@@ -1,0 +1,258 @@
+{
+  "resource_pack_name": "vanilla",
+  "texture_name": "atlas.items",
+  "texture_data": {
+    "horse_feed": {
+      "textures": "textures/items/horse_feed"
+    },
+    "dog_food": {
+      "textures": "textures/items/dog_food"
+    },
+    "shepherds_pie": {
+      "textures": "textures/items/shepherds_pie"
+    },
+    "honey_glazed_ham": {
+      "textures": "textures/items/honey_glazed_ham"
+    },
+    "stuffed_pumpkin": {
+      "textures": "textures/items/stuffed_pumpkin"
+    },
+    "roast_chicken": {
+      "textures": "textures/items/roast_chicken"
+    },
+    "grilled_salmon": {
+      "textures": "textures/items/grilled_salmon"
+    },
+    "squid_ink_pasta": {
+      "textures": "textures/items/squid_ink_pasta"
+    },
+    "ratatouille": {
+      "textures": "textures/items/ratatouille"
+    },
+    "vegetable_noodles": {
+      "textures": "textures/items/vegetable_noodles"
+    },
+    "steak_and_potatoes": {
+      "textures": "textures/items/steak_and_potatoes"
+    },
+    "roasted_mutton_chops": {
+      "textures": "textures/items/roasted_mutton_chops"
+    },
+    "pasta_with_mutton_chop": {
+      "textures": "textures/items/pasta_with_mutton_chop"
+    },
+    "pasta_with_meatballs": {
+      "textures": "textures/items/pasta_with_meatballs"
+    },
+    "bacon_and_eggs": {
+      "textures": "textures/items/bacon_and_eggs"
+    },
+    "noodle_soup": {
+      "textures": "textures/items/noodle_soup"
+    },
+    "baked_cod_stew": {
+      "textures": "textures/items/baked_cod_stew"
+    },
+    "pumpkin_soup": {
+      "textures": "textures/items/pumpkin_soup"
+    },
+    "fried_rice": {
+      "textures": "textures/items/fried_rice"
+    },
+    "fish_stew": {
+      "textures": "textures/items/fish_stew"
+    },
+    "vegetable_soup": {
+      "textures": "textures/items/vegetable_soup"
+    },
+    "chicken_soup": {
+      "textures": "textures/items/chicken_soup"
+    },
+    "beef_stew": {
+      "textures": "textures/items/beef_stew"
+    },
+    "nether_salad": {
+      "textures": "textures/items/nether_salad"
+    },
+    "mixed_salad": {
+      "textures": "textures/items/mixed_salad"
+    },
+    "cooked_rice": {
+      "textures": "textures/items/cooked_rice"
+    },
+    "cabbage_rolls": {
+      "textures": "textures/items/cabbage_rolls"
+    },
+    "stuffed_potato": {
+      "textures": "textures/items/stuffed_potato"
+    },
+    "dumplings": {
+      "textures": "textures/items/dumplings"
+    },
+    "mutton_wrap": {
+      "textures": "textures/items/mutton_wrap"
+    },
+    "bacon_sandwich": {
+      "textures": "textures/items/bacon_sandwich"
+    },
+    "hamburger": {
+      "textures": "textures/items/hamburger"
+    },
+    "chicken_sandwich": {
+      "textures": "textures/items/chicken_sandwich"
+    },
+    "egg_sandwich": {
+      "textures": "textures/items/egg_sandwich"
+    },
+    "barbecue_stick": {
+      "textures": "textures/items/barbecue_stick"
+    },
+    "netherite_knife": {
+      "textures": "textures/items/netherite_knife"
+    },
+    "diamond_knife": {
+      "textures": "textures/items/diamond_knife"
+    },
+    "golden_knife": {
+      "textures": "textures/items/golden_knife"
+    },
+    "iron_knife": {
+      "textures": "textures/items/iron_knife"
+    },
+    "flint_knife": {
+      "textures": "textures/items/flint_knife"
+    },
+    "earthworm": {
+      "textures": "textures/items/earthworm"
+    },
+    "melon_popsicle": {
+      "textures": "textures/items/melon_popsicle"
+    },
+    "honey_cookie": {
+      "textures": "textures/items/honey_cookie"
+    },
+    "sweet_berry_cookie": {
+      "textures": "textures/items/sweet_berry_cookie"
+    },
+    "fruit_salad": {
+      "textures": "textures/items/fruit_salad"
+    },
+    "chocolate_pie_slice": {
+      "textures": "textures/items/chocolate_pie_slice"
+    },
+    "sweet_berry_cheesecake_slice": {
+      "textures": "textures/items/sweet_berry_cheesecake_slice"
+    },
+    "apple_pie_slice": {
+      "textures": "textures/items/apple_pie_slice"
+    },
+    "cake_slice": {
+      "textures": "textures/items/cake_slice"
+    },
+    "pie_crust": {
+      "textures": "textures/items/pie_crust"
+    },
+    "smoked_ham": {
+      "textures": "textures/items/smoked_ham"
+    },
+    "ham": {
+      "textures": "textures/items/ham"
+    },
+    "cooked_mutton_chops": {
+      "textures": "textures/items/cooked_mutton_chops"
+    },
+    "mutton_chops": {
+      "textures": "textures/items/mutton_chops"
+    },
+    "cooked_salmon_slice": {
+      "textures": "textures/items/cooked_salmon_slice"
+    },
+    "salmon_slice": {
+      "textures": "textures/items/salmon_slice"
+    },
+    "cooked_cod_slice": {
+      "textures": "textures/items/cooked_cod_slice"
+    },
+    "cod_slice": {
+      "textures": "textures/items/cod_slice"
+    },
+    "cooked_bacon": {
+      "textures": "textures/items/cooked_bacon"
+    },
+    "bacon": {
+      "textures": "textures/items/bacon"
+    },
+    "cooked_chicken_cuts": {
+      "textures": "textures/items/cooked_chicken_cuts"
+    },
+    "chicken_cuts": {
+      "textures": "textures/items/chicken_cuts"
+    },
+    "beef_patty": {
+      "textures": "textures/items/beef_patty"
+    },
+    "minced_beef": {
+      "textures": "textures/items/minced_beef"
+    },
+    "cabbage_leaf": {
+      "textures": "textures/items/cabbage_leaf"
+    },
+    "pumpkin_slice": {
+      "textures": "textures/items/pumpkin_slice"
+    },
+    "raw_pasta": {
+      "textures": "textures/items/raw_pasta"
+    },
+    "wheat_dough": {
+      "textures": "textures/items/wheat_dough"
+    },
+    "melon_juice": {
+      "textures": "textures/items/melon_juice"
+    },
+    "apple_cider": {
+      "textures": "textures/items/apple_cider"
+    },
+    "hot_cocoa": {
+      "textures": "textures/items/hot_cocoa"
+    },
+    "milk_bottle": {
+      "textures": "textures/items/milk_bottle"
+    },
+    "fried_egg": {
+      "textures": "textures/items/fried_egg"
+    },
+    "tomato_sauce": {
+      "textures": "textures/items/tomato_sauce"
+    },
+    "tree_bark": {
+      "textures": "textures/items/tree_bark"
+    },
+    "canvas": {
+      "textures": "textures/items/canvas"
+    },
+    "straw": {
+      "textures": "textures/items/straw"
+    },
+    "rice_panicle": {
+      "textures": "textures/items/rice_panicle"
+    },
+    "tomato_seeds": {
+      "textures": "textures/items/tomato_seeds"
+    },
+    "cabbage_seeds": {
+      "textures": "textures/items/cabbage_seeds"
+    },
+    "rice": {
+      "textures": "textures/items/rice"
+    },
+    "onion": {
+      "textures": "textures/items/onion"
+    },
+    "cabbage": {
+      "textures": "textures/items/cabbage"
+    },
+    "tomato": {
+      "textures": "textures/items/tomato"
+    }
+  }
+}
