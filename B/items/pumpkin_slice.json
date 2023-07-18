@@ -1,0 +1,18 @@
+{
+  "format_version": "1.16.100", 
+  "minecraft:item": {
+    "components": {
+      "minecraft:creative_category": {
+        "parent": "itemGroup.name.items"
+      }, 
+      "minecraft:icon": {
+        "texture": "farmersdelight:pumpkin_slice"
+      }
+    }, 
+    "description": {
+      "category": "Items", 
+      "identifier": "farmersdelight:pumpkin_slice"
+    }, 
+    "events": {}
+  }
+}
