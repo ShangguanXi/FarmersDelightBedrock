@@ -1,0 +1,28 @@
+{
+    "dependencies": [
+    ],
+    "format_version": 2,
+    "header": {
+        "description": "农夫乐事",
+        "name": "农夫乐事B",
+        "uuid": "d0131071-9ec1-edcd-6871-857c700703d8",
+        "version": [
+            0,
+            0,
+            1
+        ],
+        "min_engine_version": [1, 17, 0]
+    },
+    "modules": [
+        {
+            "description": "农夫乐事",
+            "type": "data",
+            "uuid": "f5b2a87f-b96f-1a44-e9f6-e7ad00377f4a",
+            "version": [
+                0,
+                0,
+                1
+            ]
+        }
+    ]
+}

@@ -2,256 +2,256 @@
   "resource_pack_name": "vanilla",
   "texture_name": "atlas.items",
   "texture_data": {
-    "horse_feed": {
+    "farmersdelight:horse_feed": {
       "textures": "textures/items/horse_feed"
     },
-    "dog_food": {
+    "farmersdelight:dog_food": {
       "textures": "textures/items/dog_food"
     },
-    "shepherds_pie": {
+    "farmersdelight:shepherds_pie": {
       "textures": "textures/items/shepherds_pie"
     },
-    "honey_glazed_ham": {
+    "farmersdelight:honey_glazed_ham": {
       "textures": "textures/items/honey_glazed_ham"
     },
-    "stuffed_pumpkin": {
+    "farmersdelight:stuffed_pumpkin": {
       "textures": "textures/items/stuffed_pumpkin"
     },
-    "roast_chicken": {
+    "farmersdelight:roast_chicken": {
       "textures": "textures/items/roast_chicken"
     },
-    "grilled_salmon": {
+    "farmersdelight:grilled_salmon": {
       "textures": "textures/items/grilled_salmon"
     },
-    "squid_ink_pasta": {
+    "farmersdelight:squid_ink_pasta": {
       "textures": "textures/items/squid_ink_pasta"
     },
-    "ratatouille": {
+    "farmersdelight:ratatouille": {
       "textures": "textures/items/ratatouille"
     },
-    "vegetable_noodles": {
+    "farmersdelight:vegetable_noodles": {
       "textures": "textures/items/vegetable_noodles"
     },
-    "steak_and_potatoes": {
+    "farmersdelight:steak_and_potatoes": {
       "textures": "textures/items/steak_and_potatoes"
     },
-    "roasted_mutton_chops": {
+    "farmersdelight:roasted_mutton_chops": {
       "textures": "textures/items/roasted_mutton_chops"
     },
-    "pasta_with_mutton_chop": {
+    "farmersdelight:pasta_with_mutton_chop": {
       "textures": "textures/items/pasta_with_mutton_chop"
     },
-    "pasta_with_meatballs": {
+    "farmersdelight:pasta_with_meatballs": {
       "textures": "textures/items/pasta_with_meatballs"
     },
-    "bacon_and_eggs": {
+    "farmersdelight:bacon_and_eggs": {
       "textures": "textures/items/bacon_and_eggs"
     },
-    "noodle_soup": {
+    "farmersdelight:noodle_soup": {
       "textures": "textures/items/noodle_soup"
     },
-    "baked_cod_stew": {
+    "farmersdelight:baked_cod_stew": {
       "textures": "textures/items/baked_cod_stew"
     },
-    "pumpkin_soup": {
+    "farmersdelight:pumpkin_soup": {
       "textures": "textures/items/pumpkin_soup"
     },
-    "fried_rice": {
+    "farmersdelight:fried_rice": {
       "textures": "textures/items/fried_rice"
     },
-    "fish_stew": {
+    "farmersdelight:fish_stew": {
       "textures": "textures/items/fish_stew"
     },
-    "vegetable_soup": {
+    "farmersdelight:vegetable_soup": {
       "textures": "textures/items/vegetable_soup"
     },
-    "chicken_soup": {
+    "farmersdelight:chicken_soup": {
       "textures": "textures/items/chicken_soup"
     },
-    "beef_stew": {
+    "farmersdelight:beef_stew": {
       "textures": "textures/items/beef_stew"
     },
-    "nether_salad": {
+    "farmersdelight:nether_salad": {
       "textures": "textures/items/nether_salad"
     },
-    "mixed_salad": {
+    "farmersdelight:mixed_salad": {
       "textures": "textures/items/mixed_salad"
     },
-    "cooked_rice": {
+    "farmersdelight:cooked_rice": {
       "textures": "textures/items/cooked_rice"
     },
-    "cabbage_rolls": {
+    "farmersdelight:cabbage_rolls": {
       "textures": "textures/items/cabbage_rolls"
     },
-    "stuffed_potato": {
+    "farmersdelight:stuffed_potato": {
       "textures": "textures/items/stuffed_potato"
     },
-    "dumplings": {
+    "farmersdelight:dumplings": {
       "textures": "textures/items/dumplings"
     },
-    "mutton_wrap": {
+    "farmersdelight:mutton_wrap": {
       "textures": "textures/items/mutton_wrap"
     },
-    "bacon_sandwich": {
+    "farmersdelight:bacon_sandwich": {
       "textures": "textures/items/bacon_sandwich"
     },
-    "hamburger": {
+    "farmersdelight:hamburger": {
       "textures": "textures/items/hamburger"
     },
-    "chicken_sandwich": {
+    "farmersdelight:chicken_sandwich": {
       "textures": "textures/items/chicken_sandwich"
     },
-    "egg_sandwich": {
+    "farmersdelight:egg_sandwich": {
       "textures": "textures/items/egg_sandwich"
     },
-    "barbecue_stick": {
+    "farmersdelight:barbecue_stick": {
       "textures": "textures/items/barbecue_stick"
     },
-    "netherite_knife": {
+    "farmersdelight:netherite_knife": {
       "textures": "textures/items/netherite_knife"
     },
-    "diamond_knife": {
+    "farmersdelight:diamond_knife": {
       "textures": "textures/items/diamond_knife"
     },
-    "golden_knife": {
+    "farmersdelight:golden_knife": {
       "textures": "textures/items/golden_knife"
     },
-    "iron_knife": {
+    "farmersdelight:iron_knife": {
       "textures": "textures/items/iron_knife"
     },
-    "flint_knife": {
+    "farmersdelight:flint_knife": {
       "textures": "textures/items/flint_knife"
     },
-    "earthworm": {
+    "farmersdelight:earthworm": {
       "textures": "textures/items/earthworm"
     },
-    "melon_popsicle": {
+    "farmersdelight:melon_popsicle": {
       "textures": "textures/items/melon_popsicle"
     },
-    "honey_cookie": {
+    "farmersdelight:honey_cookie": {
       "textures": "textures/items/honey_cookie"
     },
-    "sweet_berry_cookie": {
+    "farmersdelight:sweet_berry_cookie": {
       "textures": "textures/items/sweet_berry_cookie"
     },
-    "fruit_salad": {
+    "farmersdelight:fruit_salad": {
       "textures": "textures/items/fruit_salad"
     },
-    "chocolate_pie_slice": {
+    "farmersdelight:chocolate_pie_slice": {
       "textures": "textures/items/chocolate_pie_slice"
     },
-    "sweet_berry_cheesecake_slice": {
+    "farmersdelight:sweet_berry_cheesecake_slice": {
       "textures": "textures/items/sweet_berry_cheesecake_slice"
     },
-    "apple_pie_slice": {
+    "farmersdelight:apple_pie_slice": {
       "textures": "textures/items/apple_pie_slice"
     },
-    "cake_slice": {
+    "farmersdelight:cake_slice": {
       "textures": "textures/items/cake_slice"
     },
-    "pie_crust": {
+    "farmersdelight:pie_crust": {
       "textures": "textures/items/pie_crust"
     },
-    "smoked_ham": {
+    "farmersdelight:smoked_ham": {
       "textures": "textures/items/smoked_ham"
     },
-    "ham": {
+    "farmersdelight:ham": {
       "textures": "textures/items/ham"
     },
-    "cooked_mutton_chops": {
+    "farmersdelight:cooked_mutton_chops": {
       "textures": "textures/items/cooked_mutton_chops"
     },
-    "mutton_chops": {
+    "farmersdelight:mutton_chops": {
       "textures": "textures/items/mutton_chops"
     },
-    "cooked_salmon_slice": {
+    "farmersdelight:cooked_salmon_slice": {
       "textures": "textures/items/cooked_salmon_slice"
     },
-    "salmon_slice": {
+    "farmersdelight:salmon_slice": {
       "textures": "textures/items/salmon_slice"
     },
-    "cooked_cod_slice": {
+    "farmersdelight:cooked_cod_slice": {
       "textures": "textures/items/cooked_cod_slice"
     },
-    "cod_slice": {
+    "farmersdelight:cod_slice": {
       "textures": "textures/items/cod_slice"
     },
-    "cooked_bacon": {
+    "farmersdelight:cooked_bacon": {
       "textures": "textures/items/cooked_bacon"
     },
-    "bacon": {
+    "farmersdelight:bacon": {
       "textures": "textures/items/bacon"
     },
-    "cooked_chicken_cuts": {
+    "farmersdelight:cooked_chicken_cuts": {
       "textures": "textures/items/cooked_chicken_cuts"
     },
-    "chicken_cuts": {
+    "farmersdelight:chicken_cuts": {
       "textures": "textures/items/chicken_cuts"
     },
-    "beef_patty": {
+    "farmersdelight:beef_patty": {
       "textures": "textures/items/beef_patty"
     },
-    "minced_beef": {
+    "farmersdelight:minced_beef": {
       "textures": "textures/items/minced_beef"
     },
-    "cabbage_leaf": {
+    "farmersdelight:cabbage_leaf": {
       "textures": "textures/items/cabbage_leaf"
     },
-    "pumpkin_slice": {
+    "farmersdelight:pumpkin_slice": {
       "textures": "textures/items/pumpkin_slice"
     },
-    "raw_pasta": {
+    "farmersdelight:raw_pasta": {
       "textures": "textures/items/raw_pasta"
     },
-    "wheat_dough": {
+    "farmersdelight:wheat_dough": {
       "textures": "textures/items/wheat_dough"
     },
-    "melon_juice": {
+    "farmersdelight:melon_juice": {
       "textures": "textures/items/melon_juice"
     },
-    "apple_cider": {
+    "farmersdelight:apple_cider": {
       "textures": "textures/items/apple_cider"
     },
-    "hot_cocoa": {
+    "farmersdelight:hot_cocoa": {
       "textures": "textures/items/hot_cocoa"
     },
-    "milk_bottle": {
+    "farmersdelight:milk_bottle": {
       "textures": "textures/items/milk_bottle"
     },
-    "fried_egg": {
+    "farmersdelight:fried_egg": {
       "textures": "textures/items/fried_egg"
     },
-    "tomato_sauce": {
+    "farmersdelight:tomato_sauce": {
       "textures": "textures/items/tomato_sauce"
     },
-    "tree_bark": {
+    "farmersdelight:tree_bark": {
       "textures": "textures/items/tree_bark"
     },
-    "canvas": {
+    "farmersdelight:canvas": {
       "textures": "textures/items/canvas"
     },
-    "straw": {
+    "farmersdelight:straw": {
       "textures": "textures/items/straw"
     },
-    "rice_panicle": {
+    "farmersdelight:rice_panicle": {
       "textures": "textures/items/rice_panicle"
     },
-    "tomato_seeds": {
+    "farmersdelight:tomato_seeds": {
       "textures": "textures/items/tomato_seeds"
     },
-    "cabbage_seeds": {
+    "farmersdelight:cabbage_seeds": {
       "textures": "textures/items/cabbage_seeds"
     },
-    "rice": {
+    "farmersdelight:rice": {
       "textures": "textures/items/rice"
     },
-    "onion": {
+    "farmersdelight:onion": {
       "textures": "textures/items/onion"
     },
-    "cabbage": {
+    "farmersdelight:cabbage": {
       "textures": "textures/items/cabbage"
     },
-    "tomato": {
+    "farmersdelight:tomato": {
       "textures": "textures/items/tomato"
     }
   }

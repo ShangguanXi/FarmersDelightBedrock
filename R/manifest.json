@@ -1,0 +1,28 @@
+{
+    "dependencies": [
+    ],
+    "format_version": 2,
+    "header": {
+        "description": "农夫乐事",
+        "name": "农夫乐事R",
+        "uuid": "98836a6c-fe16-60f4-87a4-5afb6439bd9f",
+        "version": [
+            0,
+            0,
+            1
+        ],
+        "min_engine_version": [1, 17, 0]
+    },
+    "modules": [
+        {
+            "description": "农夫乐事",
+            "type": "resources",
+            "uuid": "b42e06a7-0a94-eb6c-a150-6bfd59564e26",
+            "version": [
+                0,
+                0,
+                1
+            ]
+        }
+    ]
+}
