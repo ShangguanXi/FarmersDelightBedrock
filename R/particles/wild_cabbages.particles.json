@@ -7,14 +7,14 @@
             }, 
             "minecraft:emitter_rate_steady": {
                 "max_particles": 1, 
-                "spawn_rate": 1
+                "spawn_rate": 1.2
             }, 
             "minecraft:emitter_shape_point": {}, 
             "minecraft:particle_appearance_billboard": {
-                "facing_camera_mode": "direction_y", 
+                "facing_camera_mode": "emitter_transform_xz", 
                 "size": [
-                    0.5, 
-                    0.5
+                    0.25, 
+                    0.25
                 ], 
                 "uv": {
                     "texture_height": 16, 
