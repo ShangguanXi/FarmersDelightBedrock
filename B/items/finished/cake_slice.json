@@ -1,0 +1,38 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:item": {
+    "components": {
+      "minecraft:use_duration": 1.6,
+      "minecraft:food": {
+        "nutrition": 2,
+        "saturation_modifier": "poor",
+        "can_always_eat": false,
+        "on_consume": {
+          "event": "on_consume",
+          "target": "self"
+        }
+      },
+      "minecraft:use_animation": "eat",
+      "minecraft:creative_category": {
+        "parent": "itemGroup.name.miscFood"
+      },
+      "minecraft:icon": {
+        "texture": "farmersdelight:cake_slice"
+      }
+    },
+    "description": {
+      "category": "equipment",
+      "identifier": "farmersdelight:cake_slice"
+    },
+    "events": {
+      "on_consume": {
+        "add_mob_effect": {
+          "effect": "speed",
+          "target": "holder",
+          "duration": 20,
+          "amplifier": 0
+        }
+      }
+    }
+  }
+}

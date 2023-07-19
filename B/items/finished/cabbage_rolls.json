@@ -1,0 +1,27 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:item": {
+    "components": {
+      "components": {
+        "minecraft:use_duration": 1.6,
+        "minecraft:food": {
+          "nutrition": 5,
+          "saturation_modifier": "low",
+          "can_always_eat": false
+        },
+        "minecraft:use_animation": "eat",
+        "minecraft:creative_category": {
+          "parent": "itemGroup.name.miscFood"
+        },
+        "minecraft:icon": {
+          "texture": "farmersdelight:cabbage_rolls"
+        }
+      },
+      "description": {
+        "category": "equipment",
+        "identifier": "farmersdelight:cabbage_rolls"
+      },
+      "events": {}
+    }
+  }
+}
