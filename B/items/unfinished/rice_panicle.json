@@ -7,7 +7,8 @@
       }, 
       "minecraft:icon": {
         "texture": "farmersdelight:rice_panicle"
-      }
+      },
+      "tag:farmersdelight:can_cut":{}
     }, 
     "description": {
       "category": "Items", 

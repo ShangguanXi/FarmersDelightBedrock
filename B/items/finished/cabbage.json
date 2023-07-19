@@ -10,11 +10,12 @@
       },
       "minecraft:use_animation": "eat",
       "minecraft:creative_category": {
-        "parent": "itemGroup.name.crop"
+        "parent": "itemGroup.name.crops"
       }, 
       "minecraft:icon": {
         "texture": "farmersdelight:cabbage"
-      }
+      },
+      "tag:farmersdelight:can_cut":{}
     }, 
     "description": {
       "category": "natrue", 
