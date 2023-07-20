@@ -1,5 +1,13 @@
 {
     "dependencies": [
+        {
+            "module_name": "mojang-minecraft",
+            "version": "1.4.0-beta"
+        },
+        {
+            "module_name": "mojang-minecraft-ui",
+            "version": "1.2.0-beta"
+        }
     ],
     "format_version": 2,
     "header": {
@@ -11,7 +19,11 @@
             0,
             1
         ],
-        "min_engine_version": [1, 17, 0]
+        "min_engine_version": [
+            1,
+            19,
+            70
+        ]
     },
     "modules": [
         {
@@ -23,6 +35,18 @@
                 0,
                 1
             ]
+        },
+        {
+            "description": "Script",
+            "type": "script",
+            "language": "javascript",
+            "uuid": "DC0909A1-EC91-1818-715F-C6BAEDB3AFA7",
+            "version": [
+                0,
+                0,
+                1
+            ],
+            "entry": "scripts/main.js"
         }
     ]
 }
