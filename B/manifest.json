@@ -1,14 +1,4 @@
 {
-    "dependencies": [
-        {
-            "module_name": "mojang-minecraft",
-            "version": "1.4.0-beta"
-        },
-        {
-            "module_name": "mojang-minecraft-ui",
-            "version": "1.2.0-beta"
-        }
-    ],
     "format_version": 2,
     "header": {
         "description": "农夫乐事",
@@ -19,11 +9,7 @@
             0,
             1
         ],
-        "min_engine_version": [
-            1,
-            19,
-            70
-        ]
+        "min_engine_version": [1, 17, 0]
     },
     "modules": [
         {
@@ -37,16 +23,22 @@
             ]
         },
         {
-            "description": "Script",
+            "description": "农夫乐事脚本",
             "type": "script",
             "language": "javascript",
-            "uuid": "DC0909A1-EC91-1818-715F-C6BAEDB3AFA7",
-            "version": [
-                0,
-                0,
-                1
-            ],
+            "uuid": "c0290469-77f9-1f71-be52-f38c9e18abb0",
+            "version": [0, 0, 1],
             "entry": "scripts/main.js"
+        }
+    ],
+    "dependencies": [
+        {
+            "uuid": "98836a6c-fe16-60f4-87a4-5afb6439bd9f",
+            "version": [0, 0, 1]
+        },
+        {
+            "module_name": "@minecraft/server",
+            "version": "1.4.0-beta"
         }
     ]
 }
