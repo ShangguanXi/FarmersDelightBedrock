@@ -1,0 +1,557 @@
+{
+	"num_mip_levels": 4,
+	"padding": 8,
+	"resource_pack_name": "vanilla",
+	"texture_name": "atlas.terrain",
+	"texture_data": {
+		"wild_tomatoes": {
+			"textures": "textures/blocks/wild_tomatoes"
+		},
+		"wild_rice_top": {
+			"textures": "textures/blocks/wild_rice_top"
+		},
+		"wild_rice_bottom": {
+			"textures": "textures/blocks/wild_rice_bottom"
+		},
+		"wild_potatoes": {
+			"textures": "textures/blocks/wild_potatoes"
+		},
+		"wild_onions": {
+			"textures": "textures/blocks/wild_onions"
+		},
+		"wild_carrots": {
+			"textures": "textures/blocks/wild_carrots"
+		},
+		"wild_cabbages": {
+			"textures": "textures/blocks/wild_cabbages"
+		},
+		"wild_beetroots": {
+			"textures": "textures/blocks/wild_beetroots"
+		},
+		"warped_cabinet_top": {
+			"textures": "textures/blocks/warped_cabinet_top"
+		},
+		"warped_cabinet_side": {
+			"textures": "textures/blocks/warped_cabinet_side"
+		},
+		"warped_cabinet_front_open": {
+			"textures": "textures/blocks/warped_cabinet_front_open"
+		},
+		"warped_cabinet_front": {
+			"textures": "textures/blocks/warped_cabinet_front"
+		},
+		"tray_top_veggies": {
+			"textures": "textures/blocks/tray_top_veggies"
+		},
+		"tray_top_leftover": {
+			"textures": "textures/blocks/tray_top_leftover"
+		},
+		"tray_top": {
+			"textures": "textures/blocks/tray_top"
+		},
+		"tray_rice_berry_leftover": {
+			"textures": "textures/blocks/tray_rice_berry_leftover"
+		},
+		"tray_rice_berry_garnish": {
+			"textures": "textures/blocks/tray_rice_berry_garnish"
+		},
+		"tray_pie_leftover": {
+			"textures": "textures/blocks/tray_pie_leftover"
+		},
+		"tray_bottom": {
+			"textures": "textures/blocks/tray_bottom"
+		},
+		"tomato_crate_top": {
+			"textures": "textures/blocks/tomato_crate_top"
+		},
+		"tomato_crate_side": {
+			"textures": "textures/blocks/tomato_crate_side"
+		},
+		"tomatoes_vine_stage3": {
+			"textures": "textures/blocks/tomatoes_vine_stage3"
+		},
+		"tomatoes_vine_stage2": {
+			"textures": "textures/blocks/tomatoes_vine_stage2"
+		},
+		"tomatoes_vine_stage1": {
+			"textures": "textures/blocks/tomatoes_vine_stage1"
+		},
+		"tomatoes_vine_stage0": {
+			"textures": "textures/blocks/tomatoes_vine_stage0"
+		},
+		"tomatoes_stage4": {
+			"textures": "textures/blocks/tomatoes_stage4"
+		},
+		"tomatoes_stage3": {
+			"textures": "textures/blocks/tomatoes_stage3"
+		},
+		"tomatoes_stage2": {
+			"textures": "textures/blocks/tomatoes_stage2"
+		},
+		"tomatoes_stage1": {
+			"textures": "textures/blocks/tomatoes_stage1"
+		},
+		"tomatoes_stage0": {
+			"textures": "textures/blocks/tomatoes_stage0"
+		},
+		"tomatoes_coiled_rope": {
+			"textures": "textures/blocks/tomatoes_coiled_rope"
+		},
+		"tatami_mat_side": {
+			"textures": "textures/blocks/tatami_mat_side"
+		},
+		"tatami_mat_odd": {
+			"textures": "textures/blocks/tatami_mat_odd"
+		},
+		"tatami_mat_half": {
+			"textures": "textures/blocks/tatami_mat_half"
+		},
+		"tatami_mat_even": {
+			"textures": "textures/blocks/tatami_mat_even"
+		},
+		"tall_rice_stage5_upper": {
+			"textures": "textures/blocks/tall_rice_stage5_upper"
+		},
+		"tall_rice_stage5": {
+			"textures": "textures/blocks/tall_rice_stage5"
+		},
+		"tall_rice_stage4_upper": {
+			"textures": "textures/blocks/tall_rice_stage4_upper"
+		},
+		"tall_rice_stage4": {
+			"textures": "textures/blocks/tall_rice_stage4"
+		},
+		"tall_rice_stage3_upper": {
+			"textures": "textures/blocks/tall_rice_stage3_upper"
+		},
+		"tall_rice_stage3": {
+			"textures": "textures/blocks/tall_rice_stage3"
+		},
+		"sweet_berry_cheesecake_top": {
+			"textures": "textures/blocks/sweet_berry_cheesecake_top"
+		},
+		"sweet_berry_cheesecake_inner": {
+			"textures": "textures/blocks/sweet_berry_cheesecake_inner"
+		},
+		"stuffed_pumpkin_top_eaten": {
+			"textures": "textures/blocks/stuffed_pumpkin_top_eaten"
+		},
+		"stuffed_pumpkin_top": {
+			"textures": "textures/blocks/stuffed_pumpkin_top"
+		},
+		"stuffed_pumpkin_side": {
+			"textures": "textures/blocks/stuffed_pumpkin_side"
+		},
+		"stuffed_pumpkin_details": {
+			"textures": "textures/blocks/stuffed_pumpkin_details"
+		},
+		"stuffed_pumpkin_bottom": {
+			"textures": "textures/blocks/stuffed_pumpkin_bottom"
+		},
+		"straw_bale_side": {
+			"textures": "textures/blocks/straw_bale_side"
+		},
+		"straw_bale_end": {
+			"textures": "textures/blocks/straw_bale_end"
+		},
+		"stove_top_on": {
+			"textures": "textures/blocks/stove_top_on"
+		},
+		"stove_top": {
+			"textures": "textures/blocks/stove_top"
+		},
+		"stove_side": {
+			"textures": "textures/blocks/stove_side"
+		},
+		"stove_front_on": {
+			"textures": "textures/blocks/stove_front_on"
+		},
+		"stove_front": {
+			"textures": "textures/blocks/stove_front"
+		},
+		"stove_bottom": {
+			"textures": "textures/blocks/stove_bottom"
+		},
+		"spruce_cabinet_top": {
+			"textures": "textures/blocks/spruce_cabinet_top"
+		},
+		"spruce_cabinet_side": {
+			"textures": "textures/blocks/spruce_cabinet_side"
+		},
+		"spruce_cabinet_front_open": {
+			"textures": "textures/blocks/spruce_cabinet_front_open"
+		},
+		"spruce_cabinet_front": {
+			"textures": "textures/blocks/spruce_cabinet_front"
+		},
+		"skillet_top": {
+			"textures": "textures/blocks/skillet_top"
+		},
+		"skillet_side": {
+			"textures": "textures/blocks/skillet_side"
+		},
+		"skillet_bottom": {
+			"textures": "textures/blocks/skillet_bottom"
+		},
+		"shepherds_pie_top": {
+			"textures": "textures/blocks/shepherds_pie_top"
+		},
+		"shepherds_pie_side": {
+			"textures": "textures/blocks/shepherds_pie_side"
+		},
+		"shepherds_pie_inner": {
+			"textures": "textures/blocks/shepherds_pie_inner"
+		},
+		"sandy_shrub": {
+			"textures": "textures/blocks/sandy_shrub"
+		},
+		"safety_net": {
+			"textures": "textures/blocks/safety_net"
+		},
+		"rope_top": {
+			"textures": "textures/blocks/rope_top"
+		},
+		"rope": {
+			"textures": "textures/blocks/rope"
+		},
+		"roast_chicken_gibs": {
+			"textures": "textures/blocks/roast_chicken_gibs"
+		},
+		"roast_chicken_eaten": {
+			"textures": "textures/blocks/roast_chicken_eaten"
+		},
+		"roast_chicken_body": {
+			"textures": "textures/blocks/roast_chicken_body"
+		},
+		"rich_soil_farmland_moist_side": {
+			"textures": "textures/blocks/rich_soil_farmland_moist_side"
+		},
+		"rich_soil_farmland_moist": {
+			"textures": "textures/blocks/rich_soil_farmland_moist"
+		},
+		"rich_soil_farmland": {
+			"textures": "textures/blocks/rich_soil_farmland"
+		},
+		"rich_soil": {
+			"textures": "textures/blocks/rich_soil"
+		},
+		"rice_upper_crop_stage3": {
+			"textures": "textures/blocks/rice_upper_crop_stage3"
+		},
+		"rice_upper_crop_stage2": {
+			"textures": "textures/blocks/rice_upper_crop_stage2"
+		},
+		"rice_upper_crop_stage1": {
+			"textures": "textures/blocks/rice_upper_crop_stage1"
+		},
+		"rice_upper_crop_stage0": {
+			"textures": "textures/blocks/rice_upper_crop_stage0"
+		},
+		"rice_supporting": {
+			"textures": "textures/blocks/rice_supporting"
+		},
+		"rice_stage3": {
+			"textures": "textures/blocks/rice_stage3"
+		},
+		"rice_stage2": {
+			"textures": "textures/blocks/rice_stage2"
+		},
+		"rice_stage1": {
+			"textures": "textures/blocks/rice_stage1"
+		},
+		"rice_stage0": {
+			"textures": "textures/blocks/rice_stage0"
+		},
+		"rice_roll_medley": {
+			"textures": "textures/blocks/rice_roll_medley"
+		},
+		"rice_bale_top": {
+			"textures": "textures/blocks/rice_bale_top"
+		},
+		"rice_bale_side": {
+			"textures": "textures/blocks/rice_bale_side"
+		},
+		"rice_bale_bottom": {
+			"textures": "textures/blocks/rice_bale_bottom"
+		},
+		"rice_bag_top": {
+			"textures": "textures/blocks/rice_bag_top"
+		},
+		"rice_bag_side_tied": {
+			"textures": "textures/blocks/rice_bag_side_tied"
+		},
+		"rice_bag_side": {
+			"textures": "textures/blocks/rice_bag_side"
+		},
+		"rice_bag_bottom": {
+			"textures": "textures/blocks/rice_bag_bottom"
+		},
+		"red_mushroom_colony_stage3": {
+			"textures": "textures/blocks/red_mushroom_colony_stage3"
+		},
+		"red_mushroom_colony_stage2": {
+			"textures": "textures/blocks/red_mushroom_colony_stage2"
+		},
+		"red_mushroom_colony_stage1": {
+			"textures": "textures/blocks/red_mushroom_colony_stage1"
+		},
+		"red_mushroom_colony_stage0": {
+			"textures": "textures/blocks/red_mushroom_colony_stage0"
+		},
+		"potato_crate_top": {
+			"textures": "textures/blocks/potato_crate_top"
+		},
+		"potato_crate_side": {
+			"textures": "textures/blocks/potato_crate_side"
+		},
+		"pie_side": {
+			"textures": "textures/blocks/pie_side"
+		},
+		"pie_bottom": {
+			"textures": "textures/blocks/pie_bottom"
+		},
+		"organic_compost_stage3": {
+			"textures": "textures/blocks/organic_compost_stage3"
+		},
+		"organic_compost_stage2": {
+			"textures": "textures/blocks/organic_compost_stage2"
+		},
+		"organic_compost_stage1": {
+			"textures": "textures/blocks/organic_compost_stage1"
+		},
+		"organic_compost_stage0": {
+			"textures": "textures/blocks/organic_compost_stage0"
+		},
+		"onion_crate_top": {
+			"textures": "textures/blocks/onion_crate_top"
+		},
+		"onion_crate_side": {
+			"textures": "textures/blocks/onion_crate_side"
+		},
+		"onions_stage3": {
+			"textures": "textures/blocks/onions_stage3"
+		},
+		"onions_stage2": {
+			"textures": "textures/blocks/onions_stage2"
+		},
+		"onions_stage1": {
+			"textures": "textures/blocks/onions_stage1"
+		},
+		"onions_stage0": {
+			"textures": "textures/blocks/onions_stage0"
+		},
+		"oak_cabinet_top": {
+			"textures": "textures/blocks/oak_cabinet_top"
+		},
+		"oak_cabinet_side": {
+			"textures": "textures/blocks/oak_cabinet_side"
+		},
+		"oak_cabinet_front_open": {
+			"textures": "textures/blocks/oak_cabinet_front_open"
+		},
+		"oak_cabinet_front": {
+			"textures": "textures/blocks/oak_cabinet_front"
+		},
+		"mangrove_cabinet_top": {
+			"textures": "textures/blocks/mangrove_cabinet_top"
+		},
+		"mangrove_cabinet_side": {
+			"textures": "textures/blocks/mangrove_cabinet_side"
+		},
+		"mangrove_cabinet_front_open": {
+			"textures": "textures/blocks/mangrove_cabinet_front_open"
+		},
+		"mangrove_cabinet_front": {
+			"textures": "textures/blocks/mangrove_cabinet_front"
+		},
+		"jungle_cabinet_top": {
+			"textures": "textures/blocks/jungle_cabinet_top"
+		},
+		"jungle_cabinet_side": {
+			"textures": "textures/blocks/jungle_cabinet_side"
+		},
+		"jungle_cabinet_front_open": {
+			"textures": "textures/blocks/jungle_cabinet_front_open"
+		},
+		"jungle_cabinet_front": {
+			"textures": "textures/blocks/jungle_cabinet_front"
+		},
+		"honey_glazed_ham_bone": {
+			"textures": "textures/blocks/honey_glazed_ham_bone"
+		},
+		"honey_glazed_ham_body": {
+			"textures": "textures/blocks/honey_glazed_ham_body"
+		},
+		"dark_oak_cabinet_top": {
+			"textures": "textures/blocks/dark_oak_cabinet_top"
+		},
+		"dark_oak_cabinet_side": {
+			"textures": "textures/blocks/dark_oak_cabinet_side"
+		},
+		"dark_oak_cabinet_front_open": {
+			"textures": "textures/blocks/dark_oak_cabinet_front_open"
+		},
+		"dark_oak_cabinet_front": {
+			"textures": "textures/blocks/dark_oak_cabinet_front"
+		},
+		"cutting_board": {
+			"textures": "textures/blocks/cutting_board"
+		},
+		"crimson_cabinet_top": {
+			"textures": "textures/blocks/crimson_cabinet_top"
+		},
+		"crimson_cabinet_side": {
+			"textures": "textures/blocks/crimson_cabinet_side"
+		},
+		"crimson_cabinet_front_open": {
+			"textures": "textures/blocks/crimson_cabinet_front_open"
+		},
+		"crimson_cabinet_front": {
+			"textures": "textures/blocks/crimson_cabinet_front"
+		},
+		"crate_bottom": {
+			"textures": "textures/blocks/crate_bottom"
+		},
+		"cooking_pot_tray_top": {
+			"textures": "textures/blocks/cooking_pot_tray_top"
+		},
+		"cooking_pot_tray_side": {
+			"textures": "textures/blocks/cooking_pot_tray_side"
+		},
+		"cooking_pot_top": {
+			"textures": "textures/blocks/cooking_pot_top"
+		},
+		"cooking_pot_side": {
+			"textures": "textures/blocks/cooking_pot_side"
+		},
+		"cooking_pot_parts": {
+			"textures": "textures/blocks/cooking_pot_parts"
+		},
+		"cooking_pot_handle": {
+			"textures": "textures/blocks/cooking_pot_handle"
+		},
+		"cooking_pot_bottom": {
+			"textures": "textures/blocks/cooking_pot_bottom"
+		},
+		"chocolate_pie_top": {
+			"textures": "textures/blocks/chocolate_pie_top"
+		},
+		"chocolate_pie_inner": {
+			"textures": "textures/blocks/chocolate_pie_inner"
+		},
+		"carrot_crate_top": {
+			"textures": "textures/blocks/carrot_crate_top"
+		},
+		"carrot_crate_side": {
+			"textures": "textures/blocks/carrot_crate_side"
+		},
+		"canvas_rug_extrudes": {
+			"textures": "textures/blocks/canvas_rug_extrudes"
+		},
+		"canvas_rug": {
+			"textures": "textures/blocks/canvas_rug"
+		},
+		"cabbage_crate_top": {
+			"textures": "textures/blocks/cabbage_crate_top"
+		},
+		"cabbage_crate_side": {
+			"textures": "textures/blocks/cabbage_crate_side"
+		},
+		"cabbages_stage7": {
+			"textures": "textures/blocks/cabbages_stage7"
+		},
+		"cabbages_stage6": {
+			"textures": "textures/blocks/cabbages_stage6"
+		},
+		"cabbages_stage5": {
+			"textures": "textures/blocks/cabbages_stage5"
+		},
+		"cabbages_stage4": {
+			"textures": "textures/blocks/cabbages_stage4"
+		},
+		"cabbages_stage3": {
+			"textures": "textures/blocks/cabbages_stage3"
+		},
+		"cabbages_stage2": {
+			"textures": "textures/blocks/cabbages_stage2"
+		},
+		"cabbages_stage1": {
+			"textures": "textures/blocks/cabbages_stage1"
+		},
+		"cabbages_stage0": {
+			"textures": "textures/blocks/cabbages_stage0"
+		},
+		"budding_tomatoes_stage3": {
+			"textures": "textures/blocks/budding_tomatoes_stage3"
+		},
+		"budding_tomatoes_stage2": {
+			"textures": "textures/blocks/budding_tomatoes_stage2"
+		},
+		"budding_tomatoes_stage1": {
+			"textures": "textures/blocks/budding_tomatoes_stage1"
+		},
+		"budding_tomatoes_stage0": {
+			"textures": "textures/blocks/budding_tomatoes_stage0"
+		},
+		"brown_mushroom_colony_stage3": {
+			"textures": "textures/blocks/brown_mushroom_colony_stage3"
+		},
+		"brown_mushroom_colony_stage2": {
+			"textures": "textures/blocks/brown_mushroom_colony_stage2"
+		},
+		"brown_mushroom_colony_stage1": {
+			"textures": "textures/blocks/brown_mushroom_colony_stage1"
+		},
+		"brown_mushroom_colony_stage0": {
+			"textures": "textures/blocks/brown_mushroom_colony_stage0"
+		},
+		"birch_cabinet_top": {
+			"textures": "textures/blocks/birch_cabinet_top"
+		},
+		"birch_cabinet_side": {
+			"textures": "textures/blocks/birch_cabinet_side"
+		},
+		"birch_cabinet_front_open": {
+			"textures": "textures/blocks/birch_cabinet_front_open"
+		},
+		"birch_cabinet_front": {
+			"textures": "textures/blocks/birch_cabinet_front"
+		},
+		"beetroot_crate_top": {
+			"textures": "textures/blocks/beetroot_crate_top"
+		},
+		"beetroot_crate_side": {
+			"textures": "textures/blocks/beetroot_crate_side"
+		},
+		"basket_top": {
+			"textures": "textures/blocks/basket_top"
+		},
+		"basket_side": {
+			"textures": "textures/blocks/basket_side"
+		},
+		"basket_handle": {
+			"textures": "textures/blocks/basket_handle"
+		},
+		"basket_bottom": {
+			"textures": "textures/blocks/basket_bottom"
+		},
+		"apple_pie_top": {
+			"textures": "textures/blocks/apple_pie_top"
+		},
+		"apple_pie_inner": {
+			"textures": "textures/blocks/apple_pie_inner"
+		},
+		"acacia_cabinet_top": {
+			"textures": "textures/blocks/acacia_cabinet_top"
+		},
+		"acacia_cabinet_side": {
+			"textures": "textures/blocks/acacia_cabinet_side"
+		},
+		"acacia_cabinet_front_open": {
+			"textures": "textures/blocks/acacia_cabinet_front_open"
+		},
+		"acacia_cabinet_front": {
+			"textures": "textures/blocks/acacia_cabinet_front"
+		}
+	}
+}
