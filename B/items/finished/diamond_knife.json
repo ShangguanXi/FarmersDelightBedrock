@@ -35,6 +35,7 @@
         }
       },
       "tag:minecraft:is_sword": {},
+      "tag:farmersdelight:is_knife": {},
       "minecraft:creative_category": {
         "parent": "itemGroup.name.sword"
       },
