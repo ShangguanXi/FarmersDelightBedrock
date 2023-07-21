@@ -1,0 +1,66 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "farmersdelight:cutting_board",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "is_experimental": false
+    },
+    "component_groups": {
+      "farmersdelight:cutting_board_despawn": {
+        "minecraft:despawn": {},
+        "minecraft:instant_despawn": {
+          "remove_child_entities": false
+        }
+      }
+    },
+    "components": {
+      "minecraft:persistent": {},
+      "minecraft:physics": {
+        "has_collision": false,
+        "has_gravity": false
+      },
+      "minecraft:scale": 0,
+      "minecraft:type_family": {
+        "family": [
+          "farmersdelight_tick_block_entity"
+        ]
+      },
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:breathable": {
+        "breathes_solids": true
+      },
+      "minecraft:health": {
+        "value": 1,
+        "max": 1,
+        "min": 1
+      },
+      "minecraft:collision_box": {
+        "width": 0.1,
+        "height": 0.1
+      },
+      "minecraft:timer": {
+        "looping": true,
+        "randomInterval": true,
+        "time": [
+          0.2,
+          0.2
+        ],
+        "time_down_event": {
+          "event": "farmersdelight:tick"
+        }
+      }
+    },
+    "events": {
+      "farmersdelight:despawn": {
+        "add": {
+          "component_groups": [
+            "farmersdelight:cutting_board_despawn"
+          ]
+        }
+      },
+      "farmersdelight:tick": {}
+    }
+  }
+}
