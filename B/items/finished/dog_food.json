@@ -4,14 +4,15 @@
     "components": {
       "minecraft:creative_category": {
         "parent": "itemGroup.name.items"
-      }, 
+      },
+      "minecraft:max_stack_size": 16, 
       "minecraft:icon": {
-        "texture": "farmersdelight:cooked_mutton_chops"
+        "texture": "farmersdelight:dog_food"
       }
     }, 
     "description": {
       "category": "Items", 
-      "identifier": "farmersdelight:cooked_mutton_chops"
+      "identifier": "farmersdelight:dog_food"
     }, 
     "events": {}
   }

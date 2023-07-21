@@ -2,23 +2,23 @@
   "format_version": "1.16.100", 
   "minecraft:item": {
     "components": {
-      "minecraft:use_duration": 1.6,
+      "minecraft:use_duration": 0.8,
       "minecraft:food": {
-        "nutrition": 10,
-        "saturation_modifier": "supernatural",
+        "nutrition": 3,
+        "saturation_modifier": "normal",
         "can_always_eat": false
       },
       "minecraft:use_animation": "eat",
       "minecraft:creative_category": {
-        "parent": "itemGroup.name.miscFood"
+        "parent": "itemGroup.name.cookedFood"
       }, 
       "minecraft:icon": {
-        "texture": "farmersdelight:bacon_sandwich"
+        "texture": "farmersdelight:cooked_mutton_chops"
       }
     }, 
     "description": {
       "category": "equipment", 
-      "identifier": "farmersdelight:bacon_sandwich"
+      "identifier": "farmersdelight:cooked_mutton_chops"
     }, 
     "events": {}
   }

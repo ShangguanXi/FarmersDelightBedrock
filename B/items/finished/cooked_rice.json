@@ -3,22 +3,27 @@
   "minecraft:item": {
     "components": {
       "minecraft:use_duration": 1.6,
+      "minecraft:max_stack_size": 16,
       "minecraft:food": {
-        "nutrition": 10,
-        "saturation_modifier": "supernatural",
-        "can_always_eat": false
+        "nutrition": 6,
+        "saturation_modifier": "normal",
+        "can_always_eat": false,
+        "on_consume": {
+          "event": "on_consume",
+          "target": "self"
+        }
       },
       "minecraft:use_animation": "eat",
       "minecraft:creative_category": {
         "parent": "itemGroup.name.miscFood"
       }, 
       "minecraft:icon": {
-        "texture": "farmersdelight:bacon_sandwich"
+        "texture": "farmersdelight:cooked_rice"
       }
     }, 
     "description": {
       "category": "equipment", 
-      "identifier": "farmersdelight:bacon_sandwich"
+      "identifier": "farmersdelight:cooked_rice"
     }, 
     "events": {}
   }
