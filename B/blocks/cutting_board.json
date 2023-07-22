@@ -64,6 +64,9 @@
 			}
 		],
         "components": {
+			"minecraft:on_interact": {
+                "event": ""
+            },
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 1.0
             },
