@@ -6,10 +6,14 @@
                 "active_time": 1
             }, 
             "minecraft:emitter_rate_steady": {
-                "max_particles": 1, 
-                "spawn_rate": 1.2
+                "max_particles": 250, 
+                "spawn_rate": 1250
             }, 
-            "minecraft:emitter_shape_point": {}, 
+            "minecraft:emitter_shape_box": {
+				"offset": [0, 0.01563, 0],
+				"half_dimensions": [0, 0.01563, 0],
+				"direction": "outwards"
+			},
             "minecraft:particle_appearance_billboard": {
                 "facing_camera_mode": "emitter_transform_xz", 
                 "size": [
