@@ -63,7 +63,8 @@ system.runInterval(() => {
         for (const entity of worldEntities) {
             switch (entity.typeId) {
                 case 'farmersdelight:cutting_board':
-                    if (entity) {
+                    const block = entity.dimension.getBlock(entity.location);
+                    if (block) {
                         const itemStack = getMap(entity, 'item')?.get('item');
                         const blockLocation = location(entity);
                         if (itemStack) {
@@ -75,7 +76,7 @@ system.runInterval(() => {
                                 entity.triggerEvent('farmersdelight:despawn');
                             }
                         }
-                        if (entity.dimension.getBlock(entity.location).typeId !== 'farmersdelight:cutting_board') {
+                        if (block.typeId !== 'farmersdelight:cutting_board') {
                             entity.teleport(blockLocation);
                         }
                     }
