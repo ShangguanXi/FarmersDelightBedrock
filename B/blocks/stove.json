@@ -1,0 +1,131 @@
+{
+    "format_version": "1.20.0",
+    "minecraft:block": {
+        "description": {
+            "identifier": "farmersdelight:stove",
+            "menu_category": {
+                "category": "items"
+            },
+            "properties": {
+                "farmersdelight:is_working": [
+                    false,
+                    true
+                ]
+            },
+            "traits": {
+                "minecraft:placement_direction": {
+                    "enabled_states": [
+                        "minecraft:cardinal_direction"
+                    ],
+                    "y_rotation_offset": 180.0
+                }
+            }
+        },
+        "permutations": [
+            {
+                "condition": "query.block_property('minecraft:cardinal_direction') == 'north'",
+                "components": {
+                    "minecraft:transformation": {
+                        "rotation": [
+                            0,
+                            180,
+                            0
+                        ]
+                    }
+                }
+            },
+            {
+                "condition": "query.block_property('minecraft:cardinal_direction') == 'south'",
+                "components": {
+                    "minecraft:transformation": {
+                        "rotation": [
+                            0,
+                            0,
+                            0
+                        ]
+                    }
+                }
+            },
+            {
+                "condition": "query.block_property('minecraft:cardinal_direction') == 'west'",
+                "components": {
+                    "minecraft:transformation": {
+                        "rotation": [
+                            0,
+                            270,
+                            0
+                        ]
+                    }
+                }
+            },
+            {
+                "condition": "query.block_property('minecraft:cardinal_direction') == 'east'",
+                "components": {
+                    "minecraft:transformation": {
+                        "rotation": [
+                            0,
+                            90,
+                            0
+                        ]
+                    }
+                }
+            },
+            {
+                "condition": "query.block_property('farmersdelight:is_working') == false",
+                "components": {
+                    "minecraft:material_instances": {
+                        "*": {
+                            "texture": "stove_side"
+                        },
+                        "up": {
+                            "texture": "stove_top"
+                        },
+                        "down": {
+                            "texture": "stove_bottom"
+                        },
+                        "south": {
+                            "texture": "stove_front"
+                        }
+                    },
+					"minecraft:light_emission": 0
+                }
+            },
+            {
+                "condition": "query.block_property('farmersdelight:is_working') == true",
+                "components": {
+                    "minecraft:material_instances": {
+                        "*": {
+                            "texture": "stove_side"
+                        },
+                        "up": {
+                            "texture": "stove_top_on"
+                        },
+                        "down": {
+                            "texture": "stove_bottom"
+                        },
+                        "south": {
+                            "texture": "stove_front_on"
+                        }
+                    },
+					"minecraft:light_emission": 15
+                }
+            }
+        ],
+        "components": {
+            "minecraft:destructible_by_mining": {
+                "seconds_to_destroy": 1
+            },
+            "minecraft:destructible_by_explosion": {
+                "explosion_resistance": 6
+            },
+            "minecraft:on_interact": {
+                "event": "farmersdelight:on_interact",
+                "target": "self"
+            },
+            "minecraft:unit_cube": {}
+        },
+		"events": {
+			"farmersdelight:on_interact": {}
+        }
+    }
+}

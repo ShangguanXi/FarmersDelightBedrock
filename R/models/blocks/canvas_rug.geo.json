@@ -1,0 +1,73 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.canvas_rug",
+				"texture_width": 16,
+				"texture_height": 16,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 1.5,
+				"visible_bounds_offset": [0, 0.25, 0]
+			},
+			"bones": [
+				{
+					"name": "bone",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{
+							"origin": [-8, 0, -8],
+							"size": [16, 1, 16],
+							"uv": {
+								"north": {"uv": [0, 1], "uv_size": [16, 1]},
+								"east": {"uv": [0, 1], "uv_size": [16, 1]},
+								"south": {"uv": [0, 1], "uv_size": [16, 1]},
+								"west": {"uv": [0, 1], "uv_size": [16, 1]},
+								"up": {"uv": [16, 16], "uv_size": [-16, -16]},
+								"down": {"uv": [16, 0], "uv_size": [-16, 16]}
+							}
+						},
+						{
+							"origin": [-8, 0.999, 8],
+							"size": [16, 0, 7],
+							"uv": {
+								"up": {"uv": [16, 16], "uv_size": [-16, -8], "material_instance": "out"},
+								"down": {"uv": [16, 8], "uv_size": [-16, 8], "material_instance": "out"}
+							}
+						},
+						{
+							"origin": [-8, 0.999, 8],
+							"size": [16, 0, 7],
+							"pivot": [0, 0, 0],
+							"rotation": [0, 180, 0],
+							"uv": {
+								"up": {"uv": [16, 16], "uv_size": [-16, -8], "material_instance": "out"},
+								"down": {"uv": [16, 8], "uv_size": [-16, 8], "material_instance": "out"}
+							}
+						},
+						{
+							"origin": [-8, 0.999, 8],
+							"size": [16, 0, 7],
+							"pivot": [0, 0, 0],
+							"rotation": [0, 90, 0],
+							"uv": {
+								"up": {"uv": [16, 16], "uv_size": [-16, -8], "material_instance": "out"},
+								"down": {"uv": [16, 8], "uv_size": [-16, 8], "material_instance": "out"}
+							}
+						},
+						{
+							"origin": [-8, 0.999, 8],
+							"size": [16, 0, 7],
+							"pivot": [0, 0, 0],
+							"rotation": [0, -90, 0],
+							"uv": {
+								"up": {"uv": [16, 16], "uv_size": [-16, -8], "material_instance": "out"},
+								"down": {"uv": [16, 8], "uv_size": [-16, 8], "material_instance": "out"}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

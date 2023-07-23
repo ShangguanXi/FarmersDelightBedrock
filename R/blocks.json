@@ -1,0 +1,16 @@
+{
+    "format_version": [
+      1,
+      1,
+      0
+    ],
+    "farmersdelight:canvas_rug": {
+        "sound": "grass"
+    },
+    "farmersdelight:cutting_board": {
+        "sound": "wood"
+    },
+    "farmersdelight:safety_net": {
+        "sound": "wool"
+    }
+}

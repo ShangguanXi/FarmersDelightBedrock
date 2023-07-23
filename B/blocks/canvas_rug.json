@@ -1,0 +1,59 @@
+{
+    "format_version": "1.20.0",
+    "minecraft:block": {
+        "description": {
+            "identifier": "farmersdelight:canvas_rug",
+			"menu_category":{
+				"category": "items"
+			}
+        },
+        "components": {
+            "minecraft:destructible_by_mining": {
+                "seconds_to_destroy": 0.2
+            },
+			"minecraft:light_dampening": 0,
+            "minecraft:destructible_by_explosion": {
+                "explosion_resistance": 0.1
+            },
+            "minecraft:geometry": "geometry.canvas_rug",
+			"minecraft:material_instances": {
+				"*": {
+					"texture": "canvas_rug",
+                    "render_method": "blend"
+				},
+                "out": {
+					"texture": "canvas_rug_extrudes",
+                    "render_method": "blend"
+				}
+			},
+			"minecraft:flammable": {
+				"catch_chance_modifier": 30,
+				"destroy_chance_modifier": 60
+			},
+            "minecraft:collision_box": {
+                "origin": [
+                    -8.0,
+                    0.0,
+                    -8.0
+                ],
+                "size": [
+                    16.0,
+                    1.0,
+                    16.0
+                ]
+            },
+            "minecraft:selection_box": {
+                "origin": [
+                    -8.0,
+                    0.0,
+                    -8.0
+                ],
+                "size": [
+                    16.0,
+                    1.0,
+                    16.0
+                ]
+            }
+        }
+    }
+}
