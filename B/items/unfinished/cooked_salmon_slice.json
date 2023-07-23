@@ -6,12 +6,12 @@
         "parent": "itemGroup.name.items"
       }, 
       "minecraft:icon": {
-        "texture": "farmersdelight:golden_knife"
+        "texture": "farmersdelight:cooked_salmon_slice"
       }
     }, 
     "description": {
       "category": "Items", 
-      "identifier": "farmersdelight:golden_knife"
+      "identifier": "farmersdelight:cooked_salmon_slice"
     }, 
     "events": {}
   }

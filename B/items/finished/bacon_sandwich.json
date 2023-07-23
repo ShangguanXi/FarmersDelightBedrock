@@ -5,7 +5,7 @@
       "minecraft:use_duration": 1.6,
       "minecraft:food": {
         "nutrition": 10,
-        "saturation_modifier": "supernatural",
+        "saturation_modifier": "good",
         "can_always_eat": false
       },
       "minecraft:use_animation": "eat",

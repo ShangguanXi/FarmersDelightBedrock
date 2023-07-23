@@ -6,12 +6,12 @@
         "parent": "itemGroup.name.items"
       }, 
       "minecraft:icon": {
-        "texture": "farmersdelight:netherite_knife"
+        "texture": "farmersdelight:fish_stew"
       }
     }, 
     "description": {
       "category": "Items", 
-      "identifier": "farmersdelight:netherite_knife"
+      "identifier": "farmersdelight:fish_stew"
     }, 
     "events": {}
   }

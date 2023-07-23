@@ -1,0 +1,15 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_smithing_transform": {
+	 "description": {
+	   "identifier": "farmersdelight:netherite_knife"
+	  },
+	 
+	 "tags": [ "smithing_table" ],
+	 
+	  "template": "minecraft:netherite_upgrade_smithing_template",
+	  "base": "farmersdelight:diamond_knife",
+	  "addition": "minecraft:netherite_ingot",
+	  "result": "farmersdelight:netherite_knife"
+	}
+}

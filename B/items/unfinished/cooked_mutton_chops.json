@@ -6,12 +6,12 @@
         "parent": "itemGroup.name.items"
       }, 
       "minecraft:icon": {
-        "texture": "farmersdelight:iron_knife"
+        "texture": "farmersdelight:cooked_mutton_chops"
       }
     }, 
     "description": {
       "category": "Items", 
-      "identifier": "farmersdelight:iron_knife"
+      "identifier": "farmersdelight:cooked_mutton_chops"
     }, 
     "events": {}
   }

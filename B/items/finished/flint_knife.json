@@ -1,5 +1,5 @@
 {
-  "format_version": "1.16.100", 
+  "format_version": "1.16.100",
   "minecraft:item": {
     "components": {
       "minecraft:durability": {
@@ -10,12 +10,12 @@
           "event": "durability"
         }
       },
-			"minecraft:max_stack_size": 1,
-			"minecraft:hand_equipped": true,
+      "minecraft:max_stack_size": 1,
+      "minecraft:hand_equipped": true,
       "minecraft:enchantable": {
-				"value": 5,
-				"slot": "sword"
-			},
+        "value": 5,
+        "slot": "sword"
+      },
       "minecraft:damage": 2.5,
       "minecraft:repairable": {
         "repair_items": [
@@ -23,6 +23,12 @@
             "repair_amount": "context.other->query.remaining_durability + 0.05 * context.other->query.max_durability",
             "items": [
               "farmersdelight:flint_knife"
+            ]
+          },
+          {
+            "repair_amount": "query.max_durability * 0.25",
+            "items": [
+              "minecraft:flint"
             ]
           }
         ]
@@ -42,11 +48,19 @@
       "minecraft:icon": {
         "texture": "farmersdelight:flint_knife"
       }
-    }, 
+    },
     "description": {
-      "category": "Items", 
+      "category": "equipment",
       "identifier": "farmersdelight:flint_knife"
-    }, 
-    "events": {}
+    },
+    "events": {
+      "durability": {
+        "damage": {
+          "type": "durability",
+          "amount": 1,
+          "target": "self"
+        }
+      }
+    }
   }
 }
