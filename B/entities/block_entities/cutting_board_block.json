@@ -39,17 +39,6 @@
       "minecraft:collision_box": {
         "width": 0.1,
         "height": 0.1
-      },
-      "minecraft:timer": {
-        "looping": true,
-        "randomInterval": true,
-        "time": [
-          0.2,
-          0.2
-        ],
-        "time_down_event": {
-          "event": "farmersdelight:tick"
-        }
       }
     },
     "events": {
@@ -59,8 +48,7 @@
             "farmersdelight:cutting_board_despawn"
           ]
         }
-      },
-      "farmersdelight:tick": {}
+      }
     }
   }
 }
