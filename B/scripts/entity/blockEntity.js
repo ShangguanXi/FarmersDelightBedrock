@@ -75,6 +75,8 @@ system.runInterval(() => {
                                 entity.dimension.spawnItem(new ItemStack(itemStack), entity.location);
                                 entity.triggerEvent('farmersdelight:despawn');
                             }
+                        } else if (entity.dimension.getBlock(blockLocation).typeId !== 'farmersdelight:cutting_board') {
+                            entity.triggerEvent('farmersdelight:despawn');
                         }
                         if (block.typeId !== 'farmersdelight:cutting_board') {
                             entity.teleport(blockLocation);
