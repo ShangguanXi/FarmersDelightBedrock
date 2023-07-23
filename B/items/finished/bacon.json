@@ -10,14 +10,14 @@
       },
       "minecraft:use_animation": "eat",
       "minecraft:creative_category": {
-        "parent": "itemGroup.name.miscFood"
+        "parent": "itemGroup.name.rawFood"
       }, 
       "minecraft:icon": {
         "texture": "farmersdelight:bacon"
       }
     }, 
     "description": {
-      "category": "equipment", 
+      "category": "nature", 
       "identifier": "farmersdelight:bacon"
     }, 
     "events": {}
