@@ -39,7 +39,7 @@
             }, 
             "minecraft:particle_motion_dynamic": {},
 			"minecraft:particle_appearance_lighting": {}
-			"minecraft:particle_appearance_lighting": {}
+			
         }, 
         "description": {
             "basic_render_parameters": {
