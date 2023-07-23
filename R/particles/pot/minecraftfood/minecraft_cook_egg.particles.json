@@ -13,12 +13,12 @@
                 "direction": "outwards",
                 "half_dimensions": [
                     0,
-                    0.0078125,
+                    0.0125,
                     0
                 ],
                 "offset": [
                     0,
-                    0.0078125,
+                    0.0125,
                     0
                 ]
             },
