@@ -44,9 +44,9 @@
         "description": {
             "basic_render_parameters": {
                 "material": "particles_alpha", 
-                "texture": "textures/items/fish_cooked"
+                "texture": "textures/items/fish_raw"
             }, 
-            "identifier": "farmersdelight:minecraft_cooked_fish"
+            "identifier": "farmersdelight:minecraft_cod"
         }
     }
 }
