@@ -26,7 +26,7 @@ export function cuttingBoard(player, itemStack, block) {
         if (map) {
             if (itemStack.hasTag('farmersdelight:is_knife')) {
                 const id = map.get('item').split(':')[1];
-                player.runCommandAsync(`loot spawn ${location.x} ${location.y} ${location.z} loot "item/${id}"`);
+                player.runCommandAsync(`loot spawn ${location.x} ${location.y} ${location.z} loot "farmersdelight/cutting_board/${id}"`);
                 entity.triggerEvent('farmersdelight:despawn');
                 player.dimension.spawnEntity('farmersdelight:cutting_board', location).addTag(JSON.stringify(location));
                 damageItem(container, player.selectedSlot);
