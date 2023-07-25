@@ -21,14 +21,14 @@ const farmersdelightItemList = [
 ];
 const vanillaItemList = [
     "minecraft:cake",
-    "minecraft:clownfish",
-    "minecraft:cooked_fish",
-    "minecraft:fish",
+    "minecraft:cooked_cod",
+    "minecraft:cod",
     "minecraft:cooked_salmon",
     "minecraft:salmon",
     "minecraft:porkchop",
     "minecraft:beef",
-    "minecraft:chicken"
+    "minecraft:chicken",
+    "minecraft:mutton"
 ];
 
 export { vanillaItemList, farmersdelightBlockList };

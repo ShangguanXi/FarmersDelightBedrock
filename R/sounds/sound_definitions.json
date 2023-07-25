@@ -1,0 +1,12 @@
+{
+    "format_version": "1.14.0",
+    "sound_definitions": {
+        "block.farmersdelight.cutting_board": {
+            "category": "block",
+            "sounds": [
+                 "block/cutting_board/knife1",
+                 "block/cutting_board/knife2"
+            ]
+        }
+    }
+}
