@@ -4,8 +4,8 @@
     "components": {
       "minecraft:use_duration": 1.6,
       "minecraft:food": {
-        "nutrition": 3,
-        "saturation_modifier": "low",
+        "nutrition": 10,
+        "saturation_modifier": "supernatural",
         "can_always_eat": false,
         "on_consume": {
           "event": "on_consume",
@@ -17,19 +17,19 @@
         "parent": "itemGroup.name.miscFood"
       },
       "minecraft:icon": {
-        "texture": "farmersdelight:chocolate_pie_slice"
+        "texture": "farmersdelight:mutton_wrap"
       }
     },
     "description": {
       "category": "equipment",
-      "identifier": "farmersdelight:chocolate_pie_slice"
+      "identifier": "farmersdelight:mutton_wrap"
     },
     "events": {
       "on_consume": {
         "add_mob_effect": {
-          "effect": "speed",
+          "effect": "saturation",
           "target": "holder",
-          "duration": 30,
+          "duration": 300,
           "amplifier": 0
         }
       }

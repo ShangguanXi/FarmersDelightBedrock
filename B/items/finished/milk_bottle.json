@@ -1,0 +1,34 @@
+{
+  "format_version": "1.16.100", 
+  "minecraft:item": {
+    "components": {
+      "minecraft:use_duration": 1.6,
+      "minecraft:max_stack_size": 16,
+      "minecraft:food": {
+        "nutrition": 0,
+        "saturation_modifier": "poor",
+        "using_converts_to": "minecraft:glass_bottle",
+        "can_always_eat": true,
+        "on_consume": {
+          "event": "on_consume",
+          "target": "self"
+        }
+      },
+      "minecraft:use_animation": "drink",
+      "tag:minecraft:is_milk":{},
+      "minecraft:creative_category": {
+        "parent": "itemGroup.name.miscFood"
+      },
+      "minecraft:icon": {
+        "texture": "farmersdelight:milk_bottle"
+      }
+    }, 
+    "description": {
+      "category": "Items", 
+      "identifier": "farmersdelight:milk_bottle"
+    }, 
+    "events": {
+      "on_consume":{}
+    }
+  }
+}

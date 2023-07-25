@@ -3,8 +3,9 @@
   "minecraft:item": {
     "components": {
       "minecraft:use_duration": 1.6,
+      "minecraft:max_stack_size": 16,
       "minecraft:food": {
-        "nutrition": 3,
+        "nutrition": 5,
         "saturation_modifier": "low",
         "can_always_eat": false,
         "on_consume": {
@@ -17,21 +18,29 @@
         "parent": "itemGroup.name.miscFood"
       },
       "minecraft:icon": {
-        "texture": "farmersdelight:chocolate_pie_slice"
+        "texture": "farmersdelight:nether_salad"
       }
     },
     "description": {
       "category": "equipment",
-      "identifier": "farmersdelight:chocolate_pie_slice"
+      "identifier": "farmersdelight:nether_salad"
     },
     "events": {
       "on_consume": {
-        "add_mob_effect": {
-          "effect": "speed",
-          "target": "holder",
-          "duration": 30,
-          "amplifier": 0
-        }
+        "randomize": [
+          {
+            "weight": 7
+          },
+          {
+            "weight": 3,
+            "add_mob_effect": {
+              "effect": "hunger",
+              "target": "holder",
+              "duration": 12,
+              "amplifier": 0
+            }
+          }
+        ]
       }
     }
   }

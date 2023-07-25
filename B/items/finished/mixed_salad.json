@@ -3,9 +3,10 @@
   "minecraft:item": {
     "components": {
       "minecraft:use_duration": 1.6,
+      "minecraft:max_stack_size": 16,
       "minecraft:food": {
-        "nutrition": 3,
-        "saturation_modifier": "low",
+        "nutrition": 6,
+        "saturation_modifier": "normal",
         "can_always_eat": false,
         "on_consume": {
           "event": "on_consume",
@@ -17,19 +18,19 @@
         "parent": "itemGroup.name.miscFood"
       },
       "minecraft:icon": {
-        "texture": "farmersdelight:chocolate_pie_slice"
+        "texture": "farmersdelight:mixed_salad"
       }
     },
     "description": {
       "category": "equipment",
-      "identifier": "farmersdelight:chocolate_pie_slice"
+      "identifier": "farmersdelight:mixed_salad"
     },
     "events": {
       "on_consume": {
         "add_mob_effect": {
-          "effect": "speed",
+          "effect": "regeneration",
           "target": "holder",
-          "duration": 30,
+          "duration": 5,
           "amplifier": 0
         }
       }

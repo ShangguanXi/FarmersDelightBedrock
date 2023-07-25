@@ -2,15 +2,22 @@
   "format_version": "1.16.100", 
   "minecraft:item": {
     "components": {
+      "minecraft:use_duration": 0.8,
+      "minecraft:food": {
+        "nutrition": 2,
+        "saturation_modifier": "low",
+        "can_always_eat": false
+      },
+      "minecraft:use_animation": "eat",
       "minecraft:creative_category": {
-        "parent": "itemGroup.name.items"
+        "parent": "itemGroup.name.rawFood"
       }, 
       "minecraft:icon": {
         "texture": "farmersdelight:mutton_chops"
       }
     }, 
     "description": {
-      "category": "Items", 
+      "category": "nature", 
       "identifier": "farmersdelight:mutton_chops"
     }, 
     "events": {}

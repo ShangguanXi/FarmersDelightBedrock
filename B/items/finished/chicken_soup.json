@@ -26,11 +26,13 @@
       "identifier": "farmersdelight:chicken_soup"
     },
     "events": {
-      "run_command": {
-        "command": [
-          "tag @s add farmersdelight:comfort"
-        ],
-        "target": "holder"
+      "on_consume": {
+        "run_command": {
+          "command": [
+            "tag @s add farmersdelight:comfort"
+          ],
+          "target": "holder"
+        }
       }
     }
   }
