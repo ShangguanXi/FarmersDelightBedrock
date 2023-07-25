@@ -26,7 +26,7 @@ export function cuttingBoard(player, itemStack, block) {
         if (map) {
             if (itemStack.hasTag('farmersdelight:is_knife')) {
                 const id = map.get('item').split(':')[1];
-                player.runCommandAsync(`loot spawn ${location.x} ${location.y} ${location.z} loot "farmersdelight/cutting_board/${id}"`);
+                player.runCommandAsync(`loot spawn ${location.x} ${location.y} ${location.z} loot "farmersdelight/cutting_board/farmersdelight_${id}"`);
                 entity.triggerEvent('farmersdelight:despawn');
                 player.dimension.spawnEntity('farmersdelight:cutting_board', location).addTag(JSON.stringify(location));
                 damageItem(container, player.selectedSlot);
@@ -36,7 +36,7 @@ export function cuttingBoard(player, itemStack, block) {
             const name = id[0] == 'minecraft' ? `farmersdelight:${id[0]}_${id[1]}` : itemStack.typeId;
             entity.addTag(`{"item":"${itemStack.typeId}"}`);
             claerItem( container, player.selectedSlot);
-            entity.dimension.spawnParticle(name, { x: location.x + 0.5, y: location.y + 0.07, z: location.z + 0.5 }, molang);
+            entity.dimension.spawnParticle(name, { x: location.x + 0.5, y: location.y + 0.0563, z: location.z + 0.5 }, molang);
         }
     }
 }

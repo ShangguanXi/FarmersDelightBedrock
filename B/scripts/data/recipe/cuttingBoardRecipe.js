@@ -13,8 +13,6 @@ const farmersdelightItemList = [
     "cabbage",
     "rice_panicle",
     "wheat_dough",
-    "ham",
-    "smoked_ham",
     "apple_pie",
     "sweet_berry_cheesecake",
     "chocolate_pie"

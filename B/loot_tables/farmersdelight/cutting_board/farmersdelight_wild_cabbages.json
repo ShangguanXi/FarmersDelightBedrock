@@ -1,0 +1,49 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "farmersdelight:cabbage_seeds",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+        "rolls": 1,
+        "entries": [
+          {
+            "type": "item",
+            "weight": 1,
+            "name": "minecraft:air",
+            "functions": [
+              {
+                "function": "set_count",
+                "count": 0
+              }
+            ]
+          },
+          {
+            "type": "item",
+            "weight": 1,
+            "name": "minecraft:yellow_dye",
+            "functions": [
+              {
+                "function": "set_count",
+                "count": {
+                    "max": 2,
+                    "min": 0
+                }
+              }
+            ]
+          }
+        ]
+      }
+  ]
+}
