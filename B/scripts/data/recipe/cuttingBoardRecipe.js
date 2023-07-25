@@ -21,7 +21,6 @@ const farmersdelightItemList = [
 ];
 const vanillaItemList = [
     "minecraft:cake",
-    "minecraft:clownfish",
     "minecraft:cooked_fish",
     "minecraft:fish",
     "minecraft:cooked_salmon",
