@@ -1,0 +1,70 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.honey_glazed_ham_block_stage1",
+				"texture_width": 16,
+				"texture_height": 16,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
+			},
+			"bones": [
+				{
+					"name": "bone",
+					"pivot": [8, 0, -8],
+					"cubes": [
+						{
+							"origin": [-1, 5, 4],
+							"size": [2, 2, 4],
+							"uv": {
+								"north": {"uv": [0, 0], "uv_size": [2, 2],"material_instance": "honey_glazed_ham_bone"},
+								"east": {"uv": [6, 0], "uv_size": [-4, 2],"material_instance": "honey_glazed_ham_bone"},
+								"south": {"uv": [0, 0], "uv_size": [2, 2],"material_instance": "honey_glazed_ham_bone"},
+								"west": {"uv": [2, 0], "uv_size": [4, 2],"material_instance": "honey_glazed_ham_bone"},
+								"up": {"uv": [2, 6], "uv_size": [-2, -4],"material_instance": "honey_glazed_ham_bone"},
+								"down": {"uv": [2, 2], "uv_size": [-2, 4],"material_instance": "honey_glazed_ham_bone"}
+							}
+						}
+					]
+				},
+				{
+					"name": "ham",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{
+							"origin": [-4, 2, -2],
+							"size": [8, 8, 6],
+							"uv": {
+								"north": {"uv": [0, 0], "uv_size": [8, 8],"material_instance": "honey_glazed_ham_body"},
+								"east": {"uv": [8, 8], "uv_size": [-6, 8],"material_instance": "honey_glazed_ham_body"},
+								"south": {"uv": [8, 8], "uv_size": [8, 8],"material_instance": "honey_glazed_ham_body"},
+								"west": {"uv": [2, 8], "uv_size": [6, 8],"material_instance": "honey_glazed_ham_body"},
+								"up": {"uv": [16, 8], "uv_size": [-8, -6],"material_instance": "honey_glazed_ham_body"}
+							}
+						}
+					]
+				},
+				{
+					"name": "plate",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{
+							"origin": [-7, 0, -7],
+							"size": [14, 2, 14],
+							"uv": {
+								"north": {"uv": [1, 11], "uv_size": [14, 2],"material_instance": "tray_bottom"},
+								"east": {"uv": [1, 11], "uv_size": [14, 2],"material_instance": "tray_bottom"},
+								"south": {"uv": [1, 11], "uv_size": [14, 2],"material_instance": "tray_bottom"},
+								"west": {"uv": [1, 11], "uv_size": [14, 2],"material_instance": "tray_bottom"},
+								"up": {"uv": [15, 15], "uv_size": [-14, -14],"material_instance": "tray_rice_berry_garnish"},
+								"down": {"uv": [15, 15], "uv_size": [-14, -14],"material_instance": "tray_bottom"}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

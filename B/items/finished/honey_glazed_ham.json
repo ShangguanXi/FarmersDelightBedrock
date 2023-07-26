@@ -19,10 +19,6 @@
       },
       "minecraft:icon": {
         "texture": "farmersdelight:honey_glazed_ham"
-      },
-      "minecraft:block_placer": {
-        "block": "farmersdelight:honey_glazed_ham_block",
-        "use_block_description": true
       }
     },
     "description": {

@@ -1,0 +1,53 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.honey_glazed_ham_block_leftover",
+				"texture_width": 16,
+				"texture_height": 16,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 1.5,
+				"visible_bounds_offset": [0, 0.25, 0]
+			},
+			"bones": [
+				{
+					"name": "bone",
+					"pivot": [0, 3, 1],
+					"cubes": [
+						{
+							"origin": [-1, 2, -2],
+							"size": [2, 2, 6],
+							"uv": {
+								"north": {"uv": [0, 0], "uv_size": [2, 2],"material_instance": "honey_glazed_ham_bone"},
+								"east": {"uv": [15, 0], "uv_size": [-6, 2],"material_instance": "honey_glazed_ham_bone"},
+								"south": {"uv": [0, 0], "uv_size": [2, 2],"material_instance": "honey_glazed_ham_bone"},
+								"west": {"uv": [9, 0], "uv_size": [6, 2],"material_instance": "honey_glazed_ham_bone"},
+								"up": {"uv": [9, 8], "uv_size": [-2, -6],"material_instance": "honey_glazed_ham_bone"},
+								"down": {"uv": [9, 2], "uv_size": [-2, 6],"material_instance": "honey_glazed_ham_bone"}
+							}
+						}
+					]
+				},
+				{
+					"name": "plant",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{
+							"origin": [-7, 0, -7],
+							"size": [14, 2, 14],
+							"uv": {
+								"north": {"uv": [1, 11], "uv_size": [14, 2],"material_instance": "tray_bottom"},
+								"east": {"uv": [1, 11], "uv_size": [14, 2],"material_instance": "tray_bottom"},
+								"south": {"uv": [1, 11], "uv_size": [14, 2],"material_instance": "tray_bottom"},
+								"west": {"uv": [1, 11], "uv_size": [14, 2],"material_instance": "tray_bottom"},
+								"up": {"uv": [15, 15], "uv_size": [-14, -14],"material_instance": "tray_rice_berry_leftover"},
+								"down": {"uv": [15, 15], "uv_size": [-14, -14],"material_instance": "tray_bottom"}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

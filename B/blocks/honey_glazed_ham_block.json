@@ -1,0 +1,194 @@
+{
+    "format_version": "1.20.0",
+    "minecraft:block": {
+        "description": {
+            "identifier": "farmersdelight:honey_glazed_ham_block",
+            "menu_category": {
+                "category": "none"
+            },
+            "properties": {
+                "farmersdelight:food_block_stage": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4
+                ]
+            },
+            "traits": {
+                "minecraft:placement_direction": {
+                    "enabled_states": [
+                        "minecraft:cardinal_direction"
+                    ],
+                    "y_rotation_offset": 0.0
+                }
+            }
+        },
+        "permutations": [
+            {
+                "condition": "query.block_property('farmersdelight:food_block_stage') == 0",
+                "components": {
+                    "minecraft:loot": "loot_tables/farmersdelight/food_block/honey_glazed_ham.json",
+                    "minecraft:geometry": "geometry.honey_glazed_ham_block_stage0"
+                }
+            },
+            {
+                "condition": "query.block_property('farmersdelight:food_block_stage') == 1",
+                "components": {
+                    "minecraft:loot": "loot_tables/farmersdelight/food_block/honey_glazed_ham_over.json",
+                    "minecraft:geometry": "geometry.honey_glazed_ham_block_stage1"
+                }
+            },
+            {
+                "condition": "query.block_property('farmersdelight:food_block_stage') == 2",
+                "components": {
+                    "minecraft:loot": "loot_tables/farmersdelight/food_block/honey_glazed_ham_over.json",
+                    "minecraft:geometry": "geometry.honey_glazed_ham_block_stage2"
+                }
+            },
+            {
+                "condition": "query.block_property('farmersdelight:food_block_stage') == 3",
+                "components": {
+                    "minecraft:loot": "loot_tables/farmersdelight/food_block/honey_glazed_ham_over.json",
+                    "minecraft:geometry": "geometry.honey_glazed_ham_block_stage3"
+                }
+            },
+            {
+                "condition": "query.block_property('farmersdelight:food_block_stage') == 4",
+                "components": {
+                    "minecraft:loot": "loot_tables/farmersdelight/food_block/honey_glazed_ham_over.json",
+                    "minecraft:geometry": "geometry.honey_glazed_ham_block_leftover"
+                }
+            },
+            {
+                "condition": "query.block_property('minecraft:cardinal_direction') == 'north'",
+                "components": {
+                    "minecraft:transformation": {
+                        "rotation": [
+                            0,
+                            180,
+                            0
+                        ]
+                    }
+                }
+            },
+            {
+                "condition": "query.block_property('minecraft:cardinal_direction') == 'south'",
+                "components": {
+                    "minecraft:transformation": {
+                        "rotation": [
+                            0,
+                            0,
+                            0
+                        ]
+                    }
+                }
+            },
+            {
+                "condition": "query.block_property('minecraft:cardinal_direction') == 'west'",
+                "components": {
+                    "minecraft:transformation": {
+                        "rotation": [
+                            0,
+                            270,
+                            0
+                        ]
+                    }
+                }
+            },
+            {
+                "condition": "query.block_property('minecraft:cardinal_direction') == 'east'",
+                "components": {
+                    "minecraft:transformation": {
+                        "rotation": [
+                            0,
+                            90,
+                            0
+                        ]
+                    }
+                }
+            }
+        ],
+        "components": {
+            "minecraft:on_interact": {
+                "event": "on_interact",
+                "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bowl') == 1"
+            },
+            "minecraft:destructible_by_mining": {
+                "seconds_to_destroy": 1.0
+            },
+            "minecraft:light_dampening": 0,
+            "minecraft:destructible_by_explosion": {
+                "explosion_resistance": 0.25
+            },
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "honey_glazed_ham_body"
+                },
+                "honey_glazed_ham_bone": {
+                    "texture": "honey_glazed_ham_bone"
+                },
+                "honey_glazed_ham_body": {
+                    "texture": "honey_glazed_ham_body"
+                },
+                "tray_bottom": {
+                    "texture": "tray_bottom"
+                },
+                "tray_rice_berry_garnish": {
+                    "texture": "tray_rice_berry_garnish"
+                },
+                "tray_rice_berry_leftover":{
+                    "texture": "tray_rice_berry_leftover"
+
+                }
+            },
+            "minecraft:collision_box": {
+                "origin": [
+                    -7.0,
+                    0.0,
+                    -7.0
+                ],
+                "size": [
+                    14.0,
+                    10.0,
+                    14.0
+                ]
+            },
+            "minecraft:selection_box": {
+                "origin": [
+                    -7.0,
+                    0.0,
+                    -7.0
+                ],
+                "size": [
+                    14.0,
+                    10.0,
+                    14.0
+                ]
+            }
+        },
+        "events": {
+            "on_interact": {
+                "sequence": [
+                    {
+                        "condition": "query.block_property('farmersdelight:food_block_stage') != 4",
+                        "set_block_property": {
+                            "farmersdelight:food_block_stage": "query.block_property('farmersdelight:food_block_stage') + 1"
+                        },
+                        "decrement_stack": {},
+                        "spawn_loot": {
+                            "table": "loot_tables/farmersdelight/food_block/honey_glazed_ham.json"
+                        }
+                    },
+                    {
+                        "condition": "query.block_property('farmersdelight:food_block_stage') == 4",
+                        "die": {
+                            "target": "block"
+                        },
+                        "decrement_stack": {}
+                    }
+                ]
+            }
+        }
+    }
+}
