@@ -111,8 +111,7 @@
         ],
         "components": {
             "minecraft:on_interact": {
-                "event": "on_interact",
-                "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bowl') == 1"
+                "event": "on_interact"
             },
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 1.0
@@ -137,9 +136,8 @@
                 "tray_rice_berry_garnish": {
                     "texture": "tray_rice_berry_garnish"
                 },
-                "tray_rice_berry_leftover":{
+                "tray_rice_berry_leftover": {
                     "texture": "tray_rice_berry_leftover"
-
                 }
             },
             "minecraft:collision_box": {
@@ -172,12 +170,9 @@
                 "sequence": [
                     {
                         "condition": "query.block_property('farmersdelight:food_block_stage') != 4",
-                        "set_block_property": {
-                            "farmersdelight:food_block_stage": "query.block_property('farmersdelight:food_block_stage') + 1"
-                        },
-                        "decrement_stack": {},
-                        "spawn_loot": {
-                            "table": "loot_tables/farmersdelight/food_block/honey_glazed_ham.json"
+                        "trigger": {
+                            "event": "honey_glazed_ham",
+                            "target": "self"
                         }
                     },
                     {
@@ -186,6 +181,20 @@
                             "target": "block"
                         },
                         "decrement_stack": {}
+                    }
+                ]
+            },
+            "honey_glazed_ham": {
+                "sequence": [
+                    {
+                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bowl') == 1",
+                        "set_block_property": {
+                            "farmersdelight:food_block_stage": "query.block_property('farmersdelight:food_block_stage') + 1"
+                        },
+                        "decrement_stack": {},
+                        "spawn_loot": {
+                            "table": "loot_tables/farmersdelight/food_block/honey_glazed_ham.json"
+                        }
                     }
                 ]
             }

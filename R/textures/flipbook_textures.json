@@ -1,0 +1,12 @@
+[
+  {
+    "flipbook_texture": "textures/blocks/stove_front_on",
+    "atlas_tile": "stove_front_on",
+    "ticks_per_frame": 2
+  },
+  {
+    "flipbook_texture": "textures/blocks/stove_top_on",
+    "atlas_tile": "stove_top_on",
+    "ticks_per_frame": 2
+  }
+]
