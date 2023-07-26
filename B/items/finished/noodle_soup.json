@@ -18,25 +18,22 @@
         "parent": "itemGroup.name.miscFood"
       },
       "minecraft:icon": {
-        "texture": "farmersdelight:honey_glazed_ham"
-      },
-      "minecraft:block_placer": {
-        "block": "farmersdelight:honey_glazed_ham_block",
-        "use_block_description": true
+        "texture": "farmersdelight:noodle_soup"
       }
     },
     "description": {
       "category": "equipment",
-      "identifier": "farmersdelight:honey_glazed_ham"
+      "identifier": "farmersdelight:noodle_soup"
     },
     "events": {
       "on_consume": {
-        "add_mob_effect": {
-          "effect": "saturation",
-          "target": "holder",
-          "duration": 300,
-          "amplifier": 0
+        "run_command": {
+          "command": [
+            "tag @s add farmersdelight:comfort"
+          ],
+          "target": "holder"
         }
-      }}
+      }
+    }
   }
 }

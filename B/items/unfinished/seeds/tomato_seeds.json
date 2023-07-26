@@ -3,14 +3,20 @@
   "minecraft:item": {
     "components": {
       "minecraft:creative_category": {
-        "parent": "itemGroup.name.items"
+        "parent": "itemGroup.name.sees"
       }, 
       "minecraft:icon": {
         "texture": "farmersdelight:tomato_seeds"
+      } /*,
+      "minecraft:block_placer": {
+        "block": "",
+        "use_on": [
+        ]
       }
+      */
     }, 
     "description": {
-      "category": "Items", 
+      "category": "nature", 
       "identifier": "farmersdelight:tomato_seeds"
     }, 
     "events": {}

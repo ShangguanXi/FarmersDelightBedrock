@@ -1,0 +1,46 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:item": {
+    "components": {
+      "minecraft:use_duration": 1.6,
+      "minecraft:food": {
+        "nutrition": 3,
+        "saturation_modifier": "low",
+        "can_always_eat": false,
+        "on_consume": {
+          "event": "on_consume",
+          "target": "self"
+        }
+      },
+      "minecraft:use_animation": "eat",
+      "minecraft:creative_category": {
+        "parent": "itemGroup.name.rawFood"
+      },
+      "minecraft:icon": {
+        "texture": "farmersdelight:raw_pasta"
+      }
+    },
+    "description": {
+      "category": "nature",
+      "identifier": "farmersdelight:raw_pasta"
+    },
+    "events": {
+      "on_consume": {
+        "randomize": [
+          {
+            "weight": 7
+          },
+          {
+            "weight": 3,
+            "add_mob_effect": {
+              "effect": "hunger",
+              "target": "holder",
+              "duration": 30,
+              "amplifier": 0
+            }
+          }
+        ]
+      }
+    }
+  }
+}

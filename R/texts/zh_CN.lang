@@ -155,13 +155,17 @@
   item.farmersdelight:squid_ink_pasta=鱿鱼墨面
   item.farmersdelight:grilled_salmon=香烤鲑鱼
 
-  tile.farmersdelight:roast_chicken_block=烤鸡
+  tile.farmersdelight:roast_chicken_block.name=烤鸡
+  item.farmersdelight:roast_chicken_block_item=烤鸡
   item.farmersdelight:roast_chicken=盘装烤鸡
-  tile.farmersdelight:stuffed_pumpkin_block=填馅南瓜
+  tile.farmersdelight:stuffed_pumpkin_block.name=填馅南瓜
+  item.farmersdelight:stuffed_pumpkin_block_item=填馅南瓜
   item.farmersdelight:stuffed_pumpkin=碗装填馅南瓜
-  tile.farmersdelight:honey_glazed_ham_block=蜜汁火腿
+  tile.farmersdelight:honey_glazed_ham_block.name=蜜汁火腿
+  item.farmersdelight:honey_glazed_ham_block_item=蜜汁火腿
   item.farmersdelight:honey_glazed_ham=盘装蜜汁火腿
-  tile.farmersdelight:shepherds_pie_block=牧羊人派
+  tile.farmersdelight:shepherds_pie_block.name=牧羊人派
+  item.farmersdelight:shepherds_pie_block_item=牧羊人派
   item.farmersdelight:shepherds_pie=盘装牧羊人派
 
   item.farmersdelight:dog_food=狗粮

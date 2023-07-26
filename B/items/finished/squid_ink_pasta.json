@@ -18,16 +18,12 @@
         "parent": "itemGroup.name.miscFood"
       },
       "minecraft:icon": {
-        "texture": "farmersdelight:honey_glazed_ham"
-      },
-      "minecraft:block_placer": {
-        "block": "farmersdelight:honey_glazed_ham_block",
-        "use_block_description": true
+        "texture": "farmersdelight:squid_ink_pasta"
       }
     },
     "description": {
       "category": "equipment",
-      "identifier": "farmersdelight:honey_glazed_ham"
+      "identifier": "farmersdelight:squid_ink_pasta"
     },
     "events": {
       "on_consume": {
@@ -37,6 +33,7 @@
           "duration": 300,
           "amplifier": 0
         }
-      }}
+      }
+    }
   }
 }

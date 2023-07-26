@@ -1,0 +1,24 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:item": {
+    "components": {
+        "minecraft:max_stack_size": 1,
+        "minecraft:block_placer": {
+            "block": "farmersdelight:stuffed_pumpkin_block",
+            "use_block_description": true
+        },
+      "minecraft:creative_category": {
+        "parent": "itemGroup.name.miscFood"
+      },
+      "minecraft:icon": {
+        "texture": "farmersdelight:stuffed_pumpkin_block"
+      }
+    },
+    "description": {
+      "category": "equipment",
+      "identifier": "farmersdelight:stuffed_pumpkin_block_item"
+    },
+    "events": {
+    }
+  }
+}

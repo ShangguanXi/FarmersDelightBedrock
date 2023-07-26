@@ -3,7 +3,7 @@
   "minecraft:item": {
     "components": {
       "minecraft:creative_category": {
-        "parent": "itemGroup.name.items"
+        "parent": "itemGroup.name.crop"
       }, 
       "minecraft:icon": {
         "texture": "farmersdelight:rice_panicle"
@@ -11,7 +11,7 @@
       "tag:farmersdelight:can_cut":{}
     }, 
     "description": {
-      "category": "Items", 
+      "category": "nature", 
       "identifier": "farmersdelight:rice_panicle"
     }, 
     "events": {}

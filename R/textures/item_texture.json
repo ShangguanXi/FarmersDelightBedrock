@@ -11,14 +11,26 @@
     "farmersdelight:shepherds_pie": {
       "textures": "textures/items/shepherds_pie"
     },
+    "farmersdelight:shepherds_pie_block": {
+      "textures": "textures/items/shepherds_pie_block"
+    },
     "farmersdelight:honey_glazed_ham": {
       "textures": "textures/items/honey_glazed_ham"
+    },
+    "farmersdelight:honey_glazed_ham_block": {
+      "textures": "textures/items/honey_glazed_ham_block"
     },
     "farmersdelight:stuffed_pumpkin": {
       "textures": "textures/items/stuffed_pumpkin"
     },
+    "farmersdelight:stuffed_pumpkin_block": {
+      "textures": "textures/items/stuffed_pumpkin_block"
+    },
     "farmersdelight:roast_chicken": {
       "textures": "textures/items/roast_chicken"
+    },
+    "farmersdelight:roast_chicken_block": {
+      "textures": "textures/items/roast_chicken_block"
     },
     "farmersdelight:grilled_salmon": {
       "textures": "textures/items/grilled_salmon"

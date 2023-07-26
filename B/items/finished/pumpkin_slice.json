@@ -2,15 +2,22 @@
   "format_version": "1.16.100", 
   "minecraft:item": {
     "components": {
+      "minecraft:use_duration": 1.6,
+      "minecraft:food": {
+        "nutrition": 3,
+        "saturation_modifier": "low",
+        "can_always_eat": false
+      },
+      "minecraft:use_animation": "eat",
       "minecraft:creative_category": {
-        "parent": "itemGroup.name.items"
-      }, 
+        "parent": "itemGroup.name.rawFood"
+      },
       "minecraft:icon": {
         "texture": "farmersdelight:pumpkin_slice"
       }
     }, 
     "description": {
-      "category": "Items", 
+      "category": "nature", 
       "identifier": "farmersdelight:pumpkin_slice"
     }, 
     "events": {}
