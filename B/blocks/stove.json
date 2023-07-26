@@ -87,7 +87,7 @@
                             "texture": "stove_front"
                         }
                     },
-					"minecraft:light_emission": 0
+                    "minecraft:light_emission": 0
                 }
             },
             {
@@ -107,7 +107,7 @@
                             "texture": "stove_front_on"
                         }
                     },
-					"minecraft:light_emission": 15
+                    "minecraft:light_emission": 15
                 }
             }
         ],
@@ -124,8 +124,46 @@
             },
             "minecraft:unit_cube": {}
         },
-		"events": {
-			"farmersdelight:on_interact": {}
+        "events": {
+            "farmersdelight:on_interact": {
+                "sequence": [
+                    {
+                        "condition": "query.block_property('farmersdelight:is_working')==false&&query.get_equipped_item_name == 'flint_and_steel'",
+                        "sequence": [
+                            {
+                                "set_block_property": {
+                                    "farmersdelight:is_working": true
+                                }
+                            },
+                            {
+                                "damage": {
+                                    "amount": 1,
+                                    "target": "item",
+                                    "type": "magic"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "condition": "query.block_property('farmersdelight:is_working')==true&&query.get_equipped_item_name == 'water_bucket'",
+                        "sequence": [
+                            {
+                                "set_block_property": {
+                                    "farmersdelight:is_working": false
+                                }
+                            },
+                            {
+                                "run_command": {
+                                    "command": [
+                                        "replaceitem entity @s slot.weapon.mainhand 0 bucket"
+                                    ],
+                                    "target": "holder"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
         }
     }
 }

@@ -138,7 +138,7 @@
                     "minecraft:queued_ticking":{
                         "interval_range": [1, 1],
                         "on_tick":{
-                            "event": "farmersdelight:check",
+                            "event": "minecraft:on_tick",
                             "target": "self"
                         }
                     }
@@ -214,6 +214,7 @@
             "bone_meal_event": {
                 "sequence": [
                     {
+                        "condition": "query.block_property('farmersdelight:age')<=3&&query.block_property('farmersdelight:upper')==false",
                         "trigger": {
                             "event": "grow_stage"
                         }
@@ -227,10 +228,21 @@
                                 "particle minecraft:crop_growth_emitter ~~~"
                             ]
                         }
+                    },
+                    {
+                        "condition": "query.block_property('farmersdelight:upper')==true",
+                        "run_command": {
+                            "command": [
+                                "execute if block ~ ~+1 ~ farmersdelight:rice_block_upper[\"farmersdelight:age\":2] run setblock ~ ~+1 ~ farmersdelight:rice_block_upper[\"farmersdelight:age\":3]",
+                                "execute if block ~ ~+1 ~ farmersdelight:rice_block_upper[\"farmersdelight:age\":1] run setblock ~ ~+1 ~ farmersdelight:rice_block_upper[\"farmersdelight:age\":2]",
+                                "execute if block ~ ~+1 ~ farmersdelight:rice_block_upper[\"farmersdelight:age\":0] run setblock ~ ~+1 ~ farmersdelight:rice_block_upper[\"farmersdelight:age\":1]"
+                            ]
+                        }
                     }
+                    
                 ]
             },
-            "farmersdelight:check": {
+            "minecraft:on_tick": {
                 "sequence": [
                     {
                         "run_command": {
