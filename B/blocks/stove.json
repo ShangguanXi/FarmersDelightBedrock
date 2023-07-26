@@ -107,7 +107,7 @@
                             "texture": "stove_front_on"
                         }
                     },
-                    "minecraft:light_emission": 15
+                    "minecraft:light_emission": 12
                 }
             }
         ],
