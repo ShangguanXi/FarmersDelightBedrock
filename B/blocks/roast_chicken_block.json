@@ -2,7 +2,7 @@
     "format_version": "1.20.0",
     "minecraft:block": {
         "description": {
-            "identifier": "farmersdelight:honey_glazed_ham_block",
+            "identifier": "farmersdelight:roast_chicken_block",
             "menu_category": {
                 "category": "none"
             },
@@ -28,36 +28,36 @@
             {
                 "condition": "query.block_property('farmersdelight:food_block_stage') == 0",
                 "components": {
-                    "minecraft:loot": "loot_tables/farmersdelight/food_block/honey_glazed_ham.json",
-                    "minecraft:geometry": "geometry.honey_glazed_ham_block_stage0"
+                    "minecraft:loot": "loot_tables/farmersdelight/food_block/roast_chicken.json",
+                    "minecraft:geometry": "geometry.roast_chicken_block_stage0"
                 }
             },
             {
                 "condition": "query.block_property('farmersdelight:food_block_stage') == 1",
                 "components": {
-                    "minecraft:loot": "loot_tables/farmersdelight/food_block/honey_glazed_ham_over.json",
-                    "minecraft:geometry": "geometry.honey_glazed_ham_block_stage1"
+                    "minecraft:loot": "loot_tables/farmersdelight/food_block/roast_chicken_over.json",
+                    "minecraft:geometry": "geometry.roast_chicken_block_stage1"
                 }
             },
             {
                 "condition": "query.block_property('farmersdelight:food_block_stage') == 2",
                 "components": {
-                    "minecraft:loot": "loot_tables/farmersdelight/food_block/honey_glazed_ham_over.json",
-                    "minecraft:geometry": "geometry.honey_glazed_ham_block_stage2"
+                    "minecraft:loot": "loot_tables/farmersdelight/food_block/roast_chicken_over.json",
+                    "minecraft:geometry": "geometry.roast_chicken_block_stage2"
                 }
             },
             {
                 "condition": "query.block_property('farmersdelight:food_block_stage') == 3",
                 "components": {
-                    "minecraft:loot": "loot_tables/farmersdelight/food_block/honey_glazed_ham_over.json",
-                    "minecraft:geometry": "geometry.honey_glazed_ham_block_stage3"
+                    "minecraft:loot": "loot_tables/farmersdelight/food_block/roast_chicken_over.json",
+                    "minecraft:geometry": "geometry.roast_chicken_block_stage3"
                 }
             },
             {
                 "condition": "query.block_property('farmersdelight:food_block_stage') == 4",
                 "components": {
-                    "minecraft:loot": "loot_tables/farmersdelight/food_block/honey_glazed_ham_over.json",
-                    "minecraft:geometry": "geometry.honey_glazed_ham_block_leftover"
+                    "minecraft:loot": "loot_tables/farmersdelight/food_block/roast_chicken_over.json",
+                    "minecraft:geometry": "geometry.roast_chicken_block_leftover"
                 }
             },
             {
@@ -122,22 +122,28 @@
             },
             "minecraft:material_instances": {
                 "*": {
-                    "texture": "honey_glazed_ham_body"
+                    "texture": "roast_chicken_eaten",
+                    "render_method": "alpha_test"
                 },
-                "honey_glazed_ham_bone": {
-                    "texture": "honey_glazed_ham_bone"
+                "roast_chicken_eaten": {
+                    "texture": "roast_chicken_eaten",
+                    "render_method": "alpha_test"
                 },
-                "honey_glazed_ham_body": {
-                    "texture": "honey_glazed_ham_body"
+                "roast_chicken_gibs": {
+                    "texture": "roast_chicken_gibs",
+                    "render_method": "alpha_test"
                 },
                 "tray_bottom": {
-                    "texture": "tray_bottom"
+                    "texture": "tray_bottom",
+                    "render_method": "alpha_test"
                 },
-                "tray_rice_berry_garnish": {
-                    "texture": "tray_rice_berry_garnish"
+                "tray_top_veggies": {
+                    "texture": "tray_top_veggies",
+                    "render_method": "alpha_test"
                 },
-                "tray_rice_berry_leftover": {
-                    "texture": "tray_rice_berry_leftover"
+                "tray_top_leftover": {
+                    "texture": "tray_top_leftover",
+                    "render_method": "alpha_test"
                 }
             },
             "minecraft:collision_box": {
@@ -148,7 +154,7 @@
                 ],
                 "size": [
                     14.0,
-                    9.0,
+                    10.0,
                     14.0
                 ]
             },
@@ -160,7 +166,7 @@
                 ],
                 "size": [
                     14.0,
-                    9.0,
+                    10.0,
                     14.0
                 ]
             }
@@ -171,7 +177,7 @@
                     {
                         "condition": "query.block_property('farmersdelight:food_block_stage') != 4",
                         "trigger": {
-                            "event": "honey_glazed_ham",
+                            "event": "roast_chicken",
                             "target": "self"
                         }
                     },
@@ -183,7 +189,7 @@
                     }
                 ]
             },
-            "honey_glazed_ham": {
+            "roast_chicken": {
                 "sequence": [
                     {
                         "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bowl') == 1",
@@ -192,7 +198,7 @@
                         },
                         "decrement_stack": {},
                         "spawn_loot": {
-                            "table": "loot_tables/farmersdelight/food_block/honey_glazed_ham.json"
+                            "table": "loot_tables/farmersdelight/food_block/roast_chicken.json"
                         }
                     }
                 ]
