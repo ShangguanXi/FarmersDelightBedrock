@@ -1,0 +1,123 @@
+{
+    "format_version": "1.20.0",
+    "minecraft:block": {
+        "description": {
+            "identifier": "farmersdelight:wild_rice_block",
+			"menu_category":{
+				"category": "none"
+			}
+        },
+        "components": {
+            "minecraft:destructible_by_mining": {
+                "seconds_to_destroy": 0.0
+            },
+			"minecraft:light_dampening": 0,
+            "minecraft:destructible_by_explosion": {
+                "explosion_resistance": 0.1
+            },
+            "minecraft:geometry": "geometry.crop_cross",
+			"minecraft:material_instances": {
+				"*": {
+					"texture": "wild_rice_bottom",
+                    "render_method": "blend",
+                    "ambient_occlusion": false
+				}
+			},
+			"minecraft:flammable": {
+				"catch_chance_modifier": 30,
+				"destroy_chance_modifier": 60
+			},
+            "minecraft:on_player_destroyed":{
+                "event" : "farmersdelight:break",
+                "target": "self"
+            },
+            "minecraft:on_placed":{
+                "event" : "farmersdelight:placed",
+                "target": "self"
+            },
+            "minecraft:placement_filter": {
+                "conditions": [
+                    {
+                        "block_filter": [
+                            "dirt",
+                            "grass"
+                        ],
+                        "allowed_faces": [
+                            "up"
+                        ]
+                    },
+                    {
+                        "block_filter": [
+                            "farmersdelight:wild_rice_upper_block"
+                        ],
+                        "allowed_faces": [
+                            "down"
+                        ]
+                    }
+                ]
+            },
+            "minecraft:selection_box": {
+                "origin": [
+                    -5,
+                    0,
+                    -5
+                ],
+                "size": [
+                    10,
+                    16,
+                    10
+                ]
+            },
+            "minecraft:loot": "loot_tables/farmersdelight/empty.json",
+            "minecraft:breathability": "air",
+            "minecraft:collision_box": false,
+            "minecraft:queued_ticking":{
+                "interval_range": [1, 1],
+                "on_tick":{
+                    "event": "minecraft:on_tick",
+                    "target": "self"
+                }
+            }
+        },
+        "events": {
+            "farmersdelight:break": {
+                "sequence": [
+                    {
+                        "condition": "!query.is_item_name_any('slot.weapon.mainhand', 'minecraft:shears')",
+                        "spawn_loot":{
+                            "table": "loot_tables/farmersdelight/crops/farmersdelight_wild_rice.json"
+                        }
+                    },
+                    {
+                        "condition": "query.is_item_name_any('slot.weapon.mainhand', 'minecraft:shears')",
+                        "spawn_loot":{
+                            "table": "loot_tables/farmersdelight/crops/farmersdelight_wild_rice_self.json"
+                        }
+                    }
+                ]
+            },
+            "farmersdelight:placed": {
+                "sequence": [
+                    {
+                        "run_command": {
+                            "command": [
+                                "setblock ~ ~+1 ~ farmersdelight:wild_rice_upper_block"
+                            ]
+                        }
+                    }
+                ]
+            },
+            "minecraft:on_tick": {
+                "sequence": [
+                    {
+                        "run_command": {
+                            "command": [
+                                "execute if block ~ ~+1 ~ air run setblock ~~~ air"
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

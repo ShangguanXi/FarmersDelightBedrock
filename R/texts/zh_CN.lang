@@ -57,13 +57,13 @@
   tile.farmersdelight:brown_mushroom_colony.name=棕色蘑菇菌落
   tile.farmersdelight:red_mushroom_colony.name=红色蘑菇菌落
 
-  tile.farmersdelight:wild_cabbages.name=野生卷心菜
-  tile.farmersdelight:wild_tomatoes.name=番茄藤蔓
-  tile.farmersdelight:wild_onions.name=野生洋葱
-  tile.farmersdelight:wild_carrots.name=野生胡萝卜
-  tile.farmersdelight:wild_potatoes.name=野生马铃薯
-  tile.farmersdelight:wild_beetroots.name=海甜菜
-  tile.farmersdelight:wild_rice.name=野生稻米
+  item.farmersdelight:wild_cabbages=野生卷心菜
+  item.farmersdelight:wild_tomatoes=番茄藤蔓
+  item.farmersdelight:wild_onions=野生洋葱
+  item.farmersdelight:wild_carrots=野生胡萝卜
+  item.farmersdelight:wild_potatoes=野生马铃薯
+  item.farmersdelight:wild_beetroots=海甜菜
+  item.farmersdelight:wild_rice=野生稻米
 
   tile.farmersdelight:apple_pie.name=苹果派
   tile.farmersdelight:sweet_berry_cheesecake.name=甜浆果芝士派

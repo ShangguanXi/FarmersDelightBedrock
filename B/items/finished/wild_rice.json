@@ -1,0 +1,18 @@
+{
+  "format_version": "1.16.100", 
+  "minecraft:item": {
+    "components": {
+      "minecraft:icon": {
+        "texture": "farmersdelight:wild_rice"
+      } ,
+      "minecraft:block_placer": {
+        "block": "farmersdelight:wild_rice_block"
+      }
+    }, 
+    "description": {
+      "category": "nature", 
+      "identifier": "farmersdelight:wild_rice"
+    }, 
+    "events": {}
+  }
+}

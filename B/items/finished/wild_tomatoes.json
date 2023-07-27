@@ -1,0 +1,18 @@
+{
+  "format_version": "1.16.100", 
+  "minecraft:item": {
+    "components": {
+      "minecraft:icon": {
+        "texture": "farmersdelight:wild_tomatoes"
+      } ,
+      "minecraft:block_placer": {
+        "block": "farmersdelight:wild_tomatoes_block"
+      }
+    }, 
+    "description": {
+      "category": "nature", 
+      "identifier": "farmersdelight:wild_tomatoes"
+    }, 
+    "events": {}
+  }
+}

@@ -266,6 +266,27 @@
     "farmersdelight:tomato": {
       "textures": "textures/items/tomato"
     },
+    "farmersdelight:wild_rice": {
+      "textures": "textures/blocks/wild_rice_top"
+    },
+    "farmersdelight:wild_onions": {
+      "textures": "textures/blocks/wild_onions"
+    },
+    "farmersdelight:wild_cabbages": {
+      "textures": "textures/blocks/wild_cabbages"
+    },
+    "farmersdelight:wild_tomatoes": {
+      "textures": "textures/blocks/wild_tomatoes"
+    },
+    "farmersdelight:wild_beetroots": {
+      "textures": "textures/blocks/wild_beetroots"
+    },
+    "farmersdelight:wild_potatoes": {
+      "textures": "textures/blocks/wild_potatoes"
+    },
+    "farmersdelight:wild_carrots": {
+      "textures": "textures/blocks/wild_carrots"
+    },
     "farmersdelight:half_tatami_mat": {
       "textures": "textures/items/half_tatami_mat"
     }
