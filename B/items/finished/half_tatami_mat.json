@@ -8,15 +8,15 @@
         "use_block_description": true
       },
       "minecraft:creative_category": {
-        "parent": "itemGroup.name.miscFood"
+        "parent": "itemGroup.name.items"
       },
       "minecraft:icon": {
         "texture": "farmersdelight:half_tatami_mat"
       }
     },
     "description": {
-      "category": "equipment",
-      "identifier": "farmersdelight:half_tatami_mat"
+      "category": "items",
+      "identifier": "farmersdelight:half_tatami_mat_item"
     },
     "events": {}
   }
