@@ -2,7 +2,7 @@
     "format_version": "1.20.0",
     "minecraft:block": {
         "description": {
-            "identifier": "farmersdelight:onion_crate",
+            "identifier": "farmersdelight:rice_bag",
             "menu_category": {
                 "category": "items"
             }
@@ -10,13 +10,16 @@
         "components": {
             "minecraft:material_instances": {
                 "*": {
-                    "texture": "onion_crate_side"
+                    "texture": "rice_bag_side"
+                },
+                "west": {
+                    "texture": "rice_bag_side_tied"
                 },
                 "up": {
-                    "texture": "onion_crate_top"
+                    "texture": "rice_bag_top"
                 },
                 "down": {
-                    "texture": "crate_bottom"
+                    "texture": "rice_bag_bottom"
                 }
             },
             "minecraft:destructible_by_mining": {
