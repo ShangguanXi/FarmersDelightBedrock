@@ -1,0 +1,32 @@
+{
+    "format_version": "1.20.0",
+    "minecraft:block": {
+        "description": {
+            "identifier": "farmersdelight:beetroot_crate",
+            "menu_category": {
+                "category": "items"
+            }
+        },
+        "components": {
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "beetroot_crate_side"
+                },
+                "up": {
+                    "texture": "beetroot_crate_top"
+                },
+                "down": {
+                    "texture": "crate_bottom"
+                }
+            },
+            "minecraft:destructible_by_mining": {
+                "seconds_to_destroy": 2
+            },
+            "minecraft:destructible_by_explosion": {
+                "explosion_resistance": 3
+            },
+            "minecraft:unit_cube": {},
+            "tag:wood":{}
+        }
+    }
+}

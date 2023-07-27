@@ -1,0 +1,66 @@
+{
+    "format_version": "1.20.0",
+    "minecraft:block": {
+        "description": {
+            "identifier": "farmersdelight:half_tatami_mat",
+            "menu_category": {
+                "category": "items"
+            }
+        },
+        "components": {
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "tatami_mat_half"
+                },
+                "tatami_mat_side": {
+                    "texture": "tatami_mat_side"
+                },
+                "tatami_mat_half": {
+                    "texture": "tatami_mat_half"
+                }
+            },
+            "minecraft:geometry": "geometry.half_tatami_mat",
+            "minecraft:placement_filter": {
+                "conditions": [
+                    {
+                        "allowed_faces": [
+                            "up"
+                        ]
+                    }
+                ]
+            },
+            "minecraft:collision_box": {
+                "origin": [
+                    -8.0,
+                    0.0,
+                    -8.0
+                ],
+                "size": [
+                    16.0,
+                    2.0,
+                    16.0
+                ]
+            },
+            "minecraft:selection_box": {
+                "origin": [
+                    -8.0,
+                    0.0,
+                    -8.0
+                ],
+                "size": [
+                    16.0,
+                    2.0,
+                    16.0
+                ]
+            },
+            "minecraft:loot": "loot_tables/farmersdelight/half_tatami_mat.json",
+            "minecraft:destructible_by_mining": {
+                "seconds_to_destroy": 0.3
+            },
+            "minecraft:destructible_by_explosion": {
+                "explosion_resistance": 0.3
+            },
+            "tag:farmersdelight:straw_blocks":{}
+        }
+    }
+}

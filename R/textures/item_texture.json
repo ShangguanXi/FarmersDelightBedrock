@@ -265,6 +265,9 @@
     },
     "farmersdelight:tomato": {
       "textures": "textures/items/tomato"
+    },
+    "farmersdelight:half_tatami_mat": {
+      "textures": "textures/items/half_tatami_mat"
     }
   }
 }

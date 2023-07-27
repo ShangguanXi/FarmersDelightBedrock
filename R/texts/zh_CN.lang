@@ -17,6 +17,7 @@
   tile.farmersdelight:tatami.name=榻榻米方块
   tile.farmersdelight:full_tatami_mat.name=长榻榻米垫
   tile.farmersdelight:half_tatami_mat.name=短榻榻米垫
+  item.farmersdelight:half_tatami_mat=短榻榻米垫
   tile.farmersdelight:organic_compost.name=有机肥料
   tile.farmersdelight:rich_soil.name=沃土
   tile.farmersdelight:rich_soil_farmland.name=沃土耕地
