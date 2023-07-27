@@ -1,0 +1,263 @@
+{
+    "format_version": "1.20.0",
+    "minecraft:block": {
+        "description": {
+            "identifier": "farmersdelight:stuffed_pumpkin_block",
+            "menu_category": {
+                "category": "none"
+            },
+            "properties": {
+                "farmersdelight:food_block_stage": [
+                    0,
+                    1,
+                    2,
+                    3
+                ]
+            },
+            "traits": {
+                "minecraft:placement_direction": {
+                    "enabled_states": [
+                        "minecraft:cardinal_direction"
+                    ],
+                    "y_rotation_offset": 0.0
+                }
+            }
+        },
+        "permutations": [
+            {
+                "condition": "query.block_property('farmersdelight:food_block_stage') == 0",
+                "components": {
+                    "minecraft:loot": "loot_tables/farmersdelight/food_block/stuffed_pumpkin.json",
+                    "minecraft:geometry": "geometry.stuffed_pumpkin_block_stage0",
+                    "minecraft:collision_box": {
+                        "origin": [
+                            -6.0,
+                            0.0,
+                            -6.0
+                        ],
+                        "size": [
+                            12.0,
+                            12.0,
+                            12.0
+                        ]
+                    },
+                    "minecraft:selection_box": {
+                        "origin": [
+                            -6.0,
+                            0.0,
+                            -6.0
+                        ],
+                        "size": [
+                            12.0,
+                            12.0,
+                            12.0
+                        ]
+                    }
+                }
+            },
+            {
+                "condition": "query.block_property('farmersdelight:food_block_stage') == 1",
+                "components": {
+                    "minecraft:loot": "loot_tables/farmersdelight/food_block/stuffed_pumpkin_over.json",
+                    "minecraft:geometry": "geometry.stuffed_pumpkin_block_stage1",
+                    "minecraft:collision_box": {
+                        "origin": [
+                            -6.0,
+                            0.0,
+                            -6.0
+                        ],
+                        "size": [
+                            12.0,
+                            12.0,
+                            12.0
+                        ]
+                    },
+                    "minecraft:selection_box": {
+                        "origin": [
+                            -6.0,
+                            0.0,
+                            -6.0
+                        ],
+                        "size": [
+                            12.0,
+                            10.0,
+                            12.0
+                        ]
+                    }
+                }
+            },
+            {
+                "condition": "query.block_property('farmersdelight:food_block_stage') == 2",
+                "components": {
+                    "minecraft:loot": "loot_tables/farmersdelight/food_block/stuffed_pumpkin_over.json",
+                    "minecraft:geometry": "geometry.stuffed_pumpkin_block_stage2",
+                    "minecraft:collision_box": {
+                        "origin": [
+                            -6.0,
+                            0.0,
+                            -6.0
+                        ],
+                        "size": [
+                            12.0,
+                            12.0,
+                            12.0
+                        ]
+                    },
+                    "minecraft:selection_box": {
+                        "origin": [
+                            -6.0,
+                            0.0,
+                            -6.0
+                        ],
+                        "size": [
+                            12.0,
+                            8.0,
+                            12.0
+                        ]
+                    }
+                }
+            },
+            {
+                "condition": "query.block_property('farmersdelight:food_block_stage') == 3",
+                "components": {
+                    "minecraft:loot": "loot_tables/farmersdelight/food_block/stuffed_pumpkin_over.json",
+                    "minecraft:geometry": "geometry.stuffed_pumpkin_block_stage3",
+                    "minecraft:collision_box": {
+                        "origin": [
+                            -6.0,
+                            0.0,
+                            -6.0
+                        ],
+                        "size": [
+                            12.0,
+                            12.0,
+                            12.0
+                        ]
+                    },
+                    "minecraft:selection_box": {
+                        "origin": [
+                            -6.0,
+                            0.0,
+                            -6.0
+                        ],
+                        "size": [
+                            12.0,
+                            4.0,
+                            12.0
+                        ]
+                    }
+                }
+            },
+            {
+                "condition": "query.block_property('minecraft:cardinal_direction') == 'north'",
+                "components": {
+                    "minecraft:transformation": {
+                        "rotation": [
+                            0,
+                            180,
+                            0
+                        ]
+                    }
+                }
+            },
+            {
+                "condition": "query.block_property('minecraft:cardinal_direction') == 'south'",
+                "components": {
+                    "minecraft:transformation": {
+                        "rotation": [
+                            0,
+                            0,
+                            0
+                        ]
+                    }
+                }
+            },
+            {
+                "condition": "query.block_property('minecraft:cardinal_direction') == 'west'",
+                "components": {
+                    "minecraft:transformation": {
+                        "rotation": [
+                            0,
+                            270,
+                            0
+                        ]
+                    }
+                }
+            },
+            {
+                "condition": "query.block_property('minecraft:cardinal_direction') == 'east'",
+                "components": {
+                    "minecraft:transformation": {
+                        "rotation": [
+                            0,
+                            90,
+                            0
+                        ]
+                    }
+                }
+            }
+        ],
+        "components": {
+            "minecraft:on_interact": {
+                "event": "on_interact"
+            },
+            "minecraft:destructible_by_mining": {
+                "seconds_to_destroy": 1.0
+            },
+            "minecraft:light_dampening": 0,
+            "minecraft:destructible_by_explosion": {
+                "explosion_resistance": 0.25
+            },
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "stuffed_pumpkin_bottom"
+                },
+                "stuffed_pumpkin_bottom": {
+                    "texture": "stuffed_pumpkin_bottom"
+                },
+                "stuffed_pumpkin_details": {
+                    "texture": "stuffed_pumpkin_details"
+                },
+                "stuffed_pumpkin_side": {
+                    "texture": "stuffed_pumpkin_side"
+                },
+                "stuffed_pumpkin_top_eaten": {
+                    "texture": "stuffed_pumpkin_top_eaten"
+                }
+            }
+        },
+        "events": {
+            "on_interact": {
+                "sequence": [
+                    {
+                        "condition": "query.block_property('farmersdelight:food_block_stage') != 3",
+                        "trigger": {
+                            "event": "stuffed_pumpkin",
+                            "target": "self"
+                        }
+                    },
+                    {
+                        "condition": "query.block_property('farmersdelight:food_block_stage') == 3",
+                        "die": {
+                            "target": "block"
+                        }
+                    }
+                ]
+            },
+            "stuffed_pumpkin": {
+                "sequence": [
+                    {
+                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bowl') == 1",
+                        "set_block_property": {
+                            "farmersdelight:food_block_stage": "query.block_property('farmersdelight:food_block_stage') + 1"
+                        },
+                        "decrement_stack": {},
+                        "spawn_loot": {
+                            "table": "loot_tables/farmersdelight/food_block/stuffed_pumpkin.json"
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

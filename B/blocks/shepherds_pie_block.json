@@ -2,7 +2,7 @@
     "format_version": "1.20.0",
     "minecraft:block": {
         "description": {
-            "identifier": "farmersdelight:roast_chicken_block",
+            "identifier": "farmersdelight:shepherds_pie_block",
             "menu_category": {
                 "category": "none"
             },
@@ -28,36 +28,36 @@
             {
                 "condition": "query.block_property('farmersdelight:food_block_stage') == 0",
                 "components": {
-                    "minecraft:loot": "loot_tables/farmersdelight/food_block/roast_chicken.json",
-                    "minecraft:geometry": "geometry.roast_chicken_block_stage0"
+                    "minecraft:loot": "loot_tables/farmersdelight/food_block/shepherds_pie.json",
+                    "minecraft:geometry": "geometry.shepherds_pie_block_stage0"
                 }
             },
             {
                 "condition": "query.block_property('farmersdelight:food_block_stage') == 1",
                 "components": {
-                    "minecraft:loot": "loot_tables/farmersdelight/food_block/roast_chicken_over.json",
-                    "minecraft:geometry": "geometry.roast_chicken_block_stage1"
+                    "minecraft:loot": "loot_tables/farmersdelight/food_block/shepherds_pie_over.json",
+                    "minecraft:geometry": "geometry.shepherds_pie_block_stage1"
                 }
             },
             {
                 "condition": "query.block_property('farmersdelight:food_block_stage') == 2",
                 "components": {
-                    "minecraft:loot": "loot_tables/farmersdelight/food_block/roast_chicken_over.json",
-                    "minecraft:geometry": "geometry.roast_chicken_block_stage2"
+                    "minecraft:loot": "loot_tables/farmersdelight/food_block/shepherds_pie_over.json",
+                    "minecraft:geometry": "geometry.shepherds_pie_block_stage2"
                 }
             },
             {
                 "condition": "query.block_property('farmersdelight:food_block_stage') == 3",
                 "components": {
-                    "minecraft:loot": "loot_tables/farmersdelight/food_block/roast_chicken_over.json",
-                    "minecraft:geometry": "geometry.roast_chicken_block_stage3"
+                    "minecraft:loot": "loot_tables/farmersdelight/food_block/shepherds_pie_over.json",
+                    "minecraft:geometry": "geometry.shepherds_pie_block_stage3"
                 }
             },
             {
                 "condition": "query.block_property('farmersdelight:food_block_stage') == 4",
                 "components": {
-                    "minecraft:loot": "loot_tables/farmersdelight/food_block/roast_chicken_over.json",
-                    "minecraft:geometry": "geometry.roast_chicken_block_leftover"
+                    "minecraft:loot": "loot_tables/farmersdelight/food_block/shepherds_pie_over.json",
+                    "minecraft:geometry": "geometry.shepherds_pie_block_leftover"
                 }
             },
             {
@@ -122,28 +122,22 @@
             },
             "minecraft:material_instances": {
                 "*": {
-                    "texture": "roast_chicken_eaten",
-                    "render_method": "alpha_test"
+                    "texture": "shepherds_pie_side"
                 },
-                "roast_chicken_eaten": {
-                    "texture": "roast_chicken_eaten",
-                    "render_method": "alpha_test"
+                "shepherds_pie_top": {
+                    "texture": "shepherds_pie_top"
                 },
-                "roast_chicken_gibs": {
-                    "texture": "roast_chicken_gibs",
-                    "render_method": "alpha_test"
+                "shepherds_pie_side": {
+                    "texture": "shepherds_pie_side"
                 },
                 "tray_bottom": {
-                    "texture": "tray_bottom",
-                    "render_method": "alpha_test"
+                    "texture": "tray_bottom"
                 },
-                "tray_top_veggies": {
-                    "texture": "tray_top_veggies",
-                    "render_method": "alpha_test"
+                "shepherds_pie_inner": {
+                    "texture": "shepherds_pie_inner"
                 },
-                "tray_top_leftover": {
-                    "texture": "tray_top_leftover",
-                    "render_method": "alpha_test"
+                "tray_pie_leftover": {
+                    "texture": "tray_pie_leftover"
                 }
             },
             "minecraft:collision_box": {
@@ -154,7 +148,7 @@
                 ],
                 "size": [
                     14.0,
-                    9.0,
+                    8.0,
                     14.0
                 ]
             },
@@ -166,7 +160,7 @@
                 ],
                 "size": [
                     14.0,
-                    9.0,
+                    8.0,
                     14.0
                 ]
             }
@@ -177,7 +171,7 @@
                     {
                         "condition": "query.block_property('farmersdelight:food_block_stage') != 4",
                         "trigger": {
-                            "event": "roast_chicken",
+                            "event": "shepherds_pie",
                             "target": "self"
                         }
                     },
@@ -189,7 +183,7 @@
                     }
                 ]
             },
-            "roast_chicken": {
+            "shepherds_pie": {
                 "sequence": [
                     {
                         "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bowl') == 1",
@@ -198,7 +192,7 @@
                         },
                         "decrement_stack": {},
                         "spawn_loot": {
-                            "table": "loot_tables/farmersdelight/food_block/roast_chicken.json"
+                            "table": "loot_tables/farmersdelight/food_block/shepherds_pie.json"
                         }
                     }
                 ]

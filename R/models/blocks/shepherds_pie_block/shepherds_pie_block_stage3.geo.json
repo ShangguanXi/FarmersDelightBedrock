@@ -1,0 +1,46 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.shepherds_pie_block_stage3",
+				"texture_width": 16,
+				"texture_height": 16,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 1.5,
+				"visible_bounds_offset": [0, 0.25, 0]
+			},
+			"bones": [
+				{
+					"name": "bone",
+					"pivot": [8, 0, -8],
+					"cubes": [
+						{
+							"origin": [-7, 0, -7],
+							"size": [14, 2, 14],
+							"uv": {
+								"north": {"uv": [1, 11], "uv_size": [14, 2],"material_instance": "tray_bottom"},
+								"east": {"uv": [1, 11], "uv_size": [14, 2],"material_instance": "tray_bottom"},
+								"south": {"uv": [1, 11], "uv_size": [14, 2],"material_instance": "tray_bottom"},
+								"west": {"uv": [1, 11], "uv_size": [14, 2],"material_instance": "tray_bottom"},
+								"up": {"uv": [15, 15], "uv_size": [-14, -14],"material_instance": "tray_pie_leftover"},
+								"down": {"uv": [15, 15], "uv_size": [-14, -14],"material_instance": "tray_bottom"}
+							}
+						},
+						{
+							"origin": [0, 2, 0],
+							"size": [6, 6, 6],
+							"uv": {
+								"north": {"uv": [8, 10], "uv_size": [6, 6],"material_instance": "shepherds_pie_inner"},
+								"east": {"uv": [2, 10], "uv_size": [6, 6],"material_instance": "shepherds_pie_inner"},
+								"south": {"uv": [2, 10], "uv_size": [6, 6],"material_instance": "shepherds_pie_side"},
+								"west": {"uv": [8, 10], "uv_size": [6, 6],"material_instance": "shepherds_pie_side"},
+								"up": {"uv": [8, 14], "uv_size": [-6, -6],"material_instance": "shepherds_pie_top"}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}
