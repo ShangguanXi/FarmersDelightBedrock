@@ -1,0 +1,23 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.skillet_item.hold": {
+			"loop": true,
+			"bones": {
+				"cude": {
+					"rotation": [0, 0, 85],
+					"position": [-2, 22, -18]
+				}
+			}
+		},
+		"animation.skillet_item.first_person": {
+			"loop": true,
+			"bones": {
+				"cude": {
+					"rotation": [80, 5, -40],
+					"position": [-8, -8, 22]
+				}
+			}
+		}
+	}
+}

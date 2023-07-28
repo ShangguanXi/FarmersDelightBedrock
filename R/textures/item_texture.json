@@ -289,6 +289,9 @@
     },
     "farmersdelight:half_tatami_mat": {
       "textures": "textures/items/half_tatami_mat"
+    },
+    "farmersdelight:skillet_item": {
+      "textures": "textures/items/skillet_item"
     }
   }
 }
