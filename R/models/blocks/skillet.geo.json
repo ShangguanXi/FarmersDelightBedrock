@@ -16,27 +16,6 @@
 					"pivot": [0, 0, 0]
 				},
 				{
-					"name": "bone",
-					"parent": "cude",
-					"pivot": [8, 0, -9],
-					"cubes": [
-						{
-							"origin": [-1, -5, 11],
-							"size": [2, 12, 2],
-							"pivot": [0, 2, 12],
-							"rotation": [90, 0, 0],
-							"uv": {
-								"north": {"uv": [7, 4], "uv_size": [2, 12], "material_instance": "skillet_side"},
-								"east": {"uv": [9, 4], "uv_size": [2, 12], "material_instance": "skillet_side"},
-								"south": {"uv": [11, 4], "uv_size": [2, 12], "material_instance": "skillet_side"},
-								"west": {"uv": [5, 4], "uv_size": [2, 12], "material_instance": "skillet_side"},
-								"up": {"uv": [9, 6], "uv_size": [-2, -2], "material_instance": "skillet_side"},
-								"down": {"uv": [5, 16], "uv_size": [-2, -2], "material_instance": "skillet_side"}
-							}
-						}
-					]
-				},
-				{
 					"name": "pan",
 					"parent": "cude",
 					"pivot": [0, 8, -1],
@@ -91,6 +70,27 @@
 								"east": {"uv": [2, 0], "uv_size": [12, 3], "material_instance": "skillet_side"},
 								"west": {"uv": [2, 0], "uv_size": [12, 3], "material_instance": "skillet_side"},
 								"up": {"uv": [2, 14], "uv_size": [-1, -12], "material_instance": "skillet_top"}
+							}
+						}
+					]
+				},
+				{
+					"name": "bone",
+					"parent": "cude",
+					"pivot": [8, 0, -9],
+					"cubes": [
+						{
+							"origin": [-1, -5, 11],
+							"size": [2, 12, 2],
+							"pivot": [0, 2, 12],
+							"rotation": [90, 0, 0],
+							"uv": {
+								"north": {"uv": [7, 4], "uv_size": [2, 12], "material_instance": "skillet_side"},
+								"east": {"uv": [9, 4], "uv_size": [2, 12], "material_instance": "skillet_side"},
+								"south": {"uv": [11, 4], "uv_size": [2, 12], "material_instance": "skillet_side"},
+								"west": {"uv": [5, 4], "uv_size": [2, 12], "material_instance": "skillet_side"},
+								"up": {"uv": [9, 6], "uv_size": [-2, -2], "material_instance": "skillet_side"},
+								"down": {"uv": [5, 16], "uv_size": [-2, -2], "material_instance": "skillet_side"}
 							}
 						}
 					]
