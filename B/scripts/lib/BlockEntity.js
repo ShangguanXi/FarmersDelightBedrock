@@ -1,14 +1,19 @@
 import { ItemStack } from "@minecraft/server";
 
 // 同步处理
-export function loot(itemStack, block, entity) {
+export function loot(itemStack, block, entity, blockLocation, id, amount = 1) {
     if (itemStack) {
-        if (block !== 'farmersdelight:cutting_board') {
-            entity.dimension.spawnItem(new ItemStack(itemStack), entity.location);
+        if (block !== id) {
+            for (let index = 0; index < amount; index++) {
+                entity.dimension.spawnItem(new ItemStack(itemStack), entity.location);
+            }
             entity.triggerEvent('farmersdelight:despawn');
         }
-    } else if (block !== 'farmersdelight:cutting_board') {
+    } else if (block !== id) {
         entity.triggerEvent('farmersdelight:despawn');
+    }
+    if (block.typeId !== 'farmersdelight:cutting_board') {
+        entity.teleport(blockLocation);
     }
 }
 
@@ -63,9 +68,6 @@ export default class BlockEntity {
         if (this.entity) {
             this.#tags = this.entity.getTags();
         }
-    }
-    getEntity() {
-        return this.entity;
     }
     getDataMap(value) {
         if (this.entity) {

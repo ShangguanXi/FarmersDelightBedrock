@@ -1,7 +1,9 @@
 import { world } from "@minecraft/server";
 
 function spawnEntity(id, dimension, location) {
-    dimension.spawnEntity(id, location).addTag(JSON.stringify(location));
+    const entity = dimension.spawnEntity(id, location);
+    entity.addTag(JSON.stringify(location));
+    return entity
 }
 
 function place(args) {
@@ -11,6 +13,12 @@ function place(args) {
     switch (block.typeId) {
         case 'farmersdelight:cutting_board':
             spawnEntity('farmersdelight:cutting_board', dimension, location);
+            break;
+        case 'farmersdelight:skillet':
+            const entity = dimension.spawnEntity('farmersdelight:skillet', location);
+            entity.addTag(JSON.stringify(location));
+            entity.addTag('{"nbt":{"item":"undefined","amount":0,"inventory":[]}}');
+            // spawnEntity('farmersdelight:skillet', dimension, location).addTag('{"nbt":{"item":"undefined","amount":0,"inventory":[]}}');
             break;
     }
 }

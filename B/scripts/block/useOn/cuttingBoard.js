@@ -15,7 +15,7 @@ export function cuttingBoard(player, itemStack, block) {
             location: location
         }
     );
-    const entity = blockEntity.getEntity();
+    const entity = blockEntity.entity;
     const map = blockEntity.getDataMap('item');
     if (map && !itemStack.hasTag('farmersdelight:is_knife')) {
         entity.dimension.spawnItem(new ItemStack(map.get('item')), entity.location);

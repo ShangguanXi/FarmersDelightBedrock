@@ -1,4 +1,4 @@
 import './block/placeBlock';
 import './block/useOnBlock';
 
-import './entity/blockEntity';
+import './entity/playerTick';
