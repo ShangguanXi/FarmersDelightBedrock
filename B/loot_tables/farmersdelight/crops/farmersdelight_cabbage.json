@@ -5,19 +5,7 @@
       "entries": [
         {
           "type": "item",
-          "weight": 8,
           "name": "farmersdelight:cabbage_seeds",
-          "functions": [
-            {
-              "function": "set_count",
-              "count": 1
-            }
-          ]
-        },
-        {
-          "type": "item",
-          "weight": 2,
-          "name": "farmersdelight:cabbage",
           "functions": [
             {
               "function": "set_count",
