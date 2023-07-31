@@ -6,6 +6,7 @@ import { MolangVariableMap, ItemStack } from "@minecraft/server";
 const molang = new MolangVariableMap();
 
 export function skillet(player, itemStack, block) {
+    
     const location = block.location;
     const container = player.getComponent('inventory').container;
     const blockEntity = new BlockEntity(
@@ -19,6 +20,7 @@ export function skillet(player, itemStack, block) {
     const map = blockEntity.getDataMap('nbt');
     if (entity && map) {
         const inventory = map.get('nbt');
+        
         if (itemStack.typeId == 'minecraft:beef') {
             const maxAmount = itemStack.maxAmount;
             const removeAmount = maxAmount - inventory.amount;
