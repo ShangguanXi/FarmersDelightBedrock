@@ -2,8 +2,7 @@
   tile.farmersdelight:cooking_pot.name=厨锅
   tile.farmersdelight:basket.name=篮子
   tile.farmersdelight:cutting_board.name=砧板
-  tile.farmersdelight:skillet.name=煎锅
-  item.farmersdelight:skillet_item=煎锅
+  tile.farmersdelight:skillet_block.name=煎锅
   tile.farmersdelight:oak_cabinet.name=橡木厨柜
   tile.farmersdelight:birch_cabinet.name=白桦木厨柜
   tile.farmersdelight:spruce_cabinet.name=云杉木厨柜

@@ -14,7 +14,7 @@ function place(args) {
         case 'farmersdelight:cutting_board':
             spawnEntity('farmersdelight:cutting_board', dimension, location);
             break;
-        case 'farmersdelight:skillet':
+        case 'farmersdelight:skillet_block':
             const entity = dimension.spawnEntity('farmersdelight:skillet', location);
             entity.addTag(JSON.stringify(location));
             entity.addTag('{"nbt":{"item":"undefined","amount":0,"inventory":[]}}');

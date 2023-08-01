@@ -1,0 +1,18 @@
+{
+  "format_version": "1.16.100", 
+  "minecraft:item": {
+    "components": {
+      "minecraft:creative_category": {
+        "parent": "itemGroup.name.items"
+      }, 
+      "minecraft:icon": {
+        "texture": "farmersdelight:baked_cod_stew"
+      }
+    }, 
+    "description": {
+      "category": "Items", 
+      "identifier": "farmersdelight:baked_cod_stew"
+    }, 
+    "events": {}
+  }
+}

@@ -37,8 +37,8 @@
         "min": 1
       },
       "minecraft:collision_box": {
-        "width": 0.0,
-        "height": 0.0
+        "width": 0.1,
+        "height": 0.1
       }
     },
     "events": {

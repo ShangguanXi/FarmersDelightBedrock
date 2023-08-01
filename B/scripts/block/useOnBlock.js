@@ -10,7 +10,7 @@ function useOn(args) {
         case 'farmersdelight:cutting_board':
             cuttingBoard(player, itemStack, block);
             break;
-        case 'farmersdelight:skillet':
+        case 'farmersdelight:skillet_block':
             skillet(player, itemStack, block);
             break;
     }

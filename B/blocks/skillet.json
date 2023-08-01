@@ -2,9 +2,9 @@
     "format_version": "1.20.0",
     "minecraft:block": {
         "description": {
-            "identifier": "farmersdelight:skillet",
+            "identifier": "farmersdelight:skillet_block",
             "menu_category": {
-                "category": "none"
+                "category": "items"
             },
             "traits": {
                 "minecraft:placement_direction": {
