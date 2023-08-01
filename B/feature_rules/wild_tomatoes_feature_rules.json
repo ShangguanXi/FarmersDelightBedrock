@@ -25,9 +25,8 @@
                             ]
                         },
                         {
-                            "test": "is_temperature_value",
-                            "operator": ">",
-                            "value": 1
+                            "test": "is_temperature_type",
+                            "value": "warm"
                         }
                     ]
                 }
@@ -35,7 +34,7 @@
         },
         "distribution": {
             "iterations": 1,
-            "scatter_chance": 50.0,
+            "scatter_chance": 5.0,
             "coordinate_eval_order": "xzy",
             "x": 0,
             "y": 0,

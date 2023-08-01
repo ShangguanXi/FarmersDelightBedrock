@@ -3,7 +3,7 @@
 	"minecraft:feature_rules": {
 		"description": {
 			"identifier": "farmersdelight:wild_beetroots_feature_rules",
-			"places_feature": "farmersdelight:wild_beetroots_feature"
+			"places_feature": "farmersdelight:scatter_wild_beetroots_feature"
 		},
 		"conditions": {
 			"placement_pass": "surface_pass",
@@ -35,7 +35,7 @@
 		},
 		"distribution": {
 			"iterations": 1,
-            "scatter_chance": 50.0,
+            "scatter_chance": 5.0,
             "coordinate_eval_order": "xzy",
             "x": 0,
             "y": 0,

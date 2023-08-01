@@ -35,7 +35,9 @@
                 "conditions": [
                     {
                         "block_filter": [
-                            "sand"
+                            "dirt",
+                            "sand",
+                            "grass"
                         ],
                         "allowed_faces": [
                             "up"
