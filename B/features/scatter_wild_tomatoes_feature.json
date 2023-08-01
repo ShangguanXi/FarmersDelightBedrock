@@ -5,7 +5,7 @@
             "identifier": "farmersdelight:scatter_wild_tomatoes_feature"
         },
         "places_feature": "farmersdelight:wild_tomatoes_feature",
-        "iterations": 30,
+        "iterations": 25,
         "x": {
             "distribution": "uniform",
             "extent": [

@@ -5,7 +5,7 @@
             "identifier": "farmersdelight:scatter_wild_carrots_feature"
         },
         "places_feature": "farmersdelight:wild_carrots_feature",
-        "iterations": 30,
+        "iterations": 25,
         "x": {
             "distribution": "uniform",
             "extent": [
