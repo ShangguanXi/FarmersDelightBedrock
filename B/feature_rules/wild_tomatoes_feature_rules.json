@@ -1,0 +1,45 @@
+{
+    "format_version": "1.20.20",
+    "minecraft:feature_rules": {
+        "description": {
+            "identifier": "farmersdelight:wild_tomatoes_feature_rules",
+            "places_feature": "farmersdelight:scatter_wild_tomatoes_feature"
+        },
+        "conditions": {
+            "placement_pass": "surface_pass",
+            "minecraft:biome_filter": [
+                {
+                    "all_of": [
+                        {
+                            "any_of": [
+                                {
+                                    "test": "has_biome_tag",
+                                    "operator": "==",
+                                    "value": "overworld"
+                                },
+                                {
+                                    "test": "has_biome_tag",
+                                    "operator": "==",
+                                    "value": "overworld_generation"
+                                }
+                            ]
+                        },
+                        {
+                            "test": "is_temperature_value",
+                            "operator": ">",
+                            "value": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        "distribution": {
+            "iterations": 1,
+            "scatter_chance": 50.0,
+            "coordinate_eval_order": "xzy",
+            "x": 0,
+            "y": 0,
+            "z": 0
+        }
+    }
+}

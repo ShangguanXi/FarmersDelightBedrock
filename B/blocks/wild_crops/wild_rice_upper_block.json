@@ -19,7 +19,7 @@
 			"minecraft:material_instances": {
 				"*": {
 					"texture": "wild_rice_top",
-                    "render_method": "blend",
+                    "render_method": "alpha_test",
                     "ambient_occlusion": false
 				}
 			},

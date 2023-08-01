@@ -53,7 +53,7 @@
                 "material": "particles_alpha", 
                 "texture": "textures/items/fish_cod_raw"
             }, 
-            "identifier": "farmersdelight:minecraft_cook_cod"
+            "identifier": "farmersdelight:minecraft_stove_cod"
         }
     }
 }

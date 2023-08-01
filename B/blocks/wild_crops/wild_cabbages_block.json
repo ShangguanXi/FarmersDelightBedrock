@@ -19,7 +19,7 @@
 			"minecraft:material_instances": {
 				"*": {
 					"texture": "wild_cabbages",
-                    "render_method": "blend",
+                    "render_method": "alpha_test",
                     "ambient_occlusion": false
 				}
 			},
@@ -36,7 +36,8 @@
                     {
                         "block_filter": [
                             "dirt",
-                            "grass"
+                            "grass",
+                            "sand"
                         ],
                         "allowed_faces": [
                             "up"

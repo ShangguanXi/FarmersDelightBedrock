@@ -51,9 +51,9 @@
         "description": {
             "basic_render_parameters": {
                 "material": "particles_alpha", 
-                "texture": "textures/items/mutton_raw"
+                "texture": "textures/items/mutton_chops"
             }, 
-            "identifier": "farmersdelight:minecraft_cook_mutton"
+            "identifier": "farmersdelight:stove_mutton_chops"
         }
     }
 }

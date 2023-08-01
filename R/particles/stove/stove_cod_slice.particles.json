@@ -53,7 +53,7 @@
                 "material": "particles_alpha", 
                 "texture": "textures/items/cod_slice"
             }, 
-            "identifier": "farmersdelight:cook_cod_slice"
+            "identifier": "farmersdelight:stove_cod_slice"
         }
     }
 }

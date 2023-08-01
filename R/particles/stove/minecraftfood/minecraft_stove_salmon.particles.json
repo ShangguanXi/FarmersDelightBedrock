@@ -51,9 +51,9 @@
         "description": {
             "basic_render_parameters": {
                 "material": "particles_alpha", 
-                "texture": "textures/items/potato"
+                "texture": "textures/items/fish_salmon_raw"
             }, 
-            "identifier": "farmersdelight:minecraft_cook_potato"
+            "identifier": "farmersdelight:minecraft_stove_salmon"
         }
     }
 }

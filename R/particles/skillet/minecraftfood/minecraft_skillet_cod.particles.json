@@ -10,23 +10,15 @@
                 "spawn_rate": 1250
             }, 
             "minecraft:emitter_shape_box": {
-                "direction": "outwards", 
-                "half_dimensions": [
-                    0, 
-                    0.0125, 
-                    0
-                ], 
-                "offset": [
-                    0, 
-                    0.0125, 
-                    0
-                ]
-            }, 
+				"offset": [0, 0.01563, 0],
+				"half_dimensions": [0, 0.01563, 0],
+				"direction": "outwards"
+			},
             "minecraft:particle_appearance_billboard": {
                 "facing_camera_mode": "emitter_transform_xz", 
                 "size": [
-                    0.2, 
-                    0.2
+                    0.25, 
+                    0.25
                 ], 
                 "uv": {
                     "texture_height": 16, 
@@ -51,9 +43,9 @@
         "description": {
             "basic_render_parameters": {
                 "material": "particles_alpha", 
-                "texture": "textures/items/chicken_raw"
+                "texture": "textures/items/fish_cod_raw"
             }, 
-            "identifier": "farmersdelight:minecraft_cook_chicken"
+            "identifier": "farmersdelight:minecraft_skillet_cod"
         }
     }
 }

@@ -1,0 +1,25 @@
+{
+    "format_version": "1.20.20",
+    "minecraft:scatter_feature": {
+        "description": {
+            "identifier": "farmersdelight:scatter_wild_cabbages_feature"
+        },
+        "places_feature": "farmersdelight:wild_cabbages_feature",
+        "iterations": 30,
+        "x": {
+            "distribution": "uniform",
+            "extent": [
+                4,
+                12
+            ]
+        },
+        "y": "query.above_top_solid(variable.worldx, variable.worldz)",
+        "z": {
+            "distribution": "uniform",
+            "extent": [
+                4,
+                12
+            ]
+        }
+      }
+    }
