@@ -1,0 +1,29 @@
+{
+    "format_version": "1.20.20",
+    "minecraft:single_block_feature": {
+        "description": {
+            "identifier": "farmersdelight:wild_rice_anchor_feature"
+        },
+        "places_block": "minecraft:iron_block",
+        "enforce_survivability_rules": true,
+        "enforce_placement_rules": false,
+        "may_attach_to": {
+            "bottom": [
+                {
+                    "name": "minecraft:sand"
+                },
+                {
+                    "name": "minecraft:dirt"
+                }
+            ],
+            "top": [
+                {
+                    "name": "minecraft:air"
+                }
+            ]
+        },
+        "may_replace": [
+            "minecraft:water"
+        ]
+    }
+}

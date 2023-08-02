@@ -1,0 +1,10 @@
+{
+    "format_version": "1.13.0",
+    "minecraft:structure_template_feature": {
+      "description": {
+        "identifier": "farmersdelight:wild_rice_feature"
+      },
+      "structure_name": "farmersdelight:wild_rice",
+      "constraints":{}
+    }
+  }
