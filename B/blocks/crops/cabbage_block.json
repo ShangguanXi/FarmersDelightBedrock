@@ -218,7 +218,7 @@
                             {
                                 "condition": "query.block_property('farmersdelight:age')<7",
                                 "set_block_property": {
-                                    "farmersdelight:age": "(query.block_property('farmersdelight:age')<4) ? query.block_property('farmersdelight:age') + 3 : 7"
+                                    "farmersdelight:age": "(query.block_property('farmersdelight:age')<4) ? query.block_property('farmersdelight:age') + 1 : 7"
                                 }
                             }
                         ]
@@ -229,9 +229,21 @@
                 "sequence": [
                     {
                         "condition": "query.get_equipped_item_name == 'bone_meal'&&(query.block_property('farmersdelight:age')<7)",
-                        "trigger": {
-                            "event": "grow_stage"
-                        }
+                        "randomize": [
+                            {
+                                "weight": 5
+                            },
+                            {
+                                "weight": 12,
+                                "sequence": [
+                                    {
+                                        "set_block_property": {
+                                            "farmersdelight:age": "(query.block_property('farmersdelight:age')<4) ? query.block_property('farmersdelight:age') + 3 : 7"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
                     },
                     {
                         "condition": "query.get_equipped_item_name == 'bone_meal'&&(query.block_property('farmersdelight:age')<7)",

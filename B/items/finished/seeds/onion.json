@@ -14,13 +14,13 @@
       }, 
       "minecraft:icon": {
         "texture": "farmersdelight:onion"
-      } /*,
+      },
       "minecraft:block_placer": {
-        "block": "",
+        "block": "onion_block",
         "use_on": [
+          "farmland"
         ]
       }
-      */
     }, 
     "description": {
       "category": "nature", 

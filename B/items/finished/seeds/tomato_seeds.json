@@ -6,18 +6,18 @@
         "parent": "itemGroup.name.seed"
       }, 
       "minecraft:icon": {
-        "texture": "farmersdelight:rice"
-      } /*,
+        "texture": "farmersdelight:tomato_seeds"
+      },
       "minecraft:block_placer": {
-        "block": "",
+        "block": "tomato_block",
         "use_on": [
+          "farmland"
         ]
       }
-      */
     }, 
     "description": {
       "category": "nature", 
-      "identifier": "farmersdelight:rice"
+      "identifier": "farmersdelight:tomato_seeds"
     }, 
     "events": {}
   }

@@ -1,0 +1,90 @@
+{
+    "format_version": "1.20.0",
+    "minecraft:block": {
+        "description": {
+            "identifier": "farmersdelight:organic_compost",
+            "menu_category": {
+                "category": "nature"
+            },
+            "properties": {
+                "farmersdelight:age": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                ]
+            }
+        },
+        "permutations": [
+            {
+                "condition": "query.block_property('farmersdelight:age') == 0 || query.block_property('farmersdelight:age') == 1",
+                "components": {
+                    "minecraft:material_instances": {
+                        "*": {
+                            "texture": "organic_compost_stage0"
+                        }
+                    }
+                }
+            },
+            {
+                "condition": "query.block_property('farmersdelight:age') == 2 || query.block_property('farmersdelight:age') == 3",
+                "components": {
+                    "minecraft:material_instances": {
+                        "*": {
+                            "texture": "organic_compost_stage1"
+                        }
+                    }
+                }
+            },
+            {
+                "condition": "query.block_property('farmersdelight:age') == 4 || query.block_property('farmersdelight:age') == 5",
+                "components": {
+                    "minecraft:material_instances": {
+                        "*": {
+                            "texture": "organic_compost_stage2"
+                        }
+                    }
+                }
+            },
+            {
+                "condition": "query.block_property('farmersdelight:age') == 6 || query.block_property('farmersdelight:age') == 7",
+                "components": {
+                    "minecraft:material_instances": {
+                        "*": {
+                            "texture": "organic_compost_stage3"
+                        }
+                    }
+                }
+            }
+        ],
+        "components": {
+            "minecraft:destructible_by_mining": {
+                "seconds_to_destroy": 0.6
+            },
+            "minecraft:destructible_by_explosion": {
+                "explosion_resistance": 3
+            },
+            "minecraft:unit_cube": {},
+            "minecraft:random_ticking": {
+                "on_tick": {
+                    "event": "grow_stage",
+                    "target": "self"
+                }
+            },
+            "tag:dirt": {}
+        },
+        "events": {
+            "grow_stage": {
+                "run_command": {
+                    "command": [
+                        "scriptevent farmersdelight:organic_transfer"
+                    ]
+                }
+            }
+        }
+    }
+}

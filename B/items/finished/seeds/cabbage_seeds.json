@@ -3,21 +3,21 @@
   "minecraft:item": {
     "components": {
       "minecraft:creative_category": {
-        "parent": "itemGroup.name.sees"
+        "parent": "itemGroup.name.seed"
       }, 
       "minecraft:icon": {
-        "texture": "farmersdelight:tomato_seeds"
-      } /*,
+        "texture": "farmersdelight:cabbage_seeds"
+      },
       "minecraft:block_placer": {
-        "block": "",
+        "block": "cabbage_block",
         "use_on": [
+          "farmland"
         ]
       }
-      */
     }, 
     "description": {
       "category": "nature", 
-      "identifier": "farmersdelight:tomato_seeds"
+      "identifier": "farmersdelight:cabbage_seeds"
     }, 
     "events": {}
   }
