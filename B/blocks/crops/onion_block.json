@@ -20,7 +20,7 @@
                         "*": {
                             "texture": "onions_stage0",
                             "ambient_occlusion": false,
-                            "render_method": "blend"
+                            "render_method": "alpha_test"
                         }
                     },
                     "minecraft:selection_box": {
@@ -44,7 +44,7 @@
                         "*": {
                             "texture": "onions_stage1",
                             "ambient_occlusion": false,
-                            "render_method": "blend"
+                            "render_method": "alpha_test"
                         }
                     },
                     "minecraft:selection_box": {
@@ -68,7 +68,7 @@
                         "*": {
                             "texture": "onions_stage2",
                             "ambient_occlusion": false,
-                            "render_method": "blend"
+                            "render_method": "alpha_test"
                         }
                     },
                     "minecraft:selection_box": {
@@ -92,7 +92,7 @@
                         "*": {
                             "texture": "onions_stage3",
                             "ambient_occlusion": false,
-                            "render_method": "blend"
+                            "render_method": "alpha_test"
                         }
                     },
                     "minecraft:selection_box": {

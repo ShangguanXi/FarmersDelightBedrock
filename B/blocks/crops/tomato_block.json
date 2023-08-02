@@ -24,7 +24,7 @@
                         "*": {
                             "texture": "budding_tomatoes_stage0",
                             "ambient_occlusion": false,
-                            "render_method": "blend"
+                            "render_method": "alpha_test"
                         }
                     },
                     "minecraft:selection_box": {
@@ -48,7 +48,7 @@
                         "*": {
                             "texture": "budding_tomatoes_stage1",
                             "ambient_occlusion": false,
-                            "render_method": "blend"
+                            "render_method": "alpha_test"
                         }
                     },
                     "minecraft:selection_box": {
@@ -72,7 +72,7 @@
                         "*": {
                             "texture": "budding_tomatoes_stage2",
                             "ambient_occlusion": false,
-                            "render_method": "blend"
+                            "render_method": "alpha_test"
                         }
                     },
                     "minecraft:selection_box": {
@@ -96,7 +96,7 @@
                         "*": {
                             "texture": "budding_tomatoes_stage3",
                             "ambient_occlusion": false,
-                            "render_method": "blend"
+                            "render_method": "alpha_test"
                         }
                     }
                 }
@@ -108,7 +108,7 @@
                         "*": {
                             "texture": "tomatoes_stage0",
                             "ambient_occlusion": false,
-                            "render_method": "blend"
+                            "render_method": "alpha_test"
                         }
                     }
                 }
@@ -120,7 +120,7 @@
                         "*": {
                             "texture": "tomatoes_stage1",
                             "ambient_occlusion": false,
-                            "render_method": "blend"
+                            "render_method": "alpha_test"
                         }
                     }
                 }
@@ -132,7 +132,7 @@
                         "*": {
                             "texture": "tomatoes_stage2",
                             "ambient_occlusion": false,
-                            "render_method": "blend"
+                            "render_method": "alpha_test"
                         }
                     }
                 }
@@ -144,7 +144,7 @@
                         "*": {
                             "texture": "tomatoes_stage3",
                             "ambient_occlusion": false,
-                            "render_method": "blend"
+                            "render_method": "alpha_test"
                         }
                     }
                 }
