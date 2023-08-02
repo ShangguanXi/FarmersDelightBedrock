@@ -26,7 +26,7 @@
         "*": {
             "texture": "rope",
             "ambient_occlusion": false,
-            "render_method": "blend"
+            "render_method": "alpha_test"
         }
       },
       "minecraft:geometry": { 
