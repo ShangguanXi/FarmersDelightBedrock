@@ -10,7 +10,7 @@
                 "parent": "itemGroup.name.miscFood"
             },
             "minecraft:icon": {
-                "texture": "farmersdelights:chocolate_pie"
+                "texture": "farmersdelight:chocolate_pie"
             },
             "tag:farmersdelight:can_cut":{}
         },
