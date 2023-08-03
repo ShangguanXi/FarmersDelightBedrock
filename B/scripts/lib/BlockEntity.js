@@ -1,19 +1,23 @@
-import { ItemStack } from "@minecraft/server";
+import { ItemStack, world } from "@minecraft/server";
+const scoreboard = world.scoreboard;
 
 // 同步处理
-export function loot(itemStack, block, entity, blockLocation, id, amount = 1) {
-    if (itemStack) {
-        if (block !== id) {
+export function loot(itemStack, block, entity, blockLocation, id, amount = 1, sco = null) {
+    if (block !== id) {
+        if (itemStack) {
             for (let index = 0; index < amount; index++) {
                 entity.dimension.spawnItem(new ItemStack(itemStack), entity.location);
             }
-            entity.triggerEvent('farmersdelight:despawn');
         }
-    } else if (block !== id) {
+        if (sco) {
+            scoreboard.removeObjective(sco);
+        }
         entity.triggerEvent('farmersdelight:despawn');
     }
-    if (block.typeId !== 'farmersdelight:cutting_board') {
-        entity.teleport(blockLocation);
+    if (block) {
+        if (JSON.stringify(entity.location) === JSON.stringify(blockLocation)) {
+            entity.teleport(blockLocation);
+        }
     }
 }
 
@@ -34,14 +38,14 @@ export function getMap(entity, value) {
 }
 
 export function location(entity) {
-    for (const tag of entity.getTags()) {
+    const tags = entity.getTags();
+    const arr = Object.values(tags);
+    for (const tag of arr) {
         if (JSON.parse(tag)) {
             const json = JSON.parse(tag);
-            if (json.x) {
+            if (json.x !== false) {
                 return json
             }
-        } else {
-            continue;
         }
     }
     return undefined;
@@ -52,6 +56,7 @@ export default class BlockEntity {
     options;
     dimension;
     entity;
+    scoreboardObjective;
     map = new Map();
     #tags;
     constructor(id, dimension, options) {
@@ -67,6 +72,7 @@ export default class BlockEntity {
         }
         if (this.entity) {
             this.#tags = this.entity.getTags();
+            this.scoreboardObjective = scoreboard.getObjective(this.entity.id);
         }
     }
     getDataMap(value) {

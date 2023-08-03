@@ -1,4 +1,5 @@
 import { world } from "@minecraft/server";
+const scoreboard = world.scoreboard;
 
 function spawnEntity(id, dimension, location) {
     const entity = dimension.spawnEntity(id, location);
@@ -15,10 +16,15 @@ function place(args) {
             spawnEntity('farmersdelight:cutting_board', dimension, location);
             break;
         case 'farmersdelight:skillet_block':
-            const entity = dimension.spawnEntity('farmersdelight:skillet', location);
-            entity.addTag(JSON.stringify(location));
-            entity.addTag('{"nbt":{"item":"undefined","amount":0,"inventory":[]}}');
-            // spawnEntity('farmersdelight:skillet', dimension, location).addTag('{"nbt":{"item":"undefined","amount":0,"inventory":[]}}');
+            const skilletBlock = dimension.spawnEntity('farmersdelight:skillet', location);
+            skilletBlock.addTag(JSON.stringify(location));
+            skilletBlock.addTag('{"item":"undefined"}');
+            scoreboard.addObjective(skilletBlock.id, skilletBlock.id).setScore('amount', 0);
+            break;
+        case 'farmersdelight:stove':
+            const stove = dimension.spawnEntity('farmersdelight:stove', location);
+            stove.addTag(JSON.stringify(location));
+            scoreboard.addObjective(stove.id, stove.id).setScore('amount', 0);
             break;
     }
 }

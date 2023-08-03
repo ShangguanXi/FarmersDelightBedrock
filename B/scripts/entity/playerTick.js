@@ -2,28 +2,7 @@ import { world, MolangVariableMap, system } from "@minecraft/server";
 import { loot, location, getMap } from "../lib/BlockEntity";
 
 const molang = new MolangVariableMap();
-// const skilletV2 = [
-//     {
-//         x: (Math.random() * 2 - 1) * 0.15 * 0.5,
-//         z: (Math.random() * 2 - 1) * 0.15 * 0.5
-//     },
-//     {
-//         x: (Math.random() * 2 - 1) * 0.15 * 0.5,
-//         z: (Math.random() * 2 - 1) * 0.15 * 0.5
-//     },
-//     {
-//         x: (Math.random() * 2 - 1) * 0.15 * 0.5,
-//         z: (Math.random() * 2 - 1) * 0.15 * 0.5
-//     },
-//     {
-//         x: (Math.random() * 2 - 1) * 0.15 * 0.5,
-//         z: (Math.random() * 2 - 1) * 0.15 * 0.5
-//     },
-//     {
-//         x: (Math.random() * 2 - 1) * 0.15 * 0.5,
-//         z: (Math.random() * 2 - 1) * 0.15 * 0.5
-//     }
-// ]
+const scoreboard = world.scoreboard;
 
 const skilletV2 = [];
 for (let i = 0; i < 5; i++) {
@@ -33,9 +12,36 @@ for (let i = 0; i < 5; i++) {
     skilletV2.push(json);
 }
 
+const xOffset = 0.3;
+const yOffset = 0.2;
+const stoveOffsets = [
+    {
+        x: xOffset,
+        y: yOffset
+    },
+    {
+        x: 0,
+        y: yOffset
+    },
+    {
+        x: -xOffset,
+        y: yOffset
+    },
+    {
+        x: xOffset,
+        y: -yOffset
+    },
+    {
+        x: 0,
+        y: -yOffset
+    }
+    , {
+        x: -xOffset,
+        y: -yOffset
+    }
+];
 
 function blockTick(dimension) {
-    // console.warn(currentTick % 20);
     const worldEntities = dimension.getEntities({ families: ['farmersdelight_tick_block_entity'] });
     for (const entity of worldEntities) {
         const currentTick = system.currentTick % 20;
@@ -60,13 +66,13 @@ function blockTick(dimension) {
                 break;
             case 'farmersdelight:skillet':
                 if (block) {
-                    const inventory = getMap(entity, 'nbt').get('nbt');
-                    console.warn(entity.getTags());
-                    const itemStack = inventory.item;
-                    const amount = inventory.amount;
+                    const data = scoreboard.getObjective(entity.id);
+                    const itemStack = getMap(entity, 'item')?.get('item');
+                    const amount = data.getScore('amount');
+                    const itemStackScoresData = data.getScores();
                     const blockLocation = location(entity);
                     const oldBlock = entityDimension.getBlock(blockLocation);
-                    if (itemStack) {
+                    if (itemStack !== 'undefined') {
                         let particleCount = 1;
                         if (amount > 48) {
                             particleCount = 5;
@@ -83,35 +89,62 @@ function blockTick(dimension) {
                             entityDimension.spawnParticle(name, { x: blockLocation.x + 0.5 + skilletV2[index].x, y: blockLocation.y + 0.07 + 0.03 * (index + 1), z: blockLocation.z + 0.5 + skilletV2[index].z }, molang);
                         }
                         if (stove) {
-                            const recipes = inventory.inventory;
-                            recipes.forEach((cook, index) => {
-                                entity.removeTag(`{"nbt":${JSON.stringify(inventory)}}`);
-                                const cooking = JSON.parse(cook);
-                                const cookTime = cooking.cookTime - (!currentTick ? 1 : 0);
-                                recipes[index] = `{"number" : ${cooking.number},"cookTime":${cookTime}}`;
-                                entity.addTag(`{"nbt":${JSON.stringify(inventory)}}`);
-                                if (!cooking.cookTime) {
-                                    for (let j = 0; j < cooking.number; j++) {
-                                        entity.runCommandAsync(`loot spawn ${entity.location.x + 0.5} ${entity.location.y + 0.4} ${entity.location.z + 0.5} loot "farmersdelight/cook/farmersdelight_cook_${id[1]}"`);
+                            for (const itemStackData of itemStackScoresData) {
+                                const amountId = itemStackData.participant.displayName;
+                                if (amountId != 'amount') {
+                                    const num = parseInt(amountId.split('G')[0]);
+                                    const cookTime = itemStackData.score;
+                                    data.setScore(amountId, cookTime - (!currentTick ? 1 : 0));
+                                    if (cookTime <= 0) {
+                                        for (let j = 0; j < parseInt(num); j++) {
+                                            entity.runCommandAsync(`loot spawn ${entity.location.x + 0.5} ${entity.location.y + 0.4} ${entity.location.z + 0.5} loot "farmersdelight/cook/farmersdelight_cook_${id[1]}"`);
+                                        }
+                                        data.removeParticipant(amountId);
+                                        data.setScore('amount', data.getScore('amount') - num);
                                     }
-                                    inventory.amount -= cooking.number;
-                                    recipes.shift();
-                                    entity.removeTag(`{"nbt":${JSON.stringify(inventory)}}`);
-                                    entity.addTag(`{"nbt":${JSON.stringify(inventory)}}`);
                                 }
-                            });
-                            if (!recipes.length) {
-                                entity.removeTag(`{"nbt":${JSON.stringify(inventory)}}`);
-                                entity.addTag('{"nbt":{"item":"undefined","amount":0,"inventory":[]}}');
                             }
                         }
+                        if (!data.getScore('amount')) {
+                            entity.removeTag(JSON.stringify(getMap(entity, 'item')));
+                            entity.addTag('{"item":"undefined"}');
+                        }
                     }
-                    loot(itemStack, oldBlock.typeId, entity, blockLocation, 'farmersdelight:skillet_block', amount);
+                    loot(amount ? itemStack : null, oldBlock.typeId, entity, blockLocation, 'farmersdelight:skillet_block', amount, entity.id);
+                }
+                break;
+            case 'farmersdelight:stove':
+                if (block) {
+                    const data = scoreboard.getObjective(entity.id);
+                    const blockLocation = location(entity);
+                    const oldBlock = entityDimension.getBlock(blockLocation);
+                    const itemStackScoresData = data.getScores();
+                    for (const itemStackData of itemStackScoresData) {
+                        const itemStack = itemStackData.participant.displayName;
+                        if (itemStack != 'amount') {
+                            const id = itemStack.split('/');
+                            const name = id[0].split(':');
+                            const particleName = name[0] == 'minecraft' ? `farmersdelight:${name[0]}_cook_${name[1]}` : `farmersdelight:cook_${name[1]}`;
+                            if (oldBlock.permutation?.getState('farmersdelight:is_working')) {
+                                const cookTime = itemStackData.score;
+                                data.setScore(itemStack, cookTime - (!currentTick ? 1 : 0));
+                                if (cookTime <= 0) {
+                                    data.removeParticipant(itemStack);
+                                    data.setScore('amount', data.getScore('amount') - 1);
+                                    entity.runCommandAsync(`loot spawn ${entity.location.x + 0.5} ${entity.location.y + 1} ${entity.location.z + 0.5} loot "farmersdelight/cook/farmersdelight_cook_${name[1]}"`);
+                                }
+                            }
+                            entityDimension.spawnParticle(particleName, { x: blockLocation.x + 0.5 + stoveOffsets[id[1] - 1].x, y: blockLocation.y + 1.02, z: blockLocation.z + 0.5 + stoveOffsets[id[1] - 1].y }, molang);
+                            loot(id[0], oldBlock.typeId, entity, blockLocation, 'farmersdelight:stove', entity.id);
+                        }
+                    }
+                    loot(null, oldBlock.typeId, entity, blockLocation, 'farmersdelight:stove', entity.id);
                 }
                 break;
         }
     }
 }
+
 
 function rope(player) {
     const rope = player.dimension.getBlock(player.location).typeId === 'farmersdelight:rope';

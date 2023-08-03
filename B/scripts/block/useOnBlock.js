@@ -1,6 +1,7 @@
 import { world } from "@minecraft/server";
 import { cuttingBoard } from "./useOn/cuttingBoard";
 import { skillet } from "./useOn/skillet";
+import { stove } from "./useOn/stove";
 
 function useOn(args) {
     const block = args.block;
@@ -12,6 +13,9 @@ function useOn(args) {
             break;
         case 'farmersdelight:skillet_block':
             skillet(player, itemStack, block);
+            break;
+        case 'farmersdelight:stove':
+            stove(player, itemStack, block);
             break;
     }
 }
