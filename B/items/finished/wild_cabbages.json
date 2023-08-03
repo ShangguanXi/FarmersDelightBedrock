@@ -7,7 +7,8 @@
       } ,
       "minecraft:block_placer": {
         "block": "farmersdelight:wild_cabbages_block"
-      }
+      },
+      "tag:farmersdelight:can_cut":{}
     }, 
     "description": {
       "category": "nature", 

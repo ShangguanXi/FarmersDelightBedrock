@@ -1,0 +1,46 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.chocolate_pie_slice3",
+				"texture_width": 16,
+				"texture_height": 16,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 1.5,
+				"visible_bounds_offset": [0, 0.25, 0]
+			},
+			"bones": [
+				{
+					"name": "bone",
+					"pivot": [8, 0, -8],
+					"cubes": [
+						{
+							"origin": [-6, 0, -6],
+							"size": [6, 4, 6],
+							"uv": {
+								"north": {"uv": [2, 12], "uv_size": [6, 4], "material_instance": "side"},
+								"east": {"uv": [8, 12], "uv_size": [6, 4], "material_instance": "side"},
+								"south": {"uv": [8, 12], "uv_size": [6, 4], "material_instance": "inner"},
+								"west": {"uv": [2, 12], "uv_size": [6, 4], "material_instance": "inner"},
+								"up": {"uv": [14, 8], "uv_size": [-6, -6], "material_instance": "top"},
+								"down": {"uv": [14, 14], "uv_size": [-12, -6], "material_instance": "bottom"}
+							}
+						},
+						{
+							"origin": [-2, 4, -2],
+							"size": [2, 1, 2],
+							"uv": {
+								"north": {"uv": [6, 11], "uv_size": [2, 1], "material_instance": "inner"},
+								"east": {"uv": [8, 11], "uv_size": [2, 1], "material_instance": "inner"},
+								"south": {"uv": [8, 11], "uv_size": [2, 1], "material_instance": "inner"},
+								"west": {"uv": [6, 11], "uv_size": [2, 1], "material_instance": "inner"},
+								"up": {"uv": [10, 9], "uv_size": [-2, -2], "material_instance": "inner"}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,193 @@
+{
+    "format_version": "1.20.0",
+    "minecraft:block": {
+        "description": {
+            "identifier": "farmersdelight:chocolate_pie_block",
+            "menu_category": {
+                "category": "none"
+            },
+            "properties": {
+                "farmersdelight:food_block_stage": [
+                    0,
+                    1,
+                    2,
+                    3
+                ]
+            },
+            "traits": {
+                "minecraft:placement_direction": {
+                    "enabled_states": [
+                        "minecraft:cardinal_direction"
+                    ],
+                    "y_rotation_offset": 0.0
+                }
+            }
+        },
+        "permutations": [
+            {
+                "condition": "query.block_property('farmersdelight:food_block_stage') == 0",
+                "components": {
+                    "minecraft:geometry": "geometry.chocolate_pie"
+                }
+            },
+            {
+                "condition": "query.block_property('farmersdelight:food_block_stage') == 1",
+                "components": {
+                    "minecraft:geometry": "geometry.chocolate_pie_slice1"
+                }
+            },
+            {
+                "condition": "query.block_property('farmersdelight:food_block_stage') == 2",
+                "components": {
+                    "minecraft:geometry": "geometry.chocolate_pie_slice2"
+                }
+            },
+            {
+                "condition": "query.block_property('farmersdelight:food_block_stage') == 3",
+                "components": {
+                    "minecraft:geometry": "geometry.chocolate_pie_slice3"
+                }
+            },
+            {
+                "condition": "query.block_property('minecraft:cardinal_direction') == 'north'",
+                "components": {
+                    "minecraft:transformation": {
+                        "rotation": [
+                            0,
+                            180,
+                            0
+                        ]
+                    }
+                }
+            },
+            {
+                "condition": "query.block_property('minecraft:cardinal_direction') == 'south'",
+                "components": {
+                    "minecraft:transformation": {
+                        "rotation": [
+                            0,
+                            0,
+                            0
+                        ]
+                    }
+                }
+            },
+            {
+                "condition": "query.block_property('minecraft:cardinal_direction') == 'west'",
+                "components": {
+                    "minecraft:transformation": {
+                        "rotation": [
+                            0,
+                            270,
+                            0
+                        ]
+                    }
+                }
+            },
+            {
+                "condition": "query.block_property('minecraft:cardinal_direction') == 'east'",
+                "components": {
+                    "minecraft:transformation": {
+                        "rotation": [
+                            0,
+                            90,
+                            0
+                        ]
+                    }
+                }
+            }
+        ],
+        "components": {
+            "minecraft:on_interact": {
+                "event": "on_interact"
+            },
+            "minecraft:destructible_by_mining": {
+                "seconds_to_destroy": 0.5
+            },
+            "minecraft:light_dampening": 0,
+            "minecraft:destructible_by_explosion": {
+                "explosion_resistance": 0.5
+            },
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "chocolate_pie_top"
+                },
+                "inner": {
+                    "texture": "chocolate_pie_inner"
+                },
+                "side": {
+                    "texture": "pie_side"
+                },
+                "top": {
+                    "texture": "chocolate_pie_top"
+                },
+                "bottom": {
+                    "texture": "pie_bottom"
+                }
+            },
+            "minecraft:loot": "loot_tables/farmersdelight/empty.json",
+            "minecraft:collision_box": {
+                "origin": [
+                    -6.0,
+                    0.0,
+                    -6.0
+                ],
+                "size": [
+                    12.0,
+                    4.0,
+                    12.0
+                ]
+            },
+            "minecraft:selection_box": {
+                "origin": [
+                    -6.0,
+                    0.0,
+                    -6.0
+                ],
+                "size": [
+                    12.0,
+                    4.0,
+                    12.0
+                ]
+            }
+        },
+        "events": {
+            "on_interact": {
+                "sequence": [
+                    {
+                        "condition": "query.equipped_item_any_tag('slot.weapon.mainhand','farmersdelight:is_knife')",
+                        "damage": {
+                            "type": "magic",
+                            "amount": 1,
+                            "target": "item"
+                        },
+                        "spawn_loot": {
+                            "table": "loot_tables/farmersdelight/pie/chocolate_pie.json"
+                        }
+                    },
+                    {
+                        "condition": "!query.equipped_item_any_tag('slot.weapon.mainhand','farmersdelight:is_knife')",
+                        "add_mob_effect": {
+                            "effect": "speed",
+                            "target": "other",
+                            "duration": 30,
+                            "amplifier": 0
+                        }
+                    },
+                    {
+                        "condition": "query.block_property('farmersdelight:food_block_stage') != 3",
+                        "set_block_property": {
+                            "farmersdelight:food_block_stage": "query.block_property('farmersdelight:food_block_stage') + 1"
+                        }
+                    },
+                    {
+                        "condition": "query.block_property('farmersdelight:food_block_stage') == 3",
+                        "die": {
+                            "target": "block"
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

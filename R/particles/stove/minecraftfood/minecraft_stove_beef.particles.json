@@ -13,20 +13,20 @@
                 "direction": "outwards", 
                 "half_dimensions": [
                     0, 
-                    0.0125, 
+                    0.009375, 
                     0
                 ], 
                 "offset": [
                     0, 
-                    0.0125, 
+                    0.009375, 
                     0
                 ]
             }, 
             "minecraft:particle_appearance_billboard": {
                 "facing_camera_mode": "emitter_transform_xz", 
                 "size": [
-                    0.2, 
-                    0.2
+                    0.15, 
+                    0.15
                 ], 
                 "uv": {
                     "texture_height": 16, 

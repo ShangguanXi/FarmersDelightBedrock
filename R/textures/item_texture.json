@@ -290,8 +290,14 @@
     "farmersdelight:half_tatami_mat": {
       "textures": "textures/items/half_tatami_mat"
     },
-    "farmersdelight:skillet_item": {
-      "textures": "textures/items/skillet_item"
+    "farmersdelight:apple_pie": {
+      "textures": "textures/items/apple_pie"
+    },
+    "farmersdelight:sweet_berry_cheesecake": {
+      "textures": "textures/items/sweet_berry_cheesecake"
+    },
+    "farmersdelight:chocolate_pie": {
+      "textures": "textures/items/chocolate_pie"
     }
   }
 }
