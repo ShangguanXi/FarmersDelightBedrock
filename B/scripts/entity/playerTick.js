@@ -124,7 +124,7 @@ function blockTick(dimension) {
                         if (itemStack != 'amount') {
                             const id = itemStack.split('/');
                             const name = id[0].split(':');
-                            const particleName = name[0] == 'minecraft' ? `farmersdelight:${name[0]}_cook_${name[1]}` : `farmersdelight:cook_${name[1]}`;
+                            const particleName = name[0] == 'minecraft' ? `farmersdelight:${name[0]}_stove_${name[1]}` : `farmersdelight:stove_${name[1]}`;
                             if (oldBlock.permutation?.getState('farmersdelight:is_working')) {
                                 const cookTime = itemStackData.score;
                                 data.setScore(itemStack, cookTime - (!currentTick ? 1 : 0));

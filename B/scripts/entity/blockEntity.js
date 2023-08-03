@@ -17,7 +17,7 @@ system.runInterval(() => {
                         if (itemStack) {
                             const id = itemStack.split(':');
                             const name = id[0] == 'minecraft' ? `farmersdelight:${id[0]}_${id[1]}` : itemStack;
-                            entity.dimension.spawnParticle(name, { x: blockLocation.x + 0.5, y: blockLocation.y + 0.07, z: blockLocation.z + 0.5 }, molang);
+                            entity.dimension.spawnParticle(name, { x: blockLocation.x + 0.5, y: blockLocation.y + 0.0565, z: blockLocation.z + 0.5 }, molang);
                         }
                         loot(itemStack, oldBlock.typeId, entity);
                         if (block.typeId !== 'farmersdelight:cutting_board') {
