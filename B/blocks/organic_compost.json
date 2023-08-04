@@ -7,7 +7,7 @@
                 "category": "nature"
             },
             "properties": {
-                "farmersdelight:age": [
+                "farmersdelight:process": [
                     0,
                     1,
                     2,
@@ -21,7 +21,7 @@
         },
         "permutations": [
             {
-                "condition": "query.block_property('farmersdelight:age') == 0 || query.block_property('farmersdelight:age') == 1",
+                "condition": "query.block_property('farmersdelight:process') == 0 || query.block_property('farmersdelight:process') == 1",
                 "components": {
                     "minecraft:material_instances": {
                         "*": {
@@ -31,7 +31,7 @@
                 }
             },
             {
-                "condition": "query.block_property('farmersdelight:age') == 2 || query.block_property('farmersdelight:age') == 3",
+                "condition": "query.block_property('farmersdelight:process') == 2 || query.block_property('farmersdelight:process') == 3",
                 "components": {
                     "minecraft:material_instances": {
                         "*": {
@@ -41,7 +41,7 @@
                 }
             },
             {
-                "condition": "query.block_property('farmersdelight:age') == 4 || query.block_property('farmersdelight:age') == 5",
+                "condition": "query.block_property('farmersdelight:process') == 4 || query.block_property('farmersdelight:process') == 5",
                 "components": {
                     "minecraft:material_instances": {
                         "*": {
@@ -51,7 +51,7 @@
                 }
             },
             {
-                "condition": "query.block_property('farmersdelight:age') == 6 || query.block_property('farmersdelight:age') == 7",
+                "condition": "query.block_property('farmersdelight:process') == 6 || query.block_property('farmersdelight:process') == 7",
                 "components": {
                     "minecraft:material_instances": {
                         "*": {
@@ -75,7 +75,8 @@
                     "target": "self"
                 }
             },
-            "tag:dirt": {}
+            "tag:dirt": {},
+            "tag:compost_activators": {}
         },
         "events": {
             "grow_stage": {

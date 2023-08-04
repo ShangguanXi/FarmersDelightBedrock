@@ -1,0 +1,43 @@
+{
+    "format_version": "1.20.0",
+    "minecraft:block": {
+        "description": {
+            "identifier": "farmersdelight:rich_soil",
+            "menu_category": {
+                "category": "nature"
+            }
+        },
+        "components": {
+            "minecraft:destructible_by_mining": {
+                "seconds_to_destroy": 0.6
+            },
+            "minecraft:destructible_by_explosion": {
+                "explosion_resistance": 3
+            },
+            "minecraft:unit_cube": {},
+            "minecraft:random_ticking": {
+                "on_tick": {
+                    "event": "on_tick",
+                    "target": "self"
+                }
+            },
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "rich_soil"
+                }
+            },
+            "tag:dirt": {},
+            "tag:sand": {},
+            "tag:compost_activators": {}
+        },
+        "events": {
+            "on_tick": {
+                "run_command": {
+                    "command": [
+                        "scriptevent farmersdelight:rich_soil_tick"
+                    ]
+                }
+            }
+        }
+    }
+}
