@@ -2,9 +2,9 @@
     "format_version": "1.10.0", 
     "particle_effect": {
         "components": {
-            "minecraft:emitter_lifetime_looping": {
-                "active_time": 1
-            }, 
+            "minecraft:emitter_lifetime_once": {
+				"active_time": 0.12
+			},
             "minecraft:emitter_rate_steady": {
                 "max_particles": 250, 
                 "spawn_rate": 1250
@@ -16,21 +16,12 @@
 			},
             "minecraft:particle_appearance_billboard": {
                 "facing_camera_mode": "emitter_transform_xz", 
-                "size": [
-                    0.25, 
-                    0.25
-                ], 
+                "size": [0.25, 0.25], 
                 "uv": {
                     "texture_height": 16, 
                     "texture_width": 16, 
-                    "uv": [
-                        0, 
-                        0
-                    ], 
-                    "uv_size": [
-                        16, 
-                        16
-                    ]
+                    "uv": [ 0,0 ], 
+                    "uv_size": [16,16]
                 }
             }, 
             "minecraft:particle_initial_speed": 0, 
