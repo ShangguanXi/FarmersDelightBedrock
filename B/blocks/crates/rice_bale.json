@@ -1,0 +1,32 @@
+{
+    "format_version": "1.20.0",
+    "minecraft:block": {
+        "description": {
+            "identifier": "farmersdelight:rice_bale",
+            "menu_category": {
+                "category": "items"
+            }
+        },
+        "components": {
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "rice_bale_side"
+                },
+                "up": {
+                    "texture": "rice_bale_top"
+                },
+                "down": {
+                    "texture": "rice_bale_bottom"
+                }
+            },
+            "minecraft:destructible_by_mining": {
+                "seconds_to_destroy": 0.3
+            },
+            "minecraft:destructible_by_explosion": {
+                "explosion_resistance": 0.3
+            },
+            "minecraft:unit_cube": {},
+            "tag:farmersdelight:straw_blocks":{}
+        }
+    }
+}

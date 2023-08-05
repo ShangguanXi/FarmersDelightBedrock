@@ -36,7 +36,6 @@ function randomTick(args) {
                     compostBlock.setPermutation(BlockPermutation.resolve('farmersdelight:rich_soil'));
                 };
             };
-            dimension.runCommand(`say ${transChance}`);
             break;
         case 'farmersdelight:rich_soil_tick':
             break;
