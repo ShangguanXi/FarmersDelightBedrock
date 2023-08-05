@@ -1,0 +1,26 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "farmersdelight:cutting_board_left"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "pattern": [
+            "WW#",
+            "WW#"
+        ],
+        "key": {
+            "#": {
+                "item": "minecraft:stick"
+            },
+            "W": {
+                "tags": "minecraft:planks"
+            }
+        },
+        "result": {
+            "item": "farmersdelight:cutting_board"
+        }
+    }
+}

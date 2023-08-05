@@ -1,0 +1,26 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "farmersdelight:gold_knife"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "pattern": [
+            "#",
+            "W"
+        ],
+        "key": {
+            "#": {
+                "item": "minecraft:gold_ingot"
+            },
+            "W": {
+                "item": "minecraft:stick"
+            }
+        },
+        "result": {
+            "item": "farmersdelight:gold_knife"
+        }
+    }
+}

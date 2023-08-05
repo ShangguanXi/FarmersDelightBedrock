@@ -1,0 +1,20 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shapeless": {
+        "description": {
+            "identifier": "farmersdelight:tomato"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "ingredients": {
+            "#": {
+                "item": "farmersdelight:tomato_crate"
+            }
+        },
+        "result": {
+            "item": "farmersdelight:tomato",
+            "count": 9
+        }
+    }
+}

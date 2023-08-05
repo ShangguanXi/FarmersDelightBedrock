@@ -14,6 +14,7 @@
           "target": "self"
         }
       },
+      "minecraft:stacked_by_data": true,
       "minecraft:use_animation": "drink",
       "minecraft:creative_category": {
         "parent": "itemGroup.name.miscFood"

@@ -1,0 +1,27 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "farmersdelight:skillet_right"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "pattern": [
+            " WW",
+            " WW",
+            "#  "
+        ],
+        "key": {
+            "#": {
+                "item": "minecraft:brick"
+            },
+            "W": {
+                "item": "minecraft:iron_ingot"
+            }
+        },
+        "result": {
+            "item": "farmersdelight:skillet_block"
+        }
+    }
+}

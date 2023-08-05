@@ -291,7 +291,10 @@
       "textures": "textures/items/half_tatami_mat"
     },
     "farmersdelight:apple_pie": {
-      "textures": "textures/items/apple_pie"
+      "textures": [
+        "textures/items/apple_pie",
+        "textures/items/half_tatami_mat"
+      ]
     },
     "farmersdelight:sweet_berry_cheesecake": {
       "textures": "textures/items/sweet_berry_cheesecake"

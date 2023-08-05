@@ -1,0 +1,20 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shapeless": {
+        "description": {
+            "identifier": "farmersdelight:carrot"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "ingredients": {
+            "#": {
+                "item": "farmersdelight:carrot_crate"
+            }
+        },
+        "result": {
+            "item": "mineraft:carrot",
+            "count": 9
+        }
+    }
+}

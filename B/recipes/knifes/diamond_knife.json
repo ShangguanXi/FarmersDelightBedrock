@@ -1,0 +1,26 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "farmersdelight:diamond_knife"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "pattern": [
+            "#",
+            "W"
+        ],
+        "key": {
+            "#": {
+                "item": "minecraft:diamond"
+            },
+            "W": {
+                "item": "minecraft:stick"
+            }
+        },
+        "result": {
+            "item": "farmersdelight:diamond_knife"
+        }
+    }
+}

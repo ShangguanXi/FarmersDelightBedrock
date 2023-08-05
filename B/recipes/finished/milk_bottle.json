@@ -1,0 +1,37 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shapeless": {
+        "description": {
+            "identifier": "farmersdelight:milk_bottle"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "ingredients": {
+            "#": {
+                "item": "minecraft:milk_bucket"
+            },
+            "a": {
+                "item": "minecraft:glass_bottle"
+            },
+            "b": {
+                "item": "minecraft:glass_bottle"
+            },
+            "c": {
+                "item": "minecraft:glass_bottle"
+            },
+            "d": {
+                "item": "minecraft:glass_bottle"
+            }
+        },
+        "result": [
+            {
+                "item": "farmersdelight:milk_bottle",
+                "count": 4
+            },
+            {
+                "item": "minecraft:bucket"
+            }
+        ]
+    }
+}

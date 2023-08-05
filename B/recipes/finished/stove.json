@@ -1,0 +1,30 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "farmersdelight:stove"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "WWW",
+      "# #",
+      "#P#"
+    ],
+    "key": {
+      "P": {
+        "item": "minecraft:campfire"
+      },
+      "#": {
+        "item": "minecraft:brick_block"
+      },
+      "W": {
+        "item": "minecraft:iron_ingot"
+      }
+    },
+    "result": {
+      "item": "farmersdelight:stove"
+    }
+  }
+}
