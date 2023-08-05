@@ -6,6 +6,18 @@
         {
           "type": "item",
           "name": "farmersdelight:tomato",
+          "weight": 19,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "farmersdelight:rotten_tomato",
+          "weight": 1,
           "functions": [
             {
               "function": "set_count",
@@ -24,7 +36,7 @@
           "functions": [
             {
               "function": "set_count",
-              "count": 2
+              "count": 1
             }
           ]
         }

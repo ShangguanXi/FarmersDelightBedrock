@@ -236,6 +236,9 @@
     "farmersdelight:tomato_sauce": {
       "textures": "textures/items/tomato_sauce"
     },
+    "farmersdelight:rotten_tomato": {
+      "textures": "textures/items/rotten_tomato"
+    },
     "farmersdelight:tree_bark": {
       "textures": "textures/items/tree_bark"
     },
@@ -291,10 +294,7 @@
       "textures": "textures/items/half_tatami_mat"
     },
     "farmersdelight:apple_pie": {
-      "textures": [
-        "textures/items/apple_pie",
-        "textures/items/half_tatami_mat"
-      ]
+      "textures": "textures/items/apple_pie"
     },
     "farmersdelight:sweet_berry_cheesecake": {
       "textures": "textures/items/sweet_berry_cheesecake"
