@@ -2,7 +2,7 @@
     "format_version": "1.12",
     "minecraft:recipe_shaped": {
         "description": {
-            "identifier": "farmersdelight:gold_knife"
+            "identifier": "farmersdelight:golden_knife"
         },
         "tags": [
             "crafting_table"
@@ -20,7 +20,7 @@
             }
         },
         "result": {
-            "item": "farmersdelight:gold_knife"
+            "item": "farmersdelight:golden_knife"
         }
     }
 }
