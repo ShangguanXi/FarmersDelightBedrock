@@ -1,0 +1,15 @@
+{
+  "materials": {
+    "version": "1.0.0",
+    "particles_block:particles_base": {
+      "+defines": [
+        "ALPHA_TEST",
+        "ENABLE_FOG"
+      ],
+      "+states": [
+        "DisableAlphaWrite",
+        "DisableCulling"
+      ]
+    }
+  }
+}
