@@ -17,7 +17,7 @@
         "scale_power_by_draw_duration": false
       },
       "minecraft:projectile": {
-        "projectile_entity": "minecraft:snowball",
+        "projectile_entity": "farmersdelight:rotten_tomato",
         "minimum_critical_power": 1.0
       }
     },
