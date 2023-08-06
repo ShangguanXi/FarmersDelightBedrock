@@ -98,7 +98,7 @@
                     {
                         "run_command": {
                             "command": [
-                                "scriptevent"
+                                "scriptevent farmersdelight:rich_soil_farmland_tick"
                             ]
                         }
                     }
