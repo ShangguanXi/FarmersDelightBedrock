@@ -4,7 +4,7 @@
         "description": {
             "identifier": "farmersdelight:rich_soil_sugar_cane_bottom",
             "menu_category": {
-                "category": "nature"
+                "category": "none"
             },
             "properties": {
                 "farmersdelight:age": [

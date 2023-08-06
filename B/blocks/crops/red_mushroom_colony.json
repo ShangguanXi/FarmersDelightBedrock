@@ -1,0 +1,296 @@
+{
+    "format_version": "1.20.0",
+    "minecraft:block": {
+        "description": {
+            "identifier": "farmersdelight:red_mushroom_colony",
+            "properties": {
+                "farmersdelight:age": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                ]
+            }
+        },
+        "permutations": [
+            {
+                "condition": "query.block_property('farmersdelight:age') == 0",
+                "components": {
+                    "minecraft:loot": "loot_tables/farmersdelight/crops/farmersdelight_red_mushroom_colony0.json",
+                    "minecraft:material_instances": {
+                        "*": {
+                            "texture": "mushroom_red",
+                            "render_method": "alpha_test"
+                        }
+                    },
+                    "minecraft:selection_box": {
+                        "origin": [
+                            -3,
+                            0,
+                            -3
+                        ],
+                        "size": [
+                            6,
+                            7,
+                            6
+                        ]
+                    }
+                }
+            },
+            {
+                "condition": "query.block_property('farmersdelight:age') == 1",
+                "components": {
+                    "minecraft:material_instances": {
+                        "*": {
+                            "texture": "red_mushroom_colony_stage0",
+                            "render_method": "alpha_test"
+                        }
+                    },
+                    "minecraft:selection_box": {
+                        "origin": [
+                            -4,
+                            0,
+                            -4
+                        ],
+                        "size": [
+                            8,
+                            9,
+                            8
+                        ]
+                    }
+                }
+            },
+            {
+                "condition": "query.block_property('farmersdelight:age') == 2",
+                "components": {
+                    "minecraft:material_instances": {
+                        "*": {
+                            "texture": "red_mushroom_colony_stage1",
+                            "render_method": "alpha_test"
+                        }
+                    },
+                    "minecraft:selection_box": {
+                        "origin": [
+                            -5,
+                            0,
+                            -5
+                        ],
+                        "size": [
+                            10,
+                            11,
+                            10
+                        ]
+                    }
+                }
+            },
+            {
+                "condition": "query.block_property('farmersdelight:age') == 3",
+                "components": {
+                    "minecraft:material_instances": {
+                        "*": {
+                            "texture": "red_mushroom_colony_stage2",
+                            "render_method": "alpha_test"
+                        }
+                    },
+                    "minecraft:selection_box": {
+                        "origin": [
+                            -5,
+                            0,
+                            -5
+                        ],
+                        "size": [
+                            10,
+                            13,
+                            10
+                        ]
+                    }
+                }
+            },
+            {
+                "condition": "query.block_property('farmersdelight:age') == 4",
+                "components": {
+                    "minecraft:material_instances": {
+                        "*": {
+                            "texture": "red_mushroom_colony_stage3",
+                            "render_method": "alpha_test"
+                        }
+                    },
+                    "minecraft:selection_box": {
+                        "origin": [
+                            -6,
+                            0,
+                            -6
+                        ],
+                        "size": [
+                            12,
+                            15,
+                            12
+                        ]
+                    }
+                }
+            }
+        ],
+        "components": {
+            "minecraft:destructible_by_mining": {
+                "seconds_to_destroy": 0.0
+            },
+            "minecraft:flammable": {
+                "catch_chance_modifier": 30,
+                "destroy_chance_modifier": 30
+            },
+            "minecraft:light_dampening": 0,
+            "minecraft:geometry": "geometry.crop_cross",
+            "minecraft:destructible_by_explosion": {
+                "explosion_resistance": 0.0
+            },
+            "minecraft:breathability": "air",
+            "minecraft:collision_box": false,
+            "minecraft:on_interact": {
+                "event": "farmersdelight:on_interact"
+            },
+            "minecraft:placement_filter": {
+                "conditions": [
+                    {
+                        "block_filter": [
+                            "rich_soil"
+                        ],
+                        "allowed_faces": [
+                            "up"
+                        ]
+                    }
+                ]
+            },
+            "minecraft:random_ticking": {
+                "on_tick": {
+                    "event": "grow_stage",
+                    "target": "self"
+                }
+            },
+            "tag:crop_block": {},
+            "tag:compost_activators": {}
+        },
+        "events": {
+            "grow_stage": {
+                "randomize": [
+                    {
+                        "weight": 5
+                    },
+                    {
+                        "weight": 12,
+                        "sequence": [
+                            {
+                                "condition": "query.block_property('farmersdelight:age')<4",
+                                "set_block_property": {
+                                    "farmersdelight:age": "(query.block_property('farmersdelight:age')<4) ? query.block_property('farmersdelight:age') + 1 : 4"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            "farmersdelight:on_interact": {
+                "sequence": [
+                    {
+                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_property('farmersdelight:age')<4)&&(query.block_property('farmersdelight:age')>0)",
+                        "randomize": [
+                            {
+                                "weight": 5
+                            },
+                            {
+                                "weight": 12,
+                                "sequence": [
+                                    {
+                                        "set_block_property": {
+                                            "farmersdelight:age": "(query.block_property('farmersdelight:age')<4) ? query.block_property('farmersdelight:age') + 1 : 4"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_property('farmersdelight:age')==0)",
+                        "randomize": [
+                            {
+                                "weight": 5
+                            },
+                            {
+                                "weight": 12,
+                                "sequence": [
+                                    {
+                                        "run_command": {
+                                            "command": [
+                                                "structure load farmersdelight:red_mushroom_tree ~-2~~-2"
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_property('farmersdelight:age')<4)",
+                        "decrement_stack": {}
+                    },
+                    {
+                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_property('farmersdelight:age')<4)",
+                        "run_command": {
+                            "command": [
+                                "particle minecraft:crop_growth_emitter ~~~"
+                            ]
+                        }
+                    },
+                    {
+                        "condition": "!query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&query.block_property('farmersdelight:age')==4",
+                        "sequence": [
+                            {
+                                "set_block_property": {
+                                    "farmersdelight:age": 3
+                                }
+                            },
+                            {
+                                "spawn_loot": {
+                                    "table": "loot_tables/farmersdelight/crops/farmersdelight_red_mushroom_colony0.json"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "condition": "!query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&query.block_property('farmersdelight:age')==3",
+                        "sequence": [
+                            {
+                                "set_block_property": {
+                                    "farmersdelight:age": 2
+                                }
+                            },
+                            {
+                                "spawn_loot": {
+                                    "table": "loot_tables/farmersdelight/crops/farmersdelight_red_mushroom_colony0.json"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "condition": "!query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&query.block_property('farmersdelight:age')==2",
+                        "sequence": [
+                            {
+                                "set_block_property": {
+                                    "farmersdelight:age": 1
+                                }
+                            },
+                            {
+                                "spawn_loot": {
+                                    "table": "loot_tables/farmersdelight/crops/farmersdelight_red_mushroom_colony0.json"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

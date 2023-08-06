@@ -24,7 +24,7 @@
                 }
             },
             "minecraft:on_interact": {
-                "condition": "(query.block_face == 1.0&&(query.is_item_name_any('slot.weapon.mainhand','minecraft:wheat_seeds')||query.is_item_name_any('slot.weapon.mainhand','minecraft:beetroot_seeds')||query.is_item_name_any('slot.weapon.mainhand','minecraft:carrot')||query.is_item_name_any('slot.weapon.mainhand','minecraft:potato')))||query.equipped_item_any_tag('slot.weapon.mainhand','minecraft:is_hoe')",
+                "condition": "query.block_face == 1.0&&(query.is_item_name_any('slot.weapon.mainhand','minecraft:wheat_seeds')||query.is_item_name_any('slot.weapon.mainhand','minecraft:beetroot_seeds')||query.is_item_name_any('slot.weapon.mainhand','minecraft:carrot')||query.is_item_name_any('slot.weapon.mainhand','minecraft:potato'))",
                 "event": "farmersdelight:on_interact",
                 "target": "self"
             },
@@ -98,7 +98,7 @@
                     {
                         "run_command": {
                             "command": [
-                                "scriptevents"
+                                "scriptevent"
                             ]
                         }
                     }

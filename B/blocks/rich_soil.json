@@ -21,7 +21,7 @@
                 }
             },
             "minecraft:on_interact": {
-                "condition": "query.block_face == 1.0&&(query.is_item_name_any('slot.weapon.mainhand','minecraft:sugar_cane')||query.equipped_item_any_tag('slot.weapon.mainhand','minecraft:is_hoe'))",
+                "condition": "(query.block_face == 1.0&&(query.is_item_name_any('slot.weapon.mainhand','minecraft:sugar_cane')||query.is_item_name_any('slot.weapon.mainhand','minecraft:brown_mushroom')||query.is_item_name_any('slot.weapon.mainhand','minecraft:red_mushroom')))||query.equipped_item_any_tag('slot.weapon.mainhand','minecraft:is_hoe')",
                 "event": "farmersdelight:on_interact",
                 "target": "self"
             },
@@ -45,13 +45,43 @@
                     }
                 ]
             },
+            "place_brown_mushroom": {
+                "sequence": [
+                    {
+                        "run_command": {
+                            "command": [
+                                "execute if block ~ ~+1 ~ air run setblock ~ ~+1 ~ farmersdelight:brown_mushroom_colony",
+                                "playsound dig.grass @a ~~~"
+                            ]
+                        }
+                    },
+                    {
+                        "decrement_stack": {}
+                    }
+                ]
+            },
+            "place_red_mushroom": {
+                "sequence": [
+                    {
+                        "run_command": {
+                            "command": [
+                                "execute if block ~ ~+1 ~ air run setblock ~ ~+1 ~ farmersdelight:red_mushroom_colony",
+                                "playsound dig.grass @a ~~~"
+                            ]
+                        }
+                    },
+                    {
+                        "decrement_stack": {}
+                    }
+                ]
+            },
             "farmland_transformation": {
                 "sequence": [
                     {
                         "run_command": {
                             "command": [
                                 "setblock ~~~ farmersdelight:rich_soil_farmland",
-                                "playsound dig.dirt @a ~~~"
+                                "playsound MJ我草你ma这里应该是锄头耕地的声音 @a ~~~"
                             ]
                         }
                     },
@@ -70,6 +100,18 @@
                         "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:sugar_cane')",
                         "trigger": {
                             "event": "place_sugar_cane"
+                        }
+                    },
+                    {
+                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:brown_mushroom')",
+                        "trigger": {
+                            "event": "place_brown_mushroom"
+                        }
+                    },
+                    {
+                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:red_mushroom')",
+                        "trigger": {
+                            "event": "place_red_mushroom"
                         }
                     },
                     {
