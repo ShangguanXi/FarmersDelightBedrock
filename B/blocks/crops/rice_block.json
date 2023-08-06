@@ -162,7 +162,7 @@
             "minecraft:breathability": "air",
             "minecraft:collision_box": false,
             "minecraft:on_interact": {
-                "condition": "query.get_equipped_item_name == 'bone_meal'&&(query.block_property('farmersdelight:age')<=3)",
+                "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_property('farmersdelight:age')<=3)",
                 "event": "bone_meal_event"
             },
             "minecraft:placement_filter": {

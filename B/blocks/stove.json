@@ -128,7 +128,7 @@
             "farmersdelight:on_interact": {
                 "sequence": [
                     {
-                        "condition": "query.block_property('farmersdelight:is_working')==false&&query.get_equipped_item_name == 'flint_and_steel'",
+                        "condition": "query.block_property('farmersdelight:is_working')==false&&query.is_item_name_any('slot.weapon.mainhand','minecraft:flint_and_steel')",
                         "sequence": [
                             {
                                 "set_block_property": {
@@ -145,7 +145,7 @@
                         ]
                     },
                     {
-                        "condition": "query.block_property('farmersdelight:is_working')==true&&query.get_equipped_item_name == 'water_bucket'",
+                        "condition": "query.block_property('farmersdelight:is_working')==true&&query.is_item_name_any('slot.weapon.mainhand','minecraft:water_bucket')",
                         "sequence": [
                             {
                                 "set_block_property": {

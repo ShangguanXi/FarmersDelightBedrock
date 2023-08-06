@@ -1,0 +1,166 @@
+{
+    "format_version": "1.20.0",
+    "minecraft:block": {
+        "description": {
+            "identifier": "farmersdelight:rich_soil_sugar_cane_middle",
+            "menu_category": {
+                "category": "none"
+            },
+            "properties": {
+                "farmersdelight:age": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15
+                ]
+            }
+        },
+        "permutations": [],
+        "components": {
+            "minecraft:destructible_by_mining": {
+                "seconds_to_destroy": 0
+            },
+            "minecraft:destructible_by_explosion": {
+                "explosion_resistance": 0
+            },
+            "minecraft:random_ticking": {
+                "on_tick": {
+                    "event": "grow_stage",
+                    "target": "self"
+                }
+            },
+            "minecraft:flammable": {
+                "catch_chance_modifier": 30,
+                "destroy_chance_modifier": 30
+            },
+            "minecraft:light_dampening": 0,
+            "minecraft:geometry": "geometry.crop_cross",
+            "minecraft:collision_box": false,
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "rich_soil_reeds",
+                    "ambient_occlusion": false,
+                    "render_method": "alpha_test"
+                }
+            },
+            "minecraft:loot": "loot_tables/farmersdelight/crops/sugar_cane.json",
+            "minecraft:placement_filter": {
+                "conditions": [
+                    {
+                        "block_filter": [
+                            "farmersdelight:rich_soil_sugar_cane_bottom",
+                            "farmersdelight:rich_soil_sugar_cane_middle"
+                        ],
+                        "allowed_faces": [
+                            "up"
+                        ]
+                    }
+                ]
+            },
+            "minecraft:on_interact": {
+                "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')||(query.block_face == 1.0&&query.is_item_name_any('slot.weapon.mainhand','minecraft:sugar_cane'))",
+                "event": "farmersdelight:on_interact",
+                "target": "self"
+            },
+            "tag:reeds": {}
+        },
+        "events": {
+            "grow_stage": {
+                "randomize": [
+                    {
+                        "weight": 5
+                    },
+                    {
+                        "weight": 12,
+                        "sequence": [
+                            {
+                                "set_block_property": {
+                                    "farmersdelight:age": "(query.block_property('farmersdelight:age')<15) ? query.block_property('farmersdelight:age') + 1 : 15"
+                                }
+                            },
+                            {
+                                "condition": "query.block_property('farmersdelight:age')==15",
+                                "run_command": {
+                                    "command": [
+                                        "execute if block ~ ~+1 ~ air run setblock ~ ~+1 ~ farmersdelight:rich_soil_sugar_cane_top"
+                                    ]
+                                }
+                            },
+                            {
+                                "condition": "query.block_property('farmersdelight:age')==15",
+                                "set_block_property": {
+                                    "farmersdelight:age": 0
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bone_meal_event": {
+                "sequence": [
+                    {
+                        "run_command": {
+                            "command": [
+                                "execute if block ~ ~+1 ~ air run setblock ~ ~+1 ~ farmersdelight:rich_soil_sugar_cane_top",
+                                "execute if block ~ ~+1 ~ farmersdelight:rich_soil_sugar_cane_top if block ~ ~+2 ~ air run setblock ~ ~+2 ~ farmersdelight:rich_soil_sugar_cane_top"
+                            ]
+                        }
+                    },
+                    {
+                        "decrement_stack": {}
+                    },
+                    {
+                        "run_command": {
+                            "command": [
+                                "particle minecraft:crop_growth_emitter ~~~"
+                            ]
+                        }
+                    }
+                ]
+            },
+            "place_another": {
+                "sequence": [
+                    {
+                        "run_command": {
+                            "command": [
+                                "execute if block ~ ~+1 ~ air run setblock ~ ~+1 ~ farmersdelight:rich_soil_sugar_cane_top",
+                                "playsound dig.grass @a ~~~"
+                            ]
+                        }
+                    },
+                    {
+                        "decrement_stack": {}
+                    }
+                ]
+            },
+            "farmersdelight:on_interact": {
+                "sequence": [
+                    {
+                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&!query.block_neighbor_has_any_tag(0, 2, 0, 'reeds')",
+                        "trigger": {
+                            "event": "bone_meal_event"
+                        }
+                    },
+                    {
+                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:sugar_cane')",
+                        "trigger": {
+                            "event": "place_another"
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

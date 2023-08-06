@@ -15,28 +15,70 @@
                 "explosion_resistance": 3
             },
             "minecraft:unit_cube": {},
-            "minecraft:random_ticking": {
-                "on_tick": {
-                    "event": "on_tick",
-                    "target": "self"
-                }
-            },
             "minecraft:material_instances": {
                 "*": {
                     "texture": "rich_soil"
                 }
+            },
+            "minecraft:on_interact": {
+                "condition": "query.block_face == 1.0&&(query.is_item_name_any('slot.weapon.mainhand','minecraft:sugar_cane')||query.equipped_item_any_tag('slot.weapon.mainhand','minecraft:is_hoe'))",
+                "event": "farmersdelight:on_interact",
+                "target": "self"
             },
             "tag:dirt": {},
             "tag:sand": {},
             "tag:compost_activators": {}
         },
         "events": {
-            "on_tick": {
-                "run_command": {
-                    "command": [
-                        "scriptevent farmersdelight:rich_soil_tick"
-                    ]
-                }
+            "place_sugar_cane": {
+                "sequence": [
+                    {
+                        "run_command": {
+                            "command": [
+                                "execute if block ~ ~+1 ~ air run setblock ~ ~+1 ~ farmersdelight:rich_soil_sugar_cane_bottom",
+                                "playsound dig.grass @a ~~~"
+                            ]
+                        }
+                    },
+                    {
+                        "decrement_stack": {}
+                    }
+                ]
+            },
+            "farmland_transformation": {
+                "sequence": [
+                    {
+                        "run_command": {
+                            "command": [
+                                "setblock ~~~ farmersdelight:rich_soil_farmland",
+                                "playsound dig.dirt @a ~~~"
+                            ]
+                        }
+                    },
+                    {
+                        "damage": {
+                            "amount": 1,
+                            "target": "item",
+                            "type": "magic"
+                        }
+                    }
+                ]
+            },
+            "farmersdelight:on_interact": {
+                "sequence": [
+                    {
+                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:sugar_cane')",
+                        "trigger": {
+                            "event": "place_sugar_cane"
+                        }
+                    },
+                    {
+                        "condition": "query.equipped_item_any_tag('slot.weapon.mainhand','minecraft:is_hoe')",
+                        "trigger": {
+                            "event": "farmland_transformation"
+                        }
+                    }
+                ]
             }
         }
     }
