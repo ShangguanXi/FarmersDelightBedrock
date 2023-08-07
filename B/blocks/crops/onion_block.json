@@ -8,7 +8,11 @@
                     0,
                     1,
                     2,
-                    3
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
                 ]
             }
         },
@@ -171,17 +175,17 @@
             "farmersdelight:on_interact": {
                 "sequence": [
                     {
-                        "condition": "query.get_equipped_item_name == 'bone_meal'&&(query.block_property('farmersdelight:age')<3)",
+                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_property('farmersdelight:age')<3)",
                         "trigger": {
                             "event": "grow_stage"
                         }
                     },
                     {
-                        "condition": "query.get_equipped_item_name == 'bone_meal'&&(query.block_property('farmersdelight:age')<3)",
+                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_property('farmersdelight:age')<3)",
                         "decrement_stack": {}
                     },
                     {
-                        "condition": "query.get_equipped_item_name == 'bone_meal'&&(query.block_property('farmersdelight:age')<3)",
+                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_property('farmersdelight:age')<3)",
                         "run_command": {
                             "command": [
                                 "particle minecraft:crop_growth_emitter ~~~"

@@ -1,0 +1,109 @@
+{
+    "format_version": "1.20.0",
+    "minecraft:block": {
+        "description": {
+            "identifier": "farmersdelight:rich_soil_farmland",
+            "menu_category": {
+                "category": "nature"
+            }
+        },
+        "components": {
+            "minecraft:destructible_by_mining": {
+                "seconds_to_destroy": 0.6
+            },
+            "minecraft:destructible_by_explosion": {
+                "explosion_resistance": 3
+            },
+            "minecraft:geometry": "geometry.rich_soil_farmland",
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "rich_soil"
+                },
+                "top": {
+                    "texture": "rich_soil_farmland"
+                }
+            },
+            "minecraft:on_interact": {
+                "condition": "query.block_face == 1.0&&(query.is_item_name_any('slot.weapon.mainhand','minecraft:wheat_seeds')||query.is_item_name_any('slot.weapon.mainhand','minecraft:beetroot_seeds')||query.is_item_name_any('slot.weapon.mainhand','minecraft:carrot')||query.is_item_name_any('slot.weapon.mainhand','minecraft:potato'))",
+                "event": "farmersdelight:on_interact",
+                "target": "self"
+            },
+            "minecraft:collision_box": {
+                "origin": [
+                    -8.0,
+                    0.0,
+                    -8.0
+                ],
+                "size": [
+                    16.0,
+                    15.0,
+                    16.0
+                ]
+            },
+            "minecraft:selection_box": {
+                "origin": [
+                    -8.0,
+                    0.0,
+                    -8.0
+                ],
+                "size": [
+                    16.0,
+                    15.0,
+                    16.0
+                ]
+            },
+            "minecraft:random_ticking": {
+                "on_tick": {
+                    "event": "farmersdelight:random_ticking",
+                    "target": "self"
+                }
+            },
+            "tag:dirt": {},
+            "tag:farmland": {}
+        },
+        "events": {
+            "place_sugar_cane": {
+                "sequence": [
+                    {
+                        "run_command": {
+                            "command": [
+                                "execute if block ~ ~+1 ~ air run setblock ~ ~+1 ~ farmersdelight:rich_soil_sugar_cane_bottom",
+                                "playsound dig.grass @a ~~~"
+                            ]
+                        }
+                    },
+                    {
+                        "decrement_stack": {}
+                    }
+                ]
+            },
+            "farmersdelight:on_interact": {
+                "sequence": [
+                    {
+                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:seeds')",
+                        "trigger": {
+                            "event": "place_wheat"
+                        }
+                    },
+                    {
+                        "condition": "query.equipped_item_any_tag('slot.weapon.mainhand','minecraft:is_hoe')",
+                        "trigger": {
+                            "event": "farmland_transformation"
+                        }
+                    }
+                ]
+            },
+            "farmersdelight:random_ticking": {
+                "sequence": [
+                    {
+                        "run_command": {
+                            "command": [
+                                "scriptevent farmersdelight:rich_soil_farmland_tick"
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

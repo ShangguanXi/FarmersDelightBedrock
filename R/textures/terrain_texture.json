@@ -232,6 +232,9 @@
 		"rich_soil_farmland": {
 			"textures": "textures/blocks/rich_soil_farmland"
 		},
+		"rich_soil_reeds": {
+			"textures": "textures/blocks/rich_soil_reeds"
+		},
 		"rich_soil": {
 			"textures": "textures/blocks/rich_soil"
 		},
