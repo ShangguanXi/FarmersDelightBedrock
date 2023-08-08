@@ -2,7 +2,7 @@
     "format_version": "1.20.0",
     "minecraft:block": {
         "description": {
-            "identifier": "farmersdelight:red_mushroom_colony",
+            "identifier": "farmersdelight:rich_soil_potato",
             "properties": {
                 "farmersdelight:growth": [
                     0,
@@ -20,10 +20,9 @@
             {
                 "condition": "query.block_property('farmersdelight:growth') == 0",
                 "components": {
-                    "minecraft:loot": "loot_tables/farmersdelight/crops/farmersdelight_red_mushroom_colony0.json",
                     "minecraft:material_instances": {
                         "*": {
-                            "texture": "mushroom_red",
+                            "texture": "potatoes_stage0",
                             "ambient_occlusion": false,
                             "face_dimming": false,
                             "render_method": "alpha_test"
@@ -31,14 +30,14 @@
                     },
                     "minecraft:selection_box": {
                         "origin": [
-                            -3,
+                            -8,
                             0,
-                            -3
+                            -8
                         ],
                         "size": [
-                            6,
-                            7,
-                            6
+                            16,
+                            3,
+                            16
                         ]
                     }
                 }
@@ -48,7 +47,7 @@
                 "components": {
                     "minecraft:material_instances": {
                         "*": {
-                            "texture": "red_mushroom_colony_stage0",
+                            "texture": "potatoes_stage0",
                             "ambient_occlusion": false,
                             "face_dimming": false,
                             "render_method": "alpha_test"
@@ -56,14 +55,14 @@
                     },
                     "minecraft:selection_box": {
                         "origin": [
-                            -4,
+                            -8,
                             0,
-                            -4
+                            -8
                         ],
                         "size": [
-                            8,
-                            9,
-                            8
+                            16,
+                            4,
+                            16
                         ]
                     }
                 }
@@ -73,7 +72,7 @@
                 "components": {
                     "minecraft:material_instances": {
                         "*": {
-                            "texture": "red_mushroom_colony_stage1",
+                            "texture": "potatoes_stage1",
                             "ambient_occlusion": false,
                             "face_dimming": false,
                             "render_method": "alpha_test"
@@ -81,14 +80,14 @@
                     },
                     "minecraft:selection_box": {
                         "origin": [
-                            -5,
+                            -8,
                             0,
-                            -5
+                            -8
                         ],
                         "size": [
-                            10,
-                            11,
-                            10
+                            16,
+                            7,
+                            16
                         ]
                     }
                 }
@@ -98,7 +97,7 @@
                 "components": {
                     "minecraft:material_instances": {
                         "*": {
-                            "texture": "red_mushroom_colony_stage2",
+                            "texture": "potatoes_stage1",
                             "ambient_occlusion": false,
                             "face_dimming": false,
                             "render_method": "alpha_test"
@@ -106,14 +105,14 @@
                     },
                     "minecraft:selection_box": {
                         "origin": [
-                            -5,
+                            -8,
                             0,
-                            -5
+                            -8
                         ],
                         "size": [
-                            10,
-                            13,
-                            10
+                            16,
+                            9,
+                            16
                         ]
                     }
                 }
@@ -123,7 +122,7 @@
                 "components": {
                     "minecraft:material_instances": {
                         "*": {
-                            "texture": "red_mushroom_colony_stage3",
+                            "texture": "potatoes_stage2",
                             "ambient_occlusion": false,
                             "face_dimming": false,
                             "render_method": "alpha_test"
@@ -131,33 +130,105 @@
                     },
                     "minecraft:selection_box": {
                         "origin": [
-                            -6,
+                            -8,
                             0,
-                            -6
+                            -8
                         ],
                         "size": [
+                            16,
                             12,
+                            16
+                        ]
+                    }
+                }
+            },
+            {
+                "condition": "query.block_property('farmersdelight:growth') == 5",
+                "components": {
+                    "minecraft:material_instances": {
+                        "*": {
+                            "texture": "potatoes_stage2",
+                            "ambient_occlusion": false,
+                            "face_dimming": false,
+                            "render_method": "alpha_test"
+                        }
+                    },
+                    "minecraft:selection_box": {
+                        "origin": [
+                            -8,
+                            0,
+                            -8
+                        ],
+                        "size": [
+                            16,
+                            14,
+                            16
+                        ]
+                    }
+                }
+            },
+            {
+                "condition": "query.block_property('farmersdelight:growth') == 6",
+                "components": {
+                    "minecraft:material_instances": {
+                        "*": {
+                            "texture": "potatoes_stage3",
+                            "ambient_occlusion": false,
+                            "face_dimming": false,
+                            "render_method": "alpha_test"
+                        }
+                    },
+                    "minecraft:selection_box": {
+                        "origin": [
+                            -8,
+                            0,
+                            -8
+                        ],
+                        "size": [
+                            16,
                             15,
-                            12
+                            16
+                        ]
+                    }
+                }
+            },
+            {
+                "condition": "query.block_property('farmersdelight:growth') == 7",
+                "components": {
+                    "minecraft:loot": "loot_tables/farmersdelight/crops/potato_riped.json",
+                    "minecraft:material_instances": {
+                        "*": {
+                            "texture": "potatoes_stage3",
+                            "ambient_occlusion": false,
+                            "face_dimming": false,
+                            "render_method": "alpha_test"
+                        }
+                    },
+                    "minecraft:selection_box": {
+                        "origin": [
+                            -8,
+                            0,
+                            -8
+                        ],
+                        "size": [
+                            16,
+                            16,
+                            16
                         ]
                     }
                 }
             }
         ],
         "components": {
+            "minecraft:loot": "loot_tables/farmersdelight/crops/potato.json",
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 0.0
             },
-            "minecraft:flammable": {
-                "catch_chance_modifier": 30,
-                "destroy_chance_modifier": 30
-            },
             "minecraft:light_dampening": 0,
-            "minecraft:geometry": "geometry.wild_crop",
+            "minecraft:geometry": "geometry.bush_crop",
             "minecraft:destructible_by_explosion": {
                 "explosion_resistance": 0.0
             },
-            "minecraft:breathability": "air",
             "minecraft:collision_box": false,
             "minecraft:on_interact": {
                 "event": "farmersdelight:on_interact"
@@ -166,7 +237,7 @@
                 "conditions": [
                     {
                         "block_filter": [
-                            "rich_soil"
+                            "farmersdelight:rich_soil_farmland"
                         ],
                         "allowed_faces": [
                             "up"
@@ -181,7 +252,8 @@
                 }
             },
             "tag:crop": {},
-            "tag:compost_activators": {}
+            "tag:max_growth:7": {},
+            "tag:growth_property:farmersdelight:growth": {}
         },
         "events": {
             "grow_stage": {
@@ -193,9 +265,9 @@
                         "weight": 12,
                         "sequence": [
                             {
-                                "condition": "query.block_property('farmersdelight:growth')<4",
+                                "condition": "query.block_property('farmersdelight:growth')<7",
                                 "set_block_property": {
-                                    "farmersdelight:growth": "(query.block_property('farmersdelight:growth')<4) ? query.block_property('farmersdelight:growth') + 1 : 4"
+                                    "farmersdelight:growth": "(query.block_property('farmersdelight:growth')<7) ? query.block_property('farmersdelight:growth') + 1 : 7"
                                 }
                             }
                         ]
@@ -205,7 +277,7 @@
             "farmersdelight:on_interact": {
                 "sequence": [
                     {
-                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_property('farmersdelight:growth')<4)&&(query.block_property('farmersdelight:growth')>0)",
+                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_property('farmersdelight:growth')<7)",
                         "randomize": [
                             {
                                 "weight": 5
@@ -215,7 +287,7 @@
                                 "sequence": [
                                     {
                                         "set_block_property": {
-                                            "farmersdelight:growth": "(query.block_property('farmersdelight:growth')<4) ? query.block_property('farmersdelight:growth') + 1 : 4"
+                                            "farmersdelight:growth": "(query.block_property('farmersdelight:growth')<4) ? query.block_property('farmersdelight:growth') + 3 : 7"
                                         }
                                     }
                                 ]
@@ -223,31 +295,11 @@
                         ]
                     },
                     {
-                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_property('farmersdelight:growth')==0)",
-                        "randomize": [
-                            {
-                                "weight": 5
-                            },
-                            {
-                                "weight": 12,
-                                "sequence": [
-                                    {
-                                        "run_command": {
-                                            "command": [
-                                                "structure load farmersdelight:red_mushroom_tree ~-2~~-2"
-                                            ]
-                                        }
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_property('farmersdelight:growth')<4)",
+                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_property('farmersdelight:growth')<7)",
                         "decrement_stack": {}
                     },
                     {
-                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_property('farmersdelight:growth')<4)",
+                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_property('farmersdelight:growth')<7)",
                         "run_command": {
                             "command": [
                                 "particle minecraft:crop_growth_emitter ~~~"
@@ -255,49 +307,16 @@
                         }
                     },
                     {
-                        "condition": "!query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&query.block_property('farmersdelight:growth')==4",
-                        "sequence": [
-                            {
-                                "set_block_property": {
-                                    "farmersdelight:growth": 3
-                                }
-                            },
-                            {
-                                "spawn_loot": {
-                                    "table": "loot_tables/farmersdelight/crops/farmersdelight_red_mushroom_colony0.json"
-                                }
-                            }
-                        ]
+                        "condition": "query.block_property('farmersdelight:growth')==7",
+                        "set_block_property": {
+                            "farmersdelight:growth": 0
+                        }
                     },
                     {
-                        "condition": "!query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&query.block_property('farmersdelight:growth')==3",
-                        "sequence": [
-                            {
-                                "set_block_property": {
-                                    "farmersdelight:growth": 2
-                                }
-                            },
-                            {
-                                "spawn_loot": {
-                                    "table": "loot_tables/farmersdelight/crops/farmersdelight_red_mushroom_colony0.json"
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "condition": "!query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&query.block_property('farmersdelight:growth')==2",
-                        "sequence": [
-                            {
-                                "set_block_property": {
-                                    "farmersdelight:growth": 1
-                                }
-                            },
-                            {
-                                "spawn_loot": {
-                                    "table": "loot_tables/farmersdelight/crops/farmersdelight_red_mushroom_colony0.json"
-                                }
-                            }
-                        ]
+                        "condition": "query.block_property('farmersdelight:growth')==7",
+                        "spawn_loot":{
+                            "table": "loot_tables/farmersdelight/crops/potato_riped.json"
+                        }
                     }
                 ]
             }

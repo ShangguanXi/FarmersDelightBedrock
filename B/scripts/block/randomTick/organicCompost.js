@@ -1,5 +1,5 @@
 import { BlockPermutation, BlockVolumeUtils } from '@minecraft/server';
-import { organicCompostDetectList } from '../data/recipe/organicCompostDetect';
+import { organicCompostDetectList } from '../../data/organicCompostDetect';
 
 export function organicCompost(args) {
     let transChance = 0.1;

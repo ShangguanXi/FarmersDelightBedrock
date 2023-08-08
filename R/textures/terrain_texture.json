@@ -636,22 +636,22 @@
 			"textures/blocks/potatoes_stage_3"
 		  ]
 		},
-		"beetroot_stage0": {
+		"beetroots_stage0": {
 		  "textures": [
 			"textures/blocks/beetroots_stage_0"
 		  ]
 		},
-		"beetroot_stage1": {
+		"beetroots_stage1": {
 		  "textures": [
 			"textures/blocks/beetroots_stage_1"
 		  ]
 		},
-		"beetroot_stage2": {
+		"beetroots_stage2": {
 		  "textures": [
 			"textures/blocks/beetroots_stage_2"
 		  ]
 		},
-		"beetroot_stage3": {
+		"beetroots_stage3": {
 		  "textures": [
 			"textures/blocks/beetroots_stage_3"
 		  ]

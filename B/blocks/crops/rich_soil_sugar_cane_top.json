@@ -20,13 +20,14 @@
                 "destroy_chance_modifier": 30
             },
             "minecraft:light_dampening": 0,
-            "minecraft:geometry": "geometry.crop_cross",
+            "minecraft:geometry": "geometry.reeds",
             "minecraft:loot": "loot_tables/farmersdelight/crops/sugar_cane.json",
             "minecraft:collision_box": false,
             "minecraft:material_instances": {
                 "*": {
                     "texture": "rich_soil_reeds",
                     "ambient_occlusion": false,
+                    "face_dimming": false,
                     "render_method": "alpha_test"
                 }
             },

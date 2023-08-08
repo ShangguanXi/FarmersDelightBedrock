@@ -24,6 +24,7 @@
                         "*": {
                             "texture": "budding_tomatoes_stage0",
                             "ambient_occlusion": false,
+                            "face_dimming": false,
                             "render_method": "alpha_test"
                         }
                     },
@@ -48,6 +49,7 @@
                         "*": {
                             "texture": "budding_tomatoes_stage1",
                             "ambient_occlusion": false,
+                            "face_dimming": false,
                             "render_method": "alpha_test"
                         }
                     },
@@ -72,6 +74,7 @@
                         "*": {
                             "texture": "budding_tomatoes_stage2",
                             "ambient_occlusion": false,
+                            "face_dimming": false,
                             "render_method": "alpha_test"
                         }
                     },
@@ -96,6 +99,7 @@
                         "*": {
                             "texture": "budding_tomatoes_stage3",
                             "ambient_occlusion": false,
+                            "face_dimming": false,
                             "render_method": "alpha_test"
                         }
                     }
@@ -108,6 +112,7 @@
                         "*": {
                             "texture": "tomatoes_stage0",
                             "ambient_occlusion": false,
+                            "face_dimming": false,
                             "render_method": "alpha_test"
                         }
                     }
@@ -120,6 +125,7 @@
                         "*": {
                             "texture": "tomatoes_stage1",
                             "ambient_occlusion": false,
+                            "face_dimming": false,
                             "render_method": "alpha_test"
                         }
                     }
@@ -132,6 +138,7 @@
                         "*": {
                             "texture": "tomatoes_stage2",
                             "ambient_occlusion": false,
+                            "face_dimming": false,
                             "render_method": "alpha_test"
                         }
                     }
@@ -145,6 +152,7 @@
                         "*": {
                             "texture": "tomatoes_stage3",
                             "ambient_occlusion": false,
+                            "face_dimming": false,
                             "render_method": "alpha_test"
                         }
                     }
@@ -206,7 +214,9 @@
                     "target": "self"
                 }
             },
-            "tag:crop_block": {}
+            "tag:crop": {},
+            "tag:max_growth:7": {},
+            "tag:growth_property:farmersdelight:growth": {}
         },
         "events": {
             "grow_stage": {

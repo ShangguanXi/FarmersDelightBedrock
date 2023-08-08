@@ -7,15 +7,14 @@
                 "category": "nature"
             },
             "properties": {
-                "farmersdelight:moist": [
-                    false,
-                    true
+                "farmersdelight:moisturized_amount": [
+                    0,1,2,3,4,5,6,7
                 ]
             }
         },
         "permutations": [
             {
-                "condition": "query.block_property('farmersdelight:moist')",
+                "condition": "query.block_property('farmersdelight:moisturized_amount') > 0",
                 "components": {
                     "minecraft:material_instances": {
                         "*": {
@@ -31,7 +30,7 @@
                 }
             },
             {
-                "condition": "!query.block_property('farmersdelight:moist')",
+                "condition": "query.block_property('farmersdelight:moisturized_amount') == 0",
                 "components": {
                     "minecraft:material_instances": {
                         "*": {
@@ -106,12 +105,75 @@
                     }
                 ]
             },
+            "place_beetroot": {
+                "sequence": [
+                    {
+                        "run_command": {
+                            "command": [
+                                "execute if block ~ ~+1 ~ air run setblock ~ ~+1 ~ farmersdelight:rich_soil_beetroot",
+                                "playsound dig.grass @a ~~~"
+                            ]
+                        }
+                    },
+                    {
+                        "decrement_stack": {}
+                    }
+                ]
+            },
+            "place_carrot": {
+                "sequence": [
+                    {
+                        "run_command": {
+                            "command": [
+                                "execute if block ~ ~+1 ~ air run setblock ~ ~+1 ~ farmersdelight:rich_soil_carrot",
+                                "playsound dig.grass @a ~~~"
+                            ]
+                        }
+                    },
+                    {
+                        "decrement_stack": {}
+                    }
+                ]
+            },
+            "place_potato": {
+                "sequence": [
+                    {
+                        "run_command": {
+                            "command": [
+                                "execute if block ~ ~+1 ~ air run setblock ~ ~+1 ~ farmersdelight:rich_soil_potato",
+                                "playsound dig.grass @a ~~~"
+                            ]
+                        }
+                    },
+                    {
+                        "decrement_stack": {}
+                    }
+                ]
+            },
             "farmersdelight:on_interact": {
                 "sequence": [
                     {
                         "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:wheat_seeds')",
                         "trigger": {
                             "event": "place_wheat"
+                        }
+                    },
+                    {
+                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:potato')",
+                        "trigger": {
+                            "event": "place_potato"
+                        }
+                    },
+                    {
+                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:carrot')",
+                        "trigger": {
+                            "event": "place_carrot"
+                        }
+                    },
+                    {
+                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:beetroot_seeds')",
+                        "trigger": {
+                            "event": "place_beetroot"
                         }
                     }
                 ]

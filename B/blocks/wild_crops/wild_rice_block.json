@@ -15,12 +15,13 @@
             "minecraft:destructible_by_explosion": {
                 "explosion_resistance": 0.1
             },
-            "minecraft:geometry": "geometry.crop_cross",
+            "minecraft:geometry": "geometry.wild_crop",
 			"minecraft:material_instances": {
 				"*": {
 					"texture": "wild_rice_bottom",
                     "render_method": "alpha_test",
-                    "ambient_occlusion": false
+                    "ambient_occlusion": false,
+                    "face_dimming": false
 				}
 			},
 			"minecraft:flammable": {

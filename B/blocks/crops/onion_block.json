@@ -24,6 +24,7 @@
                         "*": {
                             "texture": "onions_stage0",
                             "ambient_occlusion": false,
+                            "face_dimming": false,
                             "render_method": "alpha_test"
                         }
                     },
@@ -48,6 +49,7 @@
                         "*": {
                             "texture": "onions_stage1",
                             "ambient_occlusion": false,
+                            "face_dimming": false,
                             "render_method": "alpha_test"
                         }
                     },
@@ -72,6 +74,7 @@
                         "*": {
                             "texture": "onions_stage2",
                             "ambient_occlusion": false,
+                            "face_dimming": false,
                             "render_method": "alpha_test"
                         }
                     },
@@ -97,6 +100,7 @@
                         "*": {
                             "texture": "onions_stage3",
                             "ambient_occlusion": false,
+                            "face_dimming": false,
                             "render_method": "alpha_test"
                         }
                     },
@@ -153,7 +157,9 @@
                     "target": "self"
                 }
             },
-            "tag:crop_block": {}
+            "tag:crop": {},
+            "tag:max_growth:3": {},
+            "tag:growth_property:farmersdelight:growth": {}
         },
         "events": {
             "grow_stage": {

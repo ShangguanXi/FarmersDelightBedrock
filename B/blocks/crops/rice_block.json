@@ -28,6 +28,7 @@
                         "*": {
                             "texture": "rice_stage0",
                             "ambient_occlusion": false,
+                            "face_dimming": false,
                             "render_method": "alpha_test"
                         }
                     },
@@ -52,6 +53,7 @@
                         "*": {
                             "texture": "rice_stage1",
                             "ambient_occlusion": false,
+                            "face_dimming": false,
                             "render_method": "alpha_test"
                         }
                     },
@@ -76,6 +78,7 @@
                         "*": {
                             "texture": "rice_stage2",
                             "ambient_occlusion": false,
+                            "face_dimming": false,
                             "render_method": "alpha_test"
                         }
                     },
@@ -100,6 +103,7 @@
                         "*": {
                             "texture": "rice_stage3",
                             "ambient_occlusion": false,
+                            "face_dimming": false,
                             "render_method": "alpha_test"
                         }
                     },
@@ -124,6 +128,7 @@
                         "*": {
                             "texture": "rice_supporting",
                             "ambient_occlusion": false,
+                            "face_dimming": false,
                             "render_method": "alpha_test"
                         }
                     },
@@ -189,7 +194,7 @@
                     "target": "self"
                 }
             },
-            "tag:crop_block": {}
+            "tag:crop": {}
         },
         "events": {
             "grow_stage": {
