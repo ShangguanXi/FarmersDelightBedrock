@@ -9,14 +9,6 @@ const farmersdelightBlockList = [
     "brown_mushroom_colony",
     "red_mushroom_colony"
 ];
-const farmersdelightItemList = [
-    "cabbage",
-    "rice_panicle",
-    "wheat_dough",
-    "apple_pie",
-    "sweet_berry_cheesecake",
-    "chocolate_pie"
-];
 const vanillaItemList = [
     "minecraft:cake",
     "minecraft:cooked_cod",

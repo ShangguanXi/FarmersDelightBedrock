@@ -3,21 +3,21 @@ const scoreboard = world.scoreboard;
 
 // 同步处理
 export function loot(itemStack, block, entity, blockLocation, id, amount = 1, sco = null) {
-    if (block !== id) {
+    if (block) {
+        if (JSON.stringify(entity.location) !== JSON.stringify(blockLocation)) {
+            entity.teleport(blockLocation);
+        }
+    }
+    if (block != id) {
         if (itemStack) {
             for (let index = 0; index < amount; index++) {
-                entity.dimension.spawnItem(new ItemStack(itemStack), entity.location);
+                entity.dimension.spawnItem(new ItemStack(itemStack), blockLocation);
             }
         }
         if (sco) {
             scoreboard.removeObjective(sco);
         }
         entity.triggerEvent('farmersdelight:despawn');
-    }
-    if (block) {
-        if (JSON.stringify(entity.location) === JSON.stringify(blockLocation)) {
-            entity.teleport(blockLocation);
-        }
     }
 }
 

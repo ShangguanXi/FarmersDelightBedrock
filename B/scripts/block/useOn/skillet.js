@@ -18,16 +18,17 @@ export function skillet(player, itemStack, block) {
     const entity = blockEntity.entity;
     const data = blockEntity.scoreboardObjective;
     const map = blockEntity.getDataMap('item');
+    const invItemStack = map.get('item');
     if (entity && data && map) {
         if (vanillaItemList.includes(itemStack.typeId) || itemStack.hasTag('can_cooking')) {
             const itemAmount = itemStack.amount;
-            if (map.get('item') === 'undefined') {
+            if (invItemStack == 'undefined') {
                 entity.removeTag('{"item":"undefined"}');
                 entity.addTag(`{"item":"${itemStack.typeId}"}`);
                 data.setScore('amount', itemAmount);
                 data.setScore(`${itemAmount}G`, 30);
                 claerItem(container, player.selectedSlot, itemAmount);
-            } else {
+            } else if (itemStack.typeId == invItemStack) {
                 const maxAmount = itemStack.maxAmount;
                 const amount = data.getScore('amount');
                 const removeAmount = maxAmount - amount;
@@ -41,6 +42,21 @@ export function skillet(player, itemStack, block) {
                     claerItem(container, player.selectedSlot, removeAmount);
                 }
             }
+        }
+        if (itemStack.typeId != invItemStack && invItemStack != 'undefined') {
+            for (const itemStackData of data.getScores()) {
+                const displayName = itemStackData.participant.displayName;
+                if (displayName != 'amount') {
+                    const num = parseInt(displayName.split('G')[0]);
+                    data.removeParticipant(displayName);
+                    data.setScore('amount', data.getScore('amount') - num);
+                    for (let i = 0; i < num; i++) {
+                        entity.dimension.spawnItem(new ItemStack(invItemStack), entity.location);
+                    }
+                    break;
+                }
+            }
+
         }
     } else {
         entity.addTag('{"item":"undefined"}');
