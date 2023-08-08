@@ -5,8 +5,45 @@
             "identifier": "farmersdelight:rich_soil_farmland",
             "menu_category": {
                 "category": "nature"
+            },
+            "properties": {
+                "farmersdelight:moist": [
+                    false,
+                    true
+                ]
             }
         },
+        "permutations": [
+            {
+                "condition": "query.block_property('farmersdelight:moist')",
+                "components": {
+                    "minecraft:material_instances": {
+                        "*": {
+                            "texture": "rich_soil_farmland_moist_side"
+                        },
+                        "top": {
+                            "texture": "rich_soil_farmland_moist"
+                        },
+                        "bottom": {
+                            "texture": "rich_soil"
+                        }
+                    }
+                }
+            },
+            {
+                "condition": "!query.block_property('farmersdelight:moist')",
+                "components": {
+                    "minecraft:material_instances": {
+                        "*": {
+                            "texture": "rich_soil"
+                        },
+                        "top": {
+                            "texture": "rich_soil_farmland"
+                        }
+                    }
+                }
+            }
+        ],
         "components": {
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 0.6
@@ -15,14 +52,6 @@
                 "explosion_resistance": 3
             },
             "minecraft:geometry": "geometry.rich_soil_farmland",
-            "minecraft:material_instances": {
-                "*": {
-                    "texture": "rich_soil"
-                },
-                "top": {
-                    "texture": "rich_soil_farmland"
-                }
-            },
             "minecraft:on_interact": {
                 "condition": "query.block_face == 1.0&&(query.is_item_name_any('slot.weapon.mainhand','minecraft:wheat_seeds')||query.is_item_name_any('slot.weapon.mainhand','minecraft:beetroot_seeds')||query.is_item_name_any('slot.weapon.mainhand','minecraft:carrot')||query.is_item_name_any('slot.weapon.mainhand','minecraft:potato'))",
                 "event": "farmersdelight:on_interact",
@@ -62,12 +91,12 @@
             "tag:farmland": {}
         },
         "events": {
-            "place_sugar_cane": {
+            "place_wheat": {
                 "sequence": [
                     {
                         "run_command": {
                             "command": [
-                                "execute if block ~ ~+1 ~ air run setblock ~ ~+1 ~ farmersdelight:rich_soil_sugar_cane_bottom",
+                                "execute if block ~ ~+1 ~ air run setblock ~ ~+1 ~ farmersdelight:rich_soil_wheat",
                                 "playsound dig.grass @a ~~~"
                             ]
                         }
@@ -80,15 +109,9 @@
             "farmersdelight:on_interact": {
                 "sequence": [
                     {
-                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:seeds')",
+                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:wheat_seeds')",
                         "trigger": {
                             "event": "place_wheat"
-                        }
-                    },
-                    {
-                        "condition": "query.equipped_item_any_tag('slot.weapon.mainhand','minecraft:is_hoe')",
-                        "trigger": {
-                            "event": "farmland_transformation"
                         }
                     }
                 ]

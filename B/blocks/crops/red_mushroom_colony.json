@@ -4,7 +4,7 @@
         "description": {
             "identifier": "farmersdelight:red_mushroom_colony",
             "properties": {
-                "farmersdelight:age": [
+                "farmersdelight:growth": [
                     0,
                     1,
                     2,
@@ -18,7 +18,7 @@
         },
         "permutations": [
             {
-                "condition": "query.block_property('farmersdelight:age') == 0",
+                "condition": "query.block_property('farmersdelight:growth') == 0",
                 "components": {
                     "minecraft:loot": "loot_tables/farmersdelight/crops/farmersdelight_red_mushroom_colony0.json",
                     "minecraft:material_instances": {
@@ -42,7 +42,7 @@
                 }
             },
             {
-                "condition": "query.block_property('farmersdelight:age') == 1",
+                "condition": "query.block_property('farmersdelight:growth') == 1",
                 "components": {
                     "minecraft:material_instances": {
                         "*": {
@@ -65,7 +65,7 @@
                 }
             },
             {
-                "condition": "query.block_property('farmersdelight:age') == 2",
+                "condition": "query.block_property('farmersdelight:growth') == 2",
                 "components": {
                     "minecraft:material_instances": {
                         "*": {
@@ -88,7 +88,7 @@
                 }
             },
             {
-                "condition": "query.block_property('farmersdelight:age') == 3",
+                "condition": "query.block_property('farmersdelight:growth') == 3",
                 "components": {
                     "minecraft:material_instances": {
                         "*": {
@@ -111,7 +111,7 @@
                 }
             },
             {
-                "condition": "query.block_property('farmersdelight:age') == 4",
+                "condition": "query.block_property('farmersdelight:growth') == 4",
                 "components": {
                     "minecraft:material_instances": {
                         "*": {
@@ -183,9 +183,9 @@
                         "weight": 12,
                         "sequence": [
                             {
-                                "condition": "query.block_property('farmersdelight:age')<4",
+                                "condition": "query.block_property('farmersdelight:growth')<4",
                                 "set_block_property": {
-                                    "farmersdelight:age": "(query.block_property('farmersdelight:age')<4) ? query.block_property('farmersdelight:age') + 1 : 4"
+                                    "farmersdelight:growth": "(query.block_property('farmersdelight:growth')<4) ? query.block_property('farmersdelight:growth') + 1 : 4"
                                 }
                             }
                         ]
@@ -195,7 +195,7 @@
             "farmersdelight:on_interact": {
                 "sequence": [
                     {
-                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_property('farmersdelight:age')<4)&&(query.block_property('farmersdelight:age')>0)",
+                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_property('farmersdelight:growth')<4)&&(query.block_property('farmersdelight:growth')>0)",
                         "randomize": [
                             {
                                 "weight": 5
@@ -205,7 +205,7 @@
                                 "sequence": [
                                     {
                                         "set_block_property": {
-                                            "farmersdelight:age": "(query.block_property('farmersdelight:age')<4) ? query.block_property('farmersdelight:age') + 1 : 4"
+                                            "farmersdelight:growth": "(query.block_property('farmersdelight:growth')<4) ? query.block_property('farmersdelight:growth') + 1 : 4"
                                         }
                                     }
                                 ]
@@ -213,7 +213,7 @@
                         ]
                     },
                     {
-                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_property('farmersdelight:age')==0)",
+                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_property('farmersdelight:growth')==0)",
                         "randomize": [
                             {
                                 "weight": 5
@@ -233,11 +233,11 @@
                         ]
                     },
                     {
-                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_property('farmersdelight:age')<4)",
+                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_property('farmersdelight:growth')<4)",
                         "decrement_stack": {}
                     },
                     {
-                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_property('farmersdelight:age')<4)",
+                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_property('farmersdelight:growth')<4)",
                         "run_command": {
                             "command": [
                                 "particle minecraft:crop_growth_emitter ~~~"
@@ -245,11 +245,11 @@
                         }
                     },
                     {
-                        "condition": "!query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&query.block_property('farmersdelight:age')==4",
+                        "condition": "!query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&query.block_property('farmersdelight:growth')==4",
                         "sequence": [
                             {
                                 "set_block_property": {
-                                    "farmersdelight:age": 3
+                                    "farmersdelight:growth": 3
                                 }
                             },
                             {
@@ -260,11 +260,11 @@
                         ]
                     },
                     {
-                        "condition": "!query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&query.block_property('farmersdelight:age')==3",
+                        "condition": "!query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&query.block_property('farmersdelight:growth')==3",
                         "sequence": [
                             {
                                 "set_block_property": {
-                                    "farmersdelight:age": 2
+                                    "farmersdelight:growth": 2
                                 }
                             },
                             {
@@ -275,11 +275,11 @@
                         ]
                     },
                     {
-                        "condition": "!query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&query.block_property('farmersdelight:age')==2",
+                        "condition": "!query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&query.block_property('farmersdelight:growth')==2",
                         "sequence": [
                             {
                                 "set_block_property": {
-                                    "farmersdelight:age": 1
+                                    "farmersdelight:growth": 1
                                 }
                             },
                             {

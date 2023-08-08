@@ -4,7 +4,7 @@
         "description": {
             "identifier": "farmersdelight:rice_block",
             "properties": {
-                "farmersdelight:age": [
+                "farmersdelight:growth": [
                     0,
                     1,
                     2,
@@ -22,7 +22,7 @@
         },
         "permutations": [
             {
-                "condition": "query.block_property('farmersdelight:age') == 0",
+                "condition": "query.block_property('farmersdelight:growth') == 0",
                 "components": {
                     "minecraft:material_instances": {
                         "*": {
@@ -46,7 +46,7 @@
                 }
             },
             {
-                "condition": "query.block_property('farmersdelight:age') == 1",
+                "condition": "query.block_property('farmersdelight:growth') == 1",
                 "components": {
                     "minecraft:material_instances": {
                         "*": {
@@ -70,7 +70,7 @@
                 }
             },
             {
-                "condition": "query.block_property('farmersdelight:age') == 2",
+                "condition": "query.block_property('farmersdelight:growth') == 2",
                 "components": {
                     "minecraft:material_instances": {
                         "*": {
@@ -94,7 +94,7 @@
                 }
             },
             {
-                "condition": "query.block_property('farmersdelight:age') == 3 && query.block_property('farmersdelight:upper') == false",
+                "condition": "query.block_property('farmersdelight:growth') == 3 && query.block_property('farmersdelight:upper') == false",
                 "components": {
                     "minecraft:material_instances": {
                         "*": {
@@ -118,7 +118,7 @@
                 }
             },
             {
-                "condition": "query.block_property('farmersdelight:age') == 3 && query.block_property('farmersdelight:upper') == true",
+                "condition": "query.block_property('farmersdelight:growth') == 3 && query.block_property('farmersdelight:upper') == true",
                 "components": {
                     "minecraft:material_instances": {
                         "*": {
@@ -166,7 +166,7 @@
             "minecraft:breathability": "air",
             "minecraft:collision_box": false,
             "minecraft:on_interact": {
-                "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_property('farmersdelight:age')<=3)",
+                "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_property('farmersdelight:growth')<=3)",
                 "event": "bone_meal_event"
             },
             "minecraft:placement_filter": {
@@ -174,7 +174,8 @@
                     {
                         "block_filter": [
                             "dirt",
-                            "grass"
+                            "grass",
+                            "farmersdelight:rich_soil"
                         ],
                         "allowed_faces": [
                             "up"
@@ -200,13 +201,13 @@
                         "weight": 12,
                         "sequence": [
                             {
-                                "condition": "query.block_property('farmersdelight:age')<3",
+                                "condition": "query.block_property('farmersdelight:growth')<3",
                                 "set_block_property": {
-                                    "farmersdelight:age": "(query.block_property('farmersdelight:age')<3) ? query.block_property('farmersdelight:age') + 1 : 3"
+                                    "farmersdelight:growth": "(query.block_property('farmersdelight:growth')<3) ? query.block_property('farmersdelight:growth') + 1 : 3"
                                 }
                             },
                             {
-                                "condition": "query.block_property('farmersdelight:age')==3",
+                                "condition": "query.block_property('farmersdelight:growth')==3",
                                 "trigger": {
                                     "event": "farmersdelight:upper_grow"
                                 }
@@ -218,7 +219,7 @@
             "bone_meal_event": {
                 "sequence": [
                     {
-                        "condition": "query.block_property('farmersdelight:age')<=3&&query.block_property('farmersdelight:upper')==false",
+                        "condition": "query.block_property('farmersdelight:growth')<=3&&query.block_property('farmersdelight:upper')==false",
                         "trigger": {
                             "event": "grow_stage"
                         }
@@ -237,9 +238,9 @@
                         "condition": "query.block_property('farmersdelight:upper')==true",
                         "run_command": {
                             "command": [
-                                "execute if block ~ ~+1 ~ farmersdelight:rice_block_upper[\"farmersdelight:age\":2] run setblock ~ ~+1 ~ farmersdelight:rice_block_upper[\"farmersdelight:age\":3]",
-                                "execute if block ~ ~+1 ~ farmersdelight:rice_block_upper[\"farmersdelight:age\":1] run setblock ~ ~+1 ~ farmersdelight:rice_block_upper[\"farmersdelight:age\":2]",
-                                "execute if block ~ ~+1 ~ farmersdelight:rice_block_upper[\"farmersdelight:age\":0] run setblock ~ ~+1 ~ farmersdelight:rice_block_upper[\"farmersdelight:age\":1]"
+                                "execute if block ~ ~+1 ~ farmersdelight:rice_block_upper[\"farmersdelight:growth\":2] run setblock ~ ~+1 ~ farmersdelight:rice_block_upper[\"farmersdelight:growth\":3]",
+                                "execute if block ~ ~+1 ~ farmersdelight:rice_block_upper[\"farmersdelight:growth\":1] run setblock ~ ~+1 ~ farmersdelight:rice_block_upper[\"farmersdelight:growth\":2]",
+                                "execute if block ~ ~+1 ~ farmersdelight:rice_block_upper[\"farmersdelight:growth\":0] run setblock ~ ~+1 ~ farmersdelight:rice_block_upper[\"farmersdelight:growth\":1]"
                             ]
                         }
                     }
@@ -251,7 +252,7 @@
                     {
                         "run_command": {
                             "command": [
-                                "execute if block ~ ~+1 ~ air run setblock ~~~ farmersdelight:rice_block[\"farmersdelight:upper\":false,\"farmersdelight:age\":3]"
+                                "execute if block ~ ~+1 ~ air run setblock ~~~ farmersdelight:rice_block[\"farmersdelight:upper\":false,\"farmersdelight:growth\":3]"
                             ]
                         }
                     }
@@ -263,7 +264,7 @@
                         "run_command": {
                             "command": [
                                 "execute if block ~ ~+1 ~ air run setblock ~ ~+1 ~ farmersdelight:rice_block_upper",
-                                "execute if block ~ ~+1 ~ farmersdelight:rice_block_upper run setblock ~~~ farmersdelight:rice_block[\"farmersdelight:upper\":true,\"farmersdelight:age\":3]"
+                                "execute if block ~ ~+1 ~ farmersdelight:rice_block_upper run setblock ~~~ farmersdelight:rice_block[\"farmersdelight:upper\":true,\"farmersdelight:growth\":3]"
                             ]
                         }
                     }

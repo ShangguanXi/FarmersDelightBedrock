@@ -7,7 +7,7 @@
                 "category": "none"
             },
             "properties": {
-                "farmersdelight:age": [
+                "farmersdelight:growth": [
                     0,
                     1,
                     2,
@@ -87,11 +87,11 @@
                         "sequence": [
                             {
                                 "set_block_property": {
-                                    "farmersdelight:age": "(query.block_property('farmersdelight:age')<15) ? query.block_property('farmersdelight:age') + 1 : 15"
+                                    "farmersdelight:growth": "(query.block_property('farmersdelight:growth')<15) ? query.block_property('farmersdelight:growth') + 1 : 15"
                                 }
                             },
                             {
-                                "condition": "query.block_property('farmersdelight:age')==15",
+                                "condition": "query.block_property('farmersdelight:growth')==15",
                                 "run_command": {
                                     "command": [
                                         "execute if block ~ ~+1 ~ air run setblock ~ ~+1 ~ farmersdelight:rich_soil_sugar_cane_top"
@@ -99,9 +99,9 @@
                                 }
                             },
                             {
-                                "condition": "query.block_property('farmersdelight:age')==15",
+                                "condition": "query.block_property('farmersdelight:growth')==15",
                                 "set_block_property": {
-                                    "farmersdelight:age": 0
+                                    "farmersdelight:growth": 0
                                 }
                             }
                         ]

@@ -4,7 +4,7 @@
         "description": {
             "identifier": "farmersdelight:onion_block",
             "properties": {
-                "farmersdelight:age": [
+                "farmersdelight:growth": [
                     0,
                     1,
                     2,
@@ -18,7 +18,7 @@
         },
         "permutations": [
             {
-                "condition": "query.block_property('farmersdelight:age') == 0",
+                "condition": "query.block_property('farmersdelight:growth') == 0",
                 "components": {
                     "minecraft:material_instances": {
                         "*": {
@@ -42,7 +42,7 @@
                 }
             },
             {
-                "condition": "query.block_property('farmersdelight:age') == 1",
+                "condition": "query.block_property('farmersdelight:growth') == 1",
                 "components": {
                     "minecraft:material_instances": {
                         "*": {
@@ -66,7 +66,7 @@
                 }
             },
             {
-                "condition": "query.block_property('farmersdelight:age') == 2",
+                "condition": "query.block_property('farmersdelight:growth') == 2",
                 "components": {
                     "minecraft:material_instances": {
                         "*": {
@@ -90,8 +90,9 @@
                 }
             },
             {
-                "condition": "query.block_property('farmersdelight:age') == 3",
+                "condition": "query.block_property('farmersdelight:growth') == 3",
                 "components": {
+                    "minecraft:loot": "loot_tables/farmersdelight/crops/farmersdelight_onion_riped.json",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "onions_stage3",
@@ -137,7 +138,8 @@
                 "conditions": [
                     {
                         "block_filter": [
-                            "farmland"
+                            "farmland",
+                            "farmersdelight:rich_soil_farmland"
                         ],
                         "allowed_faces": [
                             "up"
@@ -163,9 +165,9 @@
                         "weight": 12,
                         "sequence": [
                             {
-                                "condition": "query.block_property('farmersdelight:age')<3",
+                                "condition": "query.block_property('farmersdelight:growth')<3",
                                 "set_block_property": {
-                                    "farmersdelight:age": "(query.block_property('farmersdelight:age')<3) ? query.block_property('farmersdelight:age') + 1 : 3"
+                                    "farmersdelight:growth": "(query.block_property('farmersdelight:growth')<3) ? query.block_property('farmersdelight:growth') + 1 : 3"
                                 }
                             }
                         ]
@@ -175,17 +177,17 @@
             "farmersdelight:on_interact": {
                 "sequence": [
                     {
-                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_property('farmersdelight:age')<3)",
+                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_property('farmersdelight:growth')<3)",
                         "trigger": {
                             "event": "grow_stage"
                         }
                     },
                     {
-                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_property('farmersdelight:age')<3)",
+                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_property('farmersdelight:growth')<3)",
                         "decrement_stack": {}
                     },
                     {
-                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_property('farmersdelight:age')<3)",
+                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_property('farmersdelight:growth')<3)",
                         "run_command": {
                             "command": [
                                 "particle minecraft:crop_growth_emitter ~~~"
@@ -193,13 +195,13 @@
                         }
                     },
                     {
-                        "condition": "query.block_property('farmersdelight:age')==3",
+                        "condition": "query.block_property('farmersdelight:growth')==3",
                         "set_block_property": {
-                            "farmersdelight:age": 0
+                            "farmersdelight:growth": 0
                         }
                     },
                     {
-                        "condition": "query.block_property('farmersdelight:age')==3",
+                        "condition": "query.block_property('farmersdelight:growth')==3",
                         "spawn_loot":{
                             "table": "loot_tables/farmersdelight/crops/farmersdelight_onion_riped.json"
                         }

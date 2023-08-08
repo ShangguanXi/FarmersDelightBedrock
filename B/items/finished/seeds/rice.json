@@ -11,7 +11,8 @@
       "minecraft:block_placer": {
         "block": "rice_block",
         "use_on": [
-          "farmland"
+          "dirt",
+          "farmersdelight:rich_soil"
         ]
       }
     }, 

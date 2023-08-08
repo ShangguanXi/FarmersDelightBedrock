@@ -11,7 +11,8 @@
       "minecraft:block_placer": {
         "block": "cabbage_block",
         "use_on": [
-          "farmland"
+          "farmland",
+          "farmersdelight:rich_soil_farmland"
         ]
       }
     }, 

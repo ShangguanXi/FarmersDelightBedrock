@@ -555,6 +555,106 @@
 		},
 		"acacia_cabinet_front": {
 			"textures": "textures/blocks/acacia_cabinet_front"
+		},
+		"wheat_stage0": {
+		  "textures": [
+			"textures/blocks/wheat_stage_0"
+		  ]
+		},
+		"wheat_stage1": {
+		  "textures": [
+			"textures/blocks/wheat_stage_1"
+		  ]
+		},
+		"wheat_stage2": {
+		  "textures": [
+			"textures/blocks/wheat_stage_2"
+		  ]
+		},
+		"wheat_stage3": {
+		  "textures": [
+			"textures/blocks/wheat_stage_3"
+		  ]
+		},
+		"wheat_stage4": {
+		  "textures": [
+			"textures/blocks/wheat_stage_4"
+		  ]
+		},
+		"wheat_stage5": {
+		  "textures": [
+			"textures/blocks/wheat_stage_5"
+		  ]
+		},
+		"wheat_stage6": {
+		  "textures": [
+			"textures/blocks/wheat_stage_6"
+		  ]
+		},
+		"wheat_stage7": {
+		  "textures": [
+			"textures/blocks/wheat_stage_7"
+		  ]
+		},
+		"carrots_stage0": {
+		  "textures": [
+			"textures/blocks/carrots_stage_0"
+		  ]
+		},
+		"carrots_stage1": {
+		  "textures": [
+			"textures/blocks/carrots_stage_1"
+		  ]
+		},
+		"carrots_stage2": {
+		  "textures": [
+			"textures/blocks/carrots_stage_2"
+		  ]
+		},
+		"carrots_stage3": {
+		  "textures": [
+			"textures/blocks/carrots_stage_3"
+		  ]
+		},
+		"potatoes_stage0": {
+		  "textures": [
+			"textures/blocks/potatoes_stage_0"
+		  ]
+		},
+		"potatoes_stage1": {
+		  "textures": [
+			"textures/blocks/potatoes_stage_1"
+		  ]
+		},
+		"potatoes_stage2": {
+		  "textures": [
+			"textures/blocks/potatoes_stage_2"
+		  ]
+		},
+		"potatoes_stage3": {
+		  "textures": [
+			"textures/blocks/potatoes_stage_3"
+		  ]
+		},
+		"beetroot_stage0": {
+		  "textures": [
+			"textures/blocks/beetroots_stage_0"
+		  ]
+		},
+		"beetroot_stage1": {
+		  "textures": [
+			"textures/blocks/beetroots_stage_1"
+		  ]
+		},
+		"beetroot_stage2": {
+		  "textures": [
+			"textures/blocks/beetroots_stage_2"
+		  ]
+		},
+		"beetroot_stage3": {
+		  "textures": [
+			"textures/blocks/beetroots_stage_3"
+		  ]
 		}
 	}
 }
