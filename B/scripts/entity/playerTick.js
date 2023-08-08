@@ -217,8 +217,10 @@ function rope(player) {
 }
 
 system.runInterval(() => {
-    const firstPlayer = world.getAllPlayers()[0]
-    blockTick(firstPlayer.dimension);
+    const firstPlayer = world.getAllPlayers()[0];
+    if (firstPlayer?.dimension) {
+        blockTick(firstPlayer.dimension);
+    }
     for (const player of world.getAllPlayers()) {
         // block tick
         // rope(player);

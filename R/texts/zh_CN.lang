@@ -65,15 +65,11 @@
   item.farmersdelight:wild_beetroots=海甜菜
   item.farmersdelight:wild_rice=野生稻米
 
-  tile.farmersdelight:apple_pie_block.name=苹果派
-  tile.farmersdelight:sweet_berry_cheesecake_block.name=甜浆果芝士派
-  tile.farmersdelight:chocolate_pie_block.name=巧克力派
-  item.farmersdelight:apple_pie=苹果派
-  item.farmersdelight:sweet_berry_cheesecake=甜浆果芝士派
-  item.farmersdelight:chocolate_pie=巧克力派
+  tile.farmersdelight:apple_pie.name=苹果派
+  tile.farmersdelight:sweet_berry_cheesecake.name=甜浆果芝士派
+  tile.farmersdelight:chocolate_pie.name=巧克力派
 
   item.farmersdelight:tomato=番茄
-  item.farmersdelight:rotten_tomato=烂番茄
   item.farmersdelight:cabbage=卷心菜
   item.farmersdelight:onion=洋葱
   item.farmersdelight:rice=稻米
