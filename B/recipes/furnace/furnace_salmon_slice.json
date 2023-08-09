@@ -2,7 +2,7 @@
     "format_version": "1.17",
     "minecraft:recipe_furnace": {
         "description": {
-            "identifier": "farmersdelight:furnace_bacon"
+            "identifier": "farmersdelight:furnace_salmon_slice"
         },
         "tags": [
             "furnace",
@@ -10,7 +10,7 @@
             "campfire",
             "soul_campfire"
         ],
-        "input": "farmersdelight:bacon",
-        "output": "farmersdelight:cooked_bacon"
+        "input": "farmersdelight:salmon_slice",
+        "output": "farmersdelight:cooked_salmon_slice"
     }
 }

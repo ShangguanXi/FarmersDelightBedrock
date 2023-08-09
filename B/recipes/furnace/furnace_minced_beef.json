@@ -2,7 +2,7 @@
     "format_version": "1.17",
     "minecraft:recipe_furnace": {
         "description": {
-            "identifier": "farmersdelight:furnace_bacon"
+            "identifier": "farmersdelight:furnace_minced_beef"
         },
         "tags": [
             "furnace",
@@ -10,7 +10,7 @@
             "campfire",
             "soul_campfire"
         ],
-        "input": "farmersdelight:bacon",
-        "output": "farmersdelight:cooked_bacon"
+        "input": "farmersdelight:minced_beef",
+        "output": "farmersdelight:beef_patty"
     }
 }

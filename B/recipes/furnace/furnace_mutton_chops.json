@@ -2,7 +2,7 @@
     "format_version": "1.17",
     "minecraft:recipe_furnace": {
         "description": {
-            "identifier": "farmersdelight:furnace_bacon"
+            "identifier": "farmersdelight:furnace_mutton_chops"
         },
         "tags": [
             "furnace",
@@ -10,7 +10,7 @@
             "campfire",
             "soul_campfire"
         ],
-        "input": "farmersdelight:bacon",
-        "output": "farmersdelight:cooked_bacon"
+        "input": "farmersdelight:mutton_chops",
+        "output": "farmersdelight:cooked_mutton_chops"
     }
 }
