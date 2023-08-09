@@ -1,0 +1,20 @@
+{
+    "format_version": "1.17",
+    "minecraft:recipe_furnace": {
+        "description": {
+            "identifier": "farmersdelight:furnace_bacon"
+        },
+        "tags": [
+            "furnace",
+            "smoker",
+            "campfire",
+            "soul_campfire"
+        ],
+        "input": {
+            "item": "farmersdelight:bacon",
+            "data": 0,
+            "count": 4
+        },
+        "output ": "minecraft:cooked_bacon"
+    }
+}
