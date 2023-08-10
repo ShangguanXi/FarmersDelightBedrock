@@ -17,10 +17,11 @@ export function cuttingBoard(player, itemStack, block) {
     );
     const entity = blockEntity.entity;
     const map = blockEntity.getDataMap('item');
+    const V3 = { x: location.x + 0.5, y: location.y, z: location.z + 0.5 };
     if (map && !itemStack.hasTag('farmersdelight:is_knife')) {
         entity.dimension.spawnItem(new ItemStack(map.get('item')), entity.location);
         entity.triggerEvent('farmersdelight:despawn');
-        player.dimension.spawnEntity('farmersdelight:cutting_board', location).addTag(JSON.stringify(location));
+        player.dimension.spawnEntity('farmersdelight:cutting_board', V3).addTag(JSON.stringify(V3));
     }
     if (farmersdelightBlockList.includes(itemStack.typeId) || vanillaItemList.includes(itemStack.typeId) || itemStack.hasTag('farmersdelight:can_cut') || itemStack.hasTag('farmersdelight:is_knife')) {
         if (map) {
@@ -28,7 +29,7 @@ export function cuttingBoard(player, itemStack, block) {
                 const id = map.get('item').split(':')[1];
                 player.runCommandAsync(`loot spawn ${location.x} ${location.y} ${location.z} loot "farmersdelight/cutting_board/farmersdelight_${id}"`);
                 entity.triggerEvent('farmersdelight:despawn');
-                player.dimension.spawnEntity('farmersdelight:cutting_board', location).addTag(JSON.stringify(location));
+                player.dimension.spawnEntity('farmersdelight:cutting_board', V3).addTag(JSON.stringify(V3));
                 damageItem(container, player.selectedSlot);
             }
         } else if (!itemStack.hasTag('farmersdelight:is_knife')) {

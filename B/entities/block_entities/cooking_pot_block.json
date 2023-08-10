@@ -20,6 +20,14 @@
             }
         },
         "components": {
+            "minecraft:timer":{
+                "looping": true,
+                "randomInterval":true,
+                "time": [0.0, 0.0],
+                "time_down_event": {
+                    "event":"farmersdelight:cooking_pot_tick"
+                }
+            },
             "minecraft:persistent": {},
             "minecraft:damage_sensor": {
                 "triggers": {
@@ -53,7 +61,7 @@
             "minecraft:inventory": {
                 "inventory_size": 9,
                 "can_be_siphoned_from": true,
-                "container_type": "horse"
+                "container_type": "minecart_chest"
             }
         },
         "events": {
@@ -63,7 +71,8 @@
                         "farmersdelight:cooking_pot_despawn"
                     ]
                 }
-            }
+            },
+            "farmersdelight:cooking_pot_tick": {}
         }
     }
 }

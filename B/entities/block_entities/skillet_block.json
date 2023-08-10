@@ -16,6 +16,17 @@
       }
     },
     "components": {
+      "minecraft:timer": {
+        "looping": true,
+        "randomInterval": true,
+        "time": [
+          0.0,
+          0.0
+        ],
+        "time_down_event": {
+          "event": "farmersdelight:skillet_tick"
+        }
+      },
       "minecraft:persistent": {},
       "minecraft:physics": {
         "has_collision": false,
@@ -48,7 +59,8 @@
             "farmersdelight:skillet_despawn"
           ]
         }
-      }
+      },
+      "farmersdelight:skillet_tick": {}
     }
   }
 }

@@ -1,7 +1,26 @@
 import { ItemStack, system } from "@minecraft/server";
 import { claerItem } from "./itemUtil";
 
-function test(have, need) {
+function getValidRecipePreviewIndex(info, recipes) {
+    for (const index in recipes) {
+        if (compare(info, recipes[index].ingredients)) {
+            return index;
+        }
+    }
+    return -1;
+}
+
+function getValidRecipeoutputIndex(info, recipes) {
+    for (const index in recipes) {
+        if (isEqualValue(info, recipes[index].container)) {
+            return index;
+        }
+    }
+    return -1;
+}
+
+function isEqualValue(have, need) {
+    if (!need) return false;
     const value = Object.keys(need)[0];
     switch (value) {
         case 'item':
@@ -20,7 +39,7 @@ function test(have, need) {
 function isEqual(obj1, obj2) {
     if (obj1 === obj2) return true;
     if (typeof (obj1) !== "object" || typeof (obj2) !== "object" || !obj1 || !obj2) return false;
-    if (test(obj1, obj2)) return true;
+    if (isEqualValue(obj1, obj2)) return true;
 }
 
 function isArray(value) {
@@ -82,8 +101,10 @@ function clear(recipe, itemStack, container) {
 function setItem(itemStack, container, index) {
     const output = container.getItem(index);
     if (output) {
-        output.amount += 1;
-        container.setItem(index, output);
+        if (output.amount < output.maxAmount) {
+            output.amount += 1;
+            container.setItem(index, output);
+        }
     } else {
         itemStack.amount = 1;
         container.setItem(index, itemStack);
@@ -91,48 +112,62 @@ function setItem(itemStack, container, index) {
 }
 
 export class RecipeHolder {
-    i = 0;
+    previewIndex;
+    outputIndex;
     container;
     recipes;
     itemStack;
     #arr = [];
-    constructor(container, recipes) {
+    constructor(container, recipes, index) {
+        this.previewIndex = index;
+        this.outputIndex = index;
         this.container = container;
         this.recipes = recipes;
+        const output = this.container.getItem(6);
+        const input = this.container.getItem(7);
         for (let i = 0; i < 6; i++) {
             const itemStack = container.getItem(i);
             if (itemStack) {
                 this.#arr.push(itemStack);
             }
         }
+        if (!compare(this.#arr, this.recipes[this.previewIndex].ingredients)) {
+            this.previewIndex = getValidRecipePreviewIndex(this.#arr, this.recipes);
+        }
+        if (output && input) {
+            if (!isEqualValue(input, this.recipes[this.outputIndex].container)) {
+                this.outputIndex = getValidRecipeoutputIndex(input, this.recipes);
+            }
+        }
     }
     consume() {
-        for (const recipe of this.recipes) {
-            const itemStack = new ItemStack(recipe.result.item);
-            const output = this.container.getItem(6);
-            const input = this.container.getItem(7);
-            const ingredients = recipe.ingredients;
-            if (this.container.emptySlotsCount < this.container.size) {
-                if (this.#arr.length == ingredients.length && (output ? output.typeId == recipe.result.item : true)) {
-                    if (compare(this.#arr, ingredients)) {
-                        if (!(system.currentTick % recipe.cookingtime)) {
-                            clear(recipe, itemStack, this.container, this.#arr);
-                            itemStack.lockMode = 'none';
-                        }
+        const output = this.container.getItem(6);
+        const recipe = this.recipes[this.previewIndex];
+        const itemStack = new ItemStack(recipe.result.item);
+        const ingredients = recipe.ingredients;
+        if (this.container.emptySlotsCount < this.container.size) {
+            if (this.#arr.length == ingredients.length) {
+                if (compare(this.#arr, ingredients)) {
+                    clear(recipe, itemStack, this.container, this.#arr);
+                    itemStack.lockMode = 'none';
+                    if (!recipe.container && !output) {
+                        claerItem(this.container, 6);
+                        setItem(itemStack, this.container, 8);
                     }
                 }
             }
-            if (output) {
-                if (recipe.container?.item) {
-                    if (output.typeId == itemStack.typeId && input?.typeId == recipe.container?.item) {
-                        claerItem(this.container, 6);
-                        claerItem(this.container, 7);
-                        setItem(itemStack, this.container, 8);
-                    }
-                } else if (output.typeId == itemStack.typeId) {
-                    claerItem(this.container, 6);
-                    setItem(itemStack, this.container, 8);
-                }
+        }
+    }
+    output() {
+        const recipe = this.recipes[this.outputIndex];
+        const itemStack = new ItemStack(recipe.result.item);
+        const output = this.container.getItem(8);
+        const input = this.container.getItem(7);
+        if (recipe.container) {
+            if ((itemStack.maxAmount ? itemStack.maxAmount : 0) > output?.amount) {
+                claerItem(this.container, 6);
+                claerItem(this.container, 7);
+                setItem(itemStack, this.container, 8);
             }
         }
     }
