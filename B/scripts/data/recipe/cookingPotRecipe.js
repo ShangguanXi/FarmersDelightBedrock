@@ -1,93 +1,95 @@
 import { system, world } from "@minecraft/server"
 
 export const vanillaCookingPotRecipe = {
-    "recipe": [{
-        "type": "farmersdelight:cooking",
-        "cookingtime": 200,
-        "experience": 1.0,
-        "ingredients": [
-            {
-                "item": "minecraft:apple"
-            },
-            {
-                "item": "minecraft:apple"
-            },
-            {
-                "item": "minecraft:sugar"
+    "recipe": [
+        {
+            "type": "farmersdelight:cooking",
+            "cookingtime": 200,
+            "experience": 1.0,
+            "ingredients": [
+                {
+                    "item": "minecraft:apple"
+                },
+                {
+                    "item": "minecraft:apple"
+                },
+                {
+                    "item": "minecraft:sugar"
+                }
+            ],
+            "recipe_book_tab": "drinks",
+            "result": {
+                "item": "farmersdelight:apple_cider"
             }
-        ],
-        "recipe_book_tab": "drinks",
-        "result": {
-            "item": "farmersdelight:apple_cider"
-        }
-    },
-    {
-        "type": "farmersdelight:cooking",
-        "container": {
-            "item": "minecraft:pumpkin"
         },
-        "cookingtime": 200,
-        "experience": 2.0,
-        "ingredients": [
-            /*
-            {
-                "tag": "c:crops/rice"
+        {
+            "type": "farmersdelight:cooking",
+            "container": {
+                "item": "minecraft:pumpkin"
             },
-            {
-                "tag": "c:crops/onion"
-            },
-            */
-            {
-                "item": "minecraft:brown_mushroom"
-            },
-            {
-                "item": "minecraft:potato"
-            }
-            /*,
-            {
-              "tag": "c:berries"
-            },
-            {
-              "tag": "c:vegetables"
-            }
-            */
-        ],
-        "recipe_book_tab": "meals",
-        "result": {
-            "item": "farmersdelight:stuffed_pumpkin_block"
-        }
-    },
-    {
-        "type": "farmersdelight:cooking",
-        "container": {
-            "item": "minecraft:bowl"
-        },
-        "cookingtime": 200,
-        "experience": 1.0,
-        "ingredients": [
-            {
-                "item": "minecraft:baked_potato"
-            },
-            {
-                "item": "minecraft:rabbit"
-            },
-            {
-                "item": "minecraft:carrot"
-            },
-            [
+            "cookingtime": 200,
+            "experience": 2.0,
+            "ingredients": [
+                /*
+                {
+                    "tag": "c:crops/rice"
+                },
+                {
+                    "tag": "c:crops/onion"
+                },
+                */
                 {
                     "item": "minecraft:brown_mushroom"
                 },
                 {
-                    "item": "minecraft:red_mushroom"
+                    "item": "minecraft:potato"
                 }
-            ]
-        ],
-        "recipe_book_tab": "meals",
-        "result": {
-            "item": "minecraft:rabbit_stew"
+                /*,
+                {
+                  "tag": "c:berries"
+                },
+                {
+                  "tag": "c:vegetables"
+                }
+                */
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+                "item": "farmersdelight:stuffed_pumpkin_block_item"
+            }
+        },
+        {
+            "type": "farmersdelight:cooking",
+            "container": {
+                "item": "minecraft:bowl"
+            },
+            "cookingtime": 200,
+            "experience": 1.0,
+            "ingredients": [
+                {
+                    "item": "minecraft:baked_potato"
+                },
+                {
+                    "item": "minecraft:rabbit"
+                },
+                {
+                    "item": "minecraft:carrot"
+                },
+                [
+                    {
+                        "item": "minecraft:brown_mushroom"
+                    },
+                    {
+                        "item": "minecraft:red_mushroom"
+                    }
+                ]
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+                "item": "minecraft:rabbit_stew"
+            }
         }
-    }]
+    ]
 }
 
 // function init(args) {

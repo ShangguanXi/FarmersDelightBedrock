@@ -60,6 +60,7 @@ function useOn(args) {
                 const cookingPot = player.dimension.spawnEntity('farmersdelight:cooking_pot', V3);
                 const container = cookingPot.getComponent('inventory').container;
                 cookingPot.addTag(JSON.stringify(V3));
+                cookingPot.nameTag = 'cookingtime:0';
                 if (lores.length) {
                     lores.forEach(lore => {
                         const re = /\d+|\S+:\S+/g;
@@ -73,8 +74,6 @@ function useOn(args) {
                         }
                     });
                 }
-            } else {
-                args.cancel = true;
             }
         }
     });

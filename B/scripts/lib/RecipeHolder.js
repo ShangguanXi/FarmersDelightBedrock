@@ -3,7 +3,7 @@ import { claerItem } from "./itemUtil";
 
 function getValidRecipePreviewIndex(info, recipes) {
     for (const index in recipes) {
-        if (compare(info, recipes[index].ingredients)) {
+        if (info.length == recipes[index].ingredients && compare(info, recipes[index].ingredients)) {
             return index;
         }
     }
@@ -104,11 +104,14 @@ function setItem(itemStack, container, index) {
         if (output.amount < output.maxAmount) {
             output.amount += 1;
             container.setItem(index, output);
+            return true;
         }
     } else {
         itemStack.amount = 1;
         container.setItem(index, itemStack);
+        return true;
     }
+    return false;
 }
 
 export class RecipeHolder {
@@ -133,6 +136,9 @@ export class RecipeHolder {
         }
         if (!compare(this.#arr, this.recipes[this.previewIndex].ingredients)) {
             this.previewIndex = getValidRecipePreviewIndex(this.#arr, this.recipes);
+        }
+        if (!this.#arr.length) {
+            this.previewIndex = -1;
         }
         if (output && input) {
             if (!isEqualValue(input, this.recipes[this.outputIndex].container)) {
@@ -164,10 +170,9 @@ export class RecipeHolder {
         const output = this.container.getItem(8);
         const input = this.container.getItem(7);
         if (recipe.container) {
-            if ((itemStack.maxAmount ? itemStack.maxAmount : 0) > output?.amount) {
+            if (setItem(itemStack, this.container, 8)) {
                 claerItem(this.container, 6);
                 claerItem(this.container, 7);
-                setItem(itemStack, this.container, 8);
             }
         }
     }

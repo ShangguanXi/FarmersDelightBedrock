@@ -31,20 +31,29 @@ function working(args) {
     const block = dimension.getBlock(entity.location);
     const stove = dimension.getBlock({ x: entity.location.x, y: entity.location.y - 1, z: entity.location.z })?.permutation?.getState('farmersdelight:is_working');
     if (block) {
-        const data = new Map();
+        const map = new Map();
         const blockLocation = location(entity);
         const oldBlock = dimension.getBlock(blockLocation);
         const container = entity.getComponent('inventory').container;
         const recipes = vanillaCookingPotRecipe.recipe;
-        const holder = new RecipeHolder(container, recipes, 0);
-        const index = holder.index;
-        data.set('recipe', index);
-        // if (index >= 0 && !currentTick % (recipes[index].cookingtime)) {
-        // holder.output()
-        // }
-        if (stove) {
-            holder.consume();
+        const holder = new RecipeHolder(container, recipes, map.get('recipe') ?? 0);
+        const index = holder.previewIndex;
+        map.set('recipe', index);
+        if (stove && index > -1) {
+            const cookingTime = recipes[index].cookingtime;
+            const progress = parseInt(entity.nameTag.split(':')[1]);
+            console.warn(progress % cookingTime);
+            if (progress % cookingTime == 0) {
+                entity.nameTag = `cookingtime:1`;
+                holder.consume();
+            }else{
+                entity.nameTag = `cookingtime:${progress + 1}`;
+            }
+        } else {
+            entity.nameTag = 'cookingtime:0';
         }
+
+        holder.output();
         potLoot(container, oldBlock.typeId, entity, blockLocation, 'farmersdelight:cooking_pot');
     }
 }
