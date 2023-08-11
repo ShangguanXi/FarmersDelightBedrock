@@ -40,17 +40,17 @@ function working(args) {
         const index = holder.previewIndex;
         map.set('recipe', index);
         if (stove && index > -1) {
-            const cookingTime = recipes[index].cookingtime;
+            const cookingTime = recipes[index].progress;
             const progress = parseInt(entity.nameTag.split(':')[1]);
             console.warn(progress % cookingTime);
             if (progress % cookingTime == 0) {
-                entity.nameTag = `cookingtime:1`;
+                entity.nameTag = `progress:1`;
                 holder.consume();
             }else{
-                entity.nameTag = `cookingtime:${progress + 1}`;
+                entity.nameTag = `progress:${progress + 1}`;
             }
         } else {
-            entity.nameTag = 'cookingtime:0';
+            entity.nameTag = 'progress:0';
         }
 
         holder.output();
