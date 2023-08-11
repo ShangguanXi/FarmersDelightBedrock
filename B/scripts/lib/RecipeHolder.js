@@ -115,12 +115,13 @@ function setItem(itemStack, container, index) {
 }
 
 export class RecipeHolder {
+    canPreviewRecipe;
     previewIndex;
     outputIndex;
     container;
     recipes;
     itemStack;
-    #arr = [];
+    arr = [];
     constructor(container, recipes, index) {
         this.previewIndex = index;
         this.outputIndex = index;
@@ -131,19 +132,24 @@ export class RecipeHolder {
         for (let i = 0; i < 6; i++) {
             const itemStack = container.getItem(i);
             if (itemStack) {
-                this.#arr.push(itemStack);
+                this.arr.push(itemStack);
             }
         }
-        if (!compare(this.#arr, this.recipes[this.previewIndex].ingredients)) {
-            this.previewIndex = getValidRecipePreviewIndex(this.#arr, this.recipes);
+        if (!compare(this.arr, this.recipes[this.previewIndex].ingredients)) {
+            this.previewIndex = getValidRecipePreviewIndex(this.arr, this.recipes);
         }
-        if (!this.#arr.length) {
+        if (!this.arr.length) {
             this.previewIndex = -1;
         }
         if (output && input) {
             if (!isEqualValue(input, this.recipes[this.outputIndex].container)) {
                 this.outputIndex = getValidRecipeoutputIndex(input, this.recipes);
             }
+        }
+        if (output && output.amount == output.maxAmount) {
+            this.canPreviewRecipe = false;
+        } else {
+            this.canPreviewRecipe = true;
         }
     }
     consume() {
@@ -152,9 +158,9 @@ export class RecipeHolder {
         const itemStack = new ItemStack(recipe.result.item);
         const ingredients = recipe.ingredients;
         if (this.container.emptySlotsCount < this.container.size) {
-            if (this.#arr.length == ingredients.length) {
-                if (compare(this.#arr, ingredients)) {
-                    clear(recipe, itemStack, this.container, this.#arr);
+            if (this.arr.length == ingredients.length) {
+                if (compare(this.arr, ingredients)) {
+                    clear(recipe, itemStack, this.container, this.arr);
                     itemStack.lockMode = 'none';
                     if (!recipe.container && !output) {
                         claerItem(this.container, 6);
@@ -167,9 +173,9 @@ export class RecipeHolder {
     output() {
         const recipe = this.recipes[this.outputIndex];
         const itemStack = new ItemStack(recipe.result.item);
-        const output = this.container.getItem(8);
+        const container = this.container.getItem(6);
         const input = this.container.getItem(7);
-        if (recipe.container) {
+        if (recipe.container && isEqual(input, recipe.container) && container.typeId == itemStack.typeId) {
             if (setItem(itemStack, this.container, 8)) {
                 claerItem(this.container, 6);
                 claerItem(this.container, 7);

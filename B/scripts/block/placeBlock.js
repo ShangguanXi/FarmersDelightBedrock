@@ -1,5 +1,5 @@
 import { ItemStack, system, world } from "@minecraft/server";
-import { claerItem } from "../lib/itemUtil";
+
 const scoreboard = world.scoreboard;
 
 function place(args) {
@@ -60,7 +60,7 @@ function useOn(args) {
                 const cookingPot = player.dimension.spawnEntity('farmersdelight:cooking_pot', V3);
                 const container = cookingPot.getComponent('inventory').container;
                 cookingPot.addTag(JSON.stringify(V3));
-                cookingPot.nameTag = 'cookingtime:0';
+                cookingPot.nameTag = `0%`;
                 if (lores.length) {
                     lores.forEach(lore => {
                         const re = /\d+|\S+:\S+/g;

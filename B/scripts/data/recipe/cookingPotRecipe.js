@@ -91,7 +91,7 @@ export const vanillaCookingPotRecipe = {
         }
     ]
 }
-
+// '{"type": "farmersdelight:cooking", "container": { "item": "minecraft:bowl" }, "cookingtime": 200, "experience": 1.0, "ingredients": [{ "item": "minecraft:baked_potato" }, { "item": "minecraft:rabbit"},{"item": "minecraft:carrot"},[ { "item": "minecraft:brown_mushroom"},{"item": "minecraft:red_mushroom"}]], "recipe_book_tab": "meals", "result": { "item": "minecraft:rabbit_stew" }}'
 // function init(args) {
 //     console.warn(args.message);
 //     // const id = args.id;
