@@ -1,0 +1,483 @@
+/********************************************************
++*   (c) Mojang. All rights reserved                       *
++*   (c) Microsoft. All rights reserved.                   *
++*********************************************************/
+
+{
+  "namespace": "chest",
+
+  ////---------------------------------------------------------------------------
+  //// #slot region area
+  ////---------------------------------------------------------------------------
+
+  "chest_label": {
+    "type": "label",
+    "offset": [ 7, -1 ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "text": "$container_title",
+    "size": [ "90%", "default" ],
+    "color": "$title_text_color",
+    "layer": 2
+  },
+  "cooking_time_label": {
+    "type": "label",
+    "offset": [ 63, 11 ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "text": "$container_title",
+    "size": [ "90%", "default" ],
+    "color": "$title_text_color",
+    "layer": 2
+  },
+  "cooking_pot_label": {
+    "type": "label",
+    "offset": [ 7, -1 ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "text": "CookingPot",
+    "size": [ "90%", "default" ],
+    "color": "$title_text_color",
+    "layer": 2
+  },
+  "cooking_pot_part1": {
+    "type": "image",
+    "size": [ 14, 18 ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "texture": "textures/gui/cooking_pot_part1"
+  },
+  "chest_grid_item@common.container_item": {
+    "$item_collection_name": "container_items"
+  },
+  "cooking_pot_item1@common.container_item": {
+    "$item_collection_name": "container_items",
+    "size": [ 18, 18 ],
+    "property_bag":{
+      "#collection_index":1
+    },
+    "anchor_from": "top_left",
+    "anchor_to": "top_left"
+  },
+  "cooking_pot_item2@common.container_item": {
+    "$item_collection_name": "container_items",
+    "size": [ 18, 18 ],
+    "property_bag":{
+      "#collection_index":2
+    },
+    "anchor_from": "top_left",
+    "anchor_to": "top_left"
+  },
+  "cooking_pot_item3@common.container_item": {
+    "$item_collection_name": "container_items",
+    "size": [ 18, 18 ],
+    "property_bag":{
+      "#collection_index":3
+    },
+    "anchor_from": "top_left",
+    "anchor_to": "top_left"
+  },
+  "cooking_pot_item4@common.container_item": {
+    "$item_collection_name": "container_items",
+    "size": [ 18, 18 ],
+    "property_bag":{
+      "#collection_index":4
+    },
+    "anchor_from": "top_left",
+    "anchor_to": "top_left"
+  },
+  "cooking_pot_item5@common.container_item": {
+    "$item_collection_name": "container_items",
+    "size": [ 18, 18 ],
+    "property_bag":{
+      "#collection_index":5
+    },
+    "anchor_from": "top_left",
+    "anchor_to": "top_left"
+  },
+  "cooking_pot_item6@common.container_item": {
+    "$item_collection_name": "container_items",
+    "size": [ 18, 18 ],
+    "property_bag":{
+      "#collection_index":6
+    },
+    "anchor_from": "top_left",
+    "anchor_to": "top_left"
+  },
+  "cooking_pot_item7@common.container_item": {
+    "$item_collection_name": "container_items",
+    "$cell_image_size|default": [ 30, 30 ],
+    "size": [ 30, 30 ],
+    "property_bag":{
+      "#collection_index":7
+    },
+    "anchor_from": "top_left",
+    "anchor_to": "top_left"
+  },
+  "cooking_pot_item8@common.container_item": {
+    "$item_collection_name": "container_items",
+    "size": [ 18, 18 ],
+    "property_bag":{
+      "#collection_index":8
+    },
+    "anchor_from": "top_left",
+    "anchor_to": "top_left"
+  },
+  "cooking_pot_item9@common.container_item": {
+    "$item_collection_name": "container_items",
+    "size": [ 18, 18 ],
+    "property_bag":{
+      "#collection_index":9
+    },
+    "anchor_from": "top_left",
+    "anchor_to": "top_left"
+  },
+
+
+  "small_chest_grid": {
+    "type": "grid",
+    "size": [ 162, 54 ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "grid_dimensions": [ 9, 3 ],
+    "grid_item_template": "chest.chest_grid_item",
+    "collection_name": "container_items"
+  },
+  "cooking_pot_grid@common.container_item": {
+    "type": "grid",
+    "size": [ 162, 54 ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "grid_dimensions": [ 9, 1 ],
+    "grid_item_template": "chest.chest_grid_item",
+    "collection_name": "container_items"
+  },
+  "large_chest_grid": {
+    "type": "grid",
+    "size": [ 162, 108 ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "grid_dimensions": [ 9, 6 ],
+    "grid_item_template": "chest.chest_grid_item",
+    "collection_name": "container_items"
+  },
+
+  //// #endregion
+
+  ////---------------------------------------------------------------------------
+  //// #region chest area
+  ////---------------------------------------------------------------------------
+
+  "small_chest_panel_top_half": {
+    "type": "panel",
+    "size": [ "100%", "50%" ],
+    "offset": [ 0, 12 ],
+    "anchor_to": "top_left",
+    "anchor_from": "top_left",
+    "controls": [
+      { "chest_label@chest.chest_label": {} },
+      {
+        "small_chest_grid@chest.small_chest_grid": {
+          "offset": [ 7, 9 ]
+        }
+      }
+    ]
+  },
+  "cooking_pot_name": {
+    "type": "panel",
+    "size": [ "100%", "50%" ],
+    "offset": [ 0, 12 ],
+    "anchor_to": "top_left",
+    "anchor_from": "top_left",
+    "controls": [
+      { "cooking_pot_label@chest.cooking_pot_label": {} },
+      {
+        "cooking_pot_item1@chest.cooking_pot_item1": {
+          "offset": [ 22, 9 ]
+        }
+      },
+      {
+        "cooking_pot_item2@chest.cooking_pot_item2": {
+          "offset": [ 40, 9 ]
+        }
+      },
+      {
+        "cooking_pot_item3@chest.cooking_pot_item3": {
+          "offset": [58, 9 ]
+        }
+      },
+      {
+        "cooking_pot_item4@chest.cooking_pot_item4": {
+          "offset": [ 22, 27 ]
+        }
+      },
+      {
+        "cooking_pot_item5@chest.cooking_pot_item5": {
+          "offset": [ 40, 27 ]
+        }
+      },
+      {
+        "cooking_pot_item6@chest.cooking_pot_item6": {
+          "offset": [ 58, 27 ]
+        }
+      },
+      {
+        "cooking_pot_item7@chest.cooking_pot_item7": {
+          "offset": [ 120, 12 ]
+        }
+      },
+      {
+        "cooking_pot_item8@chest.cooking_pot_item8": {
+          "offset": [ 91,  50]
+        }
+      },
+      {
+        "cooking_pot_item9@chest.cooking_pot_item9": {
+          "offset": [ 126, 50 ]
+        }
+      },
+      {
+        "cooking_pot_part1@chest.cooking_pot_part1": {
+          "offset": [ 111,  50]
+        }
+      }
+    ]
+  },
+
+  "large_chest_panel_top_half": {
+    "type": "panel",
+    "size": [ "100%", 132 ],
+    "offset": [ 0, 11 ],
+    "anchor_to": "top_left",
+    "anchor_from": "top_left",
+    "controls": [
+      { "chest_label@chest.chest_label": {} },
+      {
+        "large_chest_grid@chest.large_chest_grid": {
+          "offset": [ 7, 10 ]
+        }
+      }
+    ]
+  },
+
+  //// #endregion
+
+  ////---------------------------------------------------------------------------
+  //// #region screen
+  ////---------------------------------------------------------------------------
+  
+  "small_chest_panel": {
+    "type": "panel",
+    "controls": [
+      { "container_gamepad_helpers@common.container_gamepad_helpers": {} },
+      {
+        "flying_item_renderer@common.flying_item_renderer": {
+          "layer": 14
+        }
+      },
+      { "selected_item_details_factory@common.selected_item_details_factory": {} },
+      { "item_lock_notification_factory@common.item_lock_notification_factory": {} },
+      {
+        "root_panel@common.root_panel": {
+          "layer": 1,
+          "controls": [
+            { "common_panel@common.common_panel": {} },
+            {
+              "chest_panel": {
+                "type": "panel",
+                "layer": 5,
+                "controls": [
+                  { "small_chest_panel_top_half@chest.small_chest_panel_top_half": {} },
+                  { "inventory_panel_bottom_half_with_label@common.inventory_panel_bottom_half_with_label": {} },
+                  { "hotbar_grid@common.hotbar_grid_template": {} },
+                  { "inventory_take_progress_icon_button@common.inventory_take_progress_icon_button": {} }
+                ]
+              }
+            },
+            { "inventory_selected_icon_button@common.inventory_selected_icon_button": {} },
+            { "gamepad_cursor@common.gamepad_cursor_button": {} }
+          ]
+        }
+      }
+    ]
+  },
+  "cooking_pot_panel": {
+    "type": "panel",
+    "controls": [
+      { "container_gamepad_helpers@common.container_gamepad_helpers": {} },
+      {
+        "flying_item_renderer@common.flying_item_renderer": {
+          "layer": 14
+        }
+      },
+      { "selected_item_details_factory@common.selected_item_details_factory": {} },
+      { "item_lock_notification_factory@common.item_lock_notification_factory": {} },
+      {
+        "root_panel@common.root_panel": {
+          "layer": 1,
+          "controls": [
+            { "common_panel@common.common_panel": {} },
+            {
+              "chest_panel": {
+                "type": "panel",
+                "layer": 5,
+                "controls": [
+                  { "cooking_time_label@chest.cooking_time_label": {} },
+                  { "cooking_pot_name@chest.cooking_pot_name": {} },
+                  { "inventory_panel_bottom_half_with_label@common.inventory_panel_bottom_half_with_label": {} },
+                  { "hotbar_grid@common.hotbar_grid_template": {} },
+                  { "inventory_take_progress_icon_button@common.inventory_take_progress_icon_button": {} }
+                ]
+              }
+            },
+            { "inventory_selected_icon_button@common.inventory_selected_icon_button": {} },
+            { "gamepad_cursor@common.gamepad_cursor_button": {} }
+          ]
+        }
+      }
+    ]
+  },
+  
+  "selected_item_details@common.selected_item_details": {
+    "offset": [ 0, 0 ]
+  },
+
+  "large_chest_panel": {
+    "type": "panel",
+    "controls": [
+      { "container_gamepad_helpers@common.container_gamepad_helpers": {} },
+      {
+        "flying_item_renderer@common.flying_item_renderer": {
+          "layer": 11
+        }
+      },
+      {
+        "selected_item_details_factory@common.selected_item_details_factory": {
+          "control_name": "@chest.selected_item_details"
+        }
+      },
+      {
+        "item_lock_notification_factory@common.item_lock_notification_factory": {
+          "control_name": "@common.item_lock_notification"
+        }
+      },
+      {
+        "root_panel@common.root_panel": {
+          "size": [ 176, 220 ],
+          "layer": 1,
+          "controls": [
+            { "common_panel@common.common_panel": {} },
+            {
+              "chest_panel": {
+                "type": "panel",
+                "layer": 5,
+                "controls": [
+                  { "large_chest_panel_top_half@chest.large_chest_panel_top_half": {} },
+                  { "inventory_panel_bottom_half_with_label@common.inventory_panel_bottom_half_with_label": {} },
+                  { "hotbar_grid@common.hotbar_grid_template": {} },
+                  { "inventory_take_progress_icon_button@common.inventory_take_progress_icon_button": {} }
+                ]
+              }
+            },
+            { "inventory_selected_icon_button@common.inventory_selected_icon_button": {} },
+            { "gamepad_cursor@common.gamepad_cursor_button": {} }
+          ]
+        }
+      }
+    ]
+  },
+
+  "ender_chest_panel@chest.small_chest_panel": {
+  },
+
+  "shulker_box_panel@chest.small_chest_panel": {
+  },
+
+  "barrel_panel@chest.small_chest_panel": {
+  },
+
+  "small_chest_screen@common.inventory_screen_common": {
+    "$close_on_player_hurt|default": true,
+    "close_on_player_hurt": "$close_on_player_hurt",
+    "variables": [
+      {
+        "requires": "($desktop_screen and $container_title = 'cookingtime:0')",
+        "$screen_content": "chest.cooking_pot_panel",
+        "$screen_bg_content": "common.screen_background"
+      },
+      {
+        "requires": "($desktop_screen and not($container_title = 'cookingtime:0'))",
+        "$screen_content": "chest.small_chest_panel",
+        "$screen_bg_content": "common.screen_background"
+      },
+      {
+        "requires": "$pocket_screen",
+        "$screen_content": "pocket_containers.small_chest_panel"
+      }
+    ]
+  },
+
+  "large_chest_screen@common.inventory_screen_common": {
+    "$close_on_player_hurt|default": true,
+    "close_on_player_hurt": "$close_on_player_hurt",
+    "variables": [
+      {
+        "requires": "$desktop_screen",
+        "$screen_content": "chest.large_chest_panel",
+        "$screen_bg_content": "common.screen_background"
+      },
+      {
+        "requires": "$pocket_screen",
+        "$screen_content": "pocket_containers.large_chest_panel"
+      }
+    ]
+  },
+
+  "ender_chest_screen@common.inventory_screen_common": {
+    "$close_on_player_hurt|default": true,
+    "close_on_player_hurt": "$close_on_player_hurt",
+    "variables": [
+      {
+        "requires": "$desktop_screen",
+        "$screen_content": "chest.ender_chest_panel",
+        "$screen_bg_content": "common.screen_background"
+      },
+      {
+        "requires": "$pocket_screen",
+        "$screen_content": "pocket_containers.ender_chest_panel"
+      }
+    ]
+  },
+
+  "shulker_box_screen@chest.small_chest_screen": {
+    "$close_on_player_hurt": true,
+    "variables": [
+      {
+        "requires": "$desktop_screen",
+        "$screen_content": "chest.shulker_box_panel",
+        "$screen_bg_content": "common.screen_background"
+      },
+      {
+        "requires": "$pocket_screen",
+        "$screen_content": "pocket_containers.shulker_box_panel"
+      }
+    ]
+  },
+
+  "barrel_screen@chest.small_chest_screen": {
+    "$close_on_player_hurt": true,
+    "variables": [
+      {
+        "requires": "$desktop_screen",
+        "$screen_content": "chest.barrel_panel",
+        "$screen_bg_content": "common.screen_background"
+      },
+      {
+        "requires": "$pocket_screen",
+        "$screen_content": "pocket_containers.barrel_panel"
+      }
+    ]
+  }
+}
+
+// #endregion
