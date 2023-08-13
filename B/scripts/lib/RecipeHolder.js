@@ -89,8 +89,10 @@ function clear(recipe, itemStack, container) {
             }
         }
         if (output) {
-            output.amount += count;
-            container.setItem(6, output);
+            if (output.amount += count <= output.maxAmount) {
+                output.amount += count;
+                container.setItem(6, output);
+            }
         } else {
             itemStack.amount = count;
             container.setItem(6, itemStack);
@@ -135,19 +137,24 @@ export class RecipeHolder {
                 this.arr.push(itemStack);
             }
         }
-        if (!compare(this.arr, this.recipes[this.previewIndex].ingredients)) {
+        const previewRecipe = this.recipes[this.previewIndex];
+        const outputRecipe = this.recipes[this.outputIndex];
+        if (!compare(this.arr, previewRecipe.ingredients)) {
             this.previewIndex = getValidRecipePreviewIndex(this.arr, this.recipes);
         }
         if (!this.arr.length) {
             this.previewIndex = -1;
         }
-        if (output && input) {
-            if (!isEqualValue(input, this.recipes[this.outputIndex].container)) {
+        if (output) {
+            const count = previewRecipe.result.count ? previewRecipe.result.count : 1;
+            if (input && !isEqualValue(input, outputRecipe.container)) {
                 this.outputIndex = getValidRecipeoutputIndex(input, this.recipes);
             }
-        }
-        if (output && output.amount == output.maxAmount) {
-            this.canPreviewRecipe = false;
+            if (output.amount == output.maxAmount || (output.amount += count) > output.maxAmount) {
+                this.canPreviewRecipe = false;
+            } else {
+                this.canPreviewRecipe = true;
+            }
         } else {
             this.canPreviewRecipe = true;
         }
@@ -162,9 +169,8 @@ export class RecipeHolder {
                 if (compare(this.arr, ingredients)) {
                     clear(recipe, itemStack, this.container, this.arr);
                     itemStack.lockMode = 'none';
-                    if (!recipe.container && !output) {
+                    if (!recipe.container && !output && setItem(itemStack, this.container, 8)) {
                         claerItem(this.container, 6);
-                        setItem(itemStack, this.container, 8);
                     }
                 }
             }
@@ -175,7 +181,11 @@ export class RecipeHolder {
         const itemStack = new ItemStack(recipe.result.item);
         const container = this.container.getItem(6);
         const input = this.container.getItem(7);
-        if (recipe.container && isEqual(input, recipe.container) && container.typeId == itemStack.typeId) {
+        if (!recipe.container) {
+            if (container && setItem(itemStack, this.container, 8)) {
+                claerItem(this.container, 6);
+            }
+        } else if (isEqual(input, recipe.container) && container.typeId == itemStack.typeId) {
             if (setItem(itemStack, this.container, 8)) {
                 claerItem(this.container, 6);
                 claerItem(this.container, 7);

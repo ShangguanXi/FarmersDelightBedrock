@@ -50,7 +50,7 @@ function working(args) {
                 if (progress >= cookingTime) {
                     entityData.setEntityData(getData, entity, 'remove', cookingTime);
                     entity.nameTag = num;
-                    holder.consume();
+                    holder.consume()
                 } else {
                     entityData.setEntityData(getData, entity, 'add', 1);
                     entity.nameTag = num;
