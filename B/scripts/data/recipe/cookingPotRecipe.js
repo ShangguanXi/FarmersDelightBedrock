@@ -121,7 +121,7 @@ export const vanillaCookingPotRecipe = {
             ],
             "recipe_book_tab": "misc",
             "result": {
-                "item": "minecraft:cooked_rice"
+                "item": "farmersdelight:cooked_rice"
             }
         },
         {

@@ -1,4 +1,4 @@
-import { ItemStack, system } from "@minecraft/server";
+import { ItemStack } from "@minecraft/server";
 import { claerItem } from "./itemUtil";
 
 function getValidRecipePreviewIndex(info, recipes) {
@@ -10,9 +10,9 @@ function getValidRecipePreviewIndex(info, recipes) {
     return -1;
 }
 
-function getValidRecipeoutputIndex(info, recipes) {
+function getValidRecipeoutputIndex(output, container, recipes) {
     for (const index in recipes) {
-        if (isEqualValue(info, recipes[index].container)) {
+        if (container ? isEqualValue(container, recipes[index].container) : true && isEqualValue(output, recipes[index].result)) {
             return index;
         }
     }
@@ -124,9 +124,9 @@ export class RecipeHolder {
     recipes;
     itemStack;
     arr = [];
-    constructor(container, recipes, index) {
-        this.previewIndex = index;
-        this.outputIndex = index;
+    constructor(container, recipes, previewIndex, outputIndex) {
+        this.previewIndex = previewIndex;
+        this.outputIndex = outputIndex;
         this.container = container;
         this.recipes = recipes;
         const output = this.container.getItem(6);
@@ -147,8 +147,8 @@ export class RecipeHolder {
         }
         if (output) {
             const count = previewRecipe.result.count ? previewRecipe.result.count : 1;
-            if (input && !isEqualValue(input, outputRecipe.container)) {
-                this.outputIndex = getValidRecipeoutputIndex(input, this.recipes);
+            if (!isEqualValue(output, outputRecipe.result)) {
+                this.outputIndex = getValidRecipeoutputIndex(output, input, this.recipes);
             }
             if (output.amount == output.maxAmount || (output.amount += count) > output.maxAmount) {
                 this.canPreviewRecipe = false;
