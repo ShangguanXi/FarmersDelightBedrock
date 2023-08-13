@@ -2,7 +2,7 @@
     "format_version": "1.12",
     "minecraft:recipe_shapeless": {
         "description": {
-            "identifier": "farmersdelight:stuffed_potato_item_tag"
+            "identifier": "farmersdelight:stuffed_potato_tag_tag"
         },
         "tags": [
             "crafting_table"
