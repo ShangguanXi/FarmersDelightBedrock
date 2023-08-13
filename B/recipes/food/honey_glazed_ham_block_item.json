@@ -1,0 +1,48 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shapeless": {
+        "description": {
+            "identifier": "farmersdelight:honey_glazed_ham_block_item"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "ingredients": {
+            "#": {
+                "item": "minecraft:sweet_berries"
+            },
+            "a": {
+                "item": "minecraft:sweet_berries"
+            },
+            "b": {
+                "item": "farmersdelight:cooked_rice"
+            },
+            "c": {
+                "item": "minecraft:bowl"
+            },
+            "d": {
+                "item": "minecraft:sweet_berries"
+            },
+            "e": {
+                "item": "minecraft:sweet_berries"
+            },
+            "f": {
+                "item": "farmersdelight:cooked_rice"
+            },
+            "g": {
+                "item": "farmersdelight:smoked_ham"
+            },
+            "h": {
+                "item": "minecraft:honey_bottle"
+            }
+        },
+        "result": [
+            {
+                "item": "farmersdelight:honey_glazed_ham_block_item"
+            },
+            {
+                "item": "minecraft:glass_bottle"
+            }
+        ]
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shapeless": {
+        "description": {
+            "identifier": "farmersdelight:chicken_sandwich"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "ingredients": {
+            "#": {
+                "item": "minecraft:bread"
+            },
+            "a": {
+                "item": "minecraft:cooked_chicken_cuts"
+            },
+            "b": {
+                "item": "minecraft:carrot"
+            },
+            "d": {
+                "tag": "minecraft:is_cabbage"
+            }
+        },
+        "result": {
+            "item": "farmersdelight:chicken_sandwich"
+        }
+    }
+}

@@ -14,7 +14,9 @@
       }, 
       "minecraft:icon": {
         "texture": "farmersdelight:cooked_mutton_chops"
-      }
+      },
+      "tag:minecraft:is_cooked":{},
+      "tag:minecraft:is_cooked_mutton":{}
     }, 
     "description": {
       "category": "equipment", 

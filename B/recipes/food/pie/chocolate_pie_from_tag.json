@@ -1,0 +1,39 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "farmersdelight:chocolate_pie_from_tag"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "pattern": [
+            "AAA",
+            "BBB",
+            "W#W"
+        ],
+        "key": {
+            "A": {
+                "item": "minecraft:cocoa_beans"
+            },
+            "W": {
+                "item": "minecraft:sugar"
+            },
+            "#": {
+                "item": "farmersdelight:pie_crust"
+            },
+            "B": {
+                "tag": "minecraft:is_milk_bottle"
+            }
+        },
+        "result": [
+            {
+                "item": "farmersdelight:chocolate_pie"
+            },
+            {
+                "item": "minecraft:glass_bottle",
+                "count": 3
+            }
+        ]
+    }
+}

@@ -1,0 +1,37 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shapeless": {
+        "description": {
+            "identifier": "farmersdelight:fruit_salad"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "ingredients": {
+            "#": {
+                "item": "minecraft:bowl"
+            },
+            "a": {
+                "item": "minecraft:melon_slice"
+            },
+            "b": {
+                "item": "minecraft:melon_slice"
+            },
+            "c": {
+                "item": "minecraft:sweet_berries"
+            },
+            "d": {
+                "item": "minecraft:sweet_berries"
+            },
+            "e": {
+                "item": "minecraft:apple"
+            },
+            "d": {
+                "item": "farmersdelight:pumpkin_slice"
+            }
+        },
+        "result": {
+            "item": "farmersdelight:fruit_salad"
+        }
+    }
+}

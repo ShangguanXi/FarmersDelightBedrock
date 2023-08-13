@@ -1,0 +1,31 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "farmersdelight:pie_crust_item"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "pattern": [
+            "W#W",
+            " W "
+        ],
+        "key": {
+            "#": {
+                "item": "minecraft:milk_bucket"
+            },
+            "W": {
+                "item": "minecraft:wheat"
+            }
+        },
+        "result": [
+            {
+                "item": "farmersdelight:pie_crust"
+            },
+            {
+                "item": "minecraft:bucket"
+            }
+        ]
+    }
+}

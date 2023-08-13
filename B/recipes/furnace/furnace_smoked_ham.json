@@ -1,0 +1,13 @@
+{
+    "format_version": "1.17",
+    "minecraft:recipe_furnace": {
+        "description": {
+            "identifier": "farmersdelight:furnace_smoked_ham"
+        },
+        "tags": [
+            "smoker"
+        ],
+        "input": "farmersdelight:ham",
+        "output": "farmersdelight:smoked_ham"
+    }
+}

@@ -14,7 +14,8 @@
       }, 
       "minecraft:icon": {
         "texture": "farmersdelight:cabbage_leaf"
-      }
+      },
+      "tag:minecraft:is_cabbage":{}
     }, 
     "description": {
       "category": "nature", 

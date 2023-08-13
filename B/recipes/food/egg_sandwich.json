@@ -1,0 +1,25 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shapeless": {
+        "description": {
+            "identifier": "farmersdelight:egg_sandwich"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "ingredients": {
+            "#": {
+                "item": "minecraft:bread"
+            },
+            "a": {
+                "tag": "minecraft:is_cooked_egg"
+            },
+            "b": {
+                "tag": "minecraft:is_cooked_egg"
+            }
+        },
+        "result": {
+            "item": "farmersdelight:egg_sandwich"
+        }
+    }
+}

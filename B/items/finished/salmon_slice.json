@@ -14,7 +14,8 @@
       }, 
       "minecraft:icon": {
         "texture": "farmersdelight:salmon_slice"
-      }
+      },
+      "tag:minecraft:is_raw_fish":{}
     }, 
     "description": {
       "category": "nature", 

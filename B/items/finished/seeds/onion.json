@@ -21,7 +21,8 @@
           "farmland",
           "farmersdelight:rich_soil_farmland"
         ]
-      }
+      },
+      "tag:minecraft:is_onion":{}
     }, 
     "description": {
       "category": "nature", 

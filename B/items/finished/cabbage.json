@@ -15,7 +15,8 @@
       "minecraft:icon": {
         "texture": "farmersdelight:cabbage"
       },
-      "tag:farmersdelight:can_cut":{}
+      "tag:farmersdelight:can_cut":{},
+      "tag:minecraft:is_cabbage":{}
     }, 
     "description": {
       "category": "nature", 

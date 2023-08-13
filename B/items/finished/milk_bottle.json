@@ -15,7 +15,7 @@
         }
       },
       "minecraft:use_animation": "drink",
-      "tag:minecraft:is_milk":{},
+      "tag:minecraft:is_milk_bottle":{},
       "minecraft:creative_category": {
         "parent": "itemGroup.name.miscFood"
       },

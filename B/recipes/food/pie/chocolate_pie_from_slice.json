@@ -1,0 +1,23 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "farmersdelight:chocolate_pie_from_slice"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "pattern": [
+            "AA",
+            "AA"
+        ],
+        "key": {
+            "A": {
+                "item": "farmersdelight:chocolate_pie_slice"
+            }
+        },
+        "result": {
+            "item": "farmersdelight:chocolate_pie"
+        }
+    }
+}

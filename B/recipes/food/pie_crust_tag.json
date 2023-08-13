@@ -1,0 +1,31 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "farmersdelight:pie_crust_tag"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "pattern": [
+            "W#W",
+            " W "
+        ],
+        "key": {
+            "#": {
+                "tag": "minecraft:is_milk_bottle"
+            },
+            "W": {
+                "item": "minecraft:wheat"
+            }
+        },
+        "result": [
+            {
+                "item": "farmersdelight:pie_crust"
+            },
+            {
+                "item": "minecraft:glass_bottle"
+            }
+        ]
+    }
+}

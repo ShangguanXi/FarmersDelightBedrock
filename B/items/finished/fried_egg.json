@@ -14,7 +14,8 @@
       }, 
       "minecraft:icon": {
         "texture": "farmersdelight:fried_egg"
-      }
+      },
+      "tag:minecraft:is_cooked_egg":{}
     }, 
     "description": {
       "category": "equipment", 

@@ -1,0 +1,36 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "farmersdelight:sweet_berry_cheesecake_from_tag"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "pattern": [
+            "AAA",
+            "AAA",
+            "W#W"
+        ],
+        "key": {
+            "A": {
+                "item": "minecraft:sweet_berries"
+            },
+            "#": {
+                "item": "farmersdelight:pie_crust"
+            },
+            "W": {
+                "tag": "minecraft:is_milk_bottle"
+            }
+        },
+        "result": [
+            {
+                "item": "farmersdelight:sweet_berry_cheesecake"
+            },
+            {
+                "item": "minecraft:glass_bottle",
+                "count": 2
+            }
+        ]
+    }
+}

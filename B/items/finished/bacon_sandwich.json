@@ -6,6 +6,7 @@
       "minecraft:food": {
         "nutrition": 10,
         "saturation_modifier": "good",
+        "using_converts_to": "minecraft:bowl",
         "can_always_eat": false
       },
       "minecraft:use_animation": "eat",

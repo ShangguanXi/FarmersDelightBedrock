@@ -1,0 +1,47 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shapeless": {
+        "description": {
+            "identifier": "farmersdelight:shepherds_pie_block_item_item_tag"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "ingredients": {
+            "#": {
+                "item": "minecraft:baked_potato"
+            },
+            "a": {
+                "item": "minecraft:baked_potato"
+            },
+            "b": {
+                "tag": "minecraft:is_cooked_mutton"
+            },
+            "d": {
+                "tag": "minecraft:is_cooked_mutton"
+            },
+            "e": {
+                "tag": "minecraft:is_cooked_mutton"
+            },
+            "c": {
+                "item": "minecraft:milk_bucket"
+            },
+            "f": {
+                "tag": "minecraft:is_onion"
+            },
+            "g": {
+                "tag": "minecraft:is_onion"
+            },
+            "h": {
+                "item": "minecraft:bowl"
+            }
+        },
+        "result": [
+            {
+                "item": "farmersdelight:shepherds_pie_block_item"
+            },{
+                "item": "minecraf:bucket"
+            }
+        ]
+    }
+}

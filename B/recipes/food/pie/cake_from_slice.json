@@ -1,0 +1,40 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shapeless": {
+        "description": {
+            "identifier": "farmersdelight:cake_from_slice"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "ingredients": {
+            "#": {
+                "item": "farmersdelight:cake_slice"
+            },
+            "a": {
+                "item": "farmersdelight:cake_slice"
+            },
+            "b": {
+                "item": "farmersdelight:cake_slice"
+            },
+            "c": {
+                "item": "farmersdelight:cake_slice"
+            },
+            "d": {
+                "item": "farmersdelight:cake_slice"
+            },
+            "e": {
+                "item": "farmersdelight:cake_slice"
+            },
+            "f": {
+                "item": "farmersdelight:cake_slice"
+            },
+            "g": {
+                "item": "farmersdelight:cake_slice"
+            }
+        },
+        "result": {
+            "item": "minecraft:cake"
+        }
+    }
+}

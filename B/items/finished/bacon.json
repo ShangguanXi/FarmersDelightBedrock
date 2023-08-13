@@ -14,7 +14,8 @@
       }, 
       "minecraft:icon": {
         "texture": "farmersdelight:bacon"
-      }
+      },
+      "tag:minecraft:is_raw_porkchop":{}
     }, 
     "description": {
       "category": "nature", 

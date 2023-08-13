@@ -14,7 +14,8 @@
       }, 
       "minecraft:icon": {
         "texture": "farmersdelight:cooked_bacon"
-      }
+      },
+      "tag:minecraft:is_cooked":{}
     }, 
     "description": {
       "category": "equipment", 

@@ -14,7 +14,8 @@
       }, 
       "minecraft:icon": {
         "texture": "farmersdelight:cooked_cod_slice"
-      }
+      },
+      "tag:minecraft:is_cooked":{}
     }, 
     "description": {
       "category": "equipment", 

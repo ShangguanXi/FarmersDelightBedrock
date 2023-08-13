@@ -1,0 +1,31 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shapeless": {
+        "description": {
+            "identifier": "farmersdelight:grilled_salmon_item"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "ingredients": {
+            "#": {
+                "tag": "minecraft:is_cooked_salmon"
+            },
+            "a": {
+                "item": "minecraft:sweet_berries"
+            },
+            "b": {
+                "item": "minecraft:bowl"
+            },
+            "c": {
+                "tag": "minecraft:is_onion"
+            },
+            "d": {
+                "tag": "minecraft:is_cabbage"
+            }
+        },
+        "result": {
+            "item": "farmersdelight:grilled_salmon"
+        }
+    }
+}

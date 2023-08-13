@@ -1,0 +1,33 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "farmersdelight:apple_pie_from_item"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "pattern": [
+            "AAA",
+            "BBB",
+            "W#W"
+        ],
+        "key": {
+            "A": {
+                "item": "minecraft:wheat"
+            },
+            "W": {
+                "item": "minecraft:sugar"
+            },
+            "#": {
+                "item": "farmersdelight:pie_crust"
+            },
+            "B": {
+                "item": "minecraft:apple"
+            }
+        },
+        "result": {
+            "item": "farmersdelight:apple_pie"
+        }
+    }
+}

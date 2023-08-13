@@ -1,0 +1,28 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shapeless": {
+        "description": {
+            "identifier": "farmersdelight:bacon_sandwich"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "ingredients": {
+            "#": {
+                "item": "minecraft:bread"
+            },
+            "a": {
+                "item": "farmersdelight:cooked_bacon"
+            },
+            "b": {
+                "tag": "minecraft:is_tomato"
+            },
+            "c": {
+                "tag": "minecraft:is_cabbage"
+            }
+        },
+        "result": {
+            "item": "farmersdelight:bacon_sandwich"
+        }
+    }
+}

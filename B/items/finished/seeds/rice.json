@@ -14,7 +14,8 @@
           "dirt",
           "farmersdelight:rich_soil"
         ]
-      }
+      },
+      "tag:minecraft:is_rice":{}
     }, 
     "description": {
       "category": "nature", 

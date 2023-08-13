@@ -1,0 +1,31 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shapeless": {
+        "description": {
+            "identifier": "farmersdelight:hamburger"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "ingredients": {
+            "#": {
+                "item": "minecraft:bread"
+            },
+            "c": {
+                "item": "farmersdelight:beef_patty"
+            },
+            "a": {
+                "tag": "minecraft:is_onion"
+            },
+            "b": {
+                "tag": "minecraft:is_tomato"
+            },
+            "d": {
+                "tag": "minecraft:is_cabbage"
+            }
+        },
+        "result": {
+            "item": "farmersdelight:hamburger"
+        }
+    }
+}

@@ -14,7 +14,9 @@
       }, 
       "minecraft:icon": {
         "texture": "farmersdelight:beef_patty"
-      }
+      },
+      "tag:minecraft:is_cooked":{},
+      "tag:minecraft:is_cooked_beef":{}
     }, 
     "description": {
       "category": "equipment", 

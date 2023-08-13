@@ -14,7 +14,8 @@
       },
       "minecraft:icon": {
         "texture": "farmersdelight:tomato"
-      }
+      },
+      "tag:minecraft:is_tomato":{} 
     }, 
     "description": {
       "category": "nature", 

@@ -1,0 +1,32 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shapeless": {
+        "description": {
+            "identifier": "farmersdelight:stuffed_potato_item_tag"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "ingredients": {
+            "#": {
+                "item": "minecraft:carrot"
+            },
+            "a": {
+                "item": "minecraft:baked_potato"
+            },
+            "b": {
+                "tag": "minecraft:is_cooked_beef"
+            },
+            "c": {
+                "tag": "minecraft:is_milk_bottle"
+            }
+        },
+        "result": [
+            {
+                "item": "farmersdelight:stuffed_potato"
+            },{
+                "item": "minecraft:glass_bottle"
+            }
+        ]
+    }
+}

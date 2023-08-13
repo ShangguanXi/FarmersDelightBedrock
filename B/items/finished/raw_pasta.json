@@ -18,7 +18,8 @@
       },
       "minecraft:icon": {
         "texture": "farmersdelight:raw_pasta"
-      }
+      },
+      "tag:minecraft:is_pasta":{}
     },
     "description": {
       "category": "nature",

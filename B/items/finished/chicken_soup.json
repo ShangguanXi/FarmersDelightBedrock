@@ -8,6 +8,7 @@
         "nutrition": 12,
         "saturation_modifier": "supernatural",
         "can_always_eat": false,
+        "using_converts_to": "minecraft:bowl",
         "on_consume": {
           "event": "on_consume",
           "target": "self"

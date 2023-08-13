@@ -18,7 +18,8 @@
       },
       "minecraft:icon": {
         "texture": "farmersdelight:chicken_cuts"
-      }
+      },
+      "tag:minecraft:is_raw_chicken":{}
     },
     "description": {
       "category": "nature",

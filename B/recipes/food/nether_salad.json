@@ -1,0 +1,25 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shapeless": {
+        "description": {
+            "identifier": "farmersdelight:nether_salad"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "ingredients": {
+            "#": {
+                "item": "minecraft:crimson_fungus"
+            },
+            "a": {
+                "item": "minecraft:crimson_fungus"
+            },
+            "b": {
+                "item": "minecraft:bowl"
+            }
+        },
+        "result": {
+            "item": "farmersdelight:nether_salad"
+        }
+    }
+}

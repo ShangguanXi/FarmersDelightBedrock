@@ -14,7 +14,9 @@
       }, 
       "minecraft:icon": {
         "texture": "farmersdelight:cooked_salmon_slice"
-      }
+      },
+      "tag:minecraft:is_cooked":{},
+      "tag:minecraft:is_cooked_salmon":{}
     }, 
     "description": {
       "category": "equipment", 

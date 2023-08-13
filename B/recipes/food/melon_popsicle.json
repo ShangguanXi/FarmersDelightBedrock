@@ -1,0 +1,30 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "farmersdelight:melon_popsicle"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "pattern": [
+            " ##",
+            "a##",
+            "Wa "
+        ],
+        "key": {
+            "#": {
+                "item": "minecraft:melon_slice"
+            },
+            "W": {
+                "item": "minecraft:stick"
+            },
+            "a": {
+                "item": "minecraft:ice"
+            }
+        },
+        "result": {
+            "item": "farmersdelight:melon_popsicle"
+        }
+    }
+}
