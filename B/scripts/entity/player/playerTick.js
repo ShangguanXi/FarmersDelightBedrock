@@ -1,7 +1,7 @@
 import { world, system } from "@minecraft/server";
 
 function rope(player) {
-    const rope = player.dimension.getBlock(player.location).typeId === 'farmersdelight:rope';
+    const rope = player.dimension.getBlock(player.location).typeId === 'farmersdelight:rope_block';
     const RY = player.getRotation().y;
     if (rope) {
         // player.addEffect('levitation', 2, { amplifier: 10, showParticles: false });

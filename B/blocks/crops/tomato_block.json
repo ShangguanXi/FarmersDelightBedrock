@@ -241,9 +241,21 @@
                 "sequence": [
                     {
                         "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_property('farmersdelight:growth')<7)",
-                        "trigger": {
-                            "event": "grow_stage"
-                        }
+                        "randomize": [
+                            {
+                                "weight": 5
+                            },
+                            {
+                                "weight": 12,
+                                "sequence": [
+                                    {
+                                        "set_block_property": {
+                                            "farmersdelight:growth": "(query.block_property('farmersdelight:growth')<4) ? query.block_property('farmersdelight:growth') + 3 : 7"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
                     },
                     {
                         "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_property('farmersdelight:growth')<7)",

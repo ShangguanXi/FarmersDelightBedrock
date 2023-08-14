@@ -11,7 +11,7 @@
   tile.farmersdelight:dark_oak_cabinet.name=深色橡木厨柜
   tile.farmersdelight:crimson_cabinet.name=绯红木厨柜
   tile.farmersdelight:warped_cabinet.name=诡异木厨柜
-  tile.farmersdelight:rope.name=绳子
+  item.farmersdelight:rope=绳子
   tile.farmersdelight:safety_net.name=安全网
   tile.farmersdelight:canvas_rug.name=粗布毯
   tile.farmersdelight:tatami.name=榻榻米方块

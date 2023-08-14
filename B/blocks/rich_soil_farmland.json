@@ -86,6 +86,7 @@
                     "target": "self"
                 }
             },
+            "minecraft:loot": "loot_tables/farmersdelight/rich_soil_farmland.json",
             "tag:dirt": {},
             "tag:farmland": {}
         },

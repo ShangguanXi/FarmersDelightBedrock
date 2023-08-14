@@ -301,6 +301,9 @@
     },
     "farmersdelight:chocolate_pie": {
       "textures": "textures/items/chocolate_pie"
+    },
+    "farmersdelight:rope": {
+      "textures": "textures/items/rope"
     }
   }
 }

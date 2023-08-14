@@ -1,0 +1,18 @@
+{
+  "format_version": "1.16.100", 
+  "minecraft:item": {
+    "components": {
+      "minecraft:icon": {
+        "texture": "farmersdelight:rope"
+      },
+      "minecraft:block_placer": {
+        "block": "rope_block"
+      }
+    }, 
+    "description": {
+      "category": "items", 
+      "identifier": "farmersdelight:rope"
+    }, 
+    "events": {}
+  }
+}
