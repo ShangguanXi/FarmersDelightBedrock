@@ -12,7 +12,7 @@ function getValidRecipePreviewIndex(info, recipes) {
 
 function getValidRecipeoutputIndex(output, container, recipes) {
     for (const index in recipes) {
-        if (container ? isEqualValue(container, recipes[index].container) : true && isEqualValue(output, recipes[index].result)) {
+        if ((container ? isEqualValue(container, recipes[index].container) : true) && output.typeId === recipes[index].result.item) {
             return index;
         }
     }
@@ -148,6 +148,7 @@ export class RecipeHolder {
         if (output) {
             const count = previewRecipe.result.count ? previewRecipe.result.count : 1;
             if (!isEqualValue(output, outputRecipe.result)) {
+                const container = outputRecipe.container ? input : undefined;
                 this.outputIndex = getValidRecipeoutputIndex(output, input, this.recipes);
             }
             if (output.amount == output.maxAmount || (output.amount += count) > output.maxAmount) {
@@ -181,6 +182,7 @@ export class RecipeHolder {
         const itemStack = new ItemStack(recipe.result.item);
         const container = this.container.getItem(6);
         const input = this.container.getItem(7);
+        console.warn(this.outputIndex, JSON.stringify(recipe.container), input.typeId, isEqual(input, recipe.container), itemStack.typeId);
         if (!recipe.container) {
             if (container && setItem(itemStack, this.container, 8)) {
                 claerItem(this.container, 6);
