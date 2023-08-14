@@ -55,32 +55,6 @@ export const vanillaCookingPotRecipe = {
             "type": "farmersdelight:cooking",
             "cookingtime": 200,
             "experience": 1.0,
-            "container": {
-                "item": "minecraft:glass_bottle"
-            },
-            "ingredients": [
-                {
-                    "item": "minecraft:cocoa_beans"
-                },
-                {
-                    "item": "minecraft:cocoa_beans"
-                },
-                {
-                    "item": "minecraft:sugar"
-                },
-                {
-                    "tag": "minecraft:is_milk_bottle"
-                }
-            ],
-            "recipe_book_tab": "drinks",
-            "result": {
-                "item": "farmersdelight:hot_cocoa"
-            }
-        },
-        {
-            "type": "farmersdelight:cooking",
-            "cookingtime": 200,
-            "experience": 1.0,
             "ingredients": [
                 [ 
                     { "tag": "minecraft:is_raw_porkchop" },
@@ -116,7 +90,7 @@ export const vanillaCookingPotRecipe = {
             "experience": 1.0,
             "ingredients": [
                 {
-                    "item": "minecraft:is_rice"
+                    "tag": "minecraft:is_rice"
                 }
             ],
             "recipe_book_tab": "misc",
@@ -440,7 +414,7 @@ export const vanillaCookingPotRecipe = {
                 },
                 [
                     {"item": "minecraft:cod"},
-                    {"item": "minecraft:is_raw_fish"},
+                    {"tag": "minecraft:is_raw_fish"},
                     {"tag": "minecraft:salmon"}
                 ]
             ],
@@ -468,7 +442,7 @@ export const vanillaCookingPotRecipe = {
                 },
                 [
                     {"item": "minecraft:cod"},
-                    {"item": "minecraft:is_raw_fish"},
+                    {"tag": "minecraft:is_raw_fish"},
                     {"tag": "minecraft:salmon"}
                 ]
             ],
@@ -552,10 +526,10 @@ export const vanillaCookingPotRecipe = {
             "experience": 1.0,
             "ingredients": [
                 {
-                    "item": "minecraft:minced_beef"
+                    "item": "farmersdelight:minced_beef"
                 },
                 {
-                    "item": "minecraft:is_cabbage"
+                    "tag": "minecraft:is_cabbage"
                 }
             ],
             "recipe_book_tab": "meals",
