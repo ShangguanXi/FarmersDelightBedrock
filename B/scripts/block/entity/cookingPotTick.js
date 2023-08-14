@@ -40,7 +40,7 @@ function working(args) {
             const oldBlock = dimension.getBlock(blockLocation);
             const container = entity.getComponent('inventory').container;
             const recipes = vanillaCookingPotRecipe.recipe;
-            const holder = new RecipeHolder(container, recipes, (map.get('previewRecipe') ?? 1), (map.get('outputRecipe') ?? 1));
+            const holder = new RecipeHolder(container, recipes, (map.get('previewRecipe') ?? 0), (map.get('outputRecipe') ?? 0));
             const previewIndex = holder.previewIndex;
             const outputIndex = holder.outputIndex;
             map.set('previewRecipe', previewIndex);

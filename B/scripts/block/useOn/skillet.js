@@ -1,6 +1,7 @@
 import BlockEntity from "../../lib/BlockEntity";
 import { vanillaItemList } from '../../data/recipe/skilletRecipe'
 import { claerItem } from '../../lib/itemUtil';
+import { gameMode } from "../../lib/EntityUtil";
 import { MolangVariableMap, ItemStack, world } from "@minecraft/server";
 
 const molang = new MolangVariableMap();
@@ -27,7 +28,9 @@ export function skillet(player, itemStack, block) {
                 entity.addTag(`{"item":"${itemStack.typeId}"}`);
                 data.setScore('amount', itemAmount);
                 data.setScore(`${itemAmount}G`, 30);
-                claerItem(container, player.selectedSlot, itemAmount);
+                if (gameMode(player)) {
+                    claerItem(container, player.selectedSlot, itemAmount);
+                }
             } else if (itemStack.typeId == invItemStack) {
                 const maxAmount = itemStack.maxAmount;
                 const amount = data.getScore('amount');
@@ -35,11 +38,15 @@ export function skillet(player, itemStack, block) {
                 if (itemAmount <= removeAmount) {
                     data.setScore('amount', amount + itemAmount);
                     data.setScore(`${amount}G`, 30);
-                    claerItem(container, player.selectedSlot, itemAmount);
+                    if (gameMode(player)) {
+                        claerItem(container, player.selectedSlot, itemAmount);
+                    }
                 } else {
                     data.setScore('amount', amount + removeAmount);
                     data.setScore(`${removeAmount}G`, 30);
-                    claerItem(container, player.selectedSlot, removeAmount);
+                    if (gameMode(player)) {
+                        claerItem(container, player.selectedSlot, removeAmount);
+                    }
                 }
             }
         }

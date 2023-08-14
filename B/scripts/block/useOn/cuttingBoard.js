@@ -2,6 +2,7 @@ import BlockEntity from "../../lib/BlockEntity";
 import { farmersdelightBlockList, vanillaItemList } from '../../data/recipe/cuttingBoardRecipe'
 import { claerItem, damageItem } from '../../lib/itemUtil';
 import { MolangVariableMap, ItemStack } from "@minecraft/server";
+import { gameMode } from "../../lib/EntityUtil";
 
 const molang = new MolangVariableMap();
 
@@ -30,13 +31,17 @@ export function cuttingBoard(player, itemStack, block) {
                 player.runCommandAsync(`loot spawn ${location.x} ${location.y} ${location.z} loot "farmersdelight/cutting_board/farmersdelight_${id}"`);
                 entity.triggerEvent('farmersdelight:despawn');
                 player.dimension.spawnEntity('farmersdelight:cutting_board', V3).addTag(JSON.stringify(V3));
-                damageItem(container, player.selectedSlot);
+                if (gameMode(player)) {
+                    damageItem(container, player.selectedSlot);
+                }
             }
         } else if (!itemStack.hasTag('farmersdelight:is_knife')) {
             const id = itemStack.typeId.split(':');
             const name = id[0] == 'minecraft' ? `farmersdelight:${id[0]}_${id[1]}` : itemStack.typeId;
             entity.addTag(`{"item":"${itemStack.typeId}"}`);
-            claerItem( container, player.selectedSlot);
+            if (gameMode(player)) {
+                claerItem(container, player.selectedSlot);
+            }
             entity.dimension.spawnParticle(name, { x: location.x + 0.5, y: location.y + 0.0563, z: location.z + 0.5 }, molang);
         }
     }

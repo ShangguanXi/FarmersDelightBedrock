@@ -1,6 +1,7 @@
 import BlockEntity from "../../lib/BlockEntity";
 import { vanillaItemList } from '../../data/recipe/skilletRecipe'
 import { claerItem } from '../../lib/itemUtil';
+import { gameMode } from "../../lib/EntityUtil";
 import { MolangVariableMap, ItemStack } from "@minecraft/server";
 
 const molang = new MolangVariableMap();
@@ -24,7 +25,9 @@ export function stove(player, itemStack, block) {
             if (amount < 6) {
                 data.setScore('amount', amount + 1);
                 data.setScore(`${itemStack.typeId}/${amount + 1}`, 30);
-                claerItem(container, player.selectedSlot);
+                if (gameMode(player)) {
+                    claerItem(container, player.selectedSlot);
+                }
             }
         } else {
             const arr = [];
