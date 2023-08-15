@@ -42,7 +42,7 @@
       },
       "tag:minecraft:is_sword": {},
       "tag:minecraft:diamond_tier": {},
-      "tag:minecraft:trimmable_armors":{},
+      "tag:minecraft:transformable_items":{},
       "tag:farmersdelight:is_knife": {},
       "minecraft:creative_category": {
         "parent": "itemGroup.name.sword"
