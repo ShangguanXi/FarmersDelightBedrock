@@ -6,7 +6,7 @@
         "texture": "farmersdelight:rope"
       },
       "minecraft:block_placer": {
-        "block": "rope_block"
+        "block": "farmersdelight:rope_block"
       }
     }, 
     "description": {
