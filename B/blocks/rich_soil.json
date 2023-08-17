@@ -21,7 +21,7 @@
                 }
             },
             "minecraft:on_interact": {
-                "condition": "(query.block_face == 1.0&&(query.is_item_name_any('slot.weapon.mainhand','minecraft:sugar_cane')||query.is_item_name_any('slot.weapon.mainhand','minecraft:brown_mushroom')||query.is_item_name_any('slot.weapon.mainhand','minecraft:red_mushroom')))||query.equipped_item_any_tag('slot.weapon.mainhand','minecraft:is_hoe')",
+                "condition": "(query.block_face == 1.0&&(query.is_item_name_any('slot.weapon.mainhand','minecraft:sugar_cane','minecraft:brown_mushroom','minecraft:red_mushroom')))||query.equipped_item_any_tag('slot.weapon.mainhand','minecraft:is_hoe')",
                 "event": "farmersdelight:on_interact",
                 "target": "self"
             },

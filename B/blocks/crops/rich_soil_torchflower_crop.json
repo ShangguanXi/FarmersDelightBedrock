@@ -1,0 +1,234 @@
+{
+    "format_version": "1.20.0",
+    "minecraft:block": {
+        "description": {
+            "identifier": "farmersdelight:rich_soil_torchflower_crop",
+            "properties": {
+                "farmersdelight:growth": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                ]
+            }
+        },
+        "permutations": [
+            {
+                "condition": "query.block_property('farmersdelight:growth') == 0",
+                "components": {
+                    "minecraft:material_instances": {
+                        "*": {
+                            "texture": "torchflower_crop_stage0",
+                            "ambient_occlusion": false,
+                            "face_dimming": false,
+                            "render_method": "alpha_test"
+                        }
+                    }
+                }
+            },
+            {
+                "condition": "query.block_property('farmersdelight:growth') == 1",
+                "components": {
+                    "minecraft:material_instances": {
+                        "*": {
+                            "texture": "torchflower_crop_stage1",
+                            "ambient_occlusion": false,
+                            "face_dimming": false,
+                            "render_method": "alpha_test"
+                        }
+                    }
+                }
+            },
+            {
+                "condition": "query.block_property('farmersdelight:growth') == 2",
+                "components": {
+                    "minecraft:material_instances": {
+                        "*": {
+                            "texture": "torchflower_crop_stage1",
+                            "ambient_occlusion": false,
+                            "face_dimming": false,
+                            "render_method": "alpha_test"
+                        }
+                    }
+                }
+            },
+            {
+                "condition": "query.block_property('farmersdelight:growth') == 3",
+                "components": {
+                    "minecraft:material_instances": {
+                        "*": {
+                            "texture": "torchflower_crop_stage1",
+                            "ambient_occlusion": false,
+                            "face_dimming": false,
+                            "render_method": "alpha_test"
+                        }
+                    }
+                }
+            },
+            {
+                "condition": "query.block_property('farmersdelight:growth') == 4",
+                "components": {
+                    "minecraft:material_instances": {
+                        "*": {
+                            "texture": "torchflower_crop_stage1",
+                            "ambient_occlusion": false,
+                            "face_dimming": false,
+                            "render_method": "alpha_test"
+                        }
+                    }
+                }
+            },
+            {
+                "condition": "query.block_property('farmersdelight:growth') == 5",
+                "components": {
+                    "minecraft:material_instances": {
+                        "*": {
+                            "texture": "torchflower_crop_stage1",
+                            "ambient_occlusion": false,
+                            "face_dimming": false,
+                            "render_method": "alpha_test"
+                        }
+                    }
+                }
+            },
+            {
+                "condition": "query.block_property('farmersdelight:growth') == 6",
+                "components": {
+                    "minecraft:material_instances": {
+                        "*": {
+                            "texture": "torchflower_crop_stage1",
+                            "ambient_occlusion": false,
+                            "face_dimming": false,
+                            "render_method": "alpha_test"
+                        }
+                    }
+                }
+            },
+            {
+                "condition": "query.block_property('farmersdelight:growth') == 7",
+                "components": {
+                    "minecraft:material_instances": {
+                        "*": {
+                            "texture": "torchflower_crop_stage1",
+                            "ambient_occlusion": false,
+                            "face_dimming": false,
+                            "render_method": "alpha_test"
+                        }
+                    }
+                }
+            }
+        ],
+        "components": {
+            "minecraft:loot": "loot_tables/farmersdelight/crops/torchflower_crop.json",
+            "minecraft:destructible_by_mining": {
+                "seconds_to_destroy": 0.0
+            },
+            "minecraft:light_dampening": 0,
+            "minecraft:geometry": "geometry.reeds",
+            "minecraft:destructible_by_explosion": {
+                "explosion_resistance": 0.0
+            },
+            "minecraft:collision_box": false,
+            "minecraft:on_interact": {
+                "event": "farmersdelight:on_interact"
+            },
+            "minecraft:placement_filter": {
+                "conditions": [
+                    {
+                        "block_filter": [
+                            "farmersdelight:rich_soil_farmland"
+                        ],
+                        "allowed_faces": [
+                            "up"
+                        ]
+                    }
+                ]
+            },
+            "minecraft:random_ticking": {
+                "on_tick": {
+                    "event": "grow_stage",
+                    "target": "self"
+                }
+            },
+            "minecraft:selection_box": {
+                "origin": [
+                    -3,
+                    0,
+                    -3
+                ],
+                "size": [
+                    6,
+                    10,
+                    6
+                ]
+            },
+            "tag:crop": {},
+            "tag:max_growth:7": {},
+            "tag:growth_property:farmersdelight:growth": {}
+        },
+        "events": {
+            "grow_stage": {
+                "randomize": [
+                    {
+                        "weight": 5
+                    },
+                    {
+                        "weight": 12,
+                        "sequence": [
+                            {
+                                "condition": "query.block_property('farmersdelight:growth')<7",
+                                "set_block_property": {
+                                    "farmersdelight:growth": "(query.block_property('farmersdelight:growth')<7) ? query.block_property('farmersdelight:growth') + 1 : 7"
+                                }
+                            },
+                            {
+                                "condition": "query.block_property('farmersdelight:growth')==7",
+                                "set_block":{
+                                    "block_type": "farmersdelight:rich_soil_torchflower"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            "farmersdelight:on_interact": {
+                "sequence": [
+                    {
+                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_property('farmersdelight:growth')<7)",
+                        "randomize": [
+                            {
+                                "weight": 5
+                            },
+                            {
+                                "weight": 12,
+                                "sequence": [
+                                    {
+                                        "set_block_property": {
+                                            "farmersdelight:growth": "(query.block_property('farmersdelight:growth')<4) ? query.block_property('farmersdelight:growth') + 3 : 7"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_property('farmersdelight:growth')<7)",
+                        "decrement_stack": {}
+                    },
+                    {
+                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_property('farmersdelight:growth')<7)",
+                        "run_command": {
+                            "command": [
+                                "particle minecraft:crop_growth_emitter ~~~"
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

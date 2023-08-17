@@ -52,7 +52,7 @@
             },
             "minecraft:geometry": "geometry.rich_soil_farmland",
             "minecraft:on_interact": {
-                "condition": "query.block_face == 1.0&&(query.is_item_name_any('slot.weapon.mainhand','minecraft:wheat_seeds')||query.is_item_name_any('slot.weapon.mainhand','minecraft:beetroot_seeds')||query.is_item_name_any('slot.weapon.mainhand','minecraft:carrot')||query.is_item_name_any('slot.weapon.mainhand','minecraft:potato'))",
+                "condition": "query.block_face == 1.0&&(query.is_item_name_any('slot.weapon.mainhand','minecraft:wheat_seeds','minecraft:beetroot_seeds','minecraft:carrot','minecraft:potato','minecraft:torchflower_seeds','minecraft:torchflower','minecraft:melon_seeds','minecraft:pumpkin_seeds'))",
                 "event": "farmersdelight:on_interact",
                 "target": "self"
             },
@@ -151,6 +151,36 @@
                     }
                 ]
             },
+            "place_torchflower_crop": {
+                "sequence": [
+                    {
+                        "run_command": {
+                            "command": [
+                                "execute if block ~ ~+1 ~ air run setblock ~ ~+1 ~ farmersdelight:rich_soil_torchflower_crop",
+                                "playsound dig.grass @a ~~~"
+                            ]
+                        }
+                    },
+                    {
+                        "decrement_stack": {}
+                    }
+                ]
+            },
+            "place_torchflower": {
+                "sequence": [
+                    {
+                        "run_command": {
+                            "command": [
+                                "execute if block ~ ~+1 ~ air run setblock ~ ~+1 ~ farmersdelight:rich_soil_torchflower",
+                                "playsound dig.grass @a ~~~"
+                            ]
+                        }
+                    },
+                    {
+                        "decrement_stack": {}
+                    }
+                ]
+            },
             "farmersdelight:on_interact": {
                 "sequence": [
                     {
@@ -175,6 +205,18 @@
                         "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:beetroot_seeds')",
                         "trigger": {
                             "event": "place_beetroot"
+                        }
+                    },
+                    {
+                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:torchflower_seeds')",
+                        "trigger": {
+                            "event": "place_torchflower_crop"
+                        }
+                    },
+                    {
+                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:torchflower')",
+                        "trigger": {
+                            "event": "place_torchflower"
                         }
                     }
                 ]
