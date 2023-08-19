@@ -51,7 +51,7 @@ function working(args) {
                         if (amountId !== 'amount') {
                             const num = parseInt(amountId.split('G')[0]);
                             const cookTime = itemStackData.score;
-                            data.setScore(amountId, cookTime - (!currentTick ? 1 : 0));
+                            data.setScore(amountId, cookTime - (!system.currentTick % 20 ? 1 : 0));
                             if (cookTime <= 0) {
                                 for (let j = 0; j < parseInt(num); j++) {
                                     entity.runCommandAsync(`loot spawn ${entity.location.x} ${entity.location.y + 0.4} ${entity.location.z} loot "farmersdelight/cook/farmersdelight_cook_${id[1]}"`);
@@ -70,7 +70,7 @@ function working(args) {
             loot(amount ? itemStack : null, oldBlock.typeId, entity, blockLocation, 'farmersdelight:skillet_block', amount, entity.id);
         }
     } catch (e) {
-        
+
     }
 }
 world.afterEvents.dataDrivenEntityTriggerEvent.subscribe(working, options);

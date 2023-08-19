@@ -1,4 +1,4 @@
-import { ItemStack, system, world } from "@minecraft/server";
+import { ItemStack, MinecraftBlockTypes, system, world } from "@minecraft/server";
 
 const scoreboard = world.scoreboard;
 
@@ -56,24 +56,23 @@ function useOn(args) {
     }
     system.run(() => {
         if (itemStack.typeId === 'farmersdelight:cooking_pot' && args.block.typeId != 'farmersdelight:cooking_pot') {
-            if (player.isSneaking) {
-                const cookingPot = player.dimension.spawnEntity('farmersdelight:cooking_pot', V3);
-                const container = cookingPot.getComponent('inventory').container;
-                cookingPot.addTag(JSON.stringify(V3));
-                cookingPot.nameTag = `0%`;
-                if (lores.length) {
-                    lores.forEach(lore => {
-                        const re = /\d+|\S+:\S+/g;
-                        const data = lore.match(re);
-                        if (data) {
-                            const slot = container.getSlot(6);
-                            const cookingItemStack = new ItemStack(data[1]);
-                            cookingItemStack.amount = parseInt(data[0]);
-                            cookingItemStack.lockMode = 'slot';
-                            slot.setItem(cookingItemStack);
-                        }
-                    });
-                }
+            player.dimension.fillBlocks(V3, V3, MinecraftBlockTypes.get('farmersdelight:cooking_pot'));
+            const cookingPot = player.dimension.spawnEntity('farmersdelight:cooking_pot', V3);
+            const container = cookingPot.getComponent('inventory').container;
+            cookingPot.addTag(JSON.stringify(V3));
+            cookingPot.nameTag = `0%`;
+            if (lores.length) {
+                lores.forEach(lore => {
+                    const re = /\d+|\S+:\S+/g;
+                    const data = lore.match(re);
+                    if (data) {
+                        const slot = container.getSlot(6);
+                        const cookingItemStack = new ItemStack(data[1]);
+                        cookingItemStack.amount = parseInt(data[0]);
+                        cookingItemStack.lockMode = 'slot';
+                        slot.setItem(cookingItemStack);
+                    }
+                });
             }
         }
     });

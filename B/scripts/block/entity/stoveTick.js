@@ -65,7 +65,7 @@ function working(args) {
                     const particleName = name[0] == 'minecraft' ? `farmersdelight:${name[0]}_cook_${name[1]}` : `farmersdelight:cook_${name[1]}`;
                     if (oldBlock.permutation?.getState('farmersdelight:is_working')) {
                         const cookTime = itemStackData.score;
-                        data.setScore(itemStack, cookTime - (!currentTick ? 1 : 0));
+                        data.setScore(itemStack, cookTime - (!system.currentTick % 20 ? 1 : 0));
                         if (cookTime <= 0) {
                             data.removeParticipant(itemStack);
                             data.setScore('amount', data.getScore('amount') - 1);

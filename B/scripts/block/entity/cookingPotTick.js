@@ -39,32 +39,34 @@ function working(args) {
             const blockLocation = location(entity);
             const oldBlock = dimension.getBlock(blockLocation);
             const container = entity.getComponent('inventory').container;
+            potLoot(container, oldBlock.typeId, entity, blockLocation, 'farmersdelight:cooking_pot');
             const recipes = vanillaCookingPotRecipe.recipe;
             const holder = new RecipeHolder(container, recipes, (map.get('previewRecipe') ?? 0), (map.get('outputRecipe') ?? 0));
             const previewIndex = holder.previewIndex;
             const outputIndex = holder.outputIndex;
             map.set('previewRecipe', previewIndex);
             map.set('outputRecipe', outputIndex);
-            if (stove && previewIndex > -1 && holder.arr.length == recipes[previewIndex].ingredients.length && holder.canPreviewRecipe) {
-                const cookingTime = recipes[previewIndex].cookingtime;
-                const progress = getData[0];
-                const num = `${Math.floor((progress / cookingTime) * 100)}%`;
-                if (progress >= cookingTime) {
-                    entityData.setEntityData(getData, entity, 'remove', cookingTime);
-                    entity.nameTag = num;
-                    holder.consume()
+            if (stove) {
+                if (previewIndex > -1 && holder.arr.length == recipes[previewIndex].ingredients.length && holder.canPreviewRecipe) {
+                    const cookingTime = recipes[previewIndex].cookingtime;
+                    const progress = getData[0];
+                    const num = `${Math.floor((progress / cookingTime) * 100)}%`;
+                    if (progress >= cookingTime) {
+                        entityData.setEntityData(getData, entity, 'remove', cookingTime);
+                        entity.nameTag = num;
+                        holder.consume()
+                    } else {
+                        entityData.setEntityData(getData, entity, 'add', 1);
+                        entity.nameTag = num;
+                    }
                 } else {
-                    entityData.setEntityData(getData, entity, 'add', 1);
-                    entity.nameTag = num;
+                    entityData.setEntityData(getData, entity, 'remove', getData[0]);
+                    entity.nameTag = '0%';
                 }
-            } else {
-                entityData.setEntityData(getData, entity, 'remove', getData[0]);
-                entity.nameTag = '0%';
             }
             if (outputIndex > -1) {
                 holder.output();
             }
-            potLoot(container, oldBlock.typeId, entity, blockLocation, 'farmersdelight:cooking_pot');
         }
     } catch (e) {
     }
