@@ -12,5 +12,128 @@
     },
     "farmersdelight:safety_net": {
         "sound": "wool"
+    },
+    "farmersdelight:rope": {
+        "sound": "wool"
+    },
+    "farmersdelight:cabbage_block": {
+        "sound": "grass"
+    },
+    "farmersdelight:onion_block": {
+        "sound": "grass"
+    },
+    "farmersdelight:rice_block": {
+        "sound": "grass"
+    },
+    "farmersdelight:rice_block_upper": {
+        "sound": "grass"
+    },
+    "farmersdelight:tomato_block": {
+        "sound": "grass"
+    },
+    "farmersdelight:brown_mushroom_colony": {
+        "sound": "grass"
+    },
+    "farmersdelight:red_mushroom_colony": {
+        "sound": "grass"
+    },
+    "farmersdelight:rich_soil_beetroot": {
+        "sound": "grass"
+    },
+    "farmersdelight:rich_soil_carrot": {
+        "sound": "grass"
+    },
+    "farmersdelight:rich_soil_potato": {
+        "sound": "grass"
+    },
+    "farmersdelight:rich_soil_wheat": {
+        "sound": "grass"
+    },
+    "farmersdelight:rich_soil_torchflower": {
+        "sound": "grass"
+    },
+    "farmersdelight:rich_soil_torchflower_crop": {
+        "sound": "grass"
+    },
+    "farmersdelight:rich_soil_sugar_cane_bottom": {
+        "sound": "grass"
+    },
+    "farmersdelight:rich_soil_sugar_cane_middle": {
+        "sound": "grass"
+    },
+    "farmersdelight:rich_soil_sugar_cane_top": {
+        "sound": "grass"
+    },
+    "farmersdelight:wild_beetroots_block": {
+        "sound": "grass"
+    },
+    "farmersdelight:wild_cabbages_block": {
+        "sound": "grass"
+    },
+    "farmersdelight:wild_carrots_block": {
+        "sound": "grass"
+    },
+    "farmersdelight:wild_onions_block": {
+        "sound": "grass"
+    },
+    "farmersdelight:wild_potatoes_block": {
+        "sound": "grass"
+    },
+    "farmersdelight:wild_rice_block": {
+        "sound": "grass"
+    },
+    "farmersdelight:wild_rice_upper_block": {
+        "sound": "grass"
+    },
+    "farmersdelight:wild_tomatoes_block": {
+        "sound": "grass"
+    },
+    "farmersdelight:half_tatami_mat": {
+        "sound": "grass"
+    },
+    "farmersdelight:rich_soil": {
+        "sound": "gravel"
+    },
+    "farmersdelight:rich_soil_farmland": {
+        "sound": "gravel"
+    },
+    "farmersdelight:organic_compost": {
+        "sound": "gravel"
+    },
+    "farmersdelight:cooking_pot": {
+        "sound": "metal"
+    },
+    "farmersdelight:skillet": {
+        "sound": "metal"
+    },
+    "farmersdelight:beetroot_crate": {
+        "sound": "wood"
+    },
+    "farmersdelight:cabbage_crate": {
+        "sound": "wood"
+    },
+    "farmersdelight:carrot_crate": {
+        "sound": "wood"
+    },
+    "farmersdelight:onion_crate": {
+        "sound": "wood"
+    },
+    "farmersdelight:potato_crate": {
+        "sound": "wood"
+    },
+    "farmersdelight:tomato_crate": {
+        "sound": "wood"
+    },
+    "farmersdelight:rice_bag": {
+        "sound": "wool"
+    },
+    "farmersdelight:rice_bale": {
+        "sound": "grass"
+    },
+    "farmersdelight:straw_bale": {
+        "sound": "grass"
+    },
+    "farmersdelight:stove": {
+        "sound": "stone"
     }
 }

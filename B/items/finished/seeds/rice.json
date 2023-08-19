@@ -12,6 +12,7 @@
         "block": "rice_block",
         "use_on": [
           "dirt",
+          "grass",
           "farmersdelight:rich_soil"
         ]
       },

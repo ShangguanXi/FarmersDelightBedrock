@@ -81,7 +81,7 @@
                         "run_command": {
                             "command": [
                                 "setblock ~~~ farmersdelight:rich_soil_farmland",
-                                "playsound MJ我草你ma这里应该是锄头耕地的声音 @a ~~~"
+                                "playsound use.gravel @a ~~~"
                             ]
                         }
                     },
