@@ -20,6 +20,12 @@
             }
         },
         "components": {
+            "minecraft:damage_sensor": {
+              "triggers": {
+                "on_damage": {},
+                "deals_damage": false
+              }
+            },
             "minecraft:timer":{
                 "looping": true,
                 "randomInterval":true,
@@ -29,12 +35,6 @@
                 }
             },
             "minecraft:persistent": {},
-            "minecraft:damage_sensor": {
-                "triggers": {
-                    "cause": "all",
-                    "deals_damage": false
-                }
-            },
             "minecraft:physics": {
                 "has_collision": false,
                 "has_gravity": false

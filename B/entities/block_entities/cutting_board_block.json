@@ -16,6 +16,12 @@
       }
     },
     "components": {
+      "minecraft:damage_sensor": {
+        "triggers": {
+          "on_damage": {},
+          "deals_damage": false
+        }
+      },
       "minecraft:timer": {
         "looping": true,
         "randomInterval": true,

@@ -21,7 +21,7 @@ function working(args) {
         const stove = dimension.getBlock({ x: entity.location.x, y: entity.location.y - 1, z: entity.location.z })?.permutation?.getState('farmersdelight:is_working');
         const data = world.scoreboard.getObjective(entity.id);
         if (block && data) {
-            const currentTick = system.currentTick % 20;
+            const currentTick = system.currentTick % 2;
             const itemStack = getMap(entity, 'item')?.get('item');
             const amount = data.getScore('amount');
             const itemStackScoresData = data.getScores();
@@ -40,7 +40,7 @@ function working(args) {
                 }
                 const id = itemStack.split(':');
                 const name = id[0] == 'minecraft' ? `farmersdelight:${id[0]}_${id[1]}` : itemStack;
-                if (!currentTick % 20) {
+                if (!currentTick % 2) {
                     for (let index = 0; index < particleCount; index++) {
                         dimension.spawnParticle(name, { x: blockLocation.x + skilletV2[index].x, y: blockLocation.y + 0.07 + 0.03 * (index + 1), z: blockLocation.z + skilletV2[index].z }, molang);
                     }
