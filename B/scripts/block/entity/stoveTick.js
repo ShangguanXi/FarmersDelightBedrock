@@ -53,7 +53,6 @@ function working(args) {
         const block = dimension.getBlock(entity.location);
         const data = world.scoreboard.getObjective(entity.id);
         if (block && data) {
-            const currentTick = system.currentTick % 20;
             const blockLocation = location(entity);
             const oldBlock = dimension.getBlock(blockLocation);
             const itemStackScoresData = data.getScores();
@@ -62,7 +61,7 @@ function working(args) {
                 if (itemStack != 'amount') {
                     const id = itemStack.split('/');
                     const name = id[0].split(':');
-                    const particleName = name[0] == 'minecraft' ? `farmersdelight:${name[0]}_cook_${name[1]}` : `farmersdelight:cook_${name[1]}`;
+                    const particleName = name[0] == 'minecraft' ? `farmersdelight:${name[0]}_stove_${name[1]}` : `farmersdelight:stove_${name[1]}`;
                     if (oldBlock.permutation?.getState('farmersdelight:is_working')) {
                         const cookTime = itemStackData.score;
                         data.setScore(itemStack, cookTime - (!system.currentTick % 20 ? 1 : 0));
@@ -72,8 +71,7 @@ function working(args) {
                             entity.runCommandAsync(`loot spawn ${entity.location.x + 0.5} ${entity.location.y + 1} ${entity.location.z + 0.5} loot "farmersdelight/cook/farmersdelight_cook_${name[1]}"`);
                         }
                     }
-                    if (!currentTick % 20) dimension.spawnParticle(particleName, { x: blockLocation.x + stoveOffsets[id[1] - 1].x, y: blockLocation.y + 1.02, z: blockLocation.z + stoveOffsets[id[1] - 1].y }, molang);
-    
+                    dimension.spawnParticle(particleName, { x: blockLocation.x + stoveOffsets[id[1] - 1].x, y: blockLocation.y + 1.02, z: blockLocation.z + stoveOffsets[id[1] - 1].y }, molang);
                 }
             }
             for (const item of itemStackArr(itemStackScoresData)) {

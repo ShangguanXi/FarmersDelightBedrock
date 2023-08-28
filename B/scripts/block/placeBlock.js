@@ -78,5 +78,14 @@ function useOn(args) {
     });
 }
 
+function placeEvent(args) {
+    const id = args.id;
+    if (id == 'farmersdelight:on_placed') {
+        const block = args.sourceBlock;
+        
+    }
+}
+
+system.afterEvents.scriptEventReceive.subscribe(placeEvent,{namespaces:['farmersdelight']})
 world.beforeEvents.itemUseOn.subscribe(useOn);
 world.afterEvents.blockPlace.subscribe(place);
