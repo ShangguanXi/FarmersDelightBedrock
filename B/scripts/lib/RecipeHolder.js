@@ -182,7 +182,6 @@ export class RecipeHolder {
         const itemStack = new ItemStack(recipe.result.item);
         const container = this.container.getItem(6);
         const input = this.container.getItem(7);
-        console.warn(this.outputIndex, JSON.stringify(recipe.container), input.typeId, isEqual(input, recipe.container), itemStack.typeId);
         if (!recipe.container) {
             if (container && setItem(itemStack, this.container, 8)) {
                 claerItem(this.container, 6);
