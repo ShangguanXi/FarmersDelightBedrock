@@ -61,7 +61,7 @@ function working(args) {
                     }
                 } else {
                     entityData.setEntityData(getData, entity, 'remove', getData[0]);
-                    entity.nameTag = '0%';
+                    entity.nameTag = '0';
                 }
             }
             if (outputIndex > -1) {
