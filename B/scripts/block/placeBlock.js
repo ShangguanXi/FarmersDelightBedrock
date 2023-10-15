@@ -1,6 +1,7 @@
 import { ItemStack, system, world } from "@minecraft/server";
 
 const scoreboard = world.scoreboard;
+const arrowhead = new ItemStack('farmersdelight:cooking_pot_arrow_0');
 
 function place(args) {
     const block = args.block;
@@ -47,11 +48,11 @@ function beforePlace(args) {
                         const slot = container.getSlot(6);
                         const cookingItemStack = new ItemStack(data[1]);
                         cookingItemStack.amount = parseInt(data[0]);
-                        cookingItemStack.lockMode = 'slot';
                         slot.setItem(cookingItemStack);
                     }
                 });
             }
+            container.setItem(9, arrowhead);
         })
     }
 }

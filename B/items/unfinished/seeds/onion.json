@@ -1,0 +1,31 @@
+{
+  "format_version": "1.16.100", 
+  "minecraft:item": {
+    "components": {
+      "minecraft:use_duration": 1.6,
+      "minecraft:food": {
+        "nutrition": 2,
+        "saturation_modifier": "low",
+        "can_always_eat": false
+      },
+      "minecraft:use_animation": "eat",
+      "minecraft:creative_category": {
+        "parent": "itemGroup.name.crop"
+      }, 
+      "minecraft:icon": {
+        "texture": "farmersdelight:onion"
+      } /*,
+      "minecraft:block_placer": {
+        "block": "",
+        "use_on": [
+        ]
+      }
+      */
+    }, 
+    "description": {
+      "category": "nature", 
+      "identifier": "farmersdelight:onion"
+    }, 
+    "events": {}
+  }
+}

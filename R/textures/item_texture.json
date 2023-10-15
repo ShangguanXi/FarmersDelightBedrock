@@ -304,6 +304,39 @@
     },
     "farmersdelight:rope": {
       "textures": "textures/items/rope"
+    },
+    "farmersdelight:cooking_pot_arrow_0":{
+      "textures": "textures/items/cooking_pot_arrow_0"
+    },
+    "farmersdelight:cooking_pot_arrow_10":{
+      "textures": "textures/items/cooking_pot_arrow_10"
+    },
+    "farmersdelight:cooking_pot_arrow_20":{
+      "textures": "textures/items/cooking_pot_arrow_20"
+    },
+    "farmersdelight:cooking_pot_arrow_30":{
+      "textures": "textures/items/cooking_pot_arrow_30"
+    },
+    "farmersdelight:cooking_pot_arrow_40":{
+      "textures": "textures/items/cooking_pot_arrow_40"
+    },
+    "farmersdelight:cooking_pot_arrow_50":{
+      "textures": "textures/items/cooking_pot_arrow_50"
+    },
+    "farmersdelight:cooking_pot_arrow_60":{
+      "textures": "textures/items/cooking_pot_arrow_60"
+    },
+    "farmersdelight:cooking_pot_arrow_70":{
+      "textures": "textures/items/cooking_pot_arrow_70"
+    },
+    "farmersdelight:cooking_pot_arrow_80":{
+      "textures": "textures/items/cooking_pot_arrow_80"
+    },
+    "farmersdelight:cooking_pot_arrow_90":{
+      "textures": "textures/items/cooking_pot_arrow_90"
+    },
+    "farmersdelight:cooking_pot_arrow_100":{
+      "textures": "textures/items/cooking_pot_arrow_100"
     }
   }
 }

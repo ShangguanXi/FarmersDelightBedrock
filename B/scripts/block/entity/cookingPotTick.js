@@ -5,6 +5,7 @@ import { vanillaCookingPotRecipe } from "../../data/recipe/cookingPotRecipe";
 import { EntityData } from "../../lib/EntityData";
 
 const options = { entityTypes: ['farmersdelight:cooking_pot'], eventTypes: ['farmersdelight:cooking_pot_tick'] };
+const emptyArrowhead = new ItemStack('farmersdelight:cooking_pot_arrow_0');
 
 function potLoot(container, block, entity, blockLocation, id) {
     const cookingPotblock = new ItemStack('farmersdelight:cooking_pot');
@@ -22,7 +23,15 @@ function potLoot(container, block, entity, blockLocation, id) {
             cookingPotblock.setLore([`§r§f目前的 ${amount} 份食物: ${typeId}`]);
         }
         entity.dimension.spawnItem(cookingPotblock, blockLocation);
+        container.setItem(9, null);
         entity.triggerEvent('farmersdelight:despawn');
+    }
+}
+
+function arrowheadUtil(container, oldItemStack) {
+    const itemStack = container.getItem(9);
+    if (itemStack.typeId != oldItemStack.typeId) {
+        container.setItem(9, oldItemStack);
     }
 }
 
@@ -35,7 +44,6 @@ function working(args) {
         if (block) {
             const map = new Map();
             const entityData = new EntityData(entity, 'progress');
-            const getData = entityData.getEntityData();
             const blockLocation = location(entity);
             const oldBlock = dimension.getBlock(blockLocation);
             const container = entity.getComponent('inventory').container;
@@ -49,19 +57,18 @@ function working(args) {
             if (stove) {
                 if (previewIndex > -1 && holder.arr.length == recipes[previewIndex].ingredients.length && holder.canPreviewRecipe) {
                     const cookingTime = recipes[previewIndex].cookingtime;
-                    const progress = getData[0];
-                   // const num = `${Math.floor((progress / cookingTime) * 100)}%`;
-                    if (progress >= cookingTime) {
-                        entityData.setEntityData(getData, entity, 'remove', cookingTime);
-                       // entity.nameTag = num;
-                        holder.consume()
+                    const num = Math.floor((entityData.value / cookingTime) * 10) * 10;
+                    const arrowhead = new ItemStack(`farmersdelight:cooking_pot_arrow_${num}`);
+                    arrowheadUtil(container, arrowhead);
+                    if (entityData.value >= cookingTime) {
+                        entityData.setEntityData('remove', cookingTime);
+                        holder.consume();
                     } else {
-                        entityData.setEntityData(getData, entity, 'add', 1);
-                       // entity.nameTag = num;
+                        entityData.setEntityData('add', 1);
                     }
                 } else {
-                    entityData.setEntityData(getData, entity, 'remove', getData[0]);
-                    //entity.nameTag = '0';
+                    entityData.setEntityData('remove', entityData.value);
+                    arrowheadUtil(container, emptyArrowhead)
                 }
             }
             if (outputIndex > -1) {

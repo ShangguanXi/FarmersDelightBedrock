@@ -80,7 +80,6 @@ function compare(A, B) {
 function clear(recipe, itemStack, container) {
     const output = container.getItem(6);
     const count = recipe.result.count ? recipe.result.count : 1;
-    itemStack.lockMode = 'slot';
     if (output ? output.amount + count <= itemStack.maxAmount : true) {
         for (let i = 0; i < 6; i++) {
             const getItem = container.getItem(i)
@@ -88,15 +87,7 @@ function clear(recipe, itemStack, container) {
                 claerItem(container, i);
             }
         }
-        if (output) {
-            if (output.amount += count <= output.maxAmount) {
-                output.amount += count;
-                container.setItem(6, output);
-            }
-        } else {
-            itemStack.amount = count;
-            container.setItem(6, itemStack);
-        }
+        setItem(itemStack, container, 6);
     }
 }
 
@@ -169,7 +160,6 @@ export class RecipeHolder {
             if (this.arr.length == ingredients.length) {
                 if (compare(this.arr, ingredients)) {
                     clear(recipe, itemStack, this.container, this.arr);
-                    itemStack.lockMode = 'none';
                     if (!recipe.container && !output && setItem(itemStack, this.container, 8)) {
                         claerItem(this.container, 6);
                     }
