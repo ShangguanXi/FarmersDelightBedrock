@@ -185,7 +185,7 @@
   enchantment.farmersdelight:backstabbing.desc.name=增加从后攻击目标时的伤害。
 
   itemGroup.farmersdelight:main.name=农夫乐事
-
+  entity.farmersdelight:cooking_pot.name=farmersdelight厨锅
   farmersdelight.container.cooking_pot.name=厨锅
   farmersdelight.container.cooking_pot.served_on.name=需摆放于：%s
   farmersdelight.container.cooking_pot.not_heated.name=需要下部热源

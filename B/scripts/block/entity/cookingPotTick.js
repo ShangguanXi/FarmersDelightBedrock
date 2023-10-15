@@ -50,18 +50,18 @@ function working(args) {
                 if (previewIndex > -1 && holder.arr.length == recipes[previewIndex].ingredients.length && holder.canPreviewRecipe) {
                     const cookingTime = recipes[previewIndex].cookingtime;
                     const progress = getData[0];
-                    const num = `${Math.floor((progress / cookingTime) * 100)}%`;
+                   // const num = `${Math.floor((progress / cookingTime) * 100)}%`;
                     if (progress >= cookingTime) {
                         entityData.setEntityData(getData, entity, 'remove', cookingTime);
-                        entity.nameTag = num;
+                       // entity.nameTag = num;
                         holder.consume()
                     } else {
                         entityData.setEntityData(getData, entity, 'add', 1);
-                        entity.nameTag = num;
+                       // entity.nameTag = num;
                     }
                 } else {
                     entityData.setEntityData(getData, entity, 'remove', getData[0]);
-                    entity.nameTag = '0';
+                    //entity.nameTag = '0';
                 }
             }
             if (outputIndex > -1) {

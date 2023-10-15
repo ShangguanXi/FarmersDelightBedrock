@@ -21,18 +21,24 @@
         },
         "components": {
             "minecraft:damage_sensor": {
-              "triggers": {
-                "on_damage": {},
-                "deals_damage": false
-              }
-            },
-            "minecraft:timer":{
-                "looping": true,
-                "randomInterval":true,
-                "time": [0.0, 0.0],
-                "time_down_event": {
-                    "event":"farmersdelight:cooking_pot_tick"
+                "triggers": {
+                    "on_damage": {},
+                    "deals_damage": false
                 }
+            },
+            "minecraft:timer": {
+                "looping": true,
+                "randomInterval": true,
+                "time": [
+                    0.0,
+                    0.0
+                ],
+                "time_down_event": {
+                    "event": "farmersdelight:cooking_pot_tick"
+                }
+            },
+            "minecraft:nameable": {
+                "allow_name_tag_renaming": false
             },
             "minecraft:persistent": {},
             "minecraft:physics": {

@@ -38,7 +38,7 @@ function beforePlace(args) {
             const cookingPot = block.dimension.spawnEntity('farmersdelight:cooking_pot', V3);
             const container = cookingPot.getComponent('inventory').container;
             cookingPot.addTag(JSON.stringify(V3));
-            cookingPot.nameTag = `0%`;
+            cookingPot.nameTag = `farmersdelight厨锅`;
             if (lores.length) {
                 lores.forEach(lore => {
                     const re = /\d+|\S+:\S+/g;
