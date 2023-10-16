@@ -207,7 +207,7 @@
                         "sequence": [
                             {
                                 "condition": "query.block_property('farmersdelight:growth')<3",
-                                "set_block_property": {
+                                "set_block_state": {
                                     "farmersdelight:growth": "(query.block_property('farmersdelight:growth')<3) ? query.block_property('farmersdelight:growth') + 1 : 3"
                                 }
                             },

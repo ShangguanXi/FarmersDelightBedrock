@@ -159,7 +159,7 @@
                     },
                     {
                         "weight": 12,
-                        "set_block_property": {
+                        "set_block_state": {
                             "farmersdelight:age": "(query.block_property('farmersdelight:age')<3) ? query.block_property('farmersdelight:age') + 1 : 3"
                         }
                     }
@@ -187,7 +187,7 @@
                     },
                     {
                         "condition": "query.block_property('farmersdelight:age')==3",
-                        "set_block_property": {
+                        "set_block_state": {
                             "farmersdelight:age": 0
                         }
                     },

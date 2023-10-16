@@ -181,7 +181,7 @@
                         "sequence": [
                             {
                                 "condition": "query.block_property('farmersdelight:growth')<7",
-                                "set_block_property": {
+                                "set_block_state": {
                                     "farmersdelight:growth": "(query.block_property('farmersdelight:growth')<7) ? query.block_property('farmersdelight:growth') + 1 : 7"
                                 }
                             },
@@ -207,7 +207,7 @@
                                 "weight": 12,
                                 "sequence": [
                                     {
-                                        "set_block_property": {
+                                        "set_block_state": {
                                             "farmersdelight:growth": "(query.block_property('farmersdelight:growth')<4) ? query.block_property('farmersdelight:growth') + 3 : 7"
                                         }
                                     }
