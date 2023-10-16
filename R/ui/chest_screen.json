@@ -29,7 +29,8 @@
     ],
     "anchor_from": "top_left",
     "anchor_to": "top_left",
-    "text": "CookingPot",
+    "text": "farmersdelight:CookingPot",
+    "localize": true,
     "size": [
       "90%",
       "default"
