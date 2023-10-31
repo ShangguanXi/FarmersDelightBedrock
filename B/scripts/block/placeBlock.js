@@ -10,19 +10,19 @@ function place(args) {
     const V3 = { x: location.x + 0.5, y: location.y, z: location.z + 0.5 };
     switch (block.typeId) {
         case 'farmersdelight:cutting_board':
-            console.warn(JSON.stringify(V3));
             const cuttingBoard = dimension.spawnEntity('farmersdelight:cutting_board', V3);
-            cuttingBoard.addTag(JSON.stringify(V3));
+            cuttingBoard.setDynamicProperty('farmersdelight:blockEntityDataLocation', V3);
+            cuttingBoard.setDynamicProperty('farmersdelight:blockEntityItemStackData', '{"item":"undefined"}');
             break;
         case 'farmersdelight:skillet_block':
             const skilletBlock = dimension.spawnEntity('farmersdelight:skillet', V3);
-            skilletBlock.addTag(JSON.stringify(V3));
-            skilletBlock.addTag('{"item":"undefined"}');
+            skilletBlock.setDynamicProperty('farmersdelight:blockEntityDataLocation', V3);
+            skilletBlock.setDynamicProperty('farmersdelight:blockEntityItemStackData', '{"item":"undefined"}');
             scoreboard.addObjective(skilletBlock.id, skilletBlock.id).setScore('amount', 0);
             break;
         case 'farmersdelight:stove':
             const stove = dimension.spawnEntity('farmersdelight:stove', V3);
-            stove.addTag(JSON.stringify(V3));
+            stove.setDynamicProperty('farmersdelight:blockEntityDataLocation', V3);
             scoreboard.addObjective(stove.id, stove.id).setScore('amount', 0);
             break;
     }
@@ -38,7 +38,7 @@ function beforePlace(args) {
         system.run(() => {
             const cookingPot = block.dimension.spawnEntity('farmersdelight:cooking_pot', V3);
             const container = cookingPot.getComponent('inventory').container;
-            cookingPot.addTag(JSON.stringify(V3));
+            cookingPot.setDynamicProperty('farmersdelight:blockEntityDataLocation', V3);
             cookingPot.nameTag = `farmersdelight厨锅`;
             if (lores.length) {
                 lores.forEach(lore => {

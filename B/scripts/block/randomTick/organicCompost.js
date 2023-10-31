@@ -13,7 +13,7 @@ export function organicCompost(args) {
     const detectLocs = BlockVolumeUtils.getBlockLocationIterator({ from: fromLocation, to: toLocation });
     for (const loc of detectLocs) {
         const block = dimension.getBlock(loc);
-        if (organicCompostDetectList.includes(block.typeId)) {
+        if (organicCompostDetectList.includes(block?.typeId)) {
             transChance += 0.02;
         }
         else if (block.hasTag('compost_activators')) {

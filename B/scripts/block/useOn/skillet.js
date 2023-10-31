@@ -10,24 +10,24 @@ export function skillet(player, itemStack, block) {
     const location = block.location;
     const container = player.getComponent('inventory').container;
     const blockEntity = new BlockEntity(
-        'farmersdelight:skillet',
-        player.dimension,
+        null,
+        block,
         {
-            location: location
+            location: location,
+            type: 'farmersdelight:skillet'
         }
     );
     const V3 = { x: location.x + 0.5, y: location.y, z: location.z + 0.5 };
     const data = blockEntity.scoreboardObjective;
     const entity = blockEntity.entity;
     if (entity) {
-        const map = blockEntity.getDataMap('item');
-        const invItemStack = map.get('item');
-        if (data && map) {
+        const itemStackData = blockEntity.getBlockEntityData('farmersdelight:blockEntityItemStackData');
+        if (data && itemStackData) {
+            const invItemStack = JSON.parse(itemStackData)['item'];
             if (vanillaItemList.includes(itemStack.typeId) || itemStack.hasTag('can_cooking')) {
                 const itemAmount = itemStack.amount;
                 if (invItemStack == 'undefined') {
-                    entity.removeTag('{"item":"undefined"}');
-                    entity.addTag(`{"item":"${itemStack.typeId}"}`);
+                    entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', `{"item":"${itemStack.typeId}"}`);
                     data.setScore('amount', itemAmount);
                     data.setScore(`${itemAmount}G`, 30);
                     if (gameMode(player)) {
@@ -65,12 +65,11 @@ export function skillet(player, itemStack, block) {
                         break;
                     }
                 }
-                scoreboard.removeObjective(entity.id);
-                entity.triggerEvent('farmersdelight:despawn');
+                blockEntity.clearEntity();
                 const skilletBlock = block.dimension.spawnEntity('farmersdelight:skillet', V3);
                 scoreboard.addObjective(skilletBlock.id, skilletBlock.id).setScore('amount', 0);
-                skilletBlock.addTag(JSON.stringify(V3));
-                skilletBlock.addTag('{"item":"undefined"}');
+                skilletBlock.setDynamicProperty('farmersdelight:blockEntityDataLocation', V3);
+                skilletBlock.setDynamicProperty('farmersdelight:blockEntityItemStackData', '{"item":"undefined"}');
             }
         }
     }
