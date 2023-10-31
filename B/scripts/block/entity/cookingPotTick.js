@@ -56,8 +56,8 @@ function working(args) {
                 if (system.currentTick % 15 == 0) {
                     const random = Math.floor(Math.random() * 10);
                     blockEntity.dimension.spawnParticle(`farmersdelight:steam_${random}`, { x: blockLocation.x, y: blockLocation.y + 1, z: blockLocation.z });
+                    blockEntity.dimension.spawnParticle('farmersdelght:bubble', { x: blockLocation.x, y: blockLocation.y + 0.63, z: blockLocation.z });
                 }
-                blockEntity.dimension.spawnParticle('farmersdelght:bubble', { x: blockLocation.x, y: blockLocation.y + 1, z: blockLocation.z });
                 if (previewIndex > -1 && holder.arr.length == recipes[previewIndex].ingredients.length && holder.canPreviewRecipe) {
                     const cookingTime = recipes[previewIndex].cookingtime;
                     const num = Math.floor((entityData.value / cookingTime) * 10) * 10;
