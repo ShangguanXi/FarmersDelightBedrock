@@ -7,5 +7,5 @@ import './block/entity/cuttingBoardTick';
 import './block/entity/skilletTick'
 import './block/entity/stoveTick';
 
-import './entity/player/playerTick';
+// import './entity/player/playerTick';
 import './entity/entityHurt'
