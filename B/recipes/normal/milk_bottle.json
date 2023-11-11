@@ -7,23 +7,23 @@
         "tags": [
             "crafting_table"
         ],
-        "ingredients": {
-            "#": {
+        "ingredients": [
+            {
                 "item": "minecraft:milk_bucket"
             },
-            "a": {
+            {
                 "item": "minecraft:glass_bottle"
             },
-            "b": {
+            {
                 "item": "minecraft:glass_bottle"
             },
-            "c": {
+            {
                 "item": "minecraft:glass_bottle"
             },
-            "d": {
+            {
                 "item": "minecraft:glass_bottle"
             }
-        },
+        ],
         "result": [
             {
                 "item": "farmersdelight:milk_bottle",

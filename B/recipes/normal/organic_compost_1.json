@@ -7,35 +7,35 @@
         "tags": [
             "crafting_table"
         ],
-        "ingredients": {
-            "a": {
+        "ingredients": [
+            {
                 "item": "farmersdelight:straw"
             },
-            "b": {
+            {
                 "item": "farmersdelight:straw"
             },
-            "b": {
+            {
                 "item": "minecraft:dirt"
             },
-            "d": {
+            {
                 "item": "minecraft:tree_bark"
             },
-            "e": {
+            {
                 "item": "minecraft:tree_bark"
             },
-            "f": {
+            {
                 "item": "minecraft:tree_bark"
             },
-            "g": {
+            {
                 "item": "minecraft:tree_bark"
             },
-            "h": {
+            {
                 "item": "minecraft:bone_meal"
             },
-            "i": {
+            {
                 "item": "minecraft:bone_meal"
             }
-        },
+        ],
         "result": {
             "item": "farmersdelight:organic_compost"
         }

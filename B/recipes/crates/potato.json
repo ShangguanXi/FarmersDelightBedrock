@@ -7,11 +7,11 @@
         "tags": [
             "crafting_table"
         ],
-        "ingredients": {
-            "#": {
+        "ingredients": [
+            {
                 "item": "farmersdelight:potato_crate"
             }
-        },
+        ],
         "result": {
             "item": "minecraft:potato",
             "count": 9

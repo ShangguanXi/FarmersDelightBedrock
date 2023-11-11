@@ -7,35 +7,35 @@
         "tags": [
             "crafting_table"
         ],
-        "ingredients": {
-            "#": {
+        "ingredients": [
+            {
                 "item": "minecraft:bread"
             },
-            "a": {
+            {
                 "item": "minecraft:cooked_chicken"
             },
-            "b": {
+            {
                 "tag": "minecraft:is_onion"
             },
-            "c": {
+            {
                 "item": "minecraft:bowl"
             },
-            "d": {
+            {
                 "item": "minecraft:carrot"
             },
-            "e": {
+            {
                 "item": "minecraft:baked_potato"
             },
-            "f": {
+            {
                 "item": "minecraft:carrot"
             },
-            "g": {
+            {
                 "item": "minecraft:baked_potato"
             },
-            "h": {
+            {
                 "item": "minecraft:egg"
             }
-        },
+        ],
         "result": {
             "item": "farmersdelight:roast_chicken_block_item"
         }

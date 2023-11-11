@@ -7,20 +7,20 @@
         "tags": [
             "crafting_table"
         ],
-        "ingredients": {
-            "#": {
+        "ingredients": [
+            {
                 "tag": "minecraft:is_cabbage"
             },
-            "a": {
+            {
                 "tag": "minecraft:is_tomato"
             },
-            "b": {
+            {
                 "item": "minecraft:beetroot"
             },
-            "c": {
+            {
                 "item": "minecraft:bowl"
             }
-        },
+        ],
         "result": {
             "item": "farmersdelight:mixed_salad"
         }

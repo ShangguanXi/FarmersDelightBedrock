@@ -7,24 +7,25 @@
         "tags": [
             "crafting_table"
         ],
-        "ingredients": {
-            "#": {
+        "ingredients": [
+            {
                 "item": "minecraft:carrot"
             },
-            "a": {
+            {
                 "item": "minecraft:baked_potato"
             },
-            "b": {
+            {
                 "tag": "minecraft:is_cooked_beef"
             },
-            "c": {
+            {
                 "tag": "minecraft:is_milk_bottle"
             }
-        },
+        ],
         "result": [
             {
                 "item": "farmersdelight:stuffed_potato"
-            },{
+            },
+            {
                 "item": "minecraft:glass_bottle"
             }
         ]

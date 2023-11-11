@@ -7,23 +7,23 @@
         "tags": [
             "crafting_table"
         ],
-        "ingredients": {
-            "#": {
+        "ingredients": [
+            {
                 "item": "farmersdelight:cooked_mutton_chops"
             },
-            "a": {
+            {
                 "item": "minecraft:beetroot"
             },
-            "b": {
+            {
                 "tag": "minecraft:is_tomato"
             },
-            "c": {
+            {
                 "item": "farmersdelight:cooked_rice"
             },
-            "e": {
+            {
                 "item": "minecraft:bowl"
             }
-        },
+        ],
         "result": {
             "item": "farmersdelight:roasted_mutton_chops"
         }

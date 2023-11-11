@@ -7,11 +7,11 @@
         "tags": [
             "crafting_table"
         ],
-        "ingredients": {
-            "#": {
+        "ingredients": [
+            {
                 "item": "farmersdelight:rice_bag"
             }
-        },
+        ],
         "result": {
             "item": "farmersdelight:rice",
             "count": 9

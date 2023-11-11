@@ -7,23 +7,23 @@
         "tags": [
             "crafting_table"
         ],
-        "ingredients": {
-            "#": {
+        "ingredients": [
+            {
                 "item": "farmersdelight:cooked_bacon"
             },
-            "a": {
+            {
                 "tag": "minecraft:is_cooked_egg"
             },
-            "b": {
+            {
                 "tag": "minecraft:is_cooked_egg"
             },
-            "c": {
+            {
                 "item": "farmersdelight:cooked_bacon"
             },
-            "e": {
+            {
                 "item": "minecraft:bowl"
             }
-        },
+        ],
         "result": {
             "item": "farmersdelight:bacon_and_eggs"
         }

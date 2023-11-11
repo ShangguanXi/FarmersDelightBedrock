@@ -243,9 +243,9 @@
                         "condition": "query.block_property('farmersdelight:upper')==true",
                         "run_command": {
                             "command": [
-                                "execute if block ~ ~+1 ~ farmersdelight:rice_block_upper[\"farmersdelight:growth\":2] run setblock ~ ~+1 ~ farmersdelight:rice_block_upper[\"farmersdelight:growth\":3]",
-                                "execute if block ~ ~+1 ~ farmersdelight:rice_block_upper[\"farmersdelight:growth\":1] run setblock ~ ~+1 ~ farmersdelight:rice_block_upper[\"farmersdelight:growth\":2]",
-                                "execute if block ~ ~+1 ~ farmersdelight:rice_block_upper[\"farmersdelight:growth\":0] run setblock ~ ~+1 ~ farmersdelight:rice_block_upper[\"farmersdelight:growth\":1]"
+                                "execute if block ~ ~+1 ~ farmersdelight:rice_block_upper[\"farmersdelight=growth\":2] run setblock ~ ~+1 ~ farmersdelight:rice_block_upper[\"farmersdelight=growth\":3]",
+                                "execute if block ~ ~+1 ~ farmersdelight:rice_block_upper[\"farmersdelight=growth\":1] run setblock ~ ~+1 ~ farmersdelight:rice_block_upper[\"farmersdelight=growth\":2]",
+                                "execute if block ~ ~+1 ~ farmersdelight:rice_block_upper[\"farmersdelight=growth\":0] run setblock ~ ~+1 ~ farmersdelight:rice_block_upper[\"farmersdelight=growth\":1]"
                             ]
                         }
                     }
@@ -257,7 +257,7 @@
                     {
                         "run_command": {
                             "command": [
-                                "execute if block ~ ~+1 ~ air run setblock ~~~ farmersdelight:rice_block[\"farmersdelight:upper\":false,\"farmersdelight:growth\":3]"
+                                "execute if block ~ ~+1 ~ air run setblock ~~~ farmersdelight:rice_block[\"farmersdelight:upper\":false,\"farmersdelight=growth\":3]"
                             ]
                         }
                     }
@@ -269,7 +269,7 @@
                         "run_command": {
                             "command": [
                                 "execute if block ~ ~+1 ~ air run setblock ~ ~+1 ~ farmersdelight:rice_block_upper",
-                                "execute if block ~ ~+1 ~ farmersdelight:rice_block_upper run setblock ~~~ farmersdelight:rice_block[\"farmersdelight:upper\":true,\"farmersdelight:growth\":3]"
+                                "execute if block ~ ~+1 ~ farmersdelight:rice_block_upper run setblock ~~~ farmersdelight:rice_block[\"farmersdelight:upper\":true,\"farmersdelight=growth\":3]"
                             ]
                         }
                     }

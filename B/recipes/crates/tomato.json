@@ -7,11 +7,11 @@
         "tags": [
             "crafting_table"
         ],
-        "ingredients": {
-            "#": {
+        "ingredients": [
+            {
                 "item": "farmersdelight:tomato_crate"
             }
-        },
+        ],
         "result": {
             "item": "farmersdelight:tomato",
             "count": 9

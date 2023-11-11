@@ -7,20 +7,20 @@
         "tags": [
             "crafting_table"
         ],
-        "ingredients": {
-            "#": {
+        "ingredients": [
+            {
                 "item": "minecraft:bread"
             },
-            "a": {
+            {
                 "tag": "minecraft:is_onion"
             },
-            "b": {
+            {
                 "tag": "minecraft:is_cabbage"
             },
-            "c": {
+            {
                 "tag": "minecraft:is_cooked_mutton"
             }
-        },
+        ],
         "result": {
             "item": "farmersdelight:mutton_wrap"
         }

@@ -7,17 +7,17 @@
         "tags": [
             "crafting_table"
         ],
-        "ingredients": {
-            "#": {
+        "ingredients": [
+            {
                 "item": "minecraft:bread"
             },
-            "a": {
+            {
                 "tag": "minecraft:is_cooked_egg"
             },
-            "b": {
+            {
                 "tag": "minecraft:is_cooked_egg"
             }
-        },
+        ],
         "result": {
             "item": "farmersdelight:egg_sandwich"
         }

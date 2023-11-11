@@ -7,23 +7,23 @@
         "tags": [
             "crafting_table"
         ],
-        "ingredients": {
-            "#": {
+        "ingredients": [
+            {
                 "tag": "minecraft:is_cooked_salmon"
             },
-            "a": {
+            {
                 "item": "minecraft:sweet_berries"
             },
-            "b": {
+            {
                 "item": "minecraft:bowl"
             },
-            "c": {
+            {
                 "tag": "minecraft:is_onion"
             },
-            "d": {
+            {
                 "tag": "minecraft:is_cabbage"
             }
-        },
+        ],
         "result": {
             "item": "farmersdelight:grilled_salmon"
         }

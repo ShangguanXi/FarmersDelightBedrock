@@ -7,17 +7,17 @@
         "tags": [
             "crafting_table"
         ],
-        "ingredients": {
-            "#": {
+        "ingredients": [
+            {
                 "item": "minecraft:crimson_fungus"
             },
-            "a": {
+            {
                 "item": "minecraft:crimson_fungus"
             },
-            "b": {
+            {
                 "item": "minecraft:bowl"
             }
-        },
+        ],
         "result": {
             "item": "farmersdelight:nether_salad"
         }

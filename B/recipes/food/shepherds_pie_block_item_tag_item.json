@@ -7,39 +7,40 @@
         "tags": [
             "crafting_table"
         ],
-        "ingredients": {
-            "#": {
+        "ingredients": [
+            {
                 "item": "minecraft:baked_potato"
             },
-            "a": {
+            {
                 "item": "minecraft:baked_potato"
             },
-            "b": {
+            {
                 "item": "minecraft:cooked_mutton"
             },
-            "d": {
+            {
                 "item": "minecraft:cooked_mutton"
             },
-            "e": {
+            {
                 "item": "minecraft:cooked_mutton"
             },
-            "c": {
+            {
                 "tag": "minecraft:is_milk"
             },
-            "f": {
+            {
                 "tag": "minecraft:is_onion"
             },
-            "g": {
+            {
                 "tag": "minecraft:is_onion"
             },
-            "h": {
+            {
                 "item": "minecraft:bowl"
             }
-        },
+        ],
         "result": [
             {
                 "item": "farmersdelight:shepherds_pie_block_item"
-            },{
+            },
+            {
                 "item": "minecraft:glass_bottle"
             }
         ]

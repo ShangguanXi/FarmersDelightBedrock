@@ -7,20 +7,20 @@
         "tags": [
             "crafting_table"
         ],
-        "ingredients": {
-            "#": {
+        "ingredients": [
+            {
                 "item": "minecraft:bread"
             },
-            "a": {
-                "item": "minecraft:cooked_chicken_cuts"
+            {
+                "item": "farmersdelight:cooked_chicken_cuts"
             },
-            "b": {
+            {
                 "item": "minecraft:carrot"
             },
-            "d": {
+            {
                 "tag": "minecraft:is_cabbage"
             }
-        },
+        ],
         "result": {
             "item": "farmersdelight:chicken_sandwich"
         }

@@ -7,26 +7,26 @@
         "tags": [
             "crafting_table"
         ],
-        "ingredients": {
-            "#": {
+        "ingredients": [
+            {
                 "item": "minecraft:glass_bottle"
             },
-            "a": {
+            {
                 "item": "minecraft:melon_slice"
             },
-            "b": {
+            {
                 "item": "minecraft:melon_slice"
             },
-            "c": {
+            {
                 "item": "minecraft:melon_slice"
             },
-            "d": {
+            {
                 "item": "minecraft:melon_slice"
             },
-            "e": {
+            {
                 "item": "minecraft:sugar"
             }
-        },
+        ],
         "result": {
             "item": "farmersdelight:melon_juice"
         }

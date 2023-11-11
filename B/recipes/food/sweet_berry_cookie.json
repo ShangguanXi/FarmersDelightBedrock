@@ -7,17 +7,17 @@
         "tags": [
             "crafting_table"
         ],
-        "ingredients": {
-            "#": {
+        "ingredients": [
+            {
                 "item": "minecraft:wheat"
             },
-            "a": {
+            {
                 "item": "minecraft:wheat"
             },
-            "b": {
+            {
                 "item": "minecraft:sweet_berries"
             }
-        },
+        ],
         "result": {
             "item": "farmersdelight:sweet_berry_cookie",
             "count": 8

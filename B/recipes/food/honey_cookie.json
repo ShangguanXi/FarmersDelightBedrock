@@ -7,18 +7,18 @@
         "tags": [
             "crafting_table"
         ],
-        "ingredients": {
-            "#": {
+        "ingredients": [
+            {
                 "item": "minecraft:wheat"
             },
-            "a": {
+            {
                 "item": "minecraft:wheat"
             },
-            "b": {
+            {
                 "item": "minecraft:honey_bottle"
             }
-        },
-        "result":  [
+        ],
+        "result": [
             {
                 "item": "farmersdelight:honey_cookie",
                 "count": 8

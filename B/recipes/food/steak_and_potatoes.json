@@ -7,23 +7,23 @@
         "tags": [
             "crafting_table"
         ],
-        "ingredients": {
-            "#": {
+        "ingredients": [
+            {
                 "item": "minecraft:bowl"
             },
-            "a": {
+            {
                 "item": "minecraft:baked_potato"
             },
-            "b": {
+            {
                 "item": "minecraft:cooked_beef"
             },
-            "c": {
+            {
                 "tag": "minecraft:is_onion"
             },
-            "d": {
+            {
                 "item": "farmersdelight:cooked_rice"
             }
-        },
+        ],
         "result": {
             "item": "farmersdelight:steak_and_potatoes"
         }

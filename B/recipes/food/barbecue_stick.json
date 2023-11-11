@@ -7,20 +7,20 @@
         "tags": [
             "crafting_table"
         ],
-        "ingredients": {
-            "#": {
+        "ingredients": [
+            {
                 "tag": "minecraft:is_onion"
             },
-            "a": {
+            {
                 "tag": "minecraft:is_tomato"
             },
-            "b": {
+            {
                 "tag": "minecraft:is_cooked"
             },
-            "c": {
+            {
                 "item": "minecraft:stick"
             }
-        },
+        ],
         "result": {
             "item": "farmersdelight:barbecue_stick"
         }
