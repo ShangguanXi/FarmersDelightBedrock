@@ -1,6 +1,6 @@
-import { world, ItemStack } from "@minecraft/server";
+import { world, ItemStack, EntityInventoryComponent, system } from "@minecraft/server";
 import { RecipeHolder } from "../../lib/RecipeHolder";
-import { location } from "../../lib/BlockEntity";
+import BlockEntity from "../../lib/BlockEntity";
 import { vanillaCookingPotRecipe } from "../../data/recipe/cookingPotRecipe";
 import { EntityData } from "../../lib/EntityData";
 
@@ -14,7 +14,7 @@ function potLoot(container, block, entity, blockLocation, id) {
             entity.teleport(blockLocation);
         }
     }
-    if (block != id) {
+    if (block.typeId != id) {
         const itemStack = container.getItem(6);
         if (itemStack) {
             const typeId = itemStack.typeId;
@@ -38,16 +38,14 @@ function arrowheadUtil(container, oldItemStack) {
 function working(args) {
     const entity = args.entity;
     try {
-        const dimension = entity?.dimension;
-        const block = dimension.getBlock(entity.location);
-        const stove = dimension.getBlock({ x: entity.location.x, y: entity.location.y - 1, z: entity.location.z })?.permutation?.getState('farmersdelight:is_working');
-        if (block) {
+        const blockEntity = new BlockEntity(entity);
+        const stove = entity.dimension.getBlock({ x: entity.location.x, y: entity.location.y - 1, z: entity.location.z })?.permutation?.getState('farmersdelight:is_working');
+        if (blockEntity.block) {
             const map = new Map();
             const entityData = new EntityData(entity, 'progress');
-            const blockLocation = location(entity);
-            const oldBlock = dimension.getBlock(blockLocation);
-            const container = entity.getComponent('inventory').container;
-            potLoot(container, oldBlock.typeId, entity, blockLocation, 'farmersdelight:cooking_pot');
+            const blockLocation = blockEntity.blockEntityDataLocation;
+            const container = entity.getComponent(EntityInventoryComponent.componentId).container;
+            potLoot(container, blockEntity.block, entity, blockLocation, 'farmersdelight:cooking_pot');
             const recipes = vanillaCookingPotRecipe.recipe;
             const holder = new RecipeHolder(container, recipes, (map.get('previewRecipe') ?? 0), (map.get('outputRecipe') ?? 0));
             const previewIndex = holder.previewIndex;
@@ -55,6 +53,11 @@ function working(args) {
             map.set('previewRecipe', previewIndex);
             map.set('outputRecipe', outputIndex);
             if (stove) {
+                if (system.currentTick % 15 == 0) {
+                    const random = Math.floor(Math.random() * 10);
+                    blockEntity.dimension.spawnParticle(`farmersdelight:steam_${random}`, { x: blockLocation.x, y: blockLocation.y + 1, z: blockLocation.z });
+                    blockEntity.dimension.spawnParticle('farmersdelght:bubble', { x: blockLocation.x, y: blockLocation.y + 0.63, z: blockLocation.z });
+                }
                 if (previewIndex > -1 && holder.arr.length == recipes[previewIndex].ingredients.length && holder.canPreviewRecipe) {
                     const cookingTime = recipes[previewIndex].cookingtime;
                     const num = Math.floor((entityData.value / cookingTime) * 10) * 10;

@@ -10,10 +10,11 @@ export function stove(player, itemStack, block) {
     const location = block.location;
     const container = player.getComponent('inventory').container;
     const blockEntity = new BlockEntity(
-        'farmersdelight:stove',
-        player.dimension,
+        null,
+        block,
         {
-            location: location
+            location: location,
+            type: 'farmersdelight:stove'
         }
     );
     const entity = blockEntity.entity;

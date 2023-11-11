@@ -1,107 +1,61 @@
 import { ItemStack, world } from "@minecraft/server";
 const scoreboard = world.scoreboard;
 
-// 同步处理
-export function loot(itemStack, block, entity, blockLocation, id, amount = 1, sco = null) {
-    if (block) {
-        if (JSON.stringify(entity.location) !== JSON.stringify(blockLocation)) {
-            entity.teleport(blockLocation);
-        }
-    }
-    if (block != id) {
-        if (itemStack) {
-            for (let index = 0; index < amount; index++) {
-                entity.dimension.spawnItem(new ItemStack(itemStack), blockLocation);
-            }
-        }
-        if (sco) {
-            scoreboard.removeObjective(sco);
-        }
-        entity.triggerEvent('farmersdelight:despawn');
-    }
-}
 
-export function getMap(entity, value) {
-    const map = new Map();
-    for (const tag of entity.getTags()) {
-        if (JSON.parse(tag)) {
-            const json = JSON.parse(tag);
-            map.set(value, json[value]);
-        } else {
-            continue;
-        }
-    }
-    if (map.get(value)) {
-        return map
-    }
-    return undefined;
-}
-
-export function location(entity) {
-    const tags = entity.getTags();
-    const arr = Object.values(tags);
-    for (const tag of arr) {
-        if (JSON.parse(tag)) {
-            const json = JSON.parse(tag);
-            if (json.x !== false) {
-                return json
-            }
-        }
-    }
-    return undefined;
-}
-// class
 export default class BlockEntity {
-    id;
-    options;
     dimension;
     entity;
+    block;
     scoreboardObjective;
-    map = new Map();
-    #tags;
-    constructor(id, dimension, options) {
-        this.id = id;
-        this.dimension = dimension;
-        this.options = options;
-        const worldEntities = dimension.getEntities(options);
-        for (const entity of worldEntities) {
-            if (entity.typeId === id && entity.getTags().includes(JSON.stringify(entity.location))) {
-                this.entity = entity;
-                break;
-            }
-        }
-        if (this.entity) {
-            this.#tags = this.entity.getTags();
-            this.scoreboardObjective = scoreboard.getObjective(this.entity.id);
-        }
-    }
-    getDataMap(value) {
-        if (this.entity) {
-            for (const tag of this.#tags) {
-                if (JSON.parse(tag)) {
-                    const json = JSON.parse(tag);
-                    this.map.set(value, json[value]);
-                } else {
-                    continue;
+    blockEntityDataLocation;
+    constructor(entity = null, block, options) {
+        if (!entity) {
+            this.block = block;
+            this.dimension = this.block.dimension;
+            this.options = options;
+            const worldEntities = this.dimension.getEntities(options);
+            for (const entity of worldEntities) {
+                if (JSON.stringify(entity.getDynamicProperty('farmersdelight:blockEntityDataLocation')) == JSON.stringify(entity.location)) {
+                    this.entity = entity;
+                    break;
                 }
             }
-            if (this.map.get(value)) {
-                return this.map
+            if (this.entity) {
+                this.scoreboardObjective = scoreboard.getObjective(this.entity.id) ?? null;
+                this.blockEntityDataLocation = this.entity.getDynamicProperty('farmersdelight:blockEntityDataLocation');
             }
+        } else {
+            this.entity = entity
+            this.dimension = entity.dimension;
+            this.blockEntityDataLocation = entity.getDynamicProperty('farmersdelight:blockEntityDataLocation');
+            this.block = this.dimension.getBlock(this.blockEntityDataLocation);
+            this.scoreboardObjective = scoreboard.getObjective(entity.id) ?? null;
         }
-        return undefined;
     }
-    blockLocation(entity) {
-        for (const tag of entity.getTags()) {
-            if (JSON.parse(tag)) {
-                const json = JSON.parse(tag);
-                if (json.x) {
-                    return json
-                }
-            } else {
-                continue;
+    getBlockEntityData(property) {
+        return this.entity.getDynamicProperty(property) ?? undefined;
+    }
+    clearEntity() {
+        if (this.scoreboardObjective) {
+            scoreboard.removeObjective(this.scoreboardObjective);
+        }
+        this.entity.triggerEvent('farmersdelight:despawn');
+    }
+    blockEntityLoot(itemStackList, id, amount = 1) {
+        if (this.block) {
+            if (JSON.stringify(this.entity.location) !== JSON.stringify(this.blockEntityDataLocation)) {
+                this.entity.teleport(this.blockEntityDataLocation);
             }
         }
-        return undefined;
+        if (this.block.typeId != id) {
+            if (itemStackList?.length) {
+                for (const itemStack of itemStackList) {
+                    for (let index = 0; index < amount; index++) {
+                        this.entity.dimension.spawnItem(new ItemStack(itemStack), this.blockEntityDataLocation);
+                    }
+                }
+            }
+            this.clearEntity();
+        }
     }
 }
