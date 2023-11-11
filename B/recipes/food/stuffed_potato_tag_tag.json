@@ -18,16 +18,12 @@
                 "tag": "minecraft:is_cooked_beef"
             },
             {
-                "tag": "minecraft:is_milk_bottle"
+                "tag": "minecraft:is_milk"
             }
         ],
-        "result": [
+        "result": 
             {
                 "item": "farmersdelight:stuffed_potato"
-            },
-            {
-                "item": "minecraft:glass_bottle"
             }
-        ]
     }
 }

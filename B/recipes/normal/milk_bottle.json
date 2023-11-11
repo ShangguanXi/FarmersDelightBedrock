@@ -24,14 +24,9 @@
                 "item": "minecraft:glass_bottle"
             }
         ],
-        "result": [
-            {
-                "item": "farmersdelight:milk_bottle",
-                "count": 4
-            },
-            {
-                "item": "minecraft:bucket"
-            }
-        ]
+        "result": {
+            "item": "farmersdelight:milk_bottle",
+            "count": 4
+        }
     }
 }

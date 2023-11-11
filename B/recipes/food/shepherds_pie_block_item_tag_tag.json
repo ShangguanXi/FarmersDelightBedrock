@@ -36,13 +36,9 @@
                 "item": "minecraft:bowl"
             }
         ],
-        "result": [
+        "result": 
             {
                 "item": "farmersdelight:shepherds_pie_block_item"
-            },
-            {
-                "item": "minecraft:glass_bottle"
             }
-        ]
     }
 }

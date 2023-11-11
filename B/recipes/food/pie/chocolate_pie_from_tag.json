@@ -23,7 +23,7 @@
                 "item": "farmersdelight:pie_crust"
             },
             "B": {
-                "tag": "minecraft:is_milk_bottle"
+                "tag": "minecraft:is_milk"
             }
         },
         "result": [

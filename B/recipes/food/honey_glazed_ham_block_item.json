@@ -36,13 +36,8 @@
                 "item": "minecraft:honey_bottle"
             }
         ],
-        "result": [
-            {
-                "item": "farmersdelight:honey_glazed_ham_block_item"
-            },
-            {
-                "item": "minecraft:glass_bottle"
-            }
-        ]
+        "result": {
+            "item": "farmersdelight:honey_glazed_ham_block_item"
+        }
     }
 }
