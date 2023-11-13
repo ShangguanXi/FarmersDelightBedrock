@@ -268,12 +268,10 @@ export const vanillaCookingPotRecipe = {
             "experience": 1.0,
             "ingredients": [
                 [
-                    {"tag": "minecraft:is_tomato" },
-                    {"item": "farmersdelight:tomato"}
+                    {"tag": "minecraft:is_tomato" }
                 ],
                 [
-                    {"tag": "minecraft:is_tomato" },
-                    {"item": "farmersdelight:tomato"}
+                    {"tag": "minecraft:is_tomato" }
                 ]
             ],
             "recipe_book_tab": "misc",

@@ -22,13 +22,16 @@ function getValidRecipeoutputIndex(output, container, recipes) {
 function isEqualValue(have, need) {
     if (!need) return false;
     const value = Object.keys(need)[0];
+    console.warn(value)
     switch (value) {
+        
         case 'item':
             if (have.typeId == need.item) {
                 return true;
             }
             return false;
         case 'tag':
+            
             if (have.hasTag(need.tag)) {
                 return true;
             }
