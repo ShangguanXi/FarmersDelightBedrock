@@ -6,27 +6,19 @@
 				"active_time": 0.12
 			},
             "minecraft:emitter_rate_steady": {
-                "max_particles": 60, 
+                "max_particles": 250, 
                 "spawn_rate": 1250
             }, 
             "minecraft:emitter_shape_box": {
-                "direction": "outwards", 
-                "half_dimensions": [
-                    0, 
-                    0.009375, 
-                    0
-                ], 
-                "offset": [
-                    0, 
-                    0.009375, 
-                    0
-                ]
-            }, 
+				"offset": [0, 0.01563, 0],
+				"half_dimensions": [0, 0.01563, 0],
+				"direction": "outwards"
+			},
             "minecraft:particle_appearance_billboard": {
                 "facing_camera_mode": "emitter_transform_xz", 
                 "size": [
-                    0.15, 
-                    0.15
+                    0.25, 
+                    0.25
                 ], 
                 "uv": {
                     "texture_height": 16, 
@@ -51,9 +43,9 @@
         "description": {
             "basic_render_parameters": {
                 "material": "particles_alpha", 
-                "texture": "textures/items/fish_raw"
+                "texture": "textures/items/mutton_cooked"
             }, 
-            "identifier": "farmersdelight:minecraft_stove_cod"
+            "identifier": "farmersdelight:minecraft_cooked_mutton"
         }
     }
 }

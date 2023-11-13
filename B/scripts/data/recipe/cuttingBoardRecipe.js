@@ -18,7 +18,9 @@ const vanillaItemList = [
     "minecraft:porkchop",
     "minecraft:beef",
     "minecraft:chicken",
-    "minecraft:mutton"
+    "minecraft:mutton",
+    "minecraft:cooked_mutton",
+    "minecraft:cooked_chicken"
 ];
 
 export { vanillaItemList, farmersdelightBlockList };

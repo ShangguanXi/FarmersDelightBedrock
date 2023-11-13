@@ -267,6 +267,28 @@ export const vanillaCookingPotRecipe = {
             "cookingtime": 200,
             "experience": 1.0,
             "ingredients": [
+                [
+                    {"tag": "minecraft:is_tomato" },
+                    {"item": "farmersdelight:tomato"}
+                ],
+                [
+                    {"tag": "minecraft:is_tomato" },
+                    {"item": "farmersdelight:tomato"}
+                ]
+            ],
+            "recipe_book_tab": "misc",
+            "result": {
+                "item": "farmersdelight:tomato_sauce"
+            }
+        },
+        {
+            "type": "farmersdelight:cooking",
+            "container": {
+                "item": "minecraft:bowl"
+            },
+            "cookingtime": 200,
+            "experience": 1.0,
+            "ingredients": [
                 {
                      "tag": "minecraft:is_cabbage" 
                 },
