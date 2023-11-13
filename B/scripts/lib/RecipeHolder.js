@@ -3,7 +3,7 @@ import { claerItem } from "./itemUtil";
 
 function getValidRecipePreviewIndex(info, recipes) {
     for (const index in recipes) {
-        if (info.length == recipes[index].ingredients && compare(info, recipes[index].ingredients)) {
+        if (info.length == recipes[index].ingredients.length && compare(info, recipes[index].ingredients)) {
             return index;
         }
     }
@@ -23,14 +23,12 @@ function isEqualValue(have, need) {
     if (!need) return false;
     const value = Object.keys(need)[0];
     switch (value) {
-        
         case 'item':
             if (have.typeId == need.item) {
                 return true;
             }
             return false;
         case 'tag':
-            
             if (have.hasTag(need.tag)) {
                 return true;
             }
