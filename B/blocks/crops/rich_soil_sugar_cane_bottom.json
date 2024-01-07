@@ -87,11 +87,11 @@
                         "sequence": [
                             {
                                 "set_block_state": {
-                                    "farmersdelight:growth": "(query.block_property('farmersdelight:growth')<15) ? query.block_property('farmersdelight:growth') + 1 : 15"
+                                    "farmersdelight:growth": "(query.block_state('farmersdelight:growth')<15) ? query.block_state('farmersdelight:growth') + 1 : 15"
                                 }
                             },
                             {
-                                "condition": "query.block_property('farmersdelight:growth')==15",
+                                "condition": "query.block_state('farmersdelight:growth')==15",
                                 "run_command": {
                                     "command": [
                                         "execute if block ~ ~+1 ~ farmersdelight:rich_soil_sugar_cane_middle if block ~ ~+2 ~ air run setblock ~ ~+2 ~ farmersdelight:rich_soil_sugar_cane_top",
@@ -100,7 +100,7 @@
                                 }
                             },
                             {
-                                "condition": "query.block_property('farmersdelight:growth')==15",
+                                "condition": "query.block_state('farmersdelight:growth')==15",
                                 "set_block_state": {
                                     "farmersdelight:growth": 0
                                 }

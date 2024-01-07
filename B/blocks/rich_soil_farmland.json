@@ -14,7 +14,7 @@
         },
         "permutations": [
             {
-                "condition": "query.block_property('farmersdelight:moisturized_amount') > 0",
+                "condition": "query.block_state('farmersdelight:moisturized_amount') > 0",
                 "components": {
                     "minecraft:material_instances": {
                         "*": {
@@ -30,7 +30,7 @@
                 }
             },
             {
-                "condition": "query.block_property('farmersdelight:moisturized_amount') == 0",
+                "condition": "query.block_state('farmersdelight:moisturized_amount') == 0",
                 "components": {
                     "minecraft:material_instances": {
                         "*": {

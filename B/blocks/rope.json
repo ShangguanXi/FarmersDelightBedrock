@@ -48,10 +48,10 @@
       "minecraft:geometry": {
         "identifier": "geometry.rope",
         "bone_visibility": {
-          "north": "query.block_property('farmersdelight:north_connected') == true",
-          "south": "query.block_property('farmersdelight:south_connected') == true",
-          "west": "query.block_property('farmersdelight:west_connected') == true",
-          "east": "query.block_property('farmersdelight:east_connected') == true"
+          "north": "query.block_state('farmersdelight:north_connected') == true",
+          "south": "query.block_state('farmersdelight:south_connected') == true",
+          "west": "query.block_state('farmersdelight:west_connected') == true",
+          "east": "query.block_state('farmersdelight:east_connected') == true"
         }
       },
       "minecraft:queued_ticking": {
@@ -80,7 +80,7 @@
     },
     "permutations": [
       {
-        "condition": "query.block_property('farmersdelight:north_connected') == true && query.block_property('farmersdelight:south_connected') == true && query.block_property('farmersdelight:west_connected') == true && query.block_property('farmersdelight:east_connected') == true",
+        "condition": "query.block_state('farmersdelight:north_connected') == true && query.block_state('farmersdelight:south_connected') == true && query.block_state('farmersdelight:west_connected') == true && query.block_state('farmersdelight:east_connected') == true",
         "components": {
           "minecraft:selection_box": {
             "origin": [-8, 0, -8],
@@ -89,7 +89,7 @@
         }
       },
       {
-        "condition": "query.block_property('farmersdelight:north_connected') == false && query.block_property('farmersdelight:south_connected') == false && query.block_property('farmersdelight:west_connected') == false && query.block_property('farmersdelight:east_connected') == false",
+        "condition": "query.block_state('farmersdelight:north_connected') == false && query.block_state('farmersdelight:south_connected') == false && query.block_state('farmersdelight:west_connected') == false && query.block_state('farmersdelight:east_connected') == false",
         "components": {
           "minecraft:selection_box": {
             "origin": [-1, 0, -1],
@@ -98,7 +98,7 @@
         }
       },
       {
-        "condition": "query.block_property('farmersdelight:north_connected') == true && query.block_property('farmersdelight:south_connected') == false && query.block_property('farmersdelight:west_connected') == false && query.block_property('farmersdelight:east_connected') == false",
+        "condition": "query.block_state('farmersdelight:north_connected') == true && query.block_state('farmersdelight:south_connected') == false && query.block_state('farmersdelight:west_connected') == false && query.block_state('farmersdelight:east_connected') == false",
         "components": {
           "minecraft:selection_box": {
             "origin": [-1, 0, -8],
@@ -107,7 +107,7 @@
         }
       },
       {
-        "condition": "query.block_property('farmersdelight:north_connected') == true && query.block_property('farmersdelight:south_connected') == true && query.block_property('farmersdelight:west_connected') == false && query.block_property('farmersdelight:east_connected') == false",
+        "condition": "query.block_state('farmersdelight:north_connected') == true && query.block_state('farmersdelight:south_connected') == true && query.block_state('farmersdelight:west_connected') == false && query.block_state('farmersdelight:east_connected') == false",
         "components": {
           "minecraft:selection_box": {
             "origin": [-1, 0, -8],
@@ -116,7 +116,7 @@
         }
       },
       {
-        "condition": "query.block_property('farmersdelight:north_connected') == true && query.block_property('farmersdelight:south_connected') == false && query.block_property('farmersdelight:west_connected') == false && query.block_property('farmersdelight:east_connected') == true",
+        "condition": "query.block_state('farmersdelight:north_connected') == true && query.block_state('farmersdelight:south_connected') == false && query.block_state('farmersdelight:west_connected') == false && query.block_state('farmersdelight:east_connected') == true",
         "components": {
           "minecraft:selection_box": {
             "origin": [8, 0, -8],
@@ -125,7 +125,7 @@
         }
       },
       {
-        "condition": "query.block_property('farmersdelight:north_connected') == true && query.block_property('farmersdelight:south_connected') == false && query.block_property('farmersdelight:west_connected') == true && query.block_property('farmersdelight:east_connected') == false",
+        "condition": "query.block_state('farmersdelight:north_connected') == true && query.block_state('farmersdelight:south_connected') == false && query.block_state('farmersdelight:west_connected') == true && query.block_state('farmersdelight:east_connected') == false",
         "components": {
           "minecraft:selection_box": {
             "origin": [-8, 0, -8],
@@ -134,7 +134,7 @@
         }
       },
       {
-        "condition": "query.block_property('farmersdelight:north_connected') == true && query.block_property('farmersdelight:south_connected') == true && query.block_property('farmersdelight:west_connected') == true && query.block_property('farmersdelight:east_connected') == false",
+        "condition": "query.block_state('farmersdelight:north_connected') == true && query.block_state('farmersdelight:south_connected') == true && query.block_state('farmersdelight:west_connected') == true && query.block_state('farmersdelight:east_connected') == false",
         "components": {
           "minecraft:selection_box": {
             "origin": [8, 0, -8],
@@ -143,7 +143,7 @@
         }
       },
       {
-        "condition": "query.block_property('farmersdelight:north_connected') == true && query.block_property('farmersdelight:south_connected') == true && query.block_property('farmersdelight:west_connected') == false && query.block_property('farmersdelight:east_connected') == true",
+        "condition": "query.block_state('farmersdelight:north_connected') == true && query.block_state('farmersdelight:south_connected') == true && query.block_state('farmersdelight:west_connected') == false && query.block_state('farmersdelight:east_connected') == true",
         "components": {
           "minecraft:selection_box": {
             "origin": [-8, 0, -8],
@@ -152,7 +152,7 @@
         }
       },
       {
-        "condition": "query.block_property('farmersdelight:north_connected') == false && query.block_property('farmersdelight:south_connected') == true && query.block_property('farmersdelight:west_connected') == true && query.block_property('farmersdelight:east_connected') == true",
+        "condition": "query.block_state('farmersdelight:north_connected') == false && query.block_state('farmersdelight:south_connected') == true && query.block_state('farmersdelight:west_connected') == true && query.block_state('farmersdelight:east_connected') == true",
         "components": {
           "minecraft:selection_box": {
             "origin": [8, 0, -8],
@@ -161,7 +161,7 @@
         }
       },
       {
-        "condition": "query.block_property('farmersdelight:north_connected') == false && query.block_property('farmersdelight:south_connected') == true && query.block_property('farmersdelight:west_connected') == false && query.block_property('farmersdelight:east_connected') == false",
+        "condition": "query.block_state('farmersdelight:north_connected') == false && query.block_state('farmersdelight:south_connected') == true && query.block_state('farmersdelight:west_connected') == false && query.block_state('farmersdelight:east_connected') == false",
         "components": {
           "minecraft:selection_box": {
             "origin": [1, 0, -1],
@@ -170,7 +170,7 @@
         }
       },
       {
-        "condition": "query.block_property('farmersdelight:north_connected') == false && query.block_property('farmersdelight:south_connected') == true && query.block_property('farmersdelight:west_connected') == false && query.block_property('farmersdelight:east_connected') == true",
+        "condition": "query.block_state('farmersdelight:north_connected') == false && query.block_state('farmersdelight:south_connected') == true && query.block_state('farmersdelight:west_connected') == false && query.block_state('farmersdelight:east_connected') == true",
         "components": {
           "minecraft:selection_box": {
             "origin": [-1, 0, -1],
@@ -179,7 +179,7 @@
         }
       },
       {
-        "condition": "query.block_property('farmersdelight:north_connected') == false && query.block_property('farmersdelight:south_connected') == true && query.block_property('farmersdelight:west_connected') == true && query.block_property('farmersdelight:east_connected') == false",
+        "condition": "query.block_state('farmersdelight:north_connected') == false && query.block_state('farmersdelight:south_connected') == true && query.block_state('farmersdelight:west_connected') == true && query.block_state('farmersdelight:east_connected') == false",
         "components": {
           "minecraft:selection_box": {
             "origin": [1, 0, -1],
@@ -188,7 +188,7 @@
         }
       },
       {
-        "condition": "query.block_property('farmersdelight:north_connected') == false && query.block_property('farmersdelight:south_connected') == true && query.block_property('farmersdelight:west_connected') == true && query.block_property('farmersdelight:east_connected') == true",
+        "condition": "query.block_state('farmersdelight:north_connected') == false && query.block_state('farmersdelight:south_connected') == true && query.block_state('farmersdelight:west_connected') == true && query.block_state('farmersdelight:east_connected') == true",
         "components": {
           "minecraft:selection_box": {
             "origin": [8, 0, -1],
@@ -197,7 +197,7 @@
         }
       },
       {
-        "condition": "query.block_property('farmersdelight:north_connected') == false && query.block_property('farmersdelight:south_connected') == false && query.block_property('farmersdelight:west_connected') == false && query.block_property('farmersdelight:east_connected') == true",
+        "condition": "query.block_state('farmersdelight:north_connected') == false && query.block_state('farmersdelight:south_connected') == false && query.block_state('farmersdelight:west_connected') == false && query.block_state('farmersdelight:east_connected') == true",
         "components": {
           "minecraft:selection_box": {
             "origin": [8, 0, -1],
@@ -206,7 +206,7 @@
         }
       },
       {
-        "condition": "query.block_property('farmersdelight:north_connected') == false && query.block_property('farmersdelight:south_connected') == false && query.block_property('farmersdelight:west_connected') == true && query.block_property('farmersdelight:east_connected') == true",
+        "condition": "query.block_state('farmersdelight:north_connected') == false && query.block_state('farmersdelight:south_connected') == false && query.block_state('farmersdelight:west_connected') == true && query.block_state('farmersdelight:east_connected') == true",
         "components": {
           "minecraft:selection_box": {
             "origin": [-8, 0, -1],
@@ -215,7 +215,7 @@
         }
       },
       {
-        "condition": "query.block_property('farmersdelight:north_connected') == false && query.block_property('farmersdelight:south_connected') == false && query.block_property('farmersdelight:west_connected') == true && query.block_property('farmersdelight:east_connected') == false",
+        "condition": "query.block_state('farmersdelight:north_connected') == false && query.block_state('farmersdelight:south_connected') == false && query.block_state('farmersdelight:west_connected') == true && query.block_state('farmersdelight:east_connected') == false",
         "components": {
           "minecraft:selection_box": {
             "origin": [-8, 0, -1],
@@ -229,49 +229,49 @@
         "sequence": [
           {
             "condition": "query.block_neighbor_has_any_tag(0, 0, -1, 'rope') == 1",
-            "set_block_property": {
+            "set_block_state": {
               "farmersdelight:north_connected": true
             }
           },
           {
             "condition": "query.block_neighbor_has_any_tag(0, 0, -1, 'rope') == 0",
-            "set_block_property": {
+            "set_block_state": {
               "farmersdelight:north_connected": false
             }
           },
           {
             "condition": "query.block_neighbor_has_any_tag(0, 0, 1, 'rope') == 1",
-            "set_block_property": {
+            "set_block_state": {
               "farmersdelight:south_connected": true
             }
           },
           {
             "condition": "query.block_neighbor_has_any_tag(0 ,0, 1, 'rope') == 0",
-            "set_block_property": {
+            "set_block_state": {
               "farmersdelight:south_connected": false
             }
           },
           {
             "condition": "query.block_neighbor_has_any_tag(-1, 0, 0, 'rope') == 1",
-            "set_block_property": {
+            "set_block_state": {
               "farmersdelight:east_connected": true
             }
           },
           {
             "condition": "query.block_neighbor_has_any_tag(-1, 0, 0, 'rope') == 0",
-            "set_block_property": {
+            "set_block_state": {
               "farmersdelight:east_connected": false
             }
           },
           {
             "condition": "query.block_neighbor_has_any_tag(1, 0, 0, 'rope') == 1",
-            "set_block_property": {
+            "set_block_state": {
               "farmersdelight:west_connected": true
             }
           },
           {
             "condition": "query.block_neighbor_has_any_tag(1 ,0, 0, 'rope') == 0",
-            "set_block_property": {
+            "set_block_state": {
               "farmersdelight:west_connected": false
             }
           }

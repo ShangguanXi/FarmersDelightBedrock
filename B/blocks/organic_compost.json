@@ -21,7 +21,7 @@
         },
         "permutations": [
             {
-                "condition": "query.block_property('farmersdelight:process') == 0 || query.block_property('farmersdelight:process') == 1",
+                "condition": "query.block_state('farmersdelight:process') == 0 || query.block_state('farmersdelight:process') == 1",
                 "components": {
                     "minecraft:material_instances": {
                         "*": {
@@ -31,7 +31,7 @@
                 }
             },
             {
-                "condition": "query.block_property('farmersdelight:process') == 2 || query.block_property('farmersdelight:process') == 3",
+                "condition": "query.block_state('farmersdelight:process') == 2 || query.block_state('farmersdelight:process') == 3",
                 "components": {
                     "minecraft:material_instances": {
                         "*": {
@@ -41,7 +41,7 @@
                 }
             },
             {
-                "condition": "query.block_property('farmersdelight:process') == 4 || query.block_property('farmersdelight:process') == 5",
+                "condition": "query.block_state('farmersdelight:process') == 4 || query.block_state('farmersdelight:process') == 5",
                 "components": {
                     "minecraft:material_instances": {
                         "*": {
@@ -51,7 +51,7 @@
                 }
             },
             {
-                "condition": "query.block_property('farmersdelight:process') == 6 || query.block_property('farmersdelight:process') == 7",
+                "condition": "query.block_state('farmersdelight:process') == 6 || query.block_state('farmersdelight:process') == 7",
                 "components": {
                     "minecraft:material_instances": {
                         "*": {

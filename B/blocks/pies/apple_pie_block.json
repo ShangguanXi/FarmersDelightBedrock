@@ -25,31 +25,31 @@
         },
         "permutations": [
             {
-                "condition": "query.block_property('farmersdelight:food_block_stage') == 0",
+                "condition": "query.block_state('farmersdelight:food_block_stage') == 0",
                 "components": {
                     "minecraft:geometry": "geometry.pie"
                 }
             },
             {
-                "condition": "query.block_property('farmersdelight:food_block_stage') == 1",
+                "condition": "query.block_state('farmersdelight:food_block_stage') == 1",
                 "components": {
                     "minecraft:geometry": "geometry.pie_slice1"
                 }
             },
             {
-                "condition": "query.block_property('farmersdelight:food_block_stage') == 2",
+                "condition": "query.block_state('farmersdelight:food_block_stage') == 2",
                 "components": {
                     "minecraft:geometry": "geometry.pie_slice2"
                 }
             },
             {
-                "condition": "query.block_property('farmersdelight:food_block_stage') == 3",
+                "condition": "query.block_state('farmersdelight:food_block_stage') == 3",
                 "components": {
                     "minecraft:geometry": "geometry.pie_slice3"
                 }
             },
             {
-                "condition": "query.block_property('minecraft:cardinal_direction') == 'north'",
+                "condition": "query.block_state('minecraft:cardinal_direction') == 'north'",
                 "components": {
                     "minecraft:transformation": {
                         "rotation": [
@@ -61,7 +61,7 @@
                 }
             },
             {
-                "condition": "query.block_property('minecraft:cardinal_direction') == 'south'",
+                "condition": "query.block_state('minecraft:cardinal_direction') == 'south'",
                 "components": {
                     "minecraft:transformation": {
                         "rotation": [
@@ -73,7 +73,7 @@
                 }
             },
             {
-                "condition": "query.block_property('minecraft:cardinal_direction') == 'west'",
+                "condition": "query.block_state('minecraft:cardinal_direction') == 'west'",
                 "components": {
                     "minecraft:transformation": {
                         "rotation": [
@@ -85,7 +85,7 @@
                 }
             },
             {
-                "condition": "query.block_property('minecraft:cardinal_direction') == 'east'",
+                "condition": "query.block_state('minecraft:cardinal_direction') == 'east'",
                 "components": {
                     "minecraft:transformation": {
                         "rotation": [
@@ -175,13 +175,13 @@
                         }
                     },
                     {
-                        "condition": "query.block_property('farmersdelight:food_block_stage') != 3",
-                        "set_block_property": {
-                            "farmersdelight:food_block_stage": "query.block_property('farmersdelight:food_block_stage') + 1"
+                        "condition": "query.block_state('farmersdelight:food_block_stage') != 3",
+                        "set_block_state": {
+                            "farmersdelight:food_block_stage": "query.block_state('farmersdelight:food_block_stage') + 1"
                         }
                     },
                     {
-                        "condition": "query.block_property('farmersdelight:food_block_stage') == 3",
+                        "condition": "query.block_state('farmersdelight:food_block_stage') == 3",
                         "die": {
                             "target": "block"
                         }
