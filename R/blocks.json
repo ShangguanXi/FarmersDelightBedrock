@@ -88,6 +88,9 @@
     "farmersdelight:wild_tomatoes_block": {
         "sound": "grass"
     },
+    "farmersdelight:sandy_shrub": {
+        "sound": "grass"
+    },
     "farmersdelight:half_tatami_mat": {
         "sound": "grass"
     },

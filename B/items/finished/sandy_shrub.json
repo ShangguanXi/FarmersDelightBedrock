@@ -1,0 +1,19 @@
+{
+  "format_version": "1.16.100", 
+  "minecraft:item": {
+    "components": {
+      "minecraft:icon": {
+        "texture": "farmersdelight:sandy_shrub"
+      } ,
+      "minecraft:block_placer": {
+        "block": "farmersdelight:sandy_shrub_block"
+      },
+      "tag:farmersdelight:can_cut":{}
+    }, 
+    "description": {
+      "category": "nature", 
+      "identifier": "farmersdelight:sandy_shrub"
+    }, 
+    "events": {}
+  }
+}

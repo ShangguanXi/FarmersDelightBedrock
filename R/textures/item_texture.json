@@ -290,6 +290,9 @@
     "farmersdelight:wild_carrots": {
       "textures": "textures/blocks/wild_carrots"
     },
+    "farmersdelight:sandy_shrub": {
+      "textures": "textures/blocks/sandy_shrub"
+    },
     "farmersdelight:half_tatami_mat": {
       "textures": "textures/items/half_tatami_mat"
     },
