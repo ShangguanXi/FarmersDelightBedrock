@@ -1,4 +1,5 @@
-const farmersdelightBlockList = [
+
+const farmersdelightBlockList: string[] = [
     "wild_cabbages",
     "wild_tomatoes",
     "wild_onions",
@@ -9,7 +10,7 @@ const farmersdelightBlockList = [
     "brown_mushroom_colony",
     "red_mushroom_colony"
 ];
-const vanillaItemList = [
+const vanillaItemList: string[] = [
     "minecraft:cake",
     "minecraft:cooked_cod",
     "minecraft:cod",
@@ -22,5 +23,5 @@ const vanillaItemList = [
     "minecraft:cooked_mutton",
     "minecraft:cooked_chicken"
 ];
+
 export { vanillaItemList, farmersdelightBlockList };
-//# sourceMappingURL=cuttingBoardRecipe.js.map
