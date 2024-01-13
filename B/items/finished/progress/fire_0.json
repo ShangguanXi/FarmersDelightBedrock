@@ -8,7 +8,7 @@
       "minecraft:max_stack_size": 1
     }, 
     "description": {
-      "category": "commands", 
+      "category": "commands",
       "identifier": "farmersdelight:fire_0"
     }, 
     "events": {}

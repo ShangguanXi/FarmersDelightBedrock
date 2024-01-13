@@ -164,12 +164,131 @@
       }
     ]
   },
+  "cooking_pot_fire_item": {
+    "type": "input_panel",
+    "size": [ 18, 18 ],
+    "layer": 1,
+    "$cell_image_size|default": [ 18, 18 ],
+    "$cell_overlay_ref|default": "common.cell_overlay",
+    "$button_ref|default": "common.container_slot_button_prototype",
+    "$stack_count_required|default": true,
+    "$durability_bar_required|default": true,
+    "$item_renderer|default": "common.item_renderer",
+    "$item_renderer_panel_size|default": [ 20, 20 ],
+    "$item_renderer_size|default": [ 20, 20 ],
+    "$item_renderer_offset|default": [ 0, 0 ],
+    "$background_images|default": "chest.cooking_pot_background_images",
+    "$background_image_control_name|default": "bg",
+
+    "$focus_id|default": "",
+    "$focus_override_down|default": "",
+    "$focus_override_up|default": "",
+    "$focus_override_left|default": "",
+    "$focus_override_right|default": "",
+    "focus_identifier": "$focus_id",
+    "focus_change_down": "$focus_override_down",
+    "focus_change_up": "$focus_override_up",
+    "focus_change_left": "$focus_override_left",
+    "focus_change_right": "$focus_override_right",
+    "focus_enabled": true,
+    "focus_wrap_enabled": false,
+    "focus_magnet_enabled": true,
+
+    "controls": [
+      {
+        "item_cell": {
+          "type": "panel",
+          "size": "$cell_image_size",
+          "layer": 0,
+          "controls": [
+            {
+              "$background_image_control_name@$background_images": {
+                "layer": 1
+              }
+            },
+            {
+              "item": {
+                "type": "panel",
+                "size": "$item_renderer_panel_size",
+                "layer": 0,
+                "controls": [
+                  {
+                    "stack_count_label@common.stack_count_label": {
+                      "layer": 9
+                    }
+                  },
+                  {
+                    "$item_renderer@$item_renderer": {
+                      "size": "$item_renderer_size",
+                      "offset": "$item_renderer_offset",
+                      "anchor_to": "center",
+                      "anchor_from": "center",
+                      "layer": 7
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "durability_bar@common.durability_bar": {
+                "layer": 8
+              }
+            }
+          ]
+        }
+      },
+      {
+        "item_cell_overlay_ref@$cell_overlay_ref": {
+          "layer": 3
+        }
+      },
+      {
+        "item_selected_image@common.slot_selected": {
+          "layer": 4
+        }
+      },
+      {
+        "item_button_ref@$button_ref": {
+          "tts_ignore_count": true,
+          "tts_skip_message": true,
+          "tts_inherit_siblings": true,
+          "layer": 5
+        }
+      },
+      {
+        "container_item_lock_overlay@common.container_item_lock_overlay": {
+          "size": "$item_renderer_size",
+          "offset": [ 1, 1 ],
+          "anchor_to": "top_left",
+          "anchor_from": "top_left",
+          "layer": 6
+        }
+      },
+      {
+        "item_lock_cell_image@common.item_lock_cell_image": {
+          "layer": 2
+        }
+      },
+      {
+        "item_container_transfer_mode_overlay@common.item_container_transfer_mode_overlay": {
+          "size": "$item_renderer_size",
+          "offset": [ 1, 1 ],
+          "anchor_to": "top_left",
+          "anchor_from": "top_left",
+          "layer": 10
+        }
+      }
+    ]
+  },
   "cooking_pot_background_images": {
     "type": "image",
     "texture": "textures/gui/cooking_pot_background_images",
     "layer": 1
   },
   "cooking_pot_item@chest.cooking_pot_container_item": {
+    "$item_collection_name": "container_items"
+  },
+  "fire_item@chest.cooking_pot_fire_item": {
     "$item_collection_name": "container_items"
   },
   "input_grid_panel": {
@@ -182,13 +301,13 @@
   "cooking_pot_grid": {
     "type": "grid",
     "size": [
-      180,
+      196,
       18
     ],
     "anchor_from": "top_left",
     "anchor_to": "top_left",
     "grid_dimensions": [
-      10,
+      11,
       1
     ],
     "grid_item_template": "chest.chest_grid_item",
@@ -377,6 +496,34 @@
             }
           ]
         }
+      },
+      {
+        "cooking_pot_bot_progress@chest.input_grid_panel": {
+          "grid_position": [
+            10,
+            0
+          ],
+          "controls": [
+            {
+              "mid_right@chest.fire_item": {
+                "offset": [
+                  -160,
+                  40
+                ],
+                "$cell_image_size|default": [
+                  10,
+                 10
+                ],
+                "size": [
+                  10,
+                  10
+                ],
+                "enabled": false
+              }
+              
+            }
+          ]
+        }
       }
     ]
   },
@@ -485,7 +632,7 @@
   "small_chest_screen@common.inventory_screen_common": {
     "$close_on_player_hurt|default": true,
     "close_on_player_hurt": "$close_on_player_hurt",
-    "$root_panel|default": "chest.small_root_panel", //default root panel
+    "$root_panel|default": "chest.small_root_panel", 
     "$new_container_title|default": "$container_title",
     "modifications": [
       {
@@ -499,43 +646,4 @@
       }
     ]
   }
-  /*"small_chest_screen@common.inventory_screen_common": {
-    "$close_on_player_hurt|default": true,
-    "close_on_player_hurt": "$close_on_player_hurt",
-    "variables": [
-      {
-        "requires": "($desktop_screen and not($container_title = '0'))",
-        "$screen_content": "chest.small_chest_panel",
-        "$screen_bg_content": "common.screen_background"
-      },
-       {
-        "requires": "($desktop_screen and ($container_title = '0'))",
-        "$screen_content": "pocket_containers.small_chest_panel",
-        "$screen_bg_content": "common.screen_background"
-      },
-      {
-        "requires": "$pocket_screen",
-        "$screen_content": "pocket_containers.small_chest_panel"
-      }
-      {
-        "requires": "($desktop_screen and ($container_title = '100'         or $container_title = '99'         or $container_title = '98'         or $container_title = '97'         or $container_title = '96'         or $container_title = '95'         or $container_title = '94'         or $container_title = '93'         or $container_title = '92'         or $container_title = '91'         or $container_title = '90'         or $container_title = '89'         or $container_title = '88'         or $container_title = '87'         or $container_title = '86'         or $container_title = '85'         or $container_title = '84'         or $container_title = '83'         or $container_title = '82'         or $container_title = '81'         or $container_title = '80'         or $container_title = '79'         or $container_title = '78'         or $container_title = '77'         or $container_title = '76'         or $container_title = '75'         or $container_title = '74'         or $container_title = '73'         or $container_title = '72'         or $container_title = '71'         or $container_title = '70'         or $container_title = '69'         or $container_title = '68'         or $container_title = '67'         or $container_title = '66'         or $container_title = '65'         or $container_title = '64'         or $container_title = '63'         or $container_title = '62'         or $container_title = '61'         or $container_title = '60'         or $container_title = '59'         or $container_title = '58'         or $container_title = '57'         or $container_title = '56'         or $container_title = '55'         or $container_title = '54'         or $container_title = '53'         or $container_title = '52'         or $container_title = '51'         or $container_title = '50'         or $container_title = '49'         or $container_title = '48'         or $container_title = '47'         or $container_title = '46'         or $container_title = '45'         or $container_title = '44'         or $container_title = '43'         or $container_title = '42'         or $container_title = '41'         or $container_title = '40'         or $container_title = '39'         or $container_title = '38'         or $container_title = '37'         or $container_title = '36'         or $container_title = '35'         or $container_title = '34'         or $container_title = '33'         or $container_title = '32'         or $container_title = '31'         or $container_title = '30'         or $container_title = '29'         or $container_title = '28'         or $container_title = '27'         or $container_title = '26'         or $container_title = '25'         or $container_title = '24'         or $container_title = '23'         or $container_title = '22'         or $container_title = '21'         or $container_title = '20'         or $container_title = '19'         or $container_title = '18'         or $container_title = '17'         or $container_title = '16'         or $container_title = '15'         or $container_title = '14'         or $container_title = '13'         or $container_title = '12'         or $container_title = '11'         or $container_title = '10'         or $container_title = '9'         or $container_title = '8'         or $container_title = '7'         or $container_title = '6'         or $container_title = '5'         or $container_title = '4'         or $container_title = '3'         or $container_title = '2'         or $container_title = '1'         or $container_title = '0'))",
-        "$screen_content": "chest.cooking_pot_panel",
-        "$screen_bg_content": "common.screen_background"
-      },
-      {
-        "requires": "($desktop_screen and not($container_title = '100'         or $container_title = '99'         or $container_title = '98'         or $container_title = '97'         or $container_title = '96'         or $container_title = '95'         or $container_title = '94'         or $container_title = '93'         or $container_title = '92'         or $container_title = '91'         or $container_title = '90'         or $container_title = '89'         or $container_title = '88'         or $container_title = '87'         or $container_title = '86'         or $container_title = '85'         or $container_title = '84'         or $container_title = '83'         or $container_title = '82'         or $container_title = '81'         or $container_title = '80'         or $container_title = '79'         or $container_title = '78'         or $container_title = '77'         or $container_title = '76'         or $container_title = '75'         or $container_title = '74'         or $container_title = '73'         or $container_title = '72'         or $container_title = '71'         or $container_title = '70'         or $container_title = '69'         or $container_title = '68'         or $container_title = '67'         or $container_title = '66'         or $container_title = '65'         or $container_title = '64'         or $container_title = '63'         or $container_title = '62'         or $container_title = '61'         or $container_title = '60'         or $container_title = '59'         or $container_title = '58'         or $container_title = '57'         or $container_title = '56'         or $container_title = '55'         or $container_title = '54'         or $container_title = '53'         or $container_title = '52'         or $container_title = '51'         or $container_title = '50'         or $container_title = '49'         or $container_title = '48'         or $container_title = '47'         or $container_title = '46'         or $container_title = '45'         or $container_title = '44'         or $container_title = '43'         or $container_title = '42'         or $container_title = '41'         or $container_title = '40'         or $container_title = '39'         or $container_title = '38'         or $container_title = '37'         or $container_title = '36'         or $container_title = '35'         or $container_title = '34'         or $container_title = '33'         or $container_title = '32'         or $container_title = '31'         or $container_title = '30'         or $container_title = '29'         or $container_title = '28'         or $container_title = '27'         or $container_title = '26'         or $container_title = '25'         or $container_title = '24'         or $container_title = '23'         or $container_title = '22'         or $container_title = '21'         or $container_title = '20'         or $container_title = '19'         or $container_title = '18'         or $container_title = '17'         or $container_title = '16'         or $container_title = '15'         or $container_title = '14'         or $container_title = '13'         or $container_title = '12'         or $container_title = '11'         or $container_title = '10'         or $container_title = '9'         or $container_title = '8'         or $container_title = '7'         or $container_title = '6'         or $container_title = '5'         or $container_title = '4'         or $container_title = '3'         or $container_title = '2'         or $container_title = '1'         or $container_title = '0'))",
-        "$screen_content": "chest.small_chest_panel",
-        "$screen_bg_content": "common.screen_background"
-      },
-      {
-        "requires": "($pocket_screen and not($container_title = '100'         or $container_title = '99'         or $container_title = '98'         or $container_title = '97'         or $container_title = '96'         or $container_title = '95'         or $container_title = '94'         or $container_title = '93'         or $container_title = '92'         or $container_title = '91'         or $container_title = '90'         or $container_title = '89'         or $container_title = '88'         or $container_title = '87'         or $container_title = '86'         or $container_title = '85'         or $container_title = '84'         or $container_title = '83'         or $container_title = '82'         or $container_title = '81'         or $container_title = '80'         or $container_title = '79'         or $container_title = '78'         or $container_title = '77'         or $container_title = '76'         or $container_title = '75'         or $container_title = '74'         or $container_title = '73'         or $container_title = '72'         or $container_title = '71'         or $container_title = '70'         or $container_title = '69'         or $container_title = '68'         or $container_title = '67'         or $container_title = '66'         or $container_title = '65'         or $container_title = '64'         or $container_title = '63'         or $container_title = '62'         or $container_title = '61'         or $container_title = '60'         or $container_title = '59'         or $container_title = '58'         or $container_title = '57'         or $container_title = '56'         or $container_title = '55'         or $container_title = '54'         or $container_title = '53'         or $container_title = '52'         or $container_title = '51'         or $container_title = '50'         or $container_title = '49'         or $container_title = '48'         or $container_title = '47'         or $container_title = '46'         or $container_title = '45'         or $container_title = '44'         or $container_title = '43'         or $container_title = '42'         or $container_title = '41'         or $container_title = '40'         or $container_title = '39'         or $container_title = '38'         or $container_title = '37'         or $container_title = '36'         or $container_title = '35'         or $container_title = '34'         or $container_title = '33'         or $container_title = '32'         or $container_title = '31'         or $container_title = '30'         or $container_title = '29'         or $container_title = '28'         or $container_title = '27'         or $container_title = '26'         or $container_title = '25'         or $container_title = '24'         or $container_title = '23'         or $container_title = '22'         or $container_title = '21'         or $container_title = '20'         or $container_title = '19'         or $container_title = '18'         or $container_title = '17'         or $container_title = '16'         or $container_title = '15'         or $container_title = '14'         or $container_title = '13'         or $container_title = '12'         or $container_title = '11'         or $container_title = '10'         or $container_title = '9'         or $container_title = '8'         or $container_title = '7'         or $container_title = '6'         or $container_title = '5'         or $container_title = '4'         or $container_title = '3'         or $container_title = '2'         or $container_title = '1'         or $container_title = '0'))",
-        "$screen_content": "pocket_containers.small_chest_panel"
-      },
-      {
-        "requires": "($pocket_screen and ($container_title = '100'         or $container_title = '99'         or $container_title = '98'         or $container_title = '97'         or $container_title = '96'         or $container_title = '95'         or $container_title = '94'         or $container_title = '93'         or $container_title = '92'         or $container_title = '91'         or $container_title = '90'         or $container_title = '89'         or $container_title = '88'         or $container_title = '87'         or $container_title = '86'         or $container_title = '85'         or $container_title = '84'         or $container_title = '83'         or $container_title = '82'         or $container_title = '81'         or $container_title = '80'         or $container_title = '79'         or $container_title = '78'         or $container_title = '77'         or $container_title = '76'         or $container_title = '75'         or $container_title = '74'         or $container_title = '73'         or $container_title = '72'         or $container_title = '71'         or $container_title = '70'         or $container_title = '69'         or $container_title = '68'         or $container_title = '67'         or $container_title = '66'         or $container_title = '65'         or $container_title = '64'         or $container_title = '63'         or $container_title = '62'         or $container_title = '61'         or $container_title = '60'         or $container_title = '59'         or $container_title = '58'         or $container_title = '57'         or $container_title = '56'         or $container_title = '55'         or $container_title = '54'         or $container_title = '53'         or $container_title = '52'         or $container_title = '51'         or $container_title = '50'         or $container_title = '49'         or $container_title = '48'         or $container_title = '47'         or $container_title = '46'         or $container_title = '45'         or $container_title = '44'         or $container_title = '43'         or $container_title = '42'         or $container_title = '41'         or $container_title = '40'         or $container_title = '39'         or $container_title = '38'         or $container_title = '37'         or $container_title = '36'         or $container_title = '35'         or $container_title = '34'         or $container_title = '33'         or $container_title = '32'         or $container_title = '31'         or $container_title = '30'         or $container_title = '29'         or $container_title = '28'         or $container_title = '27'         or $container_title = '26'         or $container_title = '25'         or $container_title = '24'         or $container_title = '23'         or $container_title = '22'         or $container_title = '21'         or $container_title = '20'         or $container_title = '19'         or $container_title = '18'         or $container_title = '17'         or $container_title = '16'         or $container_title = '15'         or $container_title = '14'         or $container_title = '13'         or $container_title = '12'         or $container_title = '11'         or $container_title = '10'         or $container_title = '9'         or $container_title = '8'         or $container_title = '7'         or $container_title = '6'         or $container_title = '5'         or $container_title = '4'         or $container_title = '3'         or $container_title = '2'         or $container_title = '1'         or $container_title = '0'))",
-        "$screen_content": "chest.cooking_pot_panel",
-        "$screen_bg_content": "common.screen_background"
-      }
-    ]
-  }*/
 }

@@ -3,13 +3,13 @@
   "minecraft:item": {
     "components": {
       "minecraft:icon": {
-        "texture": "farmersdelight:fire_0"
+        "texture": "farmersdelight:fire_1"
       },
       "minecraft:max_stack_size": 1
     }, 
     "description": {
-      "category": "commands", 
-      "identifier": "farmersdelight:fire_0"
+      "category": "commands",
+      "identifier": "farmersdelight:fire_1"
     }, 
     "events": {}
   }

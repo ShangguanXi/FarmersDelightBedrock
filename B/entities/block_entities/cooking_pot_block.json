@@ -65,7 +65,7 @@
                 "height": 0.5
             },
             "minecraft:inventory": {
-                "inventory_size": 10,
+                "inventory_size": 11,
                 "can_be_siphoned_from": true,
                 "container_type": "minecart_chest"
             }

@@ -340,6 +340,12 @@
     },
     "farmersdelight:cooking_pot_arrow_100":{
       "textures": "textures/items/cooking_pot_arrow_100"
+    },
+    "farmersdelight:fire_0":{
+      "textures": "textures/gui/cooking_pot_fire_off"
+    },
+    "farmersdelight:fire_1":{
+      "textures": "textures/gui/cooking_pot_fire_on"
     }
   }
 }
