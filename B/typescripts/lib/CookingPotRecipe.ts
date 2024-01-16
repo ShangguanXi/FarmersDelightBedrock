@@ -16,12 +16,14 @@ export class CookingPotRecipe extends RecipeHolder {
             this.canRecipe = false;
         }
         if (itemStack) {
-            const count = this.recipes[this.index].result.count ? this.recipes[this.index].result.count : 1;
             if (input && !this.isEqualValue(itemStack, this.recipes[this.index2].result)) {
                 this.index2 = this.getValidRecipeIndex2(itemStack, input, this.recipes);
             }
-            if (itemStack.amount == itemStack.maxAmount || (itemStack.amount += count) > itemStack.maxAmount) {
-                this.canRecipe = false;
+            if (this.index > -1) {
+                const count = this.recipes[this.index].result.count ? this.recipes[this.index].result.count : 1;
+                if (itemStack.amount == itemStack.maxAmount || (itemStack.amount += count) > itemStack.maxAmount) {
+                    this.canRecipe = false;
+                }
             }
         }
     }
