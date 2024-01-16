@@ -11,10 +11,10 @@
         "sound": "wood"
     },
     "farmersdelight:safety_net": {
-        "sound": "wool"
+        "sound": "cloth"
     },
     "farmersdelight:rope": {
-        "sound": "wool"
+        "sound": "cloth"
     },
     "farmersdelight:cabbage_block": {
         "sound": "grass"
@@ -94,6 +94,9 @@
     "farmersdelight:half_tatami_mat": {
         "sound": "grass"
     },
+    "farmersdelight:tatami": {
+        "sound": "cloth"
+    },
     "farmersdelight:rich_soil": {
         "sound": "gravel"
     },
@@ -128,7 +131,7 @@
         "sound": "wood"
     },
     "farmersdelight:rice_bag": {
-        "sound": "wool"
+        "sound": "cloth"
     },
     "farmersdelight:rice_bale": {
         "sound": "grass"
