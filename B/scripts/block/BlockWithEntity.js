@@ -21,7 +21,7 @@ export class BlockWithEntity {
         }
         if (!entityBlock)
             return undefined;
-        const scoreboardObjective = scoreboard.getObjective(entityBlock.id) ?? null;
+        const scoreboardObjective = scoreboard.getObjective(entityBlock.typeId + entityBlock.id) ?? null;
         const blockEntityDataLocation = entityBlock.getDynamicProperty('farmersdelight:blockEntityDataLocation');
         return { block: block, dimension: dimension, entity: entityBlock, scoreboardObjective: scoreboardObjective, blockEntityDataLocation: blockEntityDataLocation };
     }

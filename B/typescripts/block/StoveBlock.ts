@@ -13,7 +13,7 @@ export class StoveBlock extends BlockWithEntity {
         if (block.typeId != "farmersdelight:stove") return;
         const { x, y, z }: Vector3 = block.location;
         const entity: Entity = super.setBlock(args, { x: x + 0.5, y: y, z: z + 0.5 }, "farmersdelight:stove");
-        world.scoreboard.addObjective(entity.id, entity.id).setScore('amount', 0);
+        world.scoreboard.addObjective(entity.typeId + entity.id, entity.id).setScore('amount', 0);
     }
     @methodEventSub(world.afterEvents.itemUseOn)
     useOnBlock(args: any) {

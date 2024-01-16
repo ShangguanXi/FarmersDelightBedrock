@@ -1,4 +1,5 @@
 import { ItemStack, world } from "@minecraft/server";
+import ObjectUtil from "../../lib/ObjectUtil";
 const scoreboard = world.scoreboard;
 export class BlockEntity {
     blockEntityData(args) {
@@ -7,7 +8,7 @@ export class BlockEntity {
             const dimension = entity?.dimension ?? undefined;
             const blockEntityDataLocation = entity.getDynamicProperty('farmersdelight:blockEntityDataLocation');
             const block = dimension.getBlock(blockEntityDataLocation);
-            const scoreboardObjective = scoreboard.getObjective(entity.id) ?? null;
+            const scoreboardObjective = scoreboard.getObjective(entity.typeId + entity.id) ?? null;
             return { entity: entity, dimension: dimension, blockEntityDataLocation: blockEntityDataLocation, block: block, scoreboardObjective: scoreboardObjective };
         }
         catch (error) {
@@ -15,9 +16,9 @@ export class BlockEntity {
         }
     }
     blockEntityLoot(args, id, list, amount = 1) {
-        if (args.block && JSON.stringify(args.entity.location) !== JSON.stringify(args.blockEntityDataLocation))
+        if (ObjectUtil.isEqual(args.entity.location, args.blockEntityDataLocation))
             args.entity.teleport(args.blockEntityDataLocation);
-        if (args.block.typeId == id)
+        if (args.block?.typeId == id)
             return;
         if (list?.length) {
             for (const itemStack of list) {
