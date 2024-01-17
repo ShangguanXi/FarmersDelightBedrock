@@ -1,0 +1,30 @@
+{
+  "include": [
+    "../typescripts/**/*",
+    "../scripts/data/mojang-effect.js"
+  ],
+  "compilerOptions": {
+    "allowJs": true,
+    "target": "ES2020",
+    "moduleResolution": "node",
+    "module": "ES2020",
+    "declaration": false,
+    "noLib": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "pretty": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "allowUnreachableCode": true,
+    "allowUnusedLabels": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": false,
+    "noImplicitUseStrict": false,
+    "outDir": "../scripts",
+    "rootDir": "../typescripts",
+    "baseUrl": "behavior_packs/",
+    "listFiles": false,
+  },
+  "compileOnSave": false
+}

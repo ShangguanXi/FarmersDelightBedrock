@@ -10,6 +10,7 @@ import { SkilletBlockEntity } from "./block/entity/SkilletBlockEntity";
 import { RichSoilFarmland } from "./block/RichSoilFarmland";
 import { OrganicCompost } from "./block/OrganicCompost";
 import { Knife } from "./item/Knife";
+import { TatamiBlock } from "./block/TatamiBlock";
 
 
 new CookingPotBlock();
@@ -23,3 +24,4 @@ new SkilletBlockEntity();
 new RichSoilFarmland();
 new OrganicCompost();
 new Knife();
+new TatamiBlock();

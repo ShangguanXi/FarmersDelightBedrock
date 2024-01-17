@@ -296,6 +296,9 @@
     "farmersdelight:half_tatami_mat": {
       "textures": "textures/items/half_tatami_mat"
     },
+    "farmersdelight:tatami_mat": {
+      "textures": "textures/items/full_tatami_mat"
+    },
     "farmersdelight:apple_pie": {
       "textures": "textures/items/apple_pie"
     },

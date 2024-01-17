@@ -235,7 +235,8 @@
                 "explosion_resistance": 3
             },
             "minecraft:geometry": "geometry.tatami",
-            "tag:tatami": {}
+            "tag:tatami": {},
+            "tag:farmersdelight:straw_blocks":{}
         },
         "events": {
             "farmersdelight:north_check": {
@@ -243,7 +244,7 @@
                     {
                       "condition": "query.block_neighbor_has_any_tag(0, 0, -1, 'tatami') == 0",
                       "set_block_state": {
-                        "farmersdelight:north_connected": false
+                        "farmersdelight:connection": "'none'"
                       }
                     }
                 ]
@@ -253,7 +254,7 @@
                     {
                       "condition": "query.block_neighbor_has_any_tag(1, 0, 0, 'tatami') == 0",
                       "set_block_state": {
-                        "farmersdelight:east_connected": false
+                        "farmersdelight:connection": "'none'"
                       }
                     }
                 ]
@@ -263,7 +264,7 @@
                     {
                       "condition": "query.block_neighbor_has_any_tag(0, 0, 1, 'tatami') == 0",
                       "set_block_state": {
-                        "farmersdelight:south_connected": false
+                        "farmersdelight:connection": "'none'"
                       }
                     }
                 ]
@@ -273,7 +274,7 @@
                     {
                       "condition": "query.block_neighbor_has_any_tag(-1, 0, 0, 'tatami') == 0",
                       "set_block_state": {
-                        "farmersdelight:west_connected": false
+                        "farmersdelight:connection": "'none'"
                       }
                     }
                 ]
@@ -283,7 +284,7 @@
                     {
                       "condition": "query.block_neighbor_has_any_tag(0, 1, 0, 'tatami') == 0",
                       "set_block_state": {
-                        "farmersdelight:up_connected": false
+                        "farmersdelight:connection": "'none'"
                       }
                     }
                 ]
@@ -293,7 +294,7 @@
                     {
                       "condition": "query.block_neighbor_has_any_tag(0, -1, 0, 'tatami') == 0",
                       "set_block_state": {
-                        "farmersdelight:down_connected": false
+                        "farmersdelight:connection": "'none'"
                       }
                     }
                 ]

@@ -92,7 +92,13 @@
         "sound": "grass"
     },
     "farmersdelight:half_tatami_mat": {
-        "sound": "grass"
+        "sound": "cloth"
+    },
+    "farmersdelight:tatami_mat_main": {
+        "sound": "cloth"
+    },
+    "farmersdelight:tatami_mat_other": {
+        "sound": "cloth"
     },
     "farmersdelight:tatami": {
         "sound": "cloth"
