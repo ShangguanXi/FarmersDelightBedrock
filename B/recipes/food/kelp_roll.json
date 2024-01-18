@@ -1,0 +1,35 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "farmersdelight:kelp_roll"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "pattern": [
+            "#W#",
+            "aaa"
+        ],
+        "key": {
+            "#": {
+                "item": "farmersdelight:cooked_rice"
+            },
+            "W": {
+                "item": "minecraft:carrot"
+            },
+            "a": {
+                "item": "minecraft:dried_kelp"
+            }
+        },
+        "result": [
+            {
+                "item": "farmersdelight:kelp_roll"
+            },
+            {
+                "item": "minecraft:bowl",
+                "count":2
+            }
+        ]
+    }
+}

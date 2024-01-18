@@ -349,6 +349,21 @@
     },
     "farmersdelight:fire_1":{
       "textures": "textures/gui/cooking_pot_fire_on"
+    },
+    "farmersdelight:kelp_roll":{
+      "textures": "textures/items/kelp_roll"
+    },
+    "farmersdelight:kelp_roll_slice":{
+      "textures": "textures/items/kelp_roll_slice"
+    },
+    "farmersdelight:salmon_roll":{
+      "textures": "textures/items/salmon_roll"
+    },
+    "farmersdelight:cod_roll":{
+      "textures": "textures/items/cod_roll"
+    },
+    "farmersdelight:rice_roll_medley_block":{
+      "textures": "textures/items/rice_roll_medley_block"
     }
   }
 }

@@ -188,6 +188,16 @@
 
   item.farmersdelight:dog_food=狗粮
   item.farmersdelight:horse_feed=马食
+  
+  item.farmersdelight:kelp_roll=海带寿司卷
+  item.farmersdelight:kelp_roll_slice=海带寿司
+  
+  item.farmersdelight:salmon_roll=鲑鱼寿司
+  item.farmersdelight:cod_roll=鳕鱼寿司
+
+  tile.farmersdelight:rice_roll_medley_block.name=寿司拼盘
+  item.farmersdelight:rice_roll_medley_block_item=寿司拼盘
+
   effect.farmersdelight:nourishment.name=滋养
   effect.farmersdelight:comfort.name=舒适
   effect.farmersdelight:nourishment.0.desc.name=你不会再消耗饥饿值，除非需要借以恢复生命值。

@@ -1,0 +1,31 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "farmersdelight:cod_roll"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "pattern": [
+            "W#",
+            "W"
+        ],
+        "key": {
+            "#": {
+                "item": "farmersdelight:cooked_rice"
+            },
+            "W": {
+                "item": "farmersdelight:cod_slice"
+            }
+        },
+        "result": [
+            {
+                "item": "farmersdelight:cod_roll"
+            },
+            {
+                "item": "minecraft:bowl"
+            }
+        ]
+    }
+}

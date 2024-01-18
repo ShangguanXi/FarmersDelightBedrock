@@ -1,0 +1,271 @@
+{
+    "format_version": "1.20.0",
+    "minecraft:block": {
+        "description": {
+            "identifier": "farmersdelight:rice_roll_medley_block",
+            "menu_category": {
+                "category": "none"
+            },
+            "properties": {
+                "farmersdelight:food_block_stage": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                ]
+            },
+            "traits": {
+                "minecraft:placement_direction": {
+                    "enabled_states": [
+                        "minecraft:cardinal_direction"
+                    ],
+                    "y_rotation_offset": 0.0
+                }
+            }
+        },
+        "permutations": [
+            {
+                "condition": "query.block_state('farmersdelight:food_block_stage') == 0",
+                "components": {
+                    "minecraft:loot": "loot_tables/farmersdelight/food_block/rice_roll_medley_block.json",
+                    "minecraft:geometry": "geometry.rice_roll_medley_block_stage0"
+                }
+            },
+            {
+                "condition": "query.block_state('farmersdelight:food_block_stage') == 1",
+                "components": {
+                    "minecraft:loot": "loot_tables/farmersdelight/food_block/rice_roll_medley_block_over.json",
+                    "minecraft:geometry": "geometry.rice_roll_medley_block_stage1"
+                }
+            },
+            {
+                "condition": "query.block_state('farmersdelight:food_block_stage') == 2",
+                "components": {
+                    "minecraft:loot": "loot_tables/farmersdelight/food_block/rice_roll_medley_block_over.json",
+                    "minecraft:geometry": "geometry.rice_roll_medley_block_stage2"
+                }
+            },
+            {
+                "condition": "query.block_state('farmersdelight:food_block_stage') == 3",
+                "components": {
+                    "minecraft:loot": "loot_tables/farmersdelight/food_block/rice_roll_medley_block_over.json",
+                    "minecraft:geometry": "geometry.rice_roll_medley_block_stage3"
+                }
+            },
+            {
+                "condition": "query.block_state('farmersdelight:food_block_stage') == 4",
+                "components": {
+                    "minecraft:loot": "loot_tables/farmersdelight/food_block/rice_roll_medley_block_over.json",
+                    "minecraft:geometry": "geometry.rice_roll_medley_block_stage4"
+                }
+            },
+            {
+                "condition": "query.block_state('farmersdelight:food_block_stage') == 5",
+                "components": {
+                    "minecraft:loot": "loot_tables/farmersdelight/food_block/rice_roll_medley_block_over.json",
+                    "minecraft:geometry": "geometry.rice_roll_medley_block_stage5"
+                }
+            },
+            {
+                "condition": "query.block_state('farmersdelight:food_block_stage') == 6",
+                "components": {
+                    "minecraft:loot": "loot_tables/farmersdelight/food_block/rice_roll_medley_block_over.json",
+                    "minecraft:geometry": "geometry.rice_roll_medley_block_stage6"
+                }
+            },
+            {
+                "condition": "query.block_state('farmersdelight:food_block_stage') == 7",
+                "components": {
+                    "minecraft:loot": "loot_tables/farmersdelight/food_block/rice_roll_medley_block_over.json",
+                    "minecraft:geometry": "geometry.rice_roll_medley_block_stage7"
+                }
+            },
+            {
+                "condition": "query.block_state('farmersdelight:food_block_stage') == 8",
+                "components": {
+                    "minecraft:loot": "loot_tables/farmersdelight/food_block/rice_roll_medley_block_over.json",
+                    "minecraft:geometry": "geometry.rice_roll_medley_block_leftover"
+                }
+            },
+            {
+                "condition": "query.block_state('minecraft:cardinal_direction') == 'north'",
+                "components": {
+                    "minecraft:transformation": {
+                        "rotation": [
+                            0,
+                            180,
+                            0
+                        ]
+                    }
+                }
+            },
+            {
+                "condition": "query.block_state('minecraft:cardinal_direction') == 'south'",
+                "components": {
+                    "minecraft:transformation": {
+                        "rotation": [
+                            0,
+                            0,
+                            0
+                        ]
+                    }
+                }
+            },
+            {
+                "condition": "query.block_state('minecraft:cardinal_direction') == 'west'",
+                "components": {
+                    "minecraft:transformation": {
+                        "rotation": [
+                            0,
+                            270,
+                            0
+                        ]
+                    }
+                }
+            },
+            {
+                "condition": "query.block_state('minecraft:cardinal_direction') == 'east'",
+                "components": {
+                    "minecraft:transformation": {
+                        "rotation": [
+                            0,
+                            90,
+                            0
+                        ]
+                    }
+                }
+            }
+        ],
+        "components": {
+            "minecraft:on_interact": {
+                "event": "on_interact"
+            },
+            "minecraft:destructible_by_mining": {
+                "seconds_to_destroy": 1.0
+            },
+            "minecraft:light_dampening": 0,
+            "minecraft:destructible_by_explosion": {
+                "explosion_resistance": 0.25
+            },
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "rice_roll_medley",
+                    "render_method": "alpha_test"
+                },
+                "rice_roll_medley": {
+                    "texture": "rice_roll_medley",
+                    "render_method": "alpha_test"
+                },
+                "tray_bottom": {
+                    "texture": "tray_bottom",
+                    "render_method": "alpha_test"
+                },
+                "tray_top": {
+                    "texture": "tray_top",
+                    "render_method": "alpha_test"
+                }
+            },
+            "minecraft:collision_box": {
+                "origin": [
+                    -7.0,
+                    0.0,
+                    -7.0
+                ],
+                "size": [
+                    14.0,
+                    4.0,
+                    14.0
+                ]
+            },
+            "minecraft:selection_box": {
+                "origin": [
+                    -7.0,
+                    0.0,
+                    -7.0
+                ],
+                "size": [
+                    14.0,
+                    4.0,
+                    14.0
+                ]
+            }
+        },
+        "events": {
+            "on_interact": {
+                "sequence": [
+                    {
+                        "condition": "query.block_state('farmersdelight:food_block_stage') <= 2",
+                        "trigger": {
+                            "event": "kelp_roll_slice",
+                            "target": "self"
+                        }
+                    },
+                    {
+                        "condition": "(query.block_state('farmersdelight:food_block_stage') >2 )&&(query.block_state('farmersdelight:food_block_stage') <= 5)",
+                        "trigger": {
+                            "event": "salmon_roll",
+                            "target": "self"
+                        }
+                    },
+                    {
+                        "condition": "(query.block_state('farmersdelight:food_block_stage') >5 )&&(query.block_state('farmersdelight:food_block_stage') <= 7)",
+                        "trigger": {
+                            "event": "cod_roll",
+                            "target": "self"
+                        }
+                    },
+                    {
+                        "condition": "query.block_state('farmersdelight:food_block_stage') == 8",
+                        "die": {
+                            "target": "block"
+                        }
+                    }
+                ]
+            },
+            "kelp_roll_slice": {
+                "sequence": [
+                    {
+                        "set_block_state": {
+                            "farmersdelight:food_block_stage": "query.block_state('farmersdelight:food_block_stage') + 1"
+                        },
+                        "decrement_stack": {},
+                        "spawn_loot": {
+                            "table": "loot_tables/farmersdelight/food_block/kelp_roll_slice.json"
+                        }
+                    }
+                ]
+            },
+            "salmon_roll": {
+                "sequence": [
+                    {
+                        "set_block_state": {
+                            "farmersdelight:food_block_stage": "query.block_state('farmersdelight:food_block_stage') + 1"
+                        },
+                        "decrement_stack": {},
+                        "spawn_loot": {
+                            "table": "loot_tables/farmersdelight/food_block/salmon_roll.json"
+                        }
+                    }
+                ]
+            },
+            "cod_roll": {
+                "sequence": [
+                    {
+                        "set_block_state": {
+                            "farmersdelight:food_block_stage": "query.block_state('farmersdelight:food_block_stage') + 1"
+                        },
+                        "decrement_stack": {},
+                        "spawn_loot": {
+                            "table": "loot_tables/farmersdelight/food_block/cod_roll.json"
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

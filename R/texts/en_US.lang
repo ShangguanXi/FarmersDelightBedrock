@@ -178,6 +178,16 @@
   item.farmersdelight:dog_food=Dog Food
   item.farmersdelight:horse_feed=Horse Feed
 
+  
+  item.farmersdelight:kelp_roll=Kelp Roll
+  item.farmersdelight:kelp_roll_slice=Kelp Roll Slice
+  
+  item.farmersdelight:salmon_roll=Salmon Roll
+  item.farmersdelight:cod_roll=Cod Roll
+
+  tile.farmersdelight:rice_roll_medley_block.name=Rice Roll Medley
+  item.farmersdelight:rice_roll_medley_block_item=Rice Roll Medley
+
   entity.farmersdelight:cooking_pot.name=farmersdelight厨锅
   farmersdelight:CookingPot=Cooking Pot
 

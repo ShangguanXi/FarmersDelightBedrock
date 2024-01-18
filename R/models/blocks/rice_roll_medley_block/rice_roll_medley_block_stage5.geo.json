@@ -1,0 +1,71 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.rice_roll_medley_block_stage5",
+				"texture_width": 16,
+				"texture_height": 16,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 1.5,
+				"visible_bounds_offset": [0, 0.25, 0]
+			},
+			"bones": [
+				{
+					"name": "bone",
+					"pivot": [8, 0, -8],
+					"cubes": [
+						{
+							"origin": [-7, 0, -7],
+							"size": [14, 2, 14],
+							"uv": {
+								"north": {"uv": [1, 11], "uv_size": [14, 2],"material_instance": "tray_bottom"},
+								"east": {"uv": [1, 11], "uv_size": [14, 2],"material_instance": "tray_bottom"},
+								"south": {"uv": [1, 11], "uv_size": [14, 2],"material_instance": "tray_bottom"},
+								"west": {"uv": [1, 11], "uv_size": [14, 2],"material_instance": "tray_bottom"},
+								"up": {"uv": [15, 15], "uv_size": [-14, -14],"material_instance": "tray_top"},
+								"down": {"uv": [15, 15], "uv_size": [-14, -14],"material_instance": "tray_top"}
+							}
+						},
+						{
+							"origin": [-2, 2, -6],
+							"size": [2, 2, 5],
+							"uv": {
+								"north": {"uv": [1, 6], "uv_size": [2, 2],"material_instance": "rice_roll_medley"},
+								"east": {"uv": [3, 1], "uv_size": [5, 2],"material_instance": "rice_roll_medley"},
+								"south": {"uv": [1, 6], "uv_size": [2, 2],"material_instance": "rice_roll_medley"},
+								"west": {"uv": [3, 1], "uv_size": [5, 2],"material_instance": "rice_roll_medley"},
+								"up": {"uv": [3, 6], "uv_size": [-2, -5],"material_instance": "rice_roll_medley"},
+								"down": {"uv": [3, 6], "uv_size": [-2, -5],"material_instance": "rice_roll_medley"}
+							}
+						},
+						{
+							"origin": [4, 2, 1],
+							"size": [2, 2, 5],
+							"uv": {
+								"north": {"uv": [8, 6], "uv_size": [2, 2],"material_instance": "rice_roll_medley"},
+								"east": {"uv": [10, 1], "uv_size": [5, 2],"material_instance": "rice_roll_medley"},
+								"south": {"uv": [8, 6], "uv_size": [2, 2],"material_instance": "rice_roll_medley"},
+								"west": {"uv": [10, 1], "uv_size": [5, 2],"material_instance": "rice_roll_medley"},
+								"up": {"uv": [10, 6], "uv_size": [-2, -5],"material_instance": "rice_roll_medley"},
+								"down": {"uv": [10, 6], "uv_size": [-2, -5],"material_instance": "rice_roll_medley"}
+							}
+						},
+						{
+							"origin": [1, 2, 1],
+							"size": [2, 2, 5],
+							"uv": {
+								"north": {"uv": [8, 6], "uv_size": [2, 2],"material_instance": "rice_roll_medley"},
+								"east": {"uv": [10, 1], "uv_size": [5, 2],"material_instance": "rice_roll_medley"},
+								"south": {"uv": [8, 6], "uv_size": [2, 2],"material_instance": "rice_roll_medley"},
+								"west": {"uv": [10, 1], "uv_size": [5, 2],"material_instance": "rice_roll_medley"},
+								"up": {"uv": [10, 6], "uv_size": [-2, -5],"material_instance": "rice_roll_medley"},
+								"down": {"uv": [10, 6], "uv_size": [-2, -5],"material_instance": "rice_roll_medley"}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

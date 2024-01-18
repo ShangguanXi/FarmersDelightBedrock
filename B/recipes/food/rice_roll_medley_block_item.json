@@ -1,0 +1,43 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shapeless": {
+        "description": {
+            "identifier": "farmersdelight:rice_roll_medley_block_item"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "ingredients": [
+            {
+                "item": "farmersdelight:kelp_roll_slice"
+            },
+            {
+                "item": "farmersdelight:kelp_roll_slice"
+            },
+            {
+                "item": "farmersdelight:kelp_roll_slice"
+            },
+            {
+                "item": "farmersdelight:cod_roll"
+            },
+            {
+                "item": "farmersdelight:cod_roll"
+            },
+            {
+                "item": "farmersdelight:salmon_roll"
+            },
+            {
+                "item": "farmersdelight:salmon_roll"
+            },
+            {
+                "item": "farmersdelight:salmon_roll"
+            },
+            {
+                "item": "minecraft:bowl"
+            }
+        ],
+        "result": {
+            "item": "farmersdelight:rice_roll_medley_block_item"
+        }
+    }
+}
