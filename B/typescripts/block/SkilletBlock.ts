@@ -33,7 +33,7 @@ export class SKilletBlock extends BlockWithEntity {
         const sco: ScoreboardObjective | null = data.scoreboardObjective;
         if (!sco) return;
         const invItemStack: string = JSON.parse(entity.getDynamicProperty("farmersdelight:blockEntityItemStackData") as string)["item"];
-        if (vanillaItemList.includes(itemStack.typeId) || itemStack.hasTag('can_cooking')) {
+        if (vanillaItemList.includes(itemStack.typeId) || itemStack.hasTag('farmersdelight:can_cook')) {
             const amount = sco.getScore('amount') ?? 0;
             const itemAmount = itemStack.amount;
             if (invItemStack == 'undefined') {
