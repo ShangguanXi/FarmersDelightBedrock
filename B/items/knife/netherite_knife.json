@@ -37,9 +37,6 @@
             "farmersdelight:is_knife"
         ]
       },
-      "minecraft:creative_category": {
-        "parent": "itemGroup.name.sword"
-      },
       "minecraft:icon": {
         "texture": "farmersdelight:netherite_knife"
       }

@@ -2,7 +2,9 @@
   "format_version": "1.20.50", 
   "minecraft:item": {
     "components": {
-      "minecraft:use_duration": 0.8,
+      "minecraft:use_modifiers": {
+        "use_duration": 0.8
+      },
       "minecraft:food": {
         "nutrition": 3,
         "saturation_modifier": 0.8,

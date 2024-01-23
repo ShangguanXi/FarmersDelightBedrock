@@ -7,13 +7,10 @@
       },
       "minecraft:food": {
         "nutrition": 2,
-        "saturation_modifier": "low",
+        "saturation_modifier": 0.4,
         "can_always_eat": false
       },
       "minecraft:use_animation": "eat",
-      "minecraft:creative_category": {
-        "parent": "itemGroup.name.crop"
-      }, 
       "minecraft:icon": {
         "texture": "farmersdelight:onion"
       },

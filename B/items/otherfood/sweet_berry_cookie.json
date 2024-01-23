@@ -2,7 +2,9 @@
   "format_version": "1.20.50",
   "minecraft:item": {
     "components": {
-      "minecraft:use_duration": 1.6,
+      "minecraft:use_modifiers": {
+        "use_duration": 1.6
+      },
       "minecraft:food": {
         "nutrition": 2,
         "saturation_modifier": 0.15,
@@ -14,7 +16,6 @@
       }
     },
     "description": {
-      "category": "equipment",
       "identifier": "farmersdelight:sweet_berry_cookie",
       "menu_category": {
         "category": "equipment",

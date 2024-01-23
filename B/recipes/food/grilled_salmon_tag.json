@@ -9,7 +9,7 @@
         ],
         "ingredients": [
             {
-                "tag": "minecraft:is_cooked_salmon"
+                "tag": "farmersdelight:is_cooked_salmon"
             },
             {
                 "item": "minecraft:sweet_berries"
