@@ -15,7 +15,8 @@
       "minecraft:icon": {
         "texture": "farmersdelight:mutton_chops"
       },
-      "tag:minecraft:is_raw_mutton":{}
+      "tag:minecraft:is_raw_mutton":{},
+      "tag:farmersdelight:can_cook":{}
     }, 
     "description": {
       "category": "nature", 
