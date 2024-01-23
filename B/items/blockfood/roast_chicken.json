@@ -1,0 +1,28 @@
+{
+  "format_version": "1.20.50",
+  "minecraft:item": {
+    "components": {
+      "minecraft:use_modifiers": {
+        "use_duration": 1.6
+      },
+      "minecraft:max_stack_size": 16,
+      "minecraft:food": {
+        "nutrition": 14,
+        "saturation_modifier": 0.75,
+        "can_always_eat": false,
+        "using_converts_to": "minecraft:bowl"
+      },
+      "minecraft:use_animation": "eat",
+      "minecraft:icon": {
+        "texture": "farmersdelight:roast_chicken"
+      }
+    },
+    "description": {
+      "identifier": "farmersdelight:roast_chicken",
+      "menu_category": {
+        "category": "equipment",
+        "group": "itemGroup.name.miscFood"
+      }
+    }
+  }
+}

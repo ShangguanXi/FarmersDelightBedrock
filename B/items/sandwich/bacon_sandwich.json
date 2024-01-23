@@ -1,0 +1,27 @@
+{
+  "format_version": "1.20.50", 
+  "minecraft:item": {
+    "components": {
+      "minecraft:use_modifiers": {
+        "use_duration": 1.6
+      },
+      "minecraft:food": {
+        "nutrition": 10,
+        "saturation_modifier": 0.8,
+        "using_converts_to": "minecraft:bowl",
+        "can_always_eat": false
+      },
+      "minecraft:use_animation": "eat",
+      "minecraft:icon": {
+        "texture": "farmersdelight:bacon_sandwich"
+      }
+    }, 
+    "description": {
+      "identifier": "farmersdelight:bacon_sandwich",
+      "menu_category": {
+        "category": "equipment",
+        "group": "itemGroup.name.miscFood"
+      }
+    }
+  }
+}
