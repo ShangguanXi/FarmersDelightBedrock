@@ -1,0 +1,26 @@
+{
+    "format_version": "1.20.50",
+    "minecraft:item": {
+        "components": {
+            "minecraft:block_placer": {
+                "block": "farmersdelight:sweet_berry_cheesecake_block",
+                "use_block_description": true
+            },
+            "minecraft:icon": {
+                "texture": "farmersdelight:sweet_berry_cheesecake"
+            },
+            "minecraft:tags": {
+              "tags": [
+                "farmersdelight:can_cut"
+              ]
+            }
+        },
+        "description": {
+            "identifier": "farmersdelight:sweet_berry_cheesecake",
+            "menu_category": {
+              "category": "equipment",
+              "group": "itemGroup.name.miscFood"
+            }
+        }
+    }
+}

@@ -1,0 +1,17 @@
+{
+  "format_version": "1.20.50", 
+  "minecraft:item": {
+    "components": {
+      "minecraft:icon": {
+        "texture": "farmersdelight:tree_bark"
+      }
+    }, 
+    "description": {
+      "identifier": "farmersdelight:tree_bark",
+      "menu_category": {
+        "category": "Items",
+        "group": "itemGroup.name.items"
+      }
+    }
+  }
+}

@@ -12,10 +12,10 @@
                 "item": "farmersdelight:cooked_bacon"
             },
             {
-                "tag": "minecraft:is_cooked_egg"
+                "tag": "farmersdelight:is_cooked_egg"
             },
             {
-                "tag": "minecraft:is_cooked_egg"
+                "tag": "farmersdelight:is_cooked_egg"
             },
             {
                 "item": "farmersdelight:cooked_bacon"

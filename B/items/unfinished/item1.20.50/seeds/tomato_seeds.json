@@ -1,0 +1,24 @@
+{
+  "format_version": "1.20.50", 
+  "minecraft:item": {
+    "components": {
+      "minecraft:icon": {
+        "texture": "farmersdelight:tomato_seeds"
+      },
+      "minecraft:block_placer": {
+        "block": "tomato_block",
+        "use_on": [
+          "farmland",
+          "farmersdelight:rich_soil_farmland"
+        ]
+      }
+    }, 
+    "description": {
+      "identifier": "farmersdelight:tomato_seeds",
+      "menu_category": {
+        "category": "nature",
+        "group": "itemGroup.name.seed"
+      }
+    }
+  }
+}

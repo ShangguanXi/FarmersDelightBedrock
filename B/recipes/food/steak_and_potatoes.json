@@ -18,7 +18,7 @@
                 "item": "minecraft:cooked_beef"
             },
             {
-                "tag": "minecraft:is_onion"
+                "tag": "farmersdelight:is_onion"
             },
             {
                 "item": "farmersdelight:cooked_rice"

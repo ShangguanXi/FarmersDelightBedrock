@@ -1,0 +1,18 @@
+{
+  "format_version": "1.20.50", 
+  "minecraft:item": {
+    "components": {
+      "minecraft:max_stack_size": 16, 
+      "minecraft:icon": {
+        "texture": "farmersdelight:horse_feed"
+      }
+    }, 
+    "description": {
+      "identifier": "farmersdelight:horse_feed",
+      "menu_category": {
+        "category": "Items",
+        "group": "itemGroup.name.items"
+      }
+    }
+  }
+}

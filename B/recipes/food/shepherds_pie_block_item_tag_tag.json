@@ -15,22 +15,22 @@
                 "item": "minecraft:baked_potato"
             },
             {
-                "tag": "minecraft:is_cooked_mutton"
+                "tag": "farmersdelight:is_cooked_mutton"
             },
             {
-                "tag": "minecraft:is_cooked_mutton"
+                "tag": "farmersdelight:is_cooked_mutton"
             },
             {
-                "tag": "minecraft:is_cooked_mutton"
+                "tag": "farmersdelight:is_cooked_mutton"
             },
             {
-                "tag": "minecraft:is_milk"
+                "tag": "farmersdelight:is_milk"
             },
             {
-                "tag": "minecraft:is_onion"
+                "tag": "farmersdelight:is_onion"
             },
             {
-                "tag": "minecraft:is_onion"
+                "tag": "farmersdelight:is_onion"
             },
             {
                 "item": "minecraft:bowl"

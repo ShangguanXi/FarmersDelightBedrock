@@ -15,13 +15,13 @@
                 "item": "farmersdelight:beef_patty"
             },
             {
-                "tag": "minecraft:is_onion"
+                "tag": "farmersdelight:is_onion"
             },
             {
-                "tag": "minecraft:is_tomato"
+                "tag": "farmersdelight:is_tomato"
             },
             {
-                "tag": "minecraft:is_cabbage"
+                "tag": "farmersdelight:is_cabbage"
             }
         ],
         "result": {

@@ -1,0 +1,30 @@
+{
+  "format_version": "1.20.50", 
+  "minecraft:item": {
+    "components": {
+      "minecraft:use_duration": 0.8,
+      "minecraft:food": {
+        "nutrition": 3,
+        "saturation_modifier": "normal",
+        "can_always_eat": false
+      },
+      "minecraft:use_animation": "eat",
+      "minecraft:icon": {
+        "texture": "farmersdelight:cooked_mutton_chops"
+      },
+      "minecraft:tags": {
+          "tags": [
+              "minecraft:is_cooked",
+              "farmersdelight:is_cooked_mutton"
+          ]
+      }
+    }, 
+    "description": {
+      "identifier": "farmersdelight:cooked_mutton_chops",
+      "menu_category": {
+        "category": "equipment",
+        "group": "itemGroup.name.cookedFood"
+      }
+    }
+  }
+}

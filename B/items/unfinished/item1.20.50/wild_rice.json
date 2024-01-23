@@ -1,0 +1,25 @@
+{
+  "format_version": "1.20.50", 
+  "minecraft:item": {
+    "components": {
+      "minecraft:icon": {
+        "texture": "farmersdelight:wild_rice"
+      } ,
+      "minecraft:block_placer": {
+        "block": "farmersdelight:wild_rice_block"
+      },
+      "minecraft:tags": {
+        "tags": [
+          "farmersdelight:can_cut"
+        ]
+      }
+    }, 
+    "description": {
+      "identifier": "farmersdelight:wild_rice",
+      "menu_category": {
+        "category": "nature",
+        "group": "itemGroup.name.nature"
+      }
+    }
+  }
+}

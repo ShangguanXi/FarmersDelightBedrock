@@ -9,10 +9,10 @@
         ],
         "ingredients": [
             {
-                "tag": "minecraft:is_onion"
+                "tag": "farmersdelight:is_onion"
             },
             {
-                "tag": "minecraft:is_tomato"
+                "tag": "farmersdelight:is_tomato"
             },
             {
                 "tag": "minecraft:is_cooked"

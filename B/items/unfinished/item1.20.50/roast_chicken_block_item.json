@@ -1,0 +1,22 @@
+{
+  "format_version": "1.20.50", 
+  "minecraft:item": {
+    "components": {
+      "minecraft:max_stack_size": 1,
+      "minecraft:block_placer": {
+        "block": "farmersdelight:roast_chicken_block",
+        "use_block_description": true
+      },
+      "minecraft:icon": {
+        "texture": "farmersdelight:roast_chicken_block"
+      }
+    }, 
+    "description": {
+      "identifier": "farmersdelight:roast_chicken_block_item",
+      "menu_category": {
+        "category": "equipment",
+        "group": "itemGroup.name.miscFood"
+      }
+    }
+  }
+}

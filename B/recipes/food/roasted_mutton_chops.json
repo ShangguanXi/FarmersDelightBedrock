@@ -15,7 +15,7 @@
                 "item": "minecraft:beetroot"
             },
             {
-                "tag": "minecraft:is_tomato"
+                "tag": "farmersdelight:is_tomato"
             },
             {
                 "item": "farmersdelight:cooked_rice"

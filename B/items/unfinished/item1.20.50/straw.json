@@ -1,0 +1,17 @@
+{
+  "format_version": "1.20.50", 
+  "minecraft:item": {
+    "components": {
+      "minecraft:icon": {
+        "texture": "farmersdelight:straw"
+      }
+    }, 
+    "description": {
+      "identifier": "farmersdelight:straw",
+      "menu_category": {
+        "category": "Items",
+        "group": "itemGroup.name.items"
+      }
+    }
+  }
+}

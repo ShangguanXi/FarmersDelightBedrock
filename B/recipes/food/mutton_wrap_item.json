@@ -12,10 +12,10 @@
                 "item": "minecraft:bread"
             },
             {
-                "tag": "minecraft:is_onion"
+                "tag": "farmersdelight:is_onion"
             },
             {
-                "tag": "minecraft:is_cabbage"
+                "tag": "farmersdelight:is_cabbage"
             },
             {
                 "item": "minecraft:cooked_mutton"

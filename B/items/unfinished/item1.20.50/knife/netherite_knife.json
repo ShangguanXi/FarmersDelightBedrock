@@ -1,0 +1,55 @@
+{
+  "format_version": "1.20.50",
+  "minecraft:item": {
+    "components": {
+      "minecraft:durability": {
+        "max_durability": 2031
+      },
+			"minecraft:max_stack_size": 1,
+			"minecraft:hand_equipped": true,
+      "minecraft:enchantable": {
+				"value": 15,
+				"slot": "sword"
+			},
+      "minecraft:damage": 5.5,
+      "minecraft:repairable": {
+        "repair_items": [
+          {
+            "repair_amount": "context.other->query.remaining_durability + 0.05 * context.other->query.max_durability",
+            "items": [
+              "farmersdelight:netherite_knife"
+            ]
+          },
+          {
+            "repair_amount": "query.max_durability * 0.25",
+            "items": [
+              "minecraft:netherite_ingot"
+            ]
+          }
+        ]
+      },
+      "minecraft:digger": {
+        "use_efficiency": true
+      },
+      "minecraft:tags": {
+        "tags": [
+            "minecraft:is_sword",
+            "farmersdelight:is_knife"
+        ]
+      },
+      "minecraft:creative_category": {
+        "parent": "itemGroup.name.sword"
+      },
+      "minecraft:icon": {
+        "texture": "farmersdelight:netherite_knife"
+      }
+    },
+    "description": {
+      "identifier": "farmersdelight:netherite_knife",
+      "menu_category": {
+        "category": "equipment",
+        "group": "itemGroup.name.sword"
+      }
+    }
+  }
+}

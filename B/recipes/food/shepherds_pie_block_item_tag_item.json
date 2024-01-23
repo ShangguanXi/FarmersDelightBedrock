@@ -24,13 +24,13 @@
                 "item": "minecraft:cooked_mutton"
             },
             {
-                "tag": "minecraft:is_milk"
+                "tag": "farmersdelight:is_milk"
             },
             {
-                "tag": "minecraft:is_onion"
+                "tag": "farmersdelight:is_onion"
             },
             {
-                "tag": "minecraft:is_onion"
+                "tag": "farmersdelight:is_onion"
             },
             {
                 "item": "minecraft:bowl"

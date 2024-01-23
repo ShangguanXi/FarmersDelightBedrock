@@ -27,10 +27,10 @@
                 "item": "minecraft:milk_bucket"
             },
             {
-                "tag": "minecraft:is_onion"
+                "tag": "farmersdelight:is_onion"
             },
             {
-                "tag": "minecraft:is_onion"
+                "tag": "farmersdelight:is_onion"
             },
             {
                 "item": "minecraft:bowl"

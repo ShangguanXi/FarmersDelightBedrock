@@ -18,7 +18,7 @@
                 "item": "minecraft:cooked_beef"
             },
             {
-                "tag": "minecraft:is_milk"
+                "tag": "farmersdelight:is_milk"
             }
         ],
         "result": 

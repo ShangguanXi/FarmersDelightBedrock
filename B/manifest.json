@@ -37,6 +37,18 @@
                 1
             ],
             "entry": "scripts/main.js"
+        },
+        {
+            "description": "农夫乐事食物脚本",
+            "type": "script",
+            "language": "javascript",
+            "uuid": "c0290469-77f9-2f71-be52-f38c9e18abb0",
+            "version": [
+                0,
+                0,
+                1
+            ],
+            "entry": "foodScripts/food.js"
         }
     ],
     "dependencies": [

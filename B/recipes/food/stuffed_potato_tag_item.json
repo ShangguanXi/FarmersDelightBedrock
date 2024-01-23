@@ -15,7 +15,7 @@
                 "item": "minecraft:baked_potato"
             },
             {
-                "tag": "minecraft:is_cooked_beef"
+                "tag": "farmersdelight:is_cooked_beef"
             },
             {
                 "item": "minecraft:milk_bucket"

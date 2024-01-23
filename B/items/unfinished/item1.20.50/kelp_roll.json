@@ -1,0 +1,31 @@
+{
+  "format_version": "1.20.50",
+  "minecraft:item": {
+    "components": {
+      "minecraft:use_modifiers": {
+        "use_duration": 2.0
+      },
+      "minecraft:food": {
+        "nutrition": 12,
+        "saturation_modifier": "supernatural",
+        "can_always_eat": false
+      },
+      "minecraft:use_animation": "eat",
+      "minecraft:icon": {
+        "texture": "farmersdelight:kelp_roll"
+      },
+      "minecraft:tags": {
+          "tags": [
+              "farmersdelight:can_cut"
+          ]
+      }
+    },
+    "description": {
+      "identifier": "farmersdelight:kelp_roll",
+      "menu_category": {
+        "category": "equipment",
+        "group": "itemGroup.name.miscFood"
+      }
+    }
+  }
+}

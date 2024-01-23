@@ -15,7 +15,7 @@
                 "item": "minecraft:cooked_chicken"
             },
             {
-                "tag": "minecraft:is_onion"
+                "tag": "farmersdelight:is_onion"
             },
             {
                 "item": "minecraft:bowl"

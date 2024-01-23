@@ -1,0 +1,30 @@
+{
+  "format_version": "1.20.50", 
+  "minecraft:item": {
+    "components": {
+      "minecraft:icon": {
+        "texture": "farmersdelight:rice"
+      },
+      "minecraft:block_placer": {
+        "block": "rice_block",
+        "use_on": [
+          "dirt",
+          "grass",
+          "farmersdelight:rich_soil"
+        ]
+      },
+      "minecraft:tags": {
+        "tags": [
+          "farmersdelight:is_rice"
+        ]
+      }
+    }, 
+    "description": {
+      "identifier": "farmersdelight:rice",
+      "menu_category": {
+        "category": "nature",
+        "group": "itemGroup.name.seed"
+      }
+    }
+  }
+}

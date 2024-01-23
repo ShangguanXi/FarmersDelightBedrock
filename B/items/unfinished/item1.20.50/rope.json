@@ -1,0 +1,20 @@
+{
+  "format_version": "1.20.50", 
+  "minecraft:item": {
+    "components": {
+      "minecraft:icon": {
+        "texture": "farmersdelight:rope"
+      },
+      "minecraft:block_placer": {
+        "block": "farmersdelight:rope_block"
+      }
+    }, 
+    "description": {
+      "identifier": "farmersdelight:rope",
+      "menu_category": {
+        "category": "Items",
+        "group": "itemGroup.name.items"
+      }
+    }
+  }
+}

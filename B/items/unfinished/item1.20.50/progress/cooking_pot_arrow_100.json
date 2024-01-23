@@ -1,0 +1,17 @@
+{
+  "format_version": "1.20.50", 
+  "minecraft:item": {
+    "components": {
+      "minecraft:icon": {
+        "texture": "farmersdelight:cooking_pot_arrow_100"
+      },
+      "minecraft:max_stack_size": 1
+    }, 
+    "description": {
+      "menu_category": {
+        "category": "none"
+      }, 
+      "identifier": "farmersdelight:cooking_pot_arrow_100"
+    }
+  }
+}

@@ -18,7 +18,7 @@
                 "item": "minecraft:carrot"
             },
             {
-                "tag": "minecraft:is_cabbage"
+                "tag": "farmersdelight:is_cabbage"
             }
         ],
         "result": {

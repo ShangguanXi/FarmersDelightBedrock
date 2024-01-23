@@ -18,10 +18,10 @@
                 "item": "minecraft:bowl"
             },
             {
-                "tag": "minecraft:is_onion"
+                "tag": "farmersdelight:is_onion"
             },
             {
-                "tag": "minecraft:is_cabbage"
+                "tag": "farmersdelight:is_cabbage"
             }
         ],
         "result": {

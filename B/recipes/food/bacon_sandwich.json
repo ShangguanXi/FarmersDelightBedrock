@@ -15,10 +15,10 @@
                 "item": "farmersdelight:cooked_bacon"
             },
             {
-                "tag": "minecraft:is_tomato"
+                "tag": "farmersdelight:is_tomato"
             },
             {
-                "tag": "minecraft:is_cabbage"
+                "tag": "farmersdelight:is_cabbage"
             }
         ],
         "result": {

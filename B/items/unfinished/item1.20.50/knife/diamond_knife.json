@@ -1,0 +1,54 @@
+{
+  "format_version": "1.20.50",
+  "minecraft:item": {
+    "components": {
+      "minecraft:durability": {
+        "max_durability": 1561
+      },
+			"minecraft:max_stack_size": 1,
+			"minecraft:hand_equipped": true,
+      "minecraft:enchantable": {
+				"value": 17,
+				"slot": "sword"
+			},
+      "minecraft:damage": 4.5,
+      "minecraft:repairable": {
+        "repair_items": [
+          {
+            "repair_amount": "context.other->query.remaining_durability + 0.05 * context.other->query.max_durability",
+            "items": [
+              "farmersdelight:diamond_knife"
+            ]
+          },
+          {
+            "repair_amount": "query.max_durability * 0.25",
+            "items": [
+              "minecraft:diamond"
+            ]
+          }
+        ]
+      },
+      "minecraft:digger": {
+        "use_efficiency": true
+      },
+      "minecraft:tags": {
+        "tags": [
+            "minecraft:is_sword",
+            "minecraft:diamond_tier",
+            "minecraft:transformable_items",
+            "farmersdelight:is_knife"
+        ]
+      },
+      "minecraft:icon": {
+        "texture": "farmersdelight:diamond_knife"
+      }
+    },
+    "description": {
+      "identifier": "farmersdelight:diamond_knife",
+      "menu_category": {
+        "category": "equipment",
+        "group": "itemGroup.name.sword"
+      }
+    }
+  }
+}

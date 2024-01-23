@@ -1,0 +1,22 @@
+{
+  "format_version": "1.20.50", 
+  "minecraft:item": {
+    "components": {
+      "minecraft:icon": {
+        "texture": "farmersdelight:rice_panicle"
+      },
+      "minecraft:tags": {
+        "tags": [
+          "farmersdelight:can_cut"
+        ]
+      }
+    }, 
+    "description": {
+      "identifier": "farmersdelight:rice_panicle",
+      "menu_category": {
+        "category": "nature",
+        "group": "itemGroup.name.crop"
+      }
+    }
+  }
+}
