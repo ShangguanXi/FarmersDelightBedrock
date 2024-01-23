@@ -6,7 +6,8 @@
       "minecraft:food": {
         "nutrition": 8,
         "saturation_modifier": "good",
-        "can_always_eat": false
+        "can_always_eat": false,
+        "using_converts_to": "minecraft:stick"
       },
       "minecraft:use_animation": "eat",
       "minecraft:creative_category": {

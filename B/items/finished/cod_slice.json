@@ -1,5 +1,5 @@
 {
-  "format_version": "1.16.100", 
+  "format_version": "1.16.100",
   "minecraft:item": {
     "components": {
       "minecraft:use_duration": 1.6,
@@ -11,16 +11,16 @@
       "minecraft:use_animation": "eat",
       "minecraft:creative_category": {
         "parent": "itemGroup.name.rawFood"
-      }, 
+      },
       "minecraft:icon": {
         "texture": "farmersdelight:cod_slice"
       },
-      "tag:minecraft:is_raw_fish":{}
-    }, 
+      "tag:minecraft:is_raw_fish": {}
+    },
     "description": {
-      "category": "nature", 
+      "category": "nature",
       "identifier": "farmersdelight:cod_slice"
-    }, 
+    },
     "events": {}
   }
 }
