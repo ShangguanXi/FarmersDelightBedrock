@@ -7,6 +7,36 @@
                  "block/cutting_board/knife1",
                  "block/cutting_board/knife2"
             ]
+        },
+        "block.farmersdelight.skillet.add_food": {
+            "category": "block",
+            "sounds": [
+                 "block/skillet/add_food1",
+                 "block/skillet/add_food"
+            ]
+        },
+        "block.farmersdelight.skillet.sizzle1": {
+            "category": "block",
+            "sounds": [
+                 "block/skillet/sizzle1",
+                 "block/skillet/sizzle2",
+                 "block/skillet/sizzle3"
+            ]
+        },
+        "block.farmersdelight.cooking_pot.boil_soup": {
+            "category": "block",
+            "sounds": [
+                 "block/cooking_pot/boil_soup1",
+                 "block/cooking_pot/boil_soup2",
+                 "block/cooking_pot/boil_soup3"
+            ]
+        },
+        "block.farmersdelight.cooking_pot.boil_water": {
+            "category": "block",
+            "sounds": [
+                 "block/cooking_pot/boil_water1",
+                 "block/cooking_pot/boil_water2"
+            ]
         }
     }
 }
