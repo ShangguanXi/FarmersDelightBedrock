@@ -17,7 +17,7 @@ export class BlockEntity {
         }
     }
     public blockEntityLoot(args: any, id: string, list: any[] | undefined, amount: number = 1) {
-        if (ObjectUtil.isEqual(args.entity.location, args.blockEntityDataLocation)) args.entity.teleport(args.blockEntityDataLocation);
+        if (!ObjectUtil.isEqual(args.entity.location, args.blockEntityDataLocation)) args.entity.teleport(args.blockEntityDataLocation);
         if (args.block?.typeId == id) return;
         if (list?.length) {
             for (const itemStack of list) {

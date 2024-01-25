@@ -2,12 +2,11 @@ import { Container, ItemStack } from "@minecraft/server";
 
 export class RecipeHolder {
     public readonly container: Container;
-    public readonly itemStackData: Array<ItemStack>;
+    public readonly itemStackData: Array<ItemStack> = [];
     public readonly recipes: any[];
     public index: number;
     constructor(container: Container, length: number, recipes: any[], index: number) {
         this.container = container;
-        this.itemStackData = [];
         this.recipes = recipes;
         this.index = index;
         for (let slot = 0; slot < length; slot++) {
@@ -21,47 +20,54 @@ export class RecipeHolder {
             this.index = this.getValidRecipeIndex(this.itemStackData, this.recipes);
         }
     }
-    compare(A: any[], B: any[]): boolean {
-        if (!A.length) return false;
-        let flag: boolean = false;
-        flag = A.every((a: any) => {
-            return B.some((b: any) => {
+    public compare(info: any[], ingredients: any[]): boolean {
+        const infoCopy = [...info];
+        const ingredientsCopy = JSON.parse(JSON.stringify(ingredients));
+
+        let flag = infoCopy.every((a, i) => {
+            let found = false;
+            for (let j = 0; j < ingredientsCopy.length; j++) {
+                let b = ingredientsCopy[j];
                 if (Array.isArray(b)) {
-                    return b.some((c: any) => this.isEqual(a, c));
+                    let index = b.findIndex(c => this.isEqualValue(a, c));
+                    if (index !== -1) {
+                        b.splice(index, 1);
+                        found = true;
+                        break;
+                    }
                 } else {
-                    return this.isEqual(a, b);
+                    if (this.isEqualValue(a, b)) {
+                        ingredientsCopy.splice(j, 1);
+                        found = true;
+                        break;
+                    }
                 }
-            })
-        })
+            }
+            if (found) {
+                infoCopy.splice(i, 1);
+                i--;
+            }
+            return found;
+        });
         return flag;
     }
-    getValidRecipeIndex(info: any[], recipes: any) {
+    public getValidRecipeIndex(info: any[], recipes: any) {
         for (const index in recipes) {
-            if (this.compare(info, recipes[index].ingredients)) {
+            const recipe = recipes[index].ingredients;
+            if (info.length == recipe.length && this.compare(info, recipe)) {
                 return parseInt(index);
             }
         }
         return -1;
     }
-    isArray(value: any) {
-        const type = Object.prototype.toString.call(value);
-        return type === "[object Array]";
-    }
-
-    isEqualValue(have: ItemStack, need: any) {
-        if (!need) return false;
-        const value = Object.keys(need)[0];
-        switch (value) {
+    public isEqualValue(have: ItemStack | undefined, need: any): boolean {
+        if (!need || !have) return false;
+        switch (Object.keys(need)[0]) {
             case 'item':
                 return have.typeId == need.item;
             case 'tag':
-                return have.hasTag(need.tag)
+                return have.hasTag(need.tag);
         }
-    }
-
-    isEqual(obj1: any, obj2: any) {
-        if (obj1 === obj2) return true;
-        if (typeof (obj1) !== "object" || typeof (obj2) !== "object" || !obj1 || !obj2) return false;
-        if (this.isEqualValue(obj1, obj2)) return true;
+        return false;
     }
 }
