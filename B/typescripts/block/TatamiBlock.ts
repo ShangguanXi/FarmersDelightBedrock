@@ -5,54 +5,53 @@ export class TatamiBlock {
     @methodEventSub(world.beforeEvents.playerPlaceBlock)
     placeBlock(args: any) {
         const block: Block = args.block;
-        const item: ItemStack = args.itemStack;
-        if (block.typeId != "farmersdelight:tatami") return;
-        if (item.typeId != "farmersdelight:tatami") return;
-        if (block.permutation.getState('farmersdelight:connection') != "none") return;
+        const itemStack: ItemStack = args.itemStack;
+        if (!(itemStack?.typeId == "farmersdelight:tatami" && block.typeId == "farmersdelight:tatami" && block.permutation.getState('farmersdelight:connection') == "none")) return;
         let { x, y, z }: Vector3 = block.location;
-        const dimension = args.dimension as Dimension;
-        const face = args.face;
+        const dimension: Dimension = block.dimension;
+        const face: Direction = args.face;
         system.run(() => {
-            let thisPerm = BlockPermutation.resolve('farmersdelight:tatami');
-            let neighborPerm = block.permutation;
+            const blockPermutation: BlockPermutation = BlockPermutation.resolve('farmersdelight:tatami');
+            const permutation: BlockPermutation = block.permutation;
+            let thisPerm: string = 'south';
+            let neighborPerm: string = 'north';
             switch (face) {
                 case Direction.North:
-                    thisPerm = thisPerm.withState('farmersdelight:connection', 'south');
-                    neighborPerm = neighborPerm.withState('farmersdelight:connection', 'north');
+                    thisPerm = 'south';
+                    neighborPerm = 'north';
                     z -= 1;
                     break;
                 case Direction.South:
-                    thisPerm = thisPerm.withState('farmersdelight:connection', 'north');
-                    neighborPerm = neighborPerm.withState('farmersdelight:connection', 'south');
+                    thisPerm = 'north';
+                    neighborPerm = 'south';
                     z += 1;
                     break;
                 case Direction.East:
-                    thisPerm = thisPerm.withState('farmersdelight:connection', 'west');
-                    neighborPerm = neighborPerm.withState('farmersdelight:connection', 'east');
+                    thisPerm = 'west';
+                    neighborPerm = 'east';
                     x += 1;
                     break;
                 case Direction.West:
-                    thisPerm = thisPerm.withState('farmersdelight:connection', 'east');
-                    neighborPerm = neighborPerm.withState('farmersdelight:connection', 'west');
+                    thisPerm = 'east';
+                    neighborPerm = 'west';
                     x -= 1;
                     break;
                 case Direction.Up:
-                    thisPerm = thisPerm.withState('farmersdelight:connection', 'down');
-                    neighborPerm = neighborPerm.withState('farmersdelight:connection', 'up');
+                    thisPerm = 'down';
+                    neighborPerm = 'up';
                     y += 1;
                     break;
                 case Direction.Down:
-                    thisPerm = thisPerm.withState('farmersdelight:connection', 'up');
-                    neighborPerm = neighborPerm.withState('farmersdelight:connection', 'down');
+                    thisPerm = 'up';
+                    neighborPerm = 'down';
                     y -= 1;
                     break;
                 default:
                     break;
             };
-            if (dimension.getEntitiesAtBlockLocation({ x, y, z }).length != 0) return;
-            if (dimension.getBlock({ x, y, z })?.typeId != 'farmersdelight:tatami') return;
-            block.setPermutation(neighborPerm);
-            dimension.getBlock({ x, y, z })?.setPermutation(thisPerm);
+            if (dimension.getEntitiesAtBlockLocation({ x, y, z }).length != 0 && dimension.getBlock({ x, y, z })?.typeId != 'farmersdelight:tatami') return;
+            block.setPermutation(permutation.withState('farmersdelight:connection', neighborPerm));
+            dimension.getBlock({ x, y, z })?.setPermutation(blockPermutation.withState("farmersdelight:connection", thisPerm));
         })
     }
 }

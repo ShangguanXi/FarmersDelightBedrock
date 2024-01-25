@@ -20,9 +20,11 @@ function arrowheadUtil(entity: Entity, oldItemStack: ItemStack, slot: number, co
     }
 }
 
+world.afterEvents.pistonActivate
+
 function blockEntityLoot(args: any, id: string) {
     const cookingPotblock = new ItemStack('farmersdelight:cooking_pot');
-    if (ObjectUtil.isEqual(args.entity.location, args.blockEntityDataLocation)) args.entity.teleport(args.blockEntityDataLocation);
+    if (!ObjectUtil.isEqual(args.entity.location, args.blockEntityDataLocation)) args.entity.teleport(args.blockEntityDataLocation);
     if (args.block?.typeId == id) return;
     const container: Container | undefined = args.entity.getComponent(EntityInventoryComponent.componentId)?.container;
     const itemStack: ItemStack | undefined = container?.getItem(6);
@@ -54,18 +56,16 @@ export class CookingPotBlockEntity extends BlockEntity {
         const stove = entity.dimension.getBlock({ x: entity.location.x, y: entity.location.y - 1, z: entity.location.z })?.permutation?.getState("farmersdelight:is_working");
         const cookingPotRecipe = new CookingPotRecipe(container, 6, recipes, map.get("previewRecipe") ?? 0, map.get("previewRecipe2") ?? 0);
         map.set("previewRecipe2", cookingPotRecipe.index2);
-        if (cookingPotRecipe.index2 > -1) {
-            cookingPotRecipe.output();
-        }
+        if (cookingPotRecipe.index2 > -1) cookingPotRecipe.output();
         if (stove) {
+            arrowheadUtil(entity, fireArrowFull, 10, container);
             map.set("previewRecipe", cookingPotRecipe.index);
             if (system.currentTick % 15 == 0) {
                 const random = Math.floor(Math.random() * 10);
                 block.dimension.spawnParticle(`farmersdelight:steam_${random}`, { x: x, y: y + 1, z: z });
                 block.dimension.spawnParticle('farmersdelght:bubble', { x: x, y: y + 0.63, z: z });
             }
-            if (cookingPotRecipe.index > -1 && cookingPotRecipe.itemStackData.length === recipes[cookingPotRecipe.index].ingredients.length && cookingPotRecipe.canRecipe) {
-                arrowheadUtil(entity, fireArrowFull, 10, container);
+            if (cookingPotRecipe.index > -1 && cookingPotRecipe.itemStackData.length == recipes[cookingPotRecipe.index].ingredients.length && cookingPotRecipe.canRecipe) {
                 const cookingTime = recipes[cookingPotRecipe.index].cookingtime;
                 const num = Math.floor((progress / cookingTime) * 10) * 10;
                 const arrowhead = new ItemStack(`farmersdelight:cooking_pot_arrow_${num}`);
@@ -79,8 +79,9 @@ export class CookingPotBlockEntity extends BlockEntity {
             } else {
                 entity.setDynamicProperty("farmersdelight:cooking_pot_progress", 0);
                 arrowheadUtil(entity, emptyArrow, 9, container);
-                arrowheadUtil(entity, fireArrowEmpty, 10, container);
             }
+        } else {
+            arrowheadUtil(entity, fireArrowEmpty, 10, container);
         }
     }
 }

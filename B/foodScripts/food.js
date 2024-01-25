@@ -51,11 +51,7 @@ function eatFood(args) {
                 }
                 break;
             case "farmersdelight:pasta_with_meatballs":
-                player.addEffect('saturation', 180 * 20, { amplifier: 0 });
-                break;
             case "farmersdelight:pasta_with_mutton_chop":
-                player.addEffect('saturation', 180 * 20, { amplifier: 0 });
-                break;
             case "farmersdelight:ratatouille":
                 player.addEffect('saturation', 180 * 20, { amplifier: 0 });
                 break;
