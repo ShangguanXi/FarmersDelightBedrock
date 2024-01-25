@@ -1,3 +1,31 @@
 {
- 
+    "individual_event_sounds": {
+        "events": {
+            "farmersdelight.cutting_board": {
+                "sound": "block.farmersdelight.cutting_board",
+                "volume": 1.0,
+                "pitch": 1.0
+            },
+            "farmersdelight.skillet.add_food": {
+                "sound": "block.farmersdelight.skillet.add_food",
+                "volume": 1.0,
+                "pitch": 1.0
+            },
+            "farmersdelight.skillet.sizzle": {
+                "sound": "block.farmersdelight.skillet.sizzle",
+                "volume": 1.0,
+                "pitch": 1.0
+            },
+            "farmersdelight.cooking_pot.boil_soup": {
+                "sound": "block.farmersdelight.cooking_pot.boil_soup",
+                "volume": 1.0,
+                "pitch": 1.0
+            },
+            "farmersdelight.cooking_pot.boil_water": {
+                "sound": "block.farmersdelight.cooking_pot.boil_water",
+                "volume": 1.0,
+                "pitch": 1.0
+            }
+        }
+    }
 }

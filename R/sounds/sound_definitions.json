@@ -15,7 +15,7 @@
                  "block/skillet/add_food"
             ]
         },
-        "block.farmersdelight.skillet.sizzle1": {
+        "block.farmersdelight.skillet.sizzle": {
             "category": "block",
             "sounds": [
                  "block/skillet/sizzle1",
