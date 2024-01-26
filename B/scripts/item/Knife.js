@@ -7,8 +7,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { EntityEquippableComponent, EntityHealthComponent, EquipmentSlot, ItemStack, world } from "@minecraft/server";
+import { EntityEquippableComponent, EntityHealthComponent, EntityInventoryComponent, EquipmentSlot, ItemStack, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
+import { EntityUtil } from "../lib/EntityUtil";
+import { ItemUtil } from "../lib/ItemUtil";
 export class Knife {
     hurt(args) {
         const entity = args.damageSource.damagingEntity;
@@ -25,6 +27,26 @@ export class Knife {
             hurt.dimension.spawnItem(new ItemStack('farmersdelight:ham'), hurt.location);
         }
     }
+    break(args) {
+        const player = args.player;
+        const itemStack = args.itemStackAfterBreak;
+        const block = args.block;
+        const blockTypeId = args.brokenBlockPermutation.type.id;
+        if (!itemStack?.hasTag("farmersdelight:is_knife"))
+            return;
+        if (EntityUtil.gameMode(player)) {
+            const container = player.getComponent(EntityInventoryComponent.componentId)?.container;
+            if (!container)
+                return;
+            ItemUtil.damageItem(container, player.selectedSlot);
+        }
+        if (blockTypeId == "minecraft:tallgrass") {
+            const R = Math.floor(Math.random() * 10);
+            if (R > 2)
+                return;
+            player.dimension.spawnItem(new ItemStack("farmersdelight:straw"), block.location);
+        }
+    }
 }
 __decorate([
     methodEventSub(world.afterEvents.entityHurt),
@@ -32,4 +54,10 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], Knife.prototype, "hurt", null);
+__decorate([
+    methodEventSub(world.afterEvents.playerBreakBlock),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], Knife.prototype, "break", null);
 //# sourceMappingURL=Knife.js.map

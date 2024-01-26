@@ -16,7 +16,7 @@ export class BlockEntity {
         }
     }
     blockEntityLoot(args, id, list, amount = 1) {
-        if (ObjectUtil.isEqual(args.entity.location, args.blockEntityDataLocation))
+        if (!ObjectUtil.isEqual(args.entity.location, args.blockEntityDataLocation))
             args.entity.teleport(args.blockEntityDataLocation);
         if (args.block?.typeId == id)
             return;
@@ -29,7 +29,7 @@ export class BlockEntity {
     }
     static clearEntity(args) {
         if (args.scoreboardObjective) {
-            scoreboard.removeObjective(args.scoreboardObjective);
+            scoreboard.removeObjective(args.entity.typeId + args.entity.id);
         }
         args.entity.triggerEvent('farmersdelight:despawn');
     }

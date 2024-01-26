@@ -583,7 +583,7 @@ export const vanillaCookingPotRecipe = {
         }
     ]
 }
-// '{"container":{"item":"minecraft:bowl"},"cookingtime":200,"ingredients":[{"item":"minecraft:baked_potato"},{item":"minecraft:rabbit"},{"item":"minecraft:carrot"},[{"item":"minecraft:brown_mushroom"},{"item":"minecraft:red_mushroom"}]],"result":{"item":"minecraft:rabbit_stew"}}'
+// '{"container":{"item":"minecraft:bowl"},"cookingtime":200,"ingredients":[{"item":"minecraft:baked_potato"},{"item":"minecraft:rabbit"},{"item":"minecraft:carrot"},[{"item":"minecraft:brown_mushroom"},{"item":"minecraft:red_mushroom"}]],"result":{"item":"minecraft:rabbit_stew"}}'
 // function init(args) {
 //     console.warn(args.message);
 //     // const id = args.id;

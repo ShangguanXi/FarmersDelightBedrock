@@ -65,6 +65,7 @@ export class CookingPotBlockEntity extends BlockEntity {
                 block.dimension.spawnParticle(`farmersdelight:steam_${random}`, { x: x, y: y + 1, z: z });
                 block.dimension.spawnParticle('farmersdelght:bubble', { x: x, y: y + 0.63, z: z });
             }
+            container?.getItem(6) ? entity.runCommandAsync("playsound block.farmersdelight.cooking_pot.boil_soup @a ~ ~ ~ 1 1") : entity.runCommandAsync("playsound block.farmersdelight.cooking_pot.boil_water @a ~ ~ ~ 1 1");
             if (cookingPotRecipe.index > -1 && cookingPotRecipe.itemStackData.length == recipes[cookingPotRecipe.index].ingredients.length && cookingPotRecipe.canRecipe) {
                 const cookingTime = recipes[cookingPotRecipe.index].cookingtime;
                 const num = Math.floor((progress / cookingTime) * 10) * 10;

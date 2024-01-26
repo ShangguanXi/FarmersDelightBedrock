@@ -45,10 +45,11 @@ export class SkilletBlockEntity extends BlockEntity {
         for (const itemStackData of itemStackScoresData) {
             const amountId = itemStackData.participant.displayName;
             const reg: RegExpMatchArray | null = amountId.match(/\d*\+(\d*)G/);
-            if (amountId == 'amount' || !reg) continue
+            if (amountId == 'amount' || !reg) continue;
+            entity.runCommandAsync("playsound block.farmersdelight.skillet.sizzle @a ~ ~ ~ 1 1");
             const num = parseInt(reg[1]);
             const cookTime = itemStackData.score;
-            sco.setScore(amountId, cookTime - (system.currentTick % 20 == 0 ? 1 : 0));
+            sco?.setScore(amountId, cookTime - (system.currentTick % 20 == 0 ? 1 : 0));
             if (num == 0) {
                 sco.removeParticipant(amountId);
             }

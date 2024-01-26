@@ -60,6 +60,9 @@ export class SKilletBlock extends BlockWithEntity {
                     }
                 }
             }
+            const stove = entity.dimension.getBlock({ x: x, y: y - 1, z: z })?.permutation?.getState("farmersdelight:is_working");
+            if (!stove) return
+            entity.runCommandAsync("playsound block.farmersdelight.skillet.add_food @a ~ ~ ~ 1 1");
         }
         if (itemStack.typeId != invItemStack && invItemStack != 'undefined') {
             for (const itemStackData of sco.getScores()) {
@@ -73,7 +76,7 @@ export class SKilletBlock extends BlockWithEntity {
                     entity.dimension.spawnItem(new ItemStack(invItemStack, num), entity.location);
                 }
             }
-            BlockEntity.clearEntity(this.entityBlockData);
+            BlockEntity.clearEntity(data);
             const newEntity: Entity = super.setBlock(args, { x: x + 0.5, y: y, z: z + 0.5 }, "farmersdelight:skillet");
             newEntity.setDynamicProperty('farmersdelight:blockEntityItemStackData', '{"item":"undefined"}');
             world.scoreboard.addObjective(newEntity.typeId + newEntity.id, newEntity.id).setScore('amount', 0);

@@ -28,7 +28,7 @@ export class BlockEntity {
     }
     public static clearEntity(args: any) {
         if (args.scoreboardObjective) {
-            scoreboard.removeObjective(args.scoreboardObjective);
+            scoreboard.removeObjective(args.entity.typeId + args.entity.id);
         }
         args.entity.triggerEvent('farmersdelight:despawn');
     }

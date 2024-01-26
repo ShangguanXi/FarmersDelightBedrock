@@ -1,4 +1,4 @@
-import { world } from "@minecraft/server";
+
 import { CookingPotBlock } from "./block/CookingPotBlock";
 import { CookingPotBlockEntity } from "./block/entity/CookingPotBlockEntity";
 import { CuttingBoardBlock } from "./block/CuttingBoardBlock";
@@ -11,7 +11,11 @@ import { RichSoilFarmland } from "./block/RichSoilFarmland";
 import { OrganicCompost } from "./block/OrganicCompost";
 import { Knife } from "./item/Knife";
 import { TatamiBlock } from "./block/TatamiBlock";
+import { CookingPotRecipeRegistries } from "./init/CookingPotRecipeRegistries";
+import { Food } from "./item/Food";
 
+CookingPotRecipeRegistries.initCookingPotSco();
+CookingPotRecipeRegistries.initCookingPotScoRegistries();
 
 new CookingPotBlock();
 new CookingPotBlockEntity();
@@ -22,6 +26,11 @@ new StoveBlockEntity();
 new SKilletBlock();
 new SkilletBlockEntity();
 new RichSoilFarmland();
-new OrganicCompost();
-new Knife();
 new TatamiBlock();
+new OrganicCompost();
+
+new Food();
+new Knife();
+
+new CookingPotRecipeRegistries();
+

@@ -1,7 +1,7 @@
 export class RecipeHolder {
     constructor(container, length, recipes, index) {
-        this.container = container;
         this.itemStackData = [];
+        this.container = container;
         this.recipes = recipes;
         this.index = index;
         for (let slot = 0; slot < length; slot++) {
@@ -16,52 +16,56 @@ export class RecipeHolder {
             this.index = this.getValidRecipeIndex(this.itemStackData, this.recipes);
         }
     }
-    compare(A, B) {
-        if (!A.length)
-            return false;
-        let flag = false;
-        flag = A.every((a) => {
-            return B.some((b) => {
+    compare(info, ingredients) {
+        const infoCopy = [...info];
+        const ingredientsCopy = JSON.parse(JSON.stringify(ingredients));
+        let flag = infoCopy.every((a, i) => {
+            let found = false;
+            for (let j = 0; j < ingredientsCopy.length; j++) {
+                let b = ingredientsCopy[j];
                 if (Array.isArray(b)) {
-                    return b.some((c) => this.isEqual(a, c));
+                    let index = b.findIndex(c => this.isEqualValue(a, c));
+                    if (index !== -1) {
+                        b.splice(index, 1);
+                        found = true;
+                        break;
+                    }
                 }
                 else {
-                    return this.isEqual(a, b);
+                    if (this.isEqualValue(a, b)) {
+                        ingredientsCopy.splice(j, 1);
+                        found = true;
+                        break;
+                    }
                 }
-            });
+            }
+            if (found) {
+                infoCopy.splice(i, 1);
+                i--;
+            }
+            return found;
         });
         return flag;
     }
     getValidRecipeIndex(info, recipes) {
         for (const index in recipes) {
-            if (this.compare(info, recipes[index].ingredients)) {
+            const recipe = recipes[index].ingredients;
+            if (info.length == recipe.length && this.compare(info, recipe)) {
                 return parseInt(index);
             }
         }
         return -1;
     }
-    isArray(value) {
-        const type = Object.prototype.toString.call(value);
-        return type === "[object Array]";
-    }
     isEqualValue(have, need) {
-        if (!need)
+        if (!need || !have)
             return false;
-        const value = Object.keys(need)[0];
-        switch (value) {
+        switch (Object.keys(need)[0]) {
             case 'item':
                 return have.typeId == need.item;
             case 'tag':
                 return have.hasTag(need.tag);
         }
-    }
-    isEqual(obj1, obj2) {
-        if (obj1 === obj2)
-            return true;
-        if (typeof (obj1) !== "object" || typeof (obj2) !== "object" || !obj1 || !obj2)
-            return false;
-        if (this.isEqualValue(obj1, obj2))
-            return true;
+        return false;
     }
 }
 //# sourceMappingURL=RecipeHolder.js.map

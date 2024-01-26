@@ -44,6 +44,7 @@ export class CuttingBoardBlock extends BlockWithEntity {
             if (itemStack != 'undefined') {
                 if (mainHand.hasTag('farmersdelight:is_knife')) {
                     const id = itemStack.split(':')[1];
+                    entity.runCommandAsync("playsound block.farmersdelight.cutting_board @a ~ ~ ~ 1 1");
                     entity.runCommandAsync(`loot spawn ${entity.location.x} ${entity.location.y} ${entity.location.z} loot "farmersdelight/cutting_board/farmersdelight_${id}"`);
                     entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', '{"item":"undefined"}');
                     if (EntityUtil.gameMode(player)) {

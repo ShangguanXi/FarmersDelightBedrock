@@ -44,7 +44,7 @@ export class CookingPotRecipe extends RecipeHolder {
                 ItemUtil.claerItem(this.container, 6);
             }
         }
-        else if (this.isEqual(input, recipe.container) && container?.typeId == itemStack.typeId) {
+        else if (this.isEqualValue(input, recipe.container) && container?.typeId == itemStack.typeId) {
             if (this.setItem(itemStack, this.container, 8)) {
                 ItemUtil.claerItem(this.container, 6);
                 ItemUtil.claerItem(this.container, 7);
