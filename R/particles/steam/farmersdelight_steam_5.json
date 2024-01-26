@@ -8,10 +8,7 @@
             "minecraft:emitter_rate_steady": {
                 "max_particles": 1, 
                 "spawn_rate": 20
-            }, 
-            "minecraft:emitter_shape_box": {
-                "direction": "inwards"
-            }, 
+            },
             "minecraft:particle_appearance_billboard": {
                 "facing_camera_mode": "lookat_xyz", 
                 "size": [
