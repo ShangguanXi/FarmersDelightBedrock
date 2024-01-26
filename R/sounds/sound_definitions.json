@@ -4,38 +4,38 @@
         "block.farmersdelight.cutting_board": {
             "category": "block",
             "sounds": [
-                 "block/cutting_board/knife1",
-                 "block/cutting_board/knife2"
+                 "sounds/block/cutting_board/knife1",
+                 "sounds/block/cutting_board/knife2"
             ]
         },
         "block.farmersdelight.skillet.add_food": {
             "category": "block",
             "sounds": [
-                 "block/skillet/add_food1",
-                 "block/skillet/add_food"
+                 "sounds/block/skillet/add_food1",
+                 "sounds/block/skillet/add_food"
             ]
         },
         "block.farmersdelight.skillet.sizzle": {
             "category": "block",
             "sounds": [
-                 "block/skillet/sizzle1",
-                 "block/skillet/sizzle2",
-                 "block/skillet/sizzle3"
+                 "sounds/block/skillet/sizzle1",
+                 "sounds/block/skillet/sizzle2",
+                 "sounds/block/skillet/sizzle3"
             ]
         },
         "block.farmersdelight.cooking_pot.boil_soup": {
             "category": "block",
             "sounds": [
-                 "block/cooking_pot/boil_soup1",
-                 "block/cooking_pot/boil_soup2",
-                 "block/cooking_pot/boil_soup3"
+                 "sounds/block/cooking_pot/boil_soup1",
+                 "sounds/block/cooking_pot/boil_soup2",
+                 "sounds/block/cooking_pot/boil_soup3"
             ]
         },
         "block.farmersdelight.cooking_pot.boil_water": {
             "category": "block",
             "sounds": [
-                 "block/cooking_pot/boil_water1",
-                 "block/cooking_pot/boil_water2"
+                 "sounds/block/cooking_pot/boil_water1",
+                 "sounds/block/cooking_pot/boil_water2"
             ]
         }
     }
