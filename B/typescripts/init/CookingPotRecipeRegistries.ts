@@ -17,8 +17,9 @@ export class CookingPotRecipeRegistries {
         system.runInterval(() => {
             const cookingPotRecipeRegistrieSco: ScoreboardObjective | undefined = scoreboard.getObjective("farmersdelight:cooking_pot_recipe_registries");
             if (!cookingPotRecipeRegistrieSco || !bool) return;
-            for (const scores of cookingPotRecipeRegistrieSco.getScores()) {
-                world.getDimension(MinecraftDimensionTypes.overworld).runCommandAsync(`function farmersdelight/cooking_pot_recipe_registries/${scores}`);
+            for (const score of cookingPotRecipeRegistrieSco.getScores()) {
+                const fun: string = score.participant.displayName;
+                world.getDimension(MinecraftDimensionTypes.overworld).runCommandAsync(`function farmersdelight/cooking_pot_recipe_registries/${fun}`);
             }
             bool = false;
         })
