@@ -14,20 +14,23 @@ const scoreboard = world.scoreboard;
 let bool = true;
 let num = 0;
 export class CookingPotRecipeRegistries {
-    static initCookingPotSco() {
-        if (scoreboard.getObjective("farmersdelight:cooking_pot_recipe_registries")) {
-            scoreboard.removeObjective("farmersdelight:cooking_pot_recipe_registries");
-        }
-        scoreboard.addObjective("farmersdelight:cooking_pot_recipe_registries", "farmersdelight:cooking_pot_recipe_registries");
-    }
+    // public static initCookingPotSco() {
+    //     if (scoreboard.getObjective("farmersdelight:cooking_pot_recipe_registries")) {
+    //         scoreboard.removeObjective("farmersdelight:cooking_pot_recipe_registries");
+    //     }
+    //     scoreboard.addObjective("farmersdelight:cooking_pot_recipe_registries", "farmersdelight:cooking_pot_recipe_registries");
+    // }
     static initCookingPotScoRegistries() {
         system.runInterval(() => {
-            const cookingPotRecipeRegistrieSco = scoreboard.getObjective("farmersdelight:cooking_pot_recipe_registries");
-            if (!cookingPotRecipeRegistrieSco || !bool)
+            const allSco = scoreboard.getObjectives();
+            if (!allSco?.length || !bool)
                 return;
-            for (const score of cookingPotRecipeRegistrieSco.getScores()) {
-                const fun = score.participant.displayName;
-                world.getDimension(MinecraftDimensionTypes.overworld).runCommandAsync(`function farmersdelight/cooking_pot_recipe_registries/${fun}`);
+            for (const sco of allSco) {
+                const name = sco.displayName;
+                const reg = name.match(/farmersdelight_(\w+)/);
+                if (reg) {
+                    world.getDimension(MinecraftDimensionTypes.overworld).runCommandAsync(`function farmersdelight/cooking_pot_recipe_registries/${reg[1]}`);
+                }
             }
             bool = false;
         });

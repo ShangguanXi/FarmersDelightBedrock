@@ -3,23 +3,20 @@ import { methodEventSub } from "../lib/eventHelper";
 import { vanillaCookingPotRecipe } from "../data/recipe/cookingPotRecipe";
 
 const scoreboard: Scoreboard = world.scoreboard;
-let bool = true;
-let num = 0;
+let bool: boolean = true;
+let num: number = 0;
 
 export class CookingPotRecipeRegistries {
-    public static initCookingPotSco() {
-        if (scoreboard.getObjective("farmersdelight:cooking_pot_recipe_registries")) {
-            scoreboard.removeObjective("farmersdelight:cooking_pot_recipe_registries");
-        }
-        scoreboard.addObjective("farmersdelight:cooking_pot_recipe_registries", "farmersdelight:cooking_pot_recipe_registries");
-    }
     public static initCookingPotScoRegistries() {
         system.runInterval(() => {
-            const cookingPotRecipeRegistrieSco: ScoreboardObjective | undefined = scoreboard.getObjective("farmersdelight:cooking_pot_recipe_registries");
-            if (!cookingPotRecipeRegistrieSco || !bool) return;
-            for (const score of cookingPotRecipeRegistrieSco.getScores()) {
-                const fun: string = score.participant.displayName;
-                world.getDimension(MinecraftDimensionTypes.overworld).runCommandAsync(`function farmersdelight/cooking_pot_recipe_registries/${fun}`);
+            const allSco: ScoreboardObjective[] | undefined = scoreboard.getObjectives();
+            if (!allSco?.length || !bool) return;
+            for (const sco of allSco) {
+                const name: string = sco.displayName;
+                const reg: RegExpMatchArray | null = name.match(/farmersdelight_(\w+)/);
+                if (reg) {
+                    world.getDimension(MinecraftDimensionTypes.overworld).runCommandAsync(`function farmersdelight/cooking_pot_recipe_registries/${reg[1]}`);
+                }
             }
             bool = false;
         })

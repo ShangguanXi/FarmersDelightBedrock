@@ -14,7 +14,7 @@ import { TatamiBlock } from "./block/TatamiBlock";
 import { CookingPotRecipeRegistries } from "./init/CookingPotRecipeRegistries";
 import { Food } from "./item/Food";
 
-CookingPotRecipeRegistries.initCookingPotSco();
+
 CookingPotRecipeRegistries.initCookingPotScoRegistries();
 
 new CookingPotBlock();
