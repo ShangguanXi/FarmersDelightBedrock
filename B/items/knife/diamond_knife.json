@@ -5,12 +5,12 @@
       "minecraft:durability": {
         "max_durability": 1561
       },
-			"minecraft:max_stack_size": 1,
-			"minecraft:hand_equipped": true,
+      "minecraft:max_stack_size": 1,
+      "minecraft:hand_equipped": true,
       "minecraft:enchantable": {
-				"value": 17,
-				"slot": "sword"
-			},
+        "value": 17,
+        "slot": "sword"
+      },
       "minecraft:damage": 4.5,
       "minecraft:repairable": {
         "repair_items": [
@@ -29,14 +29,106 @@
         ]
       },
       "minecraft:digger": {
-        "use_efficiency": true
+        "use_efficiency": true,
+        "destroy_speeds": [
+          {
+            "block": "minecraft:web",
+            "speed": 15
+          },
+          {
+            "block": "minecraft:white_wool",
+            "speed": 15
+          },
+          {
+            "block": "minecraft:orange_wool",
+            "speed": 15
+          },
+          {
+            "block": "minecraft:magenta_wool",
+            "speed": 15
+          },
+          {
+            "block": "minecraft:light_blue_wool",
+            "speed": 15
+          },
+          {
+            "block": "minecraft:yellow_wool",
+            "speed": 15
+          },
+          {
+            "block": "minecraft:lime_wool",
+            "speed": 15
+          },
+          {
+            "block": "minecraft:pink_wool",
+            "speed": 15
+          },
+          {
+            "block": "minecraft:gray_wool",
+            "speed": 15
+          },
+          {
+            "block": "minecraft:light_gray_wool",
+            "speed": 15
+          },
+          {
+            "block": "minecraft:cyan_wool",
+            "speed": 15
+          },
+          {
+            "block": "minecraft:purple_wool",
+            "speed": 15
+          },
+          {
+            "block": "minecraft:blue_wool",
+            "speed": 15
+          },
+          {
+            "block": "minecraft:red_wool",
+            "speed": 15
+          },
+          {
+            "block": "minecraft:brown_wool",
+            "speed": 15
+          },
+          {
+            "block": "minecraft:green_wool",
+            "speed": 15
+          },
+          {
+            "block": "minecraft:black_wool",
+            "speed": 15
+          },
+          {
+            "block": "minecraft:cake",
+            "speed": 15
+          },
+          {
+            "block": "minecraft:hay_block",
+            "speed": 15
+          },
+          {
+            "block": "minecraft:leaves",
+            "speed": 15
+          },
+          {
+            "block": "minecraft:leaves2",
+            "speed": 15
+          },
+          {
+            "block": {
+              "tags": "q.any_tag('farmersdelight:pie', 'farmersdelight:straw_blocks')"
+            },
+            "speed": 15
+          }
+        ]
       },
       "minecraft:tags": {
         "tags": [
-            "minecraft:is_sword",
-            "minecraft:diamond_tier",
-            "minecraft:transformable_items",
-            "farmersdelight:is_knife"
+          "minecraft:is_sword",
+          "minecraft:diamond_tier",
+          "minecraft:transformable_items",
+          "farmersdelight:is_knife"
         ]
       },
       "minecraft:icon": {

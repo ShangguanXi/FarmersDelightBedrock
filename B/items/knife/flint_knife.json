@@ -29,7 +29,99 @@
         ]
       },
       "minecraft:digger": {
-        "use_efficiency": true
+        "use_efficiency": true,
+        "destroy_speeds": [
+          {
+            "block": "minecraft:web",
+            "speed": 10
+          },
+          {
+            "block": "minecraft:white_wool",
+            "speed": 10
+          },
+          {
+            "block": "minecraft:orange_wool",
+            "speed": 10
+          },
+          {
+            "block": "minecraft:magenta_wool",
+            "speed": 10
+          },
+          {
+            "block": "minecraft:light_blue_wool",
+            "speed": 10
+          },
+          {
+            "block": "minecraft:yellow_wool",
+            "speed": 10
+          },
+          {
+            "block": "minecraft:lime_wool",
+            "speed": 10
+          },
+          {
+            "block": "minecraft:pink_wool",
+            "speed": 10
+          },
+          {
+            "block": "minecraft:gray_wool",
+            "speed": 10
+          },
+          {
+            "block": "minecraft:light_gray_wool",
+            "speed": 10
+          },
+          {
+            "block": "minecraft:cyan_wool",
+            "speed": 10
+          },
+          {
+            "block": "minecraft:purple_wool",
+            "speed": 10
+          },
+          {
+            "block": "minecraft:blue_wool",
+            "speed": 10
+          },
+          {
+            "block": "minecraft:red_wool",
+            "speed": 10
+          },
+          {
+            "block": "minecraft:brown_wool",
+            "speed": 10
+          },
+          {
+            "block": "minecraft:green_wool",
+            "speed": 10
+          },
+          {
+            "block": "minecraft:black_wool",
+            "speed": 10
+          },
+          {
+            "block": "minecraft:cake",
+            "speed": 10
+          },
+          {
+            "block": "minecraft:hay_block",
+            "speed": 10
+          },
+          {
+            "block": "minecraft:leaves",
+            "speed": 10
+          },
+          {
+            "block": "minecraft:leaves2",
+            "speed": 10
+          },
+          {
+            "block": {
+              "tags": "q.any_tag('farmersdelight:pie', 'farmersdelight:straw_blocks')"
+            },
+            "speed": 10
+          }
+        ]
       },
       "minecraft:tags": {
         "tags": [

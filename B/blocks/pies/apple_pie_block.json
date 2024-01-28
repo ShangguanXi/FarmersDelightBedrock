@@ -149,7 +149,8 @@
                     4.0,
                     12.0
                 ]
-            }
+            },
+            "tag:farmersdelight:pie":{}
         },
         "events": {
             "on_interact": {
