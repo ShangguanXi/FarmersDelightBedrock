@@ -85,7 +85,7 @@ export const vanillaCookingPotRecipe = {
             "experience": 1.0,
             "ingredients": [
                 {
-                    "tag": "minecraft:is_rice"
+                    "tag": "farmersdelight:is_rice"
                 }
             ],
             "recipe_book_tab": "misc",
@@ -208,7 +208,7 @@ export const vanillaCookingPotRecipe = {
             "experience": 1.0,
             "ingredients": [
                 {
-                    "tag": "minecraft:is_rice"
+                    "tag": "farmersdelight:is_rice"
                 },
                 {
                     "item": "minecraft:egg"
@@ -473,7 +473,7 @@ export const vanillaCookingPotRecipe = {
             "experience": 2.0,
             "ingredients": [
                 {
-                    "tag": "minecraft:is_rice"
+                    "tag": "farmersdelight:is_rice"
                 },
                 {
                     "tag": "farmersdelight:is_onion"
