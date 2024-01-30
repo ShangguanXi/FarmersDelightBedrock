@@ -3,7 +3,7 @@
 	"minecraft:feature_rules": {
 		"description": {
 			"identifier": "farmersdelight:wild_beetroots_feature_rules",
-			"places_feature": "farmersdelight:scatter_wild_beetroots_feature"
+			"places_feature": "farmersdelight:wild_beetroots_aggregate_feature"
 		},
 		"conditions": {
 			"placement_pass": "surface_pass",

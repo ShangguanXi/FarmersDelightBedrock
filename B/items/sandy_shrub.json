@@ -7,11 +7,6 @@
       } ,
       "minecraft:block_placer": {
         "block": "farmersdelight:sandy_shrub_block"
-      },
-      "minecraft:tags": {
-          "tags": [
-              "farmersdelight:can_cut"
-          ]
       }
     }, 
     "description": {

@@ -498,7 +498,7 @@
         }
       },
       {
-        "cooking_pot_bot_progress@chest.input_grid_panel": {
+        "cooking_pot_fire_progress@chest.input_grid_panel": {
           "grid_position": [
             10,
             0

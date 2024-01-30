@@ -1,0 +1,24 @@
+{
+    "format_version": "1.20.20",
+    "minecraft:single_block_feature": {
+        "description": {
+            "identifier": "farmersdelight:sandy_shrub_feature"
+        },
+        "places_block": "farmersdelight:sandy_shrub_block",
+        "enforce_survivability_rules": true,
+        "enforce_placement_rules": false,
+        "may_attach_to": {
+            "bottom": [
+                {
+                    "name": "minecraft:sand"
+                },
+                {
+                    "name": "minecraft:grass"
+                }
+            ]
+        },
+        "may_replace": [
+            "minecraft:air"
+        ]
+    }
+}
