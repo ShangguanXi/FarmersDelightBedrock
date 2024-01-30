@@ -43,7 +43,7 @@
         "description": {
             "basic_render_parameters": {
                 "material": "particles_alpha", 
-                "texture": "textures/items/fish_cod_raw"
+                "texture": "textures/items/fish_raw"
             }, 
             "identifier": "farmersdelight:minecraft_skillet_cod"
         }
