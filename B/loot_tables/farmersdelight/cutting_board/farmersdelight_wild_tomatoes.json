@@ -5,7 +5,7 @@
       "entries": [
         {
           "type": "item",
-          "name": "farmersdelight:tomato_seed",
+          "name": "farmersdelight:tomato_seeds",
           "functions": [
             {
               "function": "set_count",

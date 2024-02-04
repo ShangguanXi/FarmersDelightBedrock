@@ -16,7 +16,7 @@
       },
       "minecraft:tags": {
         "tags": [
-          "farmersdelight:can_cut"
+          "farmersdelight:can_cut.tag.farmersdelight:is_knife"
         ]
       }
     }, 

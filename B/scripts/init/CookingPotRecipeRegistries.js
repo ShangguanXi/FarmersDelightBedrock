@@ -14,12 +14,6 @@ const scoreboard = world.scoreboard;
 let bool = true;
 let num = 0;
 export class CookingPotRecipeRegistries {
-    // public static initCookingPotSco() {
-    //     if (scoreboard.getObjective("farmersdelight:cooking_pot_recipe_registries")) {
-    //         scoreboard.removeObjective("farmersdelight:cooking_pot_recipe_registries");
-    //     }
-    //     scoreboard.addObjective("farmersdelight:cooking_pot_recipe_registries", "farmersdelight:cooking_pot_recipe_registries");
-    // }
     static initCookingPotScoRegistries() {
         system.runInterval(() => {
             const allSco = scoreboard.getObjectives();

@@ -2,18 +2,26 @@ import { ItemStack } from "@minecraft/server";
 import { RecipeHolder } from "./RecipeHolder";
 import { ItemUtil } from "./ItemUtil";
 export class CookingPotRecipe extends RecipeHolder {
+    //判断该配方是否可以进行, 每tick一次
     constructor(container, length, recipes, index, index2) {
         super(container, length, recipes, index);
         this.canRecipe = true;
         this.index2 = index2;
+        //容器槽物品
         const input = this.container.getItem(7);
+        //结果槽物品
         const itemStack = this.container.getItem(6);
-        if (itemStack && itemStack.amount == itemStack.maxAmount) {
-            this.canRecipe = false;
-        }
+        //输出槽物品
+        const output = this.container.getItem(8);
         if (itemStack) {
-            if (input && !this.isEqualValue(itemStack, this.recipes[this.index2].result)) {
-                this.index2 = this.getValidRecipeIndex2(itemStack, input, this.recipes);
+            if (itemStack.amount == itemStack.maxAmount) {
+                this.canRecipe = false;
+            }
+            if (!this.isEqualValue(itemStack, this.recipes[this.index2].result)) {
+                this.canRecipe = false;
+                if (input) {
+                    this.index2 = this.getValidRecipeIndex2(itemStack, input, this.recipes);
+                }
             }
             if (this.index > -1) {
                 const count = this.recipes[this.index].result.count ? this.recipes[this.index].result.count : 1;
@@ -23,6 +31,7 @@ export class CookingPotRecipe extends RecipeHolder {
             }
         }
     }
+    //配方完成时触发
     consume() {
         const output = this.container.getItem(6);
         const recipe = this.recipes[this.index];
@@ -30,24 +39,27 @@ export class CookingPotRecipe extends RecipeHolder {
         if (this.container.emptySlotsCount < this.container.size) {
             this.clear(recipe, itemStack, this.container);
             if (!recipe.container && !output && this.setItem(itemStack, this.container, 8)) {
-                ItemUtil.claerItem(this.container, 6);
+                ItemUtil.clearItem(this.container, 6);
             }
         }
     }
+    //菜品装碗时触发
     output() {
         const recipe = this.recipes[this.index2];
         const itemStack = new ItemStack(recipe.result.item);
         const container = this.container.getItem(6);
         const input = this.container.getItem(7);
+        //若菜品不需要容器
         if (!recipe.container) {
             if (container && this.setItem(itemStack, this.container, 8)) {
-                ItemUtil.claerItem(this.container, 6);
+                ItemUtil.clearItem(this.container, 6);
             }
+            //若容器栏容器正确
         }
         else if (this.isEqualValue(input, recipe.container) && container?.typeId == itemStack.typeId) {
             if (this.setItem(itemStack, this.container, 8)) {
-                ItemUtil.claerItem(this.container, 6);
-                ItemUtil.claerItem(this.container, 7);
+                ItemUtil.clearItem(this.container, 6);
+                ItemUtil.clearItem(this.container, 7);
             }
         }
     }
@@ -58,7 +70,7 @@ export class CookingPotRecipe extends RecipeHolder {
             for (let i = 0; i < 6; i++) {
                 const getItem = container.getItem(i);
                 if (getItem) {
-                    ItemUtil.claerItem(container, i);
+                    ItemUtil.clearItem(container, i);
                 }
             }
             this.setItemCount(container, output, itemStack, count, 6);

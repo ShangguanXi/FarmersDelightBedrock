@@ -254,12 +254,12 @@ export const vanillaCookingPotRecipe = {
             }
         },
         {
-"type": "farmersdelight:cooking",
+            "type": "farmersdelight:cooking",
             "container": {
                 "item": "minecraft:bowl"
             },
             "cookingtime": 200,
-"experience": 1.0,
+            "experience": 1.0,
             "ingredients": [
                 [
                     { "tag": "farmersdelight:is_tomato" }
@@ -268,7 +268,6 @@ export const vanillaCookingPotRecipe = {
                     { "tag": "farmersdelight:is_tomato" }
                 ]
             ],
-"recipe_book_tab": "misc",
             "result": {
                 "item": "farmersdelight:tomato_sauce"
             }

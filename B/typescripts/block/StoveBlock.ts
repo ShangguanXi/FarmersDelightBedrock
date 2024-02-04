@@ -36,7 +36,7 @@ export class StoveBlock extends BlockWithEntity {
                 if (amount < 6) {
                     sco.setScore('amount', amount + 1);
                     sco.setScore(`${itemStack.typeId}/${amount + 1}`, 30);
-                    if (EntityUtil.gameMode(player)) ItemUtil.claerItem(container, player.selectedSlot);
+                    if (EntityUtil.gameMode(player)) ItemUtil.clearItem(container, player.selectedSlot);
                 }
             } else {
                 const arr: string[] = [];

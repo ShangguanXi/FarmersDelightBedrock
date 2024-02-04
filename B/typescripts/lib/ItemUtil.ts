@@ -16,7 +16,7 @@ export class ItemUtil {
             return durability.maxDurability;
         }
     }
-    public static claerItem(container: Container, index: number, amount: number = 1) {
+    public static clearItem(container: Container, index: number, amount: number = 1) {
         const itemStack: ItemStack | undefined = container.getItem(index);
         if (!itemStack) return;
         const itemAmount: number = itemStack.amount;

@@ -22,6 +22,7 @@ function arrowheadUtil(entity: Entity, oldItemStack: ItemStack, slot: number, co
 
 world.afterEvents.pistonActivate
 
+//刷新方块实体状态以及防TP
 function blockEntityLoot(args: any, id: string) {
     const cookingPotblock = new ItemStack('farmersdelight:cooking_pot');
     if (!ObjectUtil.isEqual(args.entity.location, args.blockEntityDataLocation)) args.entity.teleport(args.blockEntityDataLocation);
@@ -51,9 +52,11 @@ export class CookingPotBlockEntity extends BlockEntity {
         const container: Container | undefined = entity.getComponent(EntityInventoryComponent.componentId)?.container;
         if (!container) return;
         blockEntityLoot(entityBlockData, "farmersdelight:cooking_pot");
+        //TODO:厨锅热源检测修改
         const map: Map<string, number> = new Map();
         const progress: number = entity.getDynamicProperty("farmersdelight:cooking_pot_progress") as number ?? 0
         const stove = entity.dimension.getBlock({ x: entity.location.x, y: entity.location.y - 1, z: entity.location.z })?.permutation?.getState("farmersdelight:is_working");
+        //配方管理器, 每tick处理一次
         const cookingPotRecipe = new CookingPotRecipe(container, 6, recipes, map.get("previewRecipe") ?? 0, map.get("previewRecipe2") ?? 0);
         map.set("previewRecipe2", cookingPotRecipe.index2);
         if (cookingPotRecipe.index2 > -1) cookingPotRecipe.output();
@@ -65,7 +68,9 @@ export class CookingPotBlockEntity extends BlockEntity {
                 block.dimension.spawnParticle(`farmersdelight:steam_${random}`, { x: x, y: y + 1, z: z });
                 block.dimension.spawnParticle('farmersdelght:bubble', { x: x, y: y + 0.63, z: z });
             }
-            container?.getItem(6) ? entity.runCommandAsync("playsound block.farmersdelight.cooking_pot.boil_soup @a ~ ~ ~ 1 1") : entity.runCommandAsync("playsound block.farmersdelight.cooking_pot.boil_water @a ~ ~ ~ 1 1");
+            if (system.currentTick % 80 == 0) {
+                container?.getItem(6) ? entity.runCommandAsync("playsound block.farmersdelight.cooking_pot.boil_soup @a ~ ~ ~ 1 1") : entity.runCommandAsync("playsound block.farmersdelight.cooking_pot.boil_water @a ~ ~ ~ 1 1");
+            }
             if (cookingPotRecipe.index > -1 && cookingPotRecipe.itemStackData.length == recipes[cookingPotRecipe.index].ingredients.length && cookingPotRecipe.canRecipe) {
                 const cookingTime = recipes[cookingPotRecipe.index].cookingtime;
                 const num = Math.floor((progress / cookingTime) * 10) * 10;

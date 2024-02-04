@@ -45,7 +45,7 @@ export class StoveBlock extends BlockWithEntity {
                     sco.setScore('amount', amount + 1);
                     sco.setScore(`${itemStack.typeId}/${amount + 1}`, 30);
                     if (EntityUtil.gameMode(player))
-                        ItemUtil.claerItem(container, player.selectedSlot);
+                        ItemUtil.clearItem(container, player.selectedSlot);
                 }
             }
             else {

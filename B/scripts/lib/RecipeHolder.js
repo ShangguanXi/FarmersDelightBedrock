@@ -1,9 +1,14 @@
 export class RecipeHolder {
+    //配方管理器初始化
     constructor(container, length, recipes, index) {
         this.itemStackData = [];
+        //实体容器
         this.container = container;
+        //配方表
         this.recipes = recipes;
+        //索引ID
         this.index = index;
+        //length为容器格子数
         for (let slot = 0; slot < length; slot++) {
             const itemStack = this.container.getItem(slot);
             if (itemStack) {
@@ -12,6 +17,7 @@ export class RecipeHolder {
         }
         if (!this.itemStackData.length)
             this.index = -1;
+        //若是当前索引指向配方与原料不符, 则重新索引配方
         if (!this.compare(this.itemStackData, recipes[index].ingredients)) {
             this.index = this.getValidRecipeIndex(this.itemStackData, this.recipes);
         }
@@ -47,6 +53,7 @@ export class RecipeHolder {
         });
         return flag;
     }
+    //根据原料索引配方
     getValidRecipeIndex(info, recipes) {
         for (const index in recipes) {
             const recipe = recipes[index].ingredients;
