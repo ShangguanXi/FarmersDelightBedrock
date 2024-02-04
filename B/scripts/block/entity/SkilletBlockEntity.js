@@ -10,12 +10,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 import { system, world } from "@minecraft/server";
 import { methodEventSub } from "../../lib/eventHelper";
 import { BlockEntity } from "./BlockEntity";
+import { heatConductors, heatSources } from "../../data/heatBlocks";
 const skilletV2 = [];
 for (let i = 0; i < 5; i++) {
     const json = {};
     json.x = (Math.random() * 2 - 1) * 0.15 * 0.5;
     json.z = (Math.random() * 2 - 1) * 0.15 * 0.5;
     skilletV2.push(json);
+}
+//检查热源
+function heatCheck(block) {
+    const blockBelow = block.below();
+    if (heatSources.includes(blockBelow?.typeId) || blockBelow?.hasTag('farmersdelight:heat_source'))
+        return true;
+    if (heatConductors.includes(blockBelow?.typeId) || blockBelow?.hasTag('farmersdelight:heat_conductors')) {
+        const blockBelow2 = block.below(2);
+        if (heatSources.includes(blockBelow2?.typeId) || blockBelow2?.hasTag('farmersdelight:heat_source'))
+            return true;
+    }
+    return false;
 }
 export class SkilletBlockEntity extends BlockEntity {
     tick(args) {
@@ -53,8 +66,8 @@ export class SkilletBlockEntity extends BlockEntity {
         for (let index = 0; index < particleCount; index++) {
             entity.dimension.spawnParticle(name, { x: x + skilletV2[index].x, y: y + 0.07 + 0.03 * (index + 1), z: z + skilletV2[index].z });
         }
-        const stove = entity.dimension.getBlock({ x: entity.location.x, y: entity.location.y - 1, z: entity.location.z })?.permutation?.getState("farmersdelight:is_working");
-        if (!stove)
+        const heated = heatCheck(entityBlockData.block);
+        if (!heated)
             return;
         for (const itemStackData of itemStackScoresData) {
             const amountId = itemStackData.participant.displayName;

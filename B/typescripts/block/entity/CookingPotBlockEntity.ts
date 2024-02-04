@@ -4,6 +4,7 @@ import { BlockEntity } from "./BlockEntity";
 import ObjectUtil from "../../lib/ObjectUtil";
 import { vanillaCookingPotRecipe } from "../../data/recipe/cookingPotRecipe";
 import { CookingPotRecipe } from "../../lib/CookingPotRecipe";
+import { heatConductors, heatSources } from "../../data/heatBlocks";
 
 
 const fireArrowFull: ItemStack = new ItemStack("farmersdelight:fire_1");
@@ -18,6 +19,17 @@ function arrowheadUtil(entity: Entity, oldItemStack: ItemStack, slot: number, co
     if (itemStack?.typeId != oldItemStack.typeId) {
         container.setItem(slot, oldItemStack);
     }
+}
+
+//检查热源  自定义热源可以使用farmersdelight:heat_source的tag进行定义
+function heatCheck(block: Block) {
+    const blockBelow = block.below()
+    if (heatSources.includes(blockBelow?.typeId as string) || blockBelow?.hasTag('farmersdelight:heat_source')) return true
+    if (heatConductors.includes(blockBelow?.typeId as string) || blockBelow?.hasTag('farmersdelight:heat_conductors')){
+        const blockBelow2 = block.below(2)
+        if (heatSources.includes(blockBelow2?.typeId as string) || blockBelow2?.hasTag('farmersdelight:heat_source')) return true
+    }
+    return false
 }
 
 world.afterEvents.pistonActivate
@@ -52,15 +64,15 @@ export class CookingPotBlockEntity extends BlockEntity {
         const container: Container | undefined = entity.getComponent(EntityInventoryComponent.componentId)?.container;
         if (!container) return;
         blockEntityLoot(entityBlockData, "farmersdelight:cooking_pot");
-        //TODO:厨锅热源检测修改
         const map: Map<string, number> = new Map();
         const progress: number = entity.getDynamicProperty("farmersdelight:cooking_pot_progress") as number ?? 0
-        const stove = entity.dimension.getBlock({ x: entity.location.x, y: entity.location.y - 1, z: entity.location.z })?.permutation?.getState("farmersdelight:is_working");
+        //热源检测
+        const heated = heatCheck(block);
         //配方管理器, 每tick处理一次
         const cookingPotRecipe = new CookingPotRecipe(container, 6, recipes, map.get("previewRecipe") ?? 0, map.get("previewRecipe2") ?? 0);
         map.set("previewRecipe2", cookingPotRecipe.index2);
         if (cookingPotRecipe.index2 > -1) cookingPotRecipe.output();
-        if (stove) {
+        if (heated) {
             arrowheadUtil(entity, fireArrowFull, 10, container);
             map.set("previewRecipe", cookingPotRecipe.index);
             if (system.currentTick % 15 == 0) {

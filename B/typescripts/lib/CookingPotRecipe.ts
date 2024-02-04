@@ -10,6 +10,7 @@ export class CookingPotRecipe extends RecipeHolder {
     //判断该配方是否可以进行, 每tick一次
     constructor(container: Container, length: number, recipes: any[], index: number, index2: number) {
         super(container, length, recipes, index);
+        //索引2, 用于索引菜品装碗对应容器
         this.index2 = index2;
         //容器槽物品
         const input: ItemStack | undefined = this.container.getItem(7);

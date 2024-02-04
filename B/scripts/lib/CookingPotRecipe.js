@@ -6,6 +6,7 @@ export class CookingPotRecipe extends RecipeHolder {
     constructor(container, length, recipes, index, index2) {
         super(container, length, recipes, index);
         this.canRecipe = true;
+        //索引2, 用于索引菜品装碗对应容器
         this.index2 = index2;
         //容器槽物品
         const input = this.container.getItem(7);
