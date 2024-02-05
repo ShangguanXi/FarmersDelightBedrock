@@ -1,0 +1,27 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "farmersdelight:jungle_cabinet"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "pattern": [
+            "WWW",
+            "# #",
+            "WWW"
+        ],
+        "key": {
+            "#": {
+                "item": "minecraft:jungle_trapdoor"
+            },
+            "W": {
+                "item": "minecraft:jungle_slab"
+            }
+        },
+        "result": {
+            "item": "farmersdelight:jungle_cabinet"
+        }
+    }
+}

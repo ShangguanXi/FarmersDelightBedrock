@@ -1,0 +1,123 @@
+{
+    "format_version": "1.20.0",
+    "minecraft:block": {
+        "description": {
+            "identifier": "farmersdelight:mangrove_cabinet",
+            "menu_category": {
+                "category": "items",
+                "group": "itemGroup.name.chest"
+            },
+            "properties": {
+                "farmersdelight:cabinet_is_open": [
+                    false,
+                    true
+                ]
+            },
+            "traits": {
+                "minecraft:placement_direction": {
+                    "enabled_states": [
+                        "minecraft:cardinal_direction"
+                    ],
+                    "y_rotation_offset": 180.0
+                }
+            }
+        },
+        "permutations": [
+            {
+                "condition": "query.block_state('minecraft:cardinal_direction') == 'north'",
+                "components": {
+                    "minecraft:transformation": {
+                        "rotation": [
+                            0,
+                            180,
+                            0
+                        ]
+                    }
+                }
+            },
+            {
+                "condition": "query.block_state('minecraft:cardinal_direction') == 'south'",
+                "components": {
+                    "minecraft:transformation": {
+                        "rotation": [
+                            0,
+                            0,
+                            0
+                        ]
+                    }
+                }
+            },
+            {
+                "condition": "query.block_state('minecraft:cardinal_direction') == 'west'",
+                "components": {
+                    "minecraft:transformation": {
+                        "rotation": [
+                            0,
+                            270,
+                            0
+                        ]
+                    }
+                }
+            },
+            {
+                "condition": "query.block_state('minecraft:cardinal_direction') == 'east'",
+                "components": {
+                    "minecraft:transformation": {
+                        "rotation": [
+                            0,
+                            90,
+                            0
+                        ]
+                    }
+                }
+            },
+            {
+                "condition": "query.block_state('farmersdelight:cabinet_is_open') == false",
+                "components": {
+                    "minecraft:material_instances": {
+                        "*": {
+                            "texture": "mangrove_cabinet_side"
+                        },
+                        "up": {
+                            "texture": "mangrove_cabinet_top"
+                        },
+                        "down": {
+                            "texture": "mangrove_cabinet_top"
+                        },
+                        "south": {
+                            "texture": "mangrove_cabinet_front"
+                        }
+                    }
+                }
+            },
+            {
+                "condition": "query.block_state('farmersdelight:cabinet_is_open') == true",
+                "components": {
+                    "minecraft:material_instances": {
+                        "*": {
+                            "texture": "mangrove_cabinet_side"
+                        },
+                        "up": {
+                            "texture": "mangrove_cabinet_top"
+                        },
+                        "down": {
+                            "texture": "mangrove_cabinet_top"
+                        },
+                        "south": {
+                            "texture": "mangrove_cabinet_front_open"
+                        }
+                    }
+                }
+            }
+        ],
+        "components": {
+            "minecraft:destructible_by_mining": {
+                "seconds_to_destroy": 1
+            },
+            "minecraft:destructible_by_explosion": {
+                "explosion_resistance": 36
+            },
+            "minecraft:unit_cube": {}
+        }
+    }
+}

@@ -1,0 +1,136 @@
+{
+    "format_version": "1.16.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "farmersdelight:spruce_cabinet",
+            "is_spawnable": false,
+            "is_summonable": true,
+            "is_experimental": false
+        },
+        "component_groups": {
+            "farmersdelight:spruce_cabinet_despawn": {
+                "minecraft:despawn": {},
+                "minecraft:instant_despawn": {
+                    "remove_child_entities": false
+                }
+            },
+            "farmersdelight:cabinet_open": {
+                "minecraft:environment_sensor": {
+                    "triggers": [
+                        {
+                            "filters": {
+                                "test": "has_container_open",
+                                "subject": "player",
+                                "value": false
+                            },
+                            "event": "farmersdelight:cabinet_close"
+                        }
+                    ]
+                }
+            },
+            "farmersdelight:cabinet_close": {
+                "minecraft:environment_sensor": {
+                    "triggers": [
+                        {
+                            "filters": {
+                                "test": "has_container_open",
+                                "subject": "player",
+                                "value": true
+                            },
+                            "event": "farmersdelight:cabinet_open"
+                        }
+                    ]
+                }
+            }
+        },
+        "components": {
+            "minecraft:damage_sensor": {
+                "triggers": {
+                    "on_damage": {},
+                    "deals_damage": false
+                }
+            },
+            "minecraft:timer": {
+                "looping": true,
+                "randomInterval": true,
+                "time": [
+                    0.0,
+                    0.0
+                ],
+                "time_down_event": {
+                    "event": "farmersdelight:cabinet_tick"
+                }
+            },
+            "minecraft:persistent": {},
+            "minecraft:inventory": {
+                "inventory_size": 27,
+                "can_be_siphoned_from": true,
+                "container_type": "minecart_chest"
+            },
+            "minecraft:physics": {
+                "has_collision": false,
+                "has_gravity": false
+            },
+            "minecraft:scale": 0,
+            "minecraft:type_family": {
+                "family": [
+                    "farmersdelight_tick_block_entity"
+                ]
+            },
+            "minecraft:is_hidden_when_invisible": {},
+            "minecraft:breathable": {
+                "breathes_solids": true
+            },
+            "minecraft:health": {
+                "value": 1,
+                "max": 1,
+                "min": 1
+            },
+            "minecraft:collision_box": {
+                "width": 0.1,
+                "height": 0.1
+            }
+        },
+        "events": {
+            "farmersdelight:despawn": {
+                "add": {
+                    "component_groups": [
+                        "farmersdelight:spruce_cabinet_despawn"
+                    ]
+                }
+            },
+            "farmersdelight:cabinet_close": {
+                "remove": {
+                    "component_groups": [
+                        "farmersdelight:cabinet_open"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "farmersdelight:cabinet_close"
+                    ]
+                }
+            },
+            "minecraft:entity_spawned": {
+                "add": {
+                    "component_groups": [
+                        "farmersdelight:cabinet_close"
+                    ]
+                }
+            },
+            "farmersdelight:cabinet_open": {
+                "remove": {
+                    "component_groups": [
+                        "farmersdelight:cabinet_close"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "farmersdelight:cabinet_open"
+                    ]
+                }
+            },
+            "farmersdelight:cabinet_tick": {}
+        }
+    }
+}

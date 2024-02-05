@@ -1,0 +1,27 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "farmersdelight:crimson_cabinet"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "pattern": [
+            "WWW",
+            "# #",
+            "WWW"
+        ],
+        "key": {
+            "#": {
+                "item": "minecraft:crimson_trapdoor"
+            },
+            "W": {
+                "item": "minecraft:crimson_slab"
+            }
+        },
+        "result": {
+            "item": "farmersdelight:crimson_cabinet"
+        }
+    }
+}

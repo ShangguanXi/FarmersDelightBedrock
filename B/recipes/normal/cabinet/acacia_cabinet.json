@@ -1,0 +1,27 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "farmersdelight:acacia_cabinet"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "pattern": [
+            "WWW",
+            "# #",
+            "WWW"
+        ],
+        "key": {
+            "#": {
+                "item": "minecraft:acacia_trapdoor"
+            },
+            "W": {
+                "item": "minecraft:acacia_slab"
+            }
+        },
+        "result": {
+            "item": "farmersdelight:acacia_cabinet"
+        }
+    }
+}

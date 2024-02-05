@@ -621,6 +621,18 @@
 		},
 		"torchflower_crop_stage1": {
 			"textures": "textures/blocks/torchflower_crop_stage_1"
+		},
+		"cherry_cabinet_top": {
+			"textures": "textures/blocks/cherry_cabinet_top"
+		},
+		"cherry_cabinet_side": {
+			"textures": "textures/blocks/cherry_cabinet_side"
+		},
+		"cherry_cabinet_front_open": {
+			"textures": "textures/blocks/cherry_cabinet_front_open"
+		},
+		"cherry_cabinet_front": {
+			"textures": "textures/blocks/cherry_cabinet_front"
 		}
 	}
 }

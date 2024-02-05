@@ -1,0 +1,27 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "farmersdelight:dark_oak_cabinet"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "pattern": [
+            "WWW",
+            "# #",
+            "WWW"
+        ],
+        "key": {
+            "#": {
+                "item": "minecraft:dark_oak_trapdoor"
+            },
+            "W": {
+                "item": "minecraft:dark_oak_slab"
+            }
+        },
+        "result": {
+            "item": "farmersdelight:dark_oak_cabinet"
+        }
+    }
+}
