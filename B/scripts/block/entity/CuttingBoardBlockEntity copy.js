@@ -12,7 +12,7 @@ import { methodEventSub } from "../../lib/eventHelper";
 import { BlockEntity } from "./BlockEntity";
 export class CuttingBoardBlockEntity extends BlockEntity {
     tick(args) {
-        const entityBlockData = super.blockEntityData(args.entity);
+        const entityBlockData = super.blockEntityData(args);
         if (!entityBlockData)
             return;
         const entity = entityBlockData.entity;
@@ -33,4 +33,4 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], CuttingBoardBlockEntity.prototype, "tick", null);
-//# sourceMappingURL=CuttingBoardBlockEntity.js.map
+//# sourceMappingURL=CuttingBoardBlockEntity%20copy.js.map

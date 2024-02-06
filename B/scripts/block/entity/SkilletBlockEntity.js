@@ -32,7 +32,7 @@ function heatCheck(block) {
 }
 export class SkilletBlockEntity extends BlockEntity {
     tick(args) {
-        const entityBlockData = super.blockEntityData(args);
+        const entityBlockData = super.blockEntityData(args.entity);
         if (!entityBlockData)
             return;
         const entity = entityBlockData.entity;

@@ -56,7 +56,7 @@ function blockEntityLoot(args: any, id: string) {
 export class CookingPotBlockEntity extends BlockEntity {
     @methodEventSub(world.afterEvents.dataDrivenEntityTriggerEvent, { entityTypes: ["farmersdelight:cooking_pot"], eventTypes: ["farmersdelight:cooking_pot_tick"] })
     tick(args: any) {
-        const entityBlockData = super.blockEntityData(args);
+        const entityBlockData = super.blockEntityData(args.entity);
         if (!entityBlockData) return;
         const entity: Entity = entityBlockData.entity;
         const { x, y, z }: Vector3 = entity.location;

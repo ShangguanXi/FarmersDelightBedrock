@@ -117,7 +117,9 @@
             "minecraft:destructible_by_explosion": {
                 "explosion_resistance": 36
             },
-            "minecraft:unit_cube": {}
+            "minecraft:unit_cube": {},
+            "tag:wood": {},
+            "tag:farmersdelight:cabinet": {}
         }
     }
 }

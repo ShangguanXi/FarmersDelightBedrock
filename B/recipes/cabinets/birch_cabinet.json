@@ -2,7 +2,7 @@
     "format_version": "1.12",
     "minecraft:recipe_shaped": {
         "description": {
-            "identifier": "farmersdelight:dark_oak_cabinet"
+            "identifier": "farmersdelight:birch_cabinet"
         },
         "tags": [
             "crafting_table"
@@ -14,14 +14,15 @@
         ],
         "key": {
             "#": {
-                "item": "minecraft:dark_oak_trapdoor"
+                "item": "minecraft:birch_trapdoor"
             },
             "W": {
-                "item": "minecraft:dark_oak_slab"
+                "item": "minecraft:wooden_slab",
+                "data": 2
             }
         },
         "result": {
-            "item": "farmersdelight:dark_oak_cabinet"
+            "item": "farmersdelight:birch_cabinet"
         }
     }
 }

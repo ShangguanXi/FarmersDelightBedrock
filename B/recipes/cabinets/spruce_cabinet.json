@@ -2,7 +2,7 @@
     "format_version": "1.12",
     "minecraft:recipe_shaped": {
         "description": {
-            "identifier": "farmersdelight:birch_cabinet"
+            "identifier": "farmersdelight:spruce_cabinet"
         },
         "tags": [
             "crafting_table"
@@ -14,14 +14,15 @@
         ],
         "key": {
             "#": {
-                "item": "minecraft:birch_trapdoor"
+                "item": "minecraft:spruce_trapdoor"
             },
             "W": {
-                "item": "minecraft:birch_slab"
+                "item": "minecraft:wooden_slab",
+                "data": 1
             }
         },
         "result": {
-            "item": "farmersdelight:birch_cabinet"
+            "item": "farmersdelight:spruce_cabinet"
         }
     }
 }

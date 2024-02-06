@@ -15,31 +15,18 @@
                 }
             },
             "farmersdelight:cabinet_open": {
-                "minecraft:environment_sensor": {
-                    "triggers": [
-                        {
-                            "filters": {
-                                "test": "has_container_open",
-                                "subject": "player",
-                                "value": false
-                            },
-                            "event": "farmersdelight:cabinet_close"
-                        }
-                    ]
-                }
-            },
-            "farmersdelight:cabinet_close": {
-                "minecraft:environment_sensor": {
-                    "triggers": [
-                        {
-                            "filters": {
-                                "test": "has_container_open",
-                                "subject": "player",
-                                "value": true
-                            },
-                            "event": "farmersdelight:cabinet_open"
-                        }
-                    ]
+                "minecraft:entity_sensor": {
+                    "maximum_count": 1,
+                    "minimum_count": 1,
+                    "relative_range": true,
+                    "sensor_range": 5,
+                    "event_filters": {
+                        "test": "has_container_open",
+                        "subject": "other",
+                        "operator": "==",
+                        "value": false
+                    },
+                    "event": "farmersdelight:cabinet_close"
                 }
             }
         },
@@ -87,8 +74,8 @@
                 "min": 1
             },
             "minecraft:collision_box": {
-                "width": 0.1,
-                "height": 0.1
+                "width": 1.0,
+                "height": 0.5
             }
         },
         "events": {
@@ -104,26 +91,9 @@
                     "component_groups": [
                         "farmersdelight:cabinet_open"
                     ]
-                },
-                "add": {
-                    "component_groups": [
-                        "farmersdelight:cabinet_close"
-                    ]
                 }
             },
-            "minecraft:entity_spawned": {
-                "add": {
-                    "component_groups": [
-                        "farmersdelight:cabinet_close"
-                    ]
-                }
-            },
-            "farmersdelight:cabinet_open": {
-                "remove": {
-                    "component_groups": [
-                        "farmersdelight:cabinet_close"
-                    ]
-                },
+            "farmersdelight:cabinet_interact": {
                 "add": {
                     "component_groups": [
                         "farmersdelight:cabinet_open"

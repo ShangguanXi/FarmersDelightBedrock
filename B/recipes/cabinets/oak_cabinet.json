@@ -2,7 +2,7 @@
     "format_version": "1.12",
     "minecraft:recipe_shaped": {
         "description": {
-            "identifier": "farmersdelight:acacia_cabinet"
+            "identifier": "farmersdelight:oak_cabinet"
         },
         "tags": [
             "crafting_table"
@@ -14,14 +14,15 @@
         ],
         "key": {
             "#": {
-                "item": "minecraft:acacia_trapdoor"
+                "item": "minecraft:trapdoor"
             },
             "W": {
-                "item": "minecraft:acacia_slab"
+                "item": "minecraft:wooden_slab",
+                "data": 0
             }
         },
         "result": {
-            "item": "farmersdelight:acacia_cabinet"
+            "item": "farmersdelight:oak_cabinet"
         }
     }
 }

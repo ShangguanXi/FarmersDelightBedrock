@@ -4,7 +4,7 @@ import { CookingPotBlockEntity } from "./block/entity/CookingPotBlockEntity";
 import { CuttingBoardBlock } from "./block/CuttingBoardBlock";
 import { CuttingBoardBlockEntity } from "./block/entity/CuttingBoardBlockEntity";
 import { StoveBlock } from "./block/StoveBlock";
-import { StoveBlockEntity } from "./block/StoveBlockEntity";
+import { StoveBlockEntity } from "./block/entity/StoveBlockEntity";
 import { SKilletBlock } from "./block/SkilletBlock";
 import { SkilletBlockEntity } from "./block/entity/SkilletBlockEntity";
 import { RichSoilFarmland } from "./block/RichSoilFarmland";
@@ -13,6 +13,8 @@ import { Knife } from "./item/Knife";
 import { TatamiBlock } from "./block/TatamiBlock";
 import { CookingPotRecipeRegistries } from "./init/CookingPotRecipeRegistries";
 import { Food } from "./item/Food";
+import { Cabinets } from "./block/Cabinets"
+import { CabinetsBlockEntity } from "./block/entity/CabinetsBlockEntity";
 
 
 CookingPotRecipeRegistries.initCookingPotScoRegistries();
@@ -28,6 +30,8 @@ new SkilletBlockEntity();
 new RichSoilFarmland();
 new TatamiBlock();
 new OrganicCompost();
+new Cabinets();
+new CabinetsBlockEntity();
 
 new Food();
 new Knife();

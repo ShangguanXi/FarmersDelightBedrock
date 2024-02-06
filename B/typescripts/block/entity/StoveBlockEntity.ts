@@ -48,7 +48,7 @@ function itemStackArr(scores: ScoreboardScoreInfo[]): string[] {
 export class StoveBlockEntity extends BlockEntity {
     @methodEventSub(world.afterEvents.dataDrivenEntityTriggerEvent, { entityTypes: ["farmersdelight:stove"], eventTypes: ["farmersdelight:stove_tick"] })
     tick(args: any) {
-        const entityBlockData = super.blockEntityData(args);
+        const entityBlockData = super.blockEntityData(args.entity);
         if (!entityBlockData) return;
         const block: Block = entityBlockData.block;
         const entity: Entity = entityBlockData.entity;
@@ -64,7 +64,7 @@ export class StoveBlockEntity extends BlockEntity {
             const particleName: string = name[0] == 'minecraft' ? `farmersdelight:${name[0]}_stove_${name[1]}` : `farmersdelight:stove_${name[1]}`;
             if (block.permutation?.getState('farmersdelight:is_working')) {
 
-                entity.dimension.spawnParticle("minecraft:basic_smoke_particle",{ x: x + stoveOffsets[parseInt(id[1]) - 1].x, y: y + 1.02, z: z + stoveOffsets[parseInt(id[1]) - 1].y };
+                entity.dimension.spawnParticle("minecraft:basic_smoke_particle",{ x: x + stoveOffsets[parseInt(id[1]) - 1].x, y: y + 1.02, z: z + stoveOffsets[parseInt(id[1]) - 1].y });
                 const cookTime: number = itemStackData.score;
                 sco.setScore(itemStack, cookTime - (system.currentTick % 20 == 0 ? 1 : 0));
                 if (cookTime <= 0) {

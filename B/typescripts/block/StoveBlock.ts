@@ -11,6 +11,8 @@ export class StoveBlock extends BlockWithEntity {
     placeBlock(args: any) {
         const block: Block = args.block;
         if (block.typeId != "farmersdelight:stove") return;
+        //创造模式放置直接为点燃状态
+        if (!EntityUtil.gameMode(args.player)) block.setPermutation(block.permutation.withState('farmersdelight:is_working', true));
         const { x, y, z }: Vector3 = block.location;
         const entity: Entity = super.setBlock(args, { x: x + 0.5, y: y, z: z + 0.5 }, "farmersdelight:stove");
         world.scoreboard.addObjective(entity.typeId + entity.id, entity.id).setScore('amount', 0);

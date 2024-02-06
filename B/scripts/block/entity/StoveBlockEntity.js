@@ -51,7 +51,7 @@ function itemStackArr(scores) {
 }
 export class StoveBlockEntity extends BlockEntity {
     tick(args) {
-        const entityBlockData = super.blockEntityData(args);
+        const entityBlockData = super.blockEntityData(args.entity);
         if (!entityBlockData)
             return;
         const block = entityBlockData.block;

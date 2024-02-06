@@ -17,7 +17,8 @@
                 "item": "minecraft:jungle_trapdoor"
             },
             "W": {
-                "item": "minecraft:jungle_slab"
+                "item": "minecraft:wooden_slab",
+                "data": 3
             }
         },
         "result": {
