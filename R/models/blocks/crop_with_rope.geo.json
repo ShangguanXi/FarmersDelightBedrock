@@ -1,0 +1,53 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.crop_with_rope",
+				"texture_width": 16,
+				"texture_height": 16,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
+			},
+			"bones": [
+				{
+					"name": "bone",
+					"pivot": [8, 0, -8],
+					"cubes": [
+						{
+							"origin": [-1, 0, -1],
+							"size": [2, 16, 2],
+							"uv": {
+								"north": {"uv": [9, 0], "uv_size": [-2, 16], "material_instance": "rope_side"},
+								"east": {"uv": [7, 0], "uv_size": [2, 16], "material_instance": "rope_side"},
+								"south": {"uv": [9, 0], "uv_size": [-2, 16], "material_instance": "rope_side"},
+								"west": {"uv": [7, 0], "uv_size": [2, 16], "material_instance": "rope_side"},
+								"up": {"uv": [9, 9], "uv_size": [-2, -2], "material_instance": "rope_top"},
+								"down": {"uv": [9, 9], "uv_size": [-2, -2], "material_instance": "rope_top"}
+							}
+						},
+						{
+							"origin": [-7.2, -1, 0],
+							"size": [14.4, 16, 0],
+							"pivot": [0, 8, 0],
+							"rotation": [0, -45, 0],
+							"uv": {
+								"south": {"uv": [0, 0], "uv_size": [16, 16], "material_instance": "crop"}
+							}
+						},
+						{
+							"origin": [0, -1, -7.2],
+							"size": [0, 16, 14.4],
+							"pivot": [0, 8, 0],
+							"rotation": [0, -45, 0],
+							"uv": {
+								"east": {"uv": [0, 0], "uv_size": [16, 16], "material_instance": "crop"}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}
