@@ -221,5 +221,8 @@
   entity.farmersdelight:cooking_pot.name=farmersdelight厨锅
   farmersdelight:CookingPot=厨锅
 
+  farmersdelight.tips.false_tool=或许得换个工具......
+  farmersdelight.tips.cant_cut=这东西可不能切啊......
+
   pack.name=农夫乐事[资源包]
   pack.description=是时候种点好东西了！QQ交流群851992067，discord链接https://discord.com/invite/djAmPY98cJ

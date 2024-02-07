@@ -202,5 +202,8 @@
   entity.farmersdelight:cooking_pot.name=farmersdelight厨锅
   farmersdelight:CookingPot=Cooking Pot
 
+  farmersdelight.tips.false_tool=Maybe with a different tool......
+  farmersdelight.tips.cant_cut=This doesn't seem cuttable......
+
   pack.name=Farmer's Delight[RP]
   pack.description=It's time to farm a little bit of everything!QQ group number 851992067, discord https://discord.com/invite/djAmPY98cJ
