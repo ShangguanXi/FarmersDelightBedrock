@@ -23,7 +23,7 @@ function heatCheck(block: Block) {
 }
 
 export class SkilletBlockEntity extends BlockEntity {
-    @methodEventSub(world.afterEvents.dataDrivenEntityTriggerEvent, { entityTypes: ["farmersdelight:skillet"], eventTypes: ["farmersdelight:skillet_tick"] })
+    @methodEventSub(world.afterEvents.dataDrivenEntityTrigger, { entityTypes: ["farmersdelight:skillet"], eventTypes: ["farmersdelight:skillet_tick"] })
     tick(args: any) {
         const entityBlockData = super.blockEntityData(args.entity);
         if (!entityBlockData) return;

@@ -54,7 +54,7 @@ function blockEntityLoot(args: any, id: string) {
     BlockEntity.clearEntity(args);
 }
 export class CookingPotBlockEntity extends BlockEntity {
-    @methodEventSub(world.afterEvents.dataDrivenEntityTriggerEvent, { entityTypes: ["farmersdelight:cooking_pot"], eventTypes: ["farmersdelight:cooking_pot_tick"] })
+    @methodEventSub(world.afterEvents.dataDrivenEntityTrigger, { entityTypes: ["farmersdelight:cooking_pot"], eventTypes: ["farmersdelight:cooking_pot_tick"] })
     tick(args: any) {
         const entityBlockData = super.blockEntityData(args.entity);
         if (!entityBlockData) return;

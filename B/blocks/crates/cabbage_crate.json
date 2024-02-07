@@ -25,7 +25,7 @@
             "minecraft:destructible_by_explosion": {
                 "explosion_resistance": 3
             },
-            "minecraft:unit_cube": {},
+            "minecraft:geometry": "geometry.block",
             "tag:wood":{}
         }
     }

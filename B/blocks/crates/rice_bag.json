@@ -28,7 +28,7 @@
             "minecraft:destructible_by_explosion": {
                 "explosion_resistance": 0.3
             },
-            "minecraft:unit_cube": {},
+            "minecraft:geometry": "geometry.block",
             "tag:farmersdelight:straw_blocks":{}
         }
     }

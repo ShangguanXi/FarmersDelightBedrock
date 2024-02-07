@@ -28,7 +28,7 @@ export class CuttingBoardBlockEntity extends BlockEntity {
     }
 }
 __decorate([
-    methodEventSub(world.afterEvents.dataDrivenEntityTriggerEvent, { entityTypes: ["farmersdelight:cutting_board"], eventTypes: ["farmersdelight:cutting_board_tick"] }),
+    methodEventSub(world.afterEvents.dataDrivenEntityTrigger, { entityTypes: ["farmersdelight:cutting_board"], eventTypes: ["farmersdelight:cutting_board_tick"] }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)

@@ -122,7 +122,7 @@
                 "event": "farmersdelight:on_interact",
                 "target": "self"
             },
-            "minecraft:unit_cube": {}
+            "minecraft:geometry": "geometry.block"
         },
         "events": {
             "farmersdelight:on_interact": {
