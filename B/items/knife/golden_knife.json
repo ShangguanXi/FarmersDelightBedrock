@@ -126,7 +126,8 @@
       "minecraft:tags": {
         "tags": [
             "minecraft:is_sword",
-            "farmersdelight:is_knife"
+            "farmersdelight:is_knife",
+            "farmersdelight:straw_harvesters"
         ]
       },
       "minecraft:icon": {

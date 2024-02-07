@@ -128,7 +128,8 @@
           "minecraft:is_sword",
           "minecraft:diamond_tier",
           "minecraft:transformable_items",
-          "farmersdelight:is_knife"
+          "farmersdelight:is_knife",
+          "farmersdelight:straw_harvesters"
         ]
       },
       "minecraft:icon": {
