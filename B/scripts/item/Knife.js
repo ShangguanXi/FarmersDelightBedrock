@@ -7,11 +7,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { EntityEquippableComponent, EntityHealthComponent, EntityInventoryComponent, EquipmentSlot, ItemStack, world } from "@minecraft/server";
+import { BlockPermutation, Direction, EntityEquippableComponent, EntityHealthComponent, EntityInventoryComponent, EquipmentSlot, ItemStack, PlayerInteractWithBlockAfterEvent, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
 import { EntityUtil } from "../lib/EntityUtil";
 import { ItemUtil } from "../lib/ItemUtil";
+function spawnLoot(path, dimenion, location) {
+    return dimenion.runCommand(`loot spawn ${location.x} ${location.y} ${location.z} loot "${path}"`);
+}
 export class Knife {
+    //杀猪掉火腿
     hurt(args) {
         const entity = args.damageSource.damagingEntity;
         const hurt = args.hurtEntity;
@@ -27,10 +31,12 @@ export class Knife {
             hurt.dimension.spawnItem(new ItemStack('farmersdelight:ham'), hurt.location);
         }
     }
+    //草秆
     break(args) {
         const player = args.player;
         const itemStack = args.itemStackAfterBreak;
         const block = args.block;
+        const permutation = args.brokenBlockPermutation;
         const blockTypeId = args.brokenBlockPermutation.type.id;
         if (!itemStack?.hasTag("farmersdelight:is_knife"))
             return;
@@ -39,12 +45,52 @@ export class Knife {
             if (!container)
                 return;
             ItemUtil.damageItem(container, player.selectedSlot);
+            if (blockTypeId == "minecraft:tallgrass") {
+                spawnLoot('farmersdelight/straw_from_grass', block.dimension, block.location);
+            }
+            else if (blockTypeId == "minecraft:double_plant") {
+                const type = permutation.getState('double_plant_type');
+                if (type == 'grass' || type == 'fern')
+                    spawnLoot('farmersdelight/straw_from_grass', block.dimension, block.location);
+            }
+            else if (blockTypeId == "minecraft:wheat") {
+                const age = permutation.getState('growth');
+                if (age == 7)
+                    spawnLoot('farmersdelight/straw', block.dimension, block.location);
+            }
+            else if (blockTypeId == "farmersdelight:rice_block_upper") {
+                const age = permutation.getState('growth');
+                if (age == 3)
+                    spawnLoot('farmersdelight/straw', block.dimension, block.location);
+            }
+            else if (blockTypeId == "farmersdelight:sandy_shrub_block") {
+                spawnLoot('farmersdelight/straw_from_sandy_shrub', block.dimension, block.location);
+            }
         }
-        if (blockTypeId == "minecraft:tallgrass") {
-            const R = Math.floor(Math.random() * 10);
-            if (R > 2)
+    }
+    //与南瓜互动
+    useOn(args) {
+        const player = args.player;
+        const itemStack = args.itemStack;
+        const block = args.block;
+        if (!itemStack || !itemStack?.hasTag("farmersdelight:is_knife") || block.typeId != "minecraft:pumpkin")
+            return;
+        const face = args.blockFace;
+        const dimenion = args.block.dimension;
+        if (EntityUtil.gameMode(player)) {
+            const container = player.getComponent(EntityInventoryComponent.componentId)?.container;
+            if (!container)
                 return;
-            player.dimension.spawnItem(new ItemStack("farmersdelight:straw"), block.location);
+            ItemUtil.damageItem(container, player.selectedSlot);
+        }
+        if (face == Direction.Up || face == Direction.Down) {
+            const direction = EntityUtil.cardinalDirection(player);
+            block.setPermutation(BlockPermutation.resolve('minecraft:carved_pumpkin', { 'minecraft:cardinal_direction': direction?.toLocaleLowerCase() }));
+            dimenion.spawnItem(new ItemStack('minecraft:pumpkin_seeds', 4), block.location);
+        }
+        else {
+            block.setPermutation(BlockPermutation.resolve('minecraft:carved_pumpkin', { 'minecraft:cardinal_direction': face?.toLocaleLowerCase() }));
+            dimenion.spawnItem(new ItemStack('minecraft:pumpkin_seeds', 4), block.location);
         }
     }
 }
@@ -60,4 +106,10 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], Knife.prototype, "break", null);
+__decorate([
+    methodEventSub(world.afterEvents.playerInteractWithBlock),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [PlayerInteractWithBlockAfterEvent]),
+    __metadata("design:returntype", void 0)
+], Knife.prototype, "useOn", null);
 //# sourceMappingURL=Knife.js.map
