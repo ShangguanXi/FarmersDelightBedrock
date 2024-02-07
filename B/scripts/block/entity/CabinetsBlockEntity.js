@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { world } from "@minecraft/server";
+import { PlayerInteractWithEntityAfterEvent, world } from "@minecraft/server";
 import { methodEventSub } from "../../lib/eventHelper";
 import { BlockEntity } from "./BlockEntity";
 export class CabinetsBlockEntity extends BlockEntity {
@@ -24,10 +24,12 @@ export class CabinetsBlockEntity extends BlockEntity {
             return;
         const entity = entityBlockData.entity;
         const block = entityBlockData.block;
+        const player = args.player;
         world.playSound('block.barrel.open', entity.location);
         block.setPermutation(block.permutation.withState('farmersdelight:cabinet_is_open', true));
         entity.setDynamicProperty('farmersdelight:player_open', args.player.nameTag);
         entity.triggerEvent('farmersdelight:cabinet_interact');
+        player.setDynamicProperty('farmersdelight:is_checking_cabinet', true);
     }
     tryClose(args) {
         const entityBlockData = super.blockEntityData(args.entity);
@@ -39,6 +41,10 @@ export class CabinetsBlockEntity extends BlockEntity {
         const players = dimension.getEntities({ type: 'minecraft:player', name: entity.getDynamicProperty('farmersdelight:player_open') });
         if (players.length != 1)
             return;
+        const player = players[0];
+        if (!player.getDynamicProperty('farmersdelight:is_checking_cabinet'))
+            return;
+        player.setDynamicProperty('farmersdelight:is_checking_cabinet', false);
         world.playSound('block.barrel.close', entity.location);
         block.setPermutation(block.permutation.withState('farmersdelight:cabinet_is_open', false));
         entity.setDynamicProperty('farmersdelight:player_open', undefined);
@@ -54,7 +60,7 @@ __decorate([
 __decorate([
     methodEventSub(world.afterEvents.playerInteractWithEntity),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [PlayerInteractWithEntityAfterEvent]),
     __metadata("design:returntype", void 0)
 ], CabinetsBlockEntity.prototype, "onInteract", null);
 __decorate([

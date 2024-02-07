@@ -18,7 +18,6 @@ export class Cabinets extends BlockWithEntity {
         const { x, y, z } = block.location;
         const entity = super.setBlock(args, { x: x + 0.5, y: y, z: z + 0.5 }, block.typeId);
         entity.nameTag = `tile.${entity.typeId}.name`;
-        console.warn(block.permutation.getState('minecraft:cardinal_direction'));
     }
 }
 __decorate([
