@@ -84,7 +84,7 @@ export class StoveBlockEntity extends BlockEntity {
     }
 }
 __decorate([
-    methodEventSub(world.afterEvents.dataDrivenEntityTriggerEvent, { entityTypes: ["farmersdelight:stove"], eventTypes: ["farmersdelight:stove_tick"] }),
+    methodEventSub(world.afterEvents.dataDrivenEntityTrigger, { entityTypes: ["farmersdelight:stove"], eventTypes: ["farmersdelight:stove_tick"] }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)

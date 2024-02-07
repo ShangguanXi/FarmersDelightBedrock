@@ -46,7 +46,7 @@ function itemStackArr(scores: ScoreboardScoreInfo[]): string[] {
 
 
 export class StoveBlockEntity extends BlockEntity {
-    @methodEventSub(world.afterEvents.dataDrivenEntityTriggerEvent, { entityTypes: ["farmersdelight:stove"], eventTypes: ["farmersdelight:stove_tick"] })
+    @methodEventSub(world.afterEvents.dataDrivenEntityTrigger, { entityTypes: ["farmersdelight:stove"], eventTypes: ["farmersdelight:stove_tick"] })
     tick(args: any) {
         const entityBlockData = super.blockEntityData(args.entity);
         if (!entityBlockData) return;

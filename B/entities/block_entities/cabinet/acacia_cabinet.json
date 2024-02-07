@@ -16,17 +16,16 @@
             },
             "farmersdelight:cabinet_open": {
                 "minecraft:entity_sensor": {
-                    "maximum_count": 1,
                     "minimum_count": 1,
                     "relative_range": true,
-                    "sensor_range": 5,
+                    "sensor_range": 6,
                     "event_filters": {
                         "test": "has_container_open",
                         "subject": "other",
                         "operator": "==",
                         "value": false
                     },
-                    "event": "farmersdelight:cabinet_close"
+                    "event": "farmersdelight:cabinet_try_close"
                 }
             }
         },
@@ -101,6 +100,7 @@
                     ]
                 }
             },
+            "farmersdelight:cabinet_try_close": {},
             "farmersdelight:cabinet_tick": {}
         }
     }

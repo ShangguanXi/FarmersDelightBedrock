@@ -8,6 +8,8 @@ export class Cabinets extends BlockWithEntity {
         const block: Block = args.block;
         if (!block.hasTag('farmersdelight:cabinet')) return;
         const { x, y, z }: Vector3 = block.location;
-        super.setBlock(args, { x: x + 0.5, y: y, z: z + 0.5 }, block.typeId);
+        const entity = super.setBlock(args, { x: x + 0.5, y: y, z: z + 0.5 }, block.typeId);
+        entity.nameTag = `tile.${entity.typeId}.name`
+        console.warn(block.permutation.getState('minecraft:cardinal_direction'))
     }
 }

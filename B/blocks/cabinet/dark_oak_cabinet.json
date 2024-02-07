@@ -1,5 +1,5 @@
 {
-    "format_version": "1.20.0",
+    "format_version": "1.20.60",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:dark_oak_cabinet",
@@ -7,7 +7,7 @@
                 "category": "items",
                 "group": "itemGroup.name.chest"
             },
-            "properties": {
+            "states": {
                 "farmersdelight:cabinet_is_open": [
                     false,
                     true
@@ -117,7 +117,7 @@
             "minecraft:destructible_by_explosion": {
                 "explosion_resistance": 36
             },
-            "minecraft:unit_cube": {},
+            "minecraft:geometry": "geometry.block",
             "tag:wood": {},
             "tag:farmersdelight:cabinet": {}
         }

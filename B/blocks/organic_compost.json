@@ -68,7 +68,7 @@
             "minecraft:destructible_by_explosion": {
                 "explosion_resistance": 3
             },
-            "minecraft:unit_cube": {},
+            "minecraft:geometry": "geometry.block",
             "minecraft:random_ticking": {
                 "on_tick": {
                     "event": "grow_stage",

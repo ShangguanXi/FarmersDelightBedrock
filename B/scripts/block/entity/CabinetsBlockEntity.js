@@ -24,19 +24,29 @@ export class CabinetsBlockEntity extends BlockEntity {
             return;
         const entity = entityBlockData.entity;
         const block = entityBlockData.block;
+        world.playSound('block.barrel.open', entity.location);
         block.setPermutation(block.permutation.withState('farmersdelight:cabinet_is_open', true));
+        entity.setDynamicProperty('farmersdelight:player_open', args.player.nameTag);
         entity.triggerEvent('farmersdelight:cabinet_interact');
     }
-    onClose(args) {
+    tryClose(args) {
         const entityBlockData = super.blockEntityData(args.entity);
         if (!entityBlockData)
             return;
         const block = entityBlockData.block;
+        const entity = entityBlockData.entity;
+        const dimension = entityBlockData.dimension;
+        const players = dimension.getEntities({ type: 'minecraft:player', name: entity.getDynamicProperty('farmersdelight:player_open') });
+        if (players.length != 1)
+            return;
+        world.playSound('block.barrel.close', entity.location);
         block.setPermutation(block.permutation.withState('farmersdelight:cabinet_is_open', false));
+        entity.setDynamicProperty('farmersdelight:player_open', undefined);
+        entity.triggerEvent('farmersdelight:cabinet_close');
     }
 }
 __decorate([
-    methodEventSub(world.afterEvents.dataDrivenEntityTriggerEvent, { eventTypes: ["farmersdelight:cabinet_tick"] }),
+    methodEventSub(world.afterEvents.dataDrivenEntityTrigger, { eventTypes: ["farmersdelight:cabinet_tick"] }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
@@ -48,9 +58,9 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], CabinetsBlockEntity.prototype, "onInteract", null);
 __decorate([
-    methodEventSub(world.afterEvents.dataDrivenEntityTriggerEvent, { eventTypes: ["farmersdelight:cabinet_close"] }),
+    methodEventSub(world.afterEvents.dataDrivenEntityTrigger, { eventTypes: ["farmersdelight:cabinet_try_close"] }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
-], CabinetsBlockEntity.prototype, "onClose", null);
+], CabinetsBlockEntity.prototype, "tryClose", null);
 //# sourceMappingURL=CabinetsBlockEntity.js.map
