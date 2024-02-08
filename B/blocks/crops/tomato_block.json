@@ -110,9 +110,9 @@
                             "ambient_occlusion": false,
                             "render_method": "alpha_test"
                         }
-                    }
-                },
-                "tag:tomato_crop": {}
+                    },
+                    "tag:tomato_crop": {}
+                }
             },
             {
                 "condition": "query.block_state('farmersdelight:growth') == 5",
@@ -123,9 +123,9 @@
                             "ambient_occlusion": false,
                             "render_method": "alpha_test"
                         }
-                    }
-                },
-                "tag:tomato_crop": {}
+                    },
+                    "tag:tomato_crop": {}
+                }
             },
             {
                 "condition": "query.block_state('farmersdelight:growth') == 6",
@@ -136,9 +136,9 @@
                             "ambient_occlusion": false,
                             "render_method": "alpha_test"
                         }
-                    }
-                },
-                "tag:tomato_crop": {}
+                    },
+                    "tag:tomato_crop": {}
+                }
             },
             {
                 "condition": "query.block_state('farmersdelight:growth') == 7",
@@ -150,9 +150,9 @@
                             "ambient_occlusion": false,
                             "render_method": "alpha_test"
                         }
-                    }
-                },
-                "tag:tomato_crop": {}
+                    },
+                    "tag:tomato_crop": {}
+                }
             },
             {
                 "condition": "query.block_state('farmersdelight:growth') >= 3",
