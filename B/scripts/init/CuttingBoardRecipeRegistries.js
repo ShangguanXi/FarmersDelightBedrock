@@ -9,12 +9,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { MinecraftDimensionTypes, system, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
-import { vanillaCookingPotRecipe } from "../data/recipe/cookingPotRecipe";
+import { vanillaItemList } from "../data/recipe/cuttingBoardRecipe";
 const scoreboard = world.scoreboard;
 let bool = true;
 let num = 0;
-export class CookingPotRecipeRegistries {
-    static initCookingPotScoRegistries() {
+export class CuttingBoardRegistries {
+    static initCuttingBoardScoRegistries() {
         system.runInterval(() => {
             const allSco = scoreboard.getObjectives();
             if (!allSco?.length || !bool)
@@ -23,7 +23,7 @@ export class CookingPotRecipeRegistries {
                 const name = sco.displayName;
                 const reg = name.match(/farmersdelight_(\w+)/);
                 if (reg) {
-                    world.getDimension(MinecraftDimensionTypes.overworld).runCommandAsync(`function farmersdelight/cooking_pot_recipe_registries/${reg[1]}`);
+                    world.getDimension(MinecraftDimensionTypes.overworld).runCommandAsync(`function farmersdelight/cutting_board_recipe_registries/${reg[1]}`);
                 }
             }
             bool = false;
@@ -31,18 +31,13 @@ export class CookingPotRecipeRegistries {
     }
     registries(args) {
         const id = args.id;
-        if (id != "farmersdelight:cooking_pot_recipe")
+        if (id != "farmersdelight:cutting_board_recipe")
             return;
         const message = args.message;
         try {
-            const json = JSON.parse(message);
-            if (!(json.cookingtime || json.ingredients || json.result))
-                return;
-            if (!json.ingredients.length || !json.result.item)
-                return;
-            vanillaCookingPotRecipe.recipe.push(json);
+            vanillaItemList.unshift(message);
             num++;
-            console.warn(`已加载 §4${num}§f 个厨锅配方`);
+            console.warn(`已加载 §4${num}§f 个砧板配方`);
         }
         catch (error) {
             return;
@@ -54,5 +49,5 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
-], CookingPotRecipeRegistries.prototype, "registries", null);
-//# sourceMappingURL=CookingPotRecipeRegistries.js.map
+], CuttingBoardRegistries.prototype, "registries", null);
+//# sourceMappingURL=CuttingBoardRecipeRegistries.js.map

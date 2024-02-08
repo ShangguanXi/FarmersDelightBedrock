@@ -15,9 +15,11 @@ import { CookingPotRecipeRegistries } from "./init/CookingPotRecipeRegistries";
 import { Food } from "./item/Food";
 import { Cabinets } from "./block/Cabinets"
 import { CabinetsBlockEntity } from "./block/entity/CabinetsBlockEntity";
+import { CuttingBoardRegistries } from "./init/CuttingBoardRecipeRegistries";
 
 
 CookingPotRecipeRegistries.initCookingPotScoRegistries();
+CuttingBoardRegistries.initCuttingBoardScoRegistries();
 
 new CookingPotBlock();
 new CookingPotBlockEntity();
