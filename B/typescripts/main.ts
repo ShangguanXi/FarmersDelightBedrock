@@ -16,6 +16,7 @@ import { Food } from "./item/Food";
 import { Cabinets } from "./block/Cabinets"
 import { CabinetsBlockEntity } from "./block/entity/CabinetsBlockEntity";
 import { CuttingBoardRegistries } from "./init/CuttingBoardRecipeRegistries";
+import { RiceBlock } from "./block/Rice";
 
 
 CookingPotRecipeRegistries.initCookingPotScoRegistries();
@@ -34,6 +35,7 @@ new TatamiBlock();
 new OrganicCompost();
 new Cabinets();
 new CabinetsBlockEntity();
+new RiceBlock();
 
 new Food();
 new Knife();
