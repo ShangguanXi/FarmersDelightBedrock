@@ -7,8 +7,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { EntityHealthComponent, world } from "@minecraft/server";
+import { EntityHealthComponent, EntityInventoryComponent, PlayerInteractWithEntityBeforeEvent, system, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
+import { ItemUtil } from "../lib/ItemUtil";
+import { EntityUtil } from "../lib/EntityUtil";
 export class Food {
     eat(args) {
         const itemStack = args.itemStack;
@@ -82,6 +84,41 @@ export class Food {
                 break;
         }
     }
+    //狗粮与马食
+    feed(args) {
+        const itemStack = args.itemStack;
+        if (!itemStack)
+            return;
+        const target = args.target;
+        const player = args.player;
+        switch (itemStack.typeId) {
+            case 'farmersdelight:dog_food':
+                if (target.typeId != 'minecraft:wolf')
+                    return;
+                args.cancel = true;
+                system.run(() => {
+                    if (EntityUtil.gameMode(player))
+                        ItemUtil.clearItem(player.getComponent(EntityInventoryComponent.componentId)?.container, player.selectedSlot);
+                    target.addEffect('speed', 6000);
+                    target.addEffect('strength', 6000);
+                    target.addEffect('resistance', 6000);
+                });
+                break;
+            case 'farmersdelight:horse_feed':
+                if (!horseFeedTargets.includes(target.typeId))
+                    return;
+                args.cancel = true;
+                system.run(() => {
+                    if (EntityUtil.gameMode(player))
+                        ItemUtil.clearItem(player.getComponent(EntityInventoryComponent.componentId)?.container, player.selectedSlot);
+                    const healthComp = target.getComponent('health');
+                    healthComp?.resetToMaxValue();
+                    target.addEffect('speed', 6000, { amplifier: 1 });
+                    target.addEffect('jump_boost', 6000);
+                });
+                break;
+        }
+    }
 }
 __decorate([
     methodEventSub(world.afterEvents.itemStopUse),
@@ -89,4 +126,11 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], Food.prototype, "eat", null);
+__decorate([
+    methodEventSub(world.beforeEvents.playerInteractWithEntity),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [PlayerInteractWithEntityBeforeEvent]),
+    __metadata("design:returntype", void 0)
+], Food.prototype, "feed", null);
+const horseFeedTargets = ['minecraft:donkey', 'minecraft:horse', 'minecraft:mule', 'minecraft:llama', 'minecraft:trader_llama'];
 //# sourceMappingURL=Food.js.map

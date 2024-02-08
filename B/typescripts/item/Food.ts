@@ -1,5 +1,7 @@
-import { EntityHealthComponent, ItemStack, Player, world } from "@minecraft/server";
+import { Container, EntityHealthComponent, EntityInventoryComponent, ItemStack, Player, PlayerInteractWithEntityBeforeEvent, system, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
+import { ItemUtil } from "../lib/ItemUtil";
+import { EntityUtil } from "../lib/EntityUtil";
 
 
 export class Food {
@@ -75,4 +77,37 @@ export class Food {
                 break;
         }
     }
+    //狗粮与马食
+    @methodEventSub(world.beforeEvents.playerInteractWithEntity)
+    feed(args: PlayerInteractWithEntityBeforeEvent){
+        const itemStack = args.itemStack;
+        if (!itemStack) return;
+        const target = args.target;
+        const player = args.player;
+        switch (itemStack.typeId) {
+            case 'farmersdelight:dog_food':
+                if (target.typeId != 'minecraft:wolf') return
+                args.cancel = true;
+                system.run(() => {
+                    if (EntityUtil.gameMode(player)) ItemUtil.clearItem(player.getComponent(EntityInventoryComponent.componentId)?.container as Container, player.selectedSlot);
+                    target.addEffect('speed', 6000);
+                    target.addEffect('strength', 6000);
+                    target.addEffect('resistance', 6000);
+                })
+                break;
+            case 'farmersdelight:horse_feed':
+                if (!horseFeedTargets.includes(target.typeId)) return
+                args.cancel = true;
+                system.run(() => {
+                    if (EntityUtil.gameMode(player)) ItemUtil.clearItem(player.getComponent(EntityInventoryComponent.componentId)?.container as Container, player.selectedSlot);
+                    const healthComp = target.getComponent('health');
+                    healthComp?.resetToMaxValue();
+                    target.addEffect('speed', 6000, {amplifier: 1});
+                    target.addEffect('jump_boost', 6000);
+                })
+                break;
+        }
+    }
 }
+
+const horseFeedTargets = ['minecraft:donkey', 'minecraft:horse', 'minecraft:mule', 'minecraft:llama', 'minecraft:trader_llama']

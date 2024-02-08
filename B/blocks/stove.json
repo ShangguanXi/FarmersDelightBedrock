@@ -107,7 +107,8 @@
                             "texture": "stove_front_on"
                         }
                     },
-                    "minecraft:light_emission": 12
+                    "minecraft:light_emission": 12,
+                    "tag:farmersdelight:heat_source": {}
                 }
             }
         ],
