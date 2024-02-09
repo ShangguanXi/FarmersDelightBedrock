@@ -17,7 +17,8 @@
       "minecraft:tags": {
           "tags": [
               "farmersdelight:is_raw_chicken",
-              "farmersdelight:can_cook"
+              "farmersdelight:can_cook",
+              "farmersdelight:is_wolf_prey"
           ]
       }
     },

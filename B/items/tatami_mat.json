@@ -3,10 +3,6 @@
   "minecraft:item": {
     "components": {
       "minecraft:max_stack_size": 64,
-      "minecraft:block_placer": {
-        "block": "farmersdelight:tatami_mat_main",
-        "use_block_description": true
-      },
       "minecraft:icon": {
         "texture": "farmersdelight:tatami_mat"
       }

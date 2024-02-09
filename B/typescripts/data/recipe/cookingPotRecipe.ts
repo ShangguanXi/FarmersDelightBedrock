@@ -582,6 +582,85 @@ export const vanillaCookingPotRecipe = {
             "result": {
                 "item": "farmersdelight:noodle_soup"
             }
+        },
+        {
+            "type": "farmersdelight:cooking",
+            "container": {
+                "item": "minecraft:bowl"
+            },
+            "cookingtime": 200,
+            "experience": 1.0,
+            "ingredients": [
+                {
+                    "tag": "farmersdelight:is_rice"
+                },
+                {
+                    "item": "minecraft:bone_meal"
+                },
+                {
+                    "item": "minecraft:rotten_flesh"
+                },
+                {
+                    "tag": "farmersdelight:is_wolf_prey"
+                }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+                "item": "farmersdelight:dog_food"
+            }
+        },
+        {
+            "type": "farmersdelight:cooking",
+            "container": {
+                "item": "minecraft:bowl"
+            },
+            "cookingtime": 200,
+            "experience": 1.0,
+            "ingredients": [
+                {
+                    "item": "minecraft:bone"
+                },
+                {
+                    "item": "minecraft:red_mushroom"
+                }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+                "item": "farmersdelight:bone_broth"
+            }
+        },
+        {
+            "type": "farmersdelight:cooking",
+            "cookingtime": 200,
+            "experience": 1.0,
+            "ingredients": [
+                [
+                    {
+                        "tag": "farmersdelight:is_milk"
+                    },
+                    {
+                        "item": "minecraft:milk_bucket"
+                    }
+                ],
+                {
+                    "item": "minecraft:glow_berries"
+                },
+                {
+                    "item": "minecraft:sugar"
+                },
+                [
+                    {
+                        "tag": "farmersdelight:is_egg"
+                    },
+                    {
+                        "item": "minecraft:egg"
+                    }
+                ]
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+                "item": "farmersdelight:glow_berry_custard"
+            }
         }
     ]
 }
