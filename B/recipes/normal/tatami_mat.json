@@ -2,7 +2,7 @@
     "format_version": "1.12",
     "minecraft:recipe_shaped": {
         "description": {
-            "identifier": "farmersdelight:half_tatami_mat"
+            "identifier": "farmersdelight:tatami_mat"
         },
         "tags": [
             "crafting_table"
@@ -12,11 +12,11 @@
         ],
         "key": {
             "#": {
-                "item": "farmersdelight:tatami_mat"
+                "item": "farmersdelight:tatami"
             }
         },
         "result": {
-            "item": "farmersdelight:half_tatami_mat_item",
+            "item": "farmersdelight:tatami_mat",
             "count": 2
         }
     }
