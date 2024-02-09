@@ -1,0 +1,32 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "farmersdelight:wheat_dough"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "pattern": [
+            "P#",
+            "##"
+        ],
+        "key": {
+            "P": {
+                "item": "minecraft:water_bucket"
+            },
+            "#": {
+                "item": "minecraft:wheat"
+            }
+        },
+        "result": [
+            {
+                "item": "farmersdelight:wheat_dough",
+                "count": 3
+            },
+            {
+                "item": "minecraft:bucket"
+            }
+        ]
+    }
+}
