@@ -659,7 +659,37 @@
             "set_block_state": {
               "farmersdelight:west_connected": false
             }
+          },
+          {
+            "run_command": {
+              "command": [
+                "effect @e[type=minecraft:player,rx=0,r=0.5] levitation 1 0 true"
+              ]
+            }
+          },
+          {
+            "run_command": {
+              "command": [
+                "effect @e[type=minecraft:player,rxm=0,r=0.5] slow_falling 1 1 true"
+              ]
+            }
           }
+
+          //tp 爬绳实现，表现不错，就是难脱离绳子
+          /*{
+            "run_command": {
+              "command": [
+                "execute as @e[type=minecraft:player,rx=0,r=1] at @s run tp ~ ~+0.1 ~"
+              ]
+            }
+          },
+          {
+            "run_command": {
+              "command": [
+                "execute as @e[type=minecraft:player,rxm=0,r=1] at @s run tp ~ ~-0.1 ~"
+              ]
+            }
+          }*/
         ]
       },
       "minecraft:crop_with_rope": {
