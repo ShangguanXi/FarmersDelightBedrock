@@ -18,10 +18,12 @@ import { CabinetsBlockEntity } from "./block/entity/CabinetsBlockEntity";
 import { CuttingBoardRegistries } from "./init/CuttingBoardRecipeRegistries";
 import { RiceBlock } from "./block/Rice";
 import { TatamiMatBlock } from "./block/TatamiMatBlock";
+import { CookRecipeRegistries } from "./init/CookRecipeRegistries";
 
 
 CookingPotRecipeRegistries.initCookingPotScoRegistries();
 CuttingBoardRegistries.initCuttingBoardScoRegistries();
+CookRecipeRegistries.initCookScoRegistries();
 
 new CookingPotBlock();
 new CookingPotBlockEntity();

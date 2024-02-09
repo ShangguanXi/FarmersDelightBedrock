@@ -1,7 +1,7 @@
 import { Block, Container, Entity, EntityInventoryComponent, ItemStack, Player, ScoreboardObjective, ScoreboardScoreInfo, Vector3, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
 import { BlockWithEntity } from "./BlockWithEntity";
-import { vanillaItemList } from "../data/recipe/cuttingBoardRecipe";
+import { vanillaItemList } from "../data/recipe/skilletRecipe";
 import { EntityUtil } from "../lib/EntityUtil";
 import { ItemUtil } from "../lib/ItemUtil";
 
