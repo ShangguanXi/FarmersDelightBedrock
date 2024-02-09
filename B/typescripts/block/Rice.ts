@@ -27,7 +27,7 @@ export class RiceBlock {
     tryUseItem(args: ItemUseOnBeforeEvent){
         const itemStack = args.itemStack;
         const block = args.block;
-        if (!itemStack || itemStack.typeId != 'minecraft:bucket' || (block.typeId != 'farmersdelight:rice_block' && block.typeId != 'minecraft:water')) return
+        if (!itemStack || !(itemStack.typeId == 'minecraft:bucket' && block.typeId == 'farmersdelight:rice_block')) return
         args.cancel = true
     }
 }
