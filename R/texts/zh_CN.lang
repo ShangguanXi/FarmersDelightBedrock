@@ -206,6 +206,9 @@
   item.farmersdelight:salmon_roll=鲑鱼寿司
   item.farmersdelight:cod_roll=鳕鱼寿司
 
+  item.farmersdelight:bone_broth=大骨汤
+  item.farmersdelight:glow_berry_custard=发光浆果蛋奶沙司
+
   tile.farmersdelight:rice_roll_medley_block.name=寿司拼盘
   item.farmersdelight:rice_roll_medley_block_item=寿司拼盘
 

@@ -364,6 +364,12 @@
     },
     "farmersdelight:rice_roll_medley_block":{
       "textures": "textures/items/rice_roll_medley_block"
+    },
+    "farmersdelight:glow_berry_custard":{
+      "textures": "textures/items/glow_berry_custard"
+    },
+    "farmersdelight:bone_broth":{
+      "textures": "textures/items/bone_broth"
     }
   }
 }

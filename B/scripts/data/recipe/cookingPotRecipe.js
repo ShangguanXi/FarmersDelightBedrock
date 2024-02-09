@@ -3,6 +3,43 @@ export const vanillaCookingPotRecipe = {
         {
             "cookingtime": 200,
             "container": {
+                "item": "minecraft:bowl"
+            },
+            "ingredients": [
+                {
+                    "item": "minecraft:red_mushroom"
+                },
+                {
+                    "item": "minecraft:bone"
+                }
+            ],
+            "result": {
+                "item": "farmersdelight:bone_broth"
+            }
+        },
+        {
+            "cookingtime": 200,
+            "ingredients": [
+                {
+                    "item": "farmersdelight:milk_bottle"
+                },
+                {
+                    "item": "minecraft:glow_berries"
+                },
+                {
+                    "item": "minecraft:egg"
+                },
+                {
+                    "item": "minecraft:sugar"
+                }
+            ],
+            "result": {
+                "item": "farmersdelight:glow_berry_custard"
+            }
+        },
+        {
+            "cookingtime": 200,
+            "container": {
                 "item": "minecraft:glass_bottle"
             },
             "ingredients": [

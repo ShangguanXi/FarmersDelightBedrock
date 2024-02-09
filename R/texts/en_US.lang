@@ -196,6 +196,9 @@
   item.farmersdelight:salmon_roll=Salmon Roll
   item.farmersdelight:cod_roll=Cod Roll
 
+  item.farmersdelight:bone_broth=Bone Broth
+  item.farmersdelight:glow_berry_custard=Glow Berry Custard
+
   tile.farmersdelight:rice_roll_medley_block.name=Rice Roll Medley
   item.farmersdelight:rice_roll_medley_block_item=Rice Roll Medley
 
