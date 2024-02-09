@@ -1,5 +1,6 @@
-import { Block, BlockPermutation, Dimension, Direction, ItemStack, ItemUseOnBeforeEvent, PlayerInteractWithBlockBeforeEvent, Vector3, system, world } from "@minecraft/server";
+import { Block, BlockPermutation, Container, Dimension, Direction, ItemStack, ItemUseOnBeforeEvent, PlayerInteractWithBlockBeforeEvent, Vector3, system, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
+import { ItemUtil } from "../lib/ItemUtil";
 
 function placeStructure(dimension: Dimension, structure : string, location: Vector3){
     dimension.runCommand(`structure load ${structure} ${location.x} ${location.y} ${location.z}`)
@@ -11,11 +12,13 @@ export class RiceBlock {
     tryPlaceBlock(args: PlayerInteractWithBlockBeforeEvent) {
         const itemStack = args.itemStack;
         const block = args.block;
+        const player = args.player;
         if (!itemStack || itemStack.typeId != 'farmersdelight:rice' || args.blockFace != Direction.Up || (block.typeId != 'minecraft:dirt' && block.typeId != 'minecraft:grass')) return
         system.run(() => {
             const water = block.above();
             if (!(water?.typeId == 'minecraft:water' && water?.permutation.getState('liquid_depth') == 0)) return
             placeStructure(block.dimension, 'farmersdelight:rice_crop', water.location);
+            ItemUtil.clearItem(player.getComponent('inventory')?.container as Container, player.selectedSlot)
         })
     }
     //防止水被装走

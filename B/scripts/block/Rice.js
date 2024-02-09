@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { Direction, ItemUseOnBeforeEvent, PlayerInteractWithBlockBeforeEvent, system, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
+import { ItemUtil } from "../lib/ItemUtil";
 function placeStructure(dimension, structure, location) {
     dimension.runCommand(`structure load ${structure} ${location.x} ${location.y} ${location.z}`);
 }
@@ -17,6 +18,7 @@ export class RiceBlock {
     tryPlaceBlock(args) {
         const itemStack = args.itemStack;
         const block = args.block;
+        const player = args.player;
         if (!itemStack || itemStack.typeId != 'farmersdelight:rice' || args.blockFace != Direction.Up || (block.typeId != 'minecraft:dirt' && block.typeId != 'minecraft:grass'))
             return;
         system.run(() => {
@@ -24,6 +26,7 @@ export class RiceBlock {
             if (!(water?.typeId == 'minecraft:water' && water?.permutation.getState('liquid_depth') == 0))
                 return;
             placeStructure(block.dimension, 'farmersdelight:rice_crop', water.location);
+            ItemUtil.clearItem(player.getComponent('inventory')?.container, player.selectedSlot);
         });
     }
     //防止水被装走

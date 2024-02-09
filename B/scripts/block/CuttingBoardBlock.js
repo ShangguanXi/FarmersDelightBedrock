@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { EntityInventoryComponent, ItemStack, world } from "@minecraft/server";
+import { EntityInventoryComponent, ItemStack, PlayerInteractWithBlockAfterEvent, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
 import { BlockWithEntity } from "./BlockWithEntity";
 import { EntityUtil } from "../lib/EntityUtil";
@@ -25,7 +25,8 @@ export class CuttingBoardBlock extends BlockWithEntity {
     }
     ;
     //物品与方块互动事件
-    useOnBlock(args) {
+    //方块互动事件, 用于处理空手取下物品
+    interactWithBlock(args) {
         if (args?.block?.typeId !== "farmersdelight:cutting_board")
             return;
         //获取方块实体数据
@@ -33,21 +34,24 @@ export class CuttingBoardBlock extends BlockWithEntity {
             type: 'farmersdelight:cutting_board',
             location: args.block.location
         });
-        const player = args.source;
+        const player = args.player;
         const container = player.getComponent(EntityInventoryComponent.componentId)?.container;
         if (!data || !container)
             return;
         const entity = data.entity;
         //mainHand为主手物品堆叠
         const mainHand = args.itemStack;
-        //这玩意写的是itemStack, 但实际上只是一个物品的标识符, 是个字符串...
-        const itemStack = JSON.parse(entity.getDynamicProperty("farmersdelight:blockEntityItemStackData"))["item"];
+        const itemId = JSON.parse(entity.getDynamicProperty("farmersdelight:blockEntityItemStackData"))["item"];
         //若砧板上有物品
-        if (itemStack != "undefined") {
+        if (itemId != "undefined") {
             const cutToolData = JSON.parse(entity.getDynamicProperty("farmersdelight:cutTool"));
             const mode = cutToolData['mode'];
-            if ((mode == 'item' && cutToolData[mode] == mainHand.typeId) || (mode == 'tag' && mainHand.hasTag(cutToolData[mode]))) {
-                const id = itemStack.split(':')[1];
+            if (!mainHand) {
+                entity.dimension.spawnItem(new ItemStack(itemId), entity.location);
+                entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', '{"item":"undefined"}');
+            }
+            else if ((mode == 'item' && cutToolData[mode] == mainHand.typeId) || (mode == 'tag' && mainHand.hasTag(cutToolData[mode]))) {
+                const id = itemId.split(':')[1];
                 entity.runCommandAsync("playsound block.farmersdelight.cutting_board @a ~ ~ ~ 1 1");
                 //对应战利品表名称:"farmersdelight_<物品标识符(不含命名空间)>,放在farmersdelight/cutting_board目录下"
                 entity.runCommandAsync(`loot spawn ${entity.location.x} ${entity.location.y} ${entity.location.z} loot "farmersdelight/cutting_board/farmersdelight_${id}"`);
@@ -65,6 +69,8 @@ export class CuttingBoardBlock extends BlockWithEntity {
         //若砧板上没有物品
         else {
             let canCut = false;
+            if (!mainHand)
+                return;
             if (farmersdelightBlockList.includes(mainHand.typeId) || vanillaItemList.includes(mainHand.typeId)) {
                 //原版物品与野生作物
                 entity.setDynamicProperty('farmersdelight:cutTool', `{"tag": "farmersdelight:is_knife", "mode": "tag"}`);
@@ -103,29 +109,6 @@ export class CuttingBoardBlock extends BlockWithEntity {
         ;
     }
     ;
-    //方块互动事件, 用于处理空手取下物品
-    interactWithBlock(args) {
-        if (args?.block?.typeId !== "farmersdelight:cutting_board")
-            return;
-        //获取方块实体数据
-        const data = super.entityBlockData(args, {
-            type: 'farmersdelight:cutting_board',
-            location: args.block.location
-        });
-        const player = args.player;
-        const container = player.getComponent(EntityInventoryComponent.componentId)?.container;
-        if (!data || !container)
-            return;
-        if (container.getItem(player.selectedSlot))
-            return;
-        const entity = data.entity;
-        const itemId = JSON.parse(entity.getDynamicProperty("farmersdelight:blockEntityItemStackData"))["item"];
-        if (itemId == 'undefined')
-            return;
-        entity.dimension.spawnItem(new ItemStack(itemId), entity.location);
-        entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', '{"item":"undefined"}');
-    }
-    ;
 }
 __decorate([
     methodEventSub(world.afterEvents.playerPlaceBlock),
@@ -134,15 +117,9 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], CuttingBoardBlock.prototype, "placeBlock", null);
 __decorate([
-    methodEventSub(world.afterEvents.itemUseOn),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", void 0)
-], CuttingBoardBlock.prototype, "useOnBlock", null);
-__decorate([
     methodEventSub(world.afterEvents.playerInteractWithBlock),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [PlayerInteractWithBlockAfterEvent]),
     __metadata("design:returntype", void 0)
 ], CuttingBoardBlock.prototype, "interactWithBlock", null);
 ;
