@@ -1,0 +1,27 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "farmersdelight:rope"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "pattern": [
+            "#",
+            "#",
+            "#"
+        ],
+        "key": {
+            "#": {
+                "item": "farmersdelight:straw"
+            }
+        },
+        "result": [
+            {
+                "item": "farmersdelight:rope",
+                "count": 3
+            }
+        ]
+    }
+}
