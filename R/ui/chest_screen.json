@@ -50,20 +50,34 @@
   },
   "cooking_pot_container_item": {
     "type": "input_panel",
-    "size": [ 18, 18 ],
+    "size": [
+      18,
+      18
+    ],
     "layer": 1,
-    "$cell_image_size|default": [ 18, 18 ],
+    "$cell_image_size|default": [
+      18,
+      18
+    ],
     "$cell_overlay_ref|default": "common.cell_overlay",
     "$button_ref|default": "common.container_slot_button_prototype",
     "$stack_count_required|default": true,
     "$durability_bar_required|default": true,
     "$item_renderer|default": "common.item_renderer",
-    "$item_renderer_panel_size|default": [ 26, 26 ],
-    "$item_renderer_size|default": [ 26, 26 ],
-    "$item_renderer_offset|default": [ 0, 0 ],
+    "$item_renderer_panel_size|default": [
+      26,
+      26
+    ],
+    "$item_renderer_size|default": [
+      26,
+      26
+    ],
+    "$item_renderer_offset|default": [
+      0,
+      0
+    ],
     "$background_images|default": "chest.cooking_pot_background_images",
     "$background_image_control_name|default": "bg",
-
     "$focus_id|default": "",
     "$focus_override_down|default": "",
     "$focus_override_up|default": "",
@@ -77,7 +91,6 @@
     "focus_enabled": true,
     "focus_wrap_enabled": false,
     "focus_magnet_enabled": true,
-
     "controls": [
       {
         "item_cell": {
@@ -142,7 +155,10 @@
       {
         "container_item_lock_overlay@common.container_item_lock_overlay": {
           "size": "$item_renderer_size",
-          "offset": [ 1, 1 ],
+          "offset": [
+            1,
+            1
+          ],
           "anchor_to": "top_left",
           "anchor_from": "top_left",
           "layer": 6
@@ -156,7 +172,10 @@
       {
         "item_container_transfer_mode_overlay@common.item_container_transfer_mode_overlay": {
           "size": "$item_renderer_size",
-          "offset": [ 1, 1 ],
+          "offset": [
+            1,
+            1
+          ],
           "anchor_to": "top_left",
           "anchor_from": "top_left",
           "layer": 10
@@ -166,20 +185,34 @@
   },
   "cooking_pot_fire_item": {
     "type": "input_panel",
-    "size": [ 18, 18 ],
+    "size": [
+      18,
+      18
+    ],
     "layer": 1,
-    "$cell_image_size|default": [ 18, 18 ],
+    "$cell_image_size|default": [
+      18,
+      18
+    ],
     "$cell_overlay_ref|default": "common.cell_overlay",
     "$button_ref|default": "common.container_slot_button_prototype",
     "$stack_count_required|default": true,
     "$durability_bar_required|default": true,
     "$item_renderer|default": "common.item_renderer",
-    "$item_renderer_panel_size|default": [ 20, 20 ],
-    "$item_renderer_size|default": [ 20, 20 ],
-    "$item_renderer_offset|default": [ 0, 0 ],
+    "$item_renderer_panel_size|default": [
+      20,
+      20
+    ],
+    "$item_renderer_size|default": [
+      20,
+      20
+    ],
+    "$item_renderer_offset|default": [
+      0,
+      0
+    ],
     "$background_images|default": "chest.cooking_pot_background_images",
     "$background_image_control_name|default": "bg",
-
     "$focus_id|default": "",
     "$focus_override_down|default": "",
     "$focus_override_up|default": "",
@@ -193,7 +226,6 @@
     "focus_enabled": true,
     "focus_wrap_enabled": false,
     "focus_magnet_enabled": true,
-
     "controls": [
       {
         "item_cell": {
@@ -258,7 +290,10 @@
       {
         "container_item_lock_overlay@common.container_item_lock_overlay": {
           "size": "$item_renderer_size",
-          "offset": [ 1, 1 ],
+          "offset": [
+            1,
+            1
+          ],
           "anchor_to": "top_left",
           "anchor_from": "top_left",
           "layer": 6
@@ -272,7 +307,10 @@
       {
         "item_container_transfer_mode_overlay@common.item_container_transfer_mode_overlay": {
           "size": "$item_renderer_size",
-          "offset": [ 1, 1 ],
+          "offset": [
+            1,
+            1
+          ],
           "anchor_to": "top_left",
           "anchor_from": "top_left",
           "layer": 10
@@ -283,6 +321,11 @@
   "cooking_pot_background_images": {
     "type": "image",
     "texture": "textures/gui/cooking_pot_background_images",
+    "layer": 1
+  },
+  "pot_background_images": {
+    "type": "image",
+    "texture": "textures/gui/pot",
     "layer": 1
   },
   "cooking_pot_item@chest.cooking_pot_container_item": {
@@ -423,9 +466,14 @@
                   30,
                   30
                 ],
+                "$background_images|default": "chest.pot_background_images",
                 "size": [
                   30,
                   30
+                ],
+                "$item_renderer_offset|default": [
+                  0,
+                  2
                 ],
                 "enabled": false
               }
@@ -492,7 +540,6 @@
                 ],
                 "enabled": false
               }
-              
             }
           ]
         }
@@ -512,7 +559,7 @@
                 ],
                 "$cell_image_size|default": [
                   10,
-                 10
+                  10
                 ],
                 "size": [
                   10,
@@ -520,7 +567,6 @@
                 ],
                 "enabled": false
               }
-              
             }
           ]
         }
@@ -632,7 +678,7 @@
   "small_chest_screen@common.inventory_screen_common": {
     "$close_on_player_hurt|default": true,
     "close_on_player_hurt": "$close_on_player_hurt",
-    "$root_panel|default": "chest.small_root_panel", 
+    "$root_panel|default": "chest.small_root_panel",
     "$new_container_title|default": "$container_title",
     "modifications": [
       {
