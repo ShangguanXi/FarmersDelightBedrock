@@ -14,7 +14,7 @@ export class RiceBlock {
         const itemStack = args.itemStack;
         const block = args.block;
         const player = args.player;
-        if (!itemStack || itemStack.typeId != 'farmersdelight:rice' || args.blockFace != Direction.Up || (block.typeId != 'minecraft:dirt' && block.typeId != 'minecraft:grass')) return
+        if (!itemStack || itemStack.typeId != 'farmersdelight:rice' || args.blockFace != Direction.Up || (!block.getTags().includes('dirt'))) return
         system.run(() => {
             const water = block.above();
             if (!(water?.typeId == 'minecraft:water' && water?.permutation.getState('liquid_depth') == 0)) return
