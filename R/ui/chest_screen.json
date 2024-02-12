@@ -390,7 +390,12 @@
           ],
           "controls": [
             {
-              "top_right@chest.chest_grid_item": {}
+              "top_right@chest.chest_grid_item": {
+                "offset": [
+                  0.25,
+                  0
+                ]
+              }
             }
           ]
         }
@@ -405,7 +410,7 @@
             {
               "mid_left@chest.chest_grid_item": {
                 "offset": [
-                  -54,
+                  -53.5,
                   18
                 ]
               }
@@ -423,7 +428,7 @@
             {
               "middle@chest.chest_grid_item": {
                 "offset": [
-                  -54,
+                  -53.5,
                   18
                 ]
               }
@@ -441,7 +446,7 @@
             {
               "mid_right@chest.chest_grid_item": {
                 "offset": [
-                  -54,
+                  -53.25,
                   18
                 ]
               }
