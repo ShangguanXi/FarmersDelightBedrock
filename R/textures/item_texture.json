@@ -370,6 +370,9 @@
     },
     "farmersdelight:bone_broth":{
       "textures": "textures/items/bone_broth"
+    },
+    "farmersdelight:book_farmersdelight":{
+      "textures": "textures/items/book_farmersdelight"
     }
   }
 }
