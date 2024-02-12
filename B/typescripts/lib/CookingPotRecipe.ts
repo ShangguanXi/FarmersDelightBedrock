@@ -2,7 +2,7 @@ import { Container, ItemStack } from "@minecraft/server";
 import { RecipeHolder } from "./RecipeHolder";
 import { ItemUtil } from "./ItemUtil";
 
-
+// 合作项目不写注释就跑路, 大黑龙我祝你早死早超生啊
 
 export class CookingPotRecipe extends RecipeHolder {
     public canRecipe: boolean = true;
@@ -19,27 +19,39 @@ export class CookingPotRecipe extends RecipeHolder {
         //输出槽物品
         const output: ItemStack | undefined = this.container.getItem(8);
         if (itemStack) {
+            //若结果槽已满则停止
             if (itemStack.amount == itemStack.maxAmount) {
                 this.canRecipe = false;
             }
-            if (!this.isEqualValue(itemStack, this.recipes[this.index2].result)) {
-                this.canRecipe = false;
-                if (input){
-                    this.index2 = this.getValidRecipeIndex2(itemStack, input, this.recipes);
-                }
+            //若结果槽物品与索引2对应配方不同且容器槽内有物品, 则更新索引2
+            if (!this.isEqualValue(itemStack, this.recipes[this.index2].result) && input) {
+                this.index2 = this.getValidRecipeIndex2(itemStack, input, this.recipes);
             }
+            //若结果槽物品与配方结果不同则停止
+            if (this.index == -1 || !this.isEqualValue(itemStack, this.recipes[this.index].result)) {
+                this.canRecipe = false;
+            }
+            //若索引1正常则获取配方合成结果数量, 若输出后结果量大于上限则停止输出
             if (this.index > -1) {
                 const count = this.recipes[this.index].result.count ? this.recipes[this.index].result.count : 1;
                 if (itemStack.amount == itemStack.maxAmount || (itemStack.amount += count) > itemStack.maxAmount) {
                     this.canRecipe = false;
                 }
             }
+            //若结果槽有物品输出槽无物品且该物品无需容器则移动该物品至输出槽
+            if (!output && !this.recipes[this.index2].container) {
+                ItemUtil.clearItem(this.container, 6);
+                this.setItem(itemStack, this.container, 8);
+            }
         }
     }
     //配方完成时触发
     public consume(): void {
+        // 结果槽物品
         const output: ItemStack | undefined = this.container.getItem(6);
+        // 配方
         const recipe: any = this.recipes[this.index];
+        // 配方结果物品
         const itemStack: ItemStack = new ItemStack(recipe.result.item);
         if (this.container.emptySlotsCount < this.container.size) {
             this.clear(recipe, itemStack, this.container);
@@ -67,12 +79,13 @@ export class CookingPotRecipe extends RecipeHolder {
             }
         }
     }
+    //完成配方时, 用于根据配方调整容器物品
     private clear(recipe: any, itemStack: ItemStack, container: Container) {
         const output: ItemStack | undefined = container.getItem(6);
         const count: number = recipe.result.count ? recipe.result.count : 1;
         if (output ? output.amount + count <= itemStack.maxAmount : true) {
             for (let i = 0; i < 6; i++) {
-                const getItem = container.getItem(i)
+                const getItem = container.getItem(i);
                 if (getItem) {
                     ItemUtil.clearItem(container, i);
                 }
@@ -93,9 +106,11 @@ export class CookingPotRecipe extends RecipeHolder {
             container.setItem(slot, itemStack);
         }
     }
+    //名为setItem实际上执行的是addItem的功能, 不得不说你这命名有一股文盲的美
     private setItem(itemStack: ItemStack, container: Container, index: number) {
         const output = container.getItem(index);
         if (output) {
+            if (output.typeId != itemStack.typeId) return false
             if (output.amount < output.maxAmount) {
                 output.amount += 1;
                 container.setItem(index, output);

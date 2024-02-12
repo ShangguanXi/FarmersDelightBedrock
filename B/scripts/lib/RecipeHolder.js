@@ -25,6 +25,7 @@ export class RecipeHolder {
     compare(info, ingredients) {
         const infoCopy = [...info];
         const ingredientsCopy = JSON.parse(JSON.stringify(ingredients));
+        // a: Itemstack
         let flag = infoCopy.every((a, i) => {
             let found = false;
             for (let j = 0; j < ingredientsCopy.length; j++) {

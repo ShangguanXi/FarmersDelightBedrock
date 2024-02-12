@@ -578,7 +578,7 @@ export const vanillaCookingPotRecipe = {
             "experience": 1.0,
             "ingredients": [
                 {
-                    "item": "farmersdelight:minced_beef"
+                    "tag": "farmersdelight:minced_beef"
                 },
                 {
                     "tag": "farmersdelight:is_cabbage"
