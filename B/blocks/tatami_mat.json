@@ -22,15 +22,6 @@
             {
                 "condition": "query.block_state('minecraft:cardinal_direction') == 'north'",
                 "components": {
-                    "minecraft:queued_ticking": {
-                      "interval_range": [
-                        1,
-                        1
-                      ],
-                      "on_tick": {
-                        "event": "farmersdelight:north_check"
-                      }
-                    },
                     "minecraft:transformation": {
                         "rotation": [
                             0,
@@ -43,15 +34,6 @@
             {
                 "condition": "query.block_state('minecraft:cardinal_direction') == 'south'",
                 "components": {
-                    "minecraft:queued_ticking": {
-                      "interval_range": [
-                        1,
-                        1
-                      ],
-                      "on_tick": {
-                        "event": "farmersdelight:south_check"
-                      }
-                    },
                     "minecraft:transformation": {
                         "rotation": [
                             0,
@@ -64,15 +46,6 @@
             {
                 "condition": "query.block_state('minecraft:cardinal_direction') == 'west'",
                 "components": {
-                    "minecraft:queued_ticking": {
-                      "interval_range": [
-                        1,
-                        1
-                      ],
-                      "on_tick": {
-                        "event": "farmersdelight:west_check"
-                      }
-                    },
                     "minecraft:transformation": {
                         "rotation": [
                             0,
@@ -85,15 +58,6 @@
             {
                 "condition": "query.block_state('minecraft:cardinal_direction') == 'east'",
                 "components": {
-                    "minecraft:queued_ticking": {
-                      "interval_range": [
-                        1,
-                        1
-                      ],
-                      "on_tick": {
-                        "event": "farmersdelight:east_check"
-                      }
-                    },
                     "minecraft:transformation": {
                         "rotation": [
                             0,
@@ -105,6 +69,15 @@
             }
         ],
         "components": {
+            "minecraft:queued_ticking": {
+                "interval_range": [
+                    1,
+                    1
+                ],
+                "on_tick": {
+                    "event": "farmersdelight:block_tick"
+                }
+            },
             "minecraft:material_instances": {
                 "*": {
                     "texture": "tatami_mat_odd"
@@ -161,49 +134,12 @@
             "tag:farmersdelight:straw_blocks": {}
         },
         "events": {
-            "farmersdelight:north_check": {
+            "farmersdelight:block_tick": {
                 "sequence": [
                     {
-                        "condition": "query.block_state('farmersdelight:init')&&query.block_neighbor_has_any_tag(0, 0, -1, 'tatami_mat') == 0",
                         "run_command": {
                             "command": [
-                                "setblock ~~~ air destroy"
-                            ]
-                        }
-                    }
-                ]
-            },
-            "farmersdelight:east_check": {
-                "sequence": [
-                    {
-                        "condition": "query.block_state('farmersdelight:init')&&query.block_neighbor_has_any_tag(1, 0, 0, 'tatami_mat') == 0",
-                        "run_command": {
-                            "command": [
-                                "setblock ~~~ air destroy"
-                            ]
-                        }
-                    }
-                ]
-            },
-            "farmersdelight:south_check": {
-                "sequence": [
-                    {
-                        "condition": "query.block_state('farmersdelight:init')&&query.block_neighbor_has_any_tag(0, 0, 1, 'tatami_mat') == 0",
-                        "run_command": {
-                            "command": [
-                                "setblock ~~~ air destroy"
-                            ]
-                        }
-                    }
-                ]
-            },
-            "farmersdelight:west_check": {
-                "sequence": [
-                    {
-                        "condition": "query.block_state('farmersdelight:init')&&query.block_neighbor_has_any_tag(-1, 0, 0, 'tatami_mat') == 0",
-                        "run_command": {
-                            "command": [
-                                "setblock ~~~ air destroy"
+                                "scriptevent farmersdelight:tatami_mat_tick"
                             ]
                         }
                     }
