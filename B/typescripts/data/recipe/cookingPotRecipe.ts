@@ -653,59 +653,6 @@ export const vanillaCookingPotRecipe = {
             "result": {
                 "item": "farmersdelight:dog_food"
             }
-        },
-        {
-            "type": "farmersdelight:cooking",
-            "container": {
-                "item": "minecraft:bowl"
-            },
-            "cookingtime": 200,
-            "experience": 1.0,
-            "ingredients": [
-                {
-                    "item": "minecraft:bone"
-                },
-                {
-                    "item": "minecraft:red_mushroom"
-                }
-            ],
-            "recipe_book_tab": "meals",
-            "result": {
-                "item": "farmersdelight:bone_broth"
-            }
-        },
-        {
-            "type": "farmersdelight:cooking",
-            "cookingtime": 200,
-            "experience": 1.0,
-            "ingredients": [
-                [
-                    {
-                        "tag": "farmersdelight:is_milk"
-                    },
-                    {
-                        "item": "minecraft:milk_bucket"
-                    }
-                ],
-                {
-                    "item": "minecraft:glow_berries"
-                },
-                {
-                    "item": "minecraft:sugar"
-                },
-                [
-                    {
-                        "tag": "farmersdelight:is_egg"
-                    },
-                    {
-                        "item": "minecraft:egg"
-                    }
-                ]
-            ],
-            "recipe_book_tab": "meals",
-            "result": {
-                "item": "farmersdelight:glow_berry_custard"
-            }
         }
     ]
 }
