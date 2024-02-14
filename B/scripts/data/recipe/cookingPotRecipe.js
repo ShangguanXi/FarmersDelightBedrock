@@ -1,5 +1,6 @@
 export const vanillaCookingPotRecipe = {
     "recipe": [
+        //finish
         {
             "cookingtime": 200,
             "container": {
@@ -17,6 +18,7 @@ export const vanillaCookingPotRecipe = {
                 "item": "farmersdelight:bone_broth"
             }
         },
+        //finish
         {
             "cookingtime": 200,
             "ingredients": [
@@ -37,6 +39,7 @@ export const vanillaCookingPotRecipe = {
                 "item": "farmersdelight:glow_berry_custard"
             }
         },
+        //finish
         {
             "cookingtime": 200,
             "container": {
@@ -57,6 +60,7 @@ export const vanillaCookingPotRecipe = {
                 "item": "farmersdelight:apple_cider"
             }
         },
+        //finish
         {
             "type": "farmersdelight:cooking",
             "cookingtime": 200,
@@ -83,6 +87,7 @@ export const vanillaCookingPotRecipe = {
                 "item": "farmersdelight:hot_cocoa"
             }
         },
+        //finish
         {
             "type": "farmersdelight:cooking",
             "cookingtime": 200,
@@ -113,6 +118,7 @@ export const vanillaCookingPotRecipe = {
                 "count": 2
             }
         },
+        //finish
         {
             "type": "farmersdelight:cooking",
             "container": {
@@ -236,6 +242,7 @@ export const vanillaCookingPotRecipe = {
                 "item": "farmersdelight:fish_stew"
             }
         },
+        //finish
         {
             "type": "farmersdelight:cooking",
             "container": {
@@ -290,6 +297,7 @@ export const vanillaCookingPotRecipe = {
                 "item": "farmersdelight:pumpkin_soup"
             }
         },
+        //finish
         {
             "type": "farmersdelight:cooking",
             "container": {
@@ -574,7 +582,7 @@ export const vanillaCookingPotRecipe = {
             "experience": 1.0,
             "ingredients": [
                 {
-                    "tag": "farmersdelight:minced_beef"
+                    "tag": "farmersdelight:cabbage_roll_ingredients"
                 },
                 {
                     "tag": "farmersdelight:is_cabbage"
@@ -634,7 +642,7 @@ export const vanillaCookingPotRecipe = {
                     "item": "minecraft:rotten_flesh"
                 },
                 {
-                    "tag": "farmersdelight:is_wolf_prey"
+                    "tag": "farmersdelight:wolf_prey"
                 }
             ],
             "recipe_book_tab": "meals",
@@ -651,48 +659,21 @@ export const vanillaCookingPotRecipe = {
             "experience": 1.0,
             "ingredients": [
                 {
-                    "item": "minecraft:bone"
+                    "item": "minecraft:brown_mushroom"
                 },
                 {
                     "item": "minecraft:red_mushroom"
+                },
+                {
+                    "item": "minecraft:carrot"
+                },
+                {
+                    "item": "farmersdelight:rice"
                 }
             ],
             "recipe_book_tab": "meals",
             "result": {
-                "item": "farmersdelight:bone_broth"
-            }
-        },
-        {
-            "type": "farmersdelight:cooking",
-            "cookingtime": 200,
-            "experience": 1.0,
-            "ingredients": [
-                [
-                    {
-                        "tag": "farmersdelight:is_milk"
-                    },
-                    {
-                        "item": "minecraft:milk_bucket"
-                    }
-                ],
-                {
-                    "item": "minecraft:glow_berries"
-                },
-                {
-                    "item": "minecraft:sugar"
-                },
-                [
-                    {
-                        "tag": "farmersdelight:is_egg"
-                    },
-                    {
-                        "item": "minecraft:egg"
-                    }
-                ]
-            ],
-            "recipe_book_tab": "meals",
-            "result": {
-                "item": "farmersdelight:glow_berry_custard"
+                "item": "farmersdelight:mushroom_rice"
             }
         }
     ]

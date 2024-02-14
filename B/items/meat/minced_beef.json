@@ -14,7 +14,8 @@
       "minecraft:tags": {
         "tags": [
           "farmersdelight:is_raw_beef",
-          "farmersdelight:can_cook"
+          "farmersdelight:can_cook",
+          "farmersdelight:cabbage_roll_ingredients"
         ]
       },
       "minecraft:icon": {

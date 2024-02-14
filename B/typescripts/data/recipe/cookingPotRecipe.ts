@@ -586,7 +586,7 @@ export const vanillaCookingPotRecipe = {
             "experience": 1.0,
             "ingredients": [
                 {
-                    "tag": "farmersdelight:minced_beef"
+                    "tag": "farmersdelight:cabbage_roll_ingredients"
                 },
                 {
                     "tag": "farmersdelight:is_cabbage"
@@ -646,12 +646,38 @@ export const vanillaCookingPotRecipe = {
                     "item": "minecraft:rotten_flesh"
                 },
                 {
-                    "tag": "farmersdelight:is_wolf_prey"
+                    "tag": "farmersdelight:wolf_prey"
                 }
             ],
             "recipe_book_tab": "meals",
             "result": {
                 "item": "farmersdelight:dog_food"
+            }
+        },
+        {
+            "type": "farmersdelight:cooking",
+            "container": {
+                "item": "minecraft:bowl"
+            },
+            "cookingtime": 200,
+            "experience": 1.0,
+            "ingredients": [
+                {
+                    "item": "minecraft:brown_mushroom"
+                },
+                {
+                    "item": "minecraft:red_mushroom"
+                },
+                {
+                    "item": "minecraft:carrot"
+                },
+                {
+                    "item": "farmersdelight:rice"
+                }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+                "item": "farmersdelight:mushroom_rice"
             }
         }
     ]

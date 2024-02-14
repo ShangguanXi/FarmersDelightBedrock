@@ -371,6 +371,9 @@
     "farmersdelight:bone_broth":{
       "textures": "textures/items/bone_broth"
     },
+    "farmersdelight:mushroom_rice":{
+      "textures": "textures/items/mushroom_rice"
+    },
     "farmersdelight:book_farmersdelight":{
       "textures": "textures/items/book_farmersdelight"
     }

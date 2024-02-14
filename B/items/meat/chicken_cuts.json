@@ -18,7 +18,8 @@
           "tags": [
               "farmersdelight:is_raw_chicken",
               "farmersdelight:can_cook",
-              "farmersdelight:is_wolf_prey"
+              "farmersdelight:wolf_prey",
+              "farmersdelight:cabbage_roll_ingredients"
           ]
       }
     },
