@@ -594,7 +594,7 @@
       {
         "cooking_pot_label@chest.cooking_pot_label": {
           "offset": [
-            7,
+            20,
             -1
           ]
         }
@@ -617,9 +617,154 @@
       }
     ]
   },
+  //链接纹理控件
+  "connect_images": {
+    "type": "image",
+    "texture": "textures/ui/recipe_back_panel",
+    "layer": 0
+  },
+  //配方界面框架
+  "cooking_pot_frame_back_images": {
+    "type": "image",
+    "texture": "textures/ui/dialog_background_hollow_3",
+    "layer": 0
+  },
+  //配方界面背景
+  "cooking_pot_recipe_back_images": {
+    "type": "image",
+    "texture": "textures/ui/recipe_book_pane_bg",
+    "layer": 0
+  },
+  //配方图片控件
+  "cooking_pot_recipe": {
+    "type": "image",
+    //默认为即将到来
+    "texture": "textures/gui/recipe/coming_soon",
+    "layer": 1
+  },
+  //配方网格
+  "recipe_grid": {
+    "type": "grid",
+    "size": [
+      150,
+      580
+    ],
+    "grid_dimensions": [
+      2,
+      15
+    ],
+    "grid_item_template": "chest.cooking_pot_recipe",
+    "controls": [
+      {
+        "apple_cider@chest.cooking_pot_recipe": {
+          "grid_position": [
+            0,
+            0
+          ],
+          "texture": "textures/gui/recipe/apple_cider"
+        }
+      },
+      {
+        "hot_cocoa@chest.cooking_pot_recipe": {
+          "grid_position": [
+            0,
+            0
+          ],
+          "texture": "textures/gui/recipe/hot_cocoa"
+        }
+      }
+    ]
+  },
+  //配方滑块面板
+  "cooking_pot_scrolling_panel@common.scrolling_panel": {
+    "$show_background": false,
+    "$scroll_track_offset": [
+      0,
+      6
+    ],
+    "size": [
+      160,
+      143
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "$scroll_size": [
+      5,
+      130
+    ],
+    "$scroll_view_port_offset": [
+      1,
+      12
+    ],
+    "$scroll_bar_right_padding_size": [
+      0,
+      0
+    ],
+    "$scroll_view_port_size": [
+      150,
+      143
+    ],
+    "$scrolling_content": "chest.recipe_grid"
+  },
+  //配方面板
+  "cooking_pot_recipe_panel": {
+    "type": "panel",
+    "controls": [
+      {
+        "cooking_pot_frame_back_images@chest.cooking_pot_frame_back_images": {
+          "size": [
+            180,
+            166
+          ]
+        }
+      },
+      {
+        "cooking_pot_scrolling_panel@chest.cooking_pot_scrolling_panel": {
+          "offset": [
+            0,
+            0
+          ]
+        }
+      }
+    ]
+  },
   "cooking_pot_panel": {
     "type": "panel",
     "controls": [
+      {
+        "connect_images@chest.connect_images": {
+          "offset": [
+            -13,
+            0
+          ],
+          "size": [
+            15,
+            160
+          ]
+        }
+      },
+      {
+        "cooking_pot_recipe_back_images@chest.cooking_pot_recipe_back_images": {
+          "size": [
+            175,
+            150
+          ],
+          "offset": [
+            -106,
+            0
+          ]
+        }
+      },
+      {
+        "cooking_pot_recipe_panel@chest.cooking_pot_recipe_panel": {
+          "offset": [
+            -106,
+            0
+          ]
+        }
+      },
       {
         "container_gamepad_helpers@common.container_gamepad_helpers": {}
       },
@@ -637,6 +782,10 @@
       {
         "root_panel@common.root_panel": {
           "layer": 1,
+          "offset": [
+            75,
+            0
+          ],
           "controls": [
             {
               "common_panel@common.common_panel": {}
