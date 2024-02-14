@@ -667,8 +667,8 @@
       {
         "hot_cocoa@chest.cooking_pot_recipe": {
           "grid_position": [
-            0,
-            0
+            2,
+            15
           ],
           "texture": "textures/gui/recipe/hot_cocoa"
         }
@@ -678,6 +678,8 @@
   //配方滑块面板
   "cooking_pot_scrolling_panel@common.scrolling_panel": {
     "$show_background": false,
+    "$always_handle_scrolling": false,
+    "$jump_to_bottom_on_update" :true,
     "$scroll_track_offset": [
       0,
       6
