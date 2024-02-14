@@ -639,47 +639,564 @@
   "cooking_pot_recipe": {
     "type": "image",
     //默认为即将到来
-    "texture": "textures/gui/recipe/coming_soon",
+    "$texture|default": "textures/gui/recipe/coming_soon",
+    "texture": "$texture",
     "layer": 1
   },
-  //配方网格
-  "recipe_grid": {
-    "type": "grid",
+  //配方物品格子
+  "cooking_pot_recipe_cell": {
+    "type": "panel",
+    "size": "$panel_size",
+    "$panel_size|default": [
+      160,
+      80
+    ],
+    "$cell0": "textures/gui/cooking_pot_background_images",
+    "$cell1": "textures/gui/cooking_pot_background_images",
+    "$cell2": "textures/gui/cooking_pot_background_images",
+    "$cell3": "textures/gui/cooking_pot_background_images",
+    "$cell4": "textures/gui/cooking_pot_background_images",
+    "$cell5": "textures/gui/cooking_pot_background_images",
+    "$container": "textures/gui/cooking_pot_background_images",
+    "$result": "textures/gui/cooking_pot_background_images",
+    "controls": [
+      {
+        "cell0": {
+          "type": "image",
+          "offset": [
+            -23,
+            -7
+          ],
+          "size": [
+            7.5,
+            7.5
+          ],
+          "texture": "$cell0"
+        }
+      },
+      {
+        "cell1": {
+          "type": "image",
+          "offset": [
+            -14.625,
+            -7
+          ],
+          "size": [
+            7.5,
+            7.5
+          ],
+          "texture": "$cell1"
+        }
+      },
+      {
+        "cell2": {
+          "type": "image",
+          "offset": [
+            -6.25,
+            -7
+          ],
+          "size": [
+            7.5,
+            7.5
+          ],
+          "texture": "$cell2"
+        }
+      },
+      {
+        "cell3": {
+          "type": "image",
+          "offset": [
+            -23,
+            1.5
+          ],
+          "size": [
+            7.5,
+            7.5
+          ],
+          "texture": "$cell3"
+        }
+      },
+      {
+        "cell4": {
+          "type": "image",
+          "offset": [
+            -14.625,
+            1.5
+          ],
+          "size": [
+            7.5,
+            7.5
+          ],
+          "texture": "$cell4"
+        }
+      },
+      {
+        "cell5": {
+          "type": "image",
+          "offset": [
+            -6.25,
+            1.5
+          ],
+          "size": [
+            7.5,
+            7.5
+          ],
+          "texture": "$cell5"
+        }
+      },
+      {
+        "container": {
+          "type": "image",
+          "offset": [
+            6,
+            10.875
+          ],
+          "size": [
+            7.5,
+            7.5
+          ],
+          "texture": "$container"
+        }
+      },
+      {
+        "result": {
+          "type": "image",
+          "offset": [
+            21,
+            -5.25
+          ],
+          "size": [
+            7.5,
+            7.5
+          ],
+          "texture": "$result"
+        }
+      }
+    ]
+  },
+  //配方网格单行面板
+  "recipe_grid_panel_part_0":{
+    "type": "panel",
     "size": [
       150,
-      580
+      38
     ],
-    "grid_dimensions": [
-      2,
-      15
-    ],
-    "grid_item_template": "chest.cooking_pot_recipe",
     "controls": [
       {
         "apple_cider@chest.cooking_pot_recipe": {
-          "grid_position": [
-            0,
+          "texture": "textures/gui/recipe/cooking_recipe",
+          "offset": [
+            37.5,
             0
           ],
-          "texture": "textures/gui/recipe/apple_cider"
+          "size": [
+            75,
+            38
+          ],
+          "controls": [
+            {
+              "cooking_pot_recipe_cell@chest.cooking_pot_recipe_cell": {
+                "$cell0": "textures/items/apple",
+                "$cell1": "textures/items/apple",
+                "$cell2": "textures/items/sugar",
+                "$container": "textures/items/potion_bottle_empty",
+                "$result": "textures/items/apple_cider"
+              }
+            }
+          ]
         }
       },
       {
         "hot_cocoa@chest.cooking_pot_recipe": {
-          "grid_position": [
-            2,
-            15
+          "texture": "textures/gui/recipe/cooking_recipe",
+          "offset": [
+            -37.5,
+            0
           ],
-          "texture": "textures/gui/recipe/hot_cocoa"
+          "size": [
+            75,
+            38
+          ],
+          "controls": [
+            {
+              "cooking_pot_recipe_cell@chest.cooking_pot_recipe_cell": {
+                "$cell0": "textures/items/milk_bottle",
+                "$cell1": "textures/items/dye_powder_brown",
+                "$cell2": "textures/items/dye_powder_brown",
+                "$cell3": "textures/items/sugar",
+                "$result": "textures/items/hot_cocoa"
+              }
+            }
+          ]
         }
       }
     ]
+  },
+  "recipe_grid_0": {
+    "type": "grid",
+    "size": [
+      150,
+      38
+    ],
+    "grid_dimensions": [
+      1,
+      1
+    ],
+    "grid_item_template": "chest.recipe_grid_panel_part_0"
+    
+  },
+  "recipe_grid_panel_part_1":{
+    "type": "panel",
+    "size": [
+      150,
+      38
+    ],
+    "controls": [
+      {
+        "bone_broth@chest.cooking_pot_recipe": {
+          "texture": "textures/gui/recipe/cooking_recipe",
+          "offset": [
+            37.5,
+            0
+          ],
+          "size": [
+            75,
+            38
+          ],
+          "controls": [
+            {
+              "cooking_pot_recipe_cell@chest.cooking_pot_recipe_cell": {
+                "$cell0": "textures/items/bone",
+                "$cell1": "textures/blocks/mushroom_red",
+                "$container": "textures/items/bowl",
+                "$result": "textures/items/bone_broth"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "glow_berry_custard@chest.cooking_pot_recipe": {
+          "texture": "textures/gui/recipe/cooking_recipe",
+          "offset": [
+            -37.5,
+            0
+          ],
+          "size": [
+            75,
+            38
+          ],
+          "controls": [
+            {
+              "cooking_pot_recipe_cell@chest.cooking_pot_recipe_cell": {
+                "$cell0": "textures/items/egg",
+                "$cell1": "textures/items/sugar",
+                "$cell2": "textures/items/glow_berries",
+                "$cell3": "textures/items/milk_bottle",
+                "$result": "textures/items/glow_berry_custard"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "recipe_grid_1": {
+    "type": "grid",
+    "size": [
+      150,
+      38
+    ],
+    "grid_dimensions": [
+      1,
+      1
+    ],
+    "grid_item_template": "chest.recipe_grid_panel_part_1"
+    
+  },
+  "recipe_grid_panel_part_2":{
+    "type": "panel",
+    "size": [
+      150,
+      38
+    ],
+    "controls": [
+      {
+        "dumplings@chest.cooking_pot_recipe": {
+          "texture": "textures/gui/recipe/cooking_recipe",
+          "offset": [
+            37.5,
+            0
+          ],
+          "size": [
+            75,
+            38
+          ],
+          "controls": [
+            {
+              "cooking_pot_recipe_cell@chest.cooking_pot_recipe_cell": {
+                "controls": [
+                  {
+                    "dumplings_anim": {
+                      "type": "image",
+                      "offset": [
+                        -23,
+                        -7
+                      ],
+                      "size": [
+                        7.5,
+                        7.5
+                      ],
+                      "texture": "textures/gui/recipe/dumplings_anim",
+                      "uv": "@dumplings_anim",
+                      "uv_size": [
+                        16,
+                        16
+                      ],
+                      "disable_anim_fast_forward": true
+                    }
+                  },
+                  {
+                    "is_cabbage_anim": {
+                      "type": "image",
+                      "offset": [
+                        -14.625,
+                        -7
+                      ],
+                      "size": [
+                        7.5,
+                        7.5
+                      ],
+                      "texture": "textures/gui/recipe/is_cabbage",
+                      "uv": "@is_cabbage_anim",
+                      "uv_size": [
+                        16,
+                        16
+                      ],
+                      "disable_anim_fast_forward": true
+                    }
+                  },
+                  {
+                    "cell2": {
+                      "offset": [
+                        -6.25,
+                        -7
+                      ],
+                      "size": [
+                        7.5,
+                        7.5
+                      ],
+                      "type": "image",
+                      "texture": "textures/items/wheat_dough"
+                    }
+                  },
+                  {
+                    "cell3": {
+                      "offset": [
+                        -23,
+                        1.5
+                      ],
+                      "size": [
+                        7.5,
+                        7.5
+                      ],
+                      "type": "image",
+                      "texture": "textures/items/onion"
+                    }
+                  },
+                  {
+                    "result": {
+                      "offset": [
+                        21,
+                        -5.25
+                      ],
+                      "size": [
+                        7.5,
+                        7.5
+                      ],
+                      "type": "image",
+                      "texture": "textures/items/dumplings"
+                    }
+                  },
+                  {
+                    "count": {
+                      "type": "label",
+                      "text": "2",
+                      "font_scale_factor": 0.5,
+                      "size": [
+                        15,
+                        15
+                      ],
+                      "offset": [
+                        31,
+                        2
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "cooked_rice@chest.cooking_pot_recipe": {
+          "texture": "textures/gui/recipe/cooking_recipe",
+          "offset": [
+            -37.5,
+            0
+          ],
+          "size": [
+            75,
+            38
+          ],
+          "controls": [
+            {
+              "cooking_pot_recipe_cell@chest.cooking_pot_recipe_cell": {
+                "$cell0": "textures/items/rice",
+                "$container": "textures/items/bowl",
+                "$result": "textures/items/cooked_rice"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "recipe_grid_2": {
+    "type": "grid",
+    "size": [
+      150,
+      38
+    ],
+    "grid_dimensions": [
+      1,
+      1
+    ],
+    "grid_item_template": "chest.recipe_grid_panel_part_2"
+  },
+  "recipe_grid_panel_part_3":{
+    "type": "panel",
+    "size": [
+      150,
+      38
+    ],
+    "controls": [
+      {
+        "fried_rice@chest.cooking_pot_recipe": {
+          "texture": "textures/gui/recipe/cooking_recipe",
+          "offset": [
+            37.5,
+            0
+          ],
+          "size": [
+            75,
+            38
+          ],
+          "controls": [
+            {
+              "cooking_pot_recipe_cell@chest.cooking_pot_recipe_cell": {
+                "$cell0": "textures/items/rice",
+                "$cell1": "textures/items/egg",
+                "$cell2": "textures/items/onion",
+                "$cell3": "textures/items/carrot",
+                "$container": "textures/items/bowl",
+                "$result": "textures/items/fried_rice"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "tomato_sauce@chest.cooking_pot_recipe": {
+          "texture": "textures/gui/recipe/cooking_recipe",
+          "offset": [
+            -37.5,
+            0
+          ],
+          "size": [
+            75,
+            38
+          ],
+          "controls": [
+            {
+              "cooking_pot_recipe_cell@chest.cooking_pot_recipe_cell": {
+                "$cell0": "textures/items/tomato",
+                "$cell1": "textures/items/tomato",
+                "$container": "textures/items/bowl",
+                "$result": "textures/items/tomato_sauce"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "recipe_grid_3": {
+    "type": "grid",
+    "size": [
+      150,
+      38
+    ],
+    "grid_dimensions": [
+      1,
+      1
+    ],
+    "grid_item_template": "chest.recipe_grid_panel_part_3"
+  },
+  //配方网格堆叠面板
+  "recipe_grid_panel": {
+    "type": "stack_panel",
+    "orientation": "vertical",
+    "size": [
+      150,
+      540
+    ],
+    "controls": [
+      {
+        "recipe_grid_0@chest.recipe_grid_0": {}
+      },
+      {
+        "recipe_grid_1@chest.recipe_grid_1": {}
+      },
+      {
+        "recipe_grid_2@chest.recipe_grid_2": {}
+      },
+      {
+        "recipe_grid_3@chest.recipe_grid_3": {}
+      }
+    ]
+  },
+  //物品动画
+  "dumplings_anim": {
+    "anim_type": "flip_book",
+    "initial_uv": [
+      0,
+      0
+    ],
+    "frame_count": 7,
+    "frame_step": 16,
+    "fps": 1,
+    "reversible": true,
+    "easing": "linear"
+  },
+  "is_cabbage_anim": {
+    "anim_type": "flip_book",
+    "initial_uv": [
+      0,
+      0
+    ],
+    "frame_count": 2,
+    "frame_step": 16,
+    "fps": 1,
+    "reversible": true,
+    "easing": "linear"
   },
   //配方滑块面板
   "cooking_pot_scrolling_panel@common.scrolling_panel": {
     "$show_background": false,
     "$always_handle_scrolling": false,
-    "$jump_to_bottom_on_update" :true,
+    "$jump_to_bottom_on_update": true,
     "$scroll_track_offset": [
       0,
       6
@@ -708,7 +1225,7 @@
       150,
       143
     ],
-    "$scrolling_content": "chest.recipe_grid"
+    "$scrolling_content": "chest.recipe_grid_panel"
   },
   //配方面板
   "cooking_pot_recipe_panel": {

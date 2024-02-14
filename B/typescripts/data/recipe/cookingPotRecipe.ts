@@ -1,6 +1,7 @@
 
 export const vanillaCookingPotRecipe = {
     "recipe": [
+        //finish
         {
             "cookingtime": 200,
             "container": {
@@ -18,6 +19,7 @@ export const vanillaCookingPotRecipe = {
                 "item": "farmersdelight:bone_broth"
             }
         },
+        //finish
         {
             "cookingtime": 200,
             "ingredients": [
@@ -38,6 +40,7 @@ export const vanillaCookingPotRecipe = {
                 "item": "farmersdelight:glow_berry_custard"
             }
         },
+        //finish
         {
             "cookingtime": 200,
             "container": {
@@ -58,6 +61,7 @@ export const vanillaCookingPotRecipe = {
                 "item": "farmersdelight:apple_cider"
             }
         },
+        //finish
         {
             "type": "farmersdelight:cooking",
             "cookingtime": 200,
@@ -84,6 +88,7 @@ export const vanillaCookingPotRecipe = {
                 "item": "farmersdelight:hot_cocoa"
             }
         },
+        //finish
         {
             "type": "farmersdelight:cooking",
             "cookingtime": 200,
@@ -114,6 +119,7 @@ export const vanillaCookingPotRecipe = {
                 "count": 2
             }
         },
+        //finish
         {
             "type": "farmersdelight:cooking",
             "container": {
@@ -238,6 +244,7 @@ export const vanillaCookingPotRecipe = {
                 "item": "farmersdelight:fish_stew"
             }
         },
+        //finish
         {
             "type": "farmersdelight:cooking",
             "container": {
@@ -292,6 +299,7 @@ export const vanillaCookingPotRecipe = {
                 "item": "farmersdelight:pumpkin_soup"
             }
         },
+        //finish
         {
             "type": "farmersdelight:cooking",
             "container": {
