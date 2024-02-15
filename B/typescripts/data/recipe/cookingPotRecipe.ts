@@ -10,7 +10,7 @@ export const vanillaCookingPotRecipe = {
             "ingredients": [
                 {
                     "item": "minecraft:red_mushroom"
-                }, 
+                },
                 {
                     "item": "minecraft:bone"
                 }
@@ -25,7 +25,7 @@ export const vanillaCookingPotRecipe = {
             "ingredients": [
                 {
                     "item": "farmersdelight:milk_bottle"
-                }, 
+                },
                 {
                     "item": "minecraft:glow_berries"
                 },
@@ -137,6 +137,7 @@ export const vanillaCookingPotRecipe = {
                 "item": "farmersdelight:cooked_rice"
             }
         },
+        //finish
         {
             "type": "farmersdelight:cooking",
             "container": {
@@ -161,6 +162,7 @@ export const vanillaCookingPotRecipe = {
                 "item": "farmersdelight:beef_stew"
             }
         },
+        //finish
         {
             "type": "farmersdelight:cooking",
             "container": {
@@ -192,6 +194,7 @@ export const vanillaCookingPotRecipe = {
                 "item": "farmersdelight:chicken_soup"
             }
         },
+        //finish
         {
             "type": "farmersdelight:cooking",
             "container": {
@@ -219,6 +222,7 @@ export const vanillaCookingPotRecipe = {
                 "item": "farmersdelight:vegetable_soup"
             }
         },
+        //finish
         {
             "type": "farmersdelight:cooking",
             "container": {
@@ -347,11 +351,9 @@ export const vanillaCookingPotRecipe = {
                 "item": "farmersdelight:baked_cod_stew"
             }
         },
+        //finish
         {
             "type": "farmersdelight:cooking",
-            "container": {
-                "item": "minecraft:bowl"
-            },
             "cookingtime": 200,
             "experience": 1.0,
             "ingredients": [
@@ -370,6 +372,7 @@ export const vanillaCookingPotRecipe = {
                 "item": "farmersdelight:pasta_with_meatballs"
             }
         },
+        //finish
         {
             "type": "farmersdelight:cooking",
             "container": {
@@ -378,13 +381,16 @@ export const vanillaCookingPotRecipe = {
             "cookingtime": 200,
             "experience": 1.0,
             "ingredients": [
-                [{
-                    "item": "minecraft:mutton"
-                }, {
-                    "tag": "farmersdelight:is_raw_mutton"
-                }],
+                [
+                    {
+                        "item": "minecraft:mutton"
+                    },
+                    {
+                        "tag": "farmersdelight:is_raw_mutton"
+                    }
+                ],
                 {
-                    "item": "farmersdelight:minced_beef"
+                    "item": "farmersdelight:tomato_sauce"
                 },
                 {
                     "tag": "farmersdelight:is_pasta"
@@ -395,6 +401,7 @@ export const vanillaCookingPotRecipe = {
                 "item": "farmersdelight:pasta_with_mutton_chop"
             }
         },
+        //finish
         {
             "type": "farmersdelight:cooking",
             "container": {
@@ -654,6 +661,7 @@ export const vanillaCookingPotRecipe = {
                 "item": "farmersdelight:dog_food"
             }
         },
+        //finish
         {
             "type": "farmersdelight:cooking",
             "container": {

@@ -775,7 +775,7 @@
     ]
   },
   //配方网格单行面板
-  "recipe_grid_panel_part_0":{
+  "recipe_grid_panel_part_0": {
     "type": "panel",
     "size": [
       150,
@@ -843,9 +843,8 @@
       1
     ],
     "grid_item_template": "chest.recipe_grid_panel_part_0"
-    
   },
-  "recipe_grid_panel_part_1":{
+  "recipe_grid_panel_part_1": {
     "type": "panel",
     "size": [
       150,
@@ -912,9 +911,8 @@
       1
     ],
     "grid_item_template": "chest.recipe_grid_panel_part_1"
-    
   },
-  "recipe_grid_panel_part_2":{
+  "recipe_grid_panel_part_2": {
     "type": "panel",
     "size": [
       150,
@@ -1075,7 +1073,7 @@
     ],
     "grid_item_template": "chest.recipe_grid_panel_part_2"
   },
-  "recipe_grid_panel_part_3":{
+  "recipe_grid_panel_part_3": {
     "type": "panel",
     "size": [
       150,
@@ -1144,13 +1142,671 @@
     ],
     "grid_item_template": "chest.recipe_grid_panel_part_3"
   },
+  "recipe_grid_panel_part_4": {
+    "type": "panel",
+    "size": [
+      150,
+      38
+    ],
+    "controls": [
+      {
+        "mushroom_rice@chest.cooking_pot_recipe": {
+          "texture": "textures/gui/recipe/cooking_recipe",
+          "offset": [
+            37.5,
+            0
+          ],
+          "size": [
+            75,
+            38
+          ],
+          "controls": [
+            {
+              "cooking_pot_recipe_cell@chest.cooking_pot_recipe_cell": {
+                "$cell0": "textures/blocks/mushroom_red",
+                "$cell1": "textures/blocks/mushroom_brown",
+                "$cell2": "textures/items/onion",
+                "$cell3": "textures/items/rice",
+                "$container": "textures/items/bowl",
+                "$result": "textures/items/mushroom_rice"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "pasta_with_meatballs@chest.cooking_pot_recipe": {
+          "texture": "textures/gui/recipe/cooking_recipe",
+          "offset": [
+            -37.5,
+            0
+          ],
+          "size": [
+            75,
+            38
+          ],
+          "controls": [
+            {
+              "cooking_pot_recipe_cell@chest.cooking_pot_recipe_cell": {
+                "$cell0": "textures/items/minced_beef",
+                "$cell1": "textures/items/tomato_sauce",
+                "$cell2": "textures/items/raw_pasta",
+                "$result": "textures/items/pasta_with_meatballs"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "recipe_grid_4": {
+    "type": "grid",
+    "size": [
+      150,
+      38
+    ],
+    "grid_dimensions": [
+      1,
+      1
+    ],
+    "grid_item_template": "chest.recipe_grid_panel_part_4"
+  },
+  "recipe_grid_panel_part_5": {
+    "type": "panel",
+    "size": [
+      150,
+      38
+    ],
+    "controls": [
+      {
+        "pasta_with_mutton_chop@chest.cooking_pot_recipe": {
+          "texture": "textures/gui/recipe/cooking_recipe",
+          "offset": [
+            37.5,
+            0
+          ],
+          "size": [
+            75,
+            38
+          ],
+          "controls": [
+            {
+              "cooking_pot_recipe_cell@chest.cooking_pot_recipe_cell": {
+                "controls": [
+                  {
+                    "cell0@chest.is_raw_mutton": {
+                      "offset": [
+                        -23,
+                        -7
+                      ],
+                      "size": [
+                        7.5,
+                        7.5
+                      ]
+                    }
+                  },
+                  {
+                    "cell1": {
+                      "type": "image",
+                      "offset": [
+                        -14.625,
+                        -7
+                      ],
+                      "size": [
+                        7.5,
+                        7.5
+                      ],
+                      "texture": "textures/items/tomato_sauce"
+                    }
+                  },
+                  {
+                    "cell2": {
+                      "offset": [
+                        -6.25,
+                        -7
+                      ],
+                      "size": [
+                        7.5,
+                        7.5
+                      ],
+                      "type": "image",
+                      "texture": "textures/items/raw_pasta"
+                    }
+                  },
+                  {
+                    "result": {
+                      "offset": [
+                        21,
+                        -5.25
+                      ],
+                      "size": [
+                        7.5,
+                        7.5
+                      ],
+                      "type": "image",
+                      "texture": "textures/items/pasta_with_mutton_chop"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "vegetable_noodles@chest.cooking_pot_recipe": {
+          "texture": "textures/gui/recipe/cooking_recipe",
+          "offset": [
+            -37.5,
+            0
+          ],
+          "size": [
+            75,
+            38
+          ],
+          "controls": [
+            {
+              "cell0@chest.is_vegetable": {
+                "offset": [
+                  -23,
+                  -7
+                ],
+                "size": [
+                  7.5,
+                  7.5
+                ]
+              }
+            },
+            {
+              "cell1@chest.is_cabbage": {
+                "type": "image",
+                "offset": [
+                  -14.625,
+                  -7
+                ],
+                "size": [
+                  7.5,
+                  7.5
+                ]
+              }
+            },
+            {
+              "cell2": {
+                "offset": [
+                  -6.25,
+                  -7
+                ],
+                "size": [
+                  7.5,
+                  7.5
+                ],
+                "type": "image",
+                "texture": "textures/blocks/mushroom_brown"
+              }
+            },
+            {
+              "cell3": {
+                "offset": [
+                  -23,
+                  1.5
+                ],
+                "size": [
+                  7.5,
+                  7.5
+                ],
+                "type": "image",
+                "texture": "textures/items/carrot"
+              }
+            },
+            {
+              "container": {
+                "type": "image",
+                "offset": [
+                  6,
+                  10.875
+                ],
+                "size": [
+                  7.5,
+                  7.5
+                ],
+                "texture": "textures/items/bowl"
+              }
+            },
+            {
+              "result": {
+                "offset": [
+                  21,
+                  -5.25
+                ],
+                "size": [
+                  7.5,
+                  7.5
+                ],
+                "type": "image",
+                "texture": "textures/items/vegetable_noodles"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "recipe_grid_5": {
+    "type": "grid",
+    "size": [
+      150,
+      38
+    ],
+    "grid_dimensions": [
+      1,
+      1
+    ],
+    "grid_item_template": "chest.recipe_grid_panel_part_5"
+  },
+  "recipe_grid_panel_part_6": {
+    "type": "panel",
+    "size": [
+      150,
+      38
+    ],
+    "controls": [
+      {
+        "beef_stew@chest.cooking_pot_recipe": {
+          "texture": "textures/gui/recipe/cooking_recipe",
+          "offset": [
+            37.5,
+            0
+          ],
+          "size": [
+            75,
+            38
+          ],
+          "controls": [
+            {
+              "cooking_pot_recipe_cell@chest.cooking_pot_recipe_cell": {
+                "controls": [
+                  {
+                    "cell0@chest.is_raw_beef": {
+                      "offset": [
+                        -23,
+                        -7
+                      ],
+                      "size": [
+                        7.5,
+                        7.5
+                      ]
+                    }
+                  },
+                  {
+                    "cell1": {
+                      "type": "image",
+                      "offset": [
+                        -14.625,
+                        -7
+                      ],
+                      "size": [
+                        7.5,
+                        7.5
+                      ],
+                      "texture": "textures/items/potato"
+                    }
+                  },
+                  {
+                    "cell2": {
+                      "offset": [
+                        -6.25,
+                        -7
+                      ],
+                      "size": [
+                        7.5,
+                        7.5
+                      ],
+                      "type": "image",
+                      "texture": "textures/items/carrot"
+                    }
+                  },
+                  {
+                    "container": {
+                      "type": "image",
+                      "offset": [
+                        6,
+                        10.875
+                      ],
+                      "size": [
+                        7.5,
+                        7.5
+                      ],
+                      "texture": "textures/items/bowl"
+                    }
+                  },
+                  {
+                    "result": {
+                      "offset": [
+                        21,
+                        -5.25
+                      ],
+                      "size": [
+                        7.5,
+                        7.5
+                      ],
+                      "type": "image",
+                      "texture": "textures/items/beef_stew"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "chicken_soup@chest.cooking_pot_recipe": {
+          "texture": "textures/gui/recipe/cooking_recipe",
+          "offset": [
+            -37.5,
+            0
+          ],
+          "size": [
+            75,
+            38
+          ],
+          "controls": [
+            {
+              "cell0@chest.is_vegetable": {
+                "offset": [
+                  -23,
+                  -7
+                ],
+                "size": [
+                  7.5,
+                  7.5
+                ]
+              }
+            },
+            {
+              "cell1@chest.is_cabbage": {
+                "type": "image",
+                "offset": [
+                  -14.625,
+                  -7
+                ],
+                "size": [
+                  7.5,
+                  7.5
+                ]
+              }
+            },
+            {
+              "cell2@chest.is_raw_chicken": {
+                "offset": [
+                  -6.25,
+                  -7
+                ],
+                "size": [
+                  7.5,
+                  7.5
+                ]
+              }
+            },
+            {
+              "cell3": {
+                "offset": [
+                  -23,
+                  1.5
+                ],
+                "size": [
+                  7.5,
+                  7.5
+                ],
+                "type": "image",
+                "texture": "textures/items/carrot"
+              }
+            },
+            {
+              "container": {
+                "type": "image",
+                "offset": [
+                  6,
+                  10.875
+                ],
+                "size": [
+                  7.5,
+                  7.5
+                ],
+                "texture": "textures/items/bowl"
+              }
+            },
+            {
+              "result": {
+                "offset": [
+                  21,
+                  -5.25
+                ],
+                "size": [
+                  7.5,
+                  7.5
+                ],
+                "type": "image",
+                "texture": "textures/items/chicken_soup"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "recipe_grid_6": {
+    "type": "grid",
+    "size": [
+      150,
+      38
+    ],
+    "grid_dimensions": [
+      1,
+      1
+    ],
+    "grid_item_template": "chest.recipe_grid_panel_part_6"
+  },
+  "recipe_grid_panel_part_7": {
+    "type": "panel",
+    "size": [
+      150,
+      38
+    ],
+    "controls": [
+      {
+        "vegetable_soup@chest.cooking_pot_recipe": {
+          "texture": "textures/gui/recipe/cooking_recipe",
+          "offset": [
+            37.5,
+            0
+          ],
+          "size": [
+            75,
+            38
+          ],
+          "controls": [
+            {
+              "cooking_pot_recipe_cell@chest.cooking_pot_recipe_cell": {
+                "controls": [
+                  {
+                    "cell0@chest.is_cabbage": {
+                      "offset": [
+                        -23,
+                        -7
+                      ],
+                      "size": [
+                        7.5,
+                        7.5
+                      ]
+                    }
+                  },
+                  {
+                    "cell1": {
+                      "type": "image",
+                      "offset": [
+                        -14.625,
+                        -7
+                      ],
+                      "size": [
+                        7.5,
+                        7.5
+                      ],
+                      "texture": "textures/items/potato"
+                    }
+                  },
+                  {
+                    "cell2": {
+                      "offset": [
+                        -6.25,
+                        -7
+                      ],
+                      "size": [
+                        7.5,
+                        7.5
+                      ],
+                      "type": "image",
+                      "texture": "textures/items/carrot"
+                    }
+                  },
+                  {
+                    "cell3": {
+                      "offset": [
+                        -23,
+                        1.5
+                      ],
+                      "size": [
+                        7.5,
+                        7.5
+                      ],
+                      "type": "image",
+                      "texture": "textures/items/beetroot"
+                    }
+                  },
+                  {
+                    "container": {
+                      "type": "image",
+                      "offset": [
+                        6,
+                        10.875
+                      ],
+                      "size": [
+                        7.5,
+                        7.5
+                      ],
+                      "texture": "textures/items/bowl"
+                    }
+                  },
+                  {
+                    "result": {
+                      "offset": [
+                        21,
+                        -5.25
+                      ],
+                      "size": [
+                        7.5,
+                        7.5
+                      ],
+                      "type": "image",
+                      "texture": "textures/items/vegetable_soup"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "fish_stew@chest.cooking_pot_recipe": {
+          "texture": "textures/gui/recipe/cooking_recipe",
+          "offset": [
+            -37.5,
+            0
+          ],
+          "size": [
+            75,
+            38
+          ],
+          "controls": [
+            {
+              "cell0@chest.is_raw_fish": {
+                "offset": [
+                  -23,
+                  -7
+                ],
+                "size": [
+                  7.5,
+                  7.5
+                ]
+              }
+            },
+            {
+              "cell1": {
+                "type": "image",
+                "texture": "textures/items/onion",
+                "offset": [
+                  -14.625,
+                  -7
+                ],
+                "size": [
+                  7.5,
+                  7.5
+                ]
+              }
+            },
+            {
+              "cell2": {
+                "offset": [
+                  -6.25,
+                  -7
+                ],
+                "size": [
+                  7.5,
+                  7.5
+                ],
+                "type": "image",
+                "texture": "textures/items/tomato_sauce"
+              }
+            },
+            {
+              "result": {
+                "offset": [
+                  21,
+                  -5.25
+                ],
+                "size": [
+                  7.5,
+                  7.5
+                ],
+                "type": "image",
+                "texture": "textures/items/fish_stew"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "recipe_grid_7": {
+    "type": "grid",
+    "size": [
+      150,
+      38
+    ],
+    "grid_dimensions": [
+      1,
+      1
+    ],
+    "grid_item_template": "chest.recipe_grid_panel_part_7"
+  },
   //配方网格堆叠面板
   "recipe_grid_panel": {
     "type": "stack_panel",
     "orientation": "vertical",
     "size": [
       150,
-      540
+      5400
     ],
     "controls": [
       {
@@ -1164,6 +1820,18 @@
       },
       {
         "recipe_grid_3@chest.recipe_grid_3": {}
+      },
+      {
+        "recipe_grid_4@chest.recipe_grid_4": {}
+      },
+      {
+        "recipe_grid_5@chest.recipe_grid_5": {}
+      },
+      {
+        "recipe_grid_6@chest.recipe_grid_6": {}
+      },
+      {
+        "recipe_grid_7@chest.recipe_grid_7": {}
       }
     ]
   },
@@ -1180,6 +1848,16 @@
     "reversible": true,
     "easing": "linear"
   },
+  "is_cabbage": {
+    "type": "image",
+    "texture": "textures/gui/recipe/is_cabbage",
+    "uv": "@is_cabbage_anim",
+    "uv_size": [
+      16,
+      16
+    ],
+    "disable_anim_fast_forward": true
+  },
   "is_cabbage_anim": {
     "anim_type": "flip_book",
     "initial_uv": [
@@ -1192,11 +1870,120 @@
     "reversible": true,
     "easing": "linear"
   },
+  "is_raw_mutton": {
+    "type": "image",
+    "texture": "textures/gui/recipe/is_raw_mutton_anim",
+    "uv": "@is_raw_mutton_anim",
+    "uv_size": [
+      16,
+      16
+    ],
+    "disable_anim_fast_forward": true
+  },
+  "is_raw_mutton_anim": {
+    "anim_type": "flip_book",
+    "initial_uv": [
+      0,
+      0
+    ],
+    "frame_count": 2,
+    "frame_step": 16,
+    "fps": 1,
+    "reversible": true,
+    "easing": "linear"
+  },
+  "is_raw_beef": {
+    "type": "image",
+    "texture": "textures/gui/recipe/is_raw_beef_anim",
+    "uv": "@is_raw_beef_anim",
+    "uv_size": [
+      16,
+      16
+    ],
+    "disable_anim_fast_forward": true
+  },
+  "is_raw_beef_anim": {
+    "anim_type": "flip_book",
+    "initial_uv": [
+      0,
+      0
+    ],
+    "frame_count": 2,
+    "frame_step": 16,
+    "fps": 1,
+    "reversible": true,
+    "easing": "linear"
+  },
+  "is_raw_chicken": {
+    "type": "image",
+    "texture": "textures/gui/recipe/is_raw_chicken_anim",
+    "uv": "@is_raw_chicken_anim",
+    "uv_size": [
+      16,
+      16
+    ],
+    "disable_anim_fast_forward": true
+  },
+  "is_raw_chicken_anim": {
+    "anim_type": "flip_book",
+    "initial_uv": [
+      0,
+      0
+    ],
+    "frame_count": 2,
+    "frame_step": 16,
+    "fps": 1,
+    "reversible": true,
+    "easing": "linear"
+  },
+  "is_raw_fish": {
+    "type": "image",
+    "texture": "textures/gui/recipe/is_raw_fish_anim.png",
+    "uv": "@is_raw_fish_anim.png",
+    "uv_size": [
+      16,
+      16
+    ],
+    "disable_anim_fast_forward": true
+  },
+  "is_raw_fish_anim.png": {
+    "anim_type": "flip_book",
+    "initial_uv": [
+      0,
+      0
+    ],
+    "frame_count": 4,
+    "frame_step": 16,
+    "fps": 1,
+    "reversible": true,
+    "easing": "linear"
+  },
+  "is_vegetable": {
+    "type": "image",
+    "texture": "textures/gui/recipe/vegetable_noodles_anim",
+    "uv": "@is_vegetable_anim",
+    "uv_size": [
+      16,
+      16
+    ],
+    "disable_anim_fast_forward": true
+  },
+  "is_vegetable_anim": {
+    "anim_type": "flip_book",
+    "initial_uv": [
+      0,
+      0
+    ],
+    "frame_count": 5,
+    "frame_step": 16,
+    "fps": 1,
+    "reversible": true,
+    "easing": "linear"
+  },
   //配方滑块面板
   "cooking_pot_scrolling_panel@common.scrolling_panel": {
     "$show_background": false,
     "$always_handle_scrolling": false,
-    "$jump_to_bottom_on_update": true,
     "$scroll_track_offset": [
       0,
       6
