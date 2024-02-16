@@ -71,6 +71,7 @@ export class StoveBlockEntity extends BlockEntity {
             if (block.permutation?.getState('farmersdelight:is_working')) {
                 if ((system.currentTick % 20) == 0) {
                     entity.dimension.spawnParticle("farmersdelight:stove_smoke_particle", { x: x + stoveOffsets[parseInt(id[1]) - 1].x, y: y + 1.02, z: z + stoveOffsets[parseInt(id[1]) - 1].y });
+                    entity.runCommandAsync("playsound block.campfire.crackle @a ~ ~ ~ 1 1");
                 }
                 const cookTime = itemStackData.score;
                 sco.setScore(itemStack, cookTime - (system.currentTick % 20 == 0 ? 1 : 0));
