@@ -34,37 +34,44 @@ export class StoveBlock extends BlockWithEntity {
         const air: Block | undefined = player.dimension.getBlock({ x: x, y: y + 1, z: z });
         if (entity && sco && air?.typeId == "minecraft:air") {
             const amount: number = sco.getScore('amount') ?? 0;
-            if (vanillaItemList.includes(itemStack.typeId) || itemStack.hasTag('farmersdelight:can_cook')) {
-                if (amount < 6) {
-                    sco.setScore('amount', amount + 1);
-                    sco.setScore(`${itemStack.typeId}/${amount + 1}`, 30);
-                    if (EntityUtil.gameMode(player)) ItemUtil.clearItem(container, player.selectedSlot);
-                }
-            } else {
-                const arr: string[] = [];
-                const itemStackScoresData: ScoreboardScoreInfo[] = sco.getScores();
-                for (const itemStackData of itemStackScoresData) {
-                    const itemStack: string = itemStackData.participant.displayName;
-                    if (itemStack == 'amount') continue;
-                    arr.push(itemStack);
-                }
-                for (let i = 0; i < arr.length - 1; i++) {
-                    for (let j = 0; j < arr.length - 1 - i; j++) {
-                        const num1: number = parseInt(arr[j].split('/')[1]);
-                        const num2: number = parseInt(arr[j + 1].split('/')[1]);
-                        if (num1 > num2) {
-                            [arr[j + 1], arr[j]] = [arr[j], arr[j + 1]]
+            if (itemStack.typeId == "farmersdelight:cooking_pot") {
+                ItemUtil.clearItem(container, player.selectedSlot);
+            }
+            else{
+                if (vanillaItemList.includes(itemStack.typeId) || itemStack.hasTag('farmersdelight:can_cook')) {
+                    if (amount < 6) {
+                        sco.setScore('amount', amount + 1);
+                        sco.setScore(`${itemStack.typeId}/${amount + 1}`, 30);
+                        if (EntityUtil.gameMode(player)) ItemUtil.clearItem(container, player.selectedSlot);
+                    }
+                } 
+                else {
+                    const arr: string[] = [];
+                    const itemStackScoresData: ScoreboardScoreInfo[] = sco.getScores();
+                    for (const itemStackData of itemStackScoresData) {
+                        const itemStack: string = itemStackData.participant.displayName;
+                        if (itemStack == 'amount') continue;
+                        arr.push(itemStack);
+                    }
+                    for (let i = 0; i < arr.length - 1; i++) {
+                        for (let j = 0; j < arr.length - 1 - i; j++) {
+                            const num1: number = parseInt(arr[j].split('/')[1]);
+                            const num2: number = parseInt(arr[j + 1].split('/')[1]);
+                            if (num1 > num2) {
+                                [arr[j + 1], arr[j]] = [arr[j], arr[j + 1]]
+                            }
                         }
                     }
-                }
-                if (arr.length && sco) {
-                    const itemStackData: string = arr[amount - 1];
-                    const itemStack: string = itemStackData.split('/')[0];
-                    sco.removeParticipant(itemStackData);
-                    sco.setScore('amount', (sco.getScore('amount') ?? 0) - 1);
-                    entity.dimension.spawnItem(new ItemStack(itemStack), entity.location);
+                    if (arr.length && sco) {
+                        const itemStackData: string = arr[amount - 1];
+                        const itemStack: string = itemStackData.split('/')[0];
+                        sco.removeParticipant(itemStackData);
+                        sco.setScore('amount', (sco.getScore('amount') ?? 0) - 1);
+                        entity.dimension.spawnItem(new ItemStack(itemStack), entity.location);
+                    }
                 }
             }
+           
         }
     }
 }

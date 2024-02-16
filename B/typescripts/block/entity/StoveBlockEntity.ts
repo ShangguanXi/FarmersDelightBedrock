@@ -63,7 +63,9 @@ export class StoveBlockEntity extends BlockEntity {
             const name: string[] = id[0].split(':');
             const particleName: string = name[0] == 'minecraft' ? `farmersdelight:${name[0]}_stove_${name[1]}` : `farmersdelight:stove_${name[1]}`;
             if (block.permutation?.getState('farmersdelight:is_working')) {
-                entity.dimension.spawnParticle("minecraft:basic_smoke_particle",{ x: x + stoveOffsets[parseInt(id[1]) - 1].x, y: y + 1.02, z: z + stoveOffsets[parseInt(id[1]) - 1].y });
+                if ((system.currentTick % 20)== 0) {
+                    entity.dimension.spawnParticle("farmersdelight:stove_smoke_particle", { x: x + stoveOffsets[parseInt(id[1]) - 1].x, y: y + 1.02, z: z + stoveOffsets[parseInt(id[1]) - 1].y });
+                }
                 const cookTime: number = itemStackData.score;
                 sco.setScore(itemStack, cookTime - (system.currentTick % 20 == 0 ? 1 : 0));
                 if (cookTime <= 0) {
@@ -72,6 +74,7 @@ export class StoveBlockEntity extends BlockEntity {
                     entity.runCommandAsync(`loot spawn ${entity.location.x + 0.5} ${entity.location.y + 1} ${entity.location.z + 0.5} loot "farmersdelight/cook/farmersdelight_cook_${name[1]}"`);
                 }
             }
+           
             entity.dimension.spawnParticle(particleName, { x: x + stoveOffsets[parseInt(id[1]) - 1].x, y: y + 1.02, z: z + stoveOffsets[parseInt(id[1]) - 1].y }
             );
         }
