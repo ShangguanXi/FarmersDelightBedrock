@@ -23,5 +23,29 @@ const vanillaItemList: string[] = [
     "minecraft:cooked_mutton",
     "minecraft:cooked_chicken"
 ];
+const vanillaBlockList: string[] = [
+    "minecraft:oak_log",
+    "minecraft:spruce_log",
+    "minecraft:birch_log",
+    "minecraft:jungle_log",
+    "minecraft:acacia_log",
+    "minecraft:dark_oak_log",
+    "minecraft:mangrove_log",
+    "minecraft:cherry_log",
+    "minecraft:crimson_stem",
+    "minecraft:warped_stem",
+    "minecraft:bamboo_block",
+    "minecraft:pumpkin",
+    /*"minecraft:oak_wood",
+    "minecraft:spruce_wood",
+    "minecraft:birch_wood",
+    "minecraft:jungle_wood",
+    "minecraft:acacia_wood",
+    "minecraft:dark_oak_wood",*/
+    "minecraft:mangrove_wood",
+    "minecraft:cherry_wood",
+    "minecraft:crimson_hyphae",
+    "minecraft:warped_hyphae",
+];
 
-export { vanillaItemList, farmersdelightBlockList };
+export { vanillaItemList, farmersdelightBlockList,  vanillaBlockList};

@@ -2,7 +2,7 @@ import { Block, Container, Entity, EntityInventoryComponent, ItemStack, Player, 
 import { methodEventSub } from "../lib/eventHelper";
 import { BlockWithEntity } from "./BlockWithEntity";
 import { EntityUtil } from "../lib/EntityUtil";
-import { farmersdelightBlockList, vanillaItemList } from "../data/recipe/cuttingBoardRecipe";
+import { farmersdelightBlockList, vanillaBlockList, vanillaItemList } from "../data/recipe/cuttingBoardRecipe";
 import { ItemUtil } from "../lib/ItemUtil";
 
 
@@ -60,6 +60,15 @@ export class CuttingBoardBlock extends BlockWithEntity {
         else {
             let canCut = false;
             if (!mainHand) return
+            if (vanillaBlockList.includes(mainHand.typeId)) {
+                //原版方块
+                entity.setDynamicProperty('farmersdelight:cutTool', `{"tag": "minecraft:is_axe", "mode": "tag"}`);
+                entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', `{"item":"${mainHand.typeId}"}`);
+                if (EntityUtil.gameMode(player)) {
+                    ItemUtil.clearItem(container, player.selectedSlot);
+                };
+                canCut = true;
+            };
             if (farmersdelightBlockList.includes(mainHand.typeId) || vanillaItemList.includes(mainHand.typeId)) {
                 //原版物品与野生作物
                 entity.setDynamicProperty('farmersdelight:cutTool', `{"tag": "farmersdelight:is_knife", "mode": "tag"}`);
