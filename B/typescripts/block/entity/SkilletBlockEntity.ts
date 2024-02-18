@@ -15,7 +15,7 @@ for (let i = 0; i < 5; i++) {
 function heatCheck(block: Block) {
     const blockBelow = block.below()
     if (heatSources.includes(blockBelow?.typeId as string) || blockBelow?.hasTag('farmersdelight:heat_source')) return true
-    if (heatConductors.includes(blockBelow?.typeId as string) || blockBelow?.hasTag('farmersdelight:heat_conductors')){
+    if (heatConductors.includes(blockBelow?.typeId as string) || blockBelow?.hasTag('farmersdelight:heat_conductors')) {
         const blockBelow2 = block.below(2)
         if (heatSources.includes(blockBelow2?.typeId as string) || blockBelow2?.hasTag('farmersdelight:heat_source')) return true
     }
@@ -60,6 +60,10 @@ export class SkilletBlockEntity extends BlockEntity {
             if (amountId == 'amount' || !reg) continue;
             if (system.currentTick % 80 == 0) {
                 entity.runCommandAsync("playsound block.farmersdelight.skillet.sizzle @a ~ ~ ~ 1 1");
+            };
+            if (system.currentTick % 4 == 0) {
+                const random = Math.floor(Math.random() * 10);
+                entity.dimension.spawnParticle(`farmersdelight:skillet_steam_${random}`, { x: x, y: y + 0.25, z: z });
             };
             const num = parseInt(reg[1]);
             const cookTime = itemStackData.score;

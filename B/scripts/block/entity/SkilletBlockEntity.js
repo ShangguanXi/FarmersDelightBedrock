@@ -78,6 +78,11 @@ export class SkilletBlockEntity extends BlockEntity {
                 entity.runCommandAsync("playsound block.farmersdelight.skillet.sizzle @a ~ ~ ~ 1 1");
             }
             ;
+            if (system.currentTick % 4 == 0) {
+                const random = Math.floor(Math.random() * 10);
+                entity.dimension.spawnParticle(`farmersdelight:skillet_steam_${random}`, { x: x, y: y + 0.25, z: z });
+            }
+            ;
             const num = parseInt(reg[1]);
             const cookTime = itemStackData.score;
             sco?.setScore(amountId, cookTime - (system.currentTick % 20 == 0 ? 1 : 0));

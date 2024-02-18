@@ -146,19 +146,31 @@
                         ]
                     },
                     {
-                        "condition": "query.block_state('farmersdelight:is_working')==true&&query.is_item_name_any('slot.weapon.mainhand','minecraft:water_bucket')",
+                        "condition": "query.block_state('farmersdelight:is_working')==true",
                         "sequence": [
                             {
+                                "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:water_bucket')",
+                                "run_command": {
+                                    "command": [
+                                        "replaceitem entity @s slot.weapon.mainhand 0 bucket",
+                                        "playsound random.fizz @p ~ ~ ~ 1 1"
+                                    ],
+                                    "target": "holder"
+                                },
                                 "set_block_state": {
                                     "farmersdelight:is_working": false
                                 }
                             },
                             {
+                                "condition": "query.equipped_item_any_tag('slot.weapon.mainhand','minecraft:is_shovel')",
                                 "run_command": {
                                     "command": [
-                                        "replaceitem entity @s slot.weapon.mainhand 0 bucket"
+                                        "playsound random.fizz @p ~ ~ ~ 1 1"
                                     ],
                                     "target": "holder"
+                                },
+                                "set_block_state": {
+                                    "farmersdelight:is_working": false
                                 }
                             }
                         ]

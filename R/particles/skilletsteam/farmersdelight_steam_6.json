@@ -1,0 +1,67 @@
+{
+    "format_version": "1.10.0", 
+    "particle_effect": {
+        "components": {
+            "minecraft:emitter_lifetime_once": {
+				"active_time": 0.12
+			},
+            "minecraft:emitter_rate_steady": {
+                "max_particles": 1, 
+                "spawn_rate": 20
+            },
+            "minecraft:particle_appearance_billboard": {
+                "facing_camera_mode": "lookat_xyz", 
+                "size": [
+                    "(variable.particle_random_1 + 0.05) * (variable.particle_random_2 * 0.1 + 0.5)", 
+                    "(variable.particle_random_1 + 0.05) * (variable.particle_random_2 * 0.1 + 0.5)"
+                ], 
+                "uv": {
+                    "texture_height": 16, 
+                    "texture_width": 16, 
+                    "uv": [
+                        0, 
+                        0
+                    ], 
+                    "uv_size": [
+                        16, 
+                        16
+                    ]
+                }
+            }, 
+            "minecraft:particle_appearance_tinting": {
+                "color": [
+                    1, 
+                    1, 
+                    1, 
+                    "(variable.particle_lifetime-variable.particle_age)/variable.particle_lifetime"
+                ]
+            }, 
+             "minecraft:particle_expire_if_not_in_blocks": [
+                "minecraft:air",
+                "farmersdelight:skillet_block"
+            ], 
+            "minecraft:particle_motion_dynamic": {
+                "linear_acceleration": [
+                     0, 
+                    0.1, 
+                    0
+                ]
+            }, 
+            "minecraft:particle_initial_speed": 0.35, 
+            "minecraft:particle_lifetime_expression": {
+                "max_lifetime": "Math.random(2, 3)"
+            }, 
+           "minecraft:emitter_shape_box": {
+				"half_dimensions": [0.3, 0, 0.3],
+				"direction": ["Math.random(-1, 1)", "Math.random(1, 1.5)", "Math.random(-1, 1)"]
+			}
+        }, 
+        "description": {
+            "basic_render_parameters": {
+                "material": "particles_blend", 
+                "texture": "textures/particle/steam_6"
+            }, 
+            "identifier": "farmersdelight:skillet_steam_6"
+        }
+    }
+}
