@@ -34,17 +34,17 @@ const vanillaBlockList = [
     "minecraft:crimson_stem",
     "minecraft:warped_stem",
     "minecraft:bamboo_block",
-    "minecraft:pumpkin",
-    /*"minecraft:oak_wood",
+    "minecraft:pumpkin" /*,
+    "minecraft:oak_wood",
     "minecraft:spruce_wood",
     "minecraft:birch_wood",
     "minecraft:jungle_wood",
     "minecraft:acacia_wood",
-    "minecraft:dark_oak_wood",*/
+    "minecraft:dark_oak_wood"
     "minecraft:mangrove_wood",
     "minecraft:cherry_wood",
-    "minecraft:crimson_hyphae",
     "minecraft:warped_hyphae",
+    "minecraft:crimson_hyphae",*/
 ];
 export { vanillaItemList, farmersdelightBlockList, vanillaBlockList };
 //# sourceMappingURL=cuttingBoardRecipe.js.map

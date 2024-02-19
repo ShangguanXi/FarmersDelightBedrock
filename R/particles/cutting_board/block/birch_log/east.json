@@ -2,10 +2,10 @@
 	"format_version": "1.10.0",
 	"particle_effect": {
 		"description": {
-			"identifier": "minecraft:spruce_log_west",
+			"identifier": "minecraft:birch_log_east",
 			"basic_render_parameters": {
 				"material": "particles_block",
-				"texture": "textures/blocks/log_spruce"
+				"texture": "textures/blocks/log_birch"
 			}
 		},
 		"components": {
@@ -18,7 +18,7 @@
 			},
 			"minecraft:emitter_shape_point": {
 				"offset": [
-					-0.125,
+					0.125,
 					0,
 					0
 				]
@@ -36,11 +36,11 @@
 					"texture_width": 16,
 					"texture_height": 16,
 					"uv": [
-						15,
+						0,
 						0
 					],
 					"uv_size": [
-						-16,
+						16,
 						16
 					]
 				}
