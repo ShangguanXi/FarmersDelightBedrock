@@ -59,31 +59,63 @@ export class StoveBlockEntity extends BlockEntity {
         const sco = entityBlockData.scoreboardObjective;
         if (!sco)
             return;
-        const { x, y, z } = entity.location;
-        const itemStackScoresData = sco?.getScores();
-        for (const itemStackData of itemStackScoresData) {
-            const itemStack = itemStackData.participant.displayName;
-            if (itemStack == 'amount')
-                continue;
-            const id = itemStack.split('/');
-            const name = id[0].split(':');
-            const particleName = name[0] == 'minecraft' ? `farmersdelight:${name[0]}_stove_${name[1]}` : `farmersdelight:stove_${name[1]}`;
-            if (block.permutation?.getState('farmersdelight:is_working')) {
-                if ((system.currentTick % 20) == 0) {
-                    entity.dimension.spawnParticle("farmersdelight:stove_smoke_particle", { x: x + stoveOffsets[parseInt(id[1]) - 1].x, y: y + 1.02, z: z + stoveOffsets[parseInt(id[1]) - 1].y });
-                    entity.runCommandAsync("playsound block.campfire.crackle @a ~ ~ ~ 1 1");
+        if (block.permutation.getState('minecraft:cardinal_direction') == "north" || block.permutation.getState('minecraft:cardinal_direction') == "south") {
+            const { x, y, z } = entity.location;
+            const itemStackScoresData = sco?.getScores();
+            for (const itemStackData of itemStackScoresData) {
+                const itemStack = itemStackData.participant.displayName;
+                if (itemStack == 'amount')
+                    continue;
+                const id = itemStack.split('/');
+                const name = id[0].split(':');
+                const particleName = name[0] == 'minecraft' ? `farmersdelight:${name[0]}_stove_${name[1]}` : `farmersdelight:stove_${name[1]}`;
+                if (block.permutation?.getState('farmersdelight:is_working')) {
+                    if ((system.currentTick % 20) == 0) {
+                        entity.dimension.spawnParticle("farmersdelight:stove_smoke_particle", { x: x + stoveOffsets[parseInt(id[1]) - 1].x, y: y + 1.02, z: z + stoveOffsets[parseInt(id[1]) - 1].y });
+                        entity.runCommandAsync("playsound block.campfire.crackle @a ~ ~ ~ 1 1");
+                    }
+                    const cookTime = itemStackData.score;
+                    sco.setScore(itemStack, cookTime - (system.currentTick % 20 == 0 ? 1 : 0));
+                    if (cookTime <= 0) {
+                        sco.removeParticipant(itemStack);
+                        sco.setScore('amount', (sco.getScore('amount') ?? 0) - 1);
+                        entity.runCommandAsync(`loot spawn ${entity.location.x + 0.5} ${entity.location.y + 1} ${entity.location.z + 0.5} loot "farmersdelight/cook/farmersdelight_cook_${name[1]}"`);
+                    }
                 }
-                const cookTime = itemStackData.score;
-                sco.setScore(itemStack, cookTime - (system.currentTick % 20 == 0 ? 1 : 0));
-                if (cookTime <= 0) {
-                    sco.removeParticipant(itemStack);
-                    sco.setScore('amount', (sco.getScore('amount') ?? 0) - 1);
-                    entity.runCommandAsync(`loot spawn ${entity.location.x + 0.5} ${entity.location.y + 1} ${entity.location.z + 0.5} loot "farmersdelight/cook/farmersdelight_cook_${name[1]}"`);
-                }
+                ;
+                entity.dimension.spawnParticle(particleName, { x: x + stoveOffsets[parseInt(id[1]) - 1].x, y: y + 1.02, z: z + stoveOffsets[parseInt(id[1]) - 1].y });
             }
-            entity.dimension.spawnParticle(particleName, { x: x + stoveOffsets[parseInt(id[1]) - 1].x, y: y + 1.02, z: z + stoveOffsets[parseInt(id[1]) - 1].y });
+            super.blockEntityLoot(entityBlockData, "farmersdelight:stove", itemStackArr(itemStackScoresData) ?? null);
         }
-        super.blockEntityLoot(entityBlockData, "farmersdelight:stove", itemStackArr(itemStackScoresData) ?? null);
+        ;
+        if (block.permutation.getState('minecraft:cardinal_direction') == "west" || block.permutation.getState('minecraft:cardinal_direction') == "east") {
+            const { x, y, z } = entity.location;
+            const itemStackScoresData = sco?.getScores();
+            for (const itemStackData of itemStackScoresData) {
+                const itemStack = itemStackData.participant.displayName;
+                if (itemStack == 'amount')
+                    continue;
+                const id = itemStack.split('/');
+                const name = id[0].split(':');
+                const particleName = name[0] == 'minecraft' ? `farmersdelight:${name[0]}_stove_${name[1]}` : `farmersdelight:stove_${name[1]}`;
+                if (block.permutation?.getState('farmersdelight:is_working')) {
+                    if ((system.currentTick % 20) == 0) {
+                        entity.dimension.spawnParticle("farmersdelight:stove_smoke_particle", { x: x + stoveOffsets[parseInt(id[1]) - 1].y, y: y + 1.02, z: z + stoveOffsets[parseInt(id[1]) - 1].x });
+                        entity.runCommandAsync("playsound block.campfire.crackle @a ~ ~ ~ 1 1");
+                    }
+                    const cookTime = itemStackData.score;
+                    sco.setScore(itemStack, cookTime - (system.currentTick % 20 == 0 ? 1 : 0));
+                    if (cookTime <= 0) {
+                        sco.removeParticipant(itemStack);
+                        sco.setScore('amount', (sco.getScore('amount') ?? 0) - 1);
+                        entity.runCommandAsync(`loot spawn ${entity.location.x + 0.5} ${entity.location.y + 1} ${entity.location.z + 0.5} loot "farmersdelight/cook/farmersdelight_cook_${name[1]}"`);
+                    }
+                }
+                ;
+                entity.dimension.spawnParticle(particleName, { x: x + stoveOffsets[parseInt(id[1]) - 1].y, y: y + 1.02, z: z + stoveOffsets[parseInt(id[1]) - 1].x });
+            }
+            super.blockEntityLoot(entityBlockData, "farmersdelight:stove", itemStackArr(itemStackScoresData) ?? null);
+        }
     }
 }
 __decorate([

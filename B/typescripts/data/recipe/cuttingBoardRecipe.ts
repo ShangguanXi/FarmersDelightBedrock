@@ -23,7 +23,7 @@ const vanillaItemList: string[] = [
     "minecraft:cooked_mutton",
     "minecraft:cooked_chicken"
 ];
-const vanillaBlockList: string[] = [
+const vanillaBlockofAxeList: string[] = [
     "minecraft:oak_log",
     "minecraft:spruce_log",
     "minecraft:birch_log",
@@ -34,8 +34,7 @@ const vanillaBlockList: string[] = [
     "minecraft:cherry_log",
     "minecraft:crimson_stem",
     "minecraft:warped_stem",
-    "minecraft:bamboo_block",
-    "minecraft:pumpkin"/*,
+    "minecraft:bamboo_block" /*,
     "minecraft:oak_wood",
     "minecraft:spruce_wood",
     "minecraft:birch_wood",
@@ -47,5 +46,10 @@ const vanillaBlockList: string[] = [
     "minecraft:warped_hyphae",
     "minecraft:crimson_hyphae",*/
 ];
+const vanillaBlockofPickaxeList: string[] = [
+];
+const vanillaBlockofKnifeList: string[] = [
+    "minecraft:pumpkin"
+];
 
-export { vanillaItemList, farmersdelightBlockList,  vanillaBlockList};
+export { vanillaItemList, farmersdelightBlockList,  vanillaBlockofAxeList, vanillaBlockofKnifeList};

@@ -22,7 +22,7 @@ const vanillaItemList = [
     "minecraft:cooked_mutton",
     "minecraft:cooked_chicken"
 ];
-const vanillaBlockList = [
+const vanillaBlockofAxeList = [
     "minecraft:oak_log",
     "minecraft:spruce_log",
     "minecraft:birch_log",
@@ -33,8 +33,7 @@ const vanillaBlockList = [
     "minecraft:cherry_log",
     "minecraft:crimson_stem",
     "minecraft:warped_stem",
-    "minecraft:bamboo_block",
-    "minecraft:pumpkin" /*,
+    "minecraft:bamboo_block" /*,
     "minecraft:oak_wood",
     "minecraft:spruce_wood",
     "minecraft:birch_wood",
@@ -46,5 +45,9 @@ const vanillaBlockList = [
     "minecraft:warped_hyphae",
     "minecraft:crimson_hyphae",*/
 ];
-export { vanillaItemList, farmersdelightBlockList, vanillaBlockList };
+const vanillaBlockofPickaxeList = [];
+const vanillaBlockofKnifeList = [
+    "minecraft:pumpkin"
+];
+export { vanillaItemList, farmersdelightBlockList, vanillaBlockofAxeList, vanillaBlockofKnifeList };
 //# sourceMappingURL=cuttingBoardRecipe.js.map
