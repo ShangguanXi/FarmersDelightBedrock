@@ -19,6 +19,7 @@ import { CuttingBoardRegistries } from "./init/CuttingBoardRecipeRegistries";
 import { RiceBlock } from "./block/Rice";
 import { TatamiMatBlock } from "./block/TatamiMatBlock";
 import { CookRecipeRegistries } from "./init/CookRecipeRegistries";
+import { FarmersBook } from "./item/FarmersBook";
 
 
 CookingPotRecipeRegistries.initCookingPotScoRegistries();
@@ -40,7 +41,7 @@ new Cabinets();
 new CabinetsBlockEntity();
 new RiceBlock();
 new TatamiMatBlock();
-
+new FarmersBook();
 new Food();
 new Knife();
 
