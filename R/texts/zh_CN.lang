@@ -235,6 +235,13 @@
   
   farmersdelight.book.title=农夫乐事
   farmersdelight.book.thanks=鸣谢
-  farmersdelight.book.thanks.body=充电鸣谢名单：@炽雨
+  farmersdelight.book.thanks.sponsored_list_title=§l§e赞助名单
+  farmersdelight.book.thanks.sponsored_list=§r@炽雨
+  farmersdelight.book.thanks.license_title=§l§9授权许可
+  farmersdelight.book.thanks.license=§r原Java版农夫乐事在GitHub及Curseforge上以MIT协议开源，本团队在遵循MIT协议的情况下进行合法移植！感谢Vectorwing创作出农夫乐事这一款优秀模组。
+  farmersdelight.book.thanks.developers_title=§l§6开发组成员
+  farmersdelight.book.thanks.developers=§r@Moaswies @诗栩 @lintha暮辰
+  farmersdelight.book.thanks.contributors_title=§l§a贡献者
+  farmersdelight.book.thanks.contributors=§r@EnderDragongugugu @语翌制作组 
   farmersdelight.book.crop=种植
   farmersdelight.book.back=返回
