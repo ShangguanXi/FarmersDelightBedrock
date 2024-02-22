@@ -238,6 +238,14 @@
   farmersdelight.book.stove.main=炉灶是一种没有GUI的功能性方块，工作状态下可以为煎锅和厨锅提供热源，并且自身可以烧制部分物品。当自身烧制物品的时候，可同时最多烧制6个相同或不同的物品。
   farmersdelight.book.stove.switch_title=§l§6点燃与熄灭
   farmersdelight.book.stove.switch=§r在工作状态下，可以使用锹或者水桶来熄灭炉灶。在熄灭状态下可以通过打火石点燃炉灶。
+  farmersdelight.book.cooking_pot.main=厨锅是一种具有GUI的功能性方块，可以用于制作以及储存食物。
+  farmersdelight.book.cooking_pot.heat_source_title=§l§c热源
+  farmersdelight.book.cooking_pot.heat_source=§r为了准备食物，厨锅下方必须具有热源。通过观察厨锅上是否有气泡或者烟雾冒出或厨锅的GUI中是否有火焰可判断是否识别下方的热源。目前的热源只支持炉灶。
+  farmersdelight.book.cooking_pot.use_title=§l§q用途
+  farmersdelight.book.cooking_pot.use.1=§r●厨锅有六个输入槽一个显示槽一个容器槽和一个成品槽。
+  farmersdelight.book.cooking_pot.use.2=§r●厨锅具有配方显示UI，可打开厨锅进行查看。
+  farmersdelight.book.cooking_pot.use.3=§r●厨锅的配方都是无序配方，符合配方并且受热就会自动开始合成食物。
+  farmersdelight.book.cooking_pot.use.4=§r●显示槽中的物品不能被直接取出，需要在容器槽内放入合适的容器来将其转移到成品槽内后，才可取出。
   farmersdelight.book.thanks=鸣谢
   farmersdelight.book.thanks.sponsored_list_title=§l§e赞助名单
   farmersdelight.book.thanks.sponsored_list=§r@炽雨

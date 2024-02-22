@@ -44,7 +44,7 @@ function thanksForm(player: Player) {
     })
 };
 function cuttingBoardForm(player: Player) {
-    const thanks = new ActionFormData()
+    const cuttingBoard = new ActionFormData()
         .title({ "rawtext": [{ "text": "tile.farmersdelight:cutting_board.name" }] })
         .body({
             "rawtext": [
@@ -54,20 +54,20 @@ function cuttingBoardForm(player: Player) {
         )
         .button({ "rawtext": [{ "text": "farmersdelight.book.back" }] });
 
-    thanks.show(player).then((response: ActionFormResponse) => {
+    cuttingBoard.show(player).then((response: ActionFormResponse) => {
         if (response.selection === 0) {
             mainForm(player);
         }
     })
 };
 function stoveForm(player: Player) {
-    const thanks = new ActionFormData()
+    const stove = new ActionFormData()
         .title({ "rawtext": [{ "text": "tile.farmersdelight:stove.name" }] })
         .body({
             "rawtext": [
                 { "translate": "farmersdelight.book.stove.main" },
                 { "text": "\n" },
-                { "translate": "farmersdelight.book.stove.cswitch_title" },
+                { "translate": "farmersdelight.book.stove.switch_title" },
                 { "text": "\n" },
                 { "translate": "farmersdelight.book.stove.switch" }
             ]
@@ -75,12 +75,43 @@ function stoveForm(player: Player) {
         )
         .button({ "rawtext": [{ "text": "farmersdelight.book.back" }] });
 
-    thanks.show(player).then((response: ActionFormResponse) => {
+    stove.show(player).then((response: ActionFormResponse) => {
         if (response.selection === 0) {
             mainForm(player);
         }
     })
 };
+function cookingPotForm(player: Player) {
+    const cookingPotForm = new ActionFormData()
+        .title({ "rawtext": [{ "text": "tile.farmersdelight:cooking_pot.name" }] })
+        .body({
+            "rawtext": [
+                { "translate": "farmersdelight.book.cooking_pot.main" },
+                { "text": "\n" },
+                { "translate": "farmersdelight.book.cooking_pot.heat_source_title" },
+                { "text": "\n" },
+                { "translate": "farmersdelight.book.cooking_pot.heat_source" },
+                { "text": "\n" },
+                { "translate": "farmersdelight.book.cooking_pot.use_title" },
+                { "text": "\n" },
+                { "translate": "farmersdelight.book.cooking_pot.use.1" },
+                { "text": "\n" },
+                { "translate": "farmersdelight.book.cooking_pot.use.2" },
+                { "text": "\n" },
+                { "translate": "farmersdelight.book.cooking_pot.use.3" },
+                { "text": "\n" },
+                { "translate": "farmersdelight.book.cooking_pot.use.4" }
+            ]
+        }
+        )
+        .button({ "rawtext": [{ "text": "farmersdelight.book.back" }] });
+
+    cookingPotForm.show(player).then((response: ActionFormResponse) => {
+        if (response.selection === 0) {
+            mainForm(player);
+        }
+    })
+}
 function mainForm(player: Player) {
     const form = new ActionFormData()
         .title({ "rawtext": [{ "text": "farmersdelight.book.title" }] })
@@ -94,12 +125,15 @@ function mainForm(player: Player) {
     form.show(player).then((response: ActionFormResponse) => {
         if (response.selection === 5) {
             thanksForm(player);
-        } 
+        };
         if (response.selection === 0) {
             cuttingBoardForm(player);
-        }
+        };
         if (response.selection === 1) {
             stoveForm(player);
+        };
+        if (response.selection === 2) {
+            cookingPotForm(player);
         }
 
 
