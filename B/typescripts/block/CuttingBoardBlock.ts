@@ -1,4 +1,4 @@
-import { Block, Container, Entity, EntityInventoryComponent, ItemStack, Player, PlayerInteractWithBlockAfterEvent, Vector3, world } from "@minecraft/server";
+import { Block, Container, Entity, EntityInventoryComponent, ItemStack, Player, PlayerInteractWithBlockAfterEvent, PlayerPlaceBlockAfterEvent, Vector3, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
 import { BlockWithEntity } from "./BlockWithEntity";
 import { EntityUtil } from "../lib/EntityUtil";
@@ -9,11 +9,11 @@ import { ItemUtil } from "../lib/ItemUtil";
 export class CuttingBoardBlock extends BlockWithEntity {
     //初始化，生成实体并初始化方块实体存储
     @methodEventSub(world.afterEvents.playerPlaceBlock)
-    placeBlock(args: any) {
+    placeBlock(args: PlayerPlaceBlockAfterEvent) {
         const block: Block = args.block;
         if (block.typeId != "farmersdelight:cutting_board") return;
         const { x, y, z }: Vector3 = block.location;
-        const entity: Entity = super.setBlock(args, { x: x + 0.5, y: y, z: z + 0.5 }, "farmersdelight:cutting_board");
+        const entity: Entity = super.setBlock(args.block.dimension, { x: x + 0.5, y: y, z: z + 0.5 }, "farmersdelight:cutting_board");
         entity.setDynamicProperty("farmersdelight:blockEntityItemStackData", '{"item":"undefined"}');
     };
     //物品与方块互动事件
@@ -22,7 +22,7 @@ export class CuttingBoardBlock extends BlockWithEntity {
     interactWithBlock(args: PlayerInteractWithBlockAfterEvent): void {
         if (args?.block?.typeId !== "farmersdelight:cutting_board") return;
         //获取方块实体数据
-        const data = super.entityBlockData(args, {
+        const data = super.entityBlockData(args.block, {
             type: 'farmersdelight:cutting_board',
             location: args.block.location
         });

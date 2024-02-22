@@ -1,4 +1,4 @@
-import { Block, Entity, ScoreboardObjective, ScoreboardScoreInfo, Vector3, system, world } from "@minecraft/server";
+import { Block, Entity, ScoreboardObjective, Vector3, system, world } from "@minecraft/server";
 import { methodEventSub } from "../../lib/eventHelper";
 import { BlockEntity } from "./BlockEntity";
 import { heatConductors, heatSources } from "../../data/heatBlocks";

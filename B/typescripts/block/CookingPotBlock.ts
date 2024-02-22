@@ -1,4 +1,4 @@
-import { Block, Container, ContainerSlot, Direction, Entity, EntityInventoryComponent, ItemStack, Vector3, system, world } from "@minecraft/server";
+import { Block, Container, ContainerSlot, Entity, EntityInventoryComponent, ItemStack, ItemUseOnBeforeEvent, PlayerPlaceBlockAfterEvent, Vector3, system, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
 import { BlockWithEntity } from "./BlockWithEntity";
 
@@ -6,37 +6,22 @@ import { BlockWithEntity } from "./BlockWithEntity";
 const fireArrowEmpty: ItemStack = new ItemStack("farmersdelight:fire_0");
 const emptyArrow: ItemStack = new ItemStack("farmersdelight:cooking_pot_arrow_0");
 
+//potItem用于放置厨锅时暂时存储厨锅物品数据，方便读取lore
+//别问我为啥不写类里面，因为写类里面的时候在constructor里还是正常的map，一到事件里就莫名其妙变成了undefined，ts也没报错，查不出来原因
+let potItem = new Map();
+
 export class CookingPotBlock extends BlockWithEntity {
-    @methodEventSub(world.afterEvents.itemUseOn)
-    placeBlock(args: any) {
-        const itemStack: ItemStack = args.itemStack;
+    @methodEventSub(world.beforeEvents.itemUseOn)
+    beforePlaceBlock(args: ItemUseOnBeforeEvent){
+        potItem.set(args.source.id, args.itemStack);
+    }
+    @methodEventSub(world.afterEvents.playerPlaceBlock)
+    placeBlock(args: PlayerPlaceBlockAfterEvent) {
+        const itemStack = potItem.get(args.player.id) as ItemStack;
         const block: Block = args.block;
-        if (itemStack.typeId != "farmersdelight:cooking_pot") return;
-        const { x, y, z }: Vector3 = block.location;
+        if (block.typeId != "farmersdelight:cooking_pot") return;
         const lores: string[] = itemStack.getLore() ?? [];
-        let V3: Vector3;
-        const faceLocation: Direction = args.blockFace;
-        switch (faceLocation) {
-            case Direction.Up:
-                V3 = { x: x + 0.5, y: y + 1, z: z + 0.5 };
-                break;
-            case Direction.Down:
-                V3 = { x: x + 0.5, y: y - 1, z: z + 0.5 };
-                break;
-            case Direction.East:
-                V3 = { x: x + 0.5 + 1, y: y, z: z + 0.5 };
-                break;
-            case Direction.North:
-                V3 = { x: x + 0.5, y: y, z: z + 0.5 - 1 };
-                break;
-            case Direction.South:
-                V3 = { x: x + 0.5, y: y, z: z + 0.5 + 1 };
-                break;
-            case Direction.West:
-                V3 = { x: x + 0.5 - 1, y: y, z: z + 0.5 };
-                break;
-        }
-        const entity: Entity = super.setBlock(args, V3, "farmersdelight:cooking_pot");
+        const entity: Entity = super.setBlock(block.dimension, block.location, "farmersdelight:cooking_pot");
         entity.nameTag = "farmersdelight厨锅";
         const container: Container | undefined = entity.getComponent(EntityInventoryComponent.componentId)?.container;
         container?.setItem(9, emptyArrow);

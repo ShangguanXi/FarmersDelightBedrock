@@ -1,4 +1,4 @@
-import { Block, Container, ContainerSlot, Entity, EntityDamageCause, EntityEquippableComponent, EntityInventoryComponent, EquipmentSlot, ItemStack, Player, ScoreboardObjective, ScoreboardScoreInfo, Vector3, world } from "@minecraft/server";
+import { Block, Container, ContainerSlot, Entity, EntityDamageCause, EntityEquippableComponent, EntityInventoryComponent, EquipmentSlot, ItemStack, ItemUseOnAfterEvent, Player, PlayerPlaceBlockAfterEvent, ScoreboardObjective, ScoreboardScoreInfo, Vector3, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
 import { BlockWithEntity } from "./BlockWithEntity";
 import { vanillaItemList } from "../data/recipe/skilletRecipe";
@@ -9,18 +9,18 @@ import { BlockEntity } from "./entity/BlockEntity";
 
 export class SKilletBlock extends BlockWithEntity {
     @methodEventSub(world.afterEvents.playerPlaceBlock)
-    placeBlock(args: any) {
+    placeBlock(args: PlayerPlaceBlockAfterEvent) {
         const block: Block = args.block;
         if (block.typeId != "farmersdelight:skillet_block") return;
         const { x, y, z }: Vector3 = block.location;
-        const entity: Entity = super.setBlock(args, { x: x + 0.5, y: y, z: z + 0.5 }, "farmersdelight:skillet");
+        const entity: Entity = super.setBlock(args.block.dimension, { x: x + 0.5, y: y, z: z + 0.5 }, "farmersdelight:skillet");
         entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', '{"item":"undefined"}');
         world.scoreboard.addObjective(entity.typeId + entity.id, entity.id).setScore('amount', 0);
     }
     @methodEventSub(world.afterEvents.itemUseOn)
-    useOnBlock(args: any) {
+    useOnBlock(args: ItemUseOnAfterEvent) {
         if (args?.block?.typeId !== "farmersdelight:skillet_block") return;
-        const data = super.entityBlockData(args, {
+        const data = super.entityBlockData(args.block, {
             type: 'farmersdelight:skillet',
             location: args.block.location
         });
@@ -77,7 +77,7 @@ export class SKilletBlock extends BlockWithEntity {
                 }
             }
             BlockEntity.clearEntity(data);
-            const newEntity: Entity = super.setBlock(args, { x: x + 0.5, y: y, z: z + 0.5 }, "farmersdelight:skillet");
+            const newEntity: Entity = super.setBlock(args.block.dimension, { x: x + 0.5, y: y, z: z + 0.5 }, "farmersdelight:skillet");
             newEntity.setDynamicProperty('farmersdelight:blockEntityItemStackData', '{"item":"undefined"}');
             world.scoreboard.addObjective(newEntity.typeId + newEntity.id, newEntity.id).setScore('amount', 0);
         }

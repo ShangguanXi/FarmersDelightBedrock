@@ -1,4 +1,4 @@
-import { Block, BlockPermutation, Container, Dimension, Direction, Entity, ItemStack, ItemUseOnBeforeEvent, PlayerInteractWithBlockBeforeEvent, Vector3, system, world } from "@minecraft/server";
+import { Container, Dimension, Direction, ItemUseOnBeforeEvent, PlayerInteractWithBlockBeforeEvent, Vector3, system, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
 import { ItemUtil } from "../lib/ItemUtil";
 import { EntityUtil } from "../lib/EntityUtil";

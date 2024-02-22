@@ -7,42 +7,25 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Direction, EntityInventoryComponent, ItemStack, system, world } from "@minecraft/server";
+import { EntityInventoryComponent, ItemStack, ItemUseOnBeforeEvent, PlayerPlaceBlockAfterEvent, system, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
 import { BlockWithEntity } from "./BlockWithEntity";
 const fireArrowEmpty = new ItemStack("farmersdelight:fire_0");
 const emptyArrow = new ItemStack("farmersdelight:cooking_pot_arrow_0");
+//potItem用于放置厨锅时暂时存储厨锅物品数据，方便读取lore
+//别问我为啥不写类里面，因为写类里面的时候在constructor里还是正常的map，一到事件里就莫名其妙变成了undefined，ts也没报错，查不出来原因
+let potItem = new Map();
 export class CookingPotBlock extends BlockWithEntity {
+    beforePlaceBlock(args) {
+        potItem.set(args.source.id, args.itemStack);
+    }
     placeBlock(args) {
-        const itemStack = args.itemStack;
+        const itemStack = potItem.get(args.player.id);
         const block = args.block;
-        if (itemStack.typeId != "farmersdelight:cooking_pot")
+        if (block.typeId != "farmersdelight:cooking_pot")
             return;
-        const { x, y, z } = block.location;
         const lores = itemStack.getLore() ?? [];
-        let V3;
-        const faceLocation = args.blockFace;
-        switch (faceLocation) {
-            case Direction.Up:
-                V3 = { x: x + 0.5, y: y + 1, z: z + 0.5 };
-                break;
-            case Direction.Down:
-                V3 = { x: x + 0.5, y: y - 1, z: z + 0.5 };
-                break;
-            case Direction.East:
-                V3 = { x: x + 0.5 + 1, y: y, z: z + 0.5 };
-                break;
-            case Direction.North:
-                V3 = { x: x + 0.5, y: y, z: z + 0.5 - 1 };
-                break;
-            case Direction.South:
-                V3 = { x: x + 0.5, y: y, z: z + 0.5 + 1 };
-                break;
-            case Direction.West:
-                V3 = { x: x + 0.5 - 1, y: y, z: z + 0.5 };
-                break;
-        }
-        const entity = super.setBlock(args, V3, "farmersdelight:cooking_pot");
+        const entity = super.setBlock(block.dimension, block.location, "farmersdelight:cooking_pot");
         entity.nameTag = "farmersdelight厨锅";
         const container = entity.getComponent(EntityInventoryComponent.componentId)?.container;
         container?.setItem(9, emptyArrow);
@@ -69,9 +52,15 @@ export class CookingPotBlock extends BlockWithEntity {
     }
 }
 __decorate([
-    methodEventSub(world.afterEvents.itemUseOn),
+    methodEventSub(world.beforeEvents.itemUseOn),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [ItemUseOnBeforeEvent]),
+    __metadata("design:returntype", void 0)
+], CookingPotBlock.prototype, "beforePlaceBlock", null);
+__decorate([
+    methodEventSub(world.afterEvents.playerPlaceBlock),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [PlayerPlaceBlockAfterEvent]),
     __metadata("design:returntype", void 0)
 ], CookingPotBlock.prototype, "placeBlock", null);
 __decorate([

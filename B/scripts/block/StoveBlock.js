@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { EntityInventoryComponent, ItemStack, world } from "@minecraft/server";
+import { EntityInventoryComponent, ItemStack, ItemUseOnAfterEvent, PlayerPlaceBlockAfterEvent, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
 import { BlockWithEntity } from "./BlockWithEntity";
 import { vanillaItemList } from "../data/recipe/skilletRecipe";
@@ -21,13 +21,13 @@ export class StoveBlock extends BlockWithEntity {
         //放置直接为点燃状态
         block.setPermutation(block.permutation.withState('farmersdelight:is_working', true));
         const { x, y, z } = block.location;
-        const entity = super.setBlock(args, { x: x + 0.5, y: y, z: z + 0.5 }, "farmersdelight:stove");
+        const entity = super.setBlock(args.block.dimension, { x: x + 0.5, y: y, z: z + 0.5 }, "farmersdelight:stove");
         world.scoreboard.addObjective(entity.typeId + entity.id, entity.id).setScore('amount', 0);
     }
     useOnBlock(args) {
         if (args?.block?.typeId !== "farmersdelight:stove")
             return;
-        const data = super.entityBlockData(args, {
+        const data = super.entityBlockData(args.block, {
             type: 'farmersdelight:stove',
             location: args.block.location
         });
@@ -87,13 +87,13 @@ export class StoveBlock extends BlockWithEntity {
 __decorate([
     methodEventSub(world.afterEvents.playerPlaceBlock),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [PlayerPlaceBlockAfterEvent]),
     __metadata("design:returntype", void 0)
 ], StoveBlock.prototype, "placeBlock", null);
 __decorate([
     methodEventSub(world.afterEvents.itemUseOn),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [ItemUseOnAfterEvent]),
     __metadata("design:returntype", void 0)
 ], StoveBlock.prototype, "useOnBlock", null);
 //# sourceMappingURL=StoveBlock.js.map

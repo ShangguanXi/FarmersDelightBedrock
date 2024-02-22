@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { world } from "@minecraft/server";
+import { PlayerPlaceBlockAfterEvent, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
 import { BlockWithEntity } from "./BlockWithEntity";
 export class Cabinets extends BlockWithEntity {
@@ -16,14 +16,14 @@ export class Cabinets extends BlockWithEntity {
         if (!block.hasTag('farmersdelight:cabinet'))
             return;
         const { x, y, z } = block.location;
-        const entity = super.setBlock(args, { x: x + 0.5, y: y, z: z + 0.5 }, block.typeId);
+        const entity = super.setBlock(args.block.dimension, { x: x + 0.5, y: y, z: z + 0.5 }, block.typeId);
         entity.nameTag = `tile.${entity.typeId}.name`;
     }
 }
 __decorate([
     methodEventSub(world.afterEvents.playerPlaceBlock),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [PlayerPlaceBlockAfterEvent]),
     __metadata("design:returntype", void 0)
 ], Cabinets.prototype, "placeBlock", null);
 //# sourceMappingURL=Cabinets.js.map

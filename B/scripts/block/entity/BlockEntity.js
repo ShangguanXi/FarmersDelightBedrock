@@ -16,7 +16,6 @@ export class BlockEntity {
             return undefined;
         }
     }
-    //以下args一律为blockEntityData
     //对使用动态属性存储物品的方块实体检测掉落
     blockEntityLoot(args, id, list, amount = 1) {
         if (!ObjectUtil.isEqual(args.entity.location, args.blockEntityDataLocation))

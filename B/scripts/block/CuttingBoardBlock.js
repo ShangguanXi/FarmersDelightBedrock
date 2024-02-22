@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { EntityInventoryComponent, ItemStack, PlayerInteractWithBlockAfterEvent, world } from "@minecraft/server";
+import { EntityInventoryComponent, ItemStack, PlayerInteractWithBlockAfterEvent, PlayerPlaceBlockAfterEvent, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
 import { BlockWithEntity } from "./BlockWithEntity";
 import { EntityUtil } from "../lib/EntityUtil";
@@ -20,7 +20,7 @@ export class CuttingBoardBlock extends BlockWithEntity {
         if (block.typeId != "farmersdelight:cutting_board")
             return;
         const { x, y, z } = block.location;
-        const entity = super.setBlock(args, { x: x + 0.5, y: y, z: z + 0.5 }, "farmersdelight:cutting_board");
+        const entity = super.setBlock(args.block.dimension, { x: x + 0.5, y: y, z: z + 0.5 }, "farmersdelight:cutting_board");
         entity.setDynamicProperty("farmersdelight:blockEntityItemStackData", '{"item":"undefined"}');
     }
     ;
@@ -30,7 +30,7 @@ export class CuttingBoardBlock extends BlockWithEntity {
         if (args?.block?.typeId !== "farmersdelight:cutting_board")
             return;
         //获取方块实体数据
-        const data = super.entityBlockData(args, {
+        const data = super.entityBlockData(args.block, {
             type: 'farmersdelight:cutting_board',
             location: args.block.location
         });
@@ -124,7 +124,7 @@ export class CuttingBoardBlock extends BlockWithEntity {
 __decorate([
     methodEventSub(world.afterEvents.playerPlaceBlock),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [PlayerPlaceBlockAfterEvent]),
     __metadata("design:returntype", void 0)
 ], CuttingBoardBlock.prototype, "placeBlock", null);
 __decorate([

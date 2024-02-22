@@ -1,4 +1,4 @@
-import { Block, Container, Entity, EntityInventoryComponent, ItemStack, Player, ScoreboardObjective, ScoreboardScoreInfo, Vector3, world } from "@minecraft/server";
+import { Block, Container, Entity, EntityInventoryComponent, ItemStack, ItemUseOnAfterEvent, Player, PlayerPlaceBlockAfterEvent, ScoreboardObjective, ScoreboardScoreInfo, Vector3, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
 import { BlockWithEntity } from "./BlockWithEntity";
 import { vanillaItemList } from "../data/recipe/skilletRecipe";
@@ -6,21 +6,22 @@ import { EntityUtil } from "../lib/EntityUtil";
 import { ItemUtil } from "../lib/ItemUtil";
 
 
+
 export class StoveBlock extends BlockWithEntity {
     @methodEventSub(world.afterEvents.playerPlaceBlock)
-    placeBlock(args: any) {
+    placeBlock(args: PlayerPlaceBlockAfterEvent) {
         const block: Block = args.block;
         if (block.typeId != "farmersdelight:stove") return;
         //放置直接为点燃状态
         block.setPermutation(block.permutation.withState('farmersdelight:is_working', true));
         const { x, y, z }: Vector3 = block.location;
-        const entity: Entity = super.setBlock(args, { x: x + 0.5, y: y, z: z + 0.5 }, "farmersdelight:stove");
+        const entity: Entity = super.setBlock(args.block.dimension, { x: x + 0.5, y: y, z: z + 0.5 }, "farmersdelight:stove");
         world.scoreboard.addObjective(entity.typeId + entity.id, entity.id).setScore('amount', 0);
     }
     @methodEventSub(world.afterEvents.itemUseOn)
-    useOnBlock(args: any) {
+    useOnBlock(args: ItemUseOnAfterEvent) {
         if (args?.block?.typeId !== "farmersdelight:stove") return;
-        const data = super.entityBlockData(args, {
+        const data = super.entityBlockData(args.block, {
             type: 'farmersdelight:stove',
             location: args.block.location
         });
