@@ -234,6 +234,10 @@
 
   
   farmersdelight.book.title=农夫乐事
+  farmersdelight.book.cutting_board.main=砧板是一种没有GUI的功能性方块，可以放置部分方块，物品，并使用工具进行处理。
+  farmersdelight.book.stove.main=炉灶是一种没有GUI的功能性方块，工作状态下可以为煎锅和厨锅提供热源，并且自身可以烧制部分物品。当自身烧制物品的时候，可同时最多烧制6个相同或不同的物品。
+  farmersdelight.book.stove.switch_title=§l§6点燃与熄灭
+  farmersdelight.book.stove.switch=§r在工作状态下，可以使用锹或者水桶来熄灭炉灶。在熄灭状态下可以通过打火石点燃炉灶。
   farmersdelight.book.thanks=鸣谢
   farmersdelight.book.thanks.sponsored_list_title=§l§e赞助名单
   farmersdelight.book.thanks.sponsored_list=§r@炽雨
@@ -243,5 +247,11 @@
   farmersdelight.book.thanks.developers=§r@Moaswies @诗栩 @lintha暮辰
   farmersdelight.book.thanks.contributors_title=§l§a贡献者
   farmersdelight.book.thanks.contributors=§r@EnderDragongugugu @语翌制作组 
+  farmersdelight.book.thanks.chat_group_title=§l§4聊天群组
+  farmersdelight.book.thanks.chat_group.qqchat=§rqq群号：851992067
+  farmersdelight.book.thanks.chat_group.discord=§rdiscord链接： https://discord.gg/52putAfXnQ
+  farmersdelight.book.thanks.sponsor_title=§l§g赞助渠道
+  farmersdelight.book.thanks.sponsor=§r爱发电：https://afdian.net/a/moaswies
+
   farmersdelight.book.crop=种植
   farmersdelight.book.back=返回

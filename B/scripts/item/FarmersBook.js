@@ -29,7 +29,17 @@ function thanksForm(player) {
             { "text": "\n" },
             { "translate": "farmersdelight.book.thanks.contributors_title" },
             { "text": "\n" },
-            { "translate": "farmersdelight.book.thanks.contributors" }
+            { "translate": "farmersdelight.book.thanks.contributors" },
+            { "text": "\n" },
+            { "translate": "farmersdelight.book.thanks.chat_group_title" },
+            { "text": "\n" },
+            { "translate": "farmersdelight.book.thanks.chat_group.qqchat" },
+            { "text": "\n" },
+            { "translate": "farmersdelight.book.thanks.chat_group.discord" },
+            { "text": "\n" },
+            { "translate": "farmersdelight.book.thanks.sponsor_title" },
+            { "text": "\n" },
+            { "translate": "farmersdelight.book.thanks.sponsor" }
         ]
     })
         .button({ "rawtext": [{ "text": "farmersdelight.book.back" }] });
@@ -45,21 +55,27 @@ function cuttingBoardForm(player) {
         .title({ "rawtext": [{ "text": "tile.farmersdelight:cutting_board.name" }] })
         .body({
         "rawtext": [
-            { "translate": "farmersdelight.book.thanks.sponsored_list_title" },
+            { "translate": "farmersdelight.book.cutting_board.main" }
+        ]
+    })
+        .button({ "rawtext": [{ "text": "farmersdelight.book.back" }] });
+    thanks.show(player).then((response) => {
+        if (response.selection === 0) {
+            mainForm(player);
+        }
+    });
+}
+;
+function stoveForm(player) {
+    const thanks = new ActionFormData()
+        .title({ "rawtext": [{ "text": "tile.farmersdelight:stove.name" }] })
+        .body({
+        "rawtext": [
+            { "translate": "farmersdelight.book.stove.main" },
             { "text": "\n" },
-            { "translate": "farmersdelight.book.thanks.sponsored_list" },
+            { "translate": "farmersdelight.book.stove.cswitch_title" },
             { "text": "\n" },
-            { "translate": "farmersdelight.book.thanks.license_title" },
-            { "text": "\n" },
-            { "translate": "farmersdelight.book.thanks.license" },
-            { "text": "\n" },
-            { "translate": "farmersdelight.book.thanks.developers_title" },
-            { "text": "\n" },
-            { "translate": "farmersdelight.book.thanks.developers" },
-            { "text": "\n" },
-            { "translate": "farmersdelight.book.thanks.contributors_title" },
-            { "text": "\n" },
-            { "translate": "farmersdelight.book.thanks.contributors" }
+            { "translate": "farmersdelight.book.stove.switch" }
         ]
     })
         .button({ "rawtext": [{ "text": "farmersdelight.book.back" }] });
@@ -82,6 +98,12 @@ function mainForm(player) {
     form.show(player).then((response) => {
         if (response.selection === 5) {
             thanksForm(player);
+        }
+        if (response.selection === 0) {
+            cuttingBoardForm(player);
+        }
+        if (response.selection === 1) {
+            stoveForm(player);
         }
     });
 }
