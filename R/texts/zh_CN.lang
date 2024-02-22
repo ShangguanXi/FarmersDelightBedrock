@@ -240,7 +240,7 @@
   farmersdelight.book.stove.switch=§r在工作状态下，可以使用锹或者水桶来熄灭炉灶。在熄灭状态下可以通过打火石点燃炉灶。
   farmersdelight.book.cooking_pot.main=厨锅是一种具有GUI的功能性方块，可以用于制作以及储存食物。
   farmersdelight.book.cooking_pot.heat_source_title=§l§c热源
-  farmersdelight.book.cooking_pot.heat_source=§r为了准备食物，厨锅下方必须具有热源。通过观察厨锅上是否有气泡或者烟雾冒出或厨锅的GUI中是否有火焰可判断是否识别下方的热源。目前的热源只支持炉灶。
+  farmersdelight.book.cooking_pot.heat_source=§r为了准备食物，厨锅下方必须具有热源。通过观察厨锅上是否有气泡或者烟雾冒出或厨锅的GUI中是否有火焰可判断是否识别下方的热源。热源可以是火焰（含灵魂火）、岩浆、营火（含灵魂火变种）、点燃的炉灶以及任何带有farmersdelight:heat_source的tag的方块。
   farmersdelight.book.cooking_pot.use_title=§l§q用途
   farmersdelight.book.cooking_pot.use.1=§r●厨锅有六个输入槽一个显示槽一个容器槽和一个成品槽。
   farmersdelight.book.cooking_pot.use.2=§r●厨锅具有配方显示UI，可打开厨锅进行查看。
