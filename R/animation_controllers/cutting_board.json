@@ -1,0 +1,24 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.cutting_board": {
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"block": "query.property('farmersdelight:is_block_mode')"
+						}
+					]
+				},
+				"block": {
+					"animations" : [ "cutting_board_block" ],
+					"transitions": [
+						{
+							"default": "!query.property('farmersdelight:is_block_mode')"
+						}
+					]
+				}
+			}
+		}
+	}
+}

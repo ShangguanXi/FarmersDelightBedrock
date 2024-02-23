@@ -5,7 +5,14 @@
       "identifier": "farmersdelight:cutting_board",
       "is_spawnable": false,
       "is_summonable": true,
-      "is_experimental": false
+      "is_experimental": false,
+			"properties": {
+				"farmersdelight:is_block_mode": {
+					"type": "bool",
+					"default": false,
+					"client_sync": true
+				}
+			}
     },
     "component_groups": {
       "farmersdelight:cutting_board_despawn": {

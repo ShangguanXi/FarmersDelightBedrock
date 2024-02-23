@@ -1,4 +1,4 @@
-import { Block, Container, Entity, EntityInventoryComponent, ItemStack, Player, PlayerInteractWithBlockAfterEvent, PlayerPlaceBlockAfterEvent, Vector3, world } from "@minecraft/server";
+import { Block, BlockPermutation, Container, Entity, EntityInventoryComponent, ItemStack, Player, PlayerInteractWithBlockAfterEvent, PlayerPlaceBlockAfterEvent, Vector3, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
 import { BlockWithEntity } from "./BlockWithEntity";
 import { EntityUtil } from "../lib/EntityUtil";
@@ -48,6 +48,7 @@ export class CuttingBoardBlock extends BlockWithEntity {
                 entity.runCommandAsync(`loot spawn ${entity.location.x} ${entity.location.y} ${entity.location.z} loot "farmersdelight/cutting_board/farmersdelight_${id}"`);
                 entity.setDynamicProperty('farmersdelight:cutTool', undefined);
                 entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', '{"item":"undefined"}');
+                entity.runCommandAsync(`replaceitem entity @s slot.weapon.mainhand 0 air`);
                 if (EntityUtil.gameMode(player)) {
                     ItemUtil.damageItem(container, player.selectedSlot);
                 }
@@ -60,10 +61,21 @@ export class CuttingBoardBlock extends BlockWithEntity {
         else {
             let canCut = false;
             if (!mainHand) return
+            let isBlock
+            try{
+                BlockPermutation.resolve(mainHand.typeId);
+                entity.setProperty('farmersdelight:is_block_mode', true);
+                isBlock = true;
+            }
+            catch{
+                entity.setProperty('farmersdelight:is_block_mode', false);
+                isBlock = false;
+            }
             if (vanillaBlockofAxeList.includes(mainHand.typeId)) {
                 //原版需要斧头的方块
                 entity.setDynamicProperty('farmersdelight:cutTool', `{"tag": "minecraft:is_axe", "mode": "tag"}`);
                 entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', `{"item":"${mainHand.typeId}"}`);
+                entity.runCommandAsync(`replaceitem entity @s slot.weapon.mainhand 0 ${mainHand.typeId}`);
                 if (EntityUtil.gameMode(player)) {
                     ItemUtil.clearItem(container, player.selectedSlot);
                 };
@@ -88,6 +100,9 @@ export class CuttingBoardBlock extends BlockWithEntity {
                         //正确格式例如 "{'tag': 'farmersdelight:is_knife'}"
                         entity.setDynamicProperty('farmersdelight:cutTool', `{"${ids[1]}": "${ids[2]}", "mode": "${ids[1]}"}`);
                         entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', `{"item":"${mainHand.typeId}"}`);
+                        if (isBlock){
+                            entity.runCommandAsync(`replaceitem entity @s slot.weapon.mainhand 0 ${mainHand.typeId}`);
+                        }
                         if (EntityUtil.gameMode(player)) {
                             ItemUtil.clearItem(container, player.selectedSlot);
                         };

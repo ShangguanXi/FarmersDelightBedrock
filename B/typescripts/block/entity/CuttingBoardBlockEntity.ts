@@ -19,15 +19,6 @@ export class CuttingBoardBlockEntity extends BlockEntity {
                 entity.dimension.spawnParticle(name, { x: x, y: y + 0.0563, z: z });
             
         };
-        if(system.currentTick && itemStack){
-            if (vanillaBlockofAxeList.includes(itemStack)||vanillaBlockofKnifeList.includes(itemStack)){
-                entity.dimension.spawnParticle(itemStack+'_top', { x: x, y: y + 0.1875, z: z });
-                entity.dimension.spawnParticle(itemStack+'_south', { x: x, y: y + 0.1875, z: z });
-                entity.dimension.spawnParticle(itemStack+'_north', { x: x, y: y + 0.1875, z: z });
-                entity.dimension.spawnParticle(itemStack+'_east', { x: x, y: y + 0.1875, z: z });
-                entity.dimension.spawnParticle(itemStack+'_west', { x: x, y: y + 0.1875, z: z });
-            }
-        };
         super.blockEntityLoot(entityBlockData, "farmersdelight:cutting_board", itemStack == "undefined" ? undefined : [itemStack]);
     }
 }

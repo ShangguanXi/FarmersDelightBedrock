@@ -13,15 +13,18 @@
         "default": "geometry.cutting_board_item"
       },
       "animations": {
-        "cutting_board": "animation.cutting_board"
+        "cutting_board_block": "animation.cutting_board.block",
+        "cutting_board_controller": "controller.animation.cutting_board"
       },
       "scripts": {
         "animate": [
-          "cutting_board"
+          "cutting_board_controller"
         ]
       },
-      "render_controllers": [ "controller.render.default" ],
-      "enable_attachables": true
+      "render_controllers": [
+        "controller.render.default"
+      ],
+      "enable_attachables": false
     }
   }
 }

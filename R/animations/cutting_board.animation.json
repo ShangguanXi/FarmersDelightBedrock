@@ -1,11 +1,11 @@
 {
 	"format_version": "1.8.0",
 	"animations": {
-		"animation.cutting_board": {
+		"animation.cutting_board.block": {
 			"loop": true,
 			"bones": {
 				"rightitem": {
-					"position": [0, 4.9, 0],
+					"position": [0, 5, 0],
 					"rotation": [-20, 44, 0]
 				}
 			}
