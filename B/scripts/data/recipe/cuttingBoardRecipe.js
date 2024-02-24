@@ -1,4 +1,4 @@
-const farmersdelightBlockList = [
+const ItemofBlockList = [
     "wild_cabbages",
     "wild_tomatoes",
     "wild_onions",
@@ -22,7 +22,7 @@ const vanillaItemList = [
     "minecraft:cooked_mutton",
     "minecraft:cooked_chicken"
 ];
-const vanillaBlockofAxeList = [
+const BlockofAxeList = [
     "minecraft:oak_log",
     "minecraft:spruce_log",
     "minecraft:birch_log",
@@ -45,9 +45,9 @@ const vanillaBlockofAxeList = [
     "minecraft:warped_hyphae",
     "minecraft:crimson_hyphae",*/
 ];
-const vanillaBlockofPickaxeList = [];
-const vanillaBlockofKnifeList = [
+const BlockofPickaxeList = [];
+const BlockofKnifeList = [
     "minecraft:pumpkin"
 ];
-export { vanillaItemList, farmersdelightBlockList, vanillaBlockofAxeList, vanillaBlockofKnifeList };
+export { vanillaItemList, BlockofAxeList, BlockofKnifeList, ItemofBlockList };
 //# sourceMappingURL=cuttingBoardRecipe.js.map

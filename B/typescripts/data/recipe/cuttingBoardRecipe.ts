@@ -1,5 +1,5 @@
 
-const farmersdelightBlockList: string[] = [
+const ItemofBlockList: string[] = [
     "wild_cabbages",
     "wild_tomatoes",
     "wild_onions",
@@ -23,7 +23,7 @@ const vanillaItemList: string[] = [
     "minecraft:cooked_mutton",
     "minecraft:cooked_chicken"
 ];
-const vanillaBlockofAxeList: string[] = [
+const BlockofAxeList: string[] = [
     "minecraft:oak_log",
     "minecraft:spruce_log",
     "minecraft:birch_log",
@@ -46,10 +46,10 @@ const vanillaBlockofAxeList: string[] = [
     "minecraft:warped_hyphae",
     "minecraft:crimson_hyphae",*/
 ];
-const vanillaBlockofPickaxeList: string[] = [
+const BlockofPickaxeList: string[] = [
 ];
-const vanillaBlockofKnifeList: string[] = [
+const BlockofKnifeList: string[] = [
     "minecraft:pumpkin"
 ];
 
-export { vanillaItemList, farmersdelightBlockList,  vanillaBlockofAxeList, vanillaBlockofKnifeList};
+export { vanillaItemList, BlockofAxeList, BlockofKnifeList, ItemofBlockList };

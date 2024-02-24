@@ -1,7 +1,6 @@
 import {  Entity, Vector3, system, world } from "@minecraft/server";
 import { methodEventSub } from "../../lib/eventHelper";
-import { BlockEntity } from "./BlockEntity";
-import { vanillaBlockofKnifeList, vanillaBlockofAxeList } from "../../data/recipe/cuttingBoardRecipe";
+import { BlockEntity } from "./BlockEntity"
 
 
 export class CuttingBoardBlockEntity extends BlockEntity {

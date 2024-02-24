@@ -11,7 +11,7 @@ import { BlockPermutation, EntityInventoryComponent, ItemStack, PlayerInteractWi
 import { methodEventSub } from "../lib/eventHelper";
 import { BlockWithEntity } from "./BlockWithEntity";
 import { EntityUtil } from "../lib/EntityUtil";
-import { farmersdelightBlockList, vanillaBlockofAxeList, vanillaBlockofKnifeList, vanillaItemList } from "../data/recipe/cuttingBoardRecipe";
+import { BlockofAxeList, BlockofKnifeList, ItemofBlockList, vanillaItemList } from "../data/recipe/cuttingBoardRecipe";
 import { ItemUtil } from "../lib/ItemUtil";
 export class CuttingBoardBlock extends BlockWithEntity {
     //初始化，生成实体并初始化方块实体存储
@@ -82,7 +82,7 @@ export class CuttingBoardBlock extends BlockWithEntity {
                 entity.setProperty('farmersdelight:is_block_mode', false);
                 isBlock = false;
             }
-            if (vanillaBlockofAxeList.includes(mainHand.typeId)) {
+            if (BlockofAxeList.includes(mainHand.typeId)) {
                 //原版需要斧头的方块
                 entity.setDynamicProperty('farmersdelight:cutTool', `{"tag": "minecraft:is_axe", "mode": "tag"}`);
                 entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', `{"item":"${mainHand.typeId}"}`);
@@ -94,7 +94,7 @@ export class CuttingBoardBlock extends BlockWithEntity {
                 canCut = true;
             }
             ;
-            if (vanillaBlockofKnifeList.includes(mainHand.typeId)) {
+            if (BlockofKnifeList.includes(mainHand.typeId)) {
                 //原版需要刀的方块
                 entity.setDynamicProperty('farmersdelight:cutTool', `{"tag": "farmersdelight:is_knife", "mode": "tag"}`);
                 entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', `{"item":"${mainHand.typeId}"}`);
@@ -106,7 +106,7 @@ export class CuttingBoardBlock extends BlockWithEntity {
                 canCut = true;
             }
             ;
-            if (farmersdelightBlockList.includes(mainHand.typeId) || vanillaItemList.includes(mainHand.typeId)) {
+            if (ItemofBlockList.includes(mainHand.typeId) || vanillaItemList.includes(mainHand.typeId)) {
                 //原版物品与野生作物
                 entity.setDynamicProperty('farmersdelight:cutTool', `{"tag": "farmersdelight:is_knife", "mode": "tag"}`);
                 entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', `{"item":"${mainHand.typeId}"}`);
