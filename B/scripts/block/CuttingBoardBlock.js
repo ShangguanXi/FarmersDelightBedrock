@@ -94,7 +94,19 @@ export class CuttingBoardBlock extends BlockWithEntity {
                 canCut = true;
             }
             ;
-            if (farmersdelightBlockList.includes(mainHand.typeId) || vanillaItemList.includes(mainHand.typeId) || vanillaBlockofKnifeList.includes(mainHand.typeId)) {
+            if (vanillaBlockofKnifeList.includes(mainHand.typeId)) {
+                //原版需要刀的方块
+                entity.setDynamicProperty('farmersdelight:cutTool', `{"tag": "farmersdelight:is_knife", "mode": "tag"}`);
+                entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', `{"item":"${mainHand.typeId}"}`);
+                entity.runCommandAsync(`replaceitem entity @s slot.weapon.mainhand 0 ${mainHand.typeId}`);
+                if (EntityUtil.gameMode(player)) {
+                    ItemUtil.clearItem(container, player.selectedSlot);
+                }
+                ;
+                canCut = true;
+            }
+            ;
+            if (farmersdelightBlockList.includes(mainHand.typeId) || vanillaItemList.includes(mainHand.typeId)) {
                 //原版物品与野生作物
                 entity.setDynamicProperty('farmersdelight:cutTool', `{"tag": "farmersdelight:is_knife", "mode": "tag"}`);
                 entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', `{"item":"${mainHand.typeId}"}`);
