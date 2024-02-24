@@ -2,7 +2,7 @@ import { Block, BlockPermutation, Container, Entity, EntityInventoryComponent, I
 import { methodEventSub } from "../lib/eventHelper";
 import { BlockWithEntity } from "./BlockWithEntity";
 import { EntityUtil } from "../lib/EntityUtil";
-import { BlockofAxeList, BlockofKnifeList, ItemofBlockList, vanillaItemList } from "../data/recipe/cuttingBoardRecipe";
+import { BlockofAxeList, BlockofKnifeList, BlockofPickaxeList, ItemofBlockList, vanillaItemList } from "../data/recipe/cuttingBoardRecipe";
 import { ItemUtil } from "../lib/ItemUtil";
 
 
@@ -72,7 +72,7 @@ export class CuttingBoardBlock extends BlockWithEntity {
                 isBlock = false;
             }
             if (BlockofAxeList.includes(mainHand.typeId)) {
-                //原版需要斧头的方块
+                //需要斧头的方块
                 entity.setDynamicProperty('farmersdelight:cutTool', `{"tag": "minecraft:is_axe", "mode": "tag"}`);
                 entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', `{"item":"${mainHand.typeId}"}`);
                 entity.runCommandAsync(`replaceitem entity @s slot.weapon.mainhand 0 ${mainHand.typeId}`);
@@ -82,8 +82,18 @@ export class CuttingBoardBlock extends BlockWithEntity {
                 canCut = true;
             };
             if (BlockofKnifeList.includes(mainHand.typeId)) {
-                //原版需要刀的方块
+                //需要刀的方块
                 entity.setDynamicProperty('farmersdelight:cutTool', `{"tag": "farmersdelight:is_knife", "mode": "tag"}`);
+                entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', `{"item":"${mainHand.typeId}"}`);
+                entity.runCommandAsync(`replaceitem entity @s slot.weapon.mainhand 0 ${mainHand.typeId}`);
+                if (EntityUtil.gameMode(player)) {
+                    ItemUtil.clearItem(container, player.selectedSlot);
+                };
+                canCut = true;
+            };
+            if (BlockofPickaxeList.includes(mainHand.typeId)) {
+                //需要镐子的方块
+                entity.setDynamicProperty('farmersdelight:cutTool', `{"tag": "minecraft:is_pickaxe", "mode": "tag"}`);
                 entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', `{"item":"${mainHand.typeId}"}`);
                 entity.runCommandAsync(`replaceitem entity @s slot.weapon.mainhand 0 ${mainHand.typeId}`);
                 if (EntityUtil.gameMode(player)) {

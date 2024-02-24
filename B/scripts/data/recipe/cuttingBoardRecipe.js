@@ -33,8 +33,8 @@ const BlockofAxeList = [
     "minecraft:cherry_log",
     "minecraft:crimson_stem",
     "minecraft:warped_stem",
-    "minecraft:bamboo_block" /*,
-    "minecraft:oak_wood",
+    "minecraft:bamboo_block",
+    /*"minecraft:oak_wood",
     "minecraft:spruce_wood",
     "minecraft:birch_wood",
     "minecraft:jungle_wood",
@@ -44,10 +44,29 @@ const BlockofAxeList = [
     "minecraft:cherry_wood",
     "minecraft:warped_hyphae",
     "minecraft:crimson_hyphae",*/
+    "minecraft:trapdoor",
+    "minecraft:spruce_trapdoor",
+    "minecraft:birch_trapdoor",
+    "minecraft:jungle_trapdoor",
+    "minecraft:acacia_trapdoor",
+    "minecraft:dark_oak_trapdoor",
+    "minecraft:mangrove_trapdoor",
+    "minecraft:cherry_trapdoor",
+    "minecraft:crimson_trapdoor",
+    "minecraft:warped_trapdoor"
 ];
-const BlockofPickaxeList = [];
+const BlockofPickaxeList = [
+    "minecraft:amethyst_block",
+    "minecraft:bricks",
+    "minecraft:deepslate",
+    //"minecraft:quartz_block",
+    "minecraft:stone",
+    "minecraft:nether_brick"
+];
 const BlockofKnifeList = [
-    "minecraft:pumpkin"
+    "minecraft:pumpkin",
+    "minecraft:melon_block"
 ];
-export { vanillaItemList, BlockofAxeList, BlockofKnifeList, ItemofBlockList };
+const BlockofShovelList = [];
+export { vanillaItemList, BlockofAxeList, BlockofKnifeList, ItemofBlockList, BlockofPickaxeList, BlockofShovelList };
 //# sourceMappingURL=cuttingBoardRecipe.js.map

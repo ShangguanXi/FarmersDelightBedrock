@@ -34,8 +34,8 @@ const BlockofAxeList: string[] = [
     "minecraft:cherry_log",
     "minecraft:crimson_stem",
     "minecraft:warped_stem",
-    "minecraft:bamboo_block" /*,
-    "minecraft:oak_wood",
+    "minecraft:bamboo_block" ,
+    /*"minecraft:oak_wood",
     "minecraft:spruce_wood",
     "minecraft:birch_wood",
     "minecraft:jungle_wood",
@@ -45,11 +45,31 @@ const BlockofAxeList: string[] = [
     "minecraft:cherry_wood",
     "minecraft:warped_hyphae",
     "minecraft:crimson_hyphae",*/
+    "minecraft:trapdoor",
+    "minecraft:spruce_trapdoor",
+    "minecraft:birch_trapdoor",
+    "minecraft:jungle_trapdoor",
+    "minecraft:acacia_trapdoor",
+    "minecraft:dark_oak_trapdoor",
+    "minecraft:mangrove_trapdoor",
+    "minecraft:cherry_trapdoor",
+    "minecraft:crimson_trapdoor",
+    "minecraft:warped_trapdoor"
 ];
 const BlockofPickaxeList: string[] = [
+    "minecraft:amethyst_block",
+    "minecraft:bricks",
+    "minecraft:deepslate",
+    //"minecraft:quartz_block",
+    "minecraft:stone",
+    "minecraft:nether_brick"
 ];
 const BlockofKnifeList: string[] = [
-    "minecraft:pumpkin"
+    "minecraft:pumpkin",
+    "minecraft:melon_block"
+];
+const BlockofShovelList: string[] = [
+    
 ];
 
-export { vanillaItemList, BlockofAxeList, BlockofKnifeList, ItemofBlockList };
+export { vanillaItemList, BlockofAxeList, BlockofKnifeList, ItemofBlockList ,BlockofPickaxeList,BlockofShovelList};
