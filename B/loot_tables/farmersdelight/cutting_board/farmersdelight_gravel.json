@@ -1,0 +1,28 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "minecraft:gravel"
+        }
+      ]
+    },
+    {
+        "rolls": 1,
+        "entries": [
+          {
+            "type": "item",
+            "weight": 9,
+            "name": "minecraft:air"
+          },
+          {
+            "type": "item",
+            "weight": 1,
+            "name": "minecraft:flint"
+          }
+        ]
+      }
+  ]
+}

@@ -54,7 +54,8 @@ const BlockofAxeList: string[] = [
     "minecraft:mangrove_trapdoor",
     "minecraft:cherry_trapdoor",
     "minecraft:crimson_trapdoor",
-    "minecraft:warped_trapdoor"
+    "minecraft:warped_trapdoor",
+    "minecraft:bamboo_trapdoor"
 ];
 const BlockofPickaxeList: string[] = [
     "minecraft:amethyst_block",
@@ -69,7 +70,8 @@ const BlockofKnifeList: string[] = [
     "minecraft:melon_block"
 ];
 const BlockofShovelList: string[] = [
-    
+    "minecraft:clay",
+    "minecraft:gravel"
 ];
 
 export { vanillaItemList, BlockofAxeList, BlockofKnifeList, ItemofBlockList ,BlockofPickaxeList,BlockofShovelList};

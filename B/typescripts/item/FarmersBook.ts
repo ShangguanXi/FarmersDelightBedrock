@@ -112,6 +112,64 @@ function cookingPotForm(player: Player) {
         }
     })
 }
+function skilletForm(player: Player) {
+    const skilletForm = new ActionFormData()
+        .title({ "rawtext": [{ "text": "tile.farmersdelight:skillet_block.name" }] })
+        .body({
+            "rawtext": [
+                { "translate": "farmersdelight.book.skillet.main" },
+                { "text": "\n" },
+                { "translate": "farmersdelight.book.skillet.block_title" },
+                { "text": "\n" },
+                { "translate": "farmersdelight.book.skillet.block" },
+                { "text": "\n" },
+                { "translate": "farmersdelight.book.skillet.item_title" },
+                { "text": "\n" },
+                { "translate": "farmersdelight.book.skillet.item" }
+            ]
+        }
+        )
+        .button({ "rawtext": [{ "text": "farmersdelight.book.back" }] });
+
+        skilletForm.show(player).then((response: ActionFormResponse) => {
+        if (response.selection === 0) {
+            mainForm(player);
+        }
+    })
+}
+function cropForm(player: Player) {
+    const cropForm = new ActionFormData()
+        .title({ "rawtext": [{ "text": "farmersdelight.book.crop" }] })
+        .body({
+            "rawtext": [
+                { "translate": "farmersdelight.book.crop.main" },
+                { "text": "\n" },
+                { "translate": "farmersdelight.book.crop.tomatoes_title" },
+                { "text": "\n" },
+                { "translate": "farmersdelight.book.crop.tomatoes" },
+                { "text": "\n" },
+                { "translate": "farmersdelight.book.crop.cabbages_title" },
+                { "text": "\n" },
+                { "translate": "farmersdelight.book.crop.cabbages" },
+                { "text": "\n" },
+                { "translate": "farmersdelight.book.crop.onions_title" },
+                { "text": "\n" },
+                { "translate": "farmersdelight.book.crop.onions" },
+                { "text": "\n" },
+                { "translate": "farmersdelight.book.crop.rice_crop_title" },
+                { "text": "\n" },
+                { "translate": "farmersdelight.book.crop.rice_crop" }
+            ]
+        }
+        )
+        .button({ "rawtext": [{ "text": "farmersdelight.book.back" }] });
+
+        cropForm.show(player).then((response: ActionFormResponse) => {
+        if (response.selection === 0) {
+            mainForm(player);
+        }
+    })
+}
 function mainForm(player: Player) {
     const form = new ActionFormData()
         .title({ "rawtext": [{ "text": "farmersdelight.book.title" }] })
@@ -134,6 +192,12 @@ function mainForm(player: Player) {
         };
         if (response.selection === 2) {
             cookingPotForm(player);
+        };
+        if (response.selection === 3) {
+            skilletForm(player);
+        };
+        if (response.selection === 4) {
+            cropForm(player);
         }
 
 

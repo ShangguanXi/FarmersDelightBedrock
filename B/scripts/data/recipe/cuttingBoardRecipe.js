@@ -53,7 +53,8 @@ const BlockofAxeList = [
     "minecraft:mangrove_trapdoor",
     "minecraft:cherry_trapdoor",
     "minecraft:crimson_trapdoor",
-    "minecraft:warped_trapdoor"
+    "minecraft:warped_trapdoor",
+    "minecraft:bamboo_trapdoor"
 ];
 const BlockofPickaxeList = [
     "minecraft:amethyst_block",
@@ -67,6 +68,9 @@ const BlockofKnifeList = [
     "minecraft:pumpkin",
     "minecraft:melon_block"
 ];
-const BlockofShovelList = [];
+const BlockofShovelList = [
+    "minecraft:clay",
+    "minecraft:gravel"
+];
 export { vanillaItemList, BlockofAxeList, BlockofKnifeList, ItemofBlockList, BlockofPickaxeList, BlockofShovelList };
 //# sourceMappingURL=cuttingBoardRecipe.js.map

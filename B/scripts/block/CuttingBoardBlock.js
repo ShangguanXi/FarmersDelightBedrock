@@ -11,7 +11,7 @@ import { BlockPermutation, EntityInventoryComponent, ItemStack, PlayerInteractWi
 import { methodEventSub } from "../lib/eventHelper";
 import { BlockWithEntity } from "./BlockWithEntity";
 import { EntityUtil } from "../lib/EntityUtil";
-import { BlockofAxeList, BlockofKnifeList, BlockofPickaxeList, ItemofBlockList, vanillaItemList } from "../data/recipe/cuttingBoardRecipe";
+import { BlockofAxeList, BlockofKnifeList, BlockofPickaxeList, BlockofShovelList, ItemofBlockList, vanillaItemList } from "../data/recipe/cuttingBoardRecipe";
 import { ItemUtil } from "../lib/ItemUtil";
 export class CuttingBoardBlock extends BlockWithEntity {
     //初始化，生成实体并初始化方块实体存储
@@ -109,6 +109,18 @@ export class CuttingBoardBlock extends BlockWithEntity {
             if (BlockofPickaxeList.includes(mainHand.typeId)) {
                 //需要镐子的方块
                 entity.setDynamicProperty('farmersdelight:cutTool', `{"tag": "minecraft:is_pickaxe", "mode": "tag"}`);
+                entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', `{"item":"${mainHand.typeId}"}`);
+                entity.runCommandAsync(`replaceitem entity @s slot.weapon.mainhand 0 ${mainHand.typeId}`);
+                if (EntityUtil.gameMode(player)) {
+                    ItemUtil.clearItem(container, player.selectedSlot);
+                }
+                ;
+                canCut = true;
+            }
+            ;
+            if (BlockofShovelList.includes(mainHand.typeId)) {
+                //需要铲的方块
+                entity.setDynamicProperty('farmersdelight:cutTool', `{"tag": "minecraft:is_shovel", "mode": "tag"}`);
                 entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', `{"item":"${mainHand.typeId}"}`);
                 entity.runCommandAsync(`replaceitem entity @s slot.weapon.mainhand 0 ${mainHand.typeId}`);
                 if (EntityUtil.gameMode(player)) {

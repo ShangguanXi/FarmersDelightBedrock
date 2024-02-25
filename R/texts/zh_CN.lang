@@ -246,6 +246,11 @@
   farmersdelight.book.cooking_pot.use.2=§r●厨锅具有配方显示UI，可打开厨锅进行查看。
   farmersdelight.book.cooking_pot.use.3=§r●厨锅的配方都是无序配方，符合配方并且受热就会自动开始合成食物。
   farmersdelight.book.cooking_pot.use.4=§r●显示槽中的物品不能被直接取出，需要在容器槽内放入合适的容器来将其转移到成品槽内后，才可取出。
+  farmersdelight.book.skillet.main=煎锅是一种没有GUI的功能性方。在物品形态和方块形态下的作用不同。
+  farmersdelight.book.skillet.block_title=§l§3方块状态
+  farmersdelight.book.skillet.block=§r此状态下的煎锅在下方有热源的情况下可以烹饪食物。将食物右击放置在煎锅上即可加热，煎锅中最多可以放置一组食材。
+  farmersdelight.book.skillet.item_title=§l§2物品状态
+  farmersdelight.book.skillet.item=§r此状态下的煎锅拥有额外的攻击力。
   farmersdelight.book.thanks=鸣谢
   farmersdelight.book.thanks.sponsored_list_title=§l§e赞助名单
   farmersdelight.book.thanks.sponsored_list=§r@炽雨
@@ -262,4 +267,13 @@
   farmersdelight.book.thanks.sponsor=§r爱发电：https://afdian.net/a/moaswies
 
   farmersdelight.book.crop=种植
+  farmersdelight.book.crop.main=本模组添加了4种新作物、分别是番茄、洋葱、卷心菜和稻米。这四种作物和原版的作物均可以以野生作物的形式在世界各地上生成。
+  farmersdelight.book.crop.tomatoes_title=§l§c西红柿
+  farmersdelight.book.crop.tomatoes=§r西红柿可以通过破坏西红柿作物、破坏野生番茄灌木或者在砧板上切割番茄灌木来获得。番茄灌木会生成在炎热的生物群系。当西红柿作物的上方有没有和其他绳子链接的绳子的时候，西红柿会沿着绳子进行绳子，并且最高会延伸两格。
+  farmersdelight.book.crop.cabbages_title=§l§a卷心菜
+  farmersdelight.book.crop.cabbages=§r卷心菜可以通过破解卷心菜作物、破坏野生卷心菜或者在砧板上切割野生卷心菜来获得。野生卷心菜生成在海滩生物群系。
+  farmersdelight.book.crop.onions_title=§l§6洋葱
+  farmersdelight.book.crop.onions=§r洋葱可以通过破解洋葱作物、破坏野生洋葱或者在砧板上切割野生洋葱来获得。野生洋葱生成在温和的生物群系。
+  farmersdelight.book.crop.rice_crop_title=§l§p稻米
+  farmersdelight.book.crop.rice_crop=§r稻米葱可以通过破解稻米作物、破坏野生稻米在砧板上切割稻米穗或者在砧板上切割野生稻米来获得。野生稻米生成在河流生物群系。
   farmersdelight.book.back=返回
