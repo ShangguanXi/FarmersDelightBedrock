@@ -229,7 +229,7 @@
   farmersdelight.tips.cant_cut=这东西可不能切啊......
 
   pack.name=农夫乐事[资源包]
-  pack.description=是时候种点好东西了！QQ交流群851992067，discord链接https://discord.com/invite/djAmPY98cJ
+  pack.description=是时候种点好东西了！支持的版本为1.20.6x
 
 
   
@@ -269,11 +269,11 @@
   farmersdelight.book.crop=种植
   farmersdelight.book.crop.main=本模组添加了4种新作物、分别是番茄、洋葱、卷心菜和稻米。这四种作物和原版的作物均可以以野生作物的形式在世界各地上生成。
   farmersdelight.book.crop.tomatoes_title=§l§c西红柿
-  farmersdelight.book.crop.tomatoes=§r西红柿可以通过破坏西红柿作物、破坏野生番茄灌木或者在砧板上切割番茄灌木来获得。番茄灌木会生成在炎热的生物群系。当西红柿作物的上方有没有和其他绳子链接的绳子的时候，西红柿会沿着绳子进行绳子，并且最高会延伸两格。
+  farmersdelight.book.crop.tomatoes=§r西红柿可以通过破坏西红柿作物、破坏野生番茄灌木或者在砧板上切割番茄灌木来获得。番茄灌木会生成在炎热的生物群系。当西红柿作物的上方有没有和其他绳子链接的绳子的时候，西红柿会沿着绳子进行生长，并且最高会延伸两格。
   farmersdelight.book.crop.cabbages_title=§l§a卷心菜
-  farmersdelight.book.crop.cabbages=§r卷心菜可以通过破解卷心菜作物、破坏野生卷心菜或者在砧板上切割野生卷心菜来获得。野生卷心菜生成在海滩生物群系。
+  farmersdelight.book.crop.cabbages=§r卷心菜可以通过破坏卷心菜作物、破坏野生卷心菜或者在砧板上切割野生卷心菜来获得。野生卷心菜生成在海滩生物群系。
   farmersdelight.book.crop.onions_title=§l§6洋葱
-  farmersdelight.book.crop.onions=§r洋葱可以通过破解洋葱作物、破坏野生洋葱或者在砧板上切割野生洋葱来获得。野生洋葱生成在温和的生物群系。
+  farmersdelight.book.crop.onions=§r洋葱可以通过破坏洋葱作物、破坏野生洋葱或者在砧板上切割野生洋葱来获得。野生洋葱生成在温和的生物群系。
   farmersdelight.book.crop.rice_crop_title=§l§p稻米
-  farmersdelight.book.crop.rice_crop=§r稻米葱可以通过破解稻米作物、破坏野生稻米在砧板上切割稻米穗或者在砧板上切割野生稻米来获得。野生稻米生成在河流生物群系。
+  farmersdelight.book.crop.rice_crop=§r稻米葱可以通过破坏稻米作物、破坏野生稻米在砧板上切割稻米穗或者在砧板上切割野生稻米来获得。野生稻米生成在河流生物群系。
   farmersdelight.book.back=返回

@@ -209,4 +209,50 @@
   farmersdelight.tips.cant_cut=This doesn't seem cuttable......
 
   pack.name=Farmer's Delight[RP]
-  pack.description=It's time to farm a little bit of everything!QQ group number 851992067, discord https://discord.com/invite/djAmPY98cJ
+  pack.description=It's time to farm a little bit of everything!Supported version is 1.20.6x
+
+  
+  farmersdelight.book.title=Farmer's Delight
+  farmersdelight.book.cutting_board.main=砧板是一种没有GUI的功能性方块，可以放置部分方块，物品，并使用工具进行处理。
+  farmersdelight.book.stove.main=炉灶是一种没有GUI的功能性方块，工作状态下可以为煎锅和厨锅提供热源，并且自身可以烧制部分物品。当自身烧制物品的时候，可同时最多烧制6个相同或不同的物品。
+  farmersdelight.book.stove.switch_title=§l§6点燃与熄灭
+  farmersdelight.book.stove.switch=§r在工作状态下，可以使用锹或者水桶来熄灭炉灶。在熄灭状态下可以通过打火石点燃炉灶。
+  farmersdelight.book.cooking_pot.main=厨锅是一种具有GUI的功能性方块，可以用于制作以及储存食物。
+  farmersdelight.book.cooking_pot.heat_source_title=§l§c热源
+  farmersdelight.book.cooking_pot.heat_source=§r为了准备食物，厨锅下方必须具有热源。通过观察厨锅上是否有气泡或者烟雾冒出或厨锅的GUI中是否有火焰可判断是否识别下方的热源。热源可以是火焰（含灵魂火）、岩浆、营火（含灵魂火变种）、点燃的炉灶以及任何带有farmersdelight:heat_source的tag的方块。
+  farmersdelight.book.cooking_pot.use_title=§l§q用途
+  farmersdelight.book.cooking_pot.use.1=§r●厨锅有六个输入槽一个显示槽一个容器槽和一个成品槽。
+  farmersdelight.book.cooking_pot.use.2=§r●厨锅具有配方显示UI，可打开厨锅进行查看。
+  farmersdelight.book.cooking_pot.use.3=§r●厨锅的配方都是无序配方，符合配方并且受热就会自动开始合成食物。
+  farmersdelight.book.cooking_pot.use.4=§r●显示槽中的物品不能被直接取出，需要在容器槽内放入合适的容器来将其转移到成品槽内后，才可取出。
+  farmersdelight.book.skillet.main=煎锅是一种没有GUI的功能性方。在物品形态和方块形态下的作用不同。
+  farmersdelight.book.skillet.block_title=§l§3方块状态
+  farmersdelight.book.skillet.block=§r此状态下的煎锅在下方有热源的情况下可以烹饪食物。将食物右击放置在煎锅上即可加热，煎锅中最多可以放置一组食材。
+  farmersdelight.book.skillet.item_title=§l§2物品状态
+  farmersdelight.book.skillet.item=§r此状态下的煎锅拥有额外的攻击力。
+  farmersdelight.book.thanks=鸣谢
+  farmersdelight.book.thanks.sponsored_list_title=§l§e赞助名单
+  farmersdelight.book.thanks.sponsored_list=§r@炽雨
+  farmersdelight.book.thanks.license_title=§l§9授权许可
+  farmersdelight.book.thanks.license=§r原Java版农夫乐事在GitHub及Curseforge上以MIT协议开源，本团队在遵循MIT协议的情况下进行合法移植！感谢Vectorwing创作出农夫乐事这一款优秀模组。
+  farmersdelight.book.thanks.developers_title=§l§6开发组成员
+  farmersdelight.book.thanks.developers=§r@Moaswies @诗栩MSolo @lintha暮辰
+  farmersdelight.book.thanks.contributors_title=§l§a贡献者
+  farmersdelight.book.thanks.contributors=§r@EnderDragongugugu @语翌制作组 
+  farmersdelight.book.thanks.chat_group_title=§l§4聊天群组
+  farmersdelight.book.thanks.chat_group.qqchat=§rqq群号：851992067
+  farmersdelight.book.thanks.chat_group.discord=§rdiscord链接： https://discord.gg/52putAfXnQ
+  farmersdelight.book.thanks.sponsor_title=§l§g赞助渠道
+  farmersdelight.book.thanks.sponsor=§r爱发电：https://afdian.net/a/moaswies
+
+  farmersdelight.book.crop=种植
+  farmersdelight.book.crop.main=本模组添加了4种新作物、分别是番茄、洋葱、卷心菜和稻米。这四种作物和原版的作物均可以以野生作物的形式在世界各地上生成。
+  farmersdelight.book.crop.tomatoes_title=§l§c西红柿
+  farmersdelight.book.crop.tomatoes=§r西红柿可以通过破坏西红柿作物、破坏野生番茄灌木或者在砧板上切割番茄灌木来获得。番茄灌木会生成在炎热的生物群系。当西红柿作物的上方有没有和其他绳子链接的绳子的时候，西红柿会沿着绳子进行生长，并且最高会延伸两格。
+  farmersdelight.book.crop.cabbages_title=§l§a卷心菜
+  farmersdelight.book.crop.cabbages=§r卷心菜可以通过破坏卷心菜作物、破坏野生卷心菜或者在砧板上切割野生卷心菜来获得。野生卷心菜生成在海滩生物群系。
+  farmersdelight.book.crop.onions_title=§l§6洋葱
+  farmersdelight.book.crop.onions=§r洋葱可以通过破坏洋葱作物、破坏野生洋葱或者在砧板上切割野生洋葱来获得。野生洋葱生成在温和的生物群系。
+  farmersdelight.book.crop.rice_crop_title=§l§p稻米
+  farmersdelight.book.crop.rice_crop=§r稻米葱可以通过破坏稻米作物、破坏野生稻米在砧板上切割稻米穗或者在砧板上切割野生稻米来获得。野生稻米生成在河流生物群系。
+  farmersdelight.book.back=返回
