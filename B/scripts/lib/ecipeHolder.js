@@ -1,4 +1,4 @@
-import { EntityInventoryComponent, ItemStack } from "@minecraft/server";
+import { EntityInventoryComponent } from "@minecraft/server";
 /**
  * @remarks
  * 配方管理器by诗栩MSolo
@@ -21,12 +21,18 @@ export class RecipeHolder {
         this.tags = tags;
         this.recipeList = recipeList ? recipeList : [];
         this.currentRecipe = false;
-        this.currentTick = this.entity.getDynamicProperty('recipe:progressTick') ? this.entity.getDynamicProperty('recipe:progressTick') : -1;
-        const inventoryComp = entity.getComponent(EntityInventoryComponent.componentId);
-        this.container = inventoryComp.container;
-        if (inputSlots + outputSlots > this.container.size) {
-            console.error(`[Recipe Holder]False to create ${entity.typeId} recipe holder!\nThe size of the entity's container is too small.`);
+        this.currentTick = -1;
+        if (!entity.hasComponent(EntityInventoryComponent.componentId)) {
+            console.error(`[Recipe Holder]False to create ${entity.typeId} recipe holder!\nThis entity doesn't have an inventory component.`);
             return;
+        }
+        else {
+            const inventoryComp = entity.getComponent(EntityInventoryComponent.componentId);
+            this.container = inventoryComp?.container;
+            if (inputSlots + outputSlots > this.container.size) {
+                console.error(`[Recipe Holder]False to create ${entity.typeId} recipe holder!\nThe size of the entity's container is too small.`);
+                return;
+            }
         }
     }
     /**
@@ -103,7 +109,6 @@ export class RecipeHolder {
                     }
                 }
             }
-            return list;
         }
     }
     /**
@@ -112,14 +117,15 @@ export class RecipeHolder {
      * 具体功能在子类中实现
     */
     update() {
+        console.warn('update!');
     }
     /**
      * @remarks
      * 获取当前配方进度(0-1小数), 若当前没有配方进行则返回false
     */
-    getProgress() {
+    getProcess() {
         if (this.currentRecipe) {
-            return this.currentTick / this.currentRecipe.time;
+            return this.currentTick / this.currentRecipe.requireTime;
         }
         else {
             return false;
@@ -137,75 +143,6 @@ export class RecipeHolder {
                 itemList.push(item);
         }
         return itemList;
-    }
-    /**
-     * @remarks
-     * 获取当前实体容器输出槽中的物品, 不包括空槽位
-    */
-    getOutputs() {
-        let itemList = [];
-        for (let i = 0; i < this.outputSlots; i++) {
-            const item = this.container?.getItem(i + this.inputSlots);
-            if (item)
-                itemList.push(item);
-        }
-        return itemList;
-    }
-    /**
-     * @remarks
-     * 设置输出槽物品
-     * @param slot 输出槽位
-     * @param item 设置的物品堆叠
-    */
-    setOutput(slot, item) {
-        this.container?.setItem(slot + this.inputSlots, item);
-    }
-    /**
-     * @remarks
-     * 向输出槽添加物品, 若添加失败返回false, 添加成功返回true
-     * @param item 添加的物品堆叠
-    */
-    addOutput(item) {
-        let added = false;
-        for (let i = 0; i < this.outputSlots; i++) {
-            const output = this.container?.getItem(i + this.inputSlots);
-            if (!output) {
-                this.container.setItem(i + this.inputSlots, item);
-                added = true;
-            }
-            else if (output?.isStackableWith(item)) {
-                if (output.amount + item.amount <= output.maxAmount) {
-                    output.amount += item.amount;
-                    added = true;
-                }
-                else {
-                    item.amount -= output.maxAmount - output.amount;
-                    output.amount = output.maxAmount;
-                }
-                this.container?.setItem(i + this.inputSlots, output);
-            }
-        }
-        return added;
-    }
-    /**
-     * @remarks
-     * 完成一次配方, 按传入的配方调整物品
-     * @param recipe 配方
-    */
-    consume(recipe) {
-        const resultItem = new ItemStack(recipe.result.item, recipe.result.amount);
-        if (this.addOutput(resultItem)) {
-            for (let i = 0; i < this.inputSlots; i++) {
-                const item = this.container?.getItem(i);
-                if (item && item.amount > 1) {
-                    item.amount -= 1;
-                    this.container?.setItem(i, item);
-                }
-                else {
-                    this.container?.setItem(i);
-                }
-            }
-        }
     }
     /**
      * @remarks
@@ -260,4 +197,4 @@ export const testRecipe = {
         "item": "farmersdelight:mushroom_rice"
     }
 };
-//# sourceMappingURL=RecipeHolder.js.map
+//# sourceMappingURL=ecipeHolder.js.map

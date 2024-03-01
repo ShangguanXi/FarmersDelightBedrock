@@ -7,18 +7,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { EntityInventoryComponent, ItemStack, system, world } from "@minecraft/server";
+import { EntityInventoryComponent, EntityLoadAfterEvent, ItemStack, world } from "@minecraft/server";
 import { methodEventSub } from "../../lib/eventHelper";
 import { BlockEntity } from "./BlockEntity";
 import ObjectUtil from "../../lib/ObjectUtil";
 import { vanillaCookingPotRecipe } from "../../data/recipe/cookingPotRecipe";
-import { CookingPotRecipe } from "../../lib/CookingPotRecipe";
 import { heatConductors, heatSources } from "../../data/heatBlocks";
+import { RecipeHolder, testRecipe } from "../../lib/RecipeHolder";
 const fireArrowFull = new ItemStack("farmersdelight:fire_1");
 const fireArrowEmpty = new ItemStack("farmersdelight:fire_0");
 const emptyArrow = new ItemStack("farmersdelight:cooking_pot_arrow_0");
 const recipes = vanillaCookingPotRecipe.recipe;
-const recipeFactory = new Map();
 // 意义不明的进度函数
 function arrowheadUtil(entity, oldItemStack, slot, container) {
     if (entity.getDynamicProperty("farmersdelight:not_can_set"))
@@ -62,7 +61,7 @@ function blockEntityLoot(args, id) {
     args.entity.dimension.spawnItem(cookingPotblock, args.blockEntityDataLocation);
     BlockEntity.clearEntity(args);
 }
-export class CookingPotBlockEntity extends BlockEntity {
+export class test extends BlockEntity {
     tick(args) {
         const entityBlockData = super.blockEntityData(args.entity);
         if (!entityBlockData)
@@ -73,45 +72,10 @@ export class CookingPotBlockEntity extends BlockEntity {
         const container = entity.getComponent(EntityInventoryComponent.componentId)?.container;
         if (!container)
             return;
-        blockEntityLoot(entityBlockData, "farmersdelight:cooking_pot");
-        const map = new Map();
-        const progress = entity.getDynamicProperty("farmersdelight:cooking_pot_progress") ?? 0;
-        //热源检测
-        const heated = heatCheck(block);
-        //配方管理器初始化, 每tick更新一次
-        let cookingPotRecipe;
-        if (!recipeFactory.get(entity.id)) {
-            cookingPotRecipe = new CookingPotRecipe(entity, 6, 1, ['cooking_pot'], recipes);
-            recipeFactory.set(entity.id, cookingPotRecipe);
-        }
-        else {
-            cookingPotRecipe = recipeFactory.get(entity.id);
-        }
-        entity.setDynamicProperty('cookingPot:heated', heated);
-        cookingPotRecipe.update();
-        if (heated) {
-            arrowheadUtil(entity, fireArrowFull, 10, container);
-            if (system.currentTick % 15 == 0) {
-                const random = Math.floor(Math.random() * 10);
-                block.dimension.spawnParticle(`farmersdelight:steam_${random}`, { x: x, y: y + 1, z: z });
-                block.dimension.spawnParticle('farmersdelght:bubble', { x: x, y: y + 0.63, z: z });
-            }
-            if (system.currentTick % 80 == 0) {
-                container?.getItem(6) ? entity.runCommandAsync("playsound block.farmersdelight.cooking_pot.boil_soup @a ~ ~ ~ 1 1") : entity.runCommandAsync("playsound block.farmersdelight.cooking_pot.boil_water @a ~ ~ ~ 1 1");
-            }
-            const progress = cookingPotRecipe.getProgress();
-            if (progress) {
-                const num = Math.floor(progress * 10) * 10;
-                const arrowhead = new ItemStack(`farmersdelight:cooking_pot_arrow_${num}`);
-                arrowheadUtil(entity, arrowhead, 9, container);
-            }
-            else {
-                arrowheadUtil(entity, emptyArrow, 9, container);
-            }
-        }
-        else {
-            arrowheadUtil(entity, fireArrowEmpty, 10, container);
-        }
+        const holder = new RecipeHolder(entity, 6, 1, ['cooking_pot'], [testRecipe]);
+    }
+    load(args) {
+        console.warn(args.entity.typeId);
     }
 }
 __decorate([
@@ -119,5 +83,11 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
-], CookingPotBlockEntity.prototype, "tick", null);
-//# sourceMappingURL=CookingPotBlockEntity.js.map
+], test.prototype, "tick", null);
+__decorate([
+    methodEventSub(world.afterEvents.entityLoad),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [EntityLoadAfterEvent]),
+    __metadata("design:returntype", void 0)
+], test.prototype, "load", null);
+//# sourceMappingURL=test.js.map

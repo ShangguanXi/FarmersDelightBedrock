@@ -1,4 +1,4 @@
-import { Block, Container, Entity, EntityInventoryComponent, ItemStack, Vector3, system, world } from "@minecraft/server";
+import { Block, Container, Entity, EntityInventoryComponent, EntitySpawnAfterEvent, ItemStack, Vector3, system, world } from "@minecraft/server";
 import { methodEventSub } from "../../lib/eventHelper";
 import { BlockEntity, BlockEntityData } from "./BlockEntity";
 import ObjectUtil from "../../lib/ObjectUtil";
@@ -11,6 +11,7 @@ const fireArrowFull: ItemStack = new ItemStack("farmersdelight:fire_1");
 const fireArrowEmpty: ItemStack = new ItemStack("farmersdelight:fire_0");
 const emptyArrow: ItemStack = new ItemStack("farmersdelight:cooking_pot_arrow_0");
 const recipes: any[] = vanillaCookingPotRecipe.recipe;
+const recipeFactory: Map<string, CookingPotRecipe> = new Map()
 
 // 意义不明的进度函数
 function arrowheadUtil(entity: Entity, oldItemStack: ItemStack, slot: number, container: Container) {
@@ -68,13 +69,19 @@ export class CookingPotBlockEntity extends BlockEntity {
         const progress: number = entity.getDynamicProperty("farmersdelight:cooking_pot_progress") as number ?? 0
         //热源检测
         const heated = heatCheck(block);
-        //配方管理器, 每tick处理一次
-        const cookingPotRecipe = new CookingPotRecipe(container, 6, recipes, map.get("previewRecipe") ?? 0, map.get("previewRecipe2") ?? 0);
-        map.set("previewRecipe2", cookingPotRecipe.index2);
-        if (cookingPotRecipe.index2 > -1) cookingPotRecipe.output();
+        //配方管理器初始化, 每tick更新一次
+        let cookingPotRecipe
+        if (!recipeFactory.get(entity.id)) {
+            cookingPotRecipe = new CookingPotRecipe(entity, 6, 1, ['cooking_pot'], recipes);
+            recipeFactory.set(entity.id, cookingPotRecipe);
+        }
+        else{
+            cookingPotRecipe = recipeFactory.get(entity.id) as CookingPotRecipe;
+        }
+        entity.setDynamicProperty('cookingPot:heated', heated);
+        cookingPotRecipe.update()
         if (heated) {
             arrowheadUtil(entity, fireArrowFull, 10, container);
-            map.set("previewRecipe", cookingPotRecipe.index);
             if (system.currentTick % 15 == 0) {
                 const random = Math.floor(Math.random() * 10);
                 block.dimension.spawnParticle(`farmersdelight:steam_${random}`, { x: x, y: y + 1, z: z });
@@ -83,19 +90,12 @@ export class CookingPotBlockEntity extends BlockEntity {
             if (system.currentTick % 80 == 0) {
                 container?.getItem(6) ? entity.runCommandAsync("playsound block.farmersdelight.cooking_pot.boil_soup @a ~ ~ ~ 1 1") : entity.runCommandAsync("playsound block.farmersdelight.cooking_pot.boil_water @a ~ ~ ~ 1 1");
             }
-            if (cookingPotRecipe.index > -1 && cookingPotRecipe.itemStackData.length == recipes[cookingPotRecipe.index].ingredients.length && cookingPotRecipe.canRecipe) {
-                const cookingTime = recipes[cookingPotRecipe.index].cookingtime;
-                const num = Math.floor((progress / cookingTime) * 10) * 10;
+            const progress = cookingPotRecipe.getProgress()
+            if (progress) {
+                const num = Math.floor(progress * 10) * 10;
                 const arrowhead = new ItemStack(`farmersdelight:cooking_pot_arrow_${num}`);
                 arrowheadUtil(entity, arrowhead, 9, container);
-                if (progress >= cookingTime) {
-                    entity.setDynamicProperty("farmersdelight:cooking_pot_progress", 0);
-                    cookingPotRecipe.consume();
-                } else {
-                    entity.setDynamicProperty("farmersdelight:cooking_pot_progress", progress + 1);
-                }
             } else {
-                entity.setDynamicProperty("farmersdelight:cooking_pot_progress", 0);
                 arrowheadUtil(entity, emptyArrow, 9, container);
             }
         } else {

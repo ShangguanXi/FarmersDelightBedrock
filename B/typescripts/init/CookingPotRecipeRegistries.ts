@@ -28,7 +28,7 @@ export class CookingPotRecipeRegistries {
         const message: string = args.message;
         try {
             const json: any = JSON.parse(message);
-            if (!(json.cookingtime || json.ingredients || json.result)) return;
+            if (!(json.time || json.ingredients || json.result)) return;
             if (!json.ingredients.length || !json.result.item) return;
             vanillaCookingPotRecipe.recipe.push(json);
             num++;

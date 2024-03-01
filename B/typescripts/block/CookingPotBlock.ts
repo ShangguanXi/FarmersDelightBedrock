@@ -21,7 +21,8 @@ export class CookingPotBlock extends BlockWithEntity {
         const block: Block = args.block;
         if (block.typeId != "farmersdelight:cooking_pot") return;
         const lores: string[] = itemStack.getLore() ?? [];
-        const entity: Entity = super.setBlock(block.dimension, block.location, "farmersdelight:cooking_pot");
+        const { x, y, z }: Vector3 = block.location;
+        const entity: Entity = super.setBlock(block.dimension, { x: x + 0.5, y: y, z: z + 0.5 }, "farmersdelight:cooking_pot");
         entity.nameTag = "farmersdelight厨锅";
         const container: Container | undefined = entity.getComponent(EntityInventoryComponent.componentId)?.container;
         container?.setItem(9, emptyArrow);

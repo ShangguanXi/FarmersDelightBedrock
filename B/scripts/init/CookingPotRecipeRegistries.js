@@ -36,7 +36,7 @@ export class CookingPotRecipeRegistries {
         const message = args.message;
         try {
             const json = JSON.parse(message);
-            if (!(json.cookingtime || json.ingredients || json.result))
+            if (!(json.time || json.ingredients || json.result))
                 return;
             if (!json.ingredients.length || !json.result.item)
                 return;

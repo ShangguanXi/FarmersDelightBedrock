@@ -3,7 +3,10 @@ export const vanillaCookingPotRecipe = {
     "recipe": [
         //finish
         {
-            "cookingtime": 200,
+            'identifer': 'farmersdelight:bone_broth',
+            'tags': ['cooking_pot'],
+            'priority': 0,
+            "time": 200,
             "container": {
                 "item": "minecraft:bowl"
             },
@@ -21,7 +24,10 @@ export const vanillaCookingPotRecipe = {
         },
         //finish
         {
-            "cookingtime": 200,
+            'identifer': 'farmersdelight:glow_berry_custard',
+            'tags': ['cooking_pot'],
+            'priority': 0,
+            "time": 200,
             "ingredients": [
                 {
                     "item": "farmersdelight:milk_bottle"
@@ -42,7 +48,10 @@ export const vanillaCookingPotRecipe = {
         },
         //finish
         {
-            "cookingtime": 200,
+            'identifer': 'farmersdelight:apple_cider',
+            'tags': ['cooking_pot'],
+            'priority': 0,
+            "time": 200,
             "container": {
                 "item": "minecraft:glass_bottle"
             },
@@ -63,8 +72,10 @@ export const vanillaCookingPotRecipe = {
         },
         //finish
         {
-            "type": "farmersdelight:cooking",
-            "cookingtime": 200,
+            'identifer': 'farmersdelight:hot_cocoa',
+            'tags': ['cooking_pot'],
+            'priority': 0,
+            "time": 200,
             "experience": 1.0,
             "container": {
                 "item": "minecraft:glass_bottle"
@@ -90,8 +101,11 @@ export const vanillaCookingPotRecipe = {
         },
         //finish
         {
+            'identifer': 'farmersdelight:dumplings',
+            'tags': ['cooking_pot'],
+            'priority': 0,
             "type": "farmersdelight:cooking",
-            "cookingtime": 200,
+            "time": 200,
             "experience": 1.0,
             "ingredients": [
                 [
@@ -121,11 +135,13 @@ export const vanillaCookingPotRecipe = {
         },
         //finish
         {
-            "type": "farmersdelight:cooking",
+            'identifer': 'farmersdelight:cooked_rice',
+            'tags': ['cooking_pot'],
+            'priority': 0,
             "container": {
                 "item": "minecraft:bowl"
             },
-            "cookingtime": 200,
+            "time": 200,
             "experience": 1.0,
             "ingredients": [
                 {
@@ -139,11 +155,13 @@ export const vanillaCookingPotRecipe = {
         },
         //finish
         {
-            "type": "farmersdelight:cooking",
+            'identifer': 'farmersdelight:beef_stew',
+            'tags': ['cooking_pot'],
+            'priority': 0,
             "container": {
                 "item": "minecraft:bowl"
             },
-            "cookingtime": 200,
+            "time": 200,
             "experience": 1.0,
             "ingredients": [
                 [
@@ -164,11 +182,13 @@ export const vanillaCookingPotRecipe = {
         },
         //finish
         {
-            "type": "farmersdelight:cooking",
+            'identifer': 'farmersdelight:chicken_soup',
+            'tags': ['cooking_pot'],
+            'priority': 0,
             "container": {
                 "item": "minecraft:bowl"
             },
-            "cookingtime": 200,
+            "time": 200,
             "experience": 1.0,
             "ingredients": [
                 [
@@ -196,11 +216,13 @@ export const vanillaCookingPotRecipe = {
         },
         //finish
         {
-            "type": "farmersdelight:cooking",
+            'identifer': 'farmersdelight:vegetable_soup',
+            'tags': ['cooking_pot'],
+            'priority': 0,
             "container": {
                 "item": "minecraft:bowl"
             },
-            "cookingtime": 200,
+            "time": 200,
             "experience": 1.0,
             "ingredients": [
                 {
@@ -224,11 +246,13 @@ export const vanillaCookingPotRecipe = {
         },
         //finish
         {
-            "type": "farmersdelight:cooking",
+            'identifer': 'farmersdelight:fish_stew',
+            'tags': ['cooking_pot'],
+            'priority': 0,
             "container": {
                 "item": "minecraft:bowl"
             },
-            "cookingtime": 200,
+            "time": 200,
             "experience": 1.0,
             "ingredients": [
                 [
@@ -250,11 +274,13 @@ export const vanillaCookingPotRecipe = {
         },
         //finish
         {
-            "type": "farmersdelight:cooking",
+            'identifer': 'farmersdelight:fried_rice',
+            'tags': ['cooking_pot'],
+            'priority': 0,
             "container": {
                 "item": "minecraft:bowl"
             },
-            "cookingtime": 200,
+            "time": 200,
             "experience": 1.0,
             "ingredients": [
                 {
@@ -277,11 +303,13 @@ export const vanillaCookingPotRecipe = {
         },
         //finish
         {
-            "type": "farmersdelight:cooking",
+            'identifer': 'farmersdelight:pumpkin_soup',
+            'tags': ['cooking_pot'],
+            'priority': 0,
             "container": {
                 "item": "minecraft:bowl"
             },
-            "cookingtime": 200,
+            "time": 200,
             "experience": 1.0,
             "ingredients": [
                 {
@@ -305,11 +333,13 @@ export const vanillaCookingPotRecipe = {
         },
         //finish
         {
-            "type": "farmersdelight:cooking",
+            'identifer': 'farmersdelight:tomato_sauce',
+            'tags': ['cooking_pot'],
+            'priority': 0,
             "container": {
                 "item": "minecraft:bowl"
             },
-            "cookingtime": 200,
+            "time": 200,
             "experience": 1.0,
             "ingredients": [
                 [
@@ -325,11 +355,13 @@ export const vanillaCookingPotRecipe = {
         },
         //finish
         {
-            "type": "farmersdelight:cooking",
+            'identifer': 'farmersdelight:baked_cod_stew',
+            'tags': ['cooking_pot'],
+            'priority': 0,
             "container": {
                 "item": "minecraft:bowl"
             },
-            "cookingtime": 200,
+            "time": 200,
             "experience": 1.0,
             "ingredients": [
                 {
@@ -354,8 +386,10 @@ export const vanillaCookingPotRecipe = {
         },
         //finish
         {
-            "type": "farmersdelight:cooking",
-            "cookingtime": 200,
+            'identifer': 'farmersdelight:pasta_with_meatballs',
+            'tags': ['cooking_pot'],
+            'priority': 0,
+            "time": 200,
             "experience": 1.0,
             "ingredients": [
                 {
@@ -375,11 +409,13 @@ export const vanillaCookingPotRecipe = {
         },
         //finish
         {
-            "type": "farmersdelight:cooking",
+            'identifer': 'farmersdelight:pasta_with_mutton_chop',
+            'tags': ['cooking_pot'],
+            'priority': 0,
             "container": {
                 "item": "minecraft:bowl"
             },
-            "cookingtime": 200,
+            "time": 200,
             "experience": 1.0,
             "ingredients": [
                 [
@@ -404,11 +440,13 @@ export const vanillaCookingPotRecipe = {
         },
         //finish
         {
-            "type": "farmersdelight:cooking",
+            'identifer': 'farmersdelight:vegetable_noodles',
+            'tags': ['cooking_pot'],
+            'priority': 0,
             "container": {
                 "item": "minecraft:bowl"
             },
-            "cookingtime": 200,
+            "time": 200,
             "experience": 1.0,
             "ingredients": [
                 {
@@ -435,11 +473,13 @@ export const vanillaCookingPotRecipe = {
         },
         //finish
         {
-            "type": "farmersdelight:cooking",
+            'identifer': 'farmersdelight:squid_ink_pasta',
+            'tags': ['cooking_pot'],
+            'priority': 0,
             "container": {
                 "item": "minecraft:bowl"
             },
-            "cookingtime": 200,
+            "time": 200,
             "experience": 1.0,
             "ingredients": [
                 {
@@ -464,11 +504,13 @@ export const vanillaCookingPotRecipe = {
         },
         //finish
         {
-            "type": "farmersdelight:cooking",
+            'identifer': 'farmersdelight:stuffed_pumpkin_block_item',
+            'tags': ['cooking_pot'],
+            'priority': 0,
             "container": {
                 "item": "minecraft:pumpkin"
             },
-            "cookingtime": 200,
+            "time": 200,
             "experience": 2.0,
             "ingredients": [
 
@@ -503,11 +545,13 @@ export const vanillaCookingPotRecipe = {
         },
         //finish
         {
-            "type": "farmersdelight:cooking",
+            'identifer': 'farmersdelight:rabbit_stew',
+            'tags': ['cooking_pot'],
+            'priority': 0,
             "container": {
                 "item": "minecraft:bowl"
             },
-            "cookingtime": 200,
+            "time": 200,
             "experience": 1.0,
             "ingredients": [
                 {
@@ -535,8 +579,10 @@ export const vanillaCookingPotRecipe = {
         },
         //finish
         {
-            "type": "farmersdelight:cooking",
-            "cookingtime": 200,
+            'identifer': 'farmersdelight:cabbage_rolls',
+            'tags': ['cooking_pot'],
+            'priority': 0,
+            "time": 200,
             "experience": 1.0,
             "ingredients": [
                 [
@@ -588,11 +634,13 @@ export const vanillaCookingPotRecipe = {
         },
         //finish
         {
-            "type": "farmersdelight:cooking",
+            'identifer': 'farmersdelight:noodle_soup',
+            'tags': ['cooking_pot'],
+            'priority': 0,
             "container": {
                 "item": "minecraft:bowl"
             },
-            "cookingtime": 200,
+            "time": 200,
             "experience": 1.0,
             "ingredients": [
                 {
@@ -619,11 +667,13 @@ export const vanillaCookingPotRecipe = {
             }
         },
         {
-            "type": "farmersdelight:cooking",
+            'identifer': 'farmersdelight:dog_food',
+            'tags': ['cooking_pot'],
+            'priority': 0,
             "container": {
                 "item": "minecraft:bowl"
             },
-            "cookingtime": 200,
+            "time": 200,
             "experience": 1.0,
             "ingredients": [
                 {
@@ -654,11 +704,13 @@ export const vanillaCookingPotRecipe = {
         },
         //finish
         {
-            "type": "farmersdelight:cooking",
+            'identifer': 'farmersdelight:mushroom_rice',
+            'tags': ['cooking_pot'],
+            'priority': 0,
             "container": {
                 "item": "minecraft:bowl"
             },
-            "cookingtime": 200,
+            "time": 200,
             "experience": 1.0,
             "ingredients": [
                 {
@@ -681,7 +733,7 @@ export const vanillaCookingPotRecipe = {
         }
     ]
 }
-// '{"container":{"item":"minecraft:bowl"},"cookingtime":200,"ingredients":[{"item":"minecraft:baked_potato"},{"item":"minecraft:rabbit"},{"item":"minecraft:carrot"},[{"item":"minecraft:brown_mushroom"},{"item":"minecraft:red_mushroom"}]],"result":{"item":"minecraft:rabbit_stew"}}'
+// '{"container":{"item":"minecraft:bowl"},"time":200,"ingredients":[{"item":"minecraft:baked_potato"},{"item":"minecraft:rabbit"},{"item":"minecraft:carrot"},[{"item":"minecraft:brown_mushroom"},{"item":"minecraft:red_mushroom"}]],"result":{"item":"minecraft:rabbit_stew"}}'
 // function init(args) {
 //     console.warn(args.message);
 //     // const id = args.id;
