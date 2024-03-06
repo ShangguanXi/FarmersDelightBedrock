@@ -7,7 +7,8 @@
       },
       "minecraft:tags": {
         "tags": [
-          "farmersdelight:is_rice"
+          "farmersdelight:is_rice",
+          "farmersdelight:is_fertilizer.35"
         ]
       }
     }, 

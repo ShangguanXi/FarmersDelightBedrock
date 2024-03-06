@@ -1,0 +1,23 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shapeless": {
+        "description": {
+            "identifier": "farmersdelight:book_farmersdelight"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "ingredients": [
+            {
+                "item": "farmersdelight:straw"
+            },
+            {
+                "item": "minecraft:dirt"
+            }
+        ],
+        "result": {
+            "item": "farmersdelight:book_farmersdelight",
+            "count": 2
+        }
+    }
+}

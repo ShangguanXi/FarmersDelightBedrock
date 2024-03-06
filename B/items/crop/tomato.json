@@ -16,7 +16,8 @@
       },
       "minecraft:tags": {
         "tags": [
-          "farmersdelight:is_tomato"
+          "farmersdelight:is_tomato",
+          "farmersdelight:is_fertilizer.65"
         ]
       }
     }, 

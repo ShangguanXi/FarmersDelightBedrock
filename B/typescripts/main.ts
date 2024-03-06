@@ -20,6 +20,7 @@ import { RiceBlock } from "./block/Rice";
 import { TatamiMatBlock } from "./block/TatamiMatBlock";
 import { CookRecipeRegistries } from "./init/CookRecipeRegistries";
 import { FarmersBook } from "./item/FarmersBook";
+import { FertilizerItem } from "./item/FertilizerItem";
 
 
 CookingPotRecipeRegistries.initCookingPotScoRegistries();
@@ -44,6 +45,6 @@ new TatamiMatBlock();
 new FarmersBook();
 new Food();
 new Knife();
-
+new FertilizerItem();
 new CookingPotRecipeRegistries();
 

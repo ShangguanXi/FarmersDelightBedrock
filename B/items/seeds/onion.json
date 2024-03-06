@@ -23,7 +23,8 @@
       },
       "minecraft:tags": {
         "tags": [
-          "farmersdelight:is_onion"
+          "farmersdelight:is_onion",
+          "farmersdelight:is_fertilizer.35"
         ]
       }
     }, 

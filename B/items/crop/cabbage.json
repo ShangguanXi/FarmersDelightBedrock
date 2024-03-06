@@ -17,7 +17,8 @@
       "minecraft:tags": {
           "tags": [
               "farmersdelight:can_cut.tag.farmersdelight:is_knife",
-              "farmersdelight:is_cabbage"
+              "farmersdelight:is_cabbage",
+              "farmersdelight:is_fertilizer.65"
           ]
       }
     }, 

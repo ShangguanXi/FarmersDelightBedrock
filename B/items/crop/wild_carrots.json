@@ -10,7 +10,8 @@
       },
       "minecraft:tags": {
         "tags": [
-          "farmersdelight:can_cut.tag.farmersdelight:is_knife"
+          "farmersdelight:can_cut.tag.farmersdelight:is_knife",
+          "farmersdelight:is_fertilizer.65"
         ]
       }
     }, 

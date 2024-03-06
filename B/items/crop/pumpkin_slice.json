@@ -13,6 +13,11 @@
       "minecraft:use_animation": "eat",
       "minecraft:icon": {
         "texture": "farmersdelight:pumpkin_slice"
+      },
+      "minecraft:tags": {
+          "tags": [
+              "farmersdelight:is_fertilizer.50"
+          ]
       }
     }, 
     "description": {

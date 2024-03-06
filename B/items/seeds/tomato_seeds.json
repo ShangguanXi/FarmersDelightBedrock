@@ -11,6 +11,11 @@
           "farmland",
           "farmersdelight:rich_soil_farmland"
         ]
+      },
+      "minecraft:tags": {
+        "tags": [
+          "farmersdelight:is_fertilizer.35"
+        ]
       }
     }, 
     "description": {

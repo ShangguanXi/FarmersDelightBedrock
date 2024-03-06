@@ -231,7 +231,7 @@
   pack.name=农夫乐事[资源包]
   pack.description=是时候种点好东西了！支持的版本为1.20.6x
 
-
+  item.farmersdelight:book_farmersdelight=农夫大典
   
   farmersdelight.book.title=农夫乐事
   farmersdelight.book.cutting_board.main=砧板是一种没有GUI的功能性方块，可以放置部分方块，物品，并使用工具进行处理。

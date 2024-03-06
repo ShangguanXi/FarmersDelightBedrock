@@ -16,6 +16,11 @@
       "minecraft:projectile": {
         "projectile_entity": "farmersdelight:rotten_tomato",
         "minimum_critical_power": 1.0
+      },
+      "minecraft:tags": {
+        "tags": [
+          "farmersdelight:is_fertilizer.65"
+        ]
       }
     },
     "description": {

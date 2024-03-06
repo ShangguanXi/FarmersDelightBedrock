@@ -16,7 +16,8 @@
       },
       "minecraft:tags": {
           "tags": [
-              "farmersdelight:is_cabbage"
+              "farmersdelight:is_cabbage",
+              "farmersdelight:is_fertilizer.30"
           ]
       }
     }, 
