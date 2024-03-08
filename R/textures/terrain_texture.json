@@ -633,6 +633,18 @@
 		},
 		"cherry_cabinet_front": {
 			"textures": "textures/blocks/cherry_cabinet_front"
+		},
+		"bamboo_cabinet_top": {
+			"textures": "textures/blocks/bamboo_cabinet_top"
+		},
+		"bamboo_cabinet_side": {
+			"textures": "textures/blocks/bamboo_cabinet_side"
+		},
+		"bamboo_cabinet_front_open": {
+			"textures": "textures/blocks/bamboo_cabinet_front_open"
+		},
+		"bamboo_cabinet_front": {
+			"textures": "textures/blocks/bamboo_cabinet_front"
 		}
 	}
 }
