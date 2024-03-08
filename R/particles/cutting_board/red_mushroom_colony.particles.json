@@ -45,7 +45,7 @@
                 "material": "particles_alpha", 
                 "texture": "textures/blocks/red_mushroom_colony_stage3"
             }, 
-            "identifier": "farmersdelight:red_mushroom_colony"
+            "identifier": "farmersdelight:red_mushroom_colony_item"
         }
     }
 }

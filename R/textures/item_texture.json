@@ -376,6 +376,12 @@
     },
     "farmersdelight:book_farmersdelight":{
       "textures": "textures/items/book_farmersdelight"
+    },
+    "farmersdelight:brown_mushroom_colony":{
+      "textures": "textures/blocks/brown_mushroom_colony_stage3"
+    },
+    "farmersdelight:red_mushroom_colony":{
+      "textures": "textures/blocks/red_mushroom_colony_stage3"
     }
   }
 }

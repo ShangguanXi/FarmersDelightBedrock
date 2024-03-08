@@ -4,6 +4,12 @@
     "components": {
       "minecraft:icon": {
         "texture": "farmersdelight:red_mushroom_colony"
+      },
+      "minecraft:tags": {
+          "tags": [
+              "farmersdelight:can_cut.tag.farmersdelight:is_knife",
+              "farmersdelight:is_fertilizer.65"
+          ]
       }
     },
     "description": {
