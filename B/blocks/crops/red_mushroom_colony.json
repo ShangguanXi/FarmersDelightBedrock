@@ -20,7 +20,6 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 0",
                 "components": {
-                    "minecraft:loot": "loot_tables/farmersdelight/crops/farmersdelight_red_mushroom_colony0.json",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "mushroom_red",
@@ -145,6 +144,7 @@
             }
         ],
         "components": {
+            "minecraft:loot": "loot_tables/empty.json",
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 0.0
             },

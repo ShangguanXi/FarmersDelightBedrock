@@ -68,6 +68,8 @@ tile.farmersdelight:rice_crop.name=Rice Crops
 tile.farmersdelight:rice_upper_crop.name=Rice Crops
 tile.farmersdelight:brown_mushroom_colony.name=Brown Mushroom Colony
 tile.farmersdelight:red_mushroom_colony.name=Red Mushroom Colony
+item.farmersdelight:brown_mushroom_colony_item=Brown Mushroom Colony
+item.farmersdelight:red_mushroom_colony_item=Red Mushroom Colony
 
 item.farmersdelight:wild_cabbages=Wild Cabbage
 item.farmersdelight:wild_tomatoes=Tomato Shrub
