@@ -166,7 +166,8 @@
                 "conditions": [
                     {
                         "block_filter": [
-                            "rich_soil"
+                            "rich_soil",
+                            "mycelium"
                         ],
                         "allowed_faces": [
                             "up"
@@ -255,7 +256,7 @@
                         }
                     },
                     {
-                        "condition": "!query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&query.block_state('farmersdelight:growth')==4",
+                        "condition": "!query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&query.block_state('farmersdelight:growth')==4&&query.is_item_name_any('slot.weapon.mainhand','minecraft:shears')",
                         "sequence": [
                             {
                                 "set_block_state": {
@@ -270,7 +271,7 @@
                         ]
                     },
                     {
-                        "condition": "!query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&query.block_state('farmersdelight:growth')==3",
+                        "condition": "!query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&query.block_state('farmersdelight:growth')==3&&query.is_item_name_any('slot.weapon.mainhand','minecraft:shears')",
                         "sequence": [
                             {
                                 "set_block_state": {
@@ -285,7 +286,7 @@
                         ]
                     },
                     {
-                        "condition": "!query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&query.block_state('farmersdelight:growth')==2",
+                        "condition": "!query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&query.block_state('farmersdelight:growth')==2&&query.is_item_name_any('slot.weapon.mainhand','minecraft:shears')",
                         "sequence": [
                             {
                                 "set_block_state": {
