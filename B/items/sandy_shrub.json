@@ -7,6 +7,11 @@
       } ,
       "minecraft:block_placer": {
         "block": "farmersdelight:sandy_shrub_block"
+      },
+      "minecraft:tags": {
+          "tags": [
+              "farmersdelight:is_fertilizer.35"
+          ]
       }
     }, 
     "description": {
