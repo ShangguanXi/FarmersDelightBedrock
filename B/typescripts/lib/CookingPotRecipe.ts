@@ -25,7 +25,7 @@ export class CookingPotRecipe extends RecipeHolder {
                     }
                 }
                 //若容器栏容器正确
-                else if (this.isEqualValue(container, this.currentRecipe2.container) && result.typeId == itemStack.typeId) {
+                else if (container && this.isIngredient(container, this.currentRecipe2.container)) {
                     if (this.setItem(itemStack, 8)) {
                         ItemUtil.clearItem(this.container, 6);
                         ItemUtil.clearItem(this.container, 7);
@@ -48,7 +48,7 @@ export class CookingPotRecipe extends RecipeHolder {
                 const amount = recipe.result.amount ?? 1
                 if (result && (
                     result.amount == result.maxAmount ||
-                    !this.isEqualValue(result, recipe.result) ||
+                    !this.isIngredient(result, recipe.result) ||
                     result.amount + amount > result.maxAmount
                     )
                     ){
@@ -87,20 +87,10 @@ export class CookingPotRecipe extends RecipeHolder {
         }
         return false;
     }
-    private isEqualValue(have: ItemStack | undefined, need: any): boolean {
-        if (!need || !have) return false;
-        switch (Object.keys(need)[0]) {
-            case 'item':
-                return have.typeId == need.item;
-            case 'tag':
-                return have.hasTag(need.tag);
-        }
-        return false;
-    }
     private getValidRecipe2(output: ItemStack, container: ItemStack | undefined) {
         const recipes = this.getRecipes()
         for (const index in recipes) {
-            if ((container ? this.isEqualValue(container, recipes[index].container) : true) && output.typeId === recipes[index].result.item) {
+            if (((container && recipes[index].container) ? this.isIngredient(container, recipes[index].container) : true) && output.typeId === recipes[index].result.item) {
                 return recipes[index]
             }
         }

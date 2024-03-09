@@ -217,7 +217,7 @@ export class RecipeHolder {
      * @remarks
      * 判断传入的物品是否为所需原料
     */
-    private isIngredient(need: ItemStack, ingredient: ItemIngredient | TagIngredient | Array<ItemIngredient | TagIngredient>) {
+    isIngredient(need: ItemStack, ingredient: ItemIngredient | TagIngredient | Array<ItemIngredient | TagIngredient>) {
         if ('tag' in ingredient) {
             ingredient as TagIngredient
             return need.hasTag(ingredient.tag)
