@@ -159,7 +159,7 @@
             "minecraft:on_interact": {
                 "event": "on_interact"
             },
-            "tag:farmersdelight:4-item.minecraft:bowl": {},
+            "tag:farmersdelight.blockfood:4-item.minecraft:bowl": {},
             "tag:farmersdelight:blockfood": {}
         },
         "events": {

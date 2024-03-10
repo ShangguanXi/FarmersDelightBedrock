@@ -159,7 +159,7 @@
                     14.0
                 ]
             },
-            "tag:farmersdelight:4-item.minecraft:bowl": {},
+            "tag:farmersdelight.blockfood:4-item.minecraft:bowl": {},
             "tag:farmersdelight:blockfood": {}
         },
         "events": {

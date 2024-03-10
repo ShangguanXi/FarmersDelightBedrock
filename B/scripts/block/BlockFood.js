@@ -25,7 +25,7 @@ export class BlockFood {
             return;
         for (const tag of blockFoodAllTag) {
             const nameSpace = tag?.split("-")[0]?.split(":")[0];
-            if (nameSpace == "farmersdelight") {
+            if (nameSpace == "farmersdelight.blockfood") {
                 const maxUse = Number(tag.split("-")[0]?.split(":")[1]);
                 const item = tag?.split("-")[1];
                 const itemType = item?.split(".")[0];

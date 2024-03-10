@@ -220,7 +220,9 @@
                 "stuffed_pumpkin_top_eaten": {
                     "texture": "stuffed_pumpkin_top_eaten"
                 }
-            }
+            },
+            "tag:farmersdelight.blockfood:4-item.minecraft:bowl": {},
+            "tag:farmersdelight:blockfood": {}
         },
         "events": {
             "on_interact": {}
