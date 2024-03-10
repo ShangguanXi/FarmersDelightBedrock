@@ -64,6 +64,9 @@ export class SKilletBlock extends BlockWithEntity {
             if (!stove) return
             entity.runCommandAsync("playsound block.farmersdelight.skillet.add_food @a ~ ~ ~ 1 1");
         }
+        if (vanillaItemList.includes(itemStack.typeId)==false && itemStack.hasTag('farmersdelight:can_cook')==false) {
+            player.onScreenDisplay.setActionBar({ translate: 'farmersdelight.skillet.invalid_item' });
+        }
         if (itemStack.typeId != invItemStack && invItemStack != 'undefined') {
             for (const itemStackData of sco.getScores()) {
                 const displayName = itemStackData.participant.displayName;

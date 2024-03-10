@@ -29,28 +29,32 @@
                 "condition": "query.block_state('farmersdelight:food_block_stage') == 0",
                 "components": {
                     "minecraft:loot": "loot_tables/farmersdelight/food_block/shepherds_pie.json",
-                    "minecraft:geometry": "geometry.shepherds_pie_block_stage0"
+                    "minecraft:geometry": "geometry.shepherds_pie_block_stage0",
+                    "tag:farmersdelight:use_bowl":{}
                 }
             },
             {
                 "condition": "query.block_state('farmersdelight:food_block_stage') == 1",
                 "components": {
                     "minecraft:loot": "loot_tables/farmersdelight/food_block/shepherds_pie_over.json",
-                    "minecraft:geometry": "geometry.shepherds_pie_block_stage1"
+                    "minecraft:geometry": "geometry.shepherds_pie_block_stage1",
+                    "tag:farmersdelight:use_bowl":{}
                 }
             },
             {
                 "condition": "query.block_state('farmersdelight:food_block_stage') == 2",
                 "components": {
                     "minecraft:loot": "loot_tables/farmersdelight/food_block/shepherds_pie_over.json",
-                    "minecraft:geometry": "geometry.shepherds_pie_block_stage2"
+                    "minecraft:geometry": "geometry.shepherds_pie_block_stage2",
+                    "tag:farmersdelight:use_bowl":{}
                 }
             },
             {
                 "condition": "query.block_state('farmersdelight:food_block_stage') == 3",
                 "components": {
                     "minecraft:loot": "loot_tables/farmersdelight/food_block/shepherds_pie_over.json",
-                    "minecraft:geometry": "geometry.shepherds_pie_block_stage3"
+                    "minecraft:geometry": "geometry.shepherds_pie_block_stage3",
+                    "tag:farmersdelight:use_bowl":{}
                 }
             },
             {

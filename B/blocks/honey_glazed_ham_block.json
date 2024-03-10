@@ -29,28 +29,32 @@
                 "condition": "query.block_state('farmersdelight:food_block_stage') == 0",
                 "components": {
                     "minecraft:loot": "loot_tables/farmersdelight/food_block/honey_glazed_ham.json",
-                    "minecraft:geometry": "geometry.honey_glazed_ham_block_stage0"
+                    "minecraft:geometry": "geometry.honey_glazed_ham_block_stage0",
+                    "tag:farmersdelight:use_bowl":{}
                 }
             },
             {
                 "condition": "query.block_state('farmersdelight:food_block_stage') == 1",
                 "components": {
                     "minecraft:loot": "loot_tables/farmersdelight/food_block/honey_glazed_ham_over.json",
-                    "minecraft:geometry": "geometry.honey_glazed_ham_block_stage1"
+                    "minecraft:geometry": "geometry.honey_glazed_ham_block_stage1",
+                    "tag:farmersdelight:use_bowl":{}
                 }
             },
             {
                 "condition": "query.block_state('farmersdelight:food_block_stage') == 2",
                 "components": {
                     "minecraft:loot": "loot_tables/farmersdelight/food_block/honey_glazed_ham_over.json",
-                    "minecraft:geometry": "geometry.honey_glazed_ham_block_stage2"
+                    "minecraft:geometry": "geometry.honey_glazed_ham_block_stage2",
+                    "tag:farmersdelight:use_bowl":{}
                 }
             },
             {
                 "condition": "query.block_state('farmersdelight:food_block_stage') == 3",
                 "components": {
                     "minecraft:loot": "loot_tables/farmersdelight/food_block/honey_glazed_ham_over.json",
-                    "minecraft:geometry": "geometry.honey_glazed_ham_block_stage3"
+                    "minecraft:geometry": "geometry.honey_glazed_ham_block_stage3",
+                    "tag:farmersdelight:use_bowl":{}
                 }
             },
             {

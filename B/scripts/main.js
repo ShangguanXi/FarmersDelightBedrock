@@ -21,6 +21,7 @@ import { CookRecipeRegistries } from "./init/CookRecipeRegistries";
 import { FarmersBook } from "./item/FarmersBook";
 import { FertilizerItem } from "./item/FertilizerItem";
 import { Colonies } from "./block/Colonies";
+import { BlockFood } from "./block/BlockFood";
 CookingPotRecipeRegistries.initCookingPotScoRegistries();
 CuttingBoardRegistries.initCuttingBoardScoRegistries();
 CookRecipeRegistries.initCookScoRegistries();
@@ -44,5 +45,6 @@ new Colonies();
 new Food();
 new Knife();
 new FertilizerItem();
+new BlockFood();
 new CookingPotRecipeRegistries();
 //# sourceMappingURL=main.js.map
