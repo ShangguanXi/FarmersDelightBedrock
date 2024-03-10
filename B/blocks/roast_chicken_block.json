@@ -28,7 +28,6 @@
             {
                 "condition": "query.block_state('farmersdelight:food_block_stage') == 0",
                 "components": {
-                    "minecraft:loot": "loot_tables/farmersdelight/food_block/roast_chicken.json",
                     "minecraft:geometry": "geometry.roast_chicken_block_stage0",
                     "tag:farmersdelight:use_bowl":{}
                 }
@@ -36,31 +35,24 @@
             {
                 "condition": "query.block_state('farmersdelight:food_block_stage') == 1",
                 "components": {
-                    "minecraft:loot": "loot_tables/farmersdelight/food_block/roast_chicken_over.json",
-                    "minecraft:geometry": "geometry.roast_chicken_block_stage1",
-                    "tag:farmersdelight:use_bowl":{}
+                    "minecraft:geometry": "geometry.roast_chicken_block_stage1"
                 }
             },
             {
                 "condition": "query.block_state('farmersdelight:food_block_stage') == 2",
                 "components": {
-                    "minecraft:loot": "loot_tables/farmersdelight/food_block/roast_chicken_over.json",
-                    "minecraft:geometry": "geometry.roast_chicken_block_stage2",
-                    "tag:farmersdelight:use_bowl":{}
+                    "minecraft:geometry": "geometry.roast_chicken_block_stage2"
                 }
             },
             {
                 "condition": "query.block_state('farmersdelight:food_block_stage') == 3",
                 "components": {
-                    "minecraft:loot": "loot_tables/farmersdelight/food_block/roast_chicken_over.json",
-                    "minecraft:geometry": "geometry.roast_chicken_block_stage3",
-                    "tag:farmersdelight:use_bowl":{}
+                    "minecraft:geometry": "geometry.roast_chicken_block_stage3"
                 }
             },
             {
                 "condition": "query.block_state('farmersdelight:food_block_stage') == 4",
                 "components": {
-                    "minecraft:loot": "loot_tables/farmersdelight/food_block/roast_chicken_over.json",
                     "minecraft:geometry": "geometry.roast_chicken_block_leftover"
                 }
             },
@@ -173,40 +165,12 @@
                     9.0,
                     14.0
                 ]
-            }
+            },
+            "tag:farmersdelight:4-item.minecraft:bowl": {},
+            "tag:farmersdelight:blockfood": {}
         },
         "events": {
-            "on_interact": {
-                "sequence": [
-                    {
-                        "condition": "query.block_state('farmersdelight:food_block_stage') != 4",
-                        "trigger": {
-                            "event": "roast_chicken",
-                            "target": "self"
-                        }
-                    },
-                    {
-                        "condition": "query.block_state('farmersdelight:food_block_stage') == 4",
-                        "die": {
-                            "target": "block"
-                        }
-                    }
-                ]
-            },
-            "roast_chicken": {
-                "sequence": [
-                    {
-                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bowl') == 1",
-                        "set_block_state": {
-                            "farmersdelight:food_block_stage": "query.block_state('farmersdelight:food_block_stage') + 1"
-                        },
-                        "decrement_stack": {},
-                        "spawn_loot": {
-                            "table": "loot_tables/farmersdelight/food_block/roast_chicken.json"
-                        }
-                    }
-                ]
-            }
+            "on_interact": {}
         }
     }
 }

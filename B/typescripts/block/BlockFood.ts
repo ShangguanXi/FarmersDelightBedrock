@@ -63,14 +63,25 @@ export class BlockFood {
         const container: Container | undefined = player.getComponent(EntityInventoryComponent.componentId)?.container;
         if (!container) return;
         for (const tag of blockFoodAllTag) {
-            if (tag == "farmersdelight:blockfood" && (Number(block.permutation.getState("farmersdelight:food_block_stage")) != 0)) {
+            if (tag == "farmersdelight:blockfood") {
+                if(Number(block.permutation.getState("farmersdelight:food_block_stage")) != 0){
+                    system.run(() => {
+                        block.dimension.fillBlocks({ x: location.x, y: location.y, z: location.z }, { x: location.x, y: location.y, z: location.z }, "minecraft:air")
+                        
+                    });
+                };
+                if(Number(block.permutation.getState("farmersdelight:food_block_stage")) == 0){
+                    system.run(() => {
+                        block.dimension.spawnItem(new ItemStack(block.typeId+"_item"), block.location);
+                        block.dimension.fillBlocks({ x: location.x, y: location.y, z: location.z }, { x: location.x, y: location.y, z: location.z }, "minecraft:air")
+                        player.playSound("dig.stone")
+                        ItemUtil.damageItem(container, player.selectedSlot)
+                    });
+                }
+                
                 args.cancel = true;
-                system.run(() => {
-                    block.dimension.fillBlocks({ x: location.x, y: location.y, z: location.z }, { x: location.x, y: location.y, z: location.z }, "minecraft:air")
-                    player.playSound("dig.stone")
-                    ItemUtil.damageItem(container, player.selectedSlot)
-                });
-            }
+                
+            };
         }
     }
 }
