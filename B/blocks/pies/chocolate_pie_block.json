@@ -150,44 +150,12 @@
                     12.0
                 ]
             },
-            "tag:farmersdelight:pie":{}
+            "tag:farmersdelight:pie":{},
+            "tag:farmersdelight.pie:3-tag.farmersdelight:is_knife":{}
         },
         "events": {
             "on_interact": {
-                "sequence": [
-                    {
-                        "condition": "query.equipped_item_any_tag('slot.weapon.mainhand','farmersdelight:is_knife')",
-                        "damage": {
-                            "type": "magic",
-                            "amount": 1,
-                            "target": "item"
-                        },
-                        "spawn_loot": {
-                            "table": "loot_tables/farmersdelight/pie/chocolate_pie.json"
-                        }
-                    },
-                    {
-                        "condition": "!query.equipped_item_any_tag('slot.weapon.mainhand','farmersdelight:is_knife')",
-                        "add_mob_effect": {
-                            "effect": "speed",
-                            "target": "other",
-                            "duration": 30,
-                            "amplifier": 0
-                        }
-                    },
-                    {
-                        "condition": "query.block_state('farmersdelight:food_block_stage') != 3",
-                        "set_block_state": {
-                            "farmersdelight:food_block_stage": "query.block_state('farmersdelight:food_block_stage') + 1"
-                        }
-                    },
-                    {
-                        "condition": "query.block_state('farmersdelight:food_block_stage') == 3",
-                        "die": {
-                            "target": "block"
-                        }
-                    }
-                ]
+               
             }
         }
     }
