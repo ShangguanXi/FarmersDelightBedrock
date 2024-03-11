@@ -25,31 +25,19 @@ export class BlockFood {
             return;
         for (const tag of blockFoodAllTag) {
             const nameSpace = tag?.split("-")[0]?.split(":")[0];
+            const maxUse = Number(tag.split("-")[0]?.split(":")[1]);
+            const item = tag?.split("-")[1];
+            const itemType = item?.split(".")[0];
+            const itemId = item?.split(".")[1];
             if (nameSpace == "farmersdelight.blockfood") {
-                const maxUse = Number(tag.split("-")[0]?.split(":")[1]);
-                const item = tag?.split("-")[1];
-                const itemType = item?.split(".")[0];
-                const itemId = item?.split(".")[1];
                 if (Number(block.permutation.getState("farmersdelight:food_block_stage")) != maxUse) {
-                    if (itemType == "tag") {
-                        if (itemStack.hasTag(itemId)) {
-                            block.setPermutation(block.permutation.withState("farmersdelight:food_block_stage", Number(block.permutation.getState("farmersdelight:food_block_stage")) + 1));
-                            spawnLoot("farmersdelight/food_block/" + block.typeId.split(":")[1], block.dimension, { x: location.x + 0.5, y: location.y + 1, z: location.z + 0.5 });
-                            ItemUtil.clearItem(container, player.selectedSlot);
-                        }
-                        else {
-                            player.onScreenDisplay.setActionBar({ translate: 'farmersdelight.blockfood.' + itemId });
-                        }
+                    if ((itemType == "tag" && itemStack.hasTag(itemId)) || (itemType == "item" && itemStack.typeId == itemId)) {
+                        block.setPermutation(block.permutation.withState("farmersdelight:food_block_stage", Number(block.permutation.getState("farmersdelight:food_block_stage")) + 1));
+                        spawnLoot("farmersdelight/food_block/" + block.typeId.split(":")[1], block.dimension, { x: location.x + 0.5, y: location.y + 1, z: location.z + 0.5 });
+                        ItemUtil.clearItem(container, player.selectedSlot);
                     }
-                    if (itemType == "item") {
-                        if (itemStack.typeId == itemId) {
-                            block.setPermutation(block.permutation.withState("farmersdelight:food_block_stage", Number(block.permutation.getState("farmersdelight:food_block_stage")) + 1));
-                            spawnLoot("farmersdelight/food_block/" + block.typeId.split(":")[1], block.dimension, { x: location.x + 0.5, y: location.y + 1, z: location.z + 0.5 });
-                            ItemUtil.clearItem(container, player.selectedSlot);
-                        }
-                        else {
-                            player.onScreenDisplay.setActionBar({ translate: 'farmersdelight.blockfood.' + itemId });
-                        }
+                    else {
+                        player.onScreenDisplay.setActionBar({ translate: 'farmersdelight.blockfood.' + itemId });
                     }
                 }
                 else {
