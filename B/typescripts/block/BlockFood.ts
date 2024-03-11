@@ -37,6 +37,22 @@ export class BlockFood {
                     block.dimension.fillBlocks({ x: location.x, y: location.y, z: location.z }, { x: location.x, y: location.y, z: location.z }, "minecraft:air")
                 };
 
+            };
+            if (nameSpace == "farmersdelight.pie") {
+                if ((itemType == "tag" && itemStack.hasTag(itemId)) || (itemType == "item" && itemStack.typeId == itemId)) {
+                    spawnLoot("farmersdelight/pie/" + block.typeId.split(":")[1], block.dimension, { x: location.x + 0.5, y: location.y + 1, z: location.z + 0.5 });
+                    ItemUtil.damageItem(container, player.selectedSlot)
+                }
+                else {
+                    player.addEffect('speed', 60 * 20, { amplifier: 0 });
+                };
+                if (Number(block.permutation.getState("farmersdelight:food_block_stage")) != maxUse) {
+                    block.setPermutation(block.permutation.withState("farmersdelight:food_block_stage", Number(block.permutation.getState("farmersdelight:food_block_stage")) + 1));
+                }
+                else {
+                    block.dimension.fillBlocks({ x: location.x, y: location.y, z: location.z }, { x: location.x, y: location.y, z: location.z }, "minecraft:air")
+                };
+               
             }
 
         }
@@ -65,10 +81,17 @@ export class BlockFood {
                         ItemUtil.damageItem(container, player.selectedSlot)
                     });
                 }
-
                 args.cancel = true;
-
             };
+            if (tag == "farmersdelight:pie") {
+                system.run(() => {
+                    block.dimension.fillBlocks({ x: location.x, y: location.y, z: location.z }, { x: location.x, y: location.y, z: location.z }, "minecraft:air")
+                    player.playSound("dig.cloth")
+                    ItemUtil.damageItem(container, player.selectedSlot)
+                });
+                args.cancel = true;
+            }
+
         }
     }
 }
