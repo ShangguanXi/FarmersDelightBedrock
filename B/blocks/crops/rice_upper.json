@@ -131,7 +131,7 @@
 				"destroy_chance_modifier": 30
 			},
 			"minecraft:light_dampening": 0,
-            "minecraft:geometry": "geometry.reeds",
+            "minecraft:geometry": "geometry.rice_crop_support",
             "minecraft:destructible_by_explosion": {
                 "explosion_resistance": 0.0
             },

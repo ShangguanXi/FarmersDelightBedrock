@@ -3,7 +3,7 @@
 	"minecraft:geometry": [
 		{
 			"description": {
-				"identifier": "geometry.crop_cross",
+				"identifier": "geometry.rice_crop_support",
 				"texture_width": 16,
 				"texture_height": 16,
 				"visible_bounds_width": 2,
@@ -13,21 +13,21 @@
 			"bones": [
 				{
 					"name": "bone",
-					"pivot": [0, -1, 0],
+					"pivot": [0, 0, 0],
 					"cubes": [
 						{
-							"origin": [-8, -1, 0],
+							"origin": [-8, 0, 0],
 							"size": [16, 16, 0],
-							"pivot": [0, 7, 0],
+							"pivot": [0, 8, 0],
 							"rotation": [0, -45, 0],
 							"uv": {
 								"north": {"uv": [16, 0], "uv_size": [-16, 16]}
 							}
 						},
 						{
-							"origin": [0, -1, -8],
+							"origin": [0, 0, -8],
 							"size": [0, 16, 16],
-							"pivot": [0, 7, 0],
+							"pivot": [0, 8, 0],
 							"rotation": [0, -45, 0],
 							"uv": {
 								"east": {"uv": [16, 0], "uv_size": [-16, 16]}

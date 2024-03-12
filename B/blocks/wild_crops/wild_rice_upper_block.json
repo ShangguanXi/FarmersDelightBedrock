@@ -15,7 +15,7 @@
             "minecraft:destructible_by_explosion": {
                 "explosion_resistance": 0.1
             },
-            "minecraft:geometry": "geometry.wild_crop",
+            "minecraft:geometry": "geometry.rice_crop_support",
 			"minecraft:material_instances": {
 				"*": {
 					"texture": "wild_rice_top",
