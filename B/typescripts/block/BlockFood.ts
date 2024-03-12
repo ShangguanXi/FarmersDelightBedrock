@@ -12,7 +12,6 @@ export class BlockFood {
         const location = args.block.location;
         const itemStack: ItemStack | undefined = args.itemStack;
         const blockFoodAllTag = block.getTags();
-
         const container: Container | undefined = player.getComponent(EntityInventoryComponent.componentId)?.container;
         if (!container) return;
         for (const tag of blockFoodAllTag) {

@@ -67,9 +67,9 @@
         }
       },
       "farmersdelight:stove_tick": {
-        "run_command": {
+        /*"run_command": {
           "command": "execute unless block ~ ~ ~ farmersdelight:stove [] run event entity @e[r=0.5,type=farmersdelight:stove] farmersdelight:despawn"
-        }
+        }*/
       }
     }
   }

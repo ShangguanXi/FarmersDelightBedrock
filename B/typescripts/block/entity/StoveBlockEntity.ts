@@ -53,9 +53,9 @@ export class StoveBlockEntity extends BlockEntity {
         const entity: Entity = entityBlockData.entity;
         const sco: ScoreboardObjective | null = entityBlockData.scoreboardObjective;
         if (!sco) return;
+        const { x, y, z }: Vector3 = entity.location;
+        const itemStackScoresData = sco?.getScores();
         if (block.permutation.getState('minecraft:cardinal_direction') == "north" || block.permutation.getState('minecraft:cardinal_direction') == "south") {
-            const { x, y, z }: Vector3 = entity.location;
-            const itemStackScoresData = sco?.getScores();
             for (const itemStackData of itemStackScoresData) {
                 const itemStack: string = itemStackData.participant.displayName;
                 if (itemStack == 'amount') continue;
@@ -81,11 +81,8 @@ export class StoveBlockEntity extends BlockEntity {
                 entity.dimension.spawnParticle(particleName, { x: x + stoveOffsets[parseInt(id[1]) - 1].x, y: y + 1.02, z: z + stoveOffsets[parseInt(id[1]) - 1].y }
                 );
             }
-            super.blockEntityLoot(entityBlockData, "farmersdelight:stove", itemStackArr(itemStackScoresData) ?? null);
         };
         if (block.permutation.getState('minecraft:cardinal_direction') == "west" || block.permutation.getState('minecraft:cardinal_direction') == "east") {
-            const { x, y, z }: Vector3 = entity.location;
-            const itemStackScoresData = sco?.getScores();
             for (const itemStackData of itemStackScoresData) {
                 const itemStack: string = itemStackData.participant.displayName;
                 if (itemStack == 'amount') continue;
@@ -111,8 +108,7 @@ export class StoveBlockEntity extends BlockEntity {
                 entity.dimension.spawnParticle(particleName, { x: x + stoveOffsets[parseInt(id[1]) - 1].y, y: y + 1.02, z: z + stoveOffsets[parseInt(id[1]) - 1].x }
                 );
             }
-            super.blockEntityLoot(entityBlockData, "farmersdelight:stove", itemStackArr(itemStackScoresData) ?? null);
         }
-
+        super.blockEntityLoot(entityBlockData, "farmersdelight:stove", itemStackArr(itemStackScoresData) ?? null);
     }
 }

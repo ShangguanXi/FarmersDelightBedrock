@@ -16,7 +16,7 @@ export class BlockEntity {
         } catch (error) {
             return undefined;
         }
-    }
+    };
     //对使用动态属性存储物品的方块实体检测掉落
     public blockEntityLoot(args: BlockEntityData, id: string, list: any[] | undefined, amount: number = 1) {
         if (!ObjectUtil.isEqual(args.entity.location, args.blockEntityDataLocation)) args.entity.teleport(args.blockEntityDataLocation);
@@ -27,7 +27,7 @@ export class BlockEntity {
             }
         }
         BlockEntity.clearEntity(args);
-    }
+    };
     //对使用容器组件存储物品的方块实体检测掉落 仅供橱柜使用
     public entityContainerLoot(args: BlockEntityData, id: string){
         if (!ObjectUtil.isEqual(args.entity.location, args.blockEntityDataLocation)) args.entity.teleport(args.blockEntityDataLocation);
@@ -42,7 +42,7 @@ export class BlockEntity {
             }
         };
         BlockEntity.clearEntity(args);
-    }
+    };
     //清除方块实体
     public static clearEntity(args: BlockEntityData) {
         if (args.scoreboardObjective) {

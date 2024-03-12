@@ -59,9 +59,9 @@ export class StoveBlockEntity extends BlockEntity {
         const sco = entityBlockData.scoreboardObjective;
         if (!sco)
             return;
+        const { x, y, z } = entity.location;
+        const itemStackScoresData = sco?.getScores();
         if (block.permutation.getState('minecraft:cardinal_direction') == "north" || block.permutation.getState('minecraft:cardinal_direction') == "south") {
-            const { x, y, z } = entity.location;
-            const itemStackScoresData = sco?.getScores();
             for (const itemStackData of itemStackScoresData) {
                 const itemStack = itemStackData.participant.displayName;
                 if (itemStack == 'amount')
@@ -85,12 +85,9 @@ export class StoveBlockEntity extends BlockEntity {
                 ;
                 entity.dimension.spawnParticle(particleName, { x: x + stoveOffsets[parseInt(id[1]) - 1].x, y: y + 1.02, z: z + stoveOffsets[parseInt(id[1]) - 1].y });
             }
-            super.blockEntityLoot(entityBlockData, "farmersdelight:stove", itemStackArr(itemStackScoresData) ?? null);
         }
         ;
         if (block.permutation.getState('minecraft:cardinal_direction') == "west" || block.permutation.getState('minecraft:cardinal_direction') == "east") {
-            const { x, y, z } = entity.location;
-            const itemStackScoresData = sco?.getScores();
             for (const itemStackData of itemStackScoresData) {
                 const itemStack = itemStackData.participant.displayName;
                 if (itemStack == 'amount')
@@ -114,8 +111,8 @@ export class StoveBlockEntity extends BlockEntity {
                 ;
                 entity.dimension.spawnParticle(particleName, { x: x + stoveOffsets[parseInt(id[1]) - 1].y, y: y + 1.02, z: z + stoveOffsets[parseInt(id[1]) - 1].x });
             }
-            super.blockEntityLoot(entityBlockData, "farmersdelight:stove", itemStackArr(itemStackScoresData) ?? null);
         }
+        super.blockEntityLoot(entityBlockData, "farmersdelight:stove", itemStackArr(itemStackScoresData) ?? null);
     }
 }
 __decorate([
