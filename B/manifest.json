@@ -12,7 +12,7 @@
         "min_engine_version": [
             1,
             20,
-            60
+            70
         ]
     },
     "modules": [
@@ -50,7 +50,7 @@
         },
         {
             "module_name": "@minecraft/server",
-            "version": "1.9.0-beta"
+            "version": "1.10.0-beta"
         },
         {
             "module_name": "@minecraft/server-ui",

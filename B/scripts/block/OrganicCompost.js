@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { BlockPermutation, BlockVolumeUtils, system } from "@minecraft/server";
+import { BlockPermutation, BlockVolume, system } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
 import { organicCompostDetectList } from "../data/organicCompostDetect";
 export class OrganicCompost {
@@ -22,7 +22,7 @@ export class OrganicCompost {
         const dimension = compostBlock.dimension;
         const fromLocation = { x: x - 1, y: y - 1, z: z - 1 };
         const toLocation = { x: x + 1, y: y + 1, z: z + 1 };
-        const detectLocs = BlockVolumeUtils.getBlockLocationIterator({ from: fromLocation, to: toLocation });
+        const detectLocs = new BlockVolume(fromLocation, toLocation).getBlockLocationIterator();
         for (const location of detectLocs) {
             const block = dimension.getBlock(location);
             if (!block)

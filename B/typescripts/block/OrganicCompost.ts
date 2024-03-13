@@ -1,4 +1,4 @@
-import { Block, BlockPermutation, BlockVolumeUtils, Dimension, Vector, Vector3, system } from "@minecraft/server";
+import { Block, BlockPermutation, BlockVolume, Dimension, Vector, Vector3, system } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
 import { organicCompostDetectList } from "../data/organicCompostDetect";
 
@@ -16,7 +16,7 @@ export class OrganicCompost {
         const dimension: Dimension = compostBlock.dimension;
         const fromLocation: Vector3 = { x: x - 1, y: y - 1, z: z - 1 };
         const toLocation: Vector3 = { x: x + 1, y: y + 1, z: z + 1 };
-        const detectLocs = BlockVolumeUtils.getBlockLocationIterator({ from: fromLocation, to: toLocation });
+        const detectLocs = new BlockVolume(fromLocation, toLocation ).getBlockLocationIterator();
         for (const location of detectLocs) {
             const block: Block | undefined = dimension.getBlock(location);
             if (!block) continue;

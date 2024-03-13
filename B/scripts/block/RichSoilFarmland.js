@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { BlockPermutation, BlockVolumeUtils, system } from "@minecraft/server";
+import { BlockPermutation, BlockVolume, system } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
 export class RichSoilFarmland {
     blockTick(args) {
@@ -18,7 +18,7 @@ export class RichSoilFarmland {
         const dimension = block.dimension;
         const fromLocation = { x: x - 4, y: y, z: z - 4 };
         const toLocation = { x: x + 4, y: y + 1, z: z + 4 };
-        const detectLocs = BlockVolumeUtils.getBlockLocationIterator({ from: fromLocation, to: toLocation });
+        const detectLocs = new BlockVolume(fromLocation, toLocation).getBlockLocationIterator();
         const moisturizedAmount = block.permutation.getState('farmersdelight:moisturized_amount');
         let hasWater = false;
         for (const location of detectLocs) {

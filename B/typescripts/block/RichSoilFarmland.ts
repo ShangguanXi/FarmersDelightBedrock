@@ -1,6 +1,5 @@
-import { Block, BlockPermutation, BlockVolumeUtils, Dimension, Vector3, system, world } from "@minecraft/server";
+import { Block, BlockPermutation, BlockVolume, Dimension, Vector3, system, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
-
 
 
 export class RichSoilFarmland {
@@ -12,7 +11,7 @@ export class RichSoilFarmland {
         const dimension: Dimension = block.dimension;
         const fromLocation: Vector3 = { x: x - 4, y: y, z: z - 4 };
         const toLocation: Vector3 = { x: x + 4, y: y + 1, z: z + 4 };
-        const detectLocs = BlockVolumeUtils.getBlockLocationIterator({ from: fromLocation, to: toLocation });
+        const detectLocs = new BlockVolume(fromLocation, toLocation ).getBlockLocationIterator();
         const moisturizedAmount: number = block.permutation.getState('farmersdelight:moisturized_amount') as number;
         let hasWater: boolean = false;
         for (const location of detectLocs) {
