@@ -76,9 +76,6 @@ export const vanillaCookingPotRecipe = {
             'priority': 0,
             "time": 200,
             "experience": 1.0,
-            "container": {
-                "item": "minecraft:glass_bottle"
-            },
             "ingredients": [
                 {
                     "item": "minecraft:cocoa_beans"
@@ -90,7 +87,7 @@ export const vanillaCookingPotRecipe = {
                     "item": "minecraft:sugar"
                 },
                 {
-                    "tag": "minecraft:milk_bucket"
+                    "item": "farmersdelight:milk_bottle"
                 }
             ],
             "recipe_book_tab": "drinks",
@@ -247,9 +244,6 @@ export const vanillaCookingPotRecipe = {
             'identifer': 'farmersdelight:fish_stew',
             'tags': ['cooking_pot'],
             'priority': 0,
-            "container": {
-                "item": "minecraft:bowl"
-            },
             "time": 200,
             "experience": 1.0,
             "ingredients": [
@@ -409,9 +403,6 @@ export const vanillaCookingPotRecipe = {
             'identifer': 'farmersdelight:pasta_with_mutton_chop',
             'tags': ['cooking_pot'],
             'priority': 0,
-            "container": {
-                "item": "minecraft:bowl"
-            },
             "time": 200,
             "experience": 1.0,
             "ingredients": [
