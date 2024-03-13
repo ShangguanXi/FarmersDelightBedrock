@@ -124,7 +124,7 @@
                 "condition": "!query.is_item_name_any('slot.weapon.mainhand','farmersdelight:skillet','farmersdelight:cooking_pot')",
                 "target": "self"
             },
-            "minecraft:geometry": "geometry.block"
+            "minecraft:geometry": "geometry.stove_block"
         },
         "events": {
             "farmersdelight:on_interact": {
