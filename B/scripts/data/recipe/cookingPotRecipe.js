@@ -363,8 +363,8 @@ export const vanillaCookingPotRecipe = {
                     "item": "minecraft:egg"
                 },
                 [
-                    { "tag": "minecraft:cod" },
-                    { "item": "farmersdelight:cod_slice" }
+                    { "item": "minecraft:cod" },
+                    { "tag": "farmersdelight:cod_slice" }
                 ],
                 {
                     "tag": "farmersdelight:is_tomato"
