@@ -1165,7 +1165,7 @@
               "cooking_pot_recipe_cell@chest.cooking_pot_recipe_cell": {
                 "$cell0": "textures/blocks/mushroom_red",
                 "$cell1": "textures/blocks/mushroom_brown",
-                "$cell2": "textures/items/onion",
+                "$cell2": "textures/items/carrot",
                 "$cell3": "textures/items/rice",
                 "$container": "textures/items/bowl",
                 "$result": "textures/items/mushroom_rice"
@@ -1356,6 +1356,20 @@
                 ],
                 "type": "image",
                 "texture": "textures/items/carrot"
+              }
+            },
+            {
+              "cell4": {
+                "type": "image",
+                "offset": [
+                  -14.625,
+                  1.5
+                ],
+                "size": [
+                  7.5,
+                  7.5
+                ],
+                "texture": "textures/items/raw_pasta"
               }
             },
             {

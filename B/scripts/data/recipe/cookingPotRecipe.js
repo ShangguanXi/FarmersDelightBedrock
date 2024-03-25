@@ -446,6 +446,9 @@ export const vanillaCookingPotRecipe = {
                 {
                     "item": "minecraft:carrot"
                 },
+                {
+                    "item": "farmersdelight:raw_pasta"
+                },
                 [
                     { "item": "minecraft:carrot" },
                     { "item": "minecraft:potato" },
