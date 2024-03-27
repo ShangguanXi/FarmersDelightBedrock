@@ -19,11 +19,11 @@
 			"minecraft:material_instances": {
 				"*": {
 					"texture": "canvas_rug",
-                    "render_method": "alpha_test"
+                    "render_method": "blend"
 				},
                 "out": {
 					"texture": "canvas_rug_extrudes",
-                    "render_method": "alpha_test"
+                    "render_method": "blend"
 				}
 			},
 			"minecraft:flammable": {
