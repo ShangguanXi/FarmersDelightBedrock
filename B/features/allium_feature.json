@@ -1,0 +1,26 @@
+{
+    "format_version": "1.20.20",
+    "minecraft:single_block_feature": {
+        "description": {
+            "identifier": "farmersdelight:allium_feature"
+        },
+        "places_block": {
+            "name": "minecraft:red_flower",
+            "states": {
+                "flower_type": "allium"
+            }
+        },
+        "enforce_survivability_rules": true,
+        "enforce_placement_rules": false,
+        "may_attach_to": {
+            "bottom": [
+                {
+                    "name": "minecraft:grass"
+                }
+            ]
+        },
+        "may_replace": [
+            "minecraft:air"
+        ]
+    }
+}
