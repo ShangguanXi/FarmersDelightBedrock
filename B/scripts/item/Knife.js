@@ -14,8 +14,16 @@ import { ItemUtil } from "../lib/ItemUtil";
 function spawnLoot(path, dimenion, location) {
     return dimenion.runCommand(`loot spawn ${location.x} ${location.y} ${location.z} loot "${path}"`);
 }
+function level(level) {
+    if (!level) {
+        return 0;
+    }
+    else {
+        return level;
+    }
+}
 export class Knife {
-    //杀猪掉火腿
+    //刀掉落物改变机制有关的战利品
     hurt(args) {
         const entity = args.damageSource.damagingEntity;
         const hurt = args.hurtEntity;
@@ -25,11 +33,49 @@ export class Knife {
         const mainHand = equipment?.getEquipmentSlot(EquipmentSlot.Mainhand);
         if (!mainHand?.hasTag('farmersdelight:is_knife'))
             return;
+        const Looting = equipment?.getEquipmentSlot(EquipmentSlot.Mainhand).getItem()?.getComponent("minecraft:enchantable")?.getEnchantment("looting")?.level;
         const health = hurt.getComponent(EntityHealthComponent.componentId);
+        const onFire = hurt.getComponent('minecraft:onfire')?.onFireTicksRemaining;
         const random = Math.floor(Math.random() * 10);
-        if (!health?.currentValue && hurt.typeId === 'minecraft:pig' && random < 5) {
-            hurt.dimension.spawnItem(new ItemStack('farmersdelight:ham'), hurt.location);
+        if (!health?.currentValue && hurt.typeId === 'minecraft:pig' && random < (5 + level(Looting))) {
+            if (!onFire) {
+                hurt.dimension.spawnItem(new ItemStack('farmersdelight:ham'), hurt.location);
+            }
+            else {
+                hurt.dimension.spawnItem(new ItemStack('farmersdelight:smoked_ham'), hurt.location);
+            }
         }
+        ;
+        if (!health?.currentValue && hurt.typeId === 'minecraft:chicken') {
+            hurt.dimension.spawnItem(new ItemStack('minecraft:feather'), hurt.location);
+        }
+        ;
+        if (!health?.currentValue && hurt.typeId === 'minecraft:hoglin') {
+            if (!onFire) {
+                hurt.dimension.spawnItem(new ItemStack('farmersdelight:ham'), hurt.location);
+            }
+            else {
+                hurt.dimension.spawnItem(new ItemStack('farmersdelight:smoked_ham'), hurt.location);
+            }
+        }
+        ;
+        const leatherAnimals = ["minecraft:cow", "minecraft:mooshroom", "minecraft:donkey", "minecraft:horse", "minecraft:mule", "minecraft:llama", "minecraft:trader_llama"];
+        if (!health?.currentValue && hurt.typeId in leatherAnimals) {
+            hurt.dimension.spawnItem(new ItemStack('minecraft:leather'), hurt.location);
+        }
+        ;
+        if (!health?.currentValue && hurt.typeId === 'minecraft:rabbit') {
+            hurt.dimension.spawnItem(new ItemStack('minecraft:rabbit_hide'), hurt.location);
+        }
+        ;
+        if (!health?.currentValue && hurt.typeId === 'minecraft:shulker') {
+            hurt.dimension.spawnItem(new ItemStack('minecraft:shulker_shell'), hurt.location);
+        }
+        ;
+        if (!health?.currentValue && hurt.typeId in ['minecraft:spider', 'minecraft:cave_spider']) {
+            hurt.dimension.spawnItem(new ItemStack('minecraft:trip_wire'), hurt.location);
+        }
+        ;
     }
     //草秆
     break(args) {
