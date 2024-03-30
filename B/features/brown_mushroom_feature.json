@@ -1,0 +1,21 @@
+{
+    "format_version": "1.20.20",
+    "minecraft:single_block_feature": {
+        "description": {
+            "identifier": "farmersdelight:brown_mushroom_feature"
+        },
+        "places_block": "minecraft:brown_mushroom",
+        "enforce_survivability_rules": true,
+        "enforce_placement_rules": false,
+        "may_attach_to": {
+            "bottom": [
+                {
+                    "name": "minecraft:mycelium"
+                }
+            ]
+        },
+        "may_replace": [
+            "minecraft:air"
+        ]
+    }
+}

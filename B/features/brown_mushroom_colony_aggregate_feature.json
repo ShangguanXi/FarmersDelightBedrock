@@ -1,0 +1,12 @@
+{
+    "format_version": "1.13.0",
+    "minecraft:aggregate_feature": {
+        "description": {
+            "identifier": "farmersdelight:brown_mushroom_colony_aggregate_feature"
+        },
+        "features": [
+            "farmersdelight:scatter_brown_mushroom_colony_feature",
+            "farmersdelight:scatter_brown_mushroom_feature"
+        ]
+    }
+}

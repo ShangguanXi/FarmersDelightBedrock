@@ -1,0 +1,25 @@
+{
+    "format_version": "1.20.20",
+    "minecraft:scatter_feature": {
+        "description": {
+            "identifier": "farmersdelight:scatter_red_mushroom_feature"
+        },
+        "places_feature": "farmersdelight:red_mushroom_feature",
+        "iterations": 25,
+        "x": {
+            "distribution": "uniform",
+            "extent": [
+                2,
+                14
+            ]
+        },
+        "y": "query.above_top_solid(variable.worldx, variable.worldz)",
+        "z": {
+            "distribution": "uniform",
+            "extent": [
+                2,
+                14
+            ]
+        }
+      }
+    }
