@@ -1,6 +1,6 @@
 import { MinecraftDimensionTypes, Scoreboard, ScoreboardObjective, system, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
-import { vanillaItemList } from "../data/recipe/cuttingBoardRecipe";
+import { ItemofKnifeList } from "../data/recipe/cuttingBoardRecipe";
 
 const scoreboard: Scoreboard = world.scoreboard;
 let bool: boolean = true;
@@ -28,7 +28,7 @@ export class CuttingBoardRegistries {
         const message: string = args.message;
         try {
             
-            vanillaItemList.unshift(message)
+            ItemofKnifeList.unshift(message)
             num++;
             console.warn(`已加载 §4${num}§f 个砧板配方`);
         } catch (error) {

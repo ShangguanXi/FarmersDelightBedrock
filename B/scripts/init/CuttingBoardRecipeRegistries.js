@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { MinecraftDimensionTypes, system, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
-import { vanillaItemList } from "../data/recipe/cuttingBoardRecipe";
+import { ItemofKnifeList } from "../data/recipe/cuttingBoardRecipe";
 const scoreboard = world.scoreboard;
 let bool = true;
 let num = 0;
@@ -35,7 +35,7 @@ export class CuttingBoardRegistries {
             return;
         const message = args.message;
         try {
-            vanillaItemList.unshift(message);
+            ItemofKnifeList.unshift(message);
             num++;
             console.warn(`已加载 §4${num}§f 个砧板配方`);
         }

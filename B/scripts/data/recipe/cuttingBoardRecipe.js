@@ -9,7 +9,7 @@ const ItemofBlockList = [
     "brown_mushroom_colony",
     "red_mushroom_colony"
 ];
-const vanillaItemList = [
+const ItemofKnifeList = [
     "minecraft:cake",
     "minecraft:cooked_cod",
     "minecraft:cod",
@@ -21,6 +21,30 @@ const vanillaItemList = [
     "minecraft:mutton",
     "minecraft:cooked_mutton",
     "minecraft:cooked_chicken"
+];
+const ItemofAxeList = [
+    "minecraft:oak_door",
+    "minecraft:spruce_door",
+    "minecraft:birch_door",
+    "minecraft:jungle_door",
+    "minecraft:acacia_door",
+    "minecraft:dark_oak_door",
+    "minecraft:mangrove_door",
+    "minecraft:cherry_door",
+    "minecraft:crimson_door",
+    "minecraft:warped_door",
+    "minecraft:bamboo_door",
+    "minecraft:oak_sign",
+    "minecraft:spruce_sign",
+    "minecraft:birch_sign",
+    "minecraft:jungle_sign",
+    "minecraft:acacia_sign",
+    "minecraft:darkoak_sign",
+    "minecraft:mangrove_sign",
+    "minecraft:cherry_sign",
+    "minecraft:crimson_sign",
+    "minecraft:warped_sign",
+    "minecraft:bamboo_sign",
 ];
 const BlockofAxeList = [
     "minecraft:oak_log",
@@ -72,5 +96,5 @@ const BlockofShovelList = [
     "minecraft:clay",
     "minecraft:gravel"
 ];
-export { vanillaItemList, BlockofAxeList, BlockofKnifeList, ItemofBlockList, BlockofPickaxeList, BlockofShovelList };
+export { ItemofKnifeList, BlockofAxeList, BlockofKnifeList, ItemofBlockList, BlockofPickaxeList, BlockofShovelList, ItemofAxeList };
 //# sourceMappingURL=cuttingBoardRecipe.js.map

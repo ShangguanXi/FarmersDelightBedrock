@@ -11,7 +11,7 @@ import { BlockPermutation, EntityInventoryComponent, ItemStack, PlayerInteractWi
 import { methodEventSub } from "../lib/eventHelper";
 import { BlockWithEntity } from "./BlockWithEntity";
 import { EntityUtil } from "../lib/EntityUtil";
-import { BlockofAxeList, BlockofKnifeList, BlockofPickaxeList, BlockofShovelList, ItemofBlockList, vanillaItemList } from "../data/recipe/cuttingBoardRecipe";
+import { BlockofAxeList, BlockofKnifeList, BlockofPickaxeList, BlockofShovelList, ItemofAxeList, ItemofBlockList, ItemofKnifeList } from "../data/recipe/cuttingBoardRecipe";
 import { ItemUtil } from "../lib/ItemUtil";
 export class CuttingBoardBlock extends BlockWithEntity {
     //初始化，生成实体并初始化方块实体存储
@@ -130,9 +130,20 @@ export class CuttingBoardBlock extends BlockWithEntity {
                 canCut = true;
             }
             ;
-            if (ItemofBlockList.includes(mainHand.typeId) || vanillaItemList.includes(mainHand.typeId)) {
-                //原版物品与野生作物
+            if (ItemofBlockList.includes(mainHand.typeId) || ItemofKnifeList.includes(mainHand.typeId)) {
+                //原版需要刀的物品与野生作物
                 entity.setDynamicProperty('farmersdelight:cutTool', `{"tag": "farmersdelight:is_knife", "mode": "tag"}`);
+                entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', `{"item":"${mainHand.typeId}"}`);
+                if (EntityUtil.gameMode(player)) {
+                    ItemUtil.clearItem(container, player.selectedSlot);
+                }
+                ;
+                canCut = true;
+            }
+            ;
+            if (ItemofAxeList.includes(mainHand.typeId)) {
+                //原版需要斧头的物品
+                entity.setDynamicProperty('farmersdelight:cutTool', `{"tag": "minecraft:is_axe", "mode": "tag"}`);
                 entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', `{"item":"${mainHand.typeId}"}`);
                 if (EntityUtil.gameMode(player)) {
                     ItemUtil.clearItem(container, player.selectedSlot);

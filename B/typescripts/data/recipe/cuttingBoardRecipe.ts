@@ -10,7 +10,7 @@ const ItemofBlockList: string[] = [
     "brown_mushroom_colony",
     "red_mushroom_colony"
 ];
-const vanillaItemList: string[] = [
+const ItemofKnifeList: string[] = [
     "minecraft:cake",
     "minecraft:cooked_cod",
     "minecraft:cod",
@@ -22,6 +22,30 @@ const vanillaItemList: string[] = [
     "minecraft:mutton",
     "minecraft:cooked_mutton",
     "minecraft:cooked_chicken"
+];
+const ItemofAxeList: string[] = [
+    "minecraft:oak_door",
+    "minecraft:spruce_door",
+    "minecraft:birch_door",
+    "minecraft:jungle_door",
+    "minecraft:acacia_door",
+    "minecraft:dark_oak_door",
+    "minecraft:mangrove_door",
+    "minecraft:cherry_door",
+    "minecraft:crimson_door",
+    "minecraft:warped_door",
+    "minecraft:bamboo_door",
+    "minecraft:oak_sign",
+    "minecraft:spruce_sign",
+    "minecraft:birch_sign",
+    "minecraft:jungle_sign",
+    "minecraft:acacia_sign",
+    "minecraft:darkoak_sign",
+    "minecraft:mangrove_sign",
+    "minecraft:cherry_sign",
+    "minecraft:crimson_sign",
+    "minecraft:warped_sign",
+    "minecraft:bamboo_sign" ,
 ];
 const BlockofAxeList: string[] = [
     "minecraft:oak_log",
@@ -74,4 +98,4 @@ const BlockofShovelList: string[] = [
     "minecraft:gravel"
 ];
 
-export { vanillaItemList, BlockofAxeList, BlockofKnifeList, ItemofBlockList ,BlockofPickaxeList,BlockofShovelList};
+export { ItemofKnifeList, BlockofAxeList, BlockofKnifeList, ItemofBlockList ,BlockofPickaxeList,BlockofShovelList,ItemofAxeList};
