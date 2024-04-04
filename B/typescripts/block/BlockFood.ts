@@ -26,14 +26,19 @@ export class BlockFood {
                         block.setPermutation(block.permutation.withState("farmersdelight:food_block_stage", Number(block.permutation.getState("farmersdelight:food_block_stage")) + 1));
                         spawnLoot("farmersdelight/food_block/" + block.typeId.split(":")[1], block.dimension, { x: location.x + 0.5, y: location.y + 1, z: location.z + 0.5 });
                         ItemUtil.clearItem(container, player.selectedSlot)
+                        
                     }
                     else {
                         player.onScreenDisplay.setActionBar({ translate: 'farmersdelight.blockfood.' + itemId });
                     }
                 }
                 else {
+                    if (block.typeId == "farmersdelight:stuffed_pumpkin_block") {
+                        spawnLoot("farmersdelight/food_block/" + block.typeId.split(":")[1], block.dimension, { x: location.x + 0.5, y: location.y + 1, z: location.z + 0.5 });
+                    }
                     spawnLoot("farmersdelight/food_block/" + block.typeId.split(":")[1] + "_over", block.dimension, { x: location.x + 0.5, y: location.y + 1, z: location.z + 0.5 });
                     block.dimension.fillBlocks({ x: location.x, y: location.y, z: location.z }, { x: location.x, y: location.y, z: location.z }, "minecraft:air")
+
                 };
 
             };
@@ -51,7 +56,7 @@ export class BlockFood {
                 else {
                     block.dimension.fillBlocks({ x: location.x, y: location.y, z: location.z }, { x: location.x, y: location.y, z: location.z }, "minecraft:air")
                 };
-               
+
             }
 
         }

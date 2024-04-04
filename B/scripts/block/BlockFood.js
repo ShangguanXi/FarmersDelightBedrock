@@ -41,6 +41,9 @@ export class BlockFood {
                     }
                 }
                 else {
+                    if (block.typeId == "farmersdelight:stuffed_pumpkin_block") {
+                        spawnLoot("farmersdelight/food_block/" + block.typeId.split(":")[1], block.dimension, { x: location.x + 0.5, y: location.y + 1, z: location.z + 0.5 });
+                    }
                     spawnLoot("farmersdelight/food_block/" + block.typeId.split(":")[1] + "_over", block.dimension, { x: location.x + 0.5, y: location.y + 1, z: location.z + 0.5 });
                     block.dimension.fillBlocks({ x: location.x, y: location.y, z: location.z }, { x: location.x, y: location.y, z: location.z }, "minecraft:air");
                 }
