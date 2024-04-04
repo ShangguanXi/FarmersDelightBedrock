@@ -1,0 +1,268 @@
+tile.farmersdelight:stove.name=Parrilla
+tile.farmersdelight:cooking_pot.name=Olla
+tile.farmersdelight:basket.name=Cesta
+tile.farmersdelight:cutting_board.name=Tabla de picar
+tile.farmersdelight:skillet_block.name=Sartén
+tile.farmersdelight:oak_cabinet.name=Despensa de roble
+tile.farmersdelight:birch_cabinet.name=Despensa de abedul
+tile.farmersdelight:spruce_cabinet.name=Despensa de abeto
+tile.farmersdelight:jungle_cabinet.name=Despensa de jungla
+tile.farmersdelight:acacia_cabinet.name=Despensa de acacia
+tile.farmersdelight:dark_oak_cabinet.name=Despensa de roble oscuro
+tile.farmersdelight:mangrove_cabinet.name=Despensa carmesí
+tile.farmersdelight:crimson_cabinet.name=Despensa deformada
+tile.farmersdelight:warped_cabinet.name=Despensa deformado
+tile.farmersdelight:cherry_cabinet.name=Despensa de cerezo
+tile.farmersdelight:bamboo_cabinet.name=Despensa de bambú
+entity.farmersdelight:oak_cabinet.name=Despensa de roble
+entity.farmersdelight:birch_cabinet.name=Despensa de abedul
+entity.farmersdelight:spruce_cabinet.name=Despensa de abeto
+entity.farmersdelight:jungle_cabinet.name=Despensa de jungla
+entity.farmersdelight:acacia_cabinet.name=Despensa de acacia
+entity.farmersdelight:dark_oak_cabinet.name=Despensa de roble oscuro
+entity.farmersdelight:mangrove_cabinet.name=Despensa de manglar
+entity.farmersdelight:crimson_cabinet.name=Despensa carmesí
+entity.farmersdelight:warped_cabinet.name=Despensa deformado
+entity.farmersdelight:cherry_cabinet.name=Despensa de cerezo
+entity.farmersdelight:bamboo_cabinet.name=Despensa de bambú
+item.farmersdelight:rope=Cuerda
+tile.farmersdelight:safety_net.name=Red de seguridad
+tile.farmersdelight:canvas_rug.name=Alfombra de tela
+tile.farmersdelight:tatami.name=Bloque de tatami
+tile.farmersdelight:tatami_mat.name=Tatami completo
+item.farmersdelight:tatami_mat=Tatami completo
+tile.farmersdelight:half_tatami_mat.name=Medio tatami
+item.farmersdelight:half_tatami_mat_item=Medio tatami
+tile.farmersdelight:organic_compost.name=Abono orgánico
+tile.farmersdelight:rich_soil.name=Suelo rico
+tile.farmersdelight:rich_soil_farmland.name=Tierras de cultivo de suelo rico
+tile.farmersdelight:carrot_crate.name=Cajón de zanahorias
+tile.farmersdelight:potato_crate.name=Cajón de patatas
+tile.farmersdelight:beetroot_crate.name=Cajón de remolachas
+tile.farmersdelight:cabbage_crate.name=Cajón de coles
+tile.farmersdelight:tomato_crate.name=Cajón de tomates
+tile.farmersdelight:onion_crate.name=Cajón de cebollas
+tile.farmersdelight:rice_bale.name=Paca de arroz
+tile.farmersdelight:rice_bag.name=Bolsa de arroz
+tile.farmersdelight:straw_bale.name=Paca de paja
+
+tile.farmersdelight:canvas_sign.name=Cartel de tela
+tile.farmersdelight:white_canvas_sign.name=Cartel de blanca
+tile.farmersdelight:orange_canvas_sign.name=Cartel de naranja
+tile.farmersdelight:magenta_canvas_sign.name=Cartel de magenta
+tile.farmersdelight:light_blue_canvas_sign.name=Cartel de azul claro
+tile.farmersdelight:yellow_canvas_sign.name=Cartel de amarilla
+tile.farmersdelight:lime_canvas_sign.name=Cartel de verde lima
+tile.farmersdelight:pink_canvas_sign.name=Cartel de rosa
+tile.farmersdelight:gray_canvas_sign.name=Cartel de gris
+tile.farmersdelight:light_gray_canvas_sign.name=Cartel de gris claro
+tile.farmersdelight:cyan_canvas_sign.name=Cartel de cian
+tile.farmersdelight:purple_canvas_sign.name=Cartel de morada
+tile.farmersdelight:blue_canvas_sign.name=Cartel de azul
+tile.farmersdelight:brown_canvas_sign.name=Cartel de marrón
+tile.farmersdelight:green_canvas_sign.name=Cartel de verde
+tile.farmersdelight:red_canvas_sign.name=Cartel de roja
+tile.farmersdelight:black_canvas_sign.name=Cartel de negra
+
+tile.farmersdelight:tomatoes.name=Tomates
+tile.farmersdelight:cabbages.name=Coles
+tile.farmersdelight:onions.name=Cebollas
+tile.farmersdelight:rice_block.name=Cultivos de arrozs
+tile.farmersdelight:rice_upper_block.name=Cultivos de arroz superiores
+tile.farmersdelight:brown_mushroom_colony.name=Colonia de hongos marrones
+tile.farmersdelight:red_mushroom_colony.name=Colonia de hongos rojos
+item.farmersdelight:brown_mushroom_colony_item=Colonia de hongos marrones
+item.farmersdelight:red_mushroom_colony_item=Colonia de hongos rojos
+
+item.farmersdelight:wild_cabbages=Col silvestre
+item.farmersdelight:wild_tomatoes=Vides de tomate silvestre
+item.farmersdelight:wild_onions=Cebolla silvestre
+item.farmersdelight:wild_carrots=Zanahoria silvestre
+item.farmersdelight:wild_potatoes=Patata silvestre
+item.farmersdelight:wild_beetroots=Remolacha de mar silvestre
+item.farmersdelight:wild_rice=Arroz silvestre
+
+tile.farmersdelight:apple_pie.name=Tarta de manzana
+tile.farmersdelight:sweet_berry_cheesecake.name=Cheesecake con bayas dulces
+tile.farmersdelight:chocolate_pie.name=Pastel de chocolate
+item.farmersdelight:apple_pie=Tarta de manzana
+item.farmersdelight:sweet_berry_cheesecake=Cheesecake con bayas dulces
+item.farmersdelight:chocolate_pie=Pastel de chocolate
+
+item.farmersdelight:tomato=Tomate
+item.farmersdelight:cabbage=Col
+item.farmersdelight:onion=Cebolla
+item.farmersdelight:rice=Arroz
+item.farmersdelight:cabbage_seeds=Semillas de col
+item.farmersdelight:tomato_seeds=Semillas de tomate
+item.farmersdelight:rice_panicle=Panícula de arroz
+item.farmersdelight:rotten_tomato=Tomate podrido
+
+item.farmersdelight:straw=Paja
+item.farmersdelight:canvas=Tela
+item.farmersdelight:tree_bark=Corteza de árbol
+
+item.farmersdelight:tomato_sauce=Salsa de tomate
+item.farmersdelight:fried_egg=Huevo frito
+item.farmersdelight:milk_bottle=Botella de leche
+item.farmersdelight:hot_cocoa=Chocolate caliente
+
+item.farmersdelight:apple_cider=Sidra de manzana
+item.farmersdelight:melon_juice=Zumo de melón
+item.farmersdelight:wheat_dough=Masa de trigo
+item.farmersdelight:raw_pasta=Pasta cruda
+item.farmersdelight:pumpkin_slice=Rodaja de calabaza
+item.farmersdelight:cabbage_leaf=Hoja de col
+item.farmersdelight:minced_beef=Carne picada
+item.farmersdelight:beef_patty=Hamburguesa
+item.farmersdelight:chicken_cuts=Cortes de pollo crudos
+item.farmersdelight:cooked_chicken_cuts=Cortes de pollo cocidos
+item.farmersdelight:bacon=Tocino crudo
+item.farmersdelight:cooked_bacon=Tocino cocido
+item.farmersdelight:cod_slice=Rebanada de bacalao crudo
+item.farmersdelight:cooked_cod_slice=Rebanada de bacalao cocido
+item.farmersdelight:salmon_slice=Rebanada de salmón crudo
+item.farmersdelight:cooked_salmon_slice=Rebanada de salmón cocido
+item.farmersdelight:mutton_chops=Chuletas de cordero crudas
+item.farmersdelight:cooked_mutton_chops=Chuletas de cordero cocidas
+item.farmersdelight:ham=Jamón
+item.farmersdelight:smoked_ham=Jamón cocido
+
+item.farmersdelight:pie_crust=Corteza de tarta
+item.farmersdelight:cake_slice=Porción de pastel
+item.farmersdelight:apple_pie_slice=Porción de pastel de manzana
+item.farmersdelight:sweet_berry_cheesecake_slice=Porción de Cheesecake de bayas dulces
+item.farmersdelight:chocolate_pie_slice=Porción de pastel de chocolate
+item.farmersdelight:fruit_salad=Ensalada de frutas
+item.farmersdelight:sweet_berry_cookie=Galleta de bayas dulces
+item.farmersdelight:honey_cookie=Galleta de miel
+item.farmersdelight:melon_popsicle=Palito de melón
+
+item.farmersdelight:earthworm=Lombriz
+
+item.farmersdelight:flint_knife=Cuchillo de pedernal
+item.farmersdelight:iron_knife=Cuchillo de hierro
+item.farmersdelight:golden_knife=Cuchillo de oro
+item.farmersdelight:diamond_knife=Cuchillo de diamante
+item.farmersdelight:netherite_knife=Cuchillo de netherita
+
+item.farmersdelight:barbecue_stick=Brocheta de carne asada
+item.farmersdelight:egg_sandwich=Sándwich de huevo
+item.farmersdelight:chicken_sandwich=Sándwich de pollo
+item.farmersdelight:hamburger=Hamburguesa
+item.farmersdelight:bacon_sandwich=Sándwich de tocino
+item.farmersdelight:mutton_wrap=Wrap de cordero
+item.farmersdelight:dumplings=Albóndigas
+item.farmersdelight:stuffed_potato=Patata rellena
+item.farmersdelight:cabbage_rolls=Rollos de col
+
+item.farmersdelight:cooked_rice=Arroz cocido
+item.farmersdelight:mixed_salad=Ensalada mixta
+item.farmersdelight:nether_salad=Ensalada del Nether
+item.farmersdelight:beef_stew=Estofado de carne
+item.farmersdelight:chicken_soup=Sopa de pollo
+item.farmersdelight:vegetable_soup=Sopa de verduras
+item.farmersdelight:fish_stew=Estofado de pescado
+item.farmersdelight:fried_rice=Arroz frito
+item.farmersdelight:pumpkin_soup=Sopa de calabaza
+item.farmersdelight:baked_cod_stew=Estofado de bacalao al horno
+item.farmersdelight:noodle_soup=Sopa de fideos
+
+item.farmersdelight:bacon_and_eggs=Tocino con huevos
+item.farmersdelight:pasta_with_meatballs=Pasta con albóndigas
+item.farmersdelight:pasta_with_mutton_chop=Pasta con chuleta de cordero
+item.farmersdelight:roasted_mutton_chops=Chuletas de cordero asadas
+item.farmersdelight:steak_and_potatoes=Bistec y patatas
+item.farmersdelight:vegetable_noodles=Fideos de verduras
+item.farmersdelight:ratatouille=Ratatouille
+item.farmersdelight:squid_ink_pasta=Pasta con tinta de calamar
+item.farmersdelight:grilled_salmon=Salmón a la parrilla
+item.farmersdelight:mushroom_rice=Arroz con champiñones
+
+tile.farmersdelight:roast_chicken_block.name=Pollo asado
+item.farmersdelight:roast_chicken_block_item=Pollo asado
+item.farmersdelight:roast_chicken=Plato de pollo asado
+tile.farmersdelight:stuffed_pumpkin_block.name=Calabaza rellena
+item.farmersdelight:stuffed_pumpkin_block_item=Calabaza rellena
+item.farmersdelight:stuffed_pumpkin=Tazón de calabaza rellena
+tile.farmersdelight:honey_glazed_ham_block.name=Jamón glaseado con miel
+item.farmersdelight:honey_glazed_ham_block_item=Jamón glaseado con miel
+item.farmersdelight:honey_glazed_ham=Plato de jamón glaseado con miel
+tile.farmersdelight:shepherds_pie_block.name=Pastel de pastor
+item.farmersdelight:shepherds_pie_block_item=Pastel de pastor
+item.farmersdelight:shepherds_pie=Plato de pastel de pastor
+
+item.farmersdelight:dog_food=Comida para perros
+item.farmersdelight:horse_feed=Comida para caballos
+
+item.farmersdelight:kelp_roll=Rollos de sargazo
+item.farmersdelight:kelp_roll_slice=Rebanada de rollo de sargazo
+
+item.farmersdelight:salmon_roll=Rollos de salmón
+item.farmersdelight:cod_roll=Rollos de bacalao
+
+item.farmersdelight:bone_broth=Caldo de huesos
+item.farmersdelight:glow_berry_custard=Natilla de bayas luminosas
+
+tile.farmersdelight:rice_roll_medley_block.name=Rollos de arroz
+item.farmersdelight:rice_roll_medley_block_item=Rollos de arroz
+
+item.farmersdelight:sandy_shrub=Arbusto arenoso
+
+entity.farmersdelight:cooking_pot.name=Olla
+farmersdelight:CookingPot=Olla
+
+farmersdelight.tips.false_tool=Tal vez con una herramienta diferente...
+farmersdelight.tips.cant_cut=Esto no parece que se pueda cortar...
+farmersdelight.blockfood.minecraft:bowl=Necesitas un cuenco para comer esto.
+farmersdelight.skillet.invalid_item=Esto no se puede cocinar...
+
+pack.name=Farmer's Delight[RP]
+pack.description=¡Es hora de cultivar un poco de todo! La versión compatible es 1,20,7x
+
+item.farmersdelight:book_farmersdelight=El libro de la delicia del granjero
+
+farmersdelight.book.title=Farmer's Delight
+farmersdelight.book.cutting_board.main=The Cutting Board is a functional block without a GUI that can hold certain blocks and items and can be processed using tools.
+farmersdelight.book.stove.main=The Stove is a functional block without a GUI that provides heat for the Skillet and Cooking Pot when active, and can also smelt certain items on its own. When smelting items, it can simultaneously smelt up to 6 different items of the same or different types.
+farmersdelight.book.stove.switch_title=§l§6Ignition and Extinguishing
+farmersdelight.book.stove.switch=§rWhile active, the Stove can be extinguished using a shovel or water bucket. When extinguished, it can be reignited using flint and steel.
+farmersdelight.book.cooking_pot.main=The Cooking Pot is a functional block with a GUI that can be used for cooking and storing food.
+farmersdelight.book.cooking_pot.heat_source_title=§l§cHeat Source
+farmersdelight.book.cooking_pot.heat_source=§rTo prepare food, the Cooking Pot must have a heat source below it. You can determine the presence of a heat source by observing bubbles or smoke rising above the Cooking Pot or flames in the GUI. Heat sources can be fire (including soul fire), lava, campfires (including soul campfires), lit stoves, or any block with the tag farmersdelight:heat_source.
+farmersdelight.book.cooking_pot.use_title=§l§qUsage
+farmersdelight.book.cooking_pot.use.1=§r● The Cooking Pot has six input slots, one display slot, one container slot, and one output slot.
+farmersdelight.book.cooking_pot.use.2=§r● The Cooking Pot has a recipe display UI, accessible by opening the Cooking Pot.
+farmersdelight.book.cooking_pot.use.3=§r● The Cooking Pot recipes are all shapeless recipes; once the ingredients are placed and it is heated, the food will automatically start synthesizing.
+farmersdelight.book.cooking_pot.use.4=§r● Items in the display slot cannot be taken directly; you need to put a suitable container in the container slot to transfer them to the output slot before they can be taken out.
+farmersdelight.book.skillet.main=The Skillet is a functional block without a GUI. Its role differs in item and block forms.
+farmersdelight.book.skillet.block_title=§l§3Block State
+farmersdelight.book.skillet.block=§rIn this state, the Skillet can cook food when there is a heat source below it. Right-click to place food on the Skillet, and it can hold a maximum of one set of ingredients.
+farmersdelight.book.skillet.item_title=§l§2Item State
+farmersdelight.book.skillet.item=§rIn this state, the Skillet has additional attack damage.
+farmersdelight.book.thanks=Credits
+farmersdelight.book.thanks.sponsored_list_title=§l§eSponsors
+farmersdelight.book.thanks.sponsored_list=§r@炽雨
+farmersdelight.book.thanks.license_title=§l§9License
+farmersdelight.book.thanks.license=§rThe original Java edition Farmer's Delight is open source on GitHub and CurseForge under the MIT license. This team has legally ported Farmer's Delight while adhering to the MIT license! Special thanks to Vectorwing for creating this excellent mod.
+farmersdelight.book.thanks.developers_title=§l§6Members of Dev Team
+farmersdelight.book.thanks.developers=§r@Moaswies @ShiXuMSolo @MysticLintha @一条小黑龙 @dofes
+farmersdelight.book.thanks.contributors_title=§l§aContributors
+farmersdelight.book.thanks.contributors=§r@语翌制作组
+farmersdelight.book.thanks.chat_group_title=§l§4Community
+farmersdelight.book.thanks.chat_group.qqchat=§rQQ Group: 851992067
+farmersdelight.book.thanks.chat_group.discord=§rDiscord Channel: https://discord.gg/52putAfXnQ
+farmersdelight.book.thanks.sponsor_title=§l§gSponsorship Methods:
+farmersdelight.book.thanks.sponsor=§PayPal: lintha437@gmail.com
+
+farmersdelight.book.crop=Cultivation
+farmersdelight.book.crop.main=This mod adds four new crops: Tomatoes, Onions, Cabbages, and Rice. These crops, along with vanilla crops, can generate as wild crops around the world.
+farmersdelight.book.crop.tomatoes_title=§l§cTomatoes
+farmersdelight.book.crop.tomatoes=§rTomatoes can be obtained by breaking tomato crops, breaking wild tomato shrubs, or cutting wild tomato shrubs on the cutting board. Tomato shrubs generate in hot biomes. When tomato crops have no linked rope above them, tomatoes will grow along the rope, reaching a maximum height of two blocks.
+farmersdelight.book.crop.cabbages_title=§l§aCabbages
+farmersdelight.book.crop.cabbages=§rCabbages can be obtained by breaking cabbage crops, breaking wild cabbages, or cutting wild cabbages on the cutting board. Wild cabbages generate in beach biomes.
+farmersdelight.book.crop.onions_title=§l§6Onions
+farmersdelight.book.crop.onions=§rOnions can be obtained by breaking onion crops, breaking wild onions, or cutting wild onions on the cutting board. Wild onions generate in temperate biomes.
+farmersdelight.book.crop.rice_crop_title=§l§pRice
+farmersdelight.book.crop.rice_crop=§rRice can be obtained by breaking rice crops, breaking wild rice, cutting rice panicles on the cutting board, or cutting wild rice on the cutting board. Wild rice generates in river biomes.
+farmersdelight.book.back=Back
