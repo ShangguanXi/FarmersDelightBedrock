@@ -1,6 +1,6 @@
 import { MinecraftDimensionTypes, Scoreboard, ScoreboardObjective, system, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
-import { vanillaItemList } from "../data/recipe/skilletRecipe";
+import { vanillaItemList } from "../data/recipe/cookRecipe";
 
 const scoreboard: Scoreboard = world.scoreboard;
 let bool: boolean = true;
