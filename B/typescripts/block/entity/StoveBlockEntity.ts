@@ -74,7 +74,7 @@ export class StoveBlockEntity extends BlockEntity {
                     if (cookTime <= 0) {
                         sco.removeParticipant(itemStack);
                         sco.setScore('amount', (sco.getScore('amount') ?? 0) - 1);
-                        entity.runCommandAsync(`loot spawn ${entity.location.x + 0.5} ${entity.location.y + 1} ${entity.location.z + 0.5} loot "farmersdelight/cook/farmersdelight_cook_${name[1]}"`);
+                        entity.runCommandAsync(`loot spawn ${entity.location.x + 0.5} ${entity.location.y + 1} ${entity.location.z + 0.5} loot "${id[0]}/cook/${id[1]}"`);
                     }
                 };
 
@@ -101,7 +101,7 @@ export class StoveBlockEntity extends BlockEntity {
                     if (cookTime <= 0) {
                         sco.removeParticipant(itemStack);
                         sco.setScore('amount', (sco.getScore('amount') ?? 0) - 1);
-                        entity.runCommandAsync(`loot spawn ${entity.location.x + 0.5} ${entity.location.y + 1} ${entity.location.z + 0.5} loot "farmersdelight/cook/farmersdelight_cook_${name[1]}"`);
+                        entity.runCommandAsync(`loot spawn ${entity.location.x + 0.5} ${entity.location.y + 1} ${entity.location.z + 0.5} loot "${id[0]}/cook/${id[1]}"`);
                     }
                 };
 

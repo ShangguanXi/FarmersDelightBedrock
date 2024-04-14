@@ -21,7 +21,7 @@ export class BlockWithEntity {
                 entity.id == entity.getDynamicProperty("farmersdelight:entityId") &&
                 entity.typeId == opt.type
                 ) {
-                entityBlock = entity;
+                    entityBlock = entity;
                 break;
             };
         };

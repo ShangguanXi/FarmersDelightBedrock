@@ -43,9 +43,10 @@ export class CuttingBoardBlock extends BlockWithEntity {
             }
             else if ((mode == 'item' && cutToolData[mode] == mainHand.typeId) || (mode == 'tag' && mainHand.hasTag(cutToolData[mode]))) {
                 const id = itemId.split(':')[1];
+                const namespace = itemId.split(':')[0];
                 entity.runCommandAsync("playsound block.farmersdelight.cutting_board @a ~ ~ ~ 1 1");
-                //对应战利品表名称:"farmersdelight_<物品标识符(不含命名空间)>,放在farmersdelight/cutting_board目录下"
-                entity.runCommandAsync(`loot spawn ${entity.location.x} ${entity.location.y} ${entity.location.z} loot "farmersdelight/cutting_board/farmersdelight_${id}"`);
+                //对应战利品表名称:"<物品标识符(不含命名空间)>,放在<物品命名空间>/cutting_board目录下"
+                entity.runCommandAsync(`loot spawn ${entity.location.x} ${entity.location.y} ${entity.location.z} loot "${namespace}/cutting_board/${id}"`);
                 entity.setDynamicProperty('farmersdelight:cutTool', undefined);
                 entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', '{"item":"undefined"}');
                 entity.runCommandAsync(`replaceitem entity @s slot.weapon.mainhand 0 air`);
@@ -62,12 +63,12 @@ export class CuttingBoardBlock extends BlockWithEntity {
             let canCut = false;
             if (!mainHand) return
             let isBlock
-            try{
+            try {
                 BlockPermutation.resolve(mainHand.typeId);
                 entity.setProperty('farmersdelight:is_block_mode', true);
                 isBlock = true;
             }
-            catch{
+            catch {
                 entity.setProperty('farmersdelight:is_block_mode', false);
                 isBlock = false;
             }
@@ -111,7 +112,7 @@ export class CuttingBoardBlock extends BlockWithEntity {
                 };
                 canCut = true;
             };
-            if (ItemofBlockList.includes(mainHand.typeId) || ItemofKnifeList.includes(mainHand.typeId) ) {
+            if (ItemofBlockList.includes(mainHand.typeId) || ItemofKnifeList.includes(mainHand.typeId)) {
                 //原版需要刀的物品与野生作物
                 entity.setDynamicProperty('farmersdelight:cutTool', `{"tag": "farmersdelight:is_knife", "mode": "tag"}`);
                 entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', `{"item":"${mainHand.typeId}"}`);
@@ -120,7 +121,7 @@ export class CuttingBoardBlock extends BlockWithEntity {
                 };
                 canCut = true;
             };
-            if (ItemofAxeList.includes(mainHand.typeId) ) {
+            if (ItemofAxeList.includes(mainHand.typeId)) {
                 //原版需要斧头的物品
                 entity.setDynamicProperty('farmersdelight:cutTool', `{"tag": "minecraft:is_axe", "mode": "tag"}`);
                 entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', `{"item":"${mainHand.typeId}"}`);
@@ -139,7 +140,7 @@ export class CuttingBoardBlock extends BlockWithEntity {
                         //正确格式例如 "{'tag': 'farmersdelight:is_knife'}"
                         entity.setDynamicProperty('farmersdelight:cutTool', `{"${ids[1]}": "${ids[2]}", "mode": "${ids[1]}"}`);
                         entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', `{"item":"${mainHand.typeId}"}`);
-                        if (isBlock){
+                        if (isBlock) {
                             entity.runCommandAsync(`replaceitem entity @s slot.weapon.mainhand 0 ${mainHand.typeId}`);
                         }
                         if (EntityUtil.gameMode(player)) {

@@ -52,9 +52,10 @@ export class CuttingBoardBlock extends BlockWithEntity {
             }
             else if ((mode == 'item' && cutToolData[mode] == mainHand.typeId) || (mode == 'tag' && mainHand.hasTag(cutToolData[mode]))) {
                 const id = itemId.split(':')[1];
+                const namespace = itemId.split(':')[0];
                 entity.runCommandAsync("playsound block.farmersdelight.cutting_board @a ~ ~ ~ 1 1");
-                //对应战利品表名称:"farmersdelight_<物品标识符(不含命名空间)>,放在farmersdelight/cutting_board目录下"
-                entity.runCommandAsync(`loot spawn ${entity.location.x} ${entity.location.y} ${entity.location.z} loot "farmersdelight/cutting_board/farmersdelight_${id}"`);
+                //对应战利品表名称:"<物品标识符(不含命名空间)>,放在<物品命名空间>/cutting_board目录下"
+                entity.runCommandAsync(`loot spawn ${entity.location.x} ${entity.location.y} ${entity.location.z} loot "${namespace}/cutting_board/${id}"`);
                 entity.setDynamicProperty('farmersdelight:cutTool', undefined);
                 entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', '{"item":"undefined"}');
                 entity.runCommandAsync(`replaceitem entity @s slot.weapon.mainhand 0 air`);

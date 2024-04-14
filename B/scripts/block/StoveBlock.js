@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 import { EntityInventoryComponent, ItemStack, ItemUseOnAfterEvent, PlayerPlaceBlockAfterEvent, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
 import { BlockWithEntity } from "./BlockWithEntity";
-import { vanillaItemList } from "../data/recipe/skilletRecipe";
+import { vanillaItemList } from "../data/recipe/cookRecipe";
 import { EntityUtil } from "../lib/EntityUtil";
 import { ItemUtil } from "../lib/ItemUtil";
 export class StoveBlock extends BlockWithEntity {

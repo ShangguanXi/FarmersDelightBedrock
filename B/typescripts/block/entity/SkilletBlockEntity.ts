@@ -73,7 +73,7 @@ export class SkilletBlockEntity extends BlockEntity {
             }
             if (cookTime <= 0) {
                 for (let j = 0; j < num; j++) {
-                    entity.runCommandAsync(`loot spawn ${entity.location.x} ${entity.location.y + 0.4} ${entity.location.z} loot "farmersdelight/cook/farmersdelight_cook_${id[1]}"`);
+                    entity.runCommandAsync(`loot spawn ${entity.location.x} ${entity.location.y + 0.4} ${entity.location.z} loot "${id[0]}/cook/${id[1]}"`);
                 }
                 sco.removeParticipant(amountId);
                 sco.setScore('amount', (sco.getScore("amount") ?? 0) - num);

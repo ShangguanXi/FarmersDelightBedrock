@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { MinecraftDimensionTypes, system, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
-import { vanillaItemList } from "../data/recipe/skilletRecipe";
+import { vanillaItemList } from "../data/recipe/cookRecipe";
 const scoreboard = world.scoreboard;
 let bool = true;
 let num = 0;
