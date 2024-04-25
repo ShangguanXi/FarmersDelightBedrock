@@ -6,13 +6,13 @@
         "uuid": "d0131071-9ec1-edcd-6871-857c700703d8",
         "version": [
             1,
-            5,
-            3
+            6,
+            1
         ],
         "min_engine_version": [
             1,
             20,
-            70
+            80
         ]
     },
     "modules": [
@@ -44,13 +44,13 @@
             "uuid": "98836a6c-fe16-60f4-87a4-5afb6439bd9f",
             "version": [
                 1,
-                5,
-                3
+                6,
+                1
             ]
         },
         {
             "module_name": "@minecraft/server",
-            "version": "1.10.0-beta"
+            "version": "1.11.0-beta"
         },
         {
             "module_name": "@minecraft/server-ui",

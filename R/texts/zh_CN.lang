@@ -235,7 +235,7 @@ farmersdelight.blockfood.minecraft:bowl=你需要一个碗以食用它。
 farmersdelight.skillet.invalid_item=这东西可放不进去……
 
 pack.name=农夫乐事[资源包]
-pack.description=是时候种点好东西了！支持的版本为1.20.7x
+pack.description=是时候种点好东西了！支持的版本为1.20.8x
 
 item.farmersdelight:book_farmersdelight=农夫大典
 
@@ -259,7 +259,7 @@ farmersdelight.book.skillet.item_title=§l§2物品状态
 farmersdelight.book.skillet.item=§r此状态下的煎锅拥有额外的攻击力。
 farmersdelight.book.thanks=鸣谢
 farmersdelight.book.thanks.sponsored_list_title=§l§e赞助名单
-farmersdelight.book.thanks.sponsored_list=§r@炽雨
+farmersdelight.book.thanks.sponsored_list=§r@炽雨 @Lis.kai
 farmersdelight.book.thanks.license_title=§l§9授权许可
 farmersdelight.book.thanks.license=§r原Java版农夫乐事在GitHub及Curseforge上以MIT协议开源，本团队在遵循MIT协议的情况下进行合法移植！感谢Vectorwing创作出农夫乐事这一款优秀模组。
 farmersdelight.book.thanks.developers_title=§l§6开发组成员
