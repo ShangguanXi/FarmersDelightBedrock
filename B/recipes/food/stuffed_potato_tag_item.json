@@ -21,9 +21,8 @@
                 "item": "minecraft:milk_bucket"
             }
         ],
-        "result": 
-            {
-                "item": "farmersdelight:stuffed_potato"
-            }
+        "result": {
+            "item": "farmersdelight:stuffed_potato"
+        }
     }
 }
