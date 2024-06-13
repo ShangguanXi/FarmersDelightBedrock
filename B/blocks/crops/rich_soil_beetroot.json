@@ -172,7 +172,7 @@
                 "components": {
                     "minecraft:material_instances": {
                         "*": {
-                            "texture": "beetroots_stage3",
+                            "texture": "beetroots_stage2",
                             "ambient_occlusion": false,
                             "face_dimming": false,
                             "render_method": "alpha_test"
