@@ -13,7 +13,7 @@
     "farmersdelight:safety_net": {
         "sound": "cloth"
     },
-    "farmersdelight:rope": {
+    "farmersdelight:rope_block": {
         "sound": "cloth"
     },
     "farmersdelight:cabbage_block": {
@@ -115,7 +115,7 @@
     "farmersdelight:cooking_pot": {
         "sound": "metal"
     },
-    "farmersdelight:skillet": {
+    "farmersdelight:skillet_block": {
         "sound": "metal"
     },
     "farmersdelight:beetroot_crate": {
