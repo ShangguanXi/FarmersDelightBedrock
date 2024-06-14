@@ -28,7 +28,7 @@ export class RiceBlock {
                 return;
             placeStructure(block.dimension, 'farmersdelight:rice_crop', water.location);
             if (EntityUtil.gameMode(player))
-                ItemUtil.clearItem(player.getComponent('inventory')?.container, player.selectedSlot);
+                ItemUtil.clearItem(player.getComponent('inventory')?.container, player.selectedSlotIndex);
         });
     }
     //防止水被装走
@@ -41,7 +41,7 @@ export class RiceBlock {
     }
 }
 __decorate([
-    methodEventSub(world.beforeEvents.playerInteractWithBlock),
+    methodEventSub(world.afterEvents.playerInteractWithBlock),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [PlayerInteractWithBlockBeforeEvent]),
     __metadata("design:returntype", void 0)

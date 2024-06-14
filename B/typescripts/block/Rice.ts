@@ -9,7 +9,7 @@ function placeStructure(dimension: Dimension, structure : string, location: Vect
 
 export class RiceBlock {
     //稻米种植
-    @methodEventSub(world.beforeEvents.playerInteractWithBlock)
+    @methodEventSub(world.afterEvents.playerInteractWithBlock)
     tryPlaceBlock(args: PlayerInteractWithBlockBeforeEvent) {
         const itemStack = args.itemStack;
         const block = args.block;
@@ -19,7 +19,7 @@ export class RiceBlock {
             const water = block.above();
             if (!(water?.typeId == 'minecraft:water' && water?.permutation.getState('liquid_depth') == 0)) return
             placeStructure(block.dimension, 'farmersdelight:rice_crop', water.location);
-            if (EntityUtil.gameMode(player)) ItemUtil.clearItem(player.getComponent('inventory')?.container as Container, player.selectedSlot)
+            if (EntityUtil.gameMode(player)) ItemUtil.clearItem(player.getComponent('inventory')?.container as Container, player.selectedSlotIndex)
         })
     }
     //防止水被装走

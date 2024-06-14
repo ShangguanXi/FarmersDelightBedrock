@@ -50,7 +50,7 @@ export class SKilletBlock extends BlockWithEntity {
                 sco.setScore('amount', itemAmount);
                 sco.setScore(`${sco.getScores().length}+${itemAmount}G`, 30);
                 if (EntityUtil.gameMode(player)) {
-                    ItemUtil.clearItem(container, player.selectedSlot, itemAmount);
+                    ItemUtil.clearItem(container, player.selectedSlotIndex, itemAmount);
                 }
             }
             else if (itemStack.typeId == invItemStack) {
@@ -60,14 +60,14 @@ export class SKilletBlock extends BlockWithEntity {
                     sco.setScore('amount', amount + itemAmount);
                     sco.setScore(`${sco.getScores().length}+${itemAmount}G`, 30);
                     if (EntityUtil.gameMode(player)) {
-                        ItemUtil.clearItem(container, player.selectedSlot, itemAmount);
+                        ItemUtil.clearItem(container, player.selectedSlotIndex, itemAmount);
                     }
                 }
                 else {
                     sco.setScore('amount', amount + removeAmount);
                     sco.setScore(`${sco.getScores().length}+${removeAmount}G`, 30);
                     if (EntityUtil.gameMode(player)) {
-                        ItemUtil.clearItem(container, player.selectedSlot, removeAmount);
+                        ItemUtil.clearItem(container, player.selectedSlotIndex, removeAmount);
                     }
                 }
             }

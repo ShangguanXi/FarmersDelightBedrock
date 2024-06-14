@@ -29,7 +29,7 @@ export class FertilizerItem {
                     block.setPermutation(block.permutation.withState("composter_fill_level", Number(block.permutation.getState("composter_fill_level")) + 1));
                 }
                 block.dimension.spawnParticle("minecraft:crop_growth_emitter", { x: block.location.x + 0.5, y: block.location.y + 0.5, z: block.location.z + 0.5 });
-                ItemUtil.clearItem(container, player.selectedSlot);
+                ItemUtil.clearItem(container, player.selectedSlotIndex);
             }
         }
     }

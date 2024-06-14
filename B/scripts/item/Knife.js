@@ -90,7 +90,7 @@ export class Knife {
             const container = player.getComponent(EntityInventoryComponent.componentId)?.container;
             if (!container)
                 return;
-            ItemUtil.damageItem(container, player.selectedSlot);
+            ItemUtil.damageItem(container, player.selectedSlotIndex);
             if (blockTypeId == "minecraft:tallgrass") {
                 spawnLoot('farmersdelight/straw_from_grass', block.dimension, block.location);
             }
@@ -127,7 +127,7 @@ export class Knife {
             const container = player.getComponent(EntityInventoryComponent.componentId)?.container;
             if (!container)
                 return;
-            ItemUtil.damageItem(container, player.selectedSlot);
+            ItemUtil.damageItem(container, player.selectedSlotIndex);
         }
         if (face == Direction.Up || face == Direction.Down) {
             const direction = EntityUtil.cardinalDirection(player);

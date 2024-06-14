@@ -89,7 +89,7 @@ export class Food {
                 if (target.typeId != 'minecraft:wolf') return
                 args.cancel = true;
                 system.run(() => {
-                    if (EntityUtil.gameMode(player)) ItemUtil.clearItem(player.getComponent(EntityInventoryComponent.componentId)?.container as Container, player.selectedSlot);
+                    if (EntityUtil.gameMode(player)) ItemUtil.clearItem(player.getComponent(EntityInventoryComponent.componentId)?.container as Container, player.selectedSlotIndex);
                     target.addEffect('speed', 6000);
                     target.addEffect('strength', 6000);
                     target.addEffect('resistance', 6000);
@@ -99,7 +99,7 @@ export class Food {
                 if (!horseFeedTargets.includes(target.typeId)) return
                 args.cancel = true;
                 system.run(() => {
-                    if (EntityUtil.gameMode(player)) ItemUtil.clearItem(player.getComponent(EntityInventoryComponent.componentId)?.container as Container, player.selectedSlot);
+                    if (EntityUtil.gameMode(player)) ItemUtil.clearItem(player.getComponent(EntityInventoryComponent.componentId)?.container as Container, player.selectedSlotIndex);
                     const healthComp = target.getComponent('health');
                     healthComp?.resetToMaxValue();
                     target.addEffect('speed', 6000, {amplifier: 1});

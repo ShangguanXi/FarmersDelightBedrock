@@ -36,7 +36,7 @@ export class TatamiMatBlock {
             const otherPerm = BlockPermutation.resolve('farmersdelight:tatami_mat_other', { 'minecraft:cardinal_direction': otherDirection, 'farmersdelight:init': true });
             main?.setPermutation(mainPerm);
             other?.setPermutation(otherPerm);
-            if (EntityUtil.gameMode(player)) ItemUtil.clearItem(player.getComponent('inventory')?.container as Container, player.selectedSlot);
+            if (EntityUtil.gameMode(player)) ItemUtil.clearItem(player.getComponent('inventory')?.container as Container, player.selectedSlotIndex);
         })
     }
     @methodEventSub(system.afterEvents.scriptEventReceive, { namespaces: ['farmersdelight'] })

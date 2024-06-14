@@ -36,14 +36,14 @@ export class StoveBlock extends BlockWithEntity {
         if (entity && sco && air?.typeId == "minecraft:air") {
             const amount: number = sco.getScore('amount') ?? 0;
             if (itemStack.typeId == "farmersdelight:cooking_pot") {
-                ItemUtil.clearItem(container, player.selectedSlot);
+                ItemUtil.clearItem(container, player.selectedSlotIndex);
             }
             else{
                 if (vanillaItemList.includes(itemStack.typeId) || itemStack.hasTag('farmersdelight:can_cook')) {
                     if (amount < 6) {
                         sco.setScore('amount', amount + 1);
                         sco.setScore(`${itemStack.typeId}/${amount + 1}`, 30);
-                        if (EntityUtil.gameMode(player)) ItemUtil.clearItem(container, player.selectedSlot);
+                        if (EntityUtil.gameMode(player)) ItemUtil.clearItem(container, player.selectedSlotIndex);
                     }
                 } 
                 else {

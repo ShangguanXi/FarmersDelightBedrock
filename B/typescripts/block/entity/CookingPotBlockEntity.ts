@@ -26,7 +26,7 @@ function arrowheadUtil(entity: Entity, oldItemStack: ItemStack, slot: number, co
 function heatCheck(block: Block) {
     const blockBelow = block.below()
     if (heatSources.includes(blockBelow?.typeId as string) || blockBelow?.hasTag('farmersdelight:heat_source')) return true
-    if (heatConductors.includes(blockBelow?.typeId as string) || blockBelow?.hasTag('farmersdelight:heat_conductors')){
+    if (heatConductors.includes(blockBelow?.typeId as string) || blockBelow?.hasTag('farmersdelight:heat_conductors')) {
         const blockBelow2 = block.below(2)
         if (heatSources.includes(blockBelow2?.typeId as string) || blockBelow2?.hasTag('farmersdelight:heat_source')) return true
     }
@@ -41,18 +41,32 @@ function blockEntityLoot(args: BlockEntityData, id: string) {
     if (!ObjectUtil.isEqual(args.entity.location, args.blockEntityDataLocation)) args.entity.teleport(args.blockEntityDataLocation);
     if (args.block?.typeId == id) return;
     const container: Container | undefined = args.entity.getComponent(EntityInventoryComponent.componentId)?.container;
-    const itemStack: ItemStack | undefined = container?.getItem(6);
-    if (itemStack) {
-        const typeId: string = itemStack.typeId;
-        const amount: number = itemStack.amount;
-        container?.setItem(6, undefined);
-        cookingPotblock.setLore([`§r§f目前的 ${amount} 份食物: ${typeId}`]);
+
+    for (let slot = 0; slot < 9; slot++) {
+        const itemStack: ItemStack | undefined = container?.getItem(slot);
+        if (slot != 6 && slot != 8 && itemStack) {
+            args.entity.dimension.spawnItem(itemStack, args.blockEntityDataLocation);
+        }
+        if (slot == 6) {
+            if (itemStack) {
+                const typeId: string = itemStack.typeId;
+                const amount: number = itemStack.amount;
+                container?.setItem(6, undefined);
+                cookingPotblock.setLore([`§r§f${amount} 份食物: ${typeId}`]);
+            }
+            container?.setItem(9, undefined);
+            container?.setItem(10, undefined);
+            args.entity.setDynamicProperty("farmersdelight:not_can_set", true);
+            args.entity.dimension.spawnItem(cookingPotblock, args.blockEntityDataLocation);
+        }
+        if (slot == 8) {
+            if (itemStack) {
+                args.entity.dimension.spawnItem(itemStack, args.blockEntityDataLocation);
+            }
+            BlockEntity.clearEntity(args);
+            break
+        }
     }
-    container?.setItem(9, undefined);
-    container?.setItem(10, undefined);
-    args.entity.setDynamicProperty("farmersdelight:not_can_set", true);
-    args.entity.dimension.spawnItem(cookingPotblock, args.blockEntityDataLocation);
-    BlockEntity.clearEntity(args);
 }
 export class CookingPotBlockEntity extends BlockEntity {
     @methodEventSub(world.afterEvents.dataDrivenEntityTrigger, { entityTypes: ["farmersdelight:cooking_pot"], eventTypes: ["farmersdelight:cooking_pot_tick"] })
@@ -75,7 +89,7 @@ export class CookingPotBlockEntity extends BlockEntity {
             cookingPotRecipe = new CookingPotRecipe(entity, 6, 1, ['cooking_pot'], recipes);
             recipeFactory.set(entity.id, cookingPotRecipe);
         }
-        else{
+        else {
             cookingPotRecipe = recipeFactory.get(entity.id) as CookingPotRecipe;
         }
         entity.setDynamicProperty('cookingPot:heated', heated);

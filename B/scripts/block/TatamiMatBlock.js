@@ -46,7 +46,7 @@ export class TatamiMatBlock {
             main?.setPermutation(mainPerm);
             other?.setPermutation(otherPerm);
             if (EntityUtil.gameMode(player))
-                ItemUtil.clearItem(player.getComponent('inventory')?.container, player.selectedSlot);
+                ItemUtil.clearItem(player.getComponent('inventory')?.container, player.selectedSlotIndex);
         });
     }
     tick(args) {

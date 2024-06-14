@@ -27,7 +27,7 @@ export class Colonies {
             const mainPerm = BlockPermutation.resolve(itemStack.typeId.split('_item')[0], { 'farmersdelight:growth': 4 });
             main?.setPermutation(mainPerm);
             if (EntityUtil.gameMode(player))
-                ItemUtil.clearItem(player.getComponent('inventory')?.container, player.selectedSlot);
+                ItemUtil.clearItem(player.getComponent('inventory')?.container, player.selectedSlotIndex);
         });
     }
     break(args) {
@@ -45,7 +45,7 @@ export class Colonies {
             const container = invComp?.container;
             if (!container)
                 return;
-            ItemUtil.damageItem(container, player.selectedSlot);
+            ItemUtil.damageItem(container, player.selectedSlotIndex);
         }
         else {
             spawnLoot(`farmersdelight/crops/farmersdelight_${blockId.split(':')[1]}${growth}`, player.dimension, { x: x + 0.5, y, z: z + 0.5 });

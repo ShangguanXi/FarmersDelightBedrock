@@ -43,7 +43,7 @@ export class CookingPotBlock extends BlockWithEntity {
         const location: Vector3 = block.location;
         args.cancel = true;
         system.run(() => {
-            block.dimension.fillBlocks(location, location, "minecraft:air");
+            block.dimension.setBlockType(location, "minecraft:air");
         })
     }
 }
