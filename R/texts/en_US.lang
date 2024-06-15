@@ -214,7 +214,7 @@ farmersdelight.blockfood.minecraft:bowl=You need a bowl to eat this.
 farmersdelight.skillet.invalid_item=This can't be cooked...
 
 pack.name=Farmer's Delight[RP]
-pack.description=It's time to farm a little bit of everything! Supported version is 1.20.8x
+pack.description=It's time to farm a little bit of everything! Supported version is 1.21.0
 
 item.farmersdelight:book_farmersdelight=The Book of Farmer's Delight
 

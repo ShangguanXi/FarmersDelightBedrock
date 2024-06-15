@@ -103,10 +103,14 @@ export class SKilletBlock extends BlockWithEntity {
         const hurt = args.hurtEntity;
         if (!entity || !hurt)
             return;
-        const equipment = entity.getComponent(EntityEquippableComponent.componentId);
-        const mainHand = equipment?.getEquipmentSlot(EquipmentSlot.Mainhand);
-        if (mainHand?.typeId == 'farmersdelight:skillet_block') {
-            hurt.applyDamage(8, { damagingEntity: entity, cause: EntityDamageCause.entityAttack });
+        try {
+            const equipment = entity.getComponent(EntityEquippableComponent.componentId);
+            const mainHand = equipment?.getEquipmentSlot(EquipmentSlot.Mainhand);
+            if (mainHand?.typeId == 'farmersdelight:skillet_block') {
+                hurt.applyDamage(8, { damagingEntity: entity, cause: EntityDamageCause.entityAttack });
+            }
+        }
+        catch (error) {
         }
     }
 }
