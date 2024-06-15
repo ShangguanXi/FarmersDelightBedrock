@@ -106,17 +106,16 @@ export const vanillaCookingPotRecipe = {
             "experience": 1.0,
             "ingredients": [
                 [
-                    { "tag": "farmersdelight:is_raw_porkchop" },
-                    { "tag": "farmersdelight:is_raw_chicken" },
-                    { "tag": "farmersdelight:is_raw_beef" },
+
                     { "item": "minecraft:porkchop" },
                     { "item": "minecraft:beef" },
                     { "item": "minecraft:chicken" },
-                    { "item": "minecraft:brown_mushroom" }
+                    { "item": "minecraft:brown_mushroom" },
+                    { "tag": "farmersdelight:is_raw_porkchop" },
+                    { "tag": "farmersdelight:is_raw_chicken" },
+                    { "tag": "farmersdelight:is_raw_beef" },
                 ],
-                {
-                    "tag": "farmersdelight:is_cabbage"
-                },
+                { "tag": "farmersdelight:is_cabbage" },
                 {
                     "tag": "farmersdelight:is_onion"
                 },
@@ -682,10 +681,10 @@ export const vanillaCookingPotRecipe = {
                 [
                     {
                         "tag": "farmersdelight:wolf_prey"
-                    }, 
+                    },
                     {
                         "item": "minecraft:chicken"
-                    }, 
+                    },
                     {
                         "item": "minecraft:mutton"
                     }
@@ -727,17 +726,3 @@ export const vanillaCookingPotRecipe = {
         }
     ]
 }
-// '{"container":{"item":"minecraft:bowl"},"time":200,"ingredients":[{"item":"minecraft:baked_potato"},{"item":"minecraft:rabbit"},{"item":"minecraft:carrot"},[{"item":"minecraft:brown_mushroom"},{"item":"minecraft:red_mushroom"}]],"result":{"item":"minecraft:rabbit_stew"}}'
-// function init(args) {
-//     console.warn(args.message);
-//     // const id = args.id;
-//     // const string = id.split(':')[1];
-//     // try {
-//     //     const json = JSON.parse(string);
-
-//     // } catch (error) {
-//     //     console.warn('is no Json');
-//     // }
-// }
-// world.beforeEvents.chatSend.subscribe(init);
-// system.afterEvents.scriptEventReceive.subscribe(init, { namespaces: ['farmersdelight'] });
