@@ -1,5 +1,5 @@
 {
-    "format_version": "1.20.0",
+    "format_version": "1.21.0",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:tatami_mat_main",
@@ -14,7 +14,7 @@
                     "y_rotation_offset": 0.0
                 }
             },
-            "properties": {
+            "states": {
                 "farmersdelight:init": [false, true]
             }
         },

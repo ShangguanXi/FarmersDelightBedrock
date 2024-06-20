@@ -1,5 +1,5 @@
 {
-    "format_version": "1.20.0",
+    "format_version": "1.21.0",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:skillet_block",
@@ -66,9 +66,9 @@
             }
         ],
         "components": {
-            "minecraft:on_interact": {
-                "event": ""
-            },
+            "minecraft:custom_components": [
+                "farmersdelight:interact"
+            ],
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 1.0
             },

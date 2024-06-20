@@ -15,7 +15,7 @@
         "texture": "farmersdelight:onion"
       },
       "minecraft:block_placer": {
-        "block": "onion_block",
+        "block": "farmersdelight:onion_block",
         "use_on": [
           "farmland",
           "farmersdelight:rich_soil_farmland"

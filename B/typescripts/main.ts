@@ -23,6 +23,10 @@ import { FarmersBook } from "./item/FarmersBook";
 import { FertilizerItem } from "./item/FertilizerItem";
 import { Colonies } from "./block/Colonies";
 import { BlockFood } from "./block/BlockFood";
+import { RiceRollMedleyComponentRegister } from "./customComponents/block/RiceRollMedleyComponent";
+import { RiceSeedComponentRegister } from "./customComponents/item/RiceSeedComponent";
+import { CropComponentRegister } from "./customComponents/block/CropComponent";
+import { InteractComponentRegister } from "./customComponents/block/InteractComponent";
 
 
 CookingPotRecipeRegistries.initCookingPotScoRegistries();
@@ -52,3 +56,7 @@ new FertilizerItem();
 new BlockFood();
 new CookingPotRecipeRegistries();
 
+new RiceRollMedleyComponentRegister();
+new RiceSeedComponentRegister();
+new CropComponentRegister()
+new InteractComponentRegister()

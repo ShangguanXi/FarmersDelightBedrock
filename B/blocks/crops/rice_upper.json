@@ -1,9 +1,9 @@
 {
-    "format_version": "1.20.0",
+    "format_version": "1.21.0",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:rice_block_upper",
-            "properties": {
+            "states": {
                 "farmersdelight:growth": [
                     0,
                     1,
@@ -135,11 +135,9 @@
             "minecraft:destructible_by_explosion": {
                 "explosion_resistance": 0.0
             },
-            "minecraft:breathability": "air",
+            
             "minecraft:collision_box": false,
-            "minecraft:on_interact": {
-                "event": "farmersdelight:on_interact"
-            },
+            
             "minecraft:placement_filter": {
                 "conditions": [
                     {
@@ -152,12 +150,7 @@
                     }
                 ]
             },
-            "minecraft:random_ticking": {
-                "on_tick": {
-                    "event": "grow_stage",
-                    "target": "self"
-                }
-            },
+            
             "tag:crop": {}
         },
         "events": {

@@ -1,5 +1,5 @@
 {
-    "format_version": "1.20.10",
+    "format_version": "1.21.0",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:cooking_pot",
@@ -66,15 +66,14 @@
             }
         ],
         "components": {
+            "minecraft:custom_components": [
+                "farmersdelight:interact"
+            ],
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 1
             },
             "minecraft:destructible_by_explosion": {
                 "explosion_resistance": 6
-            },
-            "minecraft:on_interact": {
-                "event": "farmersdelight:on_interact",
-                "target": "self"
             },
             "minecraft:material_instances": {
                 "*": {
@@ -117,9 +116,6 @@
             "minecraft:geometry": {
               "identifier": "geometry.cooking_pot"
             }
-        },
-        "events": {
-            "farmersdelight:on_interact": {}
         }
     }
 }

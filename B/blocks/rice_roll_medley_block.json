@@ -1,12 +1,12 @@
 {
-    "format_version": "1.20.0",
+    "format_version": "1.21.0",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:rice_roll_medley_block",
             "menu_category": {
                 "category": "none"
             },
-            "properties": {
+            "states": {
                 "farmersdelight:food_block_stage": [
                     0,
                     1,
@@ -142,9 +142,6 @@
             }
         ],
         "components": {
-            "minecraft:on_interact": {
-                "event": "on_interact"
-            },
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 1.0
             },
@@ -152,6 +149,9 @@
             "minecraft:destructible_by_explosion": {
                 "explosion_resistance": 0.25
             },
+            "minecraft:custom_components": [
+                "farmersdelight:rice_roll_medley"
+            ],
             "minecraft:material_instances": {
                 "*": {
                     "texture": "rice_roll_medley",
@@ -192,78 +192,6 @@
                     14.0,
                     4.0,
                     14.0
-                ]
-            }
-        },
-        "events": {
-            "on_interact": {
-                "sequence": [
-                    {
-                        "condition": "query.block_state('farmersdelight:food_block_stage') <= 2",
-                        "trigger": {
-                            "event": "kelp_roll_slice",
-                            "target": "self"
-                        }
-                    },
-                    {
-                        "condition": "(query.block_state('farmersdelight:food_block_stage') >2 )&&(query.block_state('farmersdelight:food_block_stage') <= 5)",
-                        "trigger": {
-                            "event": "salmon_roll",
-                            "target": "self"
-                        }
-                    },
-                    {
-                        "condition": "(query.block_state('farmersdelight:food_block_stage') >5 )&&(query.block_state('farmersdelight:food_block_stage') <= 7)",
-                        "trigger": {
-                            "event": "cod_roll",
-                            "target": "self"
-                        }
-                    },
-                    {
-                        "condition": "query.block_state('farmersdelight:food_block_stage') == 8",
-                        "die": {
-                            "target": "block"
-                        }
-                    }
-                ]
-            },
-            "kelp_roll_slice": {
-                "sequence": [
-                    {
-                        "set_block_state": {
-                            "farmersdelight:food_block_stage": "query.block_state('farmersdelight:food_block_stage') + 1"
-                        },
-                        "decrement_stack": {},
-                        "spawn_loot": {
-                            "table": "loot_tables/farmersdelight/food_block/kelp_roll_slice.json"
-                        }
-                    }
-                ]
-            },
-            "salmon_roll": {
-                "sequence": [
-                    {
-                        "set_block_state": {
-                            "farmersdelight:food_block_stage": "query.block_state('farmersdelight:food_block_stage') + 1"
-                        },
-                        "decrement_stack": {},
-                        "spawn_loot": {
-                            "table": "loot_tables/farmersdelight/food_block/salmon_roll.json"
-                        }
-                    }
-                ]
-            },
-            "cod_roll": {
-                "sequence": [
-                    {
-                        "set_block_state": {
-                            "farmersdelight:food_block_stage": "query.block_state('farmersdelight:food_block_stage') + 1"
-                        },
-                        "decrement_stack": {},
-                        "spawn_loot": {
-                            "table": "loot_tables/farmersdelight/food_block/cod_roll.json"
-                        }
-                    }
                 ]
             }
         }

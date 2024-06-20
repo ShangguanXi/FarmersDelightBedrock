@@ -1,9 +1,9 @@
 {
-    "format_version": "1.20.0",
+    "format_version": "1.21.0",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:tomato_block",
-            "properties": {
+            "states": {
                 "farmersdelight:growth": [
                     0,
                     1,
@@ -177,6 +177,9 @@
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 0.0
             },
+            "minecraft:custom_components": [
+                "farmersdelight:tomato"
+            ],
             "minecraft:flammable": {
                 "catch_chance_modifier": 30,
                 "destroy_chance_modifier": 30
@@ -186,11 +189,7 @@
             "minecraft:destructible_by_explosion": {
                 "explosion_resistance": 0.0
             },
-            "minecraft:breathability": "air",
             "minecraft:collision_box": false,
-            "minecraft:on_interact": {
-                "event": "farmersdelight:on_interact"
-            },
             "minecraft:placement_filter": {
                 "conditions": [
                     {
@@ -204,81 +203,9 @@
                     }
                 ]
             },
-            "minecraft:random_ticking": {
-                "on_tick": {
-                    "event": "grow_stage",
-                    "target": "self"
-                }
-            },
             "tag:crop": {},
             "tag:max_growth:7": {},
             "tag:growth_property:farmersdelight:growth": {}
-        },
-        "events": {
-            "grow_stage": {
-                "randomize": [
-                    {
-                        "weight": 5
-                    },
-                    {
-                        "weight": 12,
-                        "sequence": [
-                            {
-                                "condition": "query.block_state('farmersdelight:growth')<7",
-                                "set_block_state": {
-                                    "farmersdelight:growth": "(query.block_state('farmersdelight:growth')<7) ? query.block_state('farmersdelight:growth') + 1 : 7"
-                                }
-                            }
-                        ]
-                    }
-                ]
-            },
-            "farmersdelight:on_interact": {
-                "sequence": [
-                    {
-                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_state('farmersdelight:growth')<7)",
-                        "randomize": [
-                            {
-                                "weight": 5
-                            },
-                            {
-                                "weight": 12,
-                                "sequence": [
-                                    {
-                                        "set_block_state": {
-                                            "farmersdelight:growth": "(query.block_state('farmersdelight:growth')<4) ? query.block_state('farmersdelight:growth') + 3 : 7"
-                                        }
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_state('farmersdelight:growth')<7)",
-                        "decrement_stack": {}
-                    },
-                    {
-                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_state('farmersdelight:growth')<7)",
-                        "run_command": {
-                            "command": [
-                                "particle minecraft:crop_growth_emitter ~~~"
-                            ]
-                        }
-                    },
-                    {
-                        "condition": "query.block_state('farmersdelight:growth')==7",
-                        "set_block_state": {
-                            "farmersdelight:growth": 4
-                        }
-                    },
-                    {
-                        "condition": "query.block_state('farmersdelight:growth')==7",
-                        "spawn_loot":{
-                            "table": "loot_tables/farmersdelight/crops/farmersdelight_tomato_riped.json"
-                        }
-                    }
-                ]
-            }
         }
     }
 }

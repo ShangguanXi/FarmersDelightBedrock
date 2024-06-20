@@ -1,5 +1,5 @@
 {
-    "format_version": "1.20.0",
+    "format_version": "1.21.0",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:wild_tomatoes_block",
@@ -58,7 +58,7 @@
                 ]
             },
             "minecraft:loot": "loot_tables/farmersdelight/empty.json",
-            "minecraft:breathability": "air",
+            
             "minecraft:collision_box": false
         },
         "events": {
