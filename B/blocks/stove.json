@@ -113,71 +113,16 @@
             }
         ],
         "components": {
+            "minecraft:custom_components": [
+                "farmersdelight:interact"
+            ],
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 1
             },
             "minecraft:destructible_by_explosion": {
                 "explosion_resistance": 6
             },
-            "minecraft:on_interact": {
-                "event": "farmersdelight:on_interact",
-                "condition": "!query.is_item_name_any('slot.weapon.mainhand','farmersdelight:skillet','farmersdelight:cooking_pot')",
-                "target": "self"
-            },
             "minecraft:geometry": "geometry.stove_block"
-        },
-        "events": {
-            "farmersdelight:on_interact": {
-                "sequence": [
-                    {
-                        "condition": "query.block_state('farmersdelight:is_working')==false&&query.is_item_name_any('slot.weapon.mainhand','minecraft:flint_and_steel')",
-                        "sequence": [
-                            {
-                                "set_block_state": {
-                                    "farmersdelight:is_working": true
-                                }
-                            },
-                            {
-                                "damage": {
-                                    "amount": 1,
-                                    "target": "item",
-                                    "type": "magic"
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "condition": "query.block_state('farmersdelight:is_working')==true",
-                        "sequence": [
-                            {
-                                "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:water_bucket')",
-                                "run_command": {
-                                    "command": [
-                                        "replaceitem entity @s slot.weapon.mainhand 0 bucket",
-                                        "playsound random.fizz @p ~ ~ ~ 1 1"
-                                    ],
-                                    "target": "holder"
-                                },
-                                "set_block_state": {
-                                    "farmersdelight:is_working": false
-                                }
-                            },
-                            {
-                                "condition": "query.equipped_item_any_tag('slot.weapon.mainhand','minecraft:is_shovel')",
-                                "run_command": {
-                                    "command": [
-                                        "playsound random.fizz @p ~ ~ ~ 1 1"
-                                    ],
-                                    "target": "holder"
-                                },
-                                "set_block_state": {
-                                    "farmersdelight:is_working": false
-                                }
-                            }
-                        ]
-                    }
-                ]
-            }
         }
     }
 }

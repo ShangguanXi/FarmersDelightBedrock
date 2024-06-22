@@ -82,6 +82,22 @@ export class StoveBlock extends BlockWithEntity {
                 }
             }
         }
+        const block = args.block;
+        if (itemStack.typeId == "minecraft:water_bucket" && block.permutation.getState('farmersdelight:is_working') == true) {
+            const bucket = new ItemStack("minecraft:bucket");
+            ItemUtil.replaceItem(player, player.selectedSlotIndex, bucket);
+            block.setPermutation(block.permutation.withState('farmersdelight:is_working', false));
+            world.playSound("random.fizz", { x, y, z });
+        }
+        if (itemStack.hasTag("minecraft:is_shovel") && block.permutation.getState('farmersdelight:is_working') == true) {
+            ItemUtil.damageItem(container, player.selectedSlotIndex);
+            block.setPermutation(block.permutation.withState('farmersdelight:is_working', false));
+            world.playSound("random.fizz", { x, y, z });
+        }
+        if (itemStack.typeId == "minecraft:flint_and_steel" && block.permutation.getState('farmersdelight:is_working') == false) {
+            ItemUtil.damageItem(container, player.selectedSlotIndex);
+            block.setPermutation(block.permutation.withState('farmersdelight:is_working', true));
+        }
     }
 }
 __decorate([
