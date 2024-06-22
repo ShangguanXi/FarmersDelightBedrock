@@ -97,6 +97,7 @@ export class StoveBlock extends BlockWithEntity {
         if (itemStack.typeId == "minecraft:flint_and_steel" && block.permutation.getState('farmersdelight:is_working') == false) {
             ItemUtil.damageItem(container, player.selectedSlotIndex);
             block.setPermutation(block.permutation.withState('farmersdelight:is_working', true));
+            world.playSound("fire.ignite", { x, y, z });
         }
     }
 }
