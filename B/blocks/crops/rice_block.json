@@ -1,9 +1,9 @@
 {
-    "format_version": "1.20.0",
+    "format_version": "1.21.0",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:rice_block",
-            "properties": {
+            "states": {
                 "farmersdelight:age": [
                     0,
                     1,
@@ -134,14 +134,8 @@
                             16,
                             14
                         ]
-                    },
-                    "minecraft:queued_ticking":{
-                        "interval_range": [1, 1],
-                        "on_tick":{
-                            "event": "minecraft:on_tick",
-                            "target": "self"
-                        }
                     }
+                  
                 }
             }
         ],
@@ -159,12 +153,8 @@
             "minecraft:destructible_by_explosion": {
                 "explosion_resistance": 0.0
             },
-            "minecraft:breathability": "air",
+            
             "minecraft:collision_box": false,
-            "minecraft:on_interact": {
-                "condition": "query.get_equipped_item_name == 'bone_meal'&&(query.block_state('farmersdelight:age')<=3)",
-                "event": "bone_meal_event"
-            },
             "minecraft:placement_filter": {
                 "conditions": [
                     {
@@ -184,12 +174,7 @@
                     }
                 ]
             },
-            "minecraft:random_ticking": {
-                "on_tick": {
-                    "event": "grow_stage",
-                    "target": "self"
-                }
-            },
+            
             "tag:crop_block": {}
         },
         "events": {

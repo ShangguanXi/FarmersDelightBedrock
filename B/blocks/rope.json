@@ -1,9 +1,9 @@
 {
-  "format_version": "1.20.10",
+  "format_version": "1.21.0",
   "minecraft:block": {
     "description": {
       "identifier": "farmersdelight:rope_block",
-      "properties": {
+      "states": {
         "farmersdelight:north_connected": [
           false,
           true

@@ -6,7 +6,7 @@
         "texture": "farmersdelight:cabbage_seeds"
       },
       "minecraft:block_placer": {
-        "block": "cabbage_block",
+        "block": "farmersdelight:cabbage_block",
         "use_on": [
           "farmland",
           "farmersdelight:rich_soil_farmland"

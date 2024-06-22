@@ -1,17 +1,20 @@
 {
-  "format_version": "1.20.50", 
+  "format_version": "1.20.50",
   "minecraft:item": {
     "components": {
       "minecraft:icon": {
         "texture": "farmersdelight:rice"
       },
+      "minecraft:custom_components": [
+        "farmersdelight:rice_seed"
+      ],
       "minecraft:tags": {
         "tags": [
           "farmersdelight:is_rice",
           "farmersdelight:is_fertilizer.35"
         ]
       }
-    }, 
+    },
     "description": {
       "identifier": "farmersdelight:rice",
       "menu_category": {

@@ -43,7 +43,7 @@ export class StoveBlock extends BlockWithEntity {
         if (entity && sco && air?.typeId == "minecraft:air") {
             const amount = sco.getScore('amount') ?? 0;
             if (itemStack.typeId == "farmersdelight:cooking_pot") {
-                ItemUtil.clearItem(container, player.selectedSlot);
+                ItemUtil.clearItem(container, player.selectedSlotIndex);
             }
             else {
                 if (vanillaItemList.includes(itemStack.typeId) || itemStack.hasTag('farmersdelight:can_cook')) {
@@ -51,7 +51,7 @@ export class StoveBlock extends BlockWithEntity {
                         sco.setScore('amount', amount + 1);
                         sco.setScore(`${itemStack.typeId}/${amount + 1}`, 30);
                         if (EntityUtil.gameMode(player))
-                            ItemUtil.clearItem(container, player.selectedSlot);
+                            ItemUtil.clearItem(container, player.selectedSlotIndex);
                     }
                 }
                 else {
@@ -81,6 +81,22 @@ export class StoveBlock extends BlockWithEntity {
                     }
                 }
             }
+        }
+        const block = args.block;
+        if (itemStack.typeId == "minecraft:water_bucket" && block.permutation.getState('farmersdelight:is_working') == true) {
+            const bucket = new ItemStack("minecraft:bucket");
+            ItemUtil.replaceItem(player, player.selectedSlotIndex, bucket);
+            block.setPermutation(block.permutation.withState('farmersdelight:is_working', false));
+            world.playSound("random.fizz", { x, y, z });
+        }
+        if (itemStack.hasTag("minecraft:is_shovel") && block.permutation.getState('farmersdelight:is_working') == true) {
+            ItemUtil.damageItem(container, player.selectedSlotIndex);
+            block.setPermutation(block.permutation.withState('farmersdelight:is_working', false));
+            world.playSound("random.fizz", { x, y, z });
+        }
+        if (itemStack.typeId == "minecraft:flint_and_steel" && block.permutation.getState('farmersdelight:is_working') == false) {
+            ItemUtil.damageItem(container, player.selectedSlotIndex);
+            block.setPermutation(block.permutation.withState('farmersdelight:is_working', true));
         }
     }
 }

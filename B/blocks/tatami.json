@@ -1,12 +1,12 @@
 {
-    "format_version": "1.20.0",
+    "format_version": "1.21.0",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:tatami",
             "menu_category": {
                 "category": "construction"
             },
-            "properties": {
+            "states": {
                 "farmersdelight:connection": ["none", "north", "south", "east", "west", "up", "down"]
             }
         },

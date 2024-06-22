@@ -6,7 +6,7 @@
         "texture": "farmersdelight:tomato_seeds"
       },
       "minecraft:block_placer": {
-        "block": "tomato_block",
+        "block": "farmersdelight:tomato_block",
         "use_on": [
           "farmland",
           "farmersdelight:rich_soil_farmland"

@@ -1,12 +1,12 @@
 {
-    "format_version": "1.20.0",
+    "format_version": "1.21.0",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:sweet_berry_cheesecake_block",
             "menu_category": {
                 "category": "none"
             },
-            "properties": {
+            "states": {
                 "farmersdelight:food_block_stage": [
                     0,
                     1,

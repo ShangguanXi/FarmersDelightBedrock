@@ -60,7 +60,7 @@ export class CuttingBoardBlock extends BlockWithEntity {
                 entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', '{"item":"undefined"}');
                 entity.runCommandAsync(`replaceitem entity @s slot.weapon.mainhand 0 air`);
                 if (EntityUtil.gameMode(player)) {
-                    ItemUtil.damageItem(container, player.selectedSlot);
+                    ItemUtil.damageItem(container, player.selectedSlotIndex);
                 }
             }
             else {
@@ -89,7 +89,7 @@ export class CuttingBoardBlock extends BlockWithEntity {
                 entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', `{"item":"${mainHand.typeId}"}`);
                 entity.runCommandAsync(`replaceitem entity @s slot.weapon.mainhand 0 ${mainHand.typeId}`);
                 if (EntityUtil.gameMode(player)) {
-                    ItemUtil.clearItem(container, player.selectedSlot);
+                    ItemUtil.clearItem(container, player.selectedSlotIndex);
                 }
                 ;
                 canCut = true;
@@ -101,7 +101,7 @@ export class CuttingBoardBlock extends BlockWithEntity {
                 entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', `{"item":"${mainHand.typeId}"}`);
                 entity.runCommandAsync(`replaceitem entity @s slot.weapon.mainhand 0 ${mainHand.typeId}`);
                 if (EntityUtil.gameMode(player)) {
-                    ItemUtil.clearItem(container, player.selectedSlot);
+                    ItemUtil.clearItem(container, player.selectedSlotIndex);
                 }
                 ;
                 canCut = true;
@@ -113,7 +113,7 @@ export class CuttingBoardBlock extends BlockWithEntity {
                 entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', `{"item":"${mainHand.typeId}"}`);
                 entity.runCommandAsync(`replaceitem entity @s slot.weapon.mainhand 0 ${mainHand.typeId}`);
                 if (EntityUtil.gameMode(player)) {
-                    ItemUtil.clearItem(container, player.selectedSlot);
+                    ItemUtil.clearItem(container, player.selectedSlotIndex);
                 }
                 ;
                 canCut = true;
@@ -125,7 +125,7 @@ export class CuttingBoardBlock extends BlockWithEntity {
                 entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', `{"item":"${mainHand.typeId}"}`);
                 entity.runCommandAsync(`replaceitem entity @s slot.weapon.mainhand 0 ${mainHand.typeId}`);
                 if (EntityUtil.gameMode(player)) {
-                    ItemUtil.clearItem(container, player.selectedSlot);
+                    ItemUtil.clearItem(container, player.selectedSlotIndex);
                 }
                 ;
                 canCut = true;
@@ -136,7 +136,7 @@ export class CuttingBoardBlock extends BlockWithEntity {
                 entity.setDynamicProperty('farmersdelight:cutTool', `{"tag": "farmersdelight:is_knife", "mode": "tag"}`);
                 entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', `{"item":"${mainHand.typeId}"}`);
                 if (EntityUtil.gameMode(player)) {
-                    ItemUtil.clearItem(container, player.selectedSlot);
+                    ItemUtil.clearItem(container, player.selectedSlotIndex);
                 }
                 ;
                 canCut = true;
@@ -147,7 +147,7 @@ export class CuttingBoardBlock extends BlockWithEntity {
                 entity.setDynamicProperty('farmersdelight:cutTool', `{"tag": "minecraft:is_axe", "mode": "tag"}`);
                 entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', `{"item":"${mainHand.typeId}"}`);
                 if (EntityUtil.gameMode(player)) {
-                    ItemUtil.clearItem(container, player.selectedSlot);
+                    ItemUtil.clearItem(container, player.selectedSlotIndex);
                 }
                 ;
                 canCut = true;
@@ -166,7 +166,7 @@ export class CuttingBoardBlock extends BlockWithEntity {
                             entity.runCommandAsync(`replaceitem entity @s slot.weapon.mainhand 0 ${mainHand.typeId}`);
                         }
                         if (EntityUtil.gameMode(player)) {
-                            ItemUtil.clearItem(container, player.selectedSlot);
+                            ItemUtil.clearItem(container, player.selectedSlotIndex);
                         }
                         ;
                         canCut = true;

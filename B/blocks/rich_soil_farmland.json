@@ -1,12 +1,12 @@
 {
-    "format_version": "1.20.0",
+    "format_version": "1.21.0",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:rich_soil_farmland",
             "menu_category": {
                 "category": "nature"
             },
-            "properties": {
+            "states": {
                 "farmersdelight:moisturized_amount": [
                     0,1,2,3,4,5,6,7
                 ]

@@ -1,12 +1,12 @@
 {
-    "format_version": "1.20.0",
+    "format_version": "1.21.0",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:roast_chicken_block",
             "menu_category": {
                 "category": "none"
             },
-            "properties": {
+            "states": {
                 "farmersdelight:food_block_stage": [
                     0,
                     1,
@@ -106,9 +106,6 @@
             }
         ],
         "components": {
-            "minecraft:on_interact": {
-                "event": "on_interact"
-            },
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 1.0
             },
@@ -168,9 +165,6 @@
             },
             "tag:farmersdelight.blockfood:4-item.minecraft:bowl": {},
             "tag:farmersdelight:blockfood": {}
-        },
-        "events": {
-            "on_interact": {}
         }
     }
 }

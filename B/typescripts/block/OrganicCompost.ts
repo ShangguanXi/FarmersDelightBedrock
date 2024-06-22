@@ -1,4 +1,4 @@
-import { Block, BlockPermutation, BlockVolume, Dimension, Vector, Vector3, system } from "@minecraft/server";
+import { Block, BlockPermutation, BlockVolume, Dimension, Vector3, system } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
 import { organicCompostDetectList } from "../data/organicCompostDetect";
 

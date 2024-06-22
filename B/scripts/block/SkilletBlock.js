@@ -50,7 +50,7 @@ export class SKilletBlock extends BlockWithEntity {
                 sco.setScore('amount', itemAmount);
                 sco.setScore(`${sco.getScores().length}+${itemAmount}G`, 30);
                 if (EntityUtil.gameMode(player)) {
-                    ItemUtil.clearItem(container, player.selectedSlot, itemAmount);
+                    ItemUtil.clearItem(container, player.selectedSlotIndex, itemAmount);
                 }
             }
             else if (itemStack.typeId == invItemStack) {
@@ -60,14 +60,14 @@ export class SKilletBlock extends BlockWithEntity {
                     sco.setScore('amount', amount + itemAmount);
                     sco.setScore(`${sco.getScores().length}+${itemAmount}G`, 30);
                     if (EntityUtil.gameMode(player)) {
-                        ItemUtil.clearItem(container, player.selectedSlot, itemAmount);
+                        ItemUtil.clearItem(container, player.selectedSlotIndex, itemAmount);
                     }
                 }
                 else {
                     sco.setScore('amount', amount + removeAmount);
                     sco.setScore(`${sco.getScores().length}+${removeAmount}G`, 30);
                     if (EntityUtil.gameMode(player)) {
-                        ItemUtil.clearItem(container, player.selectedSlot, removeAmount);
+                        ItemUtil.clearItem(container, player.selectedSlotIndex, removeAmount);
                     }
                 }
             }
@@ -103,10 +103,14 @@ export class SKilletBlock extends BlockWithEntity {
         const hurt = args.hurtEntity;
         if (!entity || !hurt)
             return;
-        const equipment = entity.getComponent(EntityEquippableComponent.componentId);
-        const mainHand = equipment?.getEquipmentSlot(EquipmentSlot.Mainhand);
-        if (mainHand?.typeId == 'farmersdelight:skillet_block') {
-            hurt.applyDamage(8, { damagingEntity: entity, cause: EntityDamageCause.entityAttack });
+        try {
+            const equipment = entity.getComponent(EntityEquippableComponent.componentId);
+            const mainHand = equipment?.getEquipmentSlot(EquipmentSlot.Mainhand);
+            if (mainHand?.typeId == 'farmersdelight:skillet_block') {
+                hurt.applyDamage(8, { damagingEntity: entity, cause: EntityDamageCause.entityAttack });
+            }
+        }
+        catch (error) {
         }
     }
 }

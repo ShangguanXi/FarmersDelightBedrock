@@ -2,7 +2,7 @@ tile.farmersdelight:stove.name=Fornello
 tile.farmersdelight:cooking_pot.name=Pentola
 tile.farmersdelight:basket.name=Cestino
 tile.farmersdelight:cutting_board.name=Tagliere
-tile.farmersdelight:skillet_tile.name=Padella
+tile.farmersdelight:skillet_block.name=Padella
 tile.farmersdelight:oak_cabinet.name=Armadietto di quercia
 tile.farmersdelight:birch_cabinet.name=Armadietto di betulla
 tile.farmersdelight:spruce_cabinet.name=Armadietto di abete
@@ -197,7 +197,7 @@ farmersdelight.blockfood.minecraft:bowl=Hai bisogno di una ciotola per mangiarlo
 farmersdelight.skillet.invalid_item=Questo non può essere cucinato...
 
 pack.name=Farmer's Delight[RP]
-pack.description=È ora di coltivare un po' di tutto! La versione supportata è la 1.20.8x
+pack.description=È ora di coltivare un po' di tutto! La versione supportata è la 1.21.0
 
 item.farmersdelight:book_farmersdelight=Il libro di Farmer's Delight
 

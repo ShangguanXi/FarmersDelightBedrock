@@ -98,7 +98,7 @@ export class Food {
                 args.cancel = true;
                 system.run(() => {
                     if (EntityUtil.gameMode(player))
-                        ItemUtil.clearItem(player.getComponent(EntityInventoryComponent.componentId)?.container, player.selectedSlot);
+                        ItemUtil.clearItem(player.getComponent(EntityInventoryComponent.componentId)?.container, player.selectedSlotIndex);
                     target.addEffect('speed', 6000);
                     target.addEffect('strength', 6000);
                     target.addEffect('resistance', 6000);
@@ -110,7 +110,7 @@ export class Food {
                 args.cancel = true;
                 system.run(() => {
                     if (EntityUtil.gameMode(player))
-                        ItemUtil.clearItem(player.getComponent(EntityInventoryComponent.componentId)?.container, player.selectedSlot);
+                        ItemUtil.clearItem(player.getComponent(EntityInventoryComponent.componentId)?.container, player.selectedSlotIndex);
                     const healthComp = target.getComponent('health');
                     healthComp?.resetToMaxValue();
                     target.addEffect('speed', 6000, { amplifier: 1 });

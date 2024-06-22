@@ -1,9 +1,9 @@
 {
-    "format_version": "1.20.0",
+    "format_version": "1.21.0",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:rich_soil_torchflower_crop",
-            "properties": {
+            "states": {
                 "farmersdelight:growth": [
                     0,
                     1,
@@ -133,9 +133,7 @@
                 "explosion_resistance": 0.0
             },
             "minecraft:collision_box": false,
-            "minecraft:on_interact": {
-                "event": "farmersdelight:on_interact"
-            },
+            
             "minecraft:placement_filter": {
                 "conditions": [
                     {
@@ -148,12 +146,7 @@
                     }
                 ]
             },
-            "minecraft:random_ticking": {
-                "on_tick": {
-                    "event": "grow_stage",
-                    "target": "self"
-                }
-            },
+            
             "minecraft:selection_box": {
                 "origin": [
                     -3,

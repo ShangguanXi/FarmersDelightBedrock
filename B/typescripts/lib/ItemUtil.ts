@@ -1,4 +1,4 @@
-import { Container, ItemDurabilityComponent, ItemStack, ItemType } from "@minecraft/server";
+import { Container, GameMode, ItemDurabilityComponent, ItemStack, ItemType, Player } from "@minecraft/server";
 
 
 export class ItemUtil {
@@ -28,5 +28,16 @@ export class ItemUtil {
             container.setItem(index, undefined);
             return itemAmount;
         }
+    }
+    public static replaceItem(player: Player, slot: number, newItemStack: ItemStack) {
+        const container = player.getComponent("inventory")?.container;
+        if (!container) return;
+        const itemStack = container?.getItem(slot)
+        if (!itemStack) return;
+        container.addItem(newItemStack)
+        if (player.getGameMode() == GameMode.creative) return;
+        const itemAmount = itemStack.amount;
+        itemStack.amount = itemAmount - 1;
+        container.setItem(slot, itemStack);
     }
 }

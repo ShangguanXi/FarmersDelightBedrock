@@ -49,18 +49,31 @@ function blockEntityLoot(args, id) {
     if (args.block?.typeId == id)
         return;
     const container = args.entity.getComponent(EntityInventoryComponent.componentId)?.container;
-    const itemStack = container?.getItem(6);
-    if (itemStack) {
-        const typeId = itemStack.typeId;
-        const amount = itemStack.amount;
-        container?.setItem(6, undefined);
-        cookingPotblock.setLore([`§r§f目前的 ${amount} 份食物: ${typeId}`]);
+    for (let slot = 0; slot < 9; slot++) {
+        const itemStack = container?.getItem(slot);
+        if (slot != 6 && slot != 8 && itemStack) {
+            args.entity.dimension.spawnItem(itemStack, args.blockEntityDataLocation);
+        }
+        if (slot == 6) {
+            if (itemStack) {
+                const typeId = itemStack.typeId;
+                const amount = itemStack.amount;
+                container?.setItem(6, undefined);
+                cookingPotblock.setLore([`§r§f${amount} 份食物: ${typeId}`]);
+            }
+            container?.setItem(9, undefined);
+            container?.setItem(10, undefined);
+            args.entity.setDynamicProperty("farmersdelight:not_can_set", true);
+            args.entity.dimension.spawnItem(cookingPotblock, args.blockEntityDataLocation);
+        }
+        if (slot == 8) {
+            if (itemStack) {
+                args.entity.dimension.spawnItem(itemStack, args.blockEntityDataLocation);
+            }
+            BlockEntity.clearEntity(args);
+            break;
+        }
     }
-    container?.setItem(9, undefined);
-    container?.setItem(10, undefined);
-    args.entity.setDynamicProperty("farmersdelight:not_can_set", true);
-    args.entity.dimension.spawnItem(cookingPotblock, args.blockEntityDataLocation);
-    BlockEntity.clearEntity(args);
 }
 export class CookingPotBlockEntity extends BlockEntity {
     tick(args) {
