@@ -34,14 +34,17 @@ class RichSoilComponent {
                 if (itemId == "minecraft:sugar_cane") {
                     world.playSound("dig.grass", block.location);
                     dimension.setBlockType(topLocation, "farmersdelight:rich_soil_sugar_cane_bottom");
+                    ItemUtil.clearItem(container, player.selectedSlotIndex);
                 }
                 if (itemId == "minecraft:brown_mushroom") {
                     world.playSound("dig.grass", block.location);
                     dimension.setBlockType(topLocation, "farmersdelight:brown_mushroom_colony");
+                    ItemUtil.clearItem(container, player.selectedSlotIndex);
                 }
                 if (itemId == "minecraft:red_mushroom") {
                     world.playSound("dig.grass", block.location);
                     dimension.setBlockType(topLocation, "farmersdelight:red_mushroom_colony");
+                    ItemUtil.clearItem(container, player.selectedSlotIndex);
                 }
             }
             if (hoeTag) {
