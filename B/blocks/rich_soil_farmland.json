@@ -44,6 +44,9 @@
             }
         ],
         "components": {
+            "minecraft:custom_components": [
+                "farmersdelight:rich_soil_farmland"
+            ],
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 0.6
             },
@@ -51,11 +54,6 @@
                 "explosion_resistance": 3
             },
             "minecraft:geometry": "geometry.rich_soil_farmland",
-            "minecraft:on_interact": {
-                "condition": "query.block_face == 1.0&&(query.is_item_name_any('slot.weapon.mainhand','minecraft:wheat_seeds','minecraft:beetroot_seeds','minecraft:carrot','minecraft:potato','minecraft:torchflower_seeds','minecraft:torchflower','minecraft:melon_seeds','minecraft:pumpkin_seeds'))",
-                "event": "farmersdelight:on_interact",
-                "target": "self"
-            },
             "minecraft:collision_box": {
                 "origin": [
                     -8.0,
@@ -80,16 +78,10 @@
                     16.0
                 ]
             },
-            "minecraft:random_ticking": {
-                "on_tick": {
-                    "event": "farmersdelight:random_ticking",
-                    "target": "self"
-                }
-            },
             "minecraft:loot": "loot_tables/farmersdelight/rich_soil_farmland.json",
             "tag:dirt": {},
             "tag:farmland": {}
-        },
+        }/*,
         "events": {
             "place_wheat": {
                 "sequence": [
@@ -232,6 +224,6 @@
                     }
                 ]
             }
-        }
+        }*/
     }
 }
