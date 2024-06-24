@@ -1,4 +1,4 @@
-import { BlockCustomComponent, BlockComponentPlayerDestroyEvent, StructureManager, EntityInventoryComponent, BlockComponentTickEvent, Vector3, Dimension, BlockComponentOnPlaceEvent, LocationOutOfWorldBoundariesError, ItemComponentTypes, WorldInitializeBeforeEvent, world, BlockComponentPlayerPlaceBeforeEvent, BlockVolume } from "@minecraft/server";
+import { BlockCustomComponent, BlockComponentPlayerDestroyEvent, StructureManager, EntityInventoryComponent, BlockComponentTickEvent, Vector3, Dimension, BlockComponentOnPlaceEvent, LocationOutOfWorldBoundariesError, ItemComponentTypes, WorldInitializeBeforeEvent, world, BlockComponentPlayerPlaceBeforeEvent, BlockVolume, system } from "@minecraft/server";
 import { ItemUtil } from "../../lib/ItemUtil";
 import { methodEventSub } from "../../lib/eventHelper";
 function spawnLoot(path: string, dimenion: Dimension, location: Vector3) {
@@ -117,17 +117,20 @@ class WildRiceComponent extends WildCropComponent {
         const block = args.block;
         const dimension = args.dimension;
         const upBlockId = dimension.getBlock({ x: block.location.x, y: block.location.y + 1, z: block.location.z })?.typeId
-        
+
         if (upBlockId == "minecraft:water" || upBlockId != "minecraft:air") {
             args.cancel = true;
         }
         else {
             world.structureManager.place("farmersdelight:wild_rice_no_water", dimension, block.location);
             if (!player) return;
-            if(!container)return;
-            ItemUtil.clearItem(container, player.selectedSlotIndex, 1)
-            world.playSound("dig.grass",block.location)
-            
+            if (!container) return;
+            system.runTimeout(() => {
+                ItemUtil.clearItem(container, player.selectedSlotIndex, 1)
+                world.playSound("dig.grass", block.location)
+            })
+
+
         }
     }
     onTick(args: BlockComponentTickEvent): void {
@@ -137,7 +140,7 @@ class WildRiceComponent extends WildCropComponent {
         if (blockState == 0) {
             const upBlockId = dimension.getBlock({ x: block.location.x, y: block.location.y + 1, z: block.location.z })?.typeId
             if (upBlockId != "farmersdelight:wild_rice") {
-                dimension.setBlockType( block.location, "minecraft:air")
+                dimension.setBlockType(block.location, "minecraft:air")
             }
         }
     }

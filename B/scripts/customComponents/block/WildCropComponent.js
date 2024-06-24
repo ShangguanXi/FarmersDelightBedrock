@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { ItemComponentTypes, WorldInitializeBeforeEvent, world } from "@minecraft/server";
+import { ItemComponentTypes, WorldInitializeBeforeEvent, world, system } from "@minecraft/server";
 import { ItemUtil } from "../../lib/ItemUtil";
 import { methodEventSub } from "../../lib/eventHelper";
 function spawnLoot(path, dimenion, location) {
@@ -118,8 +118,10 @@ class WildRiceComponent extends WildCropComponent {
                 return;
             if (!container)
                 return;
-            ItemUtil.clearItem(container, player.selectedSlotIndex, 1);
-            world.playSound("dig.grass", block.location);
+            system.runTimeout(() => {
+                ItemUtil.clearItem(container, player.selectedSlotIndex, 1);
+                world.playSound("dig.grass", block.location);
+            });
         }
     }
     onTick(args) {
