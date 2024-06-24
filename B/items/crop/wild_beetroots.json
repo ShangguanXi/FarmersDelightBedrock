@@ -6,7 +6,7 @@
         "texture": "farmersdelight:wild_beetroots"
       } ,
       "minecraft:block_placer": {
-        "block": "farmersdelight:wild_beetroots_block"
+        "block": "farmersdelight:wild_beetroots"
       },
       "minecraft:tags": {
         "tags": [

@@ -6,7 +6,7 @@
         "texture": "farmersdelight:sandy_shrub"
       } ,
       "minecraft:block_placer": {
-        "block": "farmersdelight:sandy_shrub_block"
+        "block": "farmersdelight:sandy_shrub"
       },
       "minecraft:tags": {
           "tags": [

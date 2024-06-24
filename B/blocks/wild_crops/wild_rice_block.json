@@ -2,60 +2,101 @@
     "format_version": "1.21.0",
     "minecraft:block": {
         "description": {
-            "identifier": "farmersdelight:wild_rice_block",
-			"menu_category":{
-				"category": "none"
-			}
+            "identifier": "farmersdelight:wild_rice",
+            "menu_category": {
+                "category": "none"
+            },
+            "states": {
+                "farmersdelight:wild_rice": [
+                    0,
+                    1
+                ]
+            }
         },
+        "permutations": [
+            {
+                "condition": "query.block_state('farmersdelight:wild_rice') == 1",
+                "components": {
+                    "minecraft:placement_filter": {
+                        "conditions": [
+                            {
+                                "block_filter": [
+                                    "farmersdelight:wild_rice"
+                                ],
+                                "allowed_faces": [
+                                    "up"
+                                ]
+                            }
+                        ]
+                    },
+                    "minecraft:material_instances": {
+                        "*": {
+                            "texture": "wild_rice_top",
+                            "render_method": "alpha_test",
+                            "ambient_occlusion": false,
+                            "face_dimming": false
+                        }
+                    }
+                }
+            },
+            {
+                "condition": "query.block_state('farmersdelight:wild_rice') == 0",
+                "components": {
+                    "minecraft:material_instances": {
+                        "*": {
+                            "texture": "wild_rice_bottom",
+                            "render_method": "alpha_test",
+                            "ambient_occlusion": false,
+                            "face_dimming": false
+                        }
+                    },
+                    "minecraft:placement_filter": {
+                        "conditions": [
+                            {
+                                "block_filter": [
+                                    "dirt",
+                                    "grass"
+                                ],
+                                "allowed_faces": [
+                                    "up"
+                                ]
+                            },
+                            {
+                                "block_filter": [
+                                    "farmersdelight:wild_rice"
+                                ],
+                                "allowed_faces": [
+                                    "down"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ],
         "components": {
+            "minecraft:custom_components": [
+                "farmersdelight:wild_rice"
+            ],
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 0.0
             },
-			"minecraft:light_dampening": 0,
+            "minecraft:light_dampening": 0,
             "minecraft:destructible_by_explosion": {
                 "explosion_resistance": 0.1
             },
             "minecraft:geometry": "geometry.rice_crop_support",
-			"minecraft:material_instances": {
-				"*": {
-					"texture": "wild_rice_bottom",
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "wild_rice_bottom",
                     "render_method": "alpha_test",
                     "ambient_occlusion": false,
                     "face_dimming": false
-				}
-			},
-			"minecraft:flammable": {
-				"catch_chance_modifier": 30,
-				"destroy_chance_modifier": 60
-			},
-            "minecraft:on_player_destroyed":{
-                "event" : "farmersdelight:break",
-                "target": "self"
+                }
             },
-            "minecraft:on_placed":{
-                "event" : "farmersdelight:placed",
-                "target": "self"
-            },
-            "minecraft:placement_filter": {
-                "conditions": [
-                    {
-                        "block_filter": [
-                            "dirt",
-                            "grass"
-                        ],
-                        "allowed_faces": [
-                            "up"
-                        ]
-                    },
-                    {
-                        "block_filter": [
-                            "farmersdelight:wild_rice_upper_block"
-                        ],
-                        "allowed_faces": [
-                            "down"
-                        ]
-                    }
-                ]
+            "minecraft:flammable": {
+                "catch_chance_modifier": 30,
+                "destroy_chance_modifier": 60
             },
             "minecraft:selection_box": {
                 "origin": [
@@ -70,55 +111,7 @@
                 ]
             },
             "minecraft:loot": "loot_tables/farmersdelight/empty.json",
-            
-            "minecraft:collision_box": false,
-            "minecraft:queued_ticking":{
-                "interval_range": [1, 1],
-                "on_tick":{
-                    "event": "minecraft:on_tick",
-                    "target": "self"
-                }
-            }
-        },
-        "events": {
-            "farmersdelight:break": {
-                "sequence": [
-                    {
-                        "condition": "!query.is_item_name_any('slot.weapon.mainhand', 'minecraft:shears')",
-                        "spawn_loot":{
-                            "table": "loot_tables/farmersdelight/crops/farmersdelight_wild_rice.json"
-                        }
-                    },
-                    {
-                        "condition": "query.is_item_name_any('slot.weapon.mainhand', 'minecraft:shears')",
-                        "spawn_loot":{
-                            "table": "loot_tables/farmersdelight/crops/farmersdelight_wild_rice_self.json"
-                        }
-                    }
-                ]
-            },
-            "farmersdelight:placed": {
-                "sequence": [
-                    {
-                        "run_command": {
-                            "command": [
-                                "setblock ~ ~+1 ~ farmersdelight:wild_rice_upper_block"
-                            ]
-                        }
-                    }
-                ]
-            },
-            "minecraft:on_tick": {
-                "sequence": [
-                    {
-                        "run_command": {
-                            "command": [
-                                "execute if block ~ ~+1 ~ air run setblock ~~~ air"
-                            ]
-                        }
-                    }
-                ]
-            }
+            "minecraft:collision_box": false
         }
     }
 }

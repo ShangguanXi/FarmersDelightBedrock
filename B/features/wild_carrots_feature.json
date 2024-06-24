@@ -4,7 +4,7 @@
         "description": {
             "identifier": "farmersdelight:wild_carrots_feature"
         },
-        "places_block": "farmersdelight:wild_carrots_block",
+        "places_block": "farmersdelight:wild_carrots",
         "enforce_survivability_rules": true,
         "enforce_placement_rules": false,
         "may_attach_to": {

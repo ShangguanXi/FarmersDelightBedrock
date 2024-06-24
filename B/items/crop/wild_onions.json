@@ -6,7 +6,7 @@
         "texture": "farmersdelight:wild_onions"
       } ,
       "minecraft:block_placer": {
-        "block": "farmersdelight:wild_onions_block"
+        "block": "farmersdelight:wild_onions"
       },
       "minecraft:tags": {
         "tags": [

@@ -4,7 +4,7 @@
         "description": {
             "identifier": "farmersdelight:sandy_shrub_feature"
         },
-        "places_block": "farmersdelight:sandy_shrub_block",
+        "places_block": "farmersdelight:sandy_shrub",
         "enforce_survivability_rules": true,
         "enforce_placement_rules": false,
         "may_attach_to": {

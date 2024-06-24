@@ -2,12 +2,15 @@
     "format_version": "1.21.0",
     "minecraft:block": {
         "description": {
-            "identifier": "farmersdelight:wild_carrots_block",
+            "identifier": "farmersdelight:wild_carrots",
 			"menu_category":{
 				"category": "none"
 			}
         },
         "components": {
+            "minecraft:custom_components": [
+                "farmersdelight:wild_carrots"
+            ],
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 0.0
             },
@@ -28,10 +31,7 @@
 				"catch_chance_modifier": 30,
 				"destroy_chance_modifier": 60
 			},
-            "minecraft:on_player_destroyed":{
-                "event" : "farmersdelight:break",
-                "target": "self"
-            },
+           
             "minecraft:placement_filter": {
                 "conditions": [
                     {
@@ -60,24 +60,6 @@
             "minecraft:loot": "loot_tables/farmersdelight/empty.json",
             
             "minecraft:collision_box": false
-        },
-        "events": {
-            "farmersdelight:break": {
-                "sequence": [
-                    {
-                        "condition": "!query.is_item_name_any('slot.weapon.mainhand', 'minecraft:shears')",
-                        "spawn_loot":{
-                            "table": "loot_tables/farmersdelight/crops/farmersdelight_wild_carrot.json"
-                        }
-                    },
-                    {
-                        "condition": "query.is_item_name_any('slot.weapon.mainhand', 'minecraft:shears')",
-                        "spawn_loot":{
-                            "table": "loot_tables/farmersdelight/crops/farmersdelight_wild_carrot_self.json"
-                        }
-                    }
-                ]
-            }
         }
     }
 }

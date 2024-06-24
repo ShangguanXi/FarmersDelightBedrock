@@ -6,7 +6,7 @@
         "texture": "farmersdelight:wild_rice"
       } ,
       "minecraft:block_placer": {
-        "block": "farmersdelight:wild_rice_block"
+        "block": "farmersdelight:wild_rice"
       },
       "minecraft:tags": {
         "tags": [

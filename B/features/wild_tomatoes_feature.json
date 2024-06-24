@@ -4,7 +4,7 @@
         "description": {
             "identifier": "farmersdelight:wild_tomatoes_feature"
         },
-        "places_block": "farmersdelight:wild_tomatoes_block",
+        "places_block": "farmersdelight:wild_tomatoes",
         "enforce_survivability_rules": true,
         "enforce_placement_rules": false,
         "may_attach_to": {

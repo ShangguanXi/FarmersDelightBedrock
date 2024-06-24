@@ -27,6 +27,7 @@ import { RiceRollMedleyComponentRegister } from "./customComponents/block/RiceRo
 import { RiceSeedComponentRegister } from "./customComponents/item/RiceSeedComponent";
 import { CropComponentRegister } from "./customComponents/block/CropComponent";
 import { InteractComponentRegister } from "./customComponents/block/InteractComponent";
+import { WildCropComponentRegister } from "./customComponents/block/WildCropComponent";
 
 
 CookingPotRecipeRegistries.initCookingPotScoRegistries();
@@ -60,3 +61,4 @@ new RiceRollMedleyComponentRegister();
 new RiceSeedComponentRegister();
 new CropComponentRegister()
 new InteractComponentRegister()
+new WildCropComponentRegister();

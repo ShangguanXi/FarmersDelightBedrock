@@ -4,7 +4,7 @@
         "description": {
             "identifier": "farmersdelight:wild_cabbages_feature"
         },
-        "places_block": "farmersdelight:wild_cabbages_block",
+        "places_block": "farmersdelight:wild_cabbages",
         "enforce_survivability_rules": true,
         "enforce_placement_rules": false,
         "may_attach_to": {

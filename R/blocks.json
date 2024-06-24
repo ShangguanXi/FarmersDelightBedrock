@@ -64,31 +64,28 @@
     "farmersdelight:rich_soil_sugar_cane_top": {
         "sound": "grass"
     },
-    "farmersdelight:wild_beetroots_block": {
+    "farmersdelight:wild_beetroots": {
         "sound": "grass"
     },
-    "farmersdelight:wild_cabbages_block": {
+    "farmersdelight:wild_cabbages": {
         "sound": "grass"
     },
-    "farmersdelight:wild_carrots_block": {
+    "farmersdelight:wild_carrots": {
         "sound": "grass"
     },
-    "farmersdelight:wild_onions_block": {
+    "farmersdelight:wild_onions": {
         "sound": "grass"
     },
-    "farmersdelight:wild_potatoes_block": {
+    "farmersdelight:wild_potatoes": {
         "sound": "grass"
     },
-    "farmersdelight:wild_rice_block": {
+    "farmersdelight:wild_rice": {
         "sound": "grass"
     },
-    "farmersdelight:wild_rice_upper_block": {
+    "farmersdelight:wild_tomatoes": {
         "sound": "grass"
     },
-    "farmersdelight:wild_tomatoes_block": {
-        "sound": "grass"
-    },
-    "farmersdelight:sandy_shrub_block": {
+    "farmersdelight:sandy_shrub": {
         "sound": "grass"
     },
     "farmersdelight:half_tatami_mat": {
@@ -116,6 +113,9 @@
         "sound": "metal"
     },
     "farmersdelight:skillet_block": {
+        "sound": "metal"
+    },
+    "farmersdelight:skillet": {
         "sound": "metal"
     },
     "farmersdelight:beetroot_crate": {
