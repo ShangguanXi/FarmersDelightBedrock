@@ -7,10 +7,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { WorldInitializeBeforeEvent, world } from "@minecraft/server";
+import { WorldInitializeBeforeEvent, world, EntityInventoryComponent, ItemStack } from "@minecraft/server";
 import { RandomUtil } from "../../lib/RandomUtil";
 import { ItemUtil } from "../../lib/ItemUtil";
 import { methodEventSub } from "../../lib/eventHelper";
+import { EntityUtil } from "../../lib/EntityUtil";
 function spawnLoot(path, dimenion, location) {
     return dimenion.runCommand(`loot spawn ${location.x} ${location.y} ${location.z} loot "${path}"`);
 }
@@ -66,6 +67,37 @@ class MushroomColonyComonent {
             }
         }
         catch (error) {
+        }
+    }
+    onPlayerDestroy(args) {
+        const brokenPerm = args.destroyedBlockPermutation;
+        const blockId = brokenPerm.type.id;
+        const player = args.player;
+        const container = player?.getComponent("inventory")?.container;
+        if (!player)
+            return;
+        if (!container)
+            return;
+        const selectedSlot = container?.getSlot(player.selectedSlotIndex);
+        if ((blockId != 'farmersdelight:brown_mushroom_colony' && blockId != 'farmersdelight:red_mushroom_colony') || !EntityUtil.gameMode(player))
+            return;
+        const growth = brokenPerm.getState('farmersdelight:growth');
+        try {
+            const itemId = selectedSlot?.typeId;
+            const { x, y, z } = args.block.location;
+            if (growth == 4 && itemId == 'minecraft:shears') {
+                player.dimension.spawnItem(new ItemStack(`${blockId}_item`), { x: x + 0.5, y, z: z + 0.5 });
+                const invComp = player.getComponent(EntityInventoryComponent.componentId);
+                const container = invComp?.container;
+                if (!container)
+                    return;
+                ItemUtil.damageItem(container, player.selectedSlotIndex);
+            }
+            else {
+                spawnLoot(`farmersdelight/crops/farmersdelight_${blockId.split(':')[1]}${growth}`, player.dimension, { x: x + 0.5, y, z: z + 0.5 });
+            }
+        }
+        catch {
         }
     }
     onRandomTick(args) {

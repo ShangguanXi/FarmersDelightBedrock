@@ -20,7 +20,6 @@ import { TatamiMatBlock } from "./block/TatamiMatBlock";
 import { CookRecipeRegistries } from "./init/CookRecipeRegistries";
 import { FarmersBook } from "./item/FarmersBook";
 import { FertilizerItem } from "./item/FertilizerItem";
-import { Colonies } from "./block/Colonies";
 import { BlockFood } from "./block/BlockFood";
 import { RiceRollMedleyComponentRegister } from "./customComponents/block/RiceRollMedleyComponent";
 import { RiceSeedComponentRegister } from "./customComponents/item/RiceSeedComponent";
@@ -29,6 +28,8 @@ import { InteractComponentRegister } from "./customComponents/block/InteractComp
 import { WildCropComponentRegister } from "./customComponents/block/WildCropComponent";
 import { RichSoilComponentRegister } from "./customComponents/block/RichSoilComponent";
 import { RichSoilFarmlandComponentRegister } from "./customComponents/block/RichSoilFarmlandComponent";
+import { MushroomColonyComonentRegister } from "./customComponents/block/MushroomColonyComonent";
+import { ColoniesComonentRegister } from "./customComponents/item/ColoniesComonent";
 
 
 CookingPotRecipeRegistries.initCookingPotScoRegistries();
@@ -50,7 +51,6 @@ new CabinetsBlockEntity();
 new RiceBlock();
 new TatamiMatBlock();
 new FarmersBook();
-new Colonies();
 new Food();
 new Knife();
 new FertilizerItem();
@@ -58,9 +58,13 @@ new BlockFood();
 new CookingPotRecipeRegistries();
 
 new RiceRollMedleyComponentRegister();
-new RiceSeedComponentRegister();
 new CropComponentRegister()
 new InteractComponentRegister()
 new WildCropComponentRegister();
 new RichSoilComponentRegister();
 new RichSoilFarmlandComponentRegister();
+new MushroomColonyComonentRegister();
+
+
+new ColoniesComonentRegister();
+new RiceSeedComponentRegister();
