@@ -54,7 +54,6 @@
                 ]
             },
             "minecraft:loot": "loot_tables/farmersdelight/torchflower.json",
-            
             "minecraft:collision_box": false
         }
     }

@@ -123,6 +123,9 @@
             }
         ],
         "components": {
+            "minecraft:custom_components": [
+                "farmersdelight:torchflower"
+            ],
             "minecraft:loot": "loot_tables/farmersdelight/crops/torchflower_crop.json",
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 0.0
