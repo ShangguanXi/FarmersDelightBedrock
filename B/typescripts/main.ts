@@ -7,7 +7,6 @@ import { StoveBlock } from "./block/StoveBlock";
 import { StoveBlockEntity } from "./block/entity/StoveBlockEntity";
 import { SKilletBlock } from "./block/SkilletBlock";
 import { SkilletBlockEntity } from "./block/entity/SkilletBlockEntity";
-import { OrganicCompost } from "./block/OrganicCompost";
 import { Knife } from "./item/Knife";
 import { TatamiBlock } from "./block/TatamiBlock";
 import { CookingPotRecipeRegistries } from "./init/CookingPotRecipeRegistries";
@@ -30,6 +29,7 @@ import { RichSoilComponentRegister } from "./customComponents/block/RichSoilComp
 import { RichSoilFarmlandComponentRegister } from "./customComponents/block/RichSoilFarmlandComponent";
 import { MushroomColonyComonentRegister } from "./customComponents/block/MushroomColonyComonent";
 import { ColoniesComonentRegister } from "./customComponents/item/ColoniesComonent";
+import { OrganicCompostComonentRegister } from "./customComponents/block/organic_compost";
 
 
 CookingPotRecipeRegistries.initCookingPotScoRegistries();
@@ -45,7 +45,6 @@ new StoveBlockEntity();
 new SKilletBlock();
 new SkilletBlockEntity();
 new TatamiBlock();
-new OrganicCompost();
 new Cabinets();
 new CabinetsBlockEntity();
 new RiceBlock();
@@ -64,6 +63,7 @@ new WildCropComponentRegister();
 new RichSoilComponentRegister();
 new RichSoilFarmlandComponentRegister();
 new MushroomColonyComonentRegister();
+new OrganicCompostComonentRegister();
 
 
 new ColoniesComonentRegister();

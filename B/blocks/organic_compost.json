@@ -62,6 +62,9 @@
             }
         ],
         "components": {
+            "minecraft:custom_components": [
+                "farmersdelight:organic_compost"
+            ],
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 0.6
             },
@@ -72,15 +75,6 @@
             
             "tag:dirt": {},
             "tag:compost_activators": {}
-        },
-        "events": {
-            "grow_stage": {
-                "run_command": {
-                    "command": [
-                        "scriptevent farmersdelight:organic_transfer"
-                    ]
-                }
-            }
         }
     }
 }
