@@ -1,18 +1,20 @@
 {
-  "format_version": "1.20.50",
+  "format_version": "1.20.80",
   "minecraft:item": {
     "components": {
-      "minecraft:use_modifiers": {
-        "use_duration": 1.6
-      },
       "minecraft:food": {
+        "can_always_eat": false,
         "nutrition": 3,
-        "saturation_modifier": 0.3,
-        "can_always_eat": false
+        "saturation_modifier": 0.3
+      },
+      "minecraft:icon": {
+        "textures": {
+          "default": "farmersdelight:apple_pie_slice"
+        }
       },
       "minecraft:use_animation": "eat",
-      "minecraft:icon": {
-        "texture": "farmersdelight:apple_pie_slice"
+      "minecraft:use_modifiers": {
+        "use_duration": 1.6
       }
     },
     "description": {

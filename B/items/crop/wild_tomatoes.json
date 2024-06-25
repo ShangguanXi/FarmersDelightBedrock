@@ -1,12 +1,14 @@
 {
-  "format_version": "1.20.50", 
+  "format_version": "1.20.80",
   "minecraft:item": {
     "components": {
-      "minecraft:icon": {
-        "texture": "farmersdelight:wild_tomatoes"
-      } ,
       "minecraft:block_placer": {
         "block": "farmersdelight:wild_tomatoes"
+      },
+      "minecraft:icon": {
+        "textures": {
+          "default": "farmersdelight:wild_tomatoes"
+        }
       },
       "minecraft:tags": {
         "tags": [
@@ -14,7 +16,7 @@
           "farmersdelight:is_fertilizer.65"
         ]
       }
-    }, 
+    },
     "description": {
       "identifier": "farmersdelight:wild_tomatoes",
       "menu_category": {

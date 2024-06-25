@@ -1,12 +1,14 @@
 {
-  "format_version": "1.20.50", 
+  "format_version": "1.20.80",
   "minecraft:item": {
     "components": {
-      "minecraft:icon": {
-        "texture": "farmersdelight:wild_beetroots"
-      } ,
       "minecraft:block_placer": {
         "block": "farmersdelight:wild_beetroots"
+      },
+      "minecraft:icon": {
+        "textures": {
+          "default": "farmersdelight:wild_beetroots"
+        }
       },
       "minecraft:tags": {
         "tags": [
@@ -14,7 +16,7 @@
           "farmersdelight:is_fertilizer.65"
         ]
       }
-    }, 
+    },
     "description": {
       "identifier": "farmersdelight:wild_beetroots",
       "menu_category": {

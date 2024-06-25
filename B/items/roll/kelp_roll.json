@@ -1,23 +1,25 @@
 {
-  "format_version": "1.20.50",
+  "format_version": "1.20.80",
   "minecraft:item": {
     "components": {
-      "minecraft:use_modifiers": {
-        "use_duration": 2.0
-      },
       "minecraft:food": {
+        "can_always_eat": false,
         "nutrition": 12,
-        "saturation_modifier": 0.6,
-        "can_always_eat": false
+        "saturation_modifier": 0.6
       },
-      "minecraft:use_animation": "eat",
       "minecraft:icon": {
-        "texture": "farmersdelight:kelp_roll"
+        "textures": {
+          "default": "farmersdelight:kelp_roll"
+        }
       },
       "minecraft:tags": {
-          "tags": [
-              "farmersdelight:can_cut.tag.farmersdelight:is_knife"
-          ]
+        "tags": [
+          "farmersdelight:can_cut.tag.farmersdelight:is_knife"
+        ]
+      },
+      "minecraft:use_animation": "eat",
+      "minecraft:use_modifiers": {
+        "use_duration": 2.0
       }
     },
     "description": {

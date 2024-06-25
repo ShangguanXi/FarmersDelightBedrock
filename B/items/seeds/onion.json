@@ -1,19 +1,7 @@
 {
-  "format_version": "1.20.50", 
+  "format_version": "1.20.80",
   "minecraft:item": {
     "components": {
-      "minecraft:use_modifiers": {
-        "use_duration": 1.6
-      },
-      "minecraft:food": {
-        "nutrition": 2,
-        "saturation_modifier": 0.4,
-        "can_always_eat": false
-      },
-      "minecraft:use_animation": "eat",
-      "minecraft:icon": {
-        "texture": "farmersdelight:onion"
-      },
       "minecraft:block_placer": {
         "block": "farmersdelight:onion_block",
         "use_on": [
@@ -21,13 +9,27 @@
           "farmersdelight:rich_soil_farmland"
         ]
       },
+      "minecraft:food": {
+        "can_always_eat": false,
+        "nutrition": 2,
+        "saturation_modifier": 0.4
+      },
+      "minecraft:icon": {
+        "textures": {
+          "default": "farmersdelight:onion"
+        }
+      },
       "minecraft:tags": {
         "tags": [
           "farmersdelight:is_onion",
           "farmersdelight:is_fertilizer.35"
         ]
+      },
+      "minecraft:use_animation": "eat",
+      "minecraft:use_modifiers": {
+        "use_duration": 1.6
       }
-    }, 
+    },
     "description": {
       "identifier": "farmersdelight:onion",
       "menu_category": {

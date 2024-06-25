@@ -1,26 +1,28 @@
 {
-  "format_version": "1.20.50", 
+  "format_version": "1.20.80",
   "minecraft:item": {
     "components": {
-      "minecraft:use_modifiers": {
-        "use_duration": 1.6
-      },
       "minecraft:food": {
+        "can_always_eat": false,
         "nutrition": 1,
-        "saturation_modifier": 0.4,
-        "can_always_eat": false
+        "saturation_modifier": 0.4
       },
-      "minecraft:use_animation": "eat",
       "minecraft:icon": {
-        "texture": "farmersdelight:cabbage_leaf"
+        "textures": {
+          "default": "farmersdelight:cabbage_leaf"
+        }
       },
       "minecraft:tags": {
-          "tags": [
-              "farmersdelight:is_cabbage",
-              "farmersdelight:is_fertilizer.30"
-          ]
+        "tags": [
+          "farmersdelight:is_cabbage",
+          "farmersdelight:is_fertilizer.30"
+        ]
+      },
+      "minecraft:use_animation": "eat",
+      "minecraft:use_modifiers": {
+        "use_duration": 1.6
       }
-    }, 
+    },
     "description": {
       "identifier": "farmersdelight:cabbage_leaf",
       "menu_category": {

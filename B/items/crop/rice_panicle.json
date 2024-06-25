@@ -1,9 +1,11 @@
 {
-  "format_version": "1.20.50", 
+  "format_version": "1.20.80",
   "minecraft:item": {
     "components": {
       "minecraft:icon": {
-        "texture": "farmersdelight:rice_panicle"
+        "textures": {
+          "default": "farmersdelight:rice_panicle"
+        }
       },
       "minecraft:tags": {
         "tags": [
@@ -11,7 +13,7 @@
           "farmersdelight:is_fertilizer.65"
         ]
       }
-    }, 
+    },
     "description": {
       "identifier": "farmersdelight:rice_panicle",
       "menu_category": {

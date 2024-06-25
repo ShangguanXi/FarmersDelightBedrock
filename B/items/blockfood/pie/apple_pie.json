@@ -1,27 +1,29 @@
 {
-    "format_version": "1.20.50",
-    "minecraft:item": {
-        "components": {
-            "minecraft:block_placer": {
-                "block": "farmersdelight:apple_pie_block",
-                "use_block_description": true
-            },
-            "minecraft:icon": {
-                "texture": "farmersdelight:apple_pie"
-            },
-            "minecraft:tags": {
-                "tags": [
-                    "farmersdelight:can_cut.tag.farmersdelight:is_knife"
-                ]
-            }
-        },
-        "description": {
-            "identifier": "farmersdelight:apple_pie",
-            "menu_category": {
-              "category": "equipment",
-              "group": "itemGroup.name.miscFood"
-            }
-        },
-        "events": {}
-    }
+  "format_version": "1.20.80",
+  "minecraft:item": {
+    "components": {
+      "minecraft:block_placer": {
+        "block": "farmersdelight:apple_pie_block",
+        "use_block_description": true
+      },
+      "minecraft:icon": {
+        "textures": {
+          "default": "farmersdelight:apple_pie"
+        }
+      },
+      "minecraft:tags": {
+        "tags": [
+          "farmersdelight:can_cut.tag.farmersdelight:is_knife"
+        ]
+      }
+    },
+    "description": {
+      "identifier": "farmersdelight:apple_pie",
+      "menu_category": {
+        "category": "equipment",
+        "group": "itemGroup.name.miscFood"
+      }
+    },
+    "events": {}
+  }
 }

@@ -1,19 +1,21 @@
 {
-  "format_version": "1.20.50", 
+  "format_version": "1.20.80",
   "minecraft:item": {
     "components": {
-      "minecraft:icon": {
-        "texture": "farmersdelight:sandy_shrub"
-      } ,
       "minecraft:block_placer": {
         "block": "farmersdelight:sandy_shrub"
       },
+      "minecraft:icon": {
+        "textures": {
+          "default": "farmersdelight:sandy_shrub"
+        }
+      },
       "minecraft:tags": {
-          "tags": [
-              "farmersdelight:is_fertilizer.35"
-          ]
+        "tags": [
+          "farmersdelight:is_fertilizer.35"
+        ]
       }
-    }, 
+    },
     "description": {
       "identifier": "farmersdelight:sandy_shrub",
       "menu_category": {

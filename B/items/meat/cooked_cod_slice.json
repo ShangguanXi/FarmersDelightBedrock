@@ -1,27 +1,29 @@
 {
-  "format_version": "1.20.50", 
+  "format_version": "1.20.80",
   "minecraft:item": {
     "components": {
-      "minecraft:use_modifiers": {
-        "use_duration": 1.6
-      },
       "minecraft:food": {
+        "can_always_eat": false,
         "nutrition": 3,
-        "saturation_modifier": 0.5,
-        "can_always_eat": false
+        "saturation_modifier": 0.5
       },
-      "minecraft:use_animation": "eat",
       "minecraft:icon": {
-        "texture": "farmersdelight:cooked_cod_slice"
+        "textures": {
+          "default": "farmersdelight:cooked_cod_slice"
+        }
       },
       "minecraft:tags": {
-          "tags": [
-              "minecraft:is_cooked",
-              "farmersdelight:is_cooked_fish",
-              "farmersdelight:is_cooked_cod"
-          ]
+        "tags": [
+          "minecraft:is_cooked",
+          "farmersdelight:is_cooked_fish",
+          "farmersdelight:is_cooked_cod"
+        ]
+      },
+      "minecraft:use_animation": "eat",
+      "minecraft:use_modifiers": {
+        "use_duration": 1.6
       }
-    }, 
+    },
     "description": {
       "identifier": "farmersdelight:cooked_cod_slice",
       "menu_category": {

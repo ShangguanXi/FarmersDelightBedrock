@@ -1,15 +1,20 @@
 {
-  "format_version": "1.20.50",
+  "format_version": "1.20.80",
   "minecraft:item": {
     "components": {
+      "minecraft:custom_components": [
+        "farmersdelight:colonies"
+      ],
       "minecraft:icon": {
-        "texture": "farmersdelight:red_mushroom_colony"
+        "textures": {
+          "default": "farmersdelight:red_mushroom_colony"
+        }
       },
       "minecraft:tags": {
-          "tags": [
-              "farmersdelight:can_cut.tag.farmersdelight:is_knife",
-              "farmersdelight:is_fertilizer.65"
-          ]
+        "tags": [
+          "farmersdelight:can_cut.tag.farmersdelight:is_knife",
+          "farmersdelight:is_fertilizer.65"
+        ]
       }
     },
     "description": {

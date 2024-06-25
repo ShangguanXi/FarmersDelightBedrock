@@ -2,7 +2,7 @@ import { BlockPermutation, Container, Dimension, Direction, EntityInventoryCompo
 import { methodEventSub } from "../lib/eventHelper";
 import { EntityUtil } from "../lib/EntityUtil";
 import { ItemUtil } from "../lib/ItemUtil";
-
+//菌落
 export class Colonies {
     @methodEventSub(world.beforeEvents.playerInteractWithBlock)
     tryPlaceBlock(args: PlayerInteractWithBlockBeforeEvent) {

@@ -11,6 +11,7 @@ import { BlockPermutation, Direction, EntityInventoryComponent, ItemStack, Playe
 import { methodEventSub } from "../lib/eventHelper";
 import { EntityUtil } from "../lib/EntityUtil";
 import { ItemUtil } from "../lib/ItemUtil";
+//菌落
 export class Colonies {
     tryPlaceBlock(args) {
         const itemStack = args.itemStack;

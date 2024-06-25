@@ -1,16 +1,17 @@
 {
-  "format_version": "1.20.50", 
+  "format_version": "1.20.80",
   "minecraft:item": {
     "components": {
-      "minecraft:use_modifiers": {
-        "use_duration": 1.6
-      },
       "minecraft:food": {
+        "can_always_eat": false,
         "nutrition": 2,
-        "saturation_modifier": 0.3,
-        "can_always_eat": false
+        "saturation_modifier": 0.3
       },
-      "minecraft:use_animation": "eat",
+      "minecraft:icon": {
+        "textures": {
+          "default": "farmersdelight:minced_beef"
+        }
+      },
       "minecraft:tags": {
         "tags": [
           "farmersdelight:is_raw_beef",
@@ -18,10 +19,11 @@
           "farmersdelight:cabbage_roll_ingredients"
         ]
       },
-      "minecraft:icon": {
-        "texture": "farmersdelight:minced_beef"
+      "minecraft:use_animation": "eat",
+      "minecraft:use_modifiers": {
+        "use_duration": 1.6
       }
-    }, 
+    },
     "description": {
       "identifier": "farmersdelight:minced_beef",
       "menu_category": {

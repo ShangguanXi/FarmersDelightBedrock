@@ -28,6 +28,8 @@ import { InteractComponentRegister } from "./customComponents/block/InteractComp
 import { WildCropComponentRegister } from "./customComponents/block/WildCropComponent";
 import { RichSoilComponentRegister } from "./customComponents/block/RichSoilComponent";
 import { RichSoilFarmlandComponentRegister } from "./customComponents/block/RichSoilFarmlandComponent";
+import { MushroomColonyComonentRegister } from "./customComponents/block/MushroomColonyComonent";
+import { ColoniesComonentRegister } from "./customComponents/item/ColoniesComonent";
 CookingPotRecipeRegistries.initCookingPotScoRegistries();
 CuttingBoardRegistries.initCuttingBoardScoRegistries();
 CookRecipeRegistries.initCookScoRegistries();
@@ -53,10 +55,12 @@ new FertilizerItem();
 new BlockFood();
 new CookingPotRecipeRegistries();
 new RiceRollMedleyComponentRegister();
-new RiceSeedComponentRegister();
 new CropComponentRegister();
 new InteractComponentRegister();
 new WildCropComponentRegister();
 new RichSoilComponentRegister();
 new RichSoilFarmlandComponentRegister();
+new MushroomColonyComonentRegister();
+new ColoniesComonentRegister();
+new RiceSeedComponentRegister();
 //# sourceMappingURL=main.js.map

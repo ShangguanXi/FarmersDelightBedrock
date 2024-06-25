@@ -1,18 +1,16 @@
 {
-  "format_version": "1.20.50", 
+  "format_version": "1.20.80",
   "minecraft:item": {
     "components": {
-      "minecraft:use_modifiers": {
-        "use_duration": 0.8
-      },
       "minecraft:food": {
+        "can_always_eat": false,
         "nutrition": 2,
-        "saturation_modifier": 0.15,
-        "can_always_eat": false
+        "saturation_modifier": 0.15
       },
-      "minecraft:use_animation": "eat",
       "minecraft:icon": {
-        "texture": "farmersdelight:mutton_chops"
+        "textures": {
+          "default": "farmersdelight:mutton_chops"
+        }
       },
       "minecraft:tags": {
         "tags": [
@@ -20,8 +18,12 @@
           "farmersdelight:can_cook",
           "farmersdelight:wolf_prey"
         ]
+      },
+      "minecraft:use_animation": "eat",
+      "minecraft:use_modifiers": {
+        "use_duration": 0.8
       }
-    }, 
+    },
     "description": {
       "identifier": "farmersdelight:mutton_chops",
       "menu_category": {

@@ -9,10 +9,7 @@
                     1,
                     2,
                     3,
-                    4,
-                    5,
-                    6,
-                    7
+                    4
                 ]
             }
         },
@@ -144,6 +141,9 @@
             }
         ],
         "components": {
+            "minecraft:custom_components": [
+                "farmersdelight:mushroom_colony"
+            ],
             "minecraft:loot": "loot_tables/empty.json",
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 0.0
@@ -175,125 +175,6 @@
             
             "tag:crop": {},
             "tag:compost_activators": {}
-        },
-        "events": {
-            "grow_stage": {
-                "randomize": [
-                    {
-                        "weight": 5
-                    },
-                    {
-                        "weight": 12,
-                        "sequence": [
-                            {
-                                "condition": "query.block_state('farmersdelight:growth')<4",
-                                "set_block_state": {
-                                    "farmersdelight:growth": "(query.block_state('farmersdelight:growth')<4) ? query.block_state('farmersdelight:growth') + 1 : 4"
-                                }
-                            }
-                        ]
-                    }
-                ]
-            },
-            "farmersdelight:on_interact": {
-                "sequence": [
-                    {
-                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_state('farmersdelight:growth')<4)&&(query.block_state('farmersdelight:growth')>0)",
-                        "randomize": [
-                            {
-                                "weight": 5
-                            },
-                            {
-                                "weight": 12,
-                                "sequence": [
-                                    {
-                                        "set_block_state": {
-                                            "farmersdelight:growth": "(query.block_state('farmersdelight:growth')<4) ? query.block_state('farmersdelight:growth') + 1 : 4"
-                                        }
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_state('farmersdelight:growth')==0)",
-                        "randomize": [
-                            {
-                                "weight": 5
-                            },
-                            {
-                                "weight": 12,
-                                "sequence": [
-                                    {
-                                        "run_command": {
-                                            "command": [
-                                                "structure load farmersdelight:brown_mushroom_tree ~-3~~-3"
-                                            ]
-                                        }
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_state('farmersdelight:growth')<4)",
-                        "decrement_stack": {}
-                    },
-                    {
-                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_state('farmersdelight:growth')<4)",
-                        "run_command": {
-                            "command": [
-                                "particle minecraft:crop_growth_emitter ~~~"
-                            ]
-                        }
-                    },
-                    {
-                        "condition": "!query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&query.block_state('farmersdelight:growth')==4&&query.is_item_name_any('slot.weapon.mainhand','minecraft:shears')",
-                        "sequence": [
-                            {
-                                "set_block_state": {
-                                    "farmersdelight:growth": 3
-                                }
-                            },
-                            {
-                                "spawn_loot": {
-                                    "table": "loot_tables/farmersdelight/crops/farmersdelight_brown_mushroom_colony0.json"
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "condition": "!query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&query.block_state('farmersdelight:growth')==3&&query.is_item_name_any('slot.weapon.mainhand','minecraft:shears')",
-                        "sequence": [
-                            {
-                                "set_block_state": {
-                                    "farmersdelight:growth": 2
-                                }
-                            },
-                            {
-                                "spawn_loot": {
-                                    "table": "loot_tables/farmersdelight/crops/farmersdelight_brown_mushroom_colony0.json"
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "condition": "!query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&query.block_state('farmersdelight:growth')==2&&query.is_item_name_any('slot.weapon.mainhand','minecraft:shears')",
-                        "sequence": [
-                            {
-                                "set_block_state": {
-                                    "farmersdelight:growth": 1
-                                }
-                            },
-                            {
-                                "spawn_loot": {
-                                    "table": "loot_tables/farmersdelight/crops/farmersdelight_brown_mushroom_colony0.json"
-                                }
-                            }
-                        ]
-                    }
-                ]
-            }
         }
     }
 }

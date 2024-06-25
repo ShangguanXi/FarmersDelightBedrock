@@ -1,9 +1,11 @@
 {
-  "format_version": "1.20.50",
+  "format_version": "1.20.80",
   "minecraft:item": {
     "components": {
       "minecraft:icon": {
-        "texture": "farmersdelight:canvas"
+        "textures": {
+          "default": "farmersdelight:canvas"
+        }
       }
     },
     "description": {

@@ -1,10 +1,7 @@
 {
-  "format_version": "1.20.50", 
+  "format_version": "1.20.80",
   "minecraft:item": {
     "components": {
-      "minecraft:icon": {
-        "texture": "farmersdelight:tomato_seeds"
-      },
       "minecraft:block_placer": {
         "block": "farmersdelight:tomato_block",
         "use_on": [
@@ -12,12 +9,17 @@
           "farmersdelight:rich_soil_farmland"
         ]
       },
+      "minecraft:icon": {
+        "textures": {
+          "default": "farmersdelight:tomato_seeds"
+        }
+      },
       "minecraft:tags": {
         "tags": [
           "farmersdelight:is_fertilizer.35"
         ]
       }
-    }, 
+    },
     "description": {
       "identifier": "farmersdelight:tomato_seeds",
       "menu_category": {

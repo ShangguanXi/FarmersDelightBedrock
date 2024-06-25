@@ -1,35 +1,9 @@
 {
-  "format_version": "1.20.50",
+  "format_version": "1.20.80",
   "minecraft:item": {
     "components": {
-      "minecraft:durability": {
-        "max_durability": 1561
-      },
-      "minecraft:max_stack_size": 1,
-      "minecraft:hand_equipped": true,
-      "minecraft:enchantable": {
-        "value": 17,
-        "slot": "sword"
-      },
       "minecraft:damage": 4.5,
-      "minecraft:repairable": {
-        "repair_items": [
-          {
-            "repair_amount": "context.other->query.remaining_durability + 0.05 * context.other->query.max_durability",
-            "items": [
-              "farmersdelight:diamond_knife"
-            ]
-          },
-          {
-            "repair_amount": "query.max_durability * 0.25",
-            "items": [
-              "minecraft:diamond"
-            ]
-          }
-        ]
-      },
       "minecraft:digger": {
-        "use_efficiency": true,
         "destroy_speeds": [
           {
             "block": "minecraft:web",
@@ -121,6 +95,37 @@
             },
             "speed": 15
           }
+        ],
+        "use_efficiency": true
+      },
+      "minecraft:durability": {
+        "max_durability": 1561
+      },
+      "minecraft:enchantable": {
+        "slot": "sword",
+        "value": 17
+      },
+      "minecraft:hand_equipped": true,
+      "minecraft:icon": {
+        "textures": {
+          "default": "farmersdelight:diamond_knife"
+        }
+      },
+      "minecraft:max_stack_size": 1,
+      "minecraft:repairable": {
+        "repair_items": [
+          {
+            "items": [
+              "farmersdelight:diamond_knife"
+            ],
+            "repair_amount": "context.other->query.remaining_durability + 0.05 * context.other->query.max_durability"
+          },
+          {
+            "items": [
+              "minecraft:diamond"
+            ],
+            "repair_amount": "query.max_durability * 0.25"
+          }
         ]
       },
       "minecraft:tags": {
@@ -131,9 +136,6 @@
           "farmersdelight:is_knife",
           "farmersdelight:straw_harvesters"
         ]
-      },
-      "minecraft:icon": {
-        "texture": "farmersdelight:diamond_knife"
       }
     },
     "description": {
