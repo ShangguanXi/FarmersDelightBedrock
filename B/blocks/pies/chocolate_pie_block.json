@@ -98,9 +98,9 @@
             }
         ],
         "components": {
-            "minecraft:on_interact": {
-                "event": "on_interact"
-            },
+            "minecraft:custom_components": [
+                "farmersdelight:interact"
+            ],
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 0.5
             },
@@ -152,11 +152,6 @@
             },
             "tag:farmersdelight:pie":{},
             "tag:farmersdelight.pie:3-tag.farmersdelight:is_knife":{}
-        },
-        "events": {
-            "on_interact": {
-               
-            }
         }
     }
 }

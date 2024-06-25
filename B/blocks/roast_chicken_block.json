@@ -106,6 +106,9 @@
             }
         ],
         "components": {
+            "minecraft:custom_components": [
+                "farmersdelight:interact"
+            ],
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 1.0
             },
