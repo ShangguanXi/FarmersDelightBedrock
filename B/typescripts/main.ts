@@ -15,7 +15,6 @@ import { Cabinets } from "./block/Cabinets"
 import { CabinetsBlockEntity } from "./block/entity/CabinetsBlockEntity";
 import { CuttingBoardRegistries } from "./init/CuttingBoardRecipeRegistries";
 import { RiceBlock } from "./block/Rice";
-import { TatamiMatBlock } from "./block/TatamiMatBlock";
 import { CookRecipeRegistries } from "./init/CookRecipeRegistries";
 import { FarmersBook } from "./item/FarmersBook";
 import { FertilizerItem } from "./item/FertilizerItem";
@@ -31,6 +30,7 @@ import { MushroomColonyComonentRegister } from "./customComponents/block/Mushroo
 import { ColoniesComonentRegister } from "./customComponents/item/ColoniesComonent";
 import { OrganicCompostComonentRegister } from "./customComponents/block/OrganicCompostComonent";
 import { RopeComponentRegister } from "./customComponents/block/RopeComponent";
+import { TatamMatComponentRegister } from "./customComponents/block/TatamMatComponent";
 
 
 CookingPotRecipeRegistries.initCookingPotScoRegistries();
@@ -49,7 +49,6 @@ new TatamiBlock();
 new Cabinets();
 new CabinetsBlockEntity();
 new RiceBlock();
-new TatamiMatBlock();
 new FarmersBook();
 new Food();
 new Knife();
@@ -66,6 +65,7 @@ new RichSoilFarmlandComponentRegister();
 new MushroomColonyComonentRegister();
 new OrganicCompostComonentRegister();
 new RopeComponentRegister();
+new TatamMatComponentRegister();
 
 new ColoniesComonentRegister();
 new RiceSeedComponentRegister();

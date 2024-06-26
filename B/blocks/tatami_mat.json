@@ -69,15 +69,9 @@
             }
         ],
         "components": {
-            "minecraft:queued_ticking": {
-                "interval_range": [
-                    1,
-                    1
-                ],
-                "on_tick": {
-                    "event": "farmersdelight:block_tick"
-                }
-            },
+            "minecraft:custom_components": [
+              "farmersdelight:tatami_mat"
+            ],
             "minecraft:material_instances": {
                 "*": {
                     "texture": "tatami_mat_odd"

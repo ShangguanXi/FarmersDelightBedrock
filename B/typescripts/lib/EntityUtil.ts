@@ -14,7 +14,7 @@ export class EntityUtil {
         return !entities.length;
     }
     //获取玩家二维朝向
-    public static cardinalDirection(player: Entity, yOffset: number = 0) {
+    public static cardinalDirection(player: Entity|Player, yOffset: number = 0) {
         const rot = player.getRotation();
         let rotY = rot.y + yOffset;
         if (rotY > 180) rotY -= 360;
