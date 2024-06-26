@@ -31,15 +31,20 @@ class WildCropComponent {
         const selectedSlot = container?.getSlot(player.selectedSlotIndex);
         const itemId = selectedSlot.typeId;
         const silkTouch = container?.getItem(player.selectedSlotIndex)?.getComponent(ItemComponentTypes.Enchantable)?.hasEnchantment("silk_touch");
-        if (itemId == "minecraft:shears") {
-            ItemUtil.damageItem(container, player.selectedSlotIndex, 1);
-            ItemUtil.spawnItem(block, lootItem);
+        try {
+            if (itemId == "minecraft:shears") {
+                ItemUtil.damageItem(container, player.selectedSlotIndex, 1);
+                ItemUtil.spawnItem(block, lootItem);
+            }
+            ;
+            if ((itemId != "minecraft:shears") && (!silkTouch)) {
+                spawnLoot(lootTable, dimension, block.location);
+            }
+            ;
         }
-        ;
-        if ((itemId != "minecraft:shears") && (!silkTouch)) {
+        catch (error) {
             spawnLoot(lootTable, dimension, block.location);
         }
-        ;
     }
     ;
     getLootTable() {
