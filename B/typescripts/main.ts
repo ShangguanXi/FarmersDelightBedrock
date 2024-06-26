@@ -29,7 +29,8 @@ import { RichSoilComponentRegister } from "./customComponents/block/RichSoilComp
 import { RichSoilFarmlandComponentRegister } from "./customComponents/block/RichSoilFarmlandComponent";
 import { MushroomColonyComonentRegister } from "./customComponents/block/MushroomColonyComonent";
 import { ColoniesComonentRegister } from "./customComponents/item/ColoniesComonent";
-import { OrganicCompostComonentRegister } from "./customComponents/block/organic_compost";
+import { OrganicCompostComonentRegister } from "./customComponents/block/OrganicCompostComonent";
+import { RopeComponentRegister } from "./customComponents/block/RopeComponent";
 
 
 CookingPotRecipeRegistries.initCookingPotScoRegistries();
@@ -64,7 +65,7 @@ new RichSoilComponentRegister();
 new RichSoilFarmlandComponentRegister();
 new MushroomColonyComonentRegister();
 new OrganicCompostComonentRegister();
-
+new RopeComponentRegister();
 
 new ColoniesComonentRegister();
 new RiceSeedComponentRegister();

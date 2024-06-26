@@ -3,7 +3,7 @@
   "minecraft:item": {
     "components": {
       "minecraft:block_placer": {
-        "block": "farmersdelight:rope_block"
+        "block": "farmersdelight:rope"
       },
       "minecraft:icon": {
         "textures": {

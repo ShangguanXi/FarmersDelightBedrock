@@ -2,7 +2,7 @@
   "format_version": "1.21.0",
   "minecraft:block": {
     "description": {
-      "identifier": "farmersdelight:rope_block",
+      "identifier": "farmersdelight:rope",
       "states": {
         "farmersdelight:north_connected": [
           false,
@@ -37,6 +37,9 @@
       }
     },
     "components": {
+      "minecraft:custom_components": [
+        "farmersdelight:rope"
+      ],
       "minecraft:destructible_by_mining": {
         "seconds_to_destroy": 0.0
       },
@@ -89,21 +92,6 @@
               "render_method": "alpha_test"
             }
           },
-          "minecraft:queued_ticking": {
-            "interval_range": [
-              1,
-              1
-            ],
-            "on_tick": {
-              "event": "minecraft:on_tick"
-            }
-          },
-          "minecraft:random_ticking": {
-            "on_tick": {
-              "event": "minecraft:grow_with_rope",
-              "target": "self"
-            }
-          },
           "tag:rope": {}
         }
       },
@@ -136,28 +124,7 @@
               "render_method": "alpha_test"
             }
           },
-          "minecraft:queued_ticking": {
-            "interval_range": [
-              1,
-              1
-            ],
-            "on_tick": {
-              "event": "minecraft:crop_with_rope"
-            }
-          },
-          "tag:tomato_crop_with_rope": {},
-          "minecraft:random_ticking": {
-            "on_tick": {
-              "event": "minecraft:grow_with_rope",
-              "target": "self"
-            }
-          },
-          "minecraft:on_interact": {
-            "event": "farmersdelight:on_interact"
-          },
-          "minecraft:on_player_destroyed": {
-            "event": "farmersdelight:on_player_destroyed"
-          }
+          "tag:tomato_crop_with_rope": {}
         }
       },
       {
@@ -189,28 +156,7 @@
               "render_method": "alpha_test"
             }
           },
-          "minecraft:queued_ticking": {
-            "interval_range": [
-              1,
-              1
-            ],
-            "on_tick": {
-              "event": "minecraft:crop_with_rope"
-            }
-          },
-          "tag:tomato_crop_with_rope": {},
-          "minecraft:random_ticking": {
-            "on_tick": {
-              "event": "minecraft:grow_with_rope",
-              "target": "self"
-            }
-          },
-          "minecraft:on_interact": {
-            "event": "farmersdelight:on_interact"
-          },
-          "minecraft:on_player_destroyed": {
-            "event": "farmersdelight:on_player_destroyed"
-          }
+          "tag:tomato_crop_with_rope": {}
         }
       },
       {
@@ -241,27 +187,6 @@
               "ambient_occlusion": false,
               "render_method": "alpha_test"
             }
-          },
-          "minecraft:queued_ticking": {
-            "interval_range": [
-              1,
-              1
-            ],
-            "on_tick": {
-              "event": "minecraft:crop_with_rope"
-            }
-          },
-          "minecraft:random_ticking": {
-            "on_tick": {
-              "event": "minecraft:grow_with_rope",
-              "target": "self"
-            }
-          },
-          "minecraft:on_interact": {
-            "event": "farmersdelight:on_interact"
-          },
-          "minecraft:on_player_destroyed": {
-            "event": "farmersdelight:on_player_destroyed"
           },
           "tag:tomato_crop_with_rope": {}
         }
@@ -294,27 +219,6 @@
               "ambient_occlusion": false,
               "render_method": "alpha_test"
             }
-          },
-          "minecraft:queued_ticking": {
-            "interval_range": [
-              1,
-              1
-            ],
-            "on_tick": {
-              "event": "minecraft:crop_with_rope"
-            }
-          },
-          "minecraft:random_ticking": {
-            "on_tick": {
-              "event": "minecraft:grow_with_rope",
-              "target": "self"
-            }
-          },
-          "minecraft:on_interact": {
-            "event": "farmersdelight:on_interact"
-          },
-          "minecraft:on_player_destroyed": {
-            "event": "farmersdelight:on_player_destroyed"
           },
           "tag:tomato_crop_with_rope": {}
         }
@@ -608,194 +512,6 @@
           }
         }
       }
-    ],
-    "events": {
-      "minecraft:on_tick": {
-        "sequence": [
-          {
-            "condition": "query.block_neighbor_has_any_tag(0, 0, -1, 'rope') == 1",
-            "set_block_state": {
-              "farmersdelight:north_connected": true
-            }
-          },
-          {
-            "condition": "query.block_neighbor_has_any_tag(0, 0, -1, 'rope') == 0",
-            "set_block_state": {
-              "farmersdelight:north_connected": false
-            }
-          },
-          {
-            "condition": "query.block_neighbor_has_any_tag(0, 0, 1, 'rope') == 1",
-            "set_block_state": {
-              "farmersdelight:south_connected": true
-            }
-          },
-          {
-            "condition": "query.block_neighbor_has_any_tag(0 ,0, 1, 'rope') == 0",
-            "set_block_state": {
-              "farmersdelight:south_connected": false
-            }
-          },
-          {
-            "condition": "query.block_neighbor_has_any_tag(-1, 0, 0, 'rope') == 1",
-            "set_block_state": {
-              "farmersdelight:east_connected": true
-            }
-          },
-          {
-            "condition": "query.block_neighbor_has_any_tag(-1, 0, 0, 'rope') == 0",
-            "set_block_state": {
-              "farmersdelight:east_connected": false
-            }
-          },
-          {
-            "condition": "query.block_neighbor_has_any_tag(1, 0, 0, 'rope') == 1",
-            "set_block_state": {
-              "farmersdelight:west_connected": true
-            }
-          },
-          {
-            "condition": "query.block_neighbor_has_any_tag(1 ,0, 0, 'rope') == 0",
-            "set_block_state": {
-              "farmersdelight:west_connected": false
-            }
-          },
-          {
-            "run_command": {
-              "command": [
-                "effect @e[type=minecraft:player,rx=0,r=0.5] levitation 1 0 true"
-              ]
-            }
-          },
-          {
-            "run_command": {
-              "command": [
-                "effect @e[type=minecraft:player,rxm=0,r=0.5] slow_falling 1 1 true"
-              ]
-            }
-          }
-
-          //tp 爬绳实现，表现不错，就是难脱离绳子
-          /*{
-            "run_command": {
-              "command": [
-                "execute as @e[type=minecraft:player,rx=0,r=1] at @s run tp ~ ~+0.1 ~"
-              ]
-            }
-          },
-          {
-            "run_command": {
-              "command": [
-                "execute as @e[type=minecraft:player,rxm=0,r=1] at @s run tp ~ ~-0.1 ~"
-              ]
-            }
-          }*/
-        ]
-      },
-      "minecraft:crop_with_rope": {
-        "sequence": [
-          {
-            "condition": "query.block_neighbor_has_any_tag(0, -1, 0, 'tomato_crop','tomato_crop_with_rope') == 0&&(query.block_state('farmersdelight:stage')>0)",
-            "set_block_state": {
-              "farmersdelight:stage": 0,
-              "farmersdelight:can_grow": true
-            }
-          }
-        ]
-      },
-      "minecraft:grow_with_rope": {
-        "sequence": [
-          {
-            "condition": "query.block_neighbor_has_any_tag(0, -1, 0, 'tomato_crop') == 1&&query.block_state('farmersdelight:stage')==0&&(query.block_state('farmersdelight:north_connected') == false && query.block_state('farmersdelight:south_connected') == false && query.block_state('farmersdelight:west_connected') == false && query.block_state('farmersdelight:east_connected') == false)",
-            "set_block_state": {
-              "farmersdelight:stage": 1
-            }
-          },
-          {
-            "condition": "query.block_state('farmersdelight:can_grow') == true && query.block_neighbor_has_any_tag(0, -1, 0, 'tomato_crop_with_rope') == 1&&query.block_neighbor_has_any_tag(0, -1, 0, 'cannot_grow') == 0&&(query.block_state('farmersdelight:stage')==0)&&(query.block_state('farmersdelight:north_connected') == false && query.block_state('farmersdelight:south_connected') == false && query.block_state('farmersdelight:west_connected') == false && query.block_state('farmersdelight:east_connected') == false)",
-            "sequence": [
-              {
-                "set_block_state": {
-                  "farmersdelight:stage": 1,
-                  "farmersdelight:can_grow": false
-                }
-              }
-            ]
-          },
-          {
-            "condition": "query.block_state('farmersdelight:stage')<4&&query.block_state('farmersdelight:stage')>0",
-            "set_block_state": {
-              "farmersdelight:stage": "query.block_state('farmersdelight:stage') + 1"
-            }
-          }
-        ]
-      },
-      "farmersdelight:on_interact": {
-        "sequence": [
-          {
-            "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_state('farmersdelight:stage')<4)",
-            "randomize": [
-              {
-                "weight": 5,
-                "sequence": [
-                  {
-                    "run_command": {
-                      "command": [
-                        "particle minecraft:crop_growth_emitter ~~~"
-                      ]
-                    }
-                  },
-                  {
-                    "decrement_stack": {}
-                  }
-                ]
-              },
-              {
-                "weight": 12,
-                "sequence": [
-                  {
-                    "set_block_state": {
-                      "farmersdelight:stage": "query.block_state('farmersdelight:stage') + 1"
-                    }
-                  },
-                  {
-                    "run_command": {
-                      "command": [
-                        "particle minecraft:crop_growth_emitter ~~~"
-                      ]
-                    }
-                  },
-                  {
-                    "decrement_stack": {}
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "condition": "query.block_state('farmersdelight:stage')==4",
-            "sequence": [
-              {
-                "spawn_loot": {
-                  "table": "loot_tables/farmersdelight/crops/farmersdelight_tomato_riped.json"
-                }
-              },
-              {
-                "set_block_state": {
-                  "farmersdelight:stage": 1
-                }
-              }
-            ]
-          }
-        ]
-      },
-      "farmersdelight:on_player_destroyed": {
-        "run_command": {
-          "command": [
-            "setblock ~ ~ ~ farmersdelight:rope_block"
-          ]
-        }
-      }
-    }
+    ]
   }
 }
