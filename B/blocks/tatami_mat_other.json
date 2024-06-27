@@ -129,19 +129,6 @@
             },
             "tag:farmersdelight:tatami_mat": {},
             "tag:farmersdelight:straw_blocks": {}
-        },
-        "events": {
-            "farmersdelight:block_tick": {
-                "sequence": [
-                    {
-                        "run_command": {
-                            "command": [
-                                "scriptevent farmersdelight:tatami_mat_tick"
-                            ]
-                        }
-                    }
-                ]
-            }
         }
     }
 }

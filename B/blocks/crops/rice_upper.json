@@ -151,55 +151,6 @@
             },
             
             "tag:crop": {}
-        },
-        "events": {
-            "grow_stage": {
-                "randomize": [
-                    {
-                        "weight": 5
-                    },
-                    {
-                        "weight": 12,
-                        "set_block_state": {
-                            "farmersdelight:growth": "(query.block_state('farmersdelight:growth')<3) ? query.block_state('farmersdelight:growth') + 1 : 3"
-                        }
-                    }
-                ]
-            },
-            "farmersdelight:on_interact": {
-                "sequence": [
-                    {
-                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_state('farmersdelight:growth')<3)",
-                        "trigger": {
-                            "event": "grow_stage"
-                        }
-                    },
-                    {
-                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_state('farmersdelight:growth')<3)",
-                        "decrement_stack": {}
-                    },
-                    {
-                        "condition": "query.is_item_name_any('slot.weapon.mainhand','minecraft:bone_meal')&&(query.block_state('farmersdelight:growth')<3)",
-                        "run_command": {
-                            "command": [
-                                "particle minecraft:crop_growth_emitter ~~~"
-                            ]
-                        }
-                    },
-                    {
-                        "condition": "query.block_state('farmersdelight:growth')==3",
-                        "set_block_state": {
-                            "farmersdelight:growth": 0
-                        }
-                    },
-                    {
-                        "condition": "query.block_state('farmersdelight:growth')==3",
-                        "spawn_loot":{
-                            "table": "loot_tables/farmersdelight/crops/farmersdelight_rice_riped.json"
-                        }
-                    }
-                ]
-            }
         }
     }
 }

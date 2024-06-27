@@ -13,7 +13,6 @@
       "minecraft:max_stack_size": 1
     },
     "description": {
-      "category": "equipment",
       "identifier": "farmersdelight:honey_glazed_ham_block_item",
       "menu_category": {
         "category": "equipment",
