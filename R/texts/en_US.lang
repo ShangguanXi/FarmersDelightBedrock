@@ -73,6 +73,14 @@ tile.farmersdelight:red_mushroom_colony.name=Red Mushroom Colony
 item.farmersdelight:brown_mushroom_colony_item=Brown Mushroom Colony
 item.farmersdelight:red_mushroom_colony_item=Red Mushroom Colony
 
+tile.farmersdelight:wild_cabbages.block=Wild Cabbage
+tile.farmersdelight:wild_tomatoes.block=Tomato Shrub
+tile.farmersdelight:wild_onions.block=Wild Onion
+tile.farmersdelight:wild_carrots.block=Wild Carrot
+tile.farmersdelight:wild_potatoes.block=Wild Potato
+tile.farmersdelight:wild_beetroots.block=Sea Beet
+tile.farmersdelight:wild_rice.block=Wild Rice
+tile.farmersdelight:sandy_shrub.block=Sandy Shrub
 item.farmersdelight:wild_cabbages=Wild Cabbage
 item.farmersdelight:wild_tomatoes=Tomato Shrub
 item.farmersdelight:wild_onions=Wild Onion
@@ -80,6 +88,7 @@ item.farmersdelight:wild_carrots=Wild Carrot
 item.farmersdelight:wild_potatoes=Wild Potato
 item.farmersdelight:wild_beetroots=Sea Beet
 item.farmersdelight:wild_rice=Wild Rice
+item.farmersdelight:sandy_shrub=Sandy Shrub
 
 tile.farmersdelight:apple_pie.name=Apple Pie
 tile.farmersdelight:sweet_berry_cheesecake.name=Sweet Berry Cheesecake

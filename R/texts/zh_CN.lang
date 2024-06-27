@@ -75,14 +75,14 @@ item.farmersdelight:brown_mushroom_colony_item=棕色蘑菇菌落
 item.farmersdelight:red_mushroom_colony_item=红色蘑菇菌落
 
 
-tile.farmersdelight:wild_cabbages_block=野生卷心菜
-tile.farmersdelight:wild_tomatoes_block=番茄藤蔓
-tile.farmersdelight:wild_onions_block=野生洋葱
-tile.farmersdelight:wild_carrots_block=野生胡萝卜
-tile.farmersdelight:wild_potatoes_block=野生马铃薯
-tile.farmersdelight:wild_beetroots_block=海甜菜
-tile.farmersdelight:wild_rice_block=野生稻米
-tile.farmersdelight:sandy_shrub_block=沙生灌木
+tile.farmersdelight:wild_cabbages.block=野生卷心菜
+tile.farmersdelight:wild_tomatoes.block=番茄藤蔓
+tile.farmersdelight:wild_onions.block=野生洋葱
+tile.farmersdelight:wild_carrots.block=野生胡萝卜
+tile.farmersdelight:wild_potatoes.block=野生马铃薯
+tile.farmersdelight:wild_beetroots.block=海甜菜
+tile.farmersdelight:wild_rice.block=野生稻米
+tile.farmersdelight:sandy_shrub.block=沙生灌木
 item.farmersdelight:wild_cabbages=野生卷心菜
 item.farmersdelight:wild_tomatoes=番茄藤蔓
 item.farmersdelight:wild_onions=野生洋葱

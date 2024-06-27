@@ -74,6 +74,15 @@ tile.farmersdelight:red_mushroom_colony.name=Colonia de hongos rojos
 item.farmersdelight:brown_mushroom_colony_item=Colonia de hongos marrones
 item.farmersdelight:red_mushroom_colony_item=Colonia de hongos rojos
 
+
+tile.farmersdelight:wild_cabbages.block=Col silvestre
+tile.farmersdelight:wild_tomatoes.block=Vides de tomate silvestre
+tile.farmersdelight:wild_onions.block=Cebolla silvestre
+tile.farmersdelight:wild_carrots.block=Zanahoria silvestre
+tile.farmersdelight:wild_potatoes.block=Patata silvestre
+tile.farmersdelight:wild_beetroots.block=Remolacha de mar silvestre
+tile.farmersdelight:wild_rice.block=Arroz silvestre
+tile.farmersdelight:sandy_shrub.block=Arbusto arenoso
 item.farmersdelight:wild_cabbages=Col silvestre
 item.farmersdelight:wild_tomatoes=Vides de tomate silvestre
 item.farmersdelight:wild_onions=Cebolla silvestre
@@ -81,6 +90,7 @@ item.farmersdelight:wild_carrots=Zanahoria silvestre
 item.farmersdelight:wild_potatoes=Patata silvestre
 item.farmersdelight:wild_beetroots=Remolacha de mar silvestre
 item.farmersdelight:wild_rice=Arroz silvestre
+tile.farmersdelight:sandy_shrub.block=Arbusto arenoso
 
 tile.farmersdelight:apple_pie.name=Tarta de manzana
 tile.farmersdelight:sweet_berry_cheesecake.name=Cheesecake con bayas dulces

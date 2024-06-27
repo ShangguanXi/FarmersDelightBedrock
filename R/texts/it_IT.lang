@@ -63,6 +63,15 @@ item.farmersdelight:wild_carrots=Carota selvatica
 item.farmersdelight:wild_potatoes=Patata selvatica
 item.farmersdelight:wild_beetroots=Barbabietola di mare
 item.farmersdelight:wild_rice=Riso selvatico
+item.farmersdelight:sandy_shrub=Arbusto sabbioso
+item.farmersdelight:wild_cabbages=Cavolo selvatico
+item.farmersdelight:wild_tomatoes=Cespuglio di pomodori
+item.farmersdelight:wild_onions=Cipolla selvatica
+item.farmersdelight:wild_carrots=Carota selvatica
+item.farmersdelight:wild_potatoes=Patata selvatica
+item.farmersdelight:wild_beetroots=Barbabietola di mare
+item.farmersdelight:wild_rice=Riso selvatico
+item.farmersdelight:sandy_shrub=Arbusto sabbioso
 
 tile.farmersdelight:apple_pie.name=Torta di mele
 tile.farmersdelight:sweet_berry_cheesecake.name=Cheesecake di bacche dolci
