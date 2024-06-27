@@ -69,6 +69,21 @@ class RichSoilFarmlandComponent {
                     dimension.setBlockType(topLocation, "farmersdelight:rich_soil_torchflower");
                     ItemUtil.clearItem(container, player.selectedSlotIndex);
                 }
+                if (itemId == "farmersdelight:cabbage_seeds") {
+                    world.playSound("dig.grass", block.location);
+                    dimension.setBlockType(topLocation, "farmersdelight:cabbage_block");
+                    ItemUtil.clearItem(container, player.selectedSlotIndex);
+                }
+                if (itemId == "farmersdelight:onion") {
+                    world.playSound("dig.grass", block.location);
+                    dimension.setBlockType(topLocation, "farmersdelight:onion_block");
+                    ItemUtil.clearItem(container, player.selectedSlotIndex);
+                }
+                if (itemId == "farmersdelight:tomato_seeds") {
+                    world.playSound("dig.grass", block.location);
+                    dimension.setBlockType(topLocation, "farmersdelight:tomato_block");
+                    ItemUtil.clearItem(container, player.selectedSlotIndex);
+                }
             }
         }
         catch (error) {

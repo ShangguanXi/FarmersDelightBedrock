@@ -5,8 +5,8 @@
         "name": "pack.name",
         "uuid": "98836a6c-fe16-60f4-87a4-5afb6439bd9f",
         "version": [
-            1,
-            7,
+            2,
+            0,
             0
         ],
         "min_engine_version": [
@@ -21,9 +21,9 @@
             "type": "resources",
             "uuid": "b42e06a7-0a94-eb6c-a150-6bfd59564e26",
             "version": [
+                2,
                 0,
-                0,
-                1
+                0
             ]
         }
     ],
@@ -31,8 +31,8 @@
         {
             "uuid": "d0131071-9ec1-edcd-6871-857c700703d8",
             "version": [
-                1,
-                7,
+                2,
+                0,
                 0
             ]
         }
