@@ -1,12 +1,11 @@
-import { Block, BlockPermutation, Dimension, Direction, ItemStack, Vector3, system, world } from "@minecraft/server";
+import { Block, BlockPermutation, Dimension, Direction, ItemStack, PlayerPlaceBlockBeforeEvent, Vector3, system, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
 
 export class TatamiBlock {
     @methodEventSub(world.beforeEvents.playerPlaceBlock)
-    placeBlock(args: any) {
+    placeBlock(args: PlayerPlaceBlockBeforeEvent) {
         const block: Block = args.block;
-        const itemStack: ItemStack = args.itemStack;
-        if (!(itemStack?.typeId == "farmersdelight:tatami" && block.typeId == "farmersdelight:tatami" && block.permutation.getState('farmersdelight:connection') == "none")) return;
+        if (block.typeId != "farmersdelight:tatami" )return;
         let { x, y, z }: Vector3 = block.location;
         const dimension: Dimension = block.dimension;
         const face: Direction = args.face;

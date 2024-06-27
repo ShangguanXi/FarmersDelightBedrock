@@ -7,13 +7,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { BlockPermutation, Direction, system, world } from "@minecraft/server";
+import { BlockPermutation, Direction, PlayerPlaceBlockBeforeEvent, system, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
 export class TatamiBlock {
     placeBlock(args) {
         const block = args.block;
-        const itemStack = args.itemStack;
-        if (!(itemStack?.typeId == "farmersdelight:tatami" && block.typeId == "farmersdelight:tatami" && block.permutation.getState('farmersdelight:connection') == "none"))
+        if (block.typeId != "farmersdelight:tatami")
             return;
         let { x, y, z } = block.location;
         const dimension = block.dimension;
@@ -68,7 +67,7 @@ export class TatamiBlock {
 __decorate([
     methodEventSub(world.beforeEvents.playerPlaceBlock),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [PlayerPlaceBlockBeforeEvent]),
     __metadata("design:returntype", void 0)
 ], TatamiBlock.prototype, "placeBlock", null);
 //# sourceMappingURL=TatamiBlock.js.map

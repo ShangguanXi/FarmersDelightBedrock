@@ -31,6 +31,7 @@ import { ColoniesComonentRegister } from "./customComponents/item/ColoniesComone
 import { OrganicCompostComonentRegister } from "./customComponents/block/OrganicCompostComonent";
 import { RopeComponentRegister } from "./customComponents/block/RopeComponent";
 import { TatamMatComponentRegister } from "./customComponents/block/TatamMatComponent";
+import { TatamComponentRegister } from "./customComponents/block/TatamiComponent";
 
 
 CookingPotRecipeRegistries.initCookingPotScoRegistries();
@@ -66,6 +67,7 @@ new MushroomColonyComonentRegister();
 new OrganicCompostComonentRegister();
 new RopeComponentRegister();
 new TatamMatComponentRegister();
+new TatamComponentRegister();
 
 new ColoniesComonentRegister();
 new RiceSeedComponentRegister();

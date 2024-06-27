@@ -31,15 +31,6 @@
             {
                 "condition": "query.block_state('farmersdelight:connection') == 'west'",
                 "components": {
-                    "minecraft:queued_ticking": {
-                      "interval_range": [
-                        1,
-                        1
-                      ],
-                      "on_tick": {
-                        "event": "farmersdelight:west_check"
-                      }
-                    },
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "tatami_mat_half"
@@ -64,15 +55,6 @@
             {
                 "condition": "query.block_state('farmersdelight:connection') == 'east'",
                 "components": {
-                    "minecraft:queued_ticking": {
-                      "interval_range": [
-                        1,
-                        1
-                      ],
-                      "on_tick": {
-                        "event": "farmersdelight:east_check"
-                      }
-                    },
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "tatami_mat_half"
@@ -97,15 +79,6 @@
             {
                 "condition": "query.block_state('farmersdelight:connection') == 'north'",
                 "components": {
-                    "minecraft:queued_ticking": {
-                      "interval_range": [
-                        1,
-                        1
-                      ],
-                      "on_tick": {
-                        "event": "farmersdelight:north_check"
-                      }
-                    },
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "tatami_mat_half"
@@ -130,15 +103,6 @@
             {
                 "condition": "query.block_state('farmersdelight:connection') == 'south'",
                 "components": {
-                    "minecraft:queued_ticking": {
-                      "interval_range": [
-                        1,
-                        1
-                      ],
-                      "on_tick": {
-                        "event": "farmersdelight:south_check"
-                      }
-                    },
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "tatami_mat_half"
@@ -163,15 +127,6 @@
             {
                 "condition": "query.block_state('farmersdelight:connection') == 'up'",
                 "components": {
-                    "minecraft:queued_ticking": {
-                      "interval_range": [
-                        1,
-                        1
-                      ],
-                      "on_tick": {
-                        "event": "farmersdelight:up_check"
-                      }
-                    },
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "tatami_mat_half"
@@ -196,15 +151,6 @@
             {
                 "condition": "query.block_state('farmersdelight:connection') == 'down'",
                 "components": {
-                    "minecraft:queued_ticking": {
-                      "interval_range": [
-                        1,
-                        1
-                      ],
-                      "on_tick": {
-                        "event": "farmersdelight:down_check"
-                      }
-                    },
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "tatami_mat_half"
@@ -228,6 +174,9 @@
             }
         ],
         "components": {
+            "minecraft:custom_components": [
+              "farmersdelight:tatami"
+            ],
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 0.6
             },
@@ -237,68 +186,6 @@
             "minecraft:geometry": "geometry.tatami",
             "tag:tatami": {},
             "tag:farmersdelight:straw_blocks":{}
-        },
-        "events": {
-            "farmersdelight:north_check": {
-                "sequence": [
-                    {
-                      "condition": "query.block_neighbor_has_any_tag(0, 0, -1, 'tatami') == 0",
-                      "set_block_state": {
-                        "farmersdelight:connection": "'none'"
-                      }
-                    }
-                ]
-            },
-            "farmersdelight:east_check": {
-                "sequence": [
-                    {
-                      "condition": "query.block_neighbor_has_any_tag(1, 0, 0, 'tatami') == 0",
-                      "set_block_state": {
-                        "farmersdelight:connection": "'none'"
-                      }
-                    }
-                ]
-            },
-            "farmersdelight:south_check": {
-                "sequence": [
-                    {
-                      "condition": "query.block_neighbor_has_any_tag(0, 0, 1, 'tatami') == 0",
-                      "set_block_state": {
-                        "farmersdelight:connection": "'none'"
-                      }
-                    }
-                ]
-            },
-            "farmersdelight:west_check": {
-                "sequence": [
-                    {
-                      "condition": "query.block_neighbor_has_any_tag(-1, 0, 0, 'tatami') == 0",
-                      "set_block_state": {
-                        "farmersdelight:connection": "'none'"
-                      }
-                    }
-                ]
-            },
-            "farmersdelight:up_check": {
-                "sequence": [
-                    {
-                      "condition": "query.block_neighbor_has_any_tag(0, 1, 0, 'tatami') == 0",
-                      "set_block_state": {
-                        "farmersdelight:connection": "'none'"
-                      }
-                    }
-                ]
-            },
-            "farmersdelight:down_check": {
-                "sequence": [
-                    {
-                      "condition": "query.block_neighbor_has_any_tag(0, -1, 0, 'tatami') == 0",
-                      "set_block_state": {
-                        "farmersdelight:connection": "'none'"
-                      }
-                    }
-                ]
-            }
         }
     }
 }

@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { WorldInitializeBeforeEvent, world, EntityInventoryComponent, Direction } from "@minecraft/server";
+import { WorldInitializeBeforeEvent, world, EntityInventoryComponent, Direction, system } from "@minecraft/server";
 import { methodEventSub } from "../../lib/eventHelper";
 import { ItemUtil } from "../../lib/ItemUtil";
 function spawnLoot(path, dimenion, location) {
@@ -238,6 +238,121 @@ class SugarCaneComponent {
         }
     }
 }
+class RiceComponent {
+    constructor() {
+        this.onPlayerInteract = this.onPlayerInteract.bind(this);
+        this.onRandomTick = this.onRandomTick.bind(this);
+        this.onTick = this.onTick.bind(this);
+    }
+    onPlayerInteract(args) {
+        const block = args.block;
+        const player = args.player;
+        const dimension = args.dimension;
+        const itemId = player?.getComponent("inventory")?.container?.getSlot(player.selectedSlotIndex).typeId;
+        const growth = Number(block.permutation.getState("farmersdelight:growth"));
+        const topLocation = { x: block.location.x, y: block.location.y + 1, z: block.location.z };
+        const topBlockId = dimension.getBlock(topLocation)?.typeId;
+        const age = Number(block.permutation.getState("farmersdelight:age"));
+        const random = Math.floor(Math.random() * 101);
+        if (!player)
+            return;
+        const container = player.getComponent(EntityInventoryComponent.componentId)?.container;
+        if (block.typeId == "farmersdelight:rice_block") {
+            try {
+                if (itemId == "minecraft:bone_meal") {
+                    world.playSound("item.bone_meal.use", block.location);
+                    if (player?.getGameMode() == "creative") {
+                        block.dimension.spawnParticle("minecraft:crop_growth_emitter", { x: block.location.x + 0.5, y: block.location.y + 0.5, z: block.location.z + 0.5 });
+                        block.setPermutation(block.permutation.withState("farmersdelight:age", 3));
+                        if (topBlockId == "minecraft:air") {
+                            block.setPermutation(block.permutation.withState("farmersdelight:upper", true));
+                            dimension.setBlockType(topLocation, "farmersdelight:rice_block_upper");
+                            system.run(() => {
+                                const growthBlock = dimension.getBlock(topLocation);
+                                growthBlock?.setPermutation(growthBlock.permutation.withState("farmersdelight:growth", 3));
+                            });
+                        }
+                    }
+                    else {
+                        if (random <= 60) {
+                            if (age == 3 && topBlockId == "minecraft:air") {
+                                block.setPermutation(block.permutation.withState("farmersdelight:upper", true));
+                                dimension.setBlockType(topLocation, "farmersdelight:rice_block_upper");
+                            }
+                            if (age < 3) {
+                                block.setPermutation(block.permutation.withState("farmersdelight:age", age + 1));
+                            }
+                        }
+                        block.dimension.spawnParticle("minecraft:crop_growth_emitter", { x: block.location.x + 0.5, y: block.location.y + 0.5, z: block.location.z + 0.5 });
+                        if (!container)
+                            return;
+                        ItemUtil.clearItem(container, player?.selectedSlotIndex);
+                    }
+                }
+            }
+            catch (error) {
+            }
+        }
+        if (block.typeId == "farmersdelight:rice_block_upper") {
+            try {
+                if (itemId == "minecraft:bone_meal" && growth < 3) {
+                    world.playSound("item.bone_meal.use", block.location);
+                    if (player?.getGameMode() == "creative") {
+                        block.dimension.spawnParticle("minecraft:crop_growth_emitter", { x: block.location.x + 0.5, y: block.location.y + 0.5, z: block.location.z + 0.5 });
+                        block.setPermutation(block.permutation.withState("farmersdelight:growth", 3));
+                    }
+                    else {
+                        if (random <= 60) {
+                            block.setPermutation(block.permutation.withState("farmersdelight:growth", growth + 1));
+                        }
+                        block.dimension.spawnParticle("minecraft:crop_growth_emitter", { x: block.location.x + 0.5, y: block.location.y + 0.5, z: block.location.z + 0.5 });
+                        if (!container)
+                            return;
+                        ItemUtil.clearItem(container, player?.selectedSlotIndex);
+                    }
+                }
+                if (growth == 3) {
+                    block.setPermutation(block.permutation.withState("farmersdelight:growth", 0));
+                    spawnLoot("farmersdelight/crops/farmersdelight_rice_riped", dimension, { x: block.location.x, y: block.location.y, z: block.location.z });
+                }
+            }
+            catch (error) {
+            }
+        }
+    }
+    onRandomTick(args) {
+        const block = args.block;
+        const dimension = args.dimension;
+        const topLocation = { x: block.location.x, y: block.location.y + 1, z: block.location.z };
+        const topBlockId = dimension.getBlock(topLocation)?.typeId;
+        const age = Number(block.permutation.getState("farmersdelight:age"));
+        const growth = Number(block.permutation.getState("farmersdelight:growth"));
+        if (block.typeId == "farmersdelight:rice_block_upper") {
+            if (growth < 3) {
+                block.setPermutation(block.permutation.withState("farmersdelight:growth", growth + 1));
+            }
+        }
+        if (block.typeId == "farmersdelight:rice_block") {
+            if (age < 3) {
+                block.setPermutation(block.permutation.withState("farmersdelight:age", age + 1));
+            }
+            if (age == 3 && topBlockId == "minecraft:air") {
+                dimension.setBlockType(topLocation, "farmersdelight:rice_block_upper");
+                block.setPermutation(block.permutation.withState("farmersdelight:upper", true));
+            }
+        }
+    }
+    onTick(args) {
+        const block = args.block;
+        const dimension = args.dimension;
+        const topLocation = { x: block.location.x, y: block.location.y + 1, z: block.location.z };
+        const topBlockId = dimension.getBlock(topLocation)?.typeId;
+        const age = Number(block.permutation.getState("farmersdelight:age"));
+        if (age == 3 && topBlockId != "farmersdelight:rice_block_upper") {
+            block.setPermutation(block.permutation.withState("farmersdelight:upper", false));
+        }
+    }
+}
 export class CropComponentRegister {
     register(args) {
         args.blockTypeRegistry.registerCustomComponent('farmersdelight:cabbage', new CabbageComponent());
@@ -249,6 +364,7 @@ export class CropComponentRegister {
         args.blockTypeRegistry.registerCustomComponent('farmersdelight:wheat', new WheatComponent());
         args.blockTypeRegistry.registerCustomComponent('farmersdelight:torchflower', new TorchflowerComponent());
         args.blockTypeRegistry.registerCustomComponent('farmersdelight:sugar_cane', new SugarCaneComponent());
+        args.blockTypeRegistry.registerCustomComponent('farmersdelight:rice', new RiceComponent());
     }
 }
 __decorate([

@@ -8,11 +8,7 @@
                     0,
                     1,
                     2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    7
+                    3
                 ]
             }
         },
@@ -123,6 +119,9 @@
             }
         ],
         "components": {
+            "minecraft:custom_components": [
+                "farmersdelight:rice"
+            ],
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 0.0
             },

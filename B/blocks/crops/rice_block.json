@@ -140,6 +140,9 @@
             }
         ],
         "components": {
+            "minecraft:custom_components": [
+                "farmersdelight:rice"
+            ],
             "minecraft:loot": "loot_tables/farmersdelight/crops/farmersdelight_rice.json",
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 0.0
