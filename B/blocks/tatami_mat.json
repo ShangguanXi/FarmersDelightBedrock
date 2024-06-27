@@ -69,6 +69,12 @@
             }
         ],
         "components": {
+            "minecraft:tick": {
+                "interval_range": [
+                    1,
+                    1
+                ]
+            },
             "minecraft:custom_components": [
               "farmersdelight:tatami_mat"
             ],

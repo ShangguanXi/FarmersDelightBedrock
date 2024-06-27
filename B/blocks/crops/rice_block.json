@@ -135,11 +135,16 @@
                             14
                         ]
                     }
-                  
                 }
             }
         ],
         "components": {
+            "minecraft:tick": {
+                "interval_range": [
+                    1,
+                    1
+                ]
+            },
             "minecraft:custom_components": [
                 "farmersdelight:rice"
             ],
@@ -156,7 +161,6 @@
             "minecraft:destructible_by_explosion": {
                 "explosion_resistance": 0.0
             },
-            
             "minecraft:collision_box": false,
             "minecraft:placement_filter": {
                 "conditions": [
@@ -177,7 +181,6 @@
                     }
                 ]
             },
-            
             "tag:crop_block": {}
         }
     }
