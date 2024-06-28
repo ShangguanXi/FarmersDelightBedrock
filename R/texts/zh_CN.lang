@@ -75,14 +75,14 @@ item.farmersdelight:brown_mushroom_colony_item=棕色蘑菇菌落
 item.farmersdelight:red_mushroom_colony_item=红色蘑菇菌落
 
 
-tile.farmersdelight:wild_cabbages.block=野生卷心菜
-tile.farmersdelight:wild_tomatoes.block=番茄藤蔓
-tile.farmersdelight:wild_onions.block=野生洋葱
-tile.farmersdelight:wild_carrots.block=野生胡萝卜
-tile.farmersdelight:wild_potatoes.block=野生马铃薯
-tile.farmersdelight:wild_beetroots.block=海甜菜
-tile.farmersdelight:wild_rice.block=野生稻米
-tile.farmersdelight:sandy_shrub.block=沙生灌木
+tile.farmersdelight:wild_cabbages.name=野生卷心菜
+tile.farmersdelight:wild_tomatoes.name=番茄藤蔓
+tile.farmersdelight:wild_onions.name=野生洋葱
+tile.farmersdelight:wild_carrots.name=野生胡萝卜
+tile.farmersdelight:wild_potatoes.name=野生马铃薯
+tile.farmersdelight:wild_beetroots.name=海甜菜
+tile.farmersdelight:wild_rice.name=野生稻米
+tile.farmersdelight:sandy_shrub.name=沙生灌木
 item.farmersdelight:wild_cabbages=野生卷心菜
 item.farmersdelight:wild_tomatoes=番茄藤蔓
 item.farmersdelight:wild_onions=野生洋葱
@@ -235,7 +235,7 @@ farmersdelight.blockfood.minecraft:bowl=你需要一个碗以食用它。
 farmersdelight.skillet.invalid_item=这东西可放不进去……
 
 pack.name=农夫乐事[资源包]
-pack.description=是时候种点好东西了！支持的版本为1.21.0
+pack.description=是时候种点好东西了！支持的版本为1.21.0 & 1.21.1
 
 item.farmersdelight:book_farmersdelight=农夫大典
 

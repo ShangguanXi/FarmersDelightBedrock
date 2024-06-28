@@ -73,14 +73,14 @@ tile.farmersdelight:red_mushroom_colony.name=Red Mushroom Colony
 item.farmersdelight:brown_mushroom_colony_item=Brown Mushroom Colony
 item.farmersdelight:red_mushroom_colony_item=Red Mushroom Colony
 
-tile.farmersdelight:wild_cabbages.block=Wild Cabbage
-tile.farmersdelight:wild_tomatoes.block=Tomato Shrub
-tile.farmersdelight:wild_onions.block=Wild Onion
-tile.farmersdelight:wild_carrots.block=Wild Carrot
-tile.farmersdelight:wild_potatoes.block=Wild Potato
-tile.farmersdelight:wild_beetroots.block=Sea Beet
-tile.farmersdelight:wild_rice.block=Wild Rice
-tile.farmersdelight:sandy_shrub.block=Sandy Shrub
+tile.farmersdelight:wild_cabbages.name=Wild Cabbage
+tile.farmersdelight:wild_tomatoes.name=Tomato Shrub
+tile.farmersdelight:wild_onions.name=Wild Onion
+tile.farmersdelight:wild_carrots.name=Wild Carrot
+tile.farmersdelight:wild_potatoes.name=Wild Potato
+tile.farmersdelight:wild_beetroots.name=Sea Beet
+tile.farmersdelight:wild_rice.name=Wild Rice
+tile.farmersdelight:sandy_shrub.name=Sandy Shrub
 item.farmersdelight:wild_cabbages=Wild Cabbage
 item.farmersdelight:wild_tomatoes=Tomato Shrub
 item.farmersdelight:wild_onions=Wild Onion
@@ -223,7 +223,7 @@ farmersdelight.blockfood.minecraft:bowl=You need a bowl to eat this.
 farmersdelight.skillet.invalid_item=This can't be cooked...
 
 pack.name=Farmer's Delight[RP]
-pack.description=It's time to farm a little bit of everything! Supported version is 1.21.0
+pack.description=It's time to farm a little bit of everything! Supported version is 1.21.0 & 1.21.1
 
 item.farmersdelight:book_farmersdelight=The Book of Farmer's Delight
 

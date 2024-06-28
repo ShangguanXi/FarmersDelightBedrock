@@ -75,14 +75,14 @@ item.farmersdelight:brown_mushroom_colony_item=Colonia de hongos marrones
 item.farmersdelight:red_mushroom_colony_item=Colonia de hongos rojos
 
 
-tile.farmersdelight:wild_cabbages.block=Col silvestre
-tile.farmersdelight:wild_tomatoes.block=Vides de tomate silvestre
-tile.farmersdelight:wild_onions.block=Cebolla silvestre
-tile.farmersdelight:wild_carrots.block=Zanahoria silvestre
-tile.farmersdelight:wild_potatoes.block=Patata silvestre
-tile.farmersdelight:wild_beetroots.block=Remolacha de mar silvestre
-tile.farmersdelight:wild_rice.block=Arroz silvestre
-tile.farmersdelight:sandy_shrub.block=Arbusto arenoso
+tile.farmersdelight:wild_cabbages.name=Col silvestre
+tile.farmersdelight:wild_tomatoes.name=Vides de tomate silvestre
+tile.farmersdelight:wild_onions.name=Cebolla silvestre
+tile.farmersdelight:wild_carrots.name=Zanahoria silvestre
+tile.farmersdelight:wild_potatoes.name=Patata silvestre
+tile.farmersdelight:wild_beetroots.name=Remolacha de mar silvestre
+tile.farmersdelight:wild_rice.name=Arroz silvestre
+tile.farmersdelight:sandy_shrub.name=Arbusto arenoso
 item.farmersdelight:wild_cabbages=Col silvestre
 item.farmersdelight:wild_tomatoes=Vides de tomate silvestre
 item.farmersdelight:wild_onions=Cebolla silvestre
@@ -228,7 +228,7 @@ farmersdelight.blockfood.minecraft:bowl=Necesitas un cuenco para comer esto.
 farmersdelight.skillet.invalid_item=Esto no se puede cocinar...
 
 pack.name=Farmer's Delight[RP]
-pack.description=¡Es hora de cultivar un poco de todo! La versión compatible es 1.21.0
+pack.description=¡Es hora de cultivar un poco de todo! La versión compatible es 1.21.0  & 1.21.1
 
 item.farmersdelight:book_farmersdelight=El libro de la delicia del granjero
 

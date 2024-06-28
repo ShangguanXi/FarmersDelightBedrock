@@ -56,14 +56,14 @@ tile.farmersdelight:red_mushroom_colony.name=Colonia di funghi rossi
 item.farmersdelight:brown_mushroom_colony_item=Colonia di funghi marroni
 item.farmersdelight:red_mushroom_colony_item=Colonia di funghi rossi
 
-item.farmersdelight:wild_cabbages=Cavolo selvatico
-item.farmersdelight:wild_tomatoes=Cespuglio di pomodori
-item.farmersdelight:wild_onions=Cipolla selvatica
-item.farmersdelight:wild_carrots=Carota selvatica
-item.farmersdelight:wild_potatoes=Patata selvatica
-item.farmersdelight:wild_beetroots=Barbabietola di mare
-item.farmersdelight:wild_rice=Riso selvatico
-item.farmersdelight:sandy_shrub=Arbusto sabbioso
+tile.farmersdelight:wild_cabbages.name=Cavolo selvatico
+tile.farmersdelight:wild_tomatoes.name=Cespuglio di pomodori
+tile.farmersdelight:wild_onions.name=Cipolla selvatica
+tile.farmersdelight:wild_carrots.name=Carota selvatica
+tile.farmersdelight:wild_potatoes.name=Patata selvatica
+tile.farmersdelight:wild_beetroots.name=Barbabietola di mare
+tile.farmersdelight:wild_rice.name=Riso selvatico
+tile.farmersdelight:sandy_shrub.name=Arbusto sabbioso
 item.farmersdelight:wild_cabbages=Cavolo selvatico
 item.farmersdelight:wild_tomatoes=Cespuglio di pomodori
 item.farmersdelight:wild_onions=Cipolla selvatica
@@ -206,7 +206,7 @@ farmersdelight.blockfood.minecraft:bowl=Hai bisogno di una ciotola per mangiarlo
 farmersdelight.skillet.invalid_item=Questo non può essere cucinato...
 
 pack.name=Farmer's Delight[RP]
-pack.description=È ora di coltivare un po' di tutto! La versione supportata è la 1.21.0
+pack.description=È ora di coltivare un po' di tutto! La versione supportata è la 1.21.0 & 1.21.1
 
 item.farmersdelight:book_farmersdelight=Il libro di Farmer's Delight
 
