@@ -17,13 +17,14 @@
                 "minecraft:placement_direction": {
                     "enabled_states": [
                         "minecraft:cardinal_direction"
-                    ]
+                    ],
+                    "y_rotation_offset": 180.0
                 }
             }
         },
         "permutations": [
             {
-                "condition": "query.block_state('minecraft:cardinal_direction') == 'north'",
+                "condition": "query.block_state('minecraft:cardinal_direction') == 'south'",
                 "components": {
                     "minecraft:transformation": {
                         "rotation": [
@@ -83,7 +84,7 @@
                         "down": {
                             "texture": "cherry_cabinet_top"
                         },
-                        "north": {
+                        "south": {
                             "texture": "cherry_cabinet_front"
                         }
                     }
@@ -102,7 +103,7 @@
                         "down": {
                             "texture": "cherry_cabinet_top"
                         },
-                        "north": {
+                        "south": {
                             "texture": "cherry_cabinet_front_open"
                         }
                     }
