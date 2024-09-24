@@ -2462,7 +2462,7 @@
     "orientation": "vertical",
     "size": [
       150,
-      5400
+      "default"
     ],
     "controls": [
       {
@@ -2783,14 +2783,14 @@
   //配方滑块面板
   "cooking_pot_scrolling_panel@common.scrolling_panel": {
     "$show_background": false,
-    "$always_handle_scrolling": false,
+    "$always_handle_scrolling": true,
     "$scroll_track_offset": [
       0,
       6
     ],
     "size": [
       160,
-      143
+      146
     ],
     "offset": [
       0,
@@ -2810,7 +2810,7 @@
     ],
     "$scroll_view_port_size": [
       150,
-      143
+      146
     ],
     "$scrolling_content": "chest.recipe_grid_panel"
   },
@@ -2830,7 +2830,7 @@
         "cooking_pot_scrolling_panel@chest.cooking_pot_scrolling_panel": {
           "offset": [
             0,
-            0
+            2
           ]
         }
       }
