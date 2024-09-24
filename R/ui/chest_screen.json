@@ -2462,7 +2462,7 @@
     "orientation": "vertical",
     "size": [
       150,
-      "default"
+      "100.0%c+20px"
     ],
     "controls": [
       {
