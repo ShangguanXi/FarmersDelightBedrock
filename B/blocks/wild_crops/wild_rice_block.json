@@ -3,9 +3,6 @@
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:wild_rice",
-            "menu_category": {
-                "category": "none"
-            },
             "states": {
                 "farmersdelight:wild_rice": [
                     0,

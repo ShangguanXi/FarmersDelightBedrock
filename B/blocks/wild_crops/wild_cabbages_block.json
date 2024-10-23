@@ -2,10 +2,7 @@
     "format_version": "1.21.0",
     "minecraft:block": {
         "description": {
-            "identifier": "farmersdelight:wild_cabbages",
-			"menu_category":{
-				"category": "none"
-			}
+            "identifier": "farmersdelight:wild_cabbages"
         },
         "components": {
             "minecraft:custom_components": [

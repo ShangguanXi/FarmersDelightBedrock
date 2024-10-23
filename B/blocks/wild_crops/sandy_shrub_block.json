@@ -2,10 +2,7 @@
     "format_version": "1.21.0",
     "minecraft:block": {
         "description": {
-            "identifier": "farmersdelight:sandy_shrub",
-			"menu_category":{
-				"category": "none"
-			}
+            "identifier": "farmersdelight:sandy_shrub"
         },
         "components": {
             "minecraft:custom_components": [
