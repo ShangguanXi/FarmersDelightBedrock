@@ -22,7 +22,7 @@
       "identifier": "farmersdelight:kelp_roll_slice",
       "menu_category": {
         "category": "equipment",
-        "group": "itemGroup.name.miscFood"
+        "group": "farmersdelight:itemGroup.name.miscFood"
       }
     }
   }

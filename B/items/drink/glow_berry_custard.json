@@ -24,7 +24,7 @@
       "identifier": "farmersdelight:glow_berry_custard",
       "menu_category": {
         "category": "equipment",
-        "group": "itemGroup.name.miscFood"
+        "group": "farmersdelight:itemGroup.name.miscFood"
       }
     }
   }

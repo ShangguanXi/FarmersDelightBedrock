@@ -1,10 +1,11 @@
 {
-    "format_version": "1.21.0",
+    "format_version": "1.21.60",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:straw_bale",
             "menu_category": {
-                "category": "items"
+                "category": "items",
+                "group":"farmersdelight:itemGroup.name.crate"
             }
         },
         "components": {

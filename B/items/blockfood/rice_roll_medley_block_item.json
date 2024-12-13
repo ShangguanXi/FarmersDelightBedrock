@@ -16,7 +16,7 @@
       "identifier": "farmersdelight:rice_roll_medley_block_item",
       "menu_category": {
         "category": "equipment",
-        "group": "itemGroup.name.miscFood"
+        "group": "farmersdelight:itemGroup.name.miscFood"
       }
     }
   }

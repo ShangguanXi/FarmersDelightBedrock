@@ -20,7 +20,7 @@
       "identifier": "farmersdelight:sandy_shrub",
       "menu_category": {
         "category": "nature",
-        "group": "itemGroup.name.nature"
+        "group": "farmersdelight:itemGroup.name.wildcrop"
       }
     }
   }

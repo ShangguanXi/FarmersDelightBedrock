@@ -24,7 +24,7 @@
       "identifier": "farmersdelight:pasta_with_meatballs",
       "menu_category": {
         "category": "equipment",
-        "group": "itemGroup.name.miscFood"
+        "group": "farmersdelight:itemGroup.name.miscFood"
       }
     }
   }

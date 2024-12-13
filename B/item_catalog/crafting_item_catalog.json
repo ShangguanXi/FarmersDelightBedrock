@@ -1,0 +1,55 @@
+{
+   "format_version": "1.21.60",
+   "minecraft:crafting_items_catalog": {
+      "categories": [
+         {
+            "category_name": "equipment",
+            "groups": [
+               {
+                  "group_identifier": {
+                     "icon": "farmersdelight:diamond_knife",
+                     "name": "farmersdelight:itemGroup.name.knife"
+                  },
+                  "items": []
+               }
+            ]
+         },
+         {
+            "category_name": "equipment",
+            "groups": [
+               {
+                  "group_identifier": {
+                     "icon": "farmersdelight:roast_chicken_block_item",
+                     "name": "farmersdelight:itemGroup.name.miscFood"
+                  },
+                  "items": []
+               }
+            ]
+         },
+         {
+            "category_name": "nature",
+            "groups": [
+               {
+                  "group_identifier": {
+                     "icon": "farmersdelight:wild_cabbages",
+                     "name": "farmersdelight:itemGroup.name.wildcrop"
+                  },
+                  "items": []
+               }
+            ]
+         },
+         {
+            "category_name": "items",
+            "groups": [
+               {
+                  "group_identifier": {
+                     "icon": "farmersdelight:beetroot_crate",
+                     "name": "farmersdelight:itemGroup.name.crate"
+                  },
+                  "items": []
+               }
+            ]
+         }
+      ]
+   }
+}

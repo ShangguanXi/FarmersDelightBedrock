@@ -16,7 +16,7 @@
       "identifier": "farmersdelight:honey_glazed_ham_block_item",
       "menu_category": {
         "category": "equipment",
-        "group": "itemGroup.name.miscFood"
+        "group": "farmersdelight:itemGroup.name.miscFood"
       }
     }
   }
