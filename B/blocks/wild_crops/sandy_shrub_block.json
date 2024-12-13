@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.0",
+    "format_version": "1.21.60",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:sandy_shrub",
@@ -14,24 +14,23 @@
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 0.0
             },
-			"minecraft:light_dampening": 0,
+            "minecraft:light_dampening": 0,
             "minecraft:destructible_by_explosion": {
                 "explosion_resistance": 0.1
             },
             "minecraft:geometry": "geometry.wild_crop",
-			"minecraft:material_instances": {
-				"*": {
-					"texture": "sandy_shrub",
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "sandy_shrub",
                     "render_method": "alpha_test",
                     "ambient_occlusion": false,
                     "face_dimming": false
-				}
-			},
-			"minecraft:flammable": {
-				"catch_chance_modifier": 30,
-				"destroy_chance_modifier": 60
-			},
-           
+                }
+            },
+            "minecraft:flammable": {
+                "catch_chance_modifier": 30,
+                "destroy_chance_modifier": 60
+            },
             "minecraft:placement_filter": {
                 "conditions": [
                     {
@@ -59,7 +58,6 @@
                 ]
             },
             "minecraft:loot": "loot_tables/farmersdelight/empty.json",
-            
             "minecraft:collision_box": false
         }
     }
