@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.60",
+    "format_version": "1.21.0",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:red_mushroom_colony",
@@ -144,6 +144,13 @@
             "minecraft:custom_components": [
                 "farmersdelight:mushroom_colony"
             ],
+            "minecraft:liquid_detection": {
+                "detection_rules": [
+                    {
+                        "on_liquid_touches": "popped"
+                    }
+                ]
+            },
             "minecraft:loot": "loot_tables/empty.json",
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 0.0

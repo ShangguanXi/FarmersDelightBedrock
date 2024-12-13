@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.60",
+    "format_version": "1.21.0",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:cabbage_block",
@@ -178,15 +178,15 @@
         ],
         "components": {
             "minecraft:loot": "loot_tables/farmersdelight/crops/farmersdelight_cabbage.json",
-            "minecraft:destructible_by_mining": {
-                "seconds_to_destroy": 0.0
-            },
             "minecraft:liquid_detection": {
                 "detection_rules": [
                     {
                         "on_liquid_touches": "popped"
                     }
                 ]
+            },
+            "minecraft:destructible_by_mining": {
+                "seconds_to_destroy": 0.0
             },
             "minecraft:custom_components": [
                 "farmersdelight:cabbage"

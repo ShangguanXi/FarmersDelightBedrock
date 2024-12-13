@@ -1,8 +1,8 @@
 {
-  "format_version": "1.20.80",
+  "format_version": "1.21.40",
   "minecraft:item": {
     "components": {
-      "minecraft:damage": 5.5,
+      "minecraft:damage": 5,
       "minecraft:digger": {
         "destroy_speeds": [
           {

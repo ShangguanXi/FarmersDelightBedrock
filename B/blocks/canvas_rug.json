@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.60",
+    "format_version": "1.21.0",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:canvas_rug",
@@ -10,13 +10,6 @@
         "components": {
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 0.2
-            },
-            "minecraft:liquid_detection": {
-                "detection_rules": [
-                    {
-                        "on_liquid_touches": "popped"
-                    }
-                ]
             },
 			"minecraft:light_dampening": 0,
             "minecraft:destructible_by_explosion": {

@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.60",
+    "format_version": "1.21.0",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:rich_soil_sugar_cane_top",
@@ -12,13 +12,6 @@
             "minecraft:custom_components": [
                 "farmersdelight:sugar_cane"
             ],
-            "minecraft:liquid_detection": {
-                "detection_rules": [
-                    {
-                        "on_liquid_touches": "popped"
-                    }
-                ]
-            },
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 0
             },
@@ -40,6 +33,13 @@
                     "face_dimming": false,
                     "render_method": "alpha_test"
                 }
+            },
+            "minecraft:liquid_detection": {
+                "detection_rules": [
+                    {
+                        "on_liquid_touches": "popped"
+                    }
+                ]
             },
             "minecraft:placement_filter": {
                 "conditions": [
