@@ -1,0 +1,273 @@
+tile.farmersdelight:stove.name=Ocak
+tile.farmersdelight:cooking_pot.name=Tencere
+tile.farmersdelight:basket.name=Sepet
+tile.farmersdelight:cutting_board.name=Kesme Tahtası
+tile.farmersdelight:skillet_block.name=Tava
+tile.farmersdelight:oak_cabinet.name=Meşe Kiler
+tile.farmersdelight:birch_cabinet.name=Huş Kiler
+tile.farmersdelight:spruce_cabinet.name=Çam Kiler
+tile.farmersdelight:jungle_cabinet.name=Orman Kiler
+tile.farmersdelight:acacia_cabinet.name=Akasya Kiler
+tile.farmersdelight:dark_oak_cabinet.name=Koyu Meşe Kiler
+tile.farmersdelight:mangrove_cabinet.name=Mangrov Kiler
+tile.farmersdelight:crimson_cabinet.name=Kızıl Kiler
+tile.farmersdelight:warped_cabinet.name=Çarpık Kiler
+tile.farmersdelight:cherry_cabinet.name=Kiraz Kiler
+tile.farmersdelight:bamboo_cabinet.name=Bambu Kiler
+entity.farmersdelight:oak_cabinet.name=Meşe Kiler
+entity.farmersdelight:birch_cabinet.name=Huş Kiler
+entity.farmersdelight:spruce_cabinet.name=Çam Kiler
+entity.farmersdelight:jungle_cabinet.name=Orman Kiler
+entity.farmersdelight:acacia_cabinet.name=Akasya Kiler
+entity.farmersdelight:dark_oak_cabinet.name=Koyu Meşe Kiler
+entity.farmersdelight:mangrove_cabinet.name=Mangrov Kiler
+entity.farmersdelight:crimson_cabinet.name=Kızıl Kiler
+entity.farmersdelight:warped_cabinet.name=Çarpık Kiler
+entity.farmersdelight:cherry_cabinet.name=Kiraz Kiler
+entity.farmersdelight:bamboo_cabinet.name=Bambu Kiler
+item.farmersdelight:rope=Halat
+tile.farmersdelight:safety_net.name=Emniyet Halatı
+tile.farmersdelight:canvas_rug.name=Kanvas Kilim
+tile.farmersdelight:tatami.name=Tatami Bloğu
+tile.farmersdelight:full_tatami_mat.name=Tam Tatami Matı
+tile.farmersdelight:half_tatami_mat.name=Yarım Tatami Matı
+item.farmersdelight:half_tatami_mat_item=Yarım Tatami Matı
+tile.farmersdelight:organic_compost.name=Organik Gübre
+tile.farmersdelight:rich_soil.name=Zengin Toprak
+tile.farmersdelight:rich_soil_farmland.name=Zengin Toprak Tarım Arazisi
+tile.farmersdelight:carrot_crate.name=Havuç Kasası
+tile.farmersdelight:potato_crate.name=Patates Kasası
+tile.farmersdelight:beetroot_crate.name=Pancar Kasası
+tile.farmersdelight:cabbage_crate.name=Lahana Kasası
+tile.farmersdelight:tomato_crate.name=Domates Kasası
+tile.farmersdelight:onion_crate.name=Soğan Kasası
+tile.farmersdelight:rice_bale.name=Pirinç Balyası
+tile.farmersdelight:rice_bag.name=Pirinç Çuvalı
+tile.farmersdelight:straw_bale.name=Hasır Balyası
+
+tile.farmersdelight:canvas_sign.name=Kanvas Tabela
+tile.farmersdelight:white_canvas_sign.name=Beyaz Kanvas Tabela
+tile.farmersdelight:orange_canvas_sign.name=Turuncu Kanvas Tabela
+tile.farmersdelight:magenta_canvas_sign.name=Eflatun Kanvas Tabela
+tile.farmersdelight:light_blue_canvas_sign.name=Açık Mavi Kanvas Tabela
+tile.farmersdelight:yellow_canvas_sign.name=Sarı Kanvas Tabela
+tile.farmersdelight:lime_canvas_sign.name=Açık Yeşil Kanvas Tabela
+tile.farmersdelight:pink_canvas_sign.name=Pembe Kanvas Tabela
+tile.farmersdelight:gray_canvas_sign.name=Gri Kanvas Tabela
+tile.farmersdelight:light_gray_canvas_sign.name=Açık Gri Kanvas Tabela
+tile.farmersdelight:cyan_canvas_sign.name=Camgöbeği Kanvas Tabela
+tile.farmersdelight:purple_canvas_sign.name=Mor Kanvas Tabela
+tile.farmersdelight:blue_canvas_sign.name=Mavi Kanvas Tabela
+tile.farmersdelight:brown_canvas_sign.name=Kahverengi Kanvas Tabela
+tile.farmersdelight:green_canvas_sign.name=Yeşil Kanvas Tabela
+tile.farmersdelight:red_canvas_sign.name=Kırmızı Kanvas Tabela
+tile.farmersdelight:black_canvas_sign.name=Siyah Kanvas Tabela
+
+tile.farmersdelight:tomatoes.name=Domates Salkımı
+tile.farmersdelight:cabbages.name=Lahana
+tile.farmersdelight:onions.name=Soğan
+tile.farmersdelight:rice_block.name=Pirinç
+tile.farmersdelight:rice_upper_block.name=Pirinç
+tile.farmersdelight:brown_mushroom_colony.name=Kahverengi Mantar Kolonisi
+tile.farmersdelight:red_mushroom_colony.name=Kırmızı Mantar Kolonisi
+item.farmersdelight:brown_mushroom_colony_item=Kahverengi Mantar Kolonisi
+item.farmersdelight:red_mushroom_colony_item=Kırmızı Mantar Kolonisi
+
+tile.farmersdelight:wild_cabbages.name=Yabani Lahana
+tile.farmersdelight:wild_tomatoes.name=Yabani Domates
+tile.farmersdelight:wild_onions.name=Yabani Soğan
+tile.farmersdelight:wild_carrots.name=Yabani Havuç
+tile.farmersdelight:wild_potatoes.name=Yabani Patates
+tile.farmersdelight:wild_beetroots.name=Yabani Pancar
+tile.farmersdelight:wild_rice.name=Yabani Pirinç
+tile.farmersdelight:sandy_shrub.name=Kumlu Çalı
+item.farmersdelight:wild_cabbages=Yabani Lahana
+item.farmersdelight:wild_tomatoes=Yabani Domates
+item.farmersdelight:wild_onions=Yabani Soğan
+item.farmersdelight:wild_carrots=Yabani Havuç
+item.farmersdelight:wild_potatoes=Yabani Patates
+item.farmersdelight:wild_beetroots=Yabani Pancar
+item.farmersdelight:wild_rice=Yabani Pirinç
+item.farmersdelight:sandy_shrub=Kumlu Çalı
+
+tile.farmersdelight:apple_pie.name=Elmalı Turta
+tile.farmersdelight:sweet_berry_cheesecake.name=Tatlı Meyveli Çizkek
+tile.farmersdelight:chocolate_pie.name=Çikolatalı Turta
+item.farmersdelight:apple_pie=Elmalı Turta
+item.farmersdelight:sweet_berry_cheesecake=Tatlı Meyveli Çizkek
+item.farmersdelight:chocolate_pie=Çikolatalı Turta
+
+item.farmersdelight:tomato=Domates
+item.farmersdelight:cabbage=Lahana
+item.farmersdelight:onion=Soğan
+item.farmersdelight:rice=Pirinç
+item.farmersdelight:cabbage_seeds=Lahana Tohumları
+item.farmersdelight:tomato_seeds=Domates Tohumları
+item.farmersdelight:rice_panicle=Pirinç Salkımı
+item.farmersdelight:rotten_tomato=Çürük Domates
+
+item.farmersdelight:straw=Hasır
+item.farmersdelight:canvas=Kanvas
+item.farmersdelight:tree_bark=Ağaç Kabuğu
+
+item.farmersdelight:tomato_sauce=Domates Sosu
+item.farmersdelight:fried_egg=Sahanda Yumurta
+item.farmersdelight:milk_bottle=Süt Şişesi
+item.farmersdelight:hot_cocoa=Sıcak Çikolata
+
+item.farmersdelight:apple_cider=Elma Şırası
+item.farmersdelight:melon_juice=Karpuz Suyu
+item.farmersdelight:wheat_dough=Hamur
+item.farmersdelight:raw_pasta=Çiğ Makarna
+item.farmersdelight:pumpkin_slice=Balkabağı Dilimi
+item.farmersdelight:cabbage_leaf=Lahana Yaprağı
+item.farmersdelight:minced_beef=Kıyılmış Biftek
+item.farmersdelight:beef_patty=Köfte
+item.farmersdelight:chicken_cuts=Çiğ Tavuk Dilimi
+item.farmersdelight:cooked_chicken_cuts=Pişmiş Tavuk Dilimi
+item.farmersdelight:bacon=Çiğ Pastırma
+item.farmersdelight:cooked_bacon=Pişmiş Pastırma
+item.farmersdelight:cod_slice=Çiğ Morina Dilimi
+item.farmersdelight:cooked_cod_slice=Pişmiş Morina Dilimi
+item.farmersdelight:salmon_slice=Çiğ Somon Dilimi
+item.farmersdelight:cooked_salmon_slice=Pişmiş Somon Dilimi
+item.farmersdelight:mutton_chops=Çiğ Koyun Eti Dilimi
+item.farmersdelight:cooked_mutton_chops=Pişmiş Koyun Eti Dilimi
+item.farmersdelight:ham=Jambon
+item.farmersdelight:smoked_ham=Pişmiş Jambon
+
+item.farmersdelight:pie_crust=Turta Hamuru
+item.farmersdelight:cake_slice=Pasta Dilimi
+item.farmersdelight:apple_pie_slice=Elma Turtası Dilimi
+item.farmersdelight:sweet_berry_cheesecake_slice=Tatlı Meyveli Çizkek Dilimi
+item.farmersdelight:chocolate_pie_slice=Çikolatalı Turta Dilimi
+item.farmersdelight:fruit_salad=Meyve Salatası
+item.farmersdelight:sweet_berry_cookie=Tatlı Meyveli Kurabiye
+item.farmersdelight:honey_cookie=Ballı Kurabiye
+item.farmersdelight:melon_popsicle=Karpuzlu Meybuz
+
+item.farmersdelight:earthworm=Solucan
+
+item.farmersdelight:flint_knife=Çakmaktaşı Bıçak
+item.farmersdelight:iron_knife=Demir Bıçak
+item.farmersdelight:golden_knife=Altın Bıçak
+item.farmersdelight:diamond_knife=Elmas Bıçak
+item.farmersdelight:netherite_knife=Netherite Bıçak
+
+item.farmersdelight:barbecue_stick=Çubukta Barbekü
+item.farmersdelight:egg_sandwich=Yumurtalı Sandviç
+item.farmersdelight:chicken_sandwich=Tavuklu Sandviç
+item.farmersdelight:hamburger=Hamburger
+item.farmersdelight:bacon_sandwich=Pastırmalı Sandviç
+item.farmersdelight:mutton_wrap=Kuzu Dürüm
+item.farmersdelight:dumplings=Mantı
+item.farmersdelight:stuffed_potato=Kumpir
+item.farmersdelight:cabbage_rolls=Lahana Sarması
+
+item.farmersdelight:cooked_rice=Pilav
+item.farmersdelight:mixed_salad=Karışık Salata
+item.farmersdelight:nether_salad=Nether Salatası
+item.farmersdelight:beef_stew=Biftek Yahnisi
+item.farmersdelight:chicken_soup=Tavuk Çorbası
+item.farmersdelight:vegetable_soup=Sebze Çorbası
+item.farmersdelight:fish_stew=Balık Yahnisi
+item.farmersdelight:fried_rice=Kızarmış Pirinç
+item.farmersdelight:pumpkin_soup=Balkabağı Çorbası
+item.farmersdelight:baked_cod_stew=Morina Yahnisi
+item.farmersdelight:noodle_soup=Erişte Çorbası
+
+item.farmersdelight:bacon_and_eggs=Pastırma ve Yumurta
+item.farmersdelight:pasta_with_meatballs=Köfteli Makarna
+item.farmersdelight:pasta_with_mutton_chop=Koyun Etli Makarna
+item.farmersdelight:roasted_mutton_chops=Kavrulmuş Koyun Eti
+item.farmersdelight:steak_and_potatoes=Biftek ve Patates
+item.farmersdelight:vegetable_noodles=Sebzeli Erişte
+item.farmersdelight:ratatouille=Ratatuy
+item.farmersdelight:squid_ink_pasta=Mürekkepli Makarna
+item.farmersdelight:grilled_salmon=Kızarmış Somon
+
+tile.farmersdelight:roast_chicken_block.name=Kızarmış Tavuk
+item.farmersdelight:roast_chicken_block_item=Kızarmış Tavuk
+item.farmersdelight:roast_chicken=Kızarmış Tavuk Tabağı
+tile.farmersdelight:stuffed_pumpkin_block.name=Balkabağı Dolması
+item.farmersdelight:stuffed_pumpkin_block_item=Balkabağı Dolması
+item.farmersdelight:stuffed_pumpkin=Balkabağı Dolması Tabağı
+tile.farmersdelight:honey_glazed_ham_block.name=Ballı Jambon
+item.farmersdelight:honey_glazed_ham_block_item=Ballı Jambon
+item.farmersdelight:honey_glazed_ham=Ballı Jambon Tabağı
+tile.farmersdelight:shepherds_pie_block.name=Çoban Turtası
+item.farmersdelight:shepherds_pie_block_item=Çoban Turtası
+item.farmersdelight:shepherds_pie=Çoban Turtası Tabağı
+
+item.farmersdelight:dog_food=Köpek Maması
+item.farmersdelight:horse_feed=At Yemi
+
+item.farmersdelight:kelp_roll=Yosun Sarması
+item.farmersdelight:kelp_roll_slice=Yosun Sarması Dilimi
+
+item.farmersdelight:salmon_roll=Somon Sarması
+item.farmersdelight:cod_roll=Morina Sarması
+
+item.farmersdelight:bone_broth=Kemik Suyu
+item.farmersdelight:glow_berry_custard=Parlayan Meyveli Muhallebi
+
+tile.farmersdelight:rice_roll_medley_block.name=Karışık Pirinç Sarmaları
+item.farmersdelight:rice_roll_medley_block_item=Karışık Pirinç Sarmaları
+
+entity.farmersdelight:cooking_pot.name=FarmersDelight Tencere
+farmersdelight:CookingPot=Tencere
+
+farmersdelight.tips.false_tool=Belki Başka bir Aletle...
+farmersdelight.tips.cant_cut=Bu Kesilebilir Durmuyor...
+farmersdelight.blockfood.minecraft:bowl=Bunu Yemek için Kase Gerekli.
+farmersdelight.skillet.invalid_item=Bu Pişirilebilir Durmuyor...
+
+pack.name=Farmer's Delight[RP]
+pack.description=It's time to farm a little bit of everything! Supported version is 1.21.60+
+
+item.farmersdelight:book_farmersdelight=Farmer's Delight'n Kitab
+
+farmersdelight.book.title=Farmer's Delight
+farmersdelight.book.cutting_board.main=The Cutting Board is a functional block without a GUI that can hold certain blocks and items and can be processed using tools.
+farmersdelight.book.stove.main=The Stove is a functional block without a GUI that provides heat for the Skillet and Cooking Pot when active, and can also smelt certain items on its own. When smelting items, it can simultaneously smelt up to 6 different items of the same or different types.
+farmersdelight.book.stove.switch_title=§l§6Ignition and Extinguishing
+farmersdelight.book.stove.switch=§rWhile active, the Stove can be extinguished using a shovel or water bucket. When extinguished, it can be reignited using flint and steel.
+farmersdelight.book.cooking_pot.main=The Cooking Pot is a functional block with a GUI that can be used for cooking and storing food.
+farmersdelight.book.cooking_pot.heat_source_title=§l§cHeat Source
+farmersdelight.book.cooking_pot.heat_source=§rTo prepare food, the Cooking Pot must have a heat source below it. You can determine the presence of a heat source by observing bubbles or smoke rising above the Cooking Pot or flames in the GUI. Heat sources can be fire (including soul fire), lava, campfires (including soul campfires), lit stoves, or any block with the tag farmersdelight:heat_source.
+farmersdelight.book.cooking_pot.use_title=§l§qUsage
+farmersdelight.book.cooking_pot.use.1=§r The Cooking Pot has six input slots, one display slot, one container slot, and one output slot.
+farmersdelight.book.cooking_pot.use.2=§r The Cooking Pot has a recipe display UI, accessible by opening the Cooking Pot.
+farmersdelight.book.cooking_pot.use.3=§r The Cooking Pot recipes are all shapeless recipes; once the ingredients are placed and it is heated, the food will automatically start synthesizing.
+farmersdelight.book.cooking_pot.use.4=§r Items in the display slot cannot be taken directly; you need to put a suitable container in the container slot to transfer them to the output slot before they can be taken out.
+farmersdelight.book.skillet.main=The Skillet is a functional block without a GUI. Its role differs in item and block forms.
+farmersdelight.book.skillet.block_title=§l§3Block State
+farmersdelight.book.skillet.block=§rIn this state, the Skillet can cook food when there is a heat source below it. Right-click to place food on the Skillet, and it can hold a maximum of one set of ingredients.
+farmersdelight.book.skillet.item_title=§l§2Item State
+farmersdelight.book.skillet.item=§rIn this state, the Skillet has additional attack damage.
+farmersdelight.book.thanks=Credits
+farmersdelight.book.thanks.sponsored_list_title=§l§eSponsors
+farmersdelight.book.thanks.sponsored_list=§r@ @Lis.kai
+farmersdelight.book.thanks.license_title=§l§9License
+farmersdelight.book.thanks.license=§rThe original Java edition Farmer's Delight is open source on GitHub and CurseForge under the MIT license. This team has legally ported Farmer's Delight while adhering to the MIT license! Special thanks to Vectorwing for creating this excellent mod.
+farmersdelight.book.thanks.developers_title=§l§6Members of Dev Team
+farmersdelight.book.thanks.developers=§r@Moaswies @ShiXuMSolo @一条小黑龙 @dofes
+farmersdelight.book.thanks.contributors_title=§l§aContributors
+farmersdelight.book.thanks.contributors=§r@语翌制作组 @Sanjy @MysticLintha @Emeraldx392 @阁南飞
+farmersdelight.book.thanks.chat_group_title=§l§4Community
+farmersdelight.book.thanks.chat_group.qqchat=§rQQ Group: 851992067
+farmersdelight.book.thanks.chat_group.discord=§rDiscord Channel: https://discord.gg/52putAfXnQ
+farmersdelight.book.thanks.sponsor_title=§l§gSponsorship Methods:
+farmersdelight.book.thanks.sponsor=§rpatreon: https://patreon.com/Moaswies
+
+farmersdelight.book.crop=Cultivation
+farmersdelight.book.crop.main=This mod adds four new crops: Tomatoes, Onions, Cabbages, and Rice. These crops, along with vanilla crops, can generate as wild crops around the world.
+farmersdelight.book.crop.tomatoes_title=§l§cTomatoes
+farmersdelight.book.crop.tomatoes=§rTomatoes can be obtained by breaking tomato crops, breaking wild tomato shrubs, or cutting wild tomato shrubs on the cutting board. Tomato shrubs generate in hot biomes. When tomato crops have no linked rope above them, tomatoes will grow along the rope, reaching a maximum height of two blocks.
+farmersdelight.book.crop.cabbages_title=§l§aCabbages
+farmersdelight.book.crop.cabbages=§rCabbages can be obtained by breaking cabbage crops, breaking wild cabbages, or cutting wild cabbages on the cutting board. Wild cabbages generate in beach biomes.
+farmersdelight.book.crop.onions_title=§l§6Onions
+farmersdelight.book.crop.onions=§rOnions can be obtained by breaking onion crops, breaking wild onions, or cutting wild onions on the cutting board. Wild onions generate in temperate biomes.
+farmersdelight.book.crop.rice_crop_title=§l§pRice
+farmersdelight.book.crop.rice_crop=§rRice can be obtained by breaking rice crops, breaking wild rice, cutting rice panicles on the cutting board, or cutting wild rice on the cutting board. Wild rice generates in river biomes.
+farmersdelight.book.back=Back
