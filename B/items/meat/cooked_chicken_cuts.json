@@ -28,7 +28,7 @@
       "identifier": "farmersdelight:cooked_chicken_cuts",
       "menu_category": {
         "category": "equipment",
-        "group": "itemGroup.name.cookedFood"
+        "group": "farmersdelight:itemGroup.name.cookedFood"
       }
     }
   }

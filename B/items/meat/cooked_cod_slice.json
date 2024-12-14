@@ -29,7 +29,7 @@
       "identifier": "farmersdelight:cooked_cod_slice",
       "menu_category": {
         "category": "equipment",
-        "group": "itemGroup.name.cookedFood"
+        "group": "farmersdelight:itemGroup.name.cookedFood"
       }
     }
   }

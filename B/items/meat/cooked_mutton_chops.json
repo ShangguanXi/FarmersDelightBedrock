@@ -27,7 +27,7 @@
       "identifier": "farmersdelight:cooked_mutton_chops",
       "menu_category": {
         "category": "equipment",
-        "group": "itemGroup.name.cookedFood"
+        "group": "farmersdelight:itemGroup.name.cookedFood"
       }
     }
   }

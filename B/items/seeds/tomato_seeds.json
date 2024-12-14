@@ -24,7 +24,7 @@
       "identifier": "farmersdelight:tomato_seeds",
       "menu_category": {
         "category": "nature",
-        "group": "itemGroup.name.seed"
+        "group": "farmersdelight:itemGroup.name.seed"
       }
     }
   }

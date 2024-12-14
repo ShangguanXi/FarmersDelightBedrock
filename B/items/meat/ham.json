@@ -27,7 +27,7 @@
       "identifier": "farmersdelight:ham",
       "menu_category": {
         "category": "nature",
-        "group": "itemGroup.name.rawFood"
+        "group": "farmersdelight:itemGroup.name.rawFood"
       }
     }
   }

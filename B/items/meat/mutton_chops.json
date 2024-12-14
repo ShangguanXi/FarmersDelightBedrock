@@ -28,7 +28,7 @@
       "identifier": "farmersdelight:mutton_chops",
       "menu_category": {
         "category": "nature",
-        "group": "itemGroup.name.rawFood"
+        "group": "farmersdelight:itemGroup.name.rawFood"
       }
     }
   }

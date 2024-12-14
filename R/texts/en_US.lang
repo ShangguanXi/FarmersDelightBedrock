@@ -276,3 +276,7 @@ farmersdelight:itemGroup.name.knife=Farmer`s Delight-Knife
 farmersdelight:itemGroup.name.miscFood=Farmer`s Delight-Food
 farmersdelight:itemGroup.name.wildcrop=Farmer`s Delight-Wild Crop
 farmersdelight:itemGroup.name.crate=Farmer`s Delight-Crate
+farmersdelight:itemGroup.name.cookedFood=Farmer`s Delight-Cooked Food
+farmersdelight:itemGroup.name.rawFood=Farmer`s Delight-Raw Food
+farmersdelight:itemGroup.name.seed=Farmer`s Delight-Seed
+farmersdelight:itemGroup.name.crop=Farmer`s Delight-Crop

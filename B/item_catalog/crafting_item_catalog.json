@@ -11,16 +11,18 @@
                      "name": "farmersdelight:itemGroup.name.knife"
                   },
                   "items": []
-               }
-            ]
-         },
-         {
-            "category_name": "equipment",
-            "groups": [
+               },
                {
                   "group_identifier": {
                      "icon": "farmersdelight:roast_chicken_block_item",
                      "name": "farmersdelight:itemGroup.name.miscFood"
+                  },
+                  "items": []
+               },
+               {
+                  "group_identifier": {
+                     "icon": "farmersdelight:cooked_bacon",
+                     "name": "farmersdelight:itemGroup.name.cookedFood"
                   },
                   "items": []
                }
@@ -33,6 +35,27 @@
                   "group_identifier": {
                      "icon": "farmersdelight:wild_cabbages",
                      "name": "farmersdelight:itemGroup.name.wildcrop"
+                  },
+                  "items": []
+               },
+               {
+                  "group_identifier": {
+                     "icon": "farmersdelight:chicken_cuts",
+                     "name": "farmersdelight:itemGroup.name.rawFood"
+                  },
+                  "items": []
+               },
+               {
+                  "group_identifier": {
+                     "icon": "farmersdelight:cabbage_seeds",
+                     "name": "farmersdelight:itemGroup.name.seed"
+                  },
+                  "items": []
+               },
+               {
+                  "group_identifier": {
+                     "icon": "farmersdelight:tomato",
+                     "name": "farmersdelight:itemGroup.name.crop"
                   },
                   "items": []
                }

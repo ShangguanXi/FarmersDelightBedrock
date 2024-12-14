@@ -27,7 +27,7 @@
       "identifier": "farmersdelight:cooked_bacon",
       "menu_category": {
         "category": "equipment",
-        "group": "itemGroup.name.cookedFood"
+        "group": "farmersdelight:itemGroup.name.cookedFood"
       }
     }
   }

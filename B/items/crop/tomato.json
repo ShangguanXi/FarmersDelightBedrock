@@ -28,7 +28,7 @@
       "identifier": "farmersdelight:tomato",
       "menu_category": {
         "category": "nature",
-        "group": "itemGroup.name.crop"
+        "group": "farmersdelight:itemGroup.name.crop"
       }
     }
   }
