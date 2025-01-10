@@ -50,6 +50,7 @@ export class BlockFood {
             if (nameSpace == "farmersdelight.pie") {
                 if (!itemStack) {
                     if (!player.isSneaking) {
+                        block.setPermutation(block.permutation.withState("farmersdelight:food_block_stage", Number(block.permutation.getState("farmersdelight:food_block_stage")) + 1));
                         player.addEffect('speed', 60 * 20, { amplifier: 0 });
                     }
                     return
