@@ -1,4 +1,4 @@
-import { BlockPermutation, Container, Direction, ItemComponentUseOnEvent, ItemCustomComponent, Player, WorldInitializeBeforeEvent, system, world } from "@minecraft/server";
+import { BlockPermutation, Container, Direction, EntityInventoryComponent, ItemComponentUseOnEvent, ItemCustomComponent, Player, WorldInitializeBeforeEvent, system, world } from "@minecraft/server";
 import { methodEventSub } from "../../lib/eventHelper";
 import { EntityUtil } from "../../lib/EntityUtil";
 import { ItemUtil } from "../../lib/ItemUtil";
@@ -20,7 +20,10 @@ class ColoniesComonent implements ItemCustomComponent{
         const main = block.above();
         const mainPerm = BlockPermutation.resolve(itemStack.typeId.split('_item')[0], { 'farmersdelight:growth': 4 });
         main?.setPermutation(mainPerm);
-        if (EntityUtil.gameMode(player)) ItemUtil.clearItem(player.getComponent('inventory')?.container as Container, player.selectedSlotIndex);
+        
+        const inventory = player?.getComponent("inventory") as EntityInventoryComponent;
+        const container: Container = inventory?.container as Container
+        if (EntityUtil.gameMode(player)) ItemUtil.clearItem(container, player.selectedSlotIndex);
     }
 
 }

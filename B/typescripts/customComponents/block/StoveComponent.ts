@@ -1,4 +1,4 @@
-import { BlockCustomComponent, BlockComponentPlayerInteractEvent, WorldInitializeBeforeEvent, world, Dimension, Vector3, Block, ItemStack, Player } from "@minecraft/server";
+import { BlockCustomComponent, BlockComponentPlayerInteractEvent, WorldInitializeBeforeEvent, world, Dimension, Vector3, Block, ItemStack, Player, EntityInventoryComponent } from "@minecraft/server";
 import { methodEventSub } from "../../lib/eventHelper";
 import { ItemUtil } from "../../lib/ItemUtil";
 
@@ -10,7 +10,8 @@ export class StoveComponent implements BlockCustomComponent {
     onPlayerInteract(args: BlockComponentPlayerInteractEvent): void {
         const player = args.player;
         const block = args.block;
-        const container = player?.getComponent("inventory")?.container;
+        const inventory = player?.getComponent("inventory") as EntityInventoryComponent;
+        const container = inventory?.container;
         const { x, y, z } = args.block.location; if (!player) return;
         const itemStack = container?.getItem(player.selectedSlotIndex);
         if (!container) return

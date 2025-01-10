@@ -1,4 +1,4 @@
-import { Block, BlockPermutation, Container, ContainerSlot, Dimension, Direction, Entity, EntityEquippableComponent, EntityHealthComponent, EntityInventoryComponent, EquipmentSlot, ItemEnchantableComponent, ItemStack, ItemUseOnAfterEvent, Player, PlayerBreakBlockAfterEvent, PlayerInteractWithBlockAfterEvent, Vector3, world } from "@minecraft/server";
+import { Block, BlockPermutation, Container, ContainerSlot, Dimension, Direction, Entity, EntityEquippableComponent, EntityHealthComponent, EntityInventoryComponent, EntityIsChargedComponent, EntityOnFireComponent, EquipmentSlot, ItemEnchantableComponent, ItemStack, ItemUseOnAfterEvent, Player, PlayerBreakBlockAfterEvent, PlayerInteractWithBlockAfterEvent, Vector3, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
 import { EntityUtil } from "../lib/EntityUtil";
 import { ItemUtil } from "../lib/ItemUtil";
@@ -22,12 +22,12 @@ export class Knife {
         const hurt: Entity = args.hurtEntity;
         if (!entity || !hurt) return
         try {
-            const equipment: EntityEquippableComponent | undefined = entity.getComponent(EntityEquippableComponent.componentId);
+            const equipment = entity.getComponent(EntityEquippableComponent.componentId) as EntityEquippableComponent;
             const mainHand: ContainerSlot | undefined = equipment?.getEquipmentSlot(EquipmentSlot.Mainhand);
             if (!mainHand?.hasTag('farmersdelight:is_knife')) return;
-            const Looting: number | undefined = equipment?.getEquipmentSlot(EquipmentSlot.Mainhand).getItem()?.getComponent("minecraft:enchantable")?.getEnchantment("looting")?.level;
-            const health: EntityHealthComponent | undefined = hurt.getComponent(EntityHealthComponent.componentId);
-            const onFire = hurt.getComponent('minecraft:onfire')?.onFireTicksRemaining;
+            const Looting: number | undefined = (equipment?.getEquipmentSlot(EquipmentSlot.Mainhand).getItem()?.getComponent("minecraft:enchantable")as ItemEnchantableComponent)?.getEnchantment("looting")?.level;
+            const health = hurt.getComponent(EntityHealthComponent.componentId) as EntityHealthComponent
+            const onFire = (hurt.getComponent('minecraft:onfire') as EntityOnFireComponent)?.onFireTicksRemaining;
             const random = Math.floor(Math.random() * 10);
             if (!health?.currentValue && hurt.typeId === 'minecraft:pig' && random < (5 + level(Looting))) {
                 if (!onFire) {
@@ -77,7 +77,8 @@ export class Knife {
         const blockTypeId: string = args.brokenBlockPermutation.type.id;
         if (!itemStack?.hasTag("farmersdelight:is_knife")) return;
         if (EntityUtil.gameMode(player)) {
-            const container: Container | undefined = player.getComponent(EntityInventoryComponent.componentId)?.container;
+            const inventory = player?.getComponent("inventory") as EntityInventoryComponent;
+            const container = inventory?.container as Container
             if (!container) return;
             ItemUtil.damageItem(container, player.selectedSlotIndex);
             if (blockTypeId == "minecraft:tallgrass") {
@@ -109,7 +110,8 @@ export class Knife {
         const face = args.blockFace
         const dimenion: Dimension = args.block.dimension;
         if (EntityUtil.gameMode(player)) {
-            const container: Container | undefined = player.getComponent(EntityInventoryComponent.componentId)?.container;
+            const inventory = player?.getComponent("inventory") as EntityInventoryComponent;
+            const container: Container = inventory?.container as Container
             if (!container) return;
             ItemUtil.damageItem(container, player.selectedSlotIndex);
         }

@@ -20,9 +20,9 @@
       },
       "minecraft:use_animation": "eat",
       "minecraft:use_modifiers": {
-                "use_duration": 1.6,
-                "movement_modifier": 0.4
-            }
+        "use_duration": 1.6,
+        "movement_modifier": 0.4
+      }
     },
     "description": {
       "identifier": "farmersdelight:tomato",

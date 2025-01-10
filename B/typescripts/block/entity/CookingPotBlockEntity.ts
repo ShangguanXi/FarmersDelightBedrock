@@ -40,7 +40,9 @@ function blockEntityLoot(args: BlockEntityData, id: string) {
     const cookingPotblock = new ItemStack('farmersdelight:cooking_pot');
     if (!ObjectUtil.isEqual(args.entity.location, args.blockEntityDataLocation)) args.entity.teleport(args.blockEntityDataLocation);
     if (args.block?.typeId == id) return;
-    const container: Container | undefined = args.entity.getComponent(EntityInventoryComponent.componentId)?.container;
+    
+    const inventory = args.entity?.getComponent("inventory") as EntityInventoryComponent;
+    const container: Container | undefined  = inventory?.container
 
     for (let slot = 0; slot < 9; slot++) {
         const itemStack: ItemStack | undefined = container?.getItem(slot);
@@ -76,7 +78,8 @@ export class CookingPotBlockEntity extends BlockEntity {
         const entity: Entity = entityBlockData.entity;
         const { x, y, z }: Vector3 = entity.location;
         const block: Block = entityBlockData.block;
-        const container: Container | undefined = entity.getComponent(EntityInventoryComponent.componentId)?.container;
+        const inventory = args.entity?.getComponent("inventory") as EntityInventoryComponent;
+        const container: Container | undefined  = inventory?.container
         if (!container) return;
         blockEntityLoot(entityBlockData, "farmersdelight:cooking_pot");
         const map: Map<string, number> = new Map();

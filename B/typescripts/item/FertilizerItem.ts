@@ -13,7 +13,8 @@ export class FertilizerItem {
         for (const itemFullTag of itemAllTag) {
             const itemTag = itemFullTag.split('.')[0];
             const probability = Number(itemFullTag.split('.')[1]);
-            const container: Container | undefined = player.getComponent(EntityInventoryComponent.componentId)?.container;
+            const inventory = player?.getComponent("inventory") as EntityInventoryComponent;
+            const container: Container = inventory?.container as Container
             if (!container) return;
             if (itemTag == "farmersdelight:is_fertilizer" && block.typeId == "minecraft:composter") {
                 if (random <= probability) {

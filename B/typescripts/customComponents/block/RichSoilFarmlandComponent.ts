@@ -1,4 +1,4 @@
-import { BlockComponentPlayerInteractEvent, BlockCustomComponent, BlockComponentRandomTickEvent, WorldInitializeBeforeEvent, world, BlockVolume, BlockPermutation ,BlockComponentEntityFallOnEvent} from "@minecraft/server";
+import { BlockComponentPlayerInteractEvent, BlockCustomComponent, BlockComponentRandomTickEvent, WorldInitializeBeforeEvent, world, BlockVolume, BlockPermutation ,BlockComponentEntityFallOnEvent, EntityInventoryComponent} from "@minecraft/server";
 import { ItemUtil } from "../../lib/ItemUtil";
 import { methodEventSub } from "../../lib/eventHelper";
 
@@ -21,7 +21,8 @@ class RichSoilFarmlandComponent implements BlockCustomComponent {
     onPlayerInteract(args: BlockComponentPlayerInteractEvent): void {
         const player = args.player;
         const face = args.face;
-        const container = player?.getComponent("inventory")?.container;
+        const inventory = player?.getComponent("inventory") as EntityInventoryComponent;
+        const container = inventory?.container;
         const block = args.block;
         const dimension = args.dimension;
         if (!player) return;

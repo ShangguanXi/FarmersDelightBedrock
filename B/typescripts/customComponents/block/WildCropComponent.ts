@@ -1,4 +1,4 @@
-import { BlockCustomComponent, BlockComponentPlayerDestroyEvent, StructureManager, EntityInventoryComponent, BlockComponentTickEvent, Vector3, Dimension, BlockComponentOnPlaceEvent, LocationOutOfWorldBoundariesError, ItemComponentTypes, WorldInitializeBeforeEvent, world, BlockComponentPlayerPlaceBeforeEvent, BlockVolume, system } from "@minecraft/server";
+import { BlockCustomComponent, BlockComponentPlayerDestroyEvent, StructureManager, EntityInventoryComponent, BlockComponentTickEvent, Vector3, Dimension, BlockComponentOnPlaceEvent, LocationOutOfWorldBoundariesError, ItemComponentTypes, WorldInitializeBeforeEvent, world, BlockComponentPlayerPlaceBeforeEvent, BlockVolume, system, ItemEnchantableComponent } from "@minecraft/server";
 import { ItemUtil } from "../../lib/ItemUtil";
 import { methodEventSub } from "../../lib/eventHelper";
 function spawnLoot(path: string, dimenion: Dimension, location: Vector3) {
@@ -15,7 +15,8 @@ class WildCropComponent implements BlockCustomComponent {
         const player = args.player;
         const block = args.block;
         const dimension = args.dimension;
-        const container = player?.getComponent("inventory")?.container;
+        const inventory = player?.getComponent("inventory") as EntityInventoryComponent;
+        const container = inventory?.container;
         const lootTable = this.getLootTable();
         const lootItem = this.lootItem();
         if (!player) return;
@@ -23,7 +24,8 @@ class WildCropComponent implements BlockCustomComponent {
         try {
             const selectedSlot = container?.getSlot(player.selectedSlotIndex)
             const itemId = selectedSlot.typeId;
-            const silkTouch = container?.getItem(player.selectedSlotIndex)?.getComponent(ItemComponentTypes.Enchantable)?.hasEnchantment("silk_touch");
+            const enchantable = container?.getItem(player.selectedSlotIndex)?.getComponent(ItemComponentTypes.Enchantable) as ItemEnchantableComponent
+            const silkTouch= enchantable?.hasEnchantment("silk_touch");
             if (itemId == "minecraft:shears") {
                 ItemUtil.damageItem(container, player.selectedSlotIndex, 1)
                 ItemUtil.spawnItem(block, lootItem)
@@ -118,7 +120,8 @@ class WildRiceComponent extends WildCropComponent {
     beforeOnPlayerPlace(args: BlockComponentPlayerPlaceBeforeEvent): void {
 
         const player = args.player;
-        const container = player?.getComponent("inventory")?.container;
+        const inventory = player?.getComponent("inventory") as EntityInventoryComponent;
+        const container = inventory?.container;
         const block = args.block;
         const dimension = args.dimension;
         const upBlockId = dimension.getBlock({ x: block.location.x, y: block.location.y + 1, z: block.location.z })?.typeId

@@ -27,7 +27,8 @@ export class StoveBlock extends BlockWithEntity {
         });
         const player: Player = args.source;
         const itemStack: ItemStack = args.itemStack;
-        const container: Container | undefined = player.getComponent(EntityInventoryComponent.componentId)?.container;
+        const inventory = player?.getComponent("inventory") as EntityInventoryComponent;
+        const container:Container|undefined = inventory?.container
         if (!data || !container) return;
         const entity: Entity = data.entity;
         const { x, y, z }: Vector3 = args.block.location;

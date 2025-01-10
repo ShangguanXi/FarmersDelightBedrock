@@ -1,4 +1,4 @@
-import { BlockCustomComponent, BlockComponentTickEvent, WorldInitializeBeforeEvent, world, BlockComponentRandomTickEvent, BlockComponentPlayerInteractEvent,BlockComponentPlayerDestroyEvent, ItemComponentTypes, Container, EntityInventoryComponent, Dimension, Vector3 } from "@minecraft/server";
+import { BlockCustomComponent, BlockComponentTickEvent, WorldInitializeBeforeEvent, world, BlockComponentRandomTickEvent, BlockComponentPlayerInteractEvent,BlockComponentPlayerDestroyEvent, ItemComponentTypes, Container, EntityInventoryComponent, Dimension, Vector3, ItemEnchantableComponent } from "@minecraft/server";
 import { methodEventSub } from "../../lib/eventHelper";
 import { ItemUtil } from "../../lib/ItemUtil";
 
@@ -16,11 +16,13 @@ export class RopeComponent implements BlockCustomComponent {
         const block = args.block;
         const player = args.player;
         const dimension = args.dimension
-        const itemId = player?.getComponent("inventory")?.container?.getSlot(player.selectedSlotIndex).typeId
+        
+        if (!player) return;
+        const inventory = player?.getComponent("inventory") as EntityInventoryComponent;
+        const container = inventory?.container;
+        const itemId = container?.getSlot(player.selectedSlotIndex).typeId
         const stage = Number(block.permutation.getState("farmersdelight:stage"))
         const random = Math.floor(Math.random() * 101)
-        if (!player) return;
-        const container: Container | undefined = player.getComponent(EntityInventoryComponent.componentId)?.container;
         try {
             if (itemId == "minecraft:bone_meal" && stage < 4) {
                 world.playSound("item.bone_meal.use", block.location)
@@ -50,13 +52,15 @@ export class RopeComponent implements BlockCustomComponent {
     onPlayerDestroy(args: BlockComponentPlayerDestroyEvent): void {
         const player = args.player;
         const blockPermutation = args.destroyedBlockPermutation
-        const container = player?.getComponent("inventory")?.container;
+        const inventory = player?.getComponent("inventory") as EntityInventoryComponent;
+        const container = inventory?.container;
         const block = args.block;
         const dimension = args.dimension;
         if (!player) return;
         if (!container) return;
         const stage = blockPermutation.getState('farmersdelight:stage') as number;
-        const silkTouch = container?.getItem(player.selectedSlotIndex)?.getComponent(ItemComponentTypes.Enchantable)?.hasEnchantment("silk_touch");
+        const enchantable = container?.getItem(player.selectedSlotIndex)?.getComponent(ItemComponentTypes.Enchantable) as ItemEnchantableComponent
+        const silkTouch= enchantable?.hasEnchantment("silk_touch");
         if(stage>0){
             try {
                 if(!silkTouch){

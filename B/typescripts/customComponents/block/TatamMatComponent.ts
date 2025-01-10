@@ -11,8 +11,11 @@ class TatamMatComponent implements BlockCustomComponent {
     beforeOnPlayerPlace(args: BlockComponentPlayerPlaceBeforeEvent): void {
         const block = args.block;
         const player = args.player;
-        const itemId = player?.getComponent("inventory")?.container?.getSlot(player.selectedSlotIndex).typeId
+        
+        const inventory = player?.getComponent("inventory") as EntityInventoryComponent;
+        const container = inventory?.container;
         if (!player) return;
+        const itemId = container?.getSlot(player.selectedSlotIndex).typeId
         if (!itemId || itemId != 'farmersdelight:tatami_mat' || args.face != Direction.Up) return
         
         args.cancel = true
@@ -42,7 +45,7 @@ class TatamMatComponent implements BlockCustomComponent {
             
             block?.setPermutation(mainPerm);
             other?.setPermutation(otherPerm);
-            if (EntityUtil.gameMode(player)) ItemUtil.clearItem(player.getComponent('inventory')?.container as Container, player.selectedSlotIndex);
+            if (EntityUtil.gameMode(player)) ItemUtil.clearItem(container, player.selectedSlotIndex);
         })
     }
 

@@ -41,7 +41,7 @@ export class Food {
                 player.addEffect('saturation', 300 * 20, { amplifier: 0 });
                 break;
             case "farmersdelight:melon_juice":
-                const health: EntityHealthComponent | undefined = player.getComponent(EntityHealthComponent.componentId);
+                const health = player.getComponent(EntityHealthComponent.componentId) as EntityHealthComponent;
                 const currentHealth: number = health?.currentValue ?? 0;
                 health?.setCurrentValue(currentHealth + 2)
                 break;
@@ -84,12 +84,17 @@ export class Food {
         if (!itemStack) return;
         const target = args.target;
         const player = args.player;
+        
+        const inventory = player?.getComponent("inventory") as EntityInventoryComponent;
+        const container: Container = inventory?.container as Container
         switch (itemStack.typeId) {
+            
             case 'farmersdelight:dog_food':
                 if (target.typeId != 'minecraft:wolf') return
                 args.cancel = true;
                 system.run(() => {
-                    if (EntityUtil.gameMode(player)) ItemUtil.clearItem(player.getComponent(EntityInventoryComponent.componentId)?.container as Container, player.selectedSlotIndex);
+                    
+                    if (EntityUtil.gameMode(player)) ItemUtil.clearItem(container, player.selectedSlotIndex);
                     target.addEffect('speed', 6000);
                     target.addEffect('strength', 6000);
                     target.addEffect('resistance', 6000);
@@ -99,8 +104,8 @@ export class Food {
                 if (!horseFeedTargets.includes(target.typeId)) return
                 args.cancel = true;
                 system.run(() => {
-                    if (EntityUtil.gameMode(player)) ItemUtil.clearItem(player.getComponent(EntityInventoryComponent.componentId)?.container as Container, player.selectedSlotIndex);
-                    const healthComp = target.getComponent('health');
+                    if (EntityUtil.gameMode(player)) ItemUtil.clearItem(container, player.selectedSlotIndex);
+                    const healthComp = target.getComponent('health') as EntityHealthComponent;
                     healthComp?.resetToMaxValue();
                     target.addEffect('speed', 6000, {amplifier: 1});
                     target.addEffect('jump_boost', 6000);

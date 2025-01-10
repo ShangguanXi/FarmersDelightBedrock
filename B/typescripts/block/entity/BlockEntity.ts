@@ -34,7 +34,8 @@ export class BlockEntity {
         if (args.block?.typeId == id) return;
         const entity = args.entity as Entity;
         const dimension = args.dimension;
-        const container = entity.getComponent(EntityInventoryComponent.componentId)?.container as Container;
+        const inventory = entity?.getComponent("inventory") as EntityInventoryComponent;
+        const container = inventory?.container as Container;
         for (let i = 0, length = container.size; i < length; i++) {
             const itemStack = container.getItem(i)
             if (itemStack) {

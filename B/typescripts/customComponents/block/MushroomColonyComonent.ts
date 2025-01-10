@@ -14,7 +14,8 @@ class MushroomColonyComonent implements BlockCustomComponent {
     onPlayerInteract(args: BlockComponentPlayerInteractEvent): void {
         const player = args.player;
         const face = args.face;
-        const container = player?.getComponent("inventory")?.container;
+        const inventory = player?.getComponent("inventory") as EntityInventoryComponent;
+        const container = inventory?.container;
         const block = args.block;
         const dimension = args.dimension;
         if (!player) return;
@@ -63,7 +64,8 @@ class MushroomColonyComonent implements BlockCustomComponent {
         const brokenPerm = args.destroyedBlockPermutation;
         const blockId = brokenPerm.type.id;
         const player = args.player;
-        const container = player?.getComponent("inventory")?.container;
+        const inventory = player?.getComponent("inventory") as EntityInventoryComponent;
+        const container = inventory?.container;
         if (!player) return
         if (!container) return;
         const selectedSlot = container?.getSlot(player.selectedSlotIndex)
@@ -74,7 +76,7 @@ class MushroomColonyComonent implements BlockCustomComponent {
             const {x, y, z} = args.block.location
             if (growth == 4 && itemId == 'minecraft:shears'){
                 player.dimension.spawnItem(new ItemStack(`${blockId}_item`), {x:x + 0.5, y, z:z + 0.5});
-                const invComp = player.getComponent(EntityInventoryComponent.componentId);
+                const invComp = player.getComponent(EntityInventoryComponent.componentId) as EntityInventoryComponent
                 const container = invComp?.container
                 if (!container) return
                 ItemUtil.damageItem(container, player.selectedSlotIndex)
