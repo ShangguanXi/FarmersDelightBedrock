@@ -27,14 +27,6 @@ class RichSoilFarmlandComponent {
     constructor() {
         this.onRandomTick = this.onRandomTick.bind(this);
         this.onPlayerInteract = this.onPlayerInteract.bind(this);
-        this.onEntityFallOn = this.onEntityFallOn.bind(this);
-    }
-    onEntityFallOn(args) {
-        const block = args.block;
-        const dimension = args.dimension;
-        const entity = args.entity;
-        entity?.teleport({ x: entity.location.x, y: entity.location.y + 0.125, z: entity.location.z });
-        dimension.setBlockType(block.location, "farmersdelight:rich_soil");
     }
     onPlayerInteract(args) {
         const player = args.player;
