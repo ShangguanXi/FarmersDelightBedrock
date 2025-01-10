@@ -108,6 +108,7 @@ class RichSoilFarmlandComponent implements BlockCustomComponent {
             const growth: number = cropBlock.permutation.getState(growthProperty) as number;
             if (growth < maxGrowth) {
                 cropBlock.setPermutation(cropBlock.permutation.withState(growthProperty, growth + 1));
+                dimension.spawnParticle("minecraft:crop_growth_emitter", { x: block.location.x + 0.5, y: block.location.y + 1.5, z: block.location.z + 0.5 })
             }
         }
 
