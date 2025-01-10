@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { WorldInitializeBeforeEvent, world, EntityInventoryComponent, Direction, system } from "@minecraft/server";
+import { WorldInitializeBeforeEvent, world, Direction, system } from "@minecraft/server";
 import { methodEventSub } from "../../lib/eventHelper";
 import { ItemUtil } from "../../lib/ItemUtil";
 function spawnLoot(path, dimenion, location) {
@@ -26,10 +26,11 @@ class CropsComponent {
         const random = Math.floor(Math.random() * 101);
         if (!player)
             return;
-        const container = player.getComponent(EntityInventoryComponent.componentId)?.container;
+        const inventory = player?.getComponent("inventory");
+        const container = inventory?.container;
         const lootTable = this.getLootTable();
         try {
-            const itemId = player?.getComponent("inventory")?.container?.getSlot(player.selectedSlotIndex).typeId;
+            const itemId = container?.getSlot(player.selectedSlotIndex).typeId;
             if (itemId == "minecraft:bone_meal" && age < 7) {
                 world.playSound("item.bone_meal.use", block.location);
                 if (player?.getGameMode() == "creative") {
@@ -119,12 +120,13 @@ class TorchflowerComponent {
         const block = args.block;
         const player = args.player;
         const dimension = args.dimension;
-        const itemId = player?.getComponent("inventory")?.container?.getSlot(player.selectedSlotIndex).typeId;
+        const inventory = player?.getComponent("inventory");
+        const container = inventory?.container;
         const age = Number(block.permutation.getState("farmersdelight:growth"));
         const random = Math.floor(Math.random() * 101);
         if (!player)
             return;
-        const container = player.getComponent(EntityInventoryComponent.componentId)?.container;
+        const itemId = container?.getSlot(player.selectedSlotIndex).typeId;
         try {
             if (itemId == "minecraft:bone_meal" && age < 7) {
                 if (player?.getGameMode() == "creative") {
@@ -178,9 +180,10 @@ class SugarCaneComponent {
         const topLocation = { x: block.location.x, y: block.location.y + 1, z: block.location.z };
         if (!player)
             return;
-        const container = player.getComponent(EntityInventoryComponent.componentId)?.container;
+        const inventory = player?.getComponent("inventory");
+        const container = inventory?.container;
         try {
-            const itemId = player?.getComponent("inventory")?.container?.getSlot(player.selectedSlotIndex).typeId;
+            const itemId = container?.getSlot(player.selectedSlotIndex).typeId;
             if (itemId == "minecraft:sugar_cane") {
                 if (face != Direction.Up)
                     return;
@@ -265,10 +268,11 @@ class RiceComponent {
         const random = Math.floor(Math.random() * 101);
         if (!player)
             return;
-        const container = player.getComponent(EntityInventoryComponent.componentId)?.container;
+        const inventory = player?.getComponent("inventory");
+        const container = inventory?.container;
         if (block.typeId == "farmersdelight:rice_block") {
             try {
-                const itemId = player?.getComponent("inventory")?.container?.getSlot(player.selectedSlotIndex).typeId;
+                const itemId = container?.getSlot(player.selectedSlotIndex).typeId;
                 if (itemId == "minecraft:bone_meal") {
                     world.playSound("item.bone_meal.use", block.location);
                     if (player?.getGameMode() == "creative") {
@@ -305,7 +309,7 @@ class RiceComponent {
         }
         if (block.typeId == "farmersdelight:rice_block_upper") {
             try {
-                const itemId = player?.getComponent("inventory")?.container?.getSlot(player.selectedSlotIndex).typeId;
+                const itemId = container?.getSlot(player.selectedSlotIndex).typeId;
                 if (itemId == "minecraft:bone_meal" && growth < 3) {
                     world.playSound("item.bone_meal.use", block.location);
                     if (player?.getGameMode() == "creative") {

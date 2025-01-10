@@ -1,4 +1,4 @@
-import { ItemStack, world, EntityInventoryComponent, system } from "@minecraft/server";
+import { ItemStack, world, system } from "@minecraft/server";
 import ObjectUtil from "../../lib/ObjectUtil";
 const scoreboard = world.scoreboard;
 export class BlockEntity {
@@ -39,7 +39,8 @@ export class BlockEntity {
             return;
         const entity = args.entity;
         const dimension = args.dimension;
-        const container = entity.getComponent(EntityInventoryComponent.componentId)?.container;
+        const inventory = entity?.getComponent("inventory");
+        const container = inventory?.container;
         for (let i = 0, length = container.size; i < length; i++) {
             const itemStack = container.getItem(i);
             if (itemStack) {

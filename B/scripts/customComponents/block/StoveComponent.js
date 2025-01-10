@@ -17,7 +17,8 @@ export class StoveComponent {
     onPlayerInteract(args) {
         const player = args.player;
         const block = args.block;
-        const container = player?.getComponent("inventory")?.container;
+        const inventory = player?.getComponent("inventory");
+        const container = inventory?.container;
         const { x, y, z } = args.block.location;
         if (!player)
             return;

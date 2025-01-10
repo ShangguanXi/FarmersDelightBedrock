@@ -23,7 +23,8 @@ class MushroomColonyComonent {
     onPlayerInteract(args) {
         const player = args.player;
         const face = args.face;
-        const container = player?.getComponent("inventory")?.container;
+        const inventory = player?.getComponent("inventory");
+        const container = inventory?.container;
         const block = args.block;
         const dimension = args.dimension;
         if (!player)
@@ -73,7 +74,8 @@ class MushroomColonyComonent {
         const brokenPerm = args.destroyedBlockPermutation;
         const blockId = brokenPerm.type.id;
         const player = args.player;
-        const container = player?.getComponent("inventory")?.container;
+        const inventory = player?.getComponent("inventory");
+        const container = inventory?.container;
         if (!player)
             return;
         if (!container)

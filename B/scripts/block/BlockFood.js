@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { EntityInventoryComponent, ItemStack, PlayerBreakBlockBeforeEvent, PlayerInteractWithBlockAfterEvent, system, world } from "@minecraft/server";
+import { ItemStack, PlayerBreakBlockBeforeEvent, PlayerInteractWithBlockAfterEvent, system, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
 import { ItemUtil } from "../lib/ItemUtil";
 function spawnLoot(path, dimenion, location) {
@@ -20,7 +20,8 @@ export class BlockFood {
         const location = args.block.location;
         const itemStack = args.itemStack;
         const blockFoodAllTag = block.getTags();
-        const container = player.getComponent(EntityInventoryComponent.componentId)?.container;
+        const inventory = args.player?.getComponent("inventory");
+        const container = inventory?.container;
         if (!container)
             return;
         for (const tag of blockFoodAllTag) {
@@ -86,7 +87,8 @@ export class BlockFood {
         const location = args.block.location;
         const player = args.player;
         const blockFoodAllTag = block.getTags();
-        const container = player.getComponent(EntityInventoryComponent.componentId)?.container;
+        const inventory = args.player?.getComponent("inventory");
+        const container = inventory?.container;
         if (!container)
             return;
         for (const tag of blockFoodAllTag) {

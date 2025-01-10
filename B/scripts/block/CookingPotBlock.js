@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { EntityInventoryComponent, ItemStack, ItemUseOnBeforeEvent, PlayerPlaceBlockAfterEvent, system, world } from "@minecraft/server";
+import { ItemStack, ItemUseOnBeforeEvent, PlayerPlaceBlockAfterEvent, system, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
 import { BlockWithEntity } from "./BlockWithEntity";
 const fireArrowEmpty = new ItemStack("farmersdelight:fire_0");
@@ -28,7 +28,8 @@ export class CookingPotBlock extends BlockWithEntity {
         const { x, y, z } = block.location;
         const entity = super.setBlock(block.dimension, { x: x + 0.5, y: y, z: z + 0.5 }, "farmersdelight:cooking_pot");
         entity.nameTag = "farmersdelight厨锅";
-        const container = entity.getComponent(EntityInventoryComponent.componentId)?.container;
+        const inventory = args.player?.getComponent("inventory");
+        const container = inventory?.container;
         container?.setItem(9, emptyArrow);
         container?.setItem(10, fireArrowEmpty);
         if (!lores.length)

@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { EntityHealthComponent, EntityInventoryComponent, PlayerInteractWithEntityBeforeEvent, system, world } from "@minecraft/server";
+import { EntityHealthComponent, PlayerInteractWithEntityBeforeEvent, system, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
 import { ItemUtil } from "../lib/ItemUtil";
 import { EntityUtil } from "../lib/EntityUtil";
@@ -91,6 +91,8 @@ export class Food {
             return;
         const target = args.target;
         const player = args.player;
+        const inventory = player?.getComponent("inventory");
+        const container = inventory?.container;
         switch (itemStack.typeId) {
             case 'farmersdelight:dog_food':
                 if (target.typeId != 'minecraft:wolf')
@@ -98,7 +100,7 @@ export class Food {
                 args.cancel = true;
                 system.run(() => {
                     if (EntityUtil.gameMode(player))
-                        ItemUtil.clearItem(player.getComponent(EntityInventoryComponent.componentId)?.container, player.selectedSlotIndex);
+                        ItemUtil.clearItem(container, player.selectedSlotIndex);
                     target.addEffect('speed', 6000);
                     target.addEffect('strength', 6000);
                     target.addEffect('resistance', 6000);
@@ -110,7 +112,7 @@ export class Food {
                 args.cancel = true;
                 system.run(() => {
                     if (EntityUtil.gameMode(player))
-                        ItemUtil.clearItem(player.getComponent(EntityInventoryComponent.componentId)?.container, player.selectedSlotIndex);
+                        ItemUtil.clearItem(container, player.selectedSlotIndex);
                     const healthComp = target.getComponent('health');
                     healthComp?.resetToMaxValue();
                     target.addEffect('speed', 6000, { amplifier: 1 });

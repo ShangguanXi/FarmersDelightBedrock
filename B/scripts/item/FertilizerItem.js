@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { ItemUseOnAfterEvent, world, EntityInventoryComponent } from "@minecraft/server";
+import { ItemUseOnAfterEvent, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
 import { ItemUtil } from "../lib/ItemUtil";
 export class FertilizerItem {
@@ -21,7 +21,8 @@ export class FertilizerItem {
         for (const itemFullTag of itemAllTag) {
             const itemTag = itemFullTag.split('.')[0];
             const probability = Number(itemFullTag.split('.')[1]);
-            const container = player.getComponent(EntityInventoryComponent.componentId)?.container;
+            const inventory = player?.getComponent("inventory");
+            const container = inventory?.container;
             if (!container)
                 return;
             if (itemTag == "farmersdelight:is_fertilizer" && block.typeId == "minecraft:composter") {

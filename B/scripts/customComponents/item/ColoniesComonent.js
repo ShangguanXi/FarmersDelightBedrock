@@ -27,8 +27,10 @@ class ColoniesComonent {
         const main = block.above();
         const mainPerm = BlockPermutation.resolve(itemStack.typeId.split('_item')[0], { 'farmersdelight:growth': 4 });
         main?.setPermutation(mainPerm);
+        const inventory = player?.getComponent("inventory");
+        const container = inventory?.container;
         if (EntityUtil.gameMode(player))
-            ItemUtil.clearItem(player.getComponent('inventory')?.container, player.selectedSlotIndex);
+            ItemUtil.clearItem(container, player.selectedSlotIndex);
     }
 }
 export class ColoniesComonentRegister {

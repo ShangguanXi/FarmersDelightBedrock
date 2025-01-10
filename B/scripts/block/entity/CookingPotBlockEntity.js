@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { EntityInventoryComponent, ItemStack, system, world } from "@minecraft/server";
+import { ItemStack, system, world } from "@minecraft/server";
 import { methodEventSub } from "../../lib/eventHelper";
 import { BlockEntity } from "./BlockEntity";
 import ObjectUtil from "../../lib/ObjectUtil";
@@ -48,7 +48,8 @@ function blockEntityLoot(args, id) {
         args.entity.teleport(args.blockEntityDataLocation);
     if (args.block?.typeId == id)
         return;
-    const container = args.entity.getComponent(EntityInventoryComponent.componentId)?.container;
+    const inventory = args.entity?.getComponent("inventory");
+    const container = inventory?.container;
     for (let slot = 0; slot < 9; slot++) {
         const itemStack = container?.getItem(slot);
         if (slot != 6 && slot != 8 && itemStack) {
@@ -83,7 +84,8 @@ export class CookingPotBlockEntity extends BlockEntity {
         const entity = entityBlockData.entity;
         const { x, y, z } = entity.location;
         const block = entityBlockData.block;
-        const container = entity.getComponent(EntityInventoryComponent.componentId)?.container;
+        const inventory = args.entity?.getComponent("inventory");
+        const container = inventory?.container;
         if (!container)
             return;
         blockEntityLoot(entityBlockData, "farmersdelight:cooking_pot");

@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { EntityInventoryComponent, ItemStack, ItemUseOnAfterEvent, PlayerPlaceBlockAfterEvent, world } from "@minecraft/server";
+import { ItemStack, ItemUseOnAfterEvent, PlayerPlaceBlockAfterEvent, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
 import { BlockWithEntity } from "./BlockWithEntity";
 import { vanillaItemList } from "../data/recipe/cookRecipe";
@@ -33,7 +33,8 @@ export class StoveBlock extends BlockWithEntity {
         });
         const player = args.source;
         const itemStack = args.itemStack;
-        const container = player.getComponent(EntityInventoryComponent.componentId)?.container;
+        const inventory = player?.getComponent("inventory");
+        const container = inventory?.container;
         if (!data || !container)
             return;
         const entity = data.entity;

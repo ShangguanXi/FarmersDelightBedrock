@@ -19,9 +19,11 @@ class TatamMatComponent {
     beforeOnPlayerPlace(args) {
         const block = args.block;
         const player = args.player;
-        const itemId = player?.getComponent("inventory")?.container?.getSlot(player.selectedSlotIndex).typeId;
+        const inventory = player?.getComponent("inventory");
+        const container = inventory?.container;
         if (!player)
             return;
+        const itemId = container?.getSlot(player.selectedSlotIndex).typeId;
         if (!itemId || itemId != 'farmersdelight:tatami_mat' || args.face != Direction.Up)
             return;
         args.cancel = true;
@@ -53,7 +55,7 @@ class TatamMatComponent {
             block?.setPermutation(mainPerm);
             other?.setPermutation(otherPerm);
             if (EntityUtil.gameMode(player))
-                ItemUtil.clearItem(player.getComponent('inventory')?.container, player.selectedSlotIndex);
+                ItemUtil.clearItem(container, player.selectedSlotIndex);
         });
     }
     onTick(args) {

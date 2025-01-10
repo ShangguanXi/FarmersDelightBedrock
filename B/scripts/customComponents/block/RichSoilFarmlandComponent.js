@@ -10,6 +10,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 import { WorldInitializeBeforeEvent, world, BlockVolume, BlockPermutation } from "@minecraft/server";
 import { ItemUtil } from "../../lib/ItemUtil";
 import { methodEventSub } from "../../lib/eventHelper";
+function handlePlanting(seedId, crop, topLocation, container, player, block) {
+    if (!player)
+        return;
+    if (!container)
+        return;
+    const selectedSlot = container?.getSlot(player.selectedSlotIndex);
+    const itemId = selectedSlot?.typeId;
+    if (itemId == seedId) {
+        world.playSound("dig.grass", block.location);
+        block.dimension.setBlockType(topLocation, crop);
+        ItemUtil.clearItem(container, player.selectedSlotIndex);
+    }
+}
 class RichSoilFarmlandComponent {
     constructor() {
         this.onRandomTick = this.onRandomTick.bind(this);
@@ -26,7 +39,8 @@ class RichSoilFarmlandComponent {
     onPlayerInteract(args) {
         const player = args.player;
         const face = args.face;
-        const container = player?.getComponent("inventory")?.container;
+        const inventory = player?.getComponent("inventory");
+        const container = inventory?.container;
         const block = args.block;
         const dimension = args.dimension;
         if (!player)
@@ -34,59 +48,30 @@ class RichSoilFarmlandComponent {
         if (!container)
             return;
         const selectedSlot = container?.getSlot(player.selectedSlotIndex);
-        try {
-            const itemId = selectedSlot?.typeId;
-            const topLocation = { x: block.location.x, y: block.location.y + 1, z: block.location.z };
-            const topBlockId = dimension.getBlock(topLocation)?.typeId;
-            if (face == 'Up' && topBlockId == "minecraft:air") {
-                if (itemId == "minecraft:wheat_seeds") {
+        const topLocation = { x: block.location.x, y: block.location.y + 1, z: block.location.z };
+        const topBlockId = dimension.getBlock(topLocation)?.typeId;
+        if (face == 'Up' && topBlockId == "minecraft:air") {
+            handlePlanting("minecraft:wheat_seeds", "farmersdelight:rich_soil_wheat", topLocation, container, player, block);
+            handlePlanting("minecraft:potato", "farmersdelight:rich_soil_potato", topLocation, container, player, block);
+            handlePlanting("minecraft:potato", "farmersdelight:rich_soil_carrot", topLocation, container, player, block);
+            handlePlanting("minecraft:carrot", "farmersdelight:rich_soil_potato", topLocation, container, player, block);
+            handlePlanting("minecraft:beetroot_seeds", "farmersdelight:rich_soil_beetroot", topLocation, container, player, block);
+            handlePlanting("minecraft:torchflower_seeds", "farmersdelight:rich_soil_torchflower_crop", topLocation, container, player, block);
+            handlePlanting("minecraft:torchflower", "farmersdelight:rich_soil_torchflower", topLocation, container, player, block);
+            handlePlanting("farmersdelight:cabbage_seeds", "farmersdelight:cabbage_block", topLocation, container, player, block);
+            handlePlanting("farmersdelight:onion", "farmersdelight:onion_block", topLocation, container, player, block);
+            handlePlanting("farmersdelight:tomato_seeds", "farmersdelight:tomato_block", topLocation, container, player, block);
+            const tags = selectedSlot?.getTags();
+            if (!tags)
+                return;
+            for (const tag of tags) {
+                if (tag.includes("farmersdelight:seed")) {
+                    const crop = tag.split("-")[1];
                     world.playSound("dig.grass", block.location);
-                    dimension.setBlockType(topLocation, "farmersdelight:rich_soil_wheat");
-                    ItemUtil.clearItem(container, player.selectedSlotIndex);
-                }
-                if (itemId == "minecraft:potato") {
-                    world.playSound("dig.grass", block.location);
-                    dimension.setBlockType(topLocation, "farmersdelight:rich_soil_potato");
-                    ItemUtil.clearItem(container, player.selectedSlotIndex);
-                }
-                if (itemId == "minecraft:carrot") {
-                    world.playSound("dig.grass", block.location);
-                    dimension.setBlockType(topLocation, "farmersdelight:rich_soil_carrot");
-                    ItemUtil.clearItem(container, player.selectedSlotIndex);
-                }
-                if (itemId == "minecraft:beetroot_seeds") {
-                    world.playSound("dig.grass", block.location);
-                    dimension.setBlockType(topLocation, "farmersdelight:rich_soil_beetroot");
-                    ItemUtil.clearItem(container, player.selectedSlotIndex);
-                }
-                if (itemId == "minecraft:torchflower_seeds") {
-                    world.playSound("dig.grass", block.location);
-                    ItemUtil.clearItem(container, player.selectedSlotIndex);
-                    dimension.setBlockType(topLocation, "farmersdelight:rich_soil_torchflower_crop");
-                }
-                if (itemId == "minecraft:torchflower") {
-                    world.playSound("dig.grass", block.location);
-                    dimension.setBlockType(topLocation, "farmersdelight:rich_soil_torchflower");
-                    ItemUtil.clearItem(container, player.selectedSlotIndex);
-                }
-                if (itemId == "farmersdelight:cabbage_seeds") {
-                    world.playSound("dig.grass", block.location);
-                    dimension.setBlockType(topLocation, "farmersdelight:cabbage_block");
-                    ItemUtil.clearItem(container, player.selectedSlotIndex);
-                }
-                if (itemId == "farmersdelight:onion") {
-                    world.playSound("dig.grass", block.location);
-                    dimension.setBlockType(topLocation, "farmersdelight:onion_block");
-                    ItemUtil.clearItem(container, player.selectedSlotIndex);
-                }
-                if (itemId == "farmersdelight:tomato_seeds") {
-                    world.playSound("dig.grass", block.location);
-                    dimension.setBlockType(topLocation, "farmersdelight:tomato_block");
+                    block.dimension.setBlockType(topLocation, crop);
                     ItemUtil.clearItem(container, player.selectedSlotIndex);
                 }
             }
-        }
-        catch (error) {
         }
     }
     onRandomTick(args) {

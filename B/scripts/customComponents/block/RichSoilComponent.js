@@ -17,7 +17,8 @@ class RichSoilComponent {
     onPlayerInteract(args) {
         const player = args.player;
         const face = args.face;
-        const container = player?.getComponent("inventory")?.container;
+        const inventory = player?.getComponent("inventory");
+        const container = inventory?.container;
         const block = args.block;
         const dimension = args.dimension;
         if (!player)

@@ -1,4 +1,4 @@
-import { Block, Container, Entity, GameMode, ItemDurabilityComponent, ItemStack, ItemType, Player, Vector3 } from "@minecraft/server";
+import { Block, Container, Entity, EntityInventoryComponent, GameMode, ItemDurabilityComponent, ItemStack, ItemType, Player, Vector3 } from "@minecraft/server";
 import { RandomUtil } from "./RandomUtil";
 
 
@@ -6,7 +6,7 @@ export class ItemUtil {
     public static damageItem(container: Container, index: number, damage: number = 1) {
         const itemStack: ItemStack | undefined = container.getItem(index);
         if (!itemStack) return;
-        const durability: ItemDurabilityComponent | undefined = itemStack.getComponent(ItemDurabilityComponent.componentId);
+        const durability: ItemDurabilityComponent | undefined = itemStack.getComponent(ItemDurabilityComponent.componentId) as ItemDurabilityComponent;
         if (!durability) return;
         if (durability.maxDurability > durability.damage) {
             durability.damage += damage;
@@ -31,7 +31,7 @@ export class ItemUtil {
         }
     }
     public static replaceItem(player: Player, slot: number, replaceItemStack: ItemStack) {
-        const container = player.getComponent("inventory")?.container;
+        const container = (player.getComponent("inventory")as EntityInventoryComponent)?.container;
         if (!container) return;
         const itemStack = container?.getItem(slot)
         if (!itemStack) return;

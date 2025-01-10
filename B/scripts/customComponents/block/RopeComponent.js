@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { WorldInitializeBeforeEvent, world, ItemComponentTypes, EntityInventoryComponent } from "@minecraft/server";
+import { WorldInitializeBeforeEvent, world, ItemComponentTypes } from "@minecraft/server";
 import { methodEventSub } from "../../lib/eventHelper";
 import { ItemUtil } from "../../lib/ItemUtil";
 function spawnLoot(path, dimenion, location) {
@@ -24,12 +24,13 @@ export class RopeComponent {
         const block = args.block;
         const player = args.player;
         const dimension = args.dimension;
-        const itemId = player?.getComponent("inventory")?.container?.getSlot(player.selectedSlotIndex).typeId;
-        const stage = Number(block.permutation.getState("farmersdelight:stage"));
-        const random = Math.floor(Math.random() * 101);
         if (!player)
             return;
-        const container = player.getComponent(EntityInventoryComponent.componentId)?.container;
+        const inventory = player?.getComponent("inventory");
+        const container = inventory?.container;
+        const itemId = container?.getSlot(player.selectedSlotIndex).typeId;
+        const stage = Number(block.permutation.getState("farmersdelight:stage"));
+        const random = Math.floor(Math.random() * 101);
         try {
             if (itemId == "minecraft:bone_meal" && stage < 4) {
                 world.playSound("item.bone_meal.use", block.location);
@@ -58,7 +59,8 @@ export class RopeComponent {
     onPlayerDestroy(args) {
         const player = args.player;
         const blockPermutation = args.destroyedBlockPermutation;
-        const container = player?.getComponent("inventory")?.container;
+        const inventory = player?.getComponent("inventory");
+        const container = inventory?.container;
         const block = args.block;
         const dimension = args.dimension;
         if (!player)
@@ -66,7 +68,8 @@ export class RopeComponent {
         if (!container)
             return;
         const stage = blockPermutation.getState('farmersdelight:stage');
-        const silkTouch = container?.getItem(player.selectedSlotIndex)?.getComponent(ItemComponentTypes.Enchantable)?.hasEnchantment("silk_touch");
+        const enchantable = container?.getItem(player.selectedSlotIndex)?.getComponent(ItemComponentTypes.Enchantable);
+        const silkTouch = enchantable?.hasEnchantment("silk_touch");
         if (stage > 0) {
             try {
                 if (!silkTouch) {

@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { BlockPermutation, Direction, EntityEquippableComponent, EntityHealthComponent, EntityInventoryComponent, EquipmentSlot, ItemStack, PlayerInteractWithBlockAfterEvent, world } from "@minecraft/server";
+import { BlockPermutation, Direction, EntityEquippableComponent, EntityHealthComponent, EquipmentSlot, ItemStack, PlayerInteractWithBlockAfterEvent, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
 import { EntityUtil } from "../lib/EntityUtil";
 import { ItemUtil } from "../lib/ItemUtil";
@@ -91,7 +91,8 @@ export class Knife {
         if (!itemStack?.hasTag("farmersdelight:is_knife"))
             return;
         if (EntityUtil.gameMode(player)) {
-            const container = player.getComponent(EntityInventoryComponent.componentId)?.container;
+            const inventory = player?.getComponent("inventory");
+            const container = inventory?.container;
             if (!container)
                 return;
             ItemUtil.damageItem(container, player.selectedSlotIndex);
@@ -126,7 +127,8 @@ export class Knife {
         const face = args.blockFace;
         const dimenion = args.block.dimension;
         if (EntityUtil.gameMode(player)) {
-            const container = player.getComponent(EntityInventoryComponent.componentId)?.container;
+            const inventory = player?.getComponent("inventory");
+            const container = inventory?.container;
             if (!container)
                 return;
             ItemUtil.damageItem(container, player.selectedSlotIndex);

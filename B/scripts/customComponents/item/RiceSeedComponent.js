@@ -30,8 +30,10 @@ class RiceSeedComponent {
                 if (!(water?.typeId == 'minecraft:water' && water?.permutation.getState('liquid_depth') == 0))
                     return;
                 placeStructure(block.dimension, 'farmersdelight:rice_crop', water.location);
+                const inventory = source?.getComponent("inventory");
+                const container = inventory?.container;
                 if (EntityUtil.gameMode(source))
-                    ItemUtil.clearItem(source.getComponent('inventory')?.container, source.selectedSlotIndex);
+                    ItemUtil.clearItem(container, source.selectedSlotIndex);
             });
         }
     }
