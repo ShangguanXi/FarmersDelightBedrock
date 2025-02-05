@@ -1,5 +1,5 @@
 {
-  "format_version": "1.21.40",
+  "format_version": "1.21.60",
   "minecraft:item": {
     "components": {
       "minecraft:food": {
@@ -20,6 +20,9 @@
       "minecraft:use_animation": "eat",
       "minecraft:use_modifiers": {
         "use_duration": 2.0
+      },
+      "minecraft:compostable": {
+        "composting_chance": 45
       }
     },
     "description": {

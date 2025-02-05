@@ -3,6 +3,7 @@ tile.farmersdelight:cooking_pot.name=Cooking Pot
 tile.farmersdelight:basket.name=Basket
 tile.farmersdelight:cutting_board.name=Cutting Board
 tile.farmersdelight:skillet_block.name=Skillet
+item.farmersdelight:skillet_block=Skillet
 tile.farmersdelight:oak_cabinet.name=Oak Cabinet
 tile.farmersdelight:birch_cabinet.name=Birch Cabinet
 tile.farmersdelight:spruce_cabinet.name=Spruce Cabinet

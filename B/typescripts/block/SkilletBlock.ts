@@ -86,20 +86,4 @@ export class SKilletBlock extends BlockWithEntity {
             world.scoreboard.addObjective(newEntity.typeId + newEntity.id, newEntity.id).setScore('amount', 0);
         }
     }
-    @methodEventSub(world.afterEvents.entityHurt)
-    hurt(args: any) {
-        const entity: Entity = args.damageSource.damagingEntity;
-        const hurt: Entity = args.hurtEntity;
-        if (!entity || !hurt) return
-        try {
-            const equipment: EntityEquippableComponent = entity.getComponent(EntityEquippableComponent.componentId) as EntityEquippableComponent;
-            const mainHand: ContainerSlot | undefined = equipment?.getEquipmentSlot(EquipmentSlot.Mainhand);
-            if (mainHand?.typeId == 'farmersdelight:skillet_block') {
-                hurt.applyDamage(8, { damagingEntity: entity, cause: EntityDamageCause.entityAttack });
-            }
-        } catch (error) {
-            
-        }
-       
-    }
 }

@@ -1,5 +1,5 @@
 {
-  "format_version": "1.21.40",
+  "format_version": "1.21.60",
   "minecraft:item": {
     "components": {
       "minecraft:food": {
@@ -15,14 +15,16 @@
       "minecraft:tags": {
         "tags": [
           "farmersdelight:can_cut.tag.farmersdelight:is_knife",
-          "farmersdelight:is_cabbage",
-          "farmersdelight:is_fertilizer.65"
+          "farmersdelight:is_cabbage"
         ]
       },
       "minecraft:use_animation": "eat",
       "minecraft:use_modifiers": {
         "use_duration": 1.6,
         "movement_modifier": 0.4
+      },
+      "minecraft:compostable": {
+        "composting_chance": 65
       }
     },
     "description": {

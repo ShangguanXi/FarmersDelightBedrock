@@ -3,6 +3,7 @@ tile.farmersdelight:cooking_pot.name=Olla
 tile.farmersdelight:basket.name=Cesta
 tile.farmersdelight:cutting_board.name=Tabla de picar
 tile.farmersdelight:skillet_block.name=Sartén
+item.farmersdelight:skillet_block=Sartén
 tile.farmersdelight:oak_cabinet.name=Despensa de roble
 tile.farmersdelight:birch_cabinet.name=Despensa de abedul
 tile.farmersdelight:spruce_cabinet.name=Despensa de abeto

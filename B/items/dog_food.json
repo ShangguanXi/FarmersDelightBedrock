@@ -1,5 +1,5 @@
 {
-  "format_version": "1.21.40",
+  "format_version": "1.21.60",
   "minecraft:item": {
     "components": {
       "minecraft:icon": {
@@ -7,13 +7,16 @@
           "default": "farmersdelight:dog_food"
         }
       },
-      "minecraft:max_stack_size": 16
+      "minecraft:max_stack_size": 16,
+      "minecraft:compostable": {
+        "composting_chance": 85
+      }
     },
     "description": {
       "identifier": "farmersdelight:dog_food",
       "menu_category": {
         "category": "Items",
-        "group": "itemGroup.name.items"
+        "group": "minecraft:itemGroup.name.items"
       }
     }
   }

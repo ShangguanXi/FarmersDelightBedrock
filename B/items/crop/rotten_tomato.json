@@ -1,5 +1,5 @@
 {
-  "format_version": "1.21.40",
+  "format_version": "1.21.60",
   "minecraft:item": {
     "components": {
       "minecraft:icon": {
@@ -11,11 +11,6 @@
         "minimum_critical_power": 1.0,
         "projectile_entity": "farmersdelight:rotten_tomato"
       },
-      "minecraft:tags": {
-        "tags": [
-          "farmersdelight:is_fertilizer.65"
-        ]
-      },
       "minecraft:throwable": {
         "do_swing_animation": true,
         "launch_power_scale": 1.0,
@@ -23,6 +18,9 @@
         "max_launch_power": 1.0,
         "min_draw_duration": 0.0,
         "scale_power_by_draw_duration": false
+      },
+      "minecraft:compostable": {
+        "composting_chance": 65
       }
     },
     "description": {

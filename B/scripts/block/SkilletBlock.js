@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { EntityDamageCause, EntityEquippableComponent, EquipmentSlot, ItemStack, ItemUseOnAfterEvent, PlayerPlaceBlockAfterEvent, world } from "@minecraft/server";
+import { ItemStack, ItemUseOnAfterEvent, PlayerPlaceBlockAfterEvent, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
 import { BlockWithEntity } from "./BlockWithEntity";
 import { vanillaItemList } from "../data/recipe/cookRecipe";
@@ -99,21 +99,6 @@ export class SKilletBlock extends BlockWithEntity {
             world.scoreboard.addObjective(newEntity.typeId + newEntity.id, newEntity.id).setScore('amount', 0);
         }
     }
-    hurt(args) {
-        const entity = args.damageSource.damagingEntity;
-        const hurt = args.hurtEntity;
-        if (!entity || !hurt)
-            return;
-        try {
-            const equipment = entity.getComponent(EntityEquippableComponent.componentId);
-            const mainHand = equipment?.getEquipmentSlot(EquipmentSlot.Mainhand);
-            if (mainHand?.typeId == 'farmersdelight:skillet_block') {
-                hurt.applyDamage(8, { damagingEntity: entity, cause: EntityDamageCause.entityAttack });
-            }
-        }
-        catch (error) {
-        }
-    }
 }
 __decorate([
     methodEventSub(world.afterEvents.playerPlaceBlock),
@@ -127,10 +112,4 @@ __decorate([
     __metadata("design:paramtypes", [ItemUseOnAfterEvent]),
     __metadata("design:returntype", void 0)
 ], SKilletBlock.prototype, "useOnBlock", null);
-__decorate([
-    methodEventSub(world.afterEvents.entityHurt),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", void 0)
-], SKilletBlock.prototype, "hurt", null);
 //# sourceMappingURL=SkilletBlock.js.map

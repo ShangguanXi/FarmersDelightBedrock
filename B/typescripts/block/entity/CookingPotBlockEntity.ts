@@ -95,6 +95,7 @@ export class CookingPotBlockEntity extends BlockEntity {
         else {
             cookingPotRecipe = recipeFactory.get(entity.id) as CookingPotRecipe;
         }
+    
         entity.setDynamicProperty('cookingPot:heated', heated);
         cookingPotRecipe.update()
         if (heated) {

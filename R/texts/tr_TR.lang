@@ -3,6 +3,7 @@ tile.farmersdelight:cooking_pot.name=Tencere
 tile.farmersdelight:basket.name=Sepet
 tile.farmersdelight:cutting_board.name=Kesme Tahtası
 tile.farmersdelight:skillet_block.name=Tava
+item.farmersdelight:skillet_block=Tava
 tile.farmersdelight:oak_cabinet.name=Meşe Kiler
 tile.farmersdelight:birch_cabinet.name=Huş Kiler
 tile.farmersdelight:spruce_cabinet.name=Çam Kiler

@@ -1,4 +1,4 @@
-import { Entity, ItemStack } from "@minecraft/server";
+import { Entity, ItemStack, world } from "@minecraft/server";
 import { RecipeHolder } from "./RecipeHolder";
 import { ItemUtil } from "./ItemUtil";
 
@@ -11,8 +11,9 @@ export class CookingPotRecipe extends RecipeHolder {
     update(): void {
         const heated = this.entity.getDynamicProperty('cookingPot:heated')
         //检查结果栏是否可以输出并完成输出操作
-        const container = this.container.getItem(7);
-        const result = this.container.getItem(6);
+        if (!this.container) return
+        const container = this.container?.getItem(7);
+        const result = this.container?.getItem(6);
         if (result) {
             this.currentRecipe2 = this.getValidRecipe2(result, container)
             if (this.currentRecipe2) {

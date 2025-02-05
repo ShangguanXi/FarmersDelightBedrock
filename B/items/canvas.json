@@ -1,5 +1,5 @@
 {
-  "format_version": "1.21.40",
+  "format_version": "1.21.60",
   "minecraft:item": {
     "components": {
       "minecraft:icon": {
@@ -12,7 +12,7 @@
       "identifier": "farmersdelight:canvas",
       "menu_category": {
         "category": "Items",
-        "group": "itemGroup.name.items"
+        "group": "minecraft:itemGroup.name.items"
       }
     }
   }

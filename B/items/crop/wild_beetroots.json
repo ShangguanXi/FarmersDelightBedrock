@@ -1,9 +1,10 @@
 {
-  "format_version": "1.21.40",
+  "format_version": "1.21.60",
   "minecraft:item": {
     "components": {
       "minecraft:block_placer": {
-        "block": "farmersdelight:wild_beetroots"
+        "block": "farmersdelight:wild_beetroots",
+        "replace_block_item":true
       },
       "minecraft:icon": {
         "textures": {
@@ -12,9 +13,11 @@
       },
       "minecraft:tags": {
         "tags": [
-          "farmersdelight:can_cut.tag.farmersdelight:is_knife",
-          "farmersdelight:is_fertilizer.65"
+          "farmersdelight:can_cut.tag.farmersdelight:is_knife"
         ]
+      },
+      "minecraft:compostable": {
+        "composting_chance": 65
       }
     },
     "description": {

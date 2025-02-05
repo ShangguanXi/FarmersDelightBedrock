@@ -1,0 +1,26 @@
+{
+    "format_version": "1.21.60",
+    "minecraft:item": {
+      "components": {
+        "minecraft:block_placer": {
+          "block": "farmersdelight:skillet_block",
+          "replace_block_item":true
+        },
+        "minecraft:damage": 7,
+        "minecraft:durability": {
+          "max_durability": 250
+        },
+        "minecraft:enchantable": {
+          "slot": "sword",
+          "value": 12
+        }
+      },
+      "description": {
+        "identifier": "farmersdelight:skillet_block",
+        "menu_category": {
+          "category": "items",
+          "group": "farmersdelight:itemGroup.name.items"
+        }
+      }
+    }
+  }
