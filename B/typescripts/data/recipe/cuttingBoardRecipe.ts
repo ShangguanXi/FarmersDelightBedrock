@@ -36,7 +36,8 @@ const ItemofKnifeList: string[] = [
     "minecraft:poppy",
     "minecraft:red_tulip",
     "minecraft:white_tulip",
-    "minecraft:wither_rose"
+    "minecraft:wither_rose",
+    "minecraft:torchflower"
 ];
 const ItemofPickaxeList: string[] = []
 const ItemofAxeList: string[] = [
