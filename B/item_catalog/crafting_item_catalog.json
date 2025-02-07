@@ -70,6 +70,13 @@
                      "name": "farmersdelight:itemGroup.name.crate"
                   },
                   "items": []
+               },
+               {
+                  "group_identifier": {
+                     "icon": "farmersdelight:acacia_cabinet",
+                     "name": "farmersdelight:itemGroup.name.cabinet"
+                  },
+                  "items": []
                }
             ]
          }
