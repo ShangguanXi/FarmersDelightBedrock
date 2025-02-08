@@ -7,7 +7,7 @@ Farmer's Delight Bedrock
 
 <p align="center">
 <a href="https://github.com/ShangguanXi/FarmersDelightBedrock/releases">
-	<img src="https://img.shields.io/badge/Available%20for-1.21.41%20%7C%201.21.30%20%7C%201.21.20%20%7C%201.21%20%7C%201.20.80-red" alt="Supported Versions">
+	<img src="https://img.shields.io/badge/Available%20for-1.21.70%20%7C%201.21.41%20%7C%201.21.30%20%7C%201.21.20%20%7C%201.21%20%7C%201.20.80-red" alt="Supported Versions">
 </a>
 <a href="https://github.com/ShangguanXi/FarmersDelightBedrock?tab=License-1-ov-file#">
 	<img src="https://img.shields.io/github/license/ShangguanXi/FarmersDelightBedrock?style=flat&color=900c3f" alt="License">
