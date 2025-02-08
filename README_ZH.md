@@ -16,15 +16,13 @@
 <img src="https://img.shields.io/discord/1135591127454601356?color=5865f2&label=Discord&style=flat" alt="Discord">
 </a>
 <a href="">
-<img src="https://img.shields.io/badge/QQ%E7%BE%A4-851992067-grey?labelColor=blue
-" alt="Discord">
+<img src="https://img.shields.io/badge/QQ%E7%BE%A4-851992067-grey?labelColor=blue" alt="Discord">
 </a>
 <a href="https://www.patreon.com/Moaswies">
 	<img src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.vercel.app%2Fapi%3Fusername%3DMoaswies%26type%3Dpatrons&style=flat&label=Supporters&color=ff5733" alt="Patreon">
 </a>
 <a href="https://afdian.com/a/moaswies">
-	<img src="https://img.shields.io/badge/%E7%88%B1%E5%8F%91%E7%94%B5-%E8%B5%9E%E5%8A%A9-blue
-	" alt="AFDian">
+	<img src="https://img.shields.io/badge/%E7%88%B1%E5%8F%91%E7%94%B5-%E8%B5%9E%E5%8A%A9-blue" alt="AFDian">
 </a>
 </p>
 
