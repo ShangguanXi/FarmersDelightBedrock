@@ -77,18 +77,18 @@ export class CuttingBoardBlock extends BlockWithEntity {
         if (!mainHand)
             return;
         const toolMapping = [
-            { list: BlockofAxeList, tag: 'minecraft:is_axe', isBlock: true },
-            { list: BlockofKnifeList, tag: 'farmersdelight:is_knife', isBlock: true },
-            { list: BlockofPickaxeList, tag: 'minecraft:is_pickaxe', isBlock: true },
-            { list: BlockofShovelList, tag: 'minecraft:is_shovel', isBlock: true },
-            { list: ItemofAxeList, tag: 'minecraft:is_axe', isBlock: false },
-            { list: ItemofKnifeList, tag: 'farmersdelight:is_knife', isBlock: false },
-            { list: ItemofPickaxeList, tag: 'minecraft:is_pickaxe', isBlock: false },
-            { list: ItemofShearsList, tag: 'minecraft:shears', isBlock: false }
+            { list: BlockofAxeList, tool: 'minecraft:is_axe', mode: 'tag', isBlock: true },
+            { list: BlockofKnifeList, tool: 'farmersdelight:is_knife', mode: 'tag', isBlock: true },
+            { list: BlockofPickaxeList, tool: 'minecraft:is_pickaxe', mode: 'tag', isBlock: true },
+            { list: BlockofShovelList, tool: 'minecraft:is_shovel', mode: 'tag', isBlock: true },
+            { list: ItemofAxeList, tool: 'minecraft:is_axe', mode: 'tag', isBlock: false },
+            { list: ItemofKnifeList, tool: 'farmersdelight:is_knife', mode: 'tag', isBlock: false },
+            { list: ItemofPickaxeList, tool: 'minecraft:is_pickaxe', mode: 'tag', isBlock: false },
+            { list: ItemofShearsList, tool: 'minecraft:shears', mode: 'item', isBlock: false }
         ];
         for (const tool of toolMapping) {
             if (tool.list.includes(mainHand.typeId)) {
-                CuttingBoardBlock.setCuttingTool(entity, mainHand.typeId, tool.tag, tool.isBlock);
+                CuttingBoardBlock.setCuttingTool(entity, mainHand.typeId, tool.tool, tool.mode, tool.isBlock);
                 if (EntityUtil.gameMode(player)) {
                     ItemUtil.clearItem(container, player.selectedSlotIndex);
                 }
@@ -97,8 +97,8 @@ export class CuttingBoardBlock extends BlockWithEntity {
         }
         CuttingBoardBlock.handleCustomTags(mainHand, entity, player, container);
     }
-    static setCuttingTool(entity, itemId, tag, isBlock) {
-        entity.setDynamicProperty('farmersdelight:cutTool', `{"tag": "${tag}", "mode": "tag"}`);
+    static setCuttingTool(entity, itemId, tool, mode, isBlock) {
+        entity.setDynamicProperty('farmersdelight:cutTool', `{"${mode}": "${tool}", "mode": "${mode}"}`);
         entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', `{"item":"${itemId}"}`);
         entity.setProperty('farmersdelight:is_block_mode', isBlock);
         if (isBlock) {

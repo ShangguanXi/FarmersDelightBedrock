@@ -50,6 +50,7 @@ const ItemofAxeList = [
     "minecraft:crimson_door",
     "minecraft:warped_door",
     "minecraft:bamboo_door",
+    "minecraft:pale_oak_door",
     "minecraft:oak_sign",
     "minecraft:spruce_sign",
     "minecraft:birch_sign",
@@ -61,6 +62,7 @@ const ItemofAxeList = [
     "minecraft:crimson_sign",
     "minecraft:warped_sign",
     "minecraft:bamboo_sign",
+    "minecraft:pale_oak_sign"
 ];
 const BlockofAxeList = [
     "minecraft:oak_log",
@@ -74,6 +76,7 @@ const BlockofAxeList = [
     "minecraft:crimson_stem",
     "minecraft:warped_stem",
     "minecraft:bamboo_block",
+    "minecraft:pale_oak_log",
     "minecraft:oak_wood",
     "minecraft:spruce_wood",
     "minecraft:birch_wood",
@@ -84,6 +87,7 @@ const BlockofAxeList = [
     "minecraft:cherry_wood",
     "minecraft:warped_hyphae",
     "minecraft:crimson_hyphae",
+    "minecraft:pale_oak_wood",
     "minecraft:trapdoor",
     "minecraft:spruce_trapdoor",
     "minecraft:birch_trapdoor",
@@ -94,7 +98,8 @@ const BlockofAxeList = [
     "minecraft:cherry_trapdoor",
     "minecraft:crimson_trapdoor",
     "minecraft:warped_trapdoor",
-    "minecraft:bamboo_trapdoor"
+    "minecraft:bamboo_trapdoor",
+    "minecraft:pale_oak_trapdoor"
 ];
 const BlockofPickaxeList = [
     "minecraft:amethyst_block",
