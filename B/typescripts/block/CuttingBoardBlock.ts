@@ -15,6 +15,18 @@ import {
 } from "../data/recipe/cuttingBoardRecipe";
 import { ItemUtil } from "../lib/ItemUtil";
 
+const toolMapping = [
+    { list: BlockofAxeList, tool: 'minecraft:is_axe',mode:'tag', isBlock: true },
+    { list: BlockofKnifeList, tool: 'farmersdelight:is_knife',mode:'tag', isBlock: true },
+    { list: BlockofPickaxeList, tool: 'minecraft:is_pickaxe',mode:'tag', isBlock: true },
+    { list: BlockofShovelList, tool: 'minecraft:is_shovel',mode:'tag', isBlock: true },
+    { list: ItemofAxeList, tool: 'minecraft:is_axe',mode:'tag', isBlock: false },
+    { list: ItemofKnifeList, tool: 'farmersdelight:is_knife',mode:'tag', isBlock: false },
+    { list: ItemofPickaxeList, tool: 'minecraft:is_pickaxe',mode:'tag', isBlock: false },
+    { list: ItemofShearsList, tool: 'minecraft:shears',mode:'item', isBlock: false }
+];
+export {toolMapping};
+
 export class CuttingBoardBlock extends BlockWithEntity {
     @methodEventSub(world.afterEvents.playerPlaceBlock)
     placeBlock(args: PlayerPlaceBlockAfterEvent) {
@@ -82,17 +94,7 @@ export class CuttingBoardBlock extends BlockWithEntity {
     static handleItemPlacement(mainHand: ItemStack | undefined, entity: Entity, player: Player, container: Container) {
         if (!mainHand) return;
 
-        const toolMapping = [
-            { list: BlockofAxeList, tool: 'minecraft:is_axe',mode:'tag', isBlock: true },
-            { list: BlockofKnifeList, tool: 'farmersdelight:is_knife',mode:'tag', isBlock: true },
-            { list: BlockofPickaxeList, tool: 'minecraft:is_pickaxe',mode:'tag', isBlock: true },
-            { list: BlockofShovelList, tool: 'minecraft:is_shovel',mode:'tag', isBlock: true },
-            { list: ItemofAxeList, tool: 'minecraft:is_axe',mode:'tag', isBlock: false },
-            { list: ItemofKnifeList, tool: 'farmersdelight:is_knife',mode:'tag', isBlock: false },
-            { list: ItemofPickaxeList, tool: 'minecraft:is_pickaxe',mode:'tag', isBlock: false },
-            { list: ItemofShearsList, tool: 'minecraft:shears',mode:'item', isBlock: false }
-        ];
-
+       
         for (const tool of toolMapping) {
             if (tool.list.includes(mainHand.typeId)) {
                 CuttingBoardBlock.setCuttingTool(entity, mainHand.typeId, tool.tool, tool.mode, tool.isBlock);
@@ -129,4 +131,6 @@ export class CuttingBoardBlock extends BlockWithEntity {
         }
         player.onScreenDisplay.setActionBar({ translate: 'farmersdelight.tips.cant_cut' });
     }
+    
 }
+
