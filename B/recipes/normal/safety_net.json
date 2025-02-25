@@ -1,0 +1,23 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "farmersdelight:safety_net"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "pattern": [
+            "rr",
+            "rr"
+        ],
+        "key": {
+            "r": {
+                "item": "farmersdelight:rope"
+            }
+        },
+        "result": {
+            "item": "farmersdelight:safety_net"
+        }
+    }
+}
