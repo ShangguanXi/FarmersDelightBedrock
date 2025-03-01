@@ -118,7 +118,7 @@
                 }
             }
         ],
-        "components": {
+        "components": { 
             "minecraft:tick": {
                 "interval_range": [
                     1,

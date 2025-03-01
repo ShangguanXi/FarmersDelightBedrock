@@ -19,8 +19,7 @@ class RiceSeedComponent implements ItemCustomComponent {
             system.run(() => {
                 const water = block.above();
                 if (!(water?.typeId == 'minecraft:water' && water?.permutation.getState('liquid_depth') == 0)) return
-                placeStructure(block.dimension, 'farmersdelight:rice_crop', water.location);
-
+                block.dimension.setBlockType(water.location,"farmersdelight:rice_block")
                 const inventory = source?.getComponent("inventory") as EntityInventoryComponent;
                 const container: Container = inventory?.container as Container
                 if (EntityUtil.gameMode(source)) ItemUtil.clearItem(container, source.selectedSlotIndex)

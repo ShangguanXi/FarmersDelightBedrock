@@ -29,7 +29,7 @@ class RiceSeedComponent {
                 const water = block.above();
                 if (!(water?.typeId == 'minecraft:water' && water?.permutation.getState('liquid_depth') == 0))
                     return;
-                placeStructure(block.dimension, 'farmersdelight:rice_crop', water.location);
+                block.dimension.setBlockType(water.location, "farmersdelight:rice_block");
                 const inventory = source?.getComponent("inventory");
                 const container = inventory?.container;
                 if (EntityUtil.gameMode(source))

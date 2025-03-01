@@ -3,8 +3,7 @@
   "minecraft:item": {
     "components": {
       "minecraft:block_placer": {
-        "block": "farmersdelight:wild_rice",
-        "replace_block_item":true
+        "block": "farmersdelight:wild_rice"
       },
       "minecraft:icon": {
         "textures": {

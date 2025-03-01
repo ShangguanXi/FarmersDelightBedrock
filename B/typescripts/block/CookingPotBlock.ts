@@ -24,7 +24,7 @@ export class CookingPotBlock extends BlockWithEntity {
         const { x, y, z }: Vector3 = block.location;
         const entity: Entity = super.setBlock(block.dimension, { x: x + 0.5, y: y, z: z + 0.5 }, "farmersdelight:cooking_pot");
         entity.nameTag = "farmersdelight厨锅";
-        const inventory = args.player?.getComponent("inventory") as EntityInventoryComponent;
+        const inventory = entity?.getComponent("inventory") as EntityInventoryComponent;
         const container: Container | undefined = inventory?.container
         container?.setItem(9, emptyArrow);
         container?.setItem(10, fireArrowEmpty);

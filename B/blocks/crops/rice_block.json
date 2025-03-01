@@ -139,6 +139,14 @@
             }
         ],
         "components": {
+            "minecraft:liquid_detection": {
+                "detection_rules": [
+                    {
+                        "on_liquid_touches": "no_reaction",
+                        "can_contain_liquid":true
+                    }
+                ]
+            },
             "minecraft:tick": {
                 "interval_range": [
                     1,
