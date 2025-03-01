@@ -33,41 +33,39 @@ class MushroomColonyComonent {
             return;
         const growth = block.permutation.getState('farmersdelight:growth');
         const selectedSlot = container?.getSlot(player.selectedSlotIndex);
-        try {
-            const itemId = selectedSlot?.typeId;
-            if (itemId == "minecraft:bone_meal") {
-                if (growth < 4 && growth > 0 && RandomUtil.probability(70)) {
-                    block.setPermutation(block.permutation.withState('farmersdelight:growth', growth + 1));
-                }
-                if (growth == 0 && RandomUtil.probability(70)) {
-                    if (block.typeId == "farmersdelight:brown_mushroom_colony") {
-                        world.structureManager.place("farmersdelight:brown_mushroom_tree", dimension, { x: block.location.x - 3, y: block.location.y, z: block.location.z - 3 });
-                    }
-                    ;
-                    if (block.typeId == "farmersdelight:red_mushroom_colony") {
-                        world.structureManager.place("farmersdelight:red_mushroom_tree", dimension, { x: block.location.x - 2, y: block.location.y, z: block.location.z - 2 });
-                    }
-                    ;
-                }
-                dimension.spawnParticle("minecraft:crop_growth_emitter", block.center());
-                dimension.playSound("item.bone_meal.use", block.center());
-                ItemUtil.clearItem(container, player.selectedSlotIndex);
+        if (!selectedSlot.getItem())
+            return;
+        const itemId = selectedSlot?.typeId;
+        if (itemId == "minecraft:bone_meal") {
+            if (growth < 4 && growth > 0 && RandomUtil.probability(70)) {
+                block.setPermutation(block.permutation.withState('farmersdelight:growth', growth + 1));
             }
-            if (itemId == "minecraft:shears" && growth > 0) {
-                block.setPermutation(block.permutation.withState('farmersdelight:growth', growth - 1));
+            if (growth == 0 && RandomUtil.probability(70)) {
                 if (block.typeId == "farmersdelight:brown_mushroom_colony") {
-                    spawnLoot("farmersdelight/crops/farmersdelight_brown_mushroom_colony0", dimension, { x: block.location.x + 0.5, y: block.location.y + 0.5, z: block.location.z + 0.5 });
+                    world.structureManager.place("farmersdelight:brown_mushroom_tree", dimension, { x: block.location.x - 3, y: block.location.y, z: block.location.z - 3 });
                 }
                 ;
                 if (block.typeId == "farmersdelight:red_mushroom_colony") {
-                    spawnLoot("farmersdelight/crops/farmersdelight_red_mushroom_colony0", dimension, block.center());
+                    world.structureManager.place("farmersdelight:red_mushroom_tree", dimension, { x: block.location.x - 2, y: block.location.y, z: block.location.z - 2 });
                 }
                 ;
-                ItemUtil.damageItem(container, player.selectedSlotIndex);
-                dimension.playSound("mob.sheep.shear", block.center());
             }
+            dimension.spawnParticle("minecraft:crop_growth_emitter", block.center());
+            dimension.playSound("item.bone_meal.use", block.center());
+            ItemUtil.clearItem(container, player.selectedSlotIndex);
         }
-        catch (error) {
+        if (itemId == "minecraft:shears" && growth > 0) {
+            block.setPermutation(block.permutation.withState('farmersdelight:growth', growth - 1));
+            if (block.typeId == "farmersdelight:brown_mushroom_colony") {
+                spawnLoot("farmersdelight/crops/farmersdelight_brown_mushroom_colony0", dimension, { x: block.location.x + 0.5, y: block.location.y + 0.5, z: block.location.z + 0.5 });
+            }
+            ;
+            if (block.typeId == "farmersdelight:red_mushroom_colony") {
+                spawnLoot("farmersdelight/crops/farmersdelight_red_mushroom_colony0", dimension, block.center());
+            }
+            ;
+            ItemUtil.damageItem(container, player.selectedSlotIndex);
+            dimension.playSound("mob.sheep.shear", block.center());
         }
     }
     onPlayerDestroy(args) {
@@ -107,6 +105,13 @@ class MushroomColonyComonent {
         const growth = block.permutation.getState('farmersdelight:growth');
         if (growth < 4) {
             block.setPermutation(block.permutation.withState('farmersdelight:growth', growth + 1));
+        }
+        const belowBlock = block.below();
+        if (belowBlock?.typeId != "farmersdelight:organic_compost")
+            return;
+        const process = belowBlock.permutation.getState("farmersdelight:process");
+        if (process < 7) {
+            belowBlock.setPermutation(belowBlock.permutation.withState('farmersdelight:process', process + 1));
         }
     }
 }

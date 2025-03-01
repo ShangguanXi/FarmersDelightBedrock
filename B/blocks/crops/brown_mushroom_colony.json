@@ -163,8 +163,9 @@
                 "conditions": [
                     {
                         "block_filter": [
-                            "rich_soil",
-                            "mycelium"
+                            "farmersdelight:rich_soil",
+                            "minecraft:mycelium",
+                            "farmersdelight:organic_compost"
                         ],
                         "allowed_faces": [
                             "up"
