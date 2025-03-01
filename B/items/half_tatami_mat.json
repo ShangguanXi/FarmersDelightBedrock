@@ -3,7 +3,8 @@
   "minecraft:item": {
     "components": {
       "minecraft:block_placer": {
-        "block": "farmersdelight:half_tatami_mat"
+        "block": "farmersdelight:half_tatami_mat",
+        "replace_block_item":true
       },
       "minecraft:icon": {
         "textures": {
@@ -12,10 +13,9 @@
       }
     },
     "description": {
-      "identifier": "farmersdelight:half_tatami_mat_item",
+      "identifier": "farmersdelight:half_tatami_mat",
       "menu_category": {
-        "category": "items",
-        "group": "minecraft:itemGroup.name.items"
+        "category": "items"
       }
     }
   }

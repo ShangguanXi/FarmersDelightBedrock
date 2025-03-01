@@ -4,7 +4,7 @@
         "description": {
             "identifier": "farmersdelight:tatami",
             "menu_category": {
-                "category": "construction"
+                "category": "items"
             },
             "states": {
                 "farmersdelight:connection": ["none", "north", "south", "east", "west", "up", "down"]
