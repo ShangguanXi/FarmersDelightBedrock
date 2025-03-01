@@ -45,8 +45,7 @@ class RichSoilFarmlandComponent {
         if (face == 'Up' && topBlockId == "minecraft:air") {
             handlePlanting("minecraft:wheat_seeds", "farmersdelight:rich_soil_wheat", topLocation, container, player, block);
             handlePlanting("minecraft:potato", "farmersdelight:rich_soil_potato", topLocation, container, player, block);
-            handlePlanting("minecraft:potato", "farmersdelight:rich_soil_carrot", topLocation, container, player, block);
-            handlePlanting("minecraft:carrot", "farmersdelight:rich_soil_potato", topLocation, container, player, block);
+            handlePlanting("minecraft:carrot", "farmersdelight:rich_soil_carrot", topLocation, container, player, block);
             handlePlanting("minecraft:beetroot_seeds", "farmersdelight:rich_soil_beetroot", topLocation, container, player, block);
             handlePlanting("minecraft:torchflower_seeds", "farmersdelight:rich_soil_torchflower_crop", topLocation, container, player, block);
             handlePlanting("minecraft:torchflower", "farmersdelight:rich_soil_torchflower", topLocation, container, player, block);
