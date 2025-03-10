@@ -14,7 +14,8 @@
       },
       "minecraft:tags": {
         "tags": [
-          "minecraft:is_cooked"
+          "minecraft:is_cooked",
+          "farmersdelight:is_cooked_pork"
         ]
       },
       "minecraft:use_animation": "eat",
