@@ -106,7 +106,6 @@ export const vanillaCookingPotRecipe = {
             "experience": 1.0,
             "ingredients": [
                 [
-
                     { "item": "minecraft:porkchop" },
                     { "item": "better_on_bedrock:beef_patty_raw" },
                     { "item": "minecraft:beef" },
@@ -114,7 +113,7 @@ export const vanillaCookingPotRecipe = {
                     { "item": "minecraft:brown_mushroom" },
                     { "tag": "farmersdelight:is_raw_porkchop" },
                     { "tag": "farmersdelight:is_raw_chicken" },
-                    { "tag": "farmersdelight:is_raw_beef" },
+                    { "tag": "farmersdelight:is_raw_beef" }
                 ],
                 [{ "tag": "farmersdelight:is_cabbage" },
                 { "item": "better_on_bedrock:gabage_leaves" }],
@@ -405,7 +404,7 @@ export const vanillaCookingPotRecipe = {
                 {
                     "item": "farmersdelight:tomato_sauce"
                 },
-                [,
+                [
                     { "item": "better_on_bedrock:beef_patty_raw" },
                     {
                         "item": "farmersdelight:minced_beef"

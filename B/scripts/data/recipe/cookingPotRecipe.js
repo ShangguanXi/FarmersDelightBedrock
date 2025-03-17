@@ -112,15 +112,15 @@ export const vanillaCookingPotRecipe = {
                     { "item": "minecraft:brown_mushroom" },
                     { "tag": "farmersdelight:is_raw_porkchop" },
                     { "tag": "farmersdelight:is_raw_chicken" },
-                    { "tag": "farmersdelight:is_raw_beef" },
+                    { "tag": "farmersdelight:is_raw_beef" }
                 ],
+                [{ "tag": "farmersdelight:is_cabbage" },
+                    { "item": "better_on_bedrock:gabage_leaves" }],
                 [
-                    { "tag": "farmersdelight:is_cabbage" },
-                    { "item": "better_on_bedrock:gabage_leaves" }
-                ],
-                [
-                    { "tag": "farmersdelight:is_onion" },
-                    { "item": "better_on_bedrock:onion_seed" }
+                    {
+                        "tag": "farmersdelight:is_onion"
+                    },
+                    { "item": "better_on_bedrock:onion" }
                 ],
                 {
                     "tag": "farmersdelight:is_dough"
@@ -207,7 +207,7 @@ export const vanillaCookingPotRecipe = {
                     { "item": "minecraft:potato" },
                     { "item": "minecraft:beetroot" },
                     { "tag": "farmersdelight:is_onion" },
-                    { "item": "better_on_bedrock:onion_seed" },
+                    { "item": "better_on_bedrock:onion" },
                     { "tag": "farmersdelight:is_tomato" },
                     { "item": "better_on_bedrock:tomato_seed" }
                 ]
@@ -263,7 +263,7 @@ export const vanillaCookingPotRecipe = {
                 [{
                         "tag": "farmersdelight:is_onion"
                     },
-                    { "item": "better_on_bedrock:onion_seed" }],
+                    { "item": "better_on_bedrock:onion" }],
                 {
                     "item": "farmersdelight:tomato_sauce"
                 }
@@ -293,7 +293,7 @@ export const vanillaCookingPotRecipe = {
                 [{
                         "tag": "farmersdelight:is_onion"
                     },
-                    { "item": "better_on_bedrock:onion_seed" }],
+                    { "item": "better_on_bedrock:onion" }],
                 {
                     "item": "minecraft:carrot"
                 }
@@ -401,7 +401,7 @@ export const vanillaCookingPotRecipe = {
                 {
                     "item": "farmersdelight:tomato_sauce"
                 },
-                [,
+                [
                     { "item": "better_on_bedrock:beef_patty_raw" },
                     {
                         "item": "farmersdelight:minced_beef"
@@ -474,7 +474,7 @@ export const vanillaCookingPotRecipe = {
                     { "item": "minecraft:potato" },
                     { "item": "minecraft:beetroot" },
                     { "tag": "farmersdelight:is_onion" },
-                    { "item": "better_on_bedrock:onion_seed" },
+                    { "item": "better_on_bedrock:onion" },
                     { "tag": "farmersdelight:is_tomato" },
                     { "item": "better_on_bedrock:tomato_seed" }
                 ]
@@ -533,7 +533,7 @@ export const vanillaCookingPotRecipe = {
                 [{
                         "tag": "farmersdelight:is_onion"
                     },
-                    { "item": "better_on_bedrock:onion_seed" }],
+                    { "item": "better_on_bedrock:onion" }],
                 {
                     "item": "minecraft:brown_mushroom"
                 },
@@ -548,7 +548,7 @@ export const vanillaCookingPotRecipe = {
                     { "item": "minecraft:potato" },
                     { "item": "minecraft:beetroot" },
                     { "tag": "farmersdelight:is_onion" },
-                    { "item": "better_on_bedrock:onion_seed" },
+                    { "item": "better_on_bedrock:onion" },
                     { "tag": "farmersdelight:is_cabbage" },
                     { "item": "better_on_bedrock:gabage_leaves" },
                     { "tag": "farmersdelight:is_tomato" },
