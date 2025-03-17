@@ -1,0 +1,31 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "better_on_bedrock:farmersdelight_hamburger_2"
+    },
+    "ingredients": [
+      {
+        "item": "minecraft:bread"
+      },
+      {
+        "item": "better_on_bedrock:beef_patty"
+      },
+      {
+        "tag": "farmersdelight:is_onion"
+      },
+      {
+        "tag": "farmersdelight:is_tomato"
+      },
+      {
+        "item": "better_on_bedrock:cabbage_leaf"
+      }
+    ],
+    "result": {
+      "item": "farmersdelight:hamburger"
+    },
+    "tags": [
+      "crafting_table"
+    ]
+  }
+}

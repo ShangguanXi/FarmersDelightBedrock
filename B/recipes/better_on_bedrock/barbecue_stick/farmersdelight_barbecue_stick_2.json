@@ -1,0 +1,28 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "better_on_bedrock:farmersdelight_barbecue_stick_2"
+    },
+    "ingredients": [
+      {
+        "tag": "farmersdelight:is_onion"
+      },
+      {
+        "item": "better_on_bedrock:tomato"
+      },
+      {
+        "tag": "minecraft:is_cooked"
+      },
+      {
+        "item": "minecraft:stick"
+      }
+    ],
+    "result": {
+      "item": "farmersdelight:barbecue_stick"
+    },
+    "tags": [
+      "crafting_table"
+    ]
+  }
+}

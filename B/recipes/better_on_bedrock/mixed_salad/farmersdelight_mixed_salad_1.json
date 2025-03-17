@@ -1,0 +1,28 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "better_on_bedrock:farmersdelight_mixed_salad_1"
+    },
+    "ingredients": [
+      {
+        "tag": "farmersdelight:is_cabbage"
+      },
+      {
+        "tag": "farmersdelight:is_tomato"
+      },
+      {
+        "item": "minecraft:beetroot"
+      },
+      {
+        "item": "minecraft:bowl"
+      }
+    ],
+    "result": {
+      "item": "farmersdelight:mixed_salad"
+    },
+    "tags": [
+      "crafting_table"
+    ]
+  }
+}

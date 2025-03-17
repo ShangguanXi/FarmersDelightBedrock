@@ -1,0 +1,31 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "better_on_bedrock:farmersdelight_grilled_salmon_item_1"
+    },
+    "ingredients": [
+      {
+        "item": "minecraft:cooked_salmon"
+      },
+      {
+        "item": "minecraft:sweet_berries"
+      },
+      {
+        "item": "minecraft:bowl"
+      },
+      {
+        "tag": "farmersdelight:is_onion"
+      },
+      {
+        "tag": "farmersdelight:is_cabbage"
+      }
+    ],
+    "result": {
+      "item": "farmersdelight:grilled_salmon"
+    },
+    "tags": [
+      "crafting_table"
+    ]
+  }
+}

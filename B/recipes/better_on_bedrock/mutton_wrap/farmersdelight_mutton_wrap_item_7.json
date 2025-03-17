@@ -1,0 +1,28 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "better_on_bedrock:farmersdelight_mutton_wrap_item_7"
+    },
+    "ingredients": [
+      {
+        "item": "minecraft:bread"
+      },
+      {
+        "item": "better_on_bedrock:onion_seed"
+      },
+      {
+        "tag": "farmersdelight:is_cabbage"
+      },
+      {
+        "item": "minecraft:cooked_mutton"
+      }
+    ],
+    "result": {
+      "item": "farmersdelight:mutton_wrap"
+    },
+    "tags": [
+      "crafting_table"
+    ]
+  }
+}

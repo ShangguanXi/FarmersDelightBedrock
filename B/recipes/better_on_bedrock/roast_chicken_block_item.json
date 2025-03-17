@@ -1,0 +1,43 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shapeless": {
+        "description": {
+            "identifier": "better_on_bedrock:farmersdelight_roast_chicken_block_item"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "ingredients": [
+            {
+                "item": "minecraft:bread"
+            },
+            {
+                "item": "minecraft:cooked_chicken"
+            },
+            {
+                "item": "better_on_bedrock:onion_seed"
+            },
+            {
+                "item": "minecraft:bowl"
+            },
+            {
+                "item": "minecraft:carrot"
+            },
+            {
+                "item": "minecraft:baked_potato"
+            },
+            {
+                "item": "minecraft:carrot"
+            },
+            {
+                "item": "minecraft:baked_potato"
+            },
+            {
+                "item": "minecraft:egg"
+            }
+        ],
+        "result": {
+            "item": "farmersdelight:roast_chicken_block_item"
+        }
+    }
+}

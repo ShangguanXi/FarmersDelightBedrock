@@ -1,0 +1,31 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "farmersdelight:roasted_mutton_chops_6"
+    },
+    "ingredients": [
+      {
+        "item": "better_on_bedrock:cooked_mutton_chops"
+      },
+      {
+        "item": "minecraft:beetroot"
+      },
+      {
+        "item": "better_on_bedrock:tomato"
+      },
+      {
+        "item": "farmersdelight:cooked_rice"
+      },
+      {
+        "item": "minecraft:bowl"
+      }
+    ],
+    "result": {
+      "item": "farmersdelight:roasted_mutton_chops"
+    },
+    "tags": [
+      "crafting_table"
+    ]
+  }
+}

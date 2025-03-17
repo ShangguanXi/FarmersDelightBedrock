@@ -37,7 +37,12 @@ const ItemofKnifeList: string[] = [
     "minecraft:red_tulip",
     "minecraft:white_tulip",
     "minecraft:wither_rose",
-    "minecraft:torchflower"
+    "minecraft:torchflower",
+
+    // better on bedrock
+    "better_on_bedrock:dough",
+    "better_on_bedrock:berry_pie",
+    "better_on_bedrock:grape_pie"
 ];
 const ItemofPickaxeList: string[] = []
 const ItemofAxeList: string[] = [
@@ -65,7 +70,12 @@ const ItemofAxeList: string[] = [
     "minecraft:crimson_sign",
     "minecraft:warped_sign",
     "minecraft:bamboo_sign",
-    "minecraft:pale_oak_sign"
+    "minecraft:pale_oak_sign",
+
+    // better on bedrock
+    "better_on_bedrock:chorus_door",
+    "better_on_bedrock:voiding_door",
+    "better_on_bedrock:vacant_door"
 ];
 const BlockofAxeList: string[] = [
     "minecraft:oak_log",
@@ -104,7 +114,20 @@ const BlockofAxeList: string[] = [
     "minecraft:crimson_trapdoor",
     "minecraft:warped_trapdoor",
     "minecraft:bamboo_trapdoor",
-    "minecraft:pale_oak_trapdoor"
+    "minecraft:pale_oak_trapdoor",
+    
+    // better on bedrock
+    "better_on_bedrock:chorus_log",
+    "better_on_bedrock:voiding_log",
+    "better_on_bedrock:shrublog",
+
+    "better_on_bedrock:chorus_wood",
+    "better_on_bedrock:voiding_wood",
+    "better_on_bedrock:vacant_wood",
+
+    "better_on_bedrock:chorus_trapdoor",
+    "better_on_bedrock:voiding_trapdoor",
+    "better_on_bedrock:vacant_trapdoor"
 ];
 const BlockofPickaxeList: string[] = [
     "minecraft:amethyst_block",
@@ -112,7 +135,14 @@ const BlockofPickaxeList: string[] = [
     "minecraft:deepslate",
     "minecraft:quartz_block",
     "minecraft:stone",
-    "minecraft:nether_brick"
+    "minecraft:nether_brick",
+
+    // better on bedrock
+    "better_on_bedrock:cracked_dripstone_bricks",
+    "better_on_bedrock:dripstone_brick_wall",
+    "better_on_bedrock:dripstone_bricks",
+    "better_on_bedrock:polished_dripstone",
+    "better_on_bedrock:polished_dripstone_wall"
 ];
 const BlockofKnifeList: string[] = [
     "minecraft:pumpkin",
