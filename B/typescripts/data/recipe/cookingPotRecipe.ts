@@ -117,7 +117,7 @@ export const vanillaCookingPotRecipe = {
                     { "tag": "farmersdelight:is_raw_beef" },
                 ],
                 [{ "tag": "farmersdelight:is_cabbage" },
-                { "item": "better_on_bedrock:cabbage_leaf" }],
+                { "item": "better_on_bedrock:gabage_leaves" }],
                 [
                     {
                         "tag": "farmersdelight:is_onion"
@@ -200,7 +200,7 @@ export const vanillaCookingPotRecipe = {
                 [{
                     "tag": "farmersdelight:is_cabbage"
                 },
-                {"item": "better_on_bedrock:cabbage_leaf"}],
+                {"item": "better_on_bedrock:gabage_leaves"}],
                 {
                     "item": "minecraft:carrot"
                 },
@@ -211,7 +211,7 @@ export const vanillaCookingPotRecipe = {
                     { "tag": "farmersdelight:is_onion" },
                     { "item": "better_on_bedrock:onion" },
                     { "tag": "farmersdelight:is_tomato" },
-                    { "item": "better_on_bedrock:tomato" }
+                    { "item": "better_on_bedrock:tomato_seed" }
                 ]
             ],
             "recipe_book_tab": "meals",
@@ -233,7 +233,7 @@ export const vanillaCookingPotRecipe = {
                 [{
                     "tag": "farmersdelight:is_cabbage"
                 },
-                {"item": "better_on_bedrock:cabbage_leaf"}],
+                {"item": "better_on_bedrock:gabage_leaves"}],
                 {
                     "item": "minecraft:beetroot"
                 },
@@ -320,7 +320,7 @@ export const vanillaCookingPotRecipe = {
                 [{
                     "tag": "farmersdelight:is_cabbage"
                 },
-                {"item": "better_on_bedrock:cabbage_leaf"}],
+                {"item": "better_on_bedrock:gabage_leaves"}],
                 {
                     "item": "farmersdelight:pumpkin_slice"
                 },
@@ -350,11 +350,11 @@ export const vanillaCookingPotRecipe = {
             "ingredients": [
                 [
                     { "tag": "farmersdelight:is_tomato" },
-                    { "item": "better_on_bedrock:tomato" }
+                    { "item": "better_on_bedrock:tomato_seed" }
                 ],
                 [
                     { "tag": "farmersdelight:is_tomato" },
-                    { "item": "better_on_bedrock:tomato" }
+                    { "item": "better_on_bedrock:tomato_seed" }
                 ]
             ],
             "result": {
@@ -375,7 +375,7 @@ export const vanillaCookingPotRecipe = {
                 [{
                     "tag": "farmersdelight:is_cabbage"
                 },
-                {"item": "better_on_bedrock:cabbage_leaf"}],
+                {"item": "better_on_bedrock:gabage_leaves"}],
                 {
                     "item": "minecraft:egg"
                 },
@@ -387,7 +387,7 @@ export const vanillaCookingPotRecipe = {
                 [{
                     "tag": "farmersdelight:is_tomato"
                 },
-                { "item": "better_on_bedrock:tomato" }],
+                { "item": "better_on_bedrock:tomato_seed" }],
             ],
             "recipe_book_tab": "meals",
             "result": {
@@ -463,7 +463,7 @@ export const vanillaCookingPotRecipe = {
                [ {
                     "tag": "farmersdelight:is_cabbage"
                 },
-                {"item": "better_on_bedrock:cabbage_leaf"}],
+                {"item": "better_on_bedrock:gabage_leaves"}],
                 {
                     "item": "minecraft:brown_mushroom"
                 },
@@ -480,7 +480,7 @@ export const vanillaCookingPotRecipe = {
                     { "tag": "farmersdelight:is_onion" },
                     { "item": "better_on_bedrock:onion" },
                     { "tag": "farmersdelight:is_tomato" },
-                    { "item": "better_on_bedrock:tomato" }
+                    { "item": "better_on_bedrock:tomato_seed" }
                 ]
             ],
             "recipe_book_tab": "meals",
@@ -505,7 +505,7 @@ export const vanillaCookingPotRecipe = {
                 [{
                     "tag": "farmersdelight:is_tomato"
                 },
-                { "item": "better_on_bedrock:tomato" }],
+                { "item": "better_on_bedrock:tomato_seed" }],
                 {
                     "item": "minecraft:ink_sac"
                 },
@@ -555,9 +555,9 @@ export const vanillaCookingPotRecipe = {
                     { "tag": "farmersdelight:is_onion" },
                     { "item": "better_on_bedrock:onion" },
                     { "tag": "farmersdelight:is_cabbage" },
-                    { "item": "better_on_bedrock:cabbage_leaf" },
+                    { "item": "better_on_bedrock:gabage_leaves" },
                     { "tag": "farmersdelight:is_tomato" },
-                    { "item": "better_on_bedrock:tomato" }
+                    { "item": "better_on_bedrock:tomato_seed" }
                 ]
             ],
             "recipe_book_tab": "meals",
@@ -649,7 +649,7 @@ export const vanillaCookingPotRecipe = {
                 [{
                     "tag": "farmersdelight:is_cabbage"
                 },
-                { "item": "better_on_bedrock:cabbage_leaf" }]
+                { "item": "better_on_bedrock:gabage_leaves" }]
             ],
             "recipe_book_tab": "meals",
             "result": {
