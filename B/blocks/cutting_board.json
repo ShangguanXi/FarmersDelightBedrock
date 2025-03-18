@@ -4,7 +4,8 @@
         "description": {
             "identifier": "farmersdelight:cutting_board",
 			"menu_category":{
-				"category": "items"
+				"category": "items",
+                "group": "farmersdelight:itemGroup.name.cooker"
 			},
             "traits" : {
                 "minecraft:placement_direction": {

@@ -15,8 +15,7 @@
     "description": {
       "identifier": "farmersdelight:dog_food",
       "menu_category": {
-        "category": "Items",
-        "group": "minecraft:itemGroup.name.items"
+        "category": "Items"
       }
     }
   }

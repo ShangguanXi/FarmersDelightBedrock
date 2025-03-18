@@ -12,7 +12,7 @@
       "identifier": "farmersdelight:tree_bark",
       "menu_category": {
         "category": "Items",
-        "group": "minecraft:itemGroup.name.items"
+        "group": "farmersdelight:itemGroup.name.miscItem"
       }
     }
   }

@@ -19,7 +19,7 @@
         "identifier": "farmersdelight:skillet_block",
         "menu_category": {
           "category": "items",
-          "group": "farmersdelight:itemGroup.name.items"
+          "group": "farmersdelight:itemGroup.name.cooker"
         }
       }
     }

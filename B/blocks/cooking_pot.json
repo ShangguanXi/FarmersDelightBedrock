@@ -4,7 +4,8 @@
         "description": {
             "identifier": "farmersdelight:cooking_pot",
             "menu_category": {
-                "category": "items"
+                "category": "items",
+                "group": "farmersdelight:itemGroup.name.cooker"
             },
             "traits": {
                 "minecraft:placement_direction": {

@@ -15,8 +15,7 @@
     "description": {
       "identifier": "farmersdelight:horse_feed",
       "menu_category": {
-        "category": "Items",
-        "group": "minecraft:itemGroup.name.items"
+        "category": "Items"
       }
     }
   }

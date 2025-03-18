@@ -4,7 +4,8 @@
         "description": {
             "identifier": "farmersdelight:stove",
             "menu_category": {
-                "category": "items"
+                "category": "items",
+                "group": "farmersdelight:itemGroup.name.cooker"
             },
             "states": {
                 "farmersdelight:is_working": [
