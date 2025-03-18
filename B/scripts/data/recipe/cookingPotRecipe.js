@@ -122,9 +122,13 @@ export const vanillaCookingPotRecipe = {
                     },
                     { "item": "better_on_bedrock:onion" }
                 ],
-                {
-                    "tag": "farmersdelight:is_dough"
-                }
+                [{
+                        "tag": "farmersdelight:is_dough"
+                    },
+                    {
+                        "item": "better_on_bedrock:dough"
+                    }
+                ]
             ],
             "recipe_book_tab": "misc",
             "result": {

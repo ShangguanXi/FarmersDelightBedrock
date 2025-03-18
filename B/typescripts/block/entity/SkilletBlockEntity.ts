@@ -48,7 +48,7 @@ export class SkilletBlockEntity extends BlockEntity {
             particleCount = 2;
         }
         const id = itemStack.split(':');
-        const name = id[0] === 'minecraft' ? `farmersdelight:${id[0]}_skillet_${id[1]}` : `farmersdelight:skillet_${id[1]}`;
+        const name = id[0] === 'minecraft' ? `farmersdelight:${id[0]}_skillet_${id[1]}` : `${id[0]}:skillet_${id[1]}`;
         for (let index = 0; index < particleCount; index++) {
             entity.dimension.spawnParticle(name, { x: x + skilletV2[index].x, y: y + 0.07 + 0.03 * (index + 1), z: z + skilletV2[index].z });
         }

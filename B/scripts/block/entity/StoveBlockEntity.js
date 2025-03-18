@@ -68,7 +68,7 @@ export class StoveBlockEntity extends BlockEntity {
                     continue;
                 const id = itemStack.split('/');
                 const name = id[0].split(':');
-                const particleName = name[0] == 'minecraft' ? `farmersdelight:${name[0]}_stove_${name[1]}` : `farmersdelight:stove_${name[1]}`;
+                const particleName = name[0] == 'minecraft' ? `farmersdelight:${name[0]}_stove_${name[1]}` : `${name[0]}:stove_${name[1]}`;
                 if (block.permutation?.getState('farmersdelight:is_working')) {
                     if ((system.currentTick % 20) == 0) {
                         entity.dimension.spawnParticle("farmersdelight:stove_smoke_particle", { x: x + stoveOffsets[parseInt(id[1]) - 1].x, y: y + 1.02, z: z + stoveOffsets[parseInt(id[1]) - 1].y });
@@ -94,7 +94,7 @@ export class StoveBlockEntity extends BlockEntity {
                     continue;
                 const id = itemStack.split('/');
                 const name = id[0].split(':');
-                const particleName = name[0] == 'minecraft' ? `farmersdelight:${name[0]}_stove_${name[1]}` : `farmersdelight:stove_${name[1]}`;
+                const particleName = name[0] == 'minecraft' ? `farmersdelight:${name[0]}_stove_${name[1]}` : `${name[0]}:stove_${name[1]}`;
                 if (block.permutation?.getState('farmersdelight:is_working')) {
                     if ((system.currentTick % 20) == 0) {
                         entity.dimension.spawnParticle("farmersdelight:stove_smoke_particle", { x: x + stoveOffsets[parseInt(id[1]) - 1].y, y: y + 1.02, z: z + stoveOffsets[parseInt(id[1]) - 1].x });
