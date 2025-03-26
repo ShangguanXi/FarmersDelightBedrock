@@ -36,7 +36,7 @@ export const vanillaCookingPotRecipe = {
                     "item": "minecraft:glow_berries"
                 },
                 {
-                    "item": "minecraft:egg"
+                    "tag": "minecraft:egg"
                 },
                 {
                     "item": "minecraft:sugar"
@@ -294,7 +294,7 @@ export const vanillaCookingPotRecipe = {
                     "tag": "farmersdelight:is_rice"
                 },
                 {
-                    "item": "minecraft:egg"
+                    "tag": "minecraft:egg"
                 },
                 [{
                     "tag": "farmersdelight:is_onion"
@@ -380,7 +380,7 @@ export const vanillaCookingPotRecipe = {
                 },
                 {"item": "better_on_bedrock:gabage_leaves"}],
                 {
-                    "item": "minecraft:egg"
+                    "tag": "minecraft:egg"
                 },
                 [
                     { "item": "minecraft:cod" },
@@ -633,7 +633,7 @@ export const vanillaCookingPotRecipe = {
                         "item": "minecraft:red_mushroom"
                     },
                     {
-                        "item": "minecraft:egg"
+                        "tag": "minecraft:egg"
                     },
                     { "item": "better_on_bedrock:beef_patty_raw" },
                     {

@@ -2,6 +2,8 @@ const vanillaItemList = [
     "minecraft:beef",
     "minecraft:chicken",
     "minecraft:cod",
+    "minecraft:brown_egg",
+    "minecraft:blue_egg",
     "minecraft:egg",
     "minecraft:beef",
     "minecraft:mutton",

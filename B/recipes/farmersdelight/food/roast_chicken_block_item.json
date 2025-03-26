@@ -33,7 +33,7 @@
                 "item": "minecraft:baked_potato"
             },
             {
-                "item": "minecraft:egg"
+                "tag": "minecraft:egg"
             }
         ],
         "result": {

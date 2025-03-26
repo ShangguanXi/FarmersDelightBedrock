@@ -62,6 +62,7 @@ export class StoveBlockEntity extends BlockEntity {
                 const id: string[] = itemStack.split('/');
                 const name: string[] = id[0].split(':');
                 const particleName: string = name[0] == 'minecraft' ? `farmersdelight:${name[0]}_stove_${name[1]}` : `${name[0]}:stove_${name[1]}`;
+          
 
                 if (block.permutation?.getState('farmersdelight:is_working')) {
 
@@ -89,6 +90,7 @@ export class StoveBlockEntity extends BlockEntity {
                 const id: string[] = itemStack.split('/');
                 const name: string[] = id[0].split(':');
                 const particleName: string = name[0] == 'minecraft' ? `farmersdelight:${name[0]}_stove_${name[1]}` : `${name[0]}:stove_${name[1]}`;
+            
                 if (block.permutation?.getState('farmersdelight:is_working')) {
 
                     if ((system.currentTick % 20) == 0) {
