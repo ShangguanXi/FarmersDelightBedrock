@@ -56,7 +56,7 @@
                 ]
             },
             "minecraft:loot": "loot_tables/farmersdelight/empty.json",
-            
+            "minecraft:replaceable":{},
             "minecraft:collision_box": false
         }
     }

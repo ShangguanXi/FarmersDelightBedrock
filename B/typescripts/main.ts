@@ -31,6 +31,7 @@ import { RopeComponentRegister } from "./customComponents/block/RopeComponent";
 import { TatamMatComponentRegister } from "./customComponents/block/TatamMatComponent";
 import { TatamComponentRegister } from "./customComponents/block/TatamiComponent";
 import { StoveComponentRegister } from "./customComponents/block/StoveComponent";
+import { IncompleteBlocks } from "./item/IncompleteBlocks";
 
 
 CookingPotRecipeRegistries.initCookingPotScoRegistries();
@@ -52,6 +53,7 @@ new FarmersBook();
 new Food();
 new Knife();
 new BlockFood();
+new IncompleteBlocks();
 new CookingPotRecipeRegistries();
 
 new RiceRollMedleyComponentRegister();

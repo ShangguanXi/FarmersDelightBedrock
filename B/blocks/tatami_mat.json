@@ -99,6 +99,9 @@
                     }
                 ]
             },
+            "minecraft:redstone_conductivity":{
+                "allows_wire_to_step_down": false
+            },
             "minecraft:collision_box": {
                 "origin": [
                     -8.0,

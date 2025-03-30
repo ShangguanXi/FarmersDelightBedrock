@@ -53,6 +53,9 @@
                     10
                 ]
             },
+            "minecraft:redstone_conductivity":{
+                "allows_wire_to_step_down": false
+            },
             "minecraft:loot": "loot_tables/farmersdelight/empty.json",
             
             "minecraft:collision_box": false

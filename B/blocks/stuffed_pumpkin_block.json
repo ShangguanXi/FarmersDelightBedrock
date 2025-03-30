@@ -194,6 +194,9 @@
             }
         ],
         "components": {
+            "minecraft:redstone_conductivity":{
+                "allows_wire_to_step_down": false
+            },
             "minecraft:custom_components": [
                 "farmersdelight:interact"
             ],

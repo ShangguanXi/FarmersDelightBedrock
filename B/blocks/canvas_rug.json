@@ -42,6 +42,9 @@
                     16.0
                 ]
             },
+            "minecraft:redstone_conductivity":{
+                "allows_wire_to_step_down": false
+            },
             "minecraft:selection_box": {
                 "origin": [
                     -8.0,

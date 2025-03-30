@@ -105,6 +105,9 @@
             }
         ],
         "components": {
+            "minecraft:redstone_conductivity":{
+                "allows_wire_to_step_down": false
+            },
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 1.0
             },

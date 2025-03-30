@@ -10,7 +10,9 @@
             "campfire",
             "soul_campfire"
         ],
-        "input": "minecraft:egg",
+        "input": {
+            "tag":"minecraft:egg"
+        },
         "output": "farmersdelight:fried_egg"
     }
 }

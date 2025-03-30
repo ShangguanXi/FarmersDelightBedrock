@@ -53,6 +53,9 @@
                     16.0
                 ]
             },
+            "minecraft:redstone_conductivity":{
+                "allows_wire_to_step_down": false
+            },
             "minecraft:loot": "loot_tables/farmersdelight/half_tatami_mat.json",
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 0.3
