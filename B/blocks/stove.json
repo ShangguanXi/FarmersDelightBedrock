@@ -96,16 +96,20 @@
                 "components": {
                     "minecraft:material_instances": {
                         "*": {
-                            "texture": "stove_side"
+                            "texture": "stove_side",
+                            "ambient_occlusion":0
                         },
                         "up": {
-                            "texture": "stove_top_on"
+                            "texture": "stove_top_on",
+                            "ambient_occlusion":0
                         },
                         "down": {
-                            "texture": "stove_bottom"
+                            "texture": "stove_bottom",
+                            "ambient_occlusion":0
                         },
                         "north": {
-                            "texture": "stove_front_on"
+                            "texture": "stove_front_on",
+                            "ambient_occlusion":0
                         }
                     },
                     "minecraft:light_emission": 12,
