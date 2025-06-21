@@ -7,23 +7,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { MinecraftDimensionTypes, system, world } from "@minecraft/server";
+import { system, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
 import { vanillaItemList } from "../data/recipe/cookRecipe";
-const scoreboard = world.scoreboard;
+;
 let bool = true;
 let num = 0;
 export class CookRecipeRegistries {
     static initCookScoRegistries() {
         system.runInterval(() => {
-            const allSco = scoreboard.getObjectives();
+            const allSco = world.scoreboard.getObjectives();
             if (!allSco?.length || !bool)
                 return;
             for (const sco of allSco) {
                 const name = sco.displayName;
                 const reg = name.match(/farmersdelight_(\w+)/);
                 if (reg) {
-                    world.getDimension(MinecraftDimensionTypes.overworld).runCommandAsync(`function farmersdelight/cook_recipe_registries/${reg[1]}`);
+                    world.getDimension("overworld").runCommand(`function farmersdelight/cook_recipe_registries/${reg[1]}`);
                 }
             }
             bool = false;

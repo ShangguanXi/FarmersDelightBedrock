@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { WorldInitializeBeforeEvent, system, world, Direction } from "@minecraft/server";
+import { StartupEvent, system, Direction } from "@minecraft/server";
 import { methodEventSub } from "../../lib/eventHelper";
 class TatamMatComponent {
     constructor() {
@@ -95,9 +95,9 @@ export class TatamComponentRegister {
     }
 }
 __decorate([
-    methodEventSub(world.beforeEvents.worldInitialize),
+    methodEventSub(system.beforeEvents.startup),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [WorldInitializeBeforeEvent]),
+    __metadata("design:paramtypes", [StartupEvent]),
     __metadata("design:returntype", void 0)
 ], TatamComponentRegister.prototype, "register", null);
 //# sourceMappingURL=TatamiComponent.js.map

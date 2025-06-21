@@ -1,4 +1,4 @@
-import { BlockCustomComponent, BlockComponentPlayerDestroyEvent, StructureManager, EntityInventoryComponent, BlockComponentTickEvent, Vector3, Dimension, BlockComponentOnPlaceEvent, LocationOutOfWorldBoundariesError, ItemComponentTypes, WorldInitializeBeforeEvent, world, BlockComponentPlayerPlaceBeforeEvent, BlockVolume, system, ItemEnchantableComponent } from "@minecraft/server";
+import { BlockCustomComponent, BlockComponentPlayerBreakEvent, StructureManager, EntityInventoryComponent, BlockComponentTickEvent, Vector3, Dimension, LocationOutOfWorldBoundariesError, ItemComponentTypes, world, BlockComponentPlayerPlaceBeforeEvent, BlockVolume, system, ItemEnchantableComponent, StartupEvent } from "@minecraft/server";
 import { ItemUtil } from "../../lib/ItemUtil";
 import { methodEventSub } from "../../lib/eventHelper";
 function spawnLoot(path: string, dimenion: Dimension, location: Vector3) {
@@ -8,10 +8,10 @@ function spawnLoot(path: string, dimenion: Dimension, location: Vector3) {
 class WildCropComponent implements BlockCustomComponent {
 
     constructor() {
-        this.onPlayerDestroy = this.onPlayerDestroy.bind(this);
+        this.onPlayerBreak = this.onPlayerBreak.bind(this);
     }
 
-    onPlayerDestroy(args: BlockComponentPlayerDestroyEvent): void {
+    onPlayerBreak(args: BlockComponentPlayerBreakEvent): void {
         const player = args.player;
         const block = args.block;
         const dimension = args.dimension;
@@ -135,7 +135,7 @@ class WildRiceComponent extends WildCropComponent {
             if (!container) return;
             system.runTimeout(() => {
                 ItemUtil.clearItem(container, player.selectedSlotIndex, 1)
-                world.playSound("dig.grass", block.location)
+                dimension.playSound("dig.grass", block.location)
             })
 
 
@@ -176,8 +176,8 @@ class SandyShrubComponent extends WildCropComponent {
     }
 }
 export class WildCropComponentRegister {
-    @methodEventSub(world.beforeEvents.worldInitialize)
-    register(args: WorldInitializeBeforeEvent) {
+    @methodEventSub(system.beforeEvents.startup)
+    register(args: StartupEvent) {
         args.blockComponentRegistry.registerCustomComponent('farmersdelight:wild_beetroots', new WildBeetrootsComponent());
         args.blockComponentRegistry.registerCustomComponent('farmersdelight:wild_cabbages', new WildCabbagesComponent());
         args.blockComponentRegistry.registerCustomComponent('farmersdelight:wild_carrots', new WildCarrotComponent());

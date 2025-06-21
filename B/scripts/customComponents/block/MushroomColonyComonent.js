@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { WorldInitializeBeforeEvent, world, EntityInventoryComponent, ItemStack } from "@minecraft/server";
+import { world, EntityInventoryComponent, ItemStack, system, StartupEvent } from "@minecraft/server";
 import { RandomUtil } from "../../lib/RandomUtil";
 import { ItemUtil } from "../../lib/ItemUtil";
 import { methodEventSub } from "../../lib/eventHelper";
@@ -19,6 +19,7 @@ class MushroomColonyComonent {
     constructor() {
         this.onRandomTick = this.onRandomTick.bind(this);
         this.onPlayerInteract = this.onPlayerInteract.bind(this);
+        this.onPlayerBreak = this.onPlayerBreak.bind(this);
     }
     onPlayerInteract(args) {
         const player = args.player;
@@ -68,8 +69,8 @@ class MushroomColonyComonent {
             dimension.playSound("mob.sheep.shear", block.center());
         }
     }
-    onPlayerDestroy(args) {
-        const brokenPerm = args.destroyedBlockPermutation;
+    onPlayerBreak(args) {
+        const brokenPerm = args.brokenBlockPermutation;
         const blockId = brokenPerm.type.id;
         const player = args.player;
         const inventory = player?.getComponent("inventory");
@@ -121,9 +122,9 @@ export class MushroomColonyComonentRegister {
     }
 }
 __decorate([
-    methodEventSub(world.beforeEvents.worldInitialize),
+    methodEventSub(system.beforeEvents.startup),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [WorldInitializeBeforeEvent]),
+    __metadata("design:paramtypes", [StartupEvent]),
     __metadata("design:returntype", void 0)
 ], MushroomColonyComonentRegister.prototype, "register", null);
 //# sourceMappingURL=MushroomColonyComonent.js.map

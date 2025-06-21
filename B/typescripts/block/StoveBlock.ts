@@ -1,4 +1,4 @@
-import { Block, Container, Entity, EntityInventoryComponent, ItemStack, ItemUseOnAfterEvent, Player, PlayerPlaceBlockAfterEvent, ScoreboardObjective, ScoreboardScoreInfo, Vector3, world } from "@minecraft/server";
+import { Block, Container, Entity, EntityInventoryComponent, ItemStack, PlayerInteractWithBlockAfterEvent, Player, PlayerPlaceBlockAfterEvent, ScoreboardObjective, ScoreboardScoreInfo, Vector3, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
 import { BlockWithEntity } from "./BlockWithEntity";
 import { vanillaItemList } from "../data/recipe/cookRecipe";
@@ -18,15 +18,16 @@ export class StoveBlock extends BlockWithEntity {
         const entity: Entity = super.setBlock(args.block.dimension, { x: x + 0.5, y: y, z: z + 0.5 }, block.typeId);
         world.scoreboard.addObjective(entity.typeId + entity.id, entity.id).setScore('amount', 0);
     }
-    @methodEventSub(world.afterEvents.itemUseOn)
-    useOnBlock(args: ItemUseOnAfterEvent) {
+    @methodEventSub(world.afterEvents.playerInteractWithBlock)
+    useOnBlock(args: PlayerInteractWithBlockAfterEvent) {
         if (!args.block.hasTag("farmersdelight:stove")) return;
         const data = super.entityBlockData(args.block, {
             type: args.block.typeId,
             location: args.block.location
         });
-        const player: Player = args.source;
-        const itemStack: ItemStack = args.itemStack;
+        const player: Player = args.player;
+        const itemStack: ItemStack | undefined = args.itemStack;
+        if (!itemStack) return
         const inventory = player?.getComponent("inventory") as EntityInventoryComponent;
         const container:Container|undefined = inventory?.container
         if (!data || !container) return;

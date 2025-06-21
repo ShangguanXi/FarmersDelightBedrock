@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { WorldInitializeBeforeEvent, world, ItemComponentTypes } from "@minecraft/server";
+import { system, ItemComponentTypes, GameMode, StartupEvent } from "@minecraft/server";
 import { methodEventSub } from "../../lib/eventHelper";
 import { ItemUtil } from "../../lib/ItemUtil";
 function spawnLoot(path, dimenion, location) {
@@ -18,7 +18,7 @@ export class RopeComponent {
         this.onTick = this.onTick.bind(this);
         this.onRandomTick = this.onRandomTick.bind(this);
         this.onPlayerInteract = this.onPlayerInteract.bind(this);
-        this.onPlayerDestroy = this.onPlayerDestroy.bind(this);
+        this.onPlayerBreak = this.onPlayerBreak.bind(this);
     }
     onPlayerInteract(args) {
         const block = args.block;
@@ -33,8 +33,8 @@ export class RopeComponent {
         const random = Math.floor(Math.random() * 101);
         try {
             if (itemId == "minecraft:bone_meal" && stage < 4) {
-                world.playSound("item.bone_meal.use", block.location);
-                if (player?.getGameMode() == "creative") {
+                dimension.playSound("item.bone_meal.use", block.location);
+                if (player?.getGameMode() == GameMode.Creative) {
                     block.dimension.spawnParticle("minecraft:crop_growth_emitter", { x: block.location.x + 0.5, y: block.location.y + 0.5, z: block.location.z + 0.5 });
                     block.setPermutation(block.permutation.withState("farmersdelight:stage", 4));
                 }
@@ -56,9 +56,9 @@ export class RopeComponent {
         catch (error) {
         }
     }
-    onPlayerDestroy(args) {
+    onPlayerBreak(args) {
         const player = args.player;
-        const blockPermutation = args.destroyedBlockPermutation;
+        const blockPermutation = args.brokenBlockPermutation;
         const inventory = player?.getComponent("inventory");
         const container = inventory?.container;
         const block = args.block;
@@ -158,9 +158,9 @@ export class RopeComponentRegister {
     }
 }
 __decorate([
-    methodEventSub(world.beforeEvents.worldInitialize),
+    methodEventSub(system.beforeEvents.startup),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [WorldInitializeBeforeEvent]),
+    __metadata("design:paramtypes", [StartupEvent]),
     __metadata("design:returntype", void 0)
 ], RopeComponentRegister.prototype, "register", null);
 //# sourceMappingURL=RopeComponent.js.map

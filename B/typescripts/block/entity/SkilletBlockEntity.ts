@@ -23,7 +23,7 @@ function heatCheck(block: Block) {
 }
 
 export class SkilletBlockEntity extends BlockEntity {
-    @methodEventSub(world.afterEvents.dataDrivenEntityTrigger, { entityTypes: ["farmersdelight:skillet"], eventTypes: ["farmersdelight:skillet_tick"] })
+   /* @methodEventSub(world.afterEvents.dataDrivenEntityTrigger, { entityTypes: ["farmersdelight:skillet"], eventTypes: ["farmersdelight:skillet_tick"] })
     tick(args: any) {
         const entityBlockData = super.blockEntityData(args.entity);
         if (!entityBlockData) return;
@@ -59,7 +59,7 @@ export class SkilletBlockEntity extends BlockEntity {
             const reg: RegExpMatchArray | null = amountId.match(/\d*\+(\d*)G/);
             if (amountId == 'amount' || !reg) continue;
             if (system.currentTick % 80 == 0) {
-                entity.runCommandAsync("playsound block.farmersdelight.skillet.sizzle @a ~ ~ ~ 1 1");
+                entity.runCommand("playsound block.farmersdelight.skillet.sizzle @a ~ ~ ~ 1 1");
             };
             if (system.currentTick % 4 == 0) {
                 const random = Math.floor(Math.random() * 10);
@@ -73,11 +73,11 @@ export class SkilletBlockEntity extends BlockEntity {
             }
             if (cookTime <= 0) {
                 for (let j = 0; j < num; j++) {
-                    entity.runCommandAsync(`loot spawn ${entity.location.x} ${entity.location.y + 0.4} ${entity.location.z} loot "${id[0]}/cook/${id[1]}"`);
+                    entity.runCommand(`loot spawn ${entity.location.x} ${entity.location.y + 0.4} ${entity.location.z} loot "${id[0]}/cook/${id[1]}"`);
                 }
                 sco.removeParticipant(amountId);
                 sco.setScore('amount', (sco.getScore("amount") ?? 0) - num);
             }
         }
-    }
+    }*/
 }

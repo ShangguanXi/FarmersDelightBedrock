@@ -1,6 +1,5 @@
-import { ItemStack, world, system } from "@minecraft/server";
+import { ItemStack, system } from "@minecraft/server";
 import ObjectUtil from "../../lib/ObjectUtil";
-const scoreboard = world.scoreboard;
 export class BlockEntity {
     //获取方块实体数据
     blockEntityData(entity) {
@@ -8,8 +7,8 @@ export class BlockEntity {
             const dimension = entity?.dimension ?? undefined;
             const blockEntityDataLocation = entity.getDynamicProperty('farmersdelight:blockEntityDataLocation');
             const block = dimension.getBlock(blockEntityDataLocation);
-            const scoreboardObjective = scoreboard.getObjective(entity.typeId + entity.id) ?? null;
-            const blockEntityData = { entity: entity, dimension: dimension, blockEntityDataLocation: blockEntityDataLocation, block: block, scoreboardObjective: scoreboardObjective };
+            // const scoreboardObjective = world.scoreboard.getObjective(entity.typeId + entity.id) ?? null;
+            const blockEntityData = { entity: entity, dimension: dimension, blockEntityDataLocation: blockEntityDataLocation, block: block, /*scoreboardObjective: scoreboardObjective */ };
             return blockEntityData;
         }
         catch (error) {
@@ -53,9 +52,9 @@ export class BlockEntity {
     ;
     //清除方块实体
     static clearEntity(args) {
-        if (args.scoreboardObjective) {
-            scoreboard.removeObjective(args.entity.typeId + args.entity.id);
-        }
+        /*if (args.scoreboardObjective) {
+            world.scoreboard.removeObjective(args.entity.typeId + args.entity.id);
+        }*/
         system.runTimeout(() => {
             args.entity.remove();
         });

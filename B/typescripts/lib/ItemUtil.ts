@@ -1,4 +1,4 @@
-import { Block, Container, Entity, EntityInventoryComponent, GameMode, ItemDurabilityComponent, ItemStack, ItemType, Player, Vector3 } from "@minecraft/server";
+import { Block, Container, Entity, EntityInventoryComponent, EquipmentSlot, GameMode, ItemDurabilityComponent, ItemStack, ItemType, Player, Vector3 } from "@minecraft/server";
 import { RandomUtil } from "./RandomUtil";
 
 
@@ -30,12 +30,25 @@ export class ItemUtil {
             return itemAmount;
         }
     }
+    public static clearOffhandItem(player: Player, amount: number = 1) {
+        const equip = player.getComponent('minecraft:equippable')
+        const itemStack = equip?.getEquipment(EquipmentSlot.Offhand)
+        if (!itemStack) return;
+        const newItemStack = itemStack
+        if (newItemStack.amount > amount) {
+            newItemStack.amount = newItemStack.amount - amount;
+            if (!equip?.setEquipment(EquipmentSlot.Offhand, newItemStack))
+                player.runCommand(`/clear @s ${itemStack.typeId} 0 ${amount}`)
+        } else {
+            equip?.setEquipment(EquipmentSlot.Offhand, undefined)
+        }
+    }
     public static replaceItem(player: Player, slot: number, replaceItemStack: ItemStack) {
-        const container = (player.getComponent("inventory")as EntityInventoryComponent)?.container;
+        const container = (player.getComponent("inventory") as EntityInventoryComponent)?.container;
         if (!container) return;
         const itemStack = container?.getItem(slot)
         if (!itemStack) return;
-        if (player.getGameMode() == GameMode.creative) return;
+        if (player.getGameMode() == GameMode.Creative) return;
         const itemAmount = itemStack.amount;
         const amount = itemAmount - 1;
 

@@ -25,7 +25,7 @@ export class CabinetsBlockEntity extends BlockEntity {
         const entity = entityBlockData.entity;
         const block = entityBlockData.block;
         const player = args.player;
-        world.playSound('block.barrel.open', entity.location);
+        entity.dimension.playSound('block.barrel.open', entity.location);
         block.setPermutation(block.permutation.withState('farmersdelight:cabinet_is_open', true));
         entity.setDynamicProperty('farmersdelight:player_open', args.player.nameTag);
         entity.triggerEvent('farmersdelight:cabinet_interact');
@@ -45,7 +45,7 @@ export class CabinetsBlockEntity extends BlockEntity {
         if (!player.getDynamicProperty('farmersdelight:is_checking_cabinet'))
             return;
         player.setDynamicProperty('farmersdelight:is_checking_cabinet', false);
-        world.playSound('block.barrel.close', entity.location);
+        entity.dimension.playSound('block.barrel.close', entity.location);
         block.setPermutation(block.permutation.withState('farmersdelight:cabinet_is_open', false));
         entity.setDynamicProperty('farmersdelight:player_open', undefined);
         entity.triggerEvent('farmersdelight:cabinet_close');

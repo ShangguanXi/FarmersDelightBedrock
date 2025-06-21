@@ -1,13 +1,14 @@
-import { Block, BlockPermutation, Container, ContainerSlot, Dimension, Direction, Entity, EntityEquippableComponent, EntityHealthComponent, EntityInventoryComponent, EntityIsChargedComponent, EntityOnFireComponent, EquipmentSlot, ItemEnchantableComponent, ItemStack, ItemUseOnAfterEvent, ItemUseOnBeforeEvent, Player, PlayerBreakBlockAfterEvent, PlayerInteractWithBlockAfterEvent, Vector3, world } from "@minecraft/server";
+import { Block, BlockPermutation, Container, ContainerSlot, Dimension, Direction, Entity, EntityEquippableComponent, EntityHealthComponent, EntityInventoryComponent, EntityIsChargedComponent, EntityOnFireComponent, EquipmentSlot, ItemEnchantableComponent, ItemStack, Player, PlayerBreakBlockAfterEvent, PlayerInteractWithBlockAfterEvent, PlayerInteractWithBlockBeforeEvent, Vector3, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
 import { EntityUtil } from "../lib/EntityUtil";
 import { ItemUtil } from "../lib/ItemUtil";
 
 
 export class IncompleteBlocks {
-    @methodEventSub(world.beforeEvents.itemUseOn)
-    place(args: ItemUseOnBeforeEvent) {
+    @methodEventSub(world.beforeEvents.playerInteractWithBlock)
+    place(args: PlayerInteractWithBlockBeforeEvent) {
         const itemStack = args.itemStack
+        if (!itemStack) return
         const face = args.blockFace
         const block = args.block
         const redstone_list: string[] = [

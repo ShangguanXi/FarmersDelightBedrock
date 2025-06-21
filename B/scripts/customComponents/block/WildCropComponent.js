@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { ItemComponentTypes, WorldInitializeBeforeEvent, world, system } from "@minecraft/server";
+import { ItemComponentTypes, world, system, StartupEvent } from "@minecraft/server";
 import { ItemUtil } from "../../lib/ItemUtil";
 import { methodEventSub } from "../../lib/eventHelper";
 function spawnLoot(path, dimenion, location) {
@@ -15,9 +15,9 @@ function spawnLoot(path, dimenion, location) {
 }
 class WildCropComponent {
     constructor() {
-        this.onPlayerDestroy = this.onPlayerDestroy.bind(this);
+        this.onPlayerBreak = this.onPlayerBreak.bind(this);
     }
-    onPlayerDestroy(args) {
+    onPlayerBreak(args) {
         const player = args.player;
         const block = args.block;
         const dimension = args.dimension;
@@ -128,7 +128,7 @@ class WildRiceComponent extends WildCropComponent {
                 return;
             system.runTimeout(() => {
                 ItemUtil.clearItem(container, player.selectedSlotIndex, 1);
-                world.playSound("dig.grass", block.location);
+                dimension.playSound("dig.grass", block.location);
             });
         }
     }
@@ -171,9 +171,9 @@ export class WildCropComponentRegister {
     }
 }
 __decorate([
-    methodEventSub(world.beforeEvents.worldInitialize),
+    methodEventSub(system.beforeEvents.startup),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [WorldInitializeBeforeEvent]),
+    __metadata("design:paramtypes", [StartupEvent]),
     __metadata("design:returntype", void 0)
 ], WildCropComponentRegister.prototype, "register", null);
 //# sourceMappingURL=WildCropComponent.js.map

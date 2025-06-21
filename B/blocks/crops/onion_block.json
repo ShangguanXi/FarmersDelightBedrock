@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.70",
+    "format_version": "1.21.90",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:onion_block",
@@ -220,6 +220,22 @@
             }
         ],
         "components": {
+            "farmersdelight:crop":{
+                "loot": "loot_tables/farmersdelight/crops/farmersdelight_onion_riped.json",
+                "state":{
+                    "name":"farmersdelight:growth",
+                    "age":7
+                }
+            },
+            
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "onions_stage0",
+                    "ambient_occlusion": false,
+                    "face_dimming": false,
+                    "render_method": "alpha_test"
+                }
+            },
             "minecraft:redstone_conductivity":{
                 "allows_wire_to_step_down": false
             },
@@ -234,9 +250,6 @@
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 0.0
             },
-            "minecraft:custom_components": [
-                "farmersdelight:onion"
-            ],
             "minecraft:flammable": {
                 "catch_chance_modifier": 30,
                 "destroy_chance_modifier": 30

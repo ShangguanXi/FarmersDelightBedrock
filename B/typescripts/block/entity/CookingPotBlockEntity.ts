@@ -7,9 +7,6 @@ import { CookingPotRecipe } from "../../lib/CookingPotRecipe";
 import { heatConductors, heatSources } from "../../data/heatBlocks";
 
 
-const fireArrowFull: ItemStack = new ItemStack("farmersdelight:fire_1");
-const fireArrowEmpty: ItemStack = new ItemStack("farmersdelight:fire_0");
-const emptyArrow: ItemStack = new ItemStack("farmersdelight:cooking_pot_arrow_0");
 const recipes: any[] = vanillaCookingPotRecipe.recipe;
 const recipeFactory: Map<string, CookingPotRecipe> = new Map()
 
@@ -99,14 +96,14 @@ export class CookingPotBlockEntity extends BlockEntity {
         entity.setDynamicProperty('cookingPot:heated', heated);
         cookingPotRecipe.update()
         if (heated) {
-            arrowheadUtil(entity, fireArrowFull, 10, container);
+            arrowheadUtil(entity, new ItemStack("farmersdelight:fire_1"), 10, container);
             if (system.currentTick % 15 == 0) {
                 const random = Math.floor(Math.random() * 10);
                 block.dimension.spawnParticle(`farmersdelight:steam_${random}`, { x: x, y: y + 1, z: z });
                 block.dimension.spawnParticle('farmersdelght:bubble', { x: x, y: y + 0.63, z: z });
             }
             if (system.currentTick % 80 == 0) {
-                container?.getItem(6) ? entity.runCommandAsync("playsound block.farmersdelight.cooking_pot.boil_soup @a ~ ~ ~ 1 1") : entity.runCommandAsync("playsound block.farmersdelight.cooking_pot.boil_water @a ~ ~ ~ 1 1");
+                container?.getItem(6) ? entity.runCommand("playsound block.farmersdelight.cooking_pot.boil_soup @a ~ ~ ~ 1 1") : entity.runCommand("playsound block.farmersdelight.cooking_pot.boil_water @a ~ ~ ~ 1 1");
             }
             const progress = cookingPotRecipe.getProgress()
             if (progress) {
@@ -114,10 +111,10 @@ export class CookingPotBlockEntity extends BlockEntity {
                 const arrowhead = new ItemStack(`farmersdelight:cooking_pot_arrow_${num}`);
                 arrowheadUtil(entity, arrowhead, 9, container);
             } else {
-                arrowheadUtil(entity, emptyArrow, 9, container);
+                arrowheadUtil(entity,  new ItemStack("farmersdelight:cooking_pot_arrow_0"), 9, container);
             }
         } else {
-            arrowheadUtil(entity, fireArrowEmpty, 10, container);
+            arrowheadUtil(entity, new ItemStack("farmersdelight:fire_0"), 10, container);
         }
     }
 }

@@ -1,8 +1,8 @@
 
 import { CookingPotBlock } from "./block/CookingPotBlock";
 import { CookingPotBlockEntity } from "./block/entity/CookingPotBlockEntity";
-import { CuttingBoardBlock } from "./block/CuttingBoardBlock";
-import { CuttingBoardBlockEntity } from "./block/entity/CuttingBoardBlockEntity";
+import { CuttingBoardBlock } from "./block/cuttingBoard/CuttingBoardBlock";
+import { CuttingBoardBlockEntity } from "./block/cuttingBoard/CuttingBoardBlockEntity";
 import { StoveBlock } from "./block/StoveBlock";
 import { StoveBlockEntity } from "./block/entity/StoveBlockEntity";
 import { SKilletBlock } from "./block/SkilletBlock";
@@ -32,12 +32,31 @@ import { TatamMatComponentRegister } from "./customComponents/block/TatamMatComp
 import { TatamComponentRegister } from "./customComponents/block/TatamiComponent";
 import { StoveComponentRegister } from "./customComponents/block/StoveComponent";
 import { IncompleteBlocks } from "./item/IncompleteBlocks";
+import { CuttableComponentRegister } from "./customComponents/item/Cuttablecomponent";
 
 
 CookingPotRecipeRegistries.initCookingPotScoRegistries();
 CuttingBoardRegistries.initCuttingBoardScoRegistries();
 CookRecipeRegistries.initCookScoRegistries();
 
+new RiceRollMedleyComponentRegister();
+new CropComponentRegister()
+new InteractComponentRegister()
+new WildCropComponentRegister();
+new RichSoilComponentRegister();
+new RichSoilFarmlandComponentRegister();
+new MushroomColonyComonentRegister();
+new OrganicCompostComonentRegister();
+new RopeComponentRegister();
+new TatamMatComponentRegister();
+new TatamComponentRegister();
+new StoveComponentRegister();
+
+
+new CuttableComponentRegister();
+
+new ColoniesComonentRegister();
+new RiceSeedComponentRegister();
 new CookingPotBlock();
 new CookingPotBlockEntity();
 new CuttingBoardBlock();
@@ -55,19 +74,3 @@ new Knife();
 new BlockFood();
 new IncompleteBlocks();
 new CookingPotRecipeRegistries();
-
-new RiceRollMedleyComponentRegister();
-new CropComponentRegister()
-new InteractComponentRegister()
-new WildCropComponentRegister();
-new RichSoilComponentRegister();
-new RichSoilFarmlandComponentRegister();
-new MushroomColonyComonentRegister();
-new OrganicCompostComonentRegister();
-new RopeComponentRegister();
-new TatamMatComponentRegister();
-new TatamComponentRegister();
-new StoveComponentRegister();
-
-new ColoniesComonentRegister();
-new RiceSeedComponentRegister();

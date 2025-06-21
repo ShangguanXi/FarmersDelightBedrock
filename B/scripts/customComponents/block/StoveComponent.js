@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { WorldInitializeBeforeEvent, world, ItemStack } from "@minecraft/server";
+import { StartupEvent, system, ItemStack } from "@minecraft/server";
 import { methodEventSub } from "../../lib/eventHelper";
 import { ItemUtil } from "../../lib/ItemUtil";
 export class StoveComponent {
@@ -16,6 +16,7 @@ export class StoveComponent {
     }
     onPlayerInteract(args) {
         const player = args.player;
+        const dimension = args.dimension;
         const block = args.block;
         const inventory = player?.getComponent("inventory");
         const container = inventory?.container;
@@ -33,19 +34,19 @@ export class StoveComponent {
             const bucket = new ItemStack("minecraft:bucket");
             ItemUtil.replaceItem(player, player.selectedSlotIndex, bucket);
             block.setPermutation(block.permutation.withState('farmersdelight:is_working', false));
-            world.playSound("random.fizz", { x, y, z });
+            dimension.playSound("random.fizz", { x, y, z });
         }
         ;
         if (itemStack.hasTag("minecraft:is_shovel") && block.permutation.getState('farmersdelight:is_working') == true) {
             ItemUtil.damageItem(container, player.selectedSlotIndex);
             block.setPermutation(block.permutation.withState('farmersdelight:is_working', false));
-            world.playSound("random.fizz", { x, y, z });
+            dimension.playSound("random.fizz", { x, y, z });
         }
         ;
         if (itemStack.typeId == "minecraft:flint_and_steel" && block.permutation.getState('farmersdelight:is_working') == false) {
             ItemUtil.damageItem(container, player.selectedSlotIndex);
             block.setPermutation(block.permutation.withState('farmersdelight:is_working', true));
-            world.playSound("fire.ignite", { x, y, z });
+            dimension.playSound("fire.ignite", { x, y, z });
         }
         ;
     }
@@ -56,9 +57,9 @@ export class StoveComponentRegister {
     }
 }
 __decorate([
-    methodEventSub(world.beforeEvents.worldInitialize),
+    methodEventSub(system.beforeEvents.startup),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [WorldInitializeBeforeEvent]),
+    __metadata("design:paramtypes", [StartupEvent]),
     __metadata("design:returntype", void 0)
 ], StoveComponentRegister.prototype, "register", null);
 //# sourceMappingURL=StoveComponent.js.map

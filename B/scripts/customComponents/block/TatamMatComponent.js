@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { BlockPermutation, Direction, system, WorldInitializeBeforeEvent, world } from "@minecraft/server";
+import { BlockPermutation, Direction, system, StartupEvent } from "@minecraft/server";
 import { EntityUtil } from "../../lib/EntityUtil";
 import { ItemUtil } from "../../lib/ItemUtil";
 import { methodEventSub } from "../../lib/eventHelper";
@@ -19,6 +19,7 @@ class TatamMatComponent {
     beforeOnPlayerPlace(args) {
         const block = args.block;
         const player = args.player;
+        const dimension = args.dimension;
         const inventory = player?.getComponent("inventory");
         const container = inventory?.container;
         if (!player)
@@ -51,7 +52,7 @@ class TatamMatComponent {
                 return;
             const mainPerm = BlockPermutation.resolve('farmersdelight:tatami_mat_main', { 'minecraft:cardinal_direction': direction, 'farmersdelight:init': true });
             const otherPerm = BlockPermutation.resolve('farmersdelight:tatami_mat_other', { 'minecraft:cardinal_direction': otherDirection, 'farmersdelight:init': true });
-            world.playSound("dig.cloth", block.location);
+            dimension.playSound("dig.cloth", block.location);
             block?.setPermutation(mainPerm);
             other?.setPermutation(otherPerm);
             if (EntityUtil.gameMode(player))
@@ -96,9 +97,9 @@ export class TatamMatComponentRegister {
     }
 }
 __decorate([
-    methodEventSub(world.beforeEvents.worldInitialize),
+    methodEventSub(system.beforeEvents.startup),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [WorldInitializeBeforeEvent]),
+    __metadata("design:paramtypes", [StartupEvent]),
     __metadata("design:returntype", void 0)
 ], TatamMatComponentRegister.prototype, "register", null);
 //# sourceMappingURL=TatamMatComponent.js.map

@@ -45,7 +45,7 @@ function itemStackArr(scores: ScoreboardScoreInfo[]): string[] {
 
 
 export class StoveBlockEntity extends BlockEntity {
-    @methodEventSub(world.afterEvents.dataDrivenEntityTrigger, {eventTypes: ["farmersdelight:stove_tick"] })
+  /*  @methodEventSub(world.afterEvents.dataDrivenEntityTrigger, {eventTypes: ["farmersdelight:stove_tick"] })
     tick(args:DataDrivenEntityTriggerAfterEvent) {
         const entityBlockData = super.blockEntityData(args.entity);
         if (!entityBlockData) return;
@@ -68,14 +68,14 @@ export class StoveBlockEntity extends BlockEntity {
 
                     if ((system.currentTick % 20) == 0) {
                         entity.dimension.spawnParticle("farmersdelight:stove_smoke_particle", { x: x + stoveOffsets[parseInt(id[1]) - 1].x, y: y + 1.02, z: z + stoveOffsets[parseInt(id[1]) - 1].y });
-                        entity.runCommandAsync("playsound block.campfire.crackle @a ~ ~ ~ 1 1")
+                        entity.runCommand("playsound block.campfire.crackle @a ~ ~ ~ 1 1")
                     }
                     const cookTime: number = itemStackData.score;
                     sco.setScore(itemStack, cookTime - (system.currentTick % 20 == 0 ? 1 : 0));
                     if (cookTime <= 0) {
                         sco.removeParticipant(itemStack);
                         sco.setScore('amount', (sco.getScore('amount') ?? 0) - 1);
-                        entity.runCommandAsync(`loot spawn ${entity.location.x + 0.5} ${entity.location.y + 1} ${entity.location.z + 0.5} loot "${name[0]}/cook/${name[1]}"`);
+                        entity.runCommand(`loot spawn ${entity.location.x + 0.5} ${entity.location.y + 1} ${entity.location.z + 0.5} loot "${name[0]}/cook/${name[1]}"`);
                     }
                 };
 
@@ -95,14 +95,14 @@ export class StoveBlockEntity extends BlockEntity {
 
                     if ((system.currentTick % 20) == 0) {
                         entity.dimension.spawnParticle("farmersdelight:stove_smoke_particle", { x: x + stoveOffsets[parseInt(id[1]) - 1].y, y: y + 1.02, z: z + stoveOffsets[parseInt(id[1]) - 1].x });
-                        entity.runCommandAsync("playsound block.campfire.crackle @a ~ ~ ~ 1 1")
+                        entity.runCommand("playsound block.campfire.crackle @a ~ ~ ~ 1 1")
                     }
                     const cookTime: number = itemStackData.score;
                     sco.setScore(itemStack, cookTime - (system.currentTick % 20 == 0 ? 1 : 0));
                     if (cookTime <= 0) {
                         sco.removeParticipant(itemStack);
                         sco.setScore('amount', (sco.getScore('amount') ?? 0) - 1);
-                        entity.runCommandAsync(`loot spawn ${entity.location.x + 0.5} ${entity.location.y + 1} ${entity.location.z + 0.5} loot "${name[0]}/cook/${name[1]}"`);
+                        entity.runCommand(`loot spawn ${entity.location.x + 0.5} ${entity.location.y + 1} ${entity.location.z + 0.5} loot "${name[0]}/cook/${name[1]}"`);
                     }
                 };
 
@@ -111,5 +111,5 @@ export class StoveBlockEntity extends BlockEntity {
             }
         }
         super.blockEntityLoot(entityBlockData, entityBlockData.entity.typeId, itemStackArr(itemStackScoresData) ?? null);
-    }
+    }*/
 }

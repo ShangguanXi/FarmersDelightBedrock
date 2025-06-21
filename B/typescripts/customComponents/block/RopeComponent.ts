@@ -1,7 +1,7 @@
-import { BlockCustomComponent, BlockComponentTickEvent, WorldInitializeBeforeEvent, world, BlockComponentRandomTickEvent, BlockComponentPlayerInteractEvent,BlockComponentPlayerDestroyEvent, ItemComponentTypes, Container, EntityInventoryComponent, Dimension, Vector3, ItemEnchantableComponent } from "@minecraft/server";
+import { BlockCustomComponent, BlockComponentTickEvent, system, world, BlockComponentRandomTickEvent, BlockComponentPlayerInteractEvent, ItemComponentTypes, BlockComponentPlayerBreakEvent, EntityInventoryComponent, Dimension, Vector3, ItemEnchantableComponent, GameMode, StartupEvent } from "@minecraft/server";
 import { methodEventSub } from "../../lib/eventHelper";
 import { ItemUtil } from "../../lib/ItemUtil";
-
+import type * as minecraftvanilladata from '@minecraft/vanilla-data';
 function spawnLoot(path: string, dimenion: Dimension, location: Vector3) {
     return dimenion.runCommand(`loot spawn ${location.x} ${location.y} ${location.z} loot "${path}"`)
 }
@@ -10,7 +10,7 @@ export class RopeComponent implements BlockCustomComponent {
         this.onTick = this.onTick.bind(this);
         this.onRandomTick = this.onRandomTick.bind(this);
         this.onPlayerInteract = this.onPlayerInteract.bind(this);
-        this.onPlayerDestroy = this.onPlayerDestroy.bind(this);
+        this.onPlayerBreak = this.onPlayerBreak.bind(this);
     }
     onPlayerInteract(args: BlockComponentPlayerInteractEvent): void {
         const block = args.block;
@@ -25,8 +25,8 @@ export class RopeComponent implements BlockCustomComponent {
         const random = Math.floor(Math.random() * 101)
         try {
             if (itemId == "minecraft:bone_meal" && stage < 4) {
-                world.playSound("item.bone_meal.use", block.location)
-                if (player?.getGameMode() == "creative") {
+                dimension.playSound("item.bone_meal.use", block.location)
+                if (player?.getGameMode() ==  GameMode.Creative) {
                     block.dimension.spawnParticle("minecraft:crop_growth_emitter", { x: block.location.x + 0.5, y: block.location.y + 0.5, z: block.location.z + 0.5 });
                     block.setPermutation(block.permutation.withState("farmersdelight:stage", 4))
                 }
@@ -49,9 +49,9 @@ export class RopeComponent implements BlockCustomComponent {
         }
 
     }
-    onPlayerDestroy(args: BlockComponentPlayerDestroyEvent): void {
+    onPlayerBreak(args: BlockComponentPlayerBreakEvent): void {
         const player = args.player;
-        const blockPermutation = args.destroyedBlockPermutation
+        const blockPermutation = args.brokenBlockPermutation
         const inventory = player?.getComponent("inventory") as EntityInventoryComponent;
         const container = inventory?.container;
         const block = args.block;
@@ -122,7 +122,7 @@ export class RopeComponent implements BlockCustomComponent {
 
             ropePositions.forEach(pos => {
                 const rope = dimension.getBlock(pos)?.hasTag('rope');
-                block.setPermutation(block.permutation.withState(`farmersdelight:${pos.direction}_connected`, Boolean(rope)));
+                block.setPermutation(block.permutation.withState(`farmersdelight:${pos.direction}_connected` as keyof minecraftvanilladata.BlockStateSuperset, Boolean(rope)));
             })
             const players = dimension.getPlayers()
             for (const player of players){
@@ -160,8 +160,8 @@ export class RopeComponent implements BlockCustomComponent {
     }
 }
 export class RopeComponentRegister {
-    @methodEventSub(world.beforeEvents.worldInitialize)
-    register(args: WorldInitializeBeforeEvent) {
+    @methodEventSub(system.beforeEvents.startup)
+    register(args: StartupEvent) {
         args.blockComponentRegistry.registerCustomComponent('farmersdelight:rope', new RopeComponent());
     }
 

@@ -1,5 +1,5 @@
 {
-  "format_version": "1.21.70",
+  "format_version": "1.21.90",
   "minecraft:item": {
     "components": {
       "minecraft:food": {
@@ -12,10 +12,15 @@
           "default": "farmersdelight:ham"
         }
       },
-      "minecraft:tags": {
-        "tags": [
-          "farmersdelight:can_cut.tag.farmersdelight:is_knife"
-        ]
+      "farmersdelight:cuttable": {
+        "loot": [
+          ["minecraft:porkchop", 2],
+          ["minecraft:bone_meal", 1]
+        ],
+        "tool": {
+          "type": "tag",
+          "name": "farmersdelight:is_knife"
+        }
       },
       "minecraft:use_animation": "eat",
       "minecraft:use_modifiers": {

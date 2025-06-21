@@ -1,4 +1,4 @@
-import { BlockPermutation, Container, Direction, EntityInventoryComponent, ItemComponentUseOnEvent, ItemCustomComponent, Player, WorldInitializeBeforeEvent, system, world } from "@minecraft/server";
+import { BlockPermutation, Container, Direction, EntityInventoryComponent, ItemComponentUseOnEvent, ItemCustomComponent, Player, system, StartupEvent } from "@minecraft/server";
 import { methodEventSub } from "../../lib/eventHelper";
 import { EntityUtil } from "../../lib/EntityUtil";
 import { ItemUtil } from "../../lib/ItemUtil";
@@ -28,8 +28,8 @@ class ColoniesComonent implements ItemCustomComponent{
 
 }
 export class ColoniesComonentRegister{
-    @methodEventSub(world.beforeEvents.worldInitialize)
-    register(args:WorldInitializeBeforeEvent){
+    @methodEventSub(system.beforeEvents.startup)
+    register(args:StartupEvent){
         args.itemComponentRegistry.registerCustomComponent('farmersdelight:colonies', new ColoniesComonent())
     }
   

@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.70",
+    "format_version": "1.21.90",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:tomato_block",
@@ -173,6 +173,21 @@
             }
         ],
         "components": {
+            "farmersdelight:crop":{
+                "loot": "loot_tables/farmersdelight/crops/farmersdelight_tomato_riped.json",
+                "state":{
+                    "name":"farmersdelight:growth",
+                    "age_after_harvest":4,
+                    "age":7
+                }
+            },
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "budding_tomatoes_stage0",
+                    "ambient_occlusion": false,
+                    "render_method": "alpha_test"
+                }
+            },
             "minecraft:redstone_conductivity":{
                 "allows_wire_to_step_down": false
             },
@@ -187,9 +202,6 @@
                     }
                 ]
             },
-            "minecraft:custom_components": [
-                "farmersdelight:tomato"
-            ],
             "minecraft:flammable": {
                 "catch_chance_modifier": 30,
                 "destroy_chance_modifier": 30

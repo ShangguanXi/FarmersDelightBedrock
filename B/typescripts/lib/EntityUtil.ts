@@ -8,7 +8,7 @@ export class EntityUtil {
             type: "minecraft:player",
             name: player.nameTag,
             location: player.location,
-            gameMode: GameMode.creative
+            gameMode: GameMode.Creative
         }
         const entities = player.dimension.getEntities(query);
         return !entities.length;

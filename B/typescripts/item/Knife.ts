@@ -1,4 +1,4 @@
-import { Block, BlockPermutation, Container, ContainerSlot, Dimension, Direction, Entity, EntityEquippableComponent, EntityHealthComponent, EntityInventoryComponent, EntityIsChargedComponent, EntityOnFireComponent, EquipmentSlot, ItemEnchantableComponent, ItemStack, ItemUseOnAfterEvent, Player, PlayerBreakBlockAfterEvent, PlayerInteractWithBlockAfterEvent, Vector3, world } from "@minecraft/server";
+import { Block, BlockPermutation, Container, ContainerSlot, Dimension, Direction, Entity, EntityEquippableComponent, EntityHealthComponent, EntityInventoryComponent, EntityIsChargedComponent, EntityOnFireComponent, EquipmentSlot, ItemEnchantableComponent, ItemStack, Player, PlayerBreakBlockAfterEvent, PlayerInteractWithBlockAfterEvent, Vector3, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
 import { EntityUtil } from "../lib/EntityUtil";
 import { ItemUtil } from "../lib/ItemUtil";

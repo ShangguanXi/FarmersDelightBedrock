@@ -1,6 +1,5 @@
 import { world } from "@minecraft/server";
 import ObjectUtil from "../lib/ObjectUtil";
-const scoreboard = world.scoreboard;
 export class BlockWithEntity {
     //名为setblock实际上是放置对应方块实体的实体，若成功则返回放置的实体
     setBlock(dimension, location, entityId) {
@@ -26,7 +25,7 @@ export class BlockWithEntity {
         ;
         if (!entityBlock)
             return undefined;
-        const scoreboardObjective = scoreboard.getObjective(entityBlock.typeId + entityBlock.id) ?? null;
+        const scoreboardObjective = world.scoreboard.getObjective(entityBlock.typeId + entityBlock.id) ?? null;
         const blockEntityDataLocation = entityBlock.getDynamicProperty('farmersdelight:blockEntityDataLocation');
         return { block: block, dimension: dimension, entity: entityBlock, scoreboardObjective: scoreboardObjective, blockEntityDataLocation: blockEntityDataLocation };
     }

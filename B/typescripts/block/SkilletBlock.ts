@@ -1,4 +1,4 @@
-import { Block, Container, ContainerSlot, Entity, EntityDamageCause, EntityEquippableComponent, EntityInventoryComponent, EquipmentSlot, ItemStack, ItemUseOnAfterEvent, Player, PlayerPlaceBlockAfterEvent, ScoreboardObjective, ScoreboardScoreInfo, Vector3, world } from "@minecraft/server";
+import { Block, Container, ContainerSlot, Entity, EntityDamageCause, EntityEquippableComponent, EntityInventoryComponent, EquipmentSlot, ItemStack, Player, PlayerInteractWithBlockAfterEvent, PlayerPlaceBlockAfterEvent, ScoreboardObjective, ScoreboardScoreInfo, Vector3, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
 import { BlockWithEntity } from "./BlockWithEntity";
 import { vanillaItemList } from "../data/recipe/cookRecipe";
@@ -17,15 +17,16 @@ export class SKilletBlock extends BlockWithEntity {
         entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', '{"item":"undefined"}');
         world.scoreboard.addObjective(entity.typeId + entity.id, entity.id).setScore('amount', 0);
     }
-    @methodEventSub(world.afterEvents.itemUseOn)
-    useOnBlock(args: ItemUseOnAfterEvent) {
+    @methodEventSub(world.afterEvents.playerInteractWithBlock)
+    useOnBlock(args: PlayerInteractWithBlockAfterEvent) {
         if (args?.block?.typeId !== "farmersdelight:skillet_block") return;
         const data = super.entityBlockData(args.block, {
             type: 'farmersdelight:skillet',
             location: args.block.location
         });
-        const player: Player = args.source;
-        const itemStack: ItemStack = args.itemStack;
+        const player: Player = args.player;
+        const itemStack: ItemStack | undefined = args.itemStack;
+        if (!itemStack) return
         const inventory = player?.getComponent("inventory") as EntityInventoryComponent;
         const container:Container|undefined = inventory?.container
         if (!data || !container) return;
@@ -63,7 +64,7 @@ export class SKilletBlock extends BlockWithEntity {
             }
             const stove = entity.dimension.getBlock({ x: x, y: y - 1, z: z })?.permutation?.getState("farmersdelight:is_working");
             if (!stove) return
-            entity.runCommandAsync("playsound block.farmersdelight.skillet.add_food @a ~ ~ ~ 1 1");
+            entity.runCommand("playsound block.farmersdelight.skillet.add_food @a ~ ~ ~ 1 1");
         }
         if (vanillaItemList.includes(itemStack.typeId)==false && itemStack.hasTag('farmersdelight:can_cook')==false) {
             player.onScreenDisplay.setActionBar({ translate: 'farmersdelight.skillet.invalid_item' });

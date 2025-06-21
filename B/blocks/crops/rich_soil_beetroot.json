@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.70",
+    "format_version": "1.21.90",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:rich_soil_beetroot",
@@ -223,9 +223,22 @@
             "minecraft:redstone_conductivity":{
                 "allows_wire_to_step_down": false
             },
-            "minecraft:custom_components": [
-                "farmersdelight:beetroot"
-            ],
+            "farmersdelight:crop":{
+                "loot": "loot_tables/farmersdelight/crops/beetroot_riped.json",
+                "state":{
+                    "name":"farmersdelight:growth",
+                    "age":7
+                }
+            },
+            
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "beetroots_stage0",
+                    "ambient_occlusion": false,
+                    "face_dimming": false,
+                    "render_method": "alpha_test"
+                }
+            },
             "minecraft:liquid_detection": {
                 "detection_rules": [
                     {

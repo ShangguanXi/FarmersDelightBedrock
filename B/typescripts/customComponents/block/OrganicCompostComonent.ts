@@ -1,5 +1,5 @@
-import { BlockCustomComponent, BlockComponentRandomTickEvent, world, WorldInitializeBeforeEvent, BlockPermutation, BlockVolume, BlockComponentPlayerPlaceBeforeEvent, BlockComponentPlayerDestroyEvent, BlockComponentPlayerInteractEvent, EntityInventoryComponent } from "@minecraft/server";
-import { methodEventSub } from "../../lib/eventHelper";
+import { BlockCustomComponent, BlockComponentRandomTickEvent, world, StartupEvent, system, BlockPermutation, BlockVolume, BlockComponentPlayerPlaceBeforeEvent, BlockComponentPlayerInteractEvent, EntityInventoryComponent } from "@minecraft/server";
+import { methodEventSub } from "../../lib/eventHelper"
 import { organicCompostDetectList } from "../../data/organicCompostDetect";
 import { ItemUtil } from "../../lib/ItemUtil";
 
@@ -25,13 +25,13 @@ class OrganicCompostComonent implements BlockCustomComponent {
         const topBlockId = dimension.getBlock(topLocation)?.typeId
         if (face == 'Up' && topBlockId == "minecraft:air") {
             if (itemId == "minecraft:brown_mushroom") {
-                world.playSound("dig.grass", block.location)
+                dimension.playSound("dig.grass", block.location)
                 dimension.setBlockType(topLocation, "farmersdelight:brown_mushroom_colony")
                 ItemUtil.clearItem(container, player.selectedSlotIndex)
 
             }
             if (itemId == "minecraft:red_mushroom") {
-                world.playSound("dig.grass", block.location)
+                dimension.playSound("dig.grass", block.location)
                 dimension.setBlockType(topLocation, "farmersdelight:red_mushroom_colony")
                 ItemUtil.clearItem(container, player.selectedSlotIndex)
 
@@ -76,8 +76,8 @@ class OrganicCompostComonent implements BlockCustomComponent {
     }
 }
 export class OrganicCompostComonentRegister {
-    @methodEventSub(world.beforeEvents.worldInitialize)
-    register(args: WorldInitializeBeforeEvent) {
+    @methodEventSub(system.beforeEvents.startup)
+    register(args: StartupEvent) {
         args.blockComponentRegistry.registerCustomComponent('farmersdelight:organic_compost', new OrganicCompostComonent());
     }
 

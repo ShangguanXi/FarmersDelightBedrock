@@ -10,10 +10,14 @@
           "default": "farmersdelight:apple_pie"
         }
       },
-      "minecraft:tags": {
-        "tags": [
-          "farmersdelight:can_cut.tag.farmersdelight:is_knife"
-        ]
+      "farmersdelight:cuttable": {
+        "loot": [
+          ["farmersdelight:apple_pie_slice", 4]
+        ],
+        "tool": {
+          "type": "tag",
+          "name": "farmersdelight:is_knife"
+        }
       },
       "minecraft:compostable": {
         "composting_chance": 45

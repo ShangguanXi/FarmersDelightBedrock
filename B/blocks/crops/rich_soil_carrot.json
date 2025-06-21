@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.70",
+    "format_version": "1.21.90",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:rich_soil_carrot",
@@ -220,12 +220,25 @@
             }
         ],
         "components": {
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "carrots_stage3",
+                    "ambient_occlusion": false,
+                    "face_dimming": false,
+                    "render_method": "alpha_test"
+                }
+            },
+            "farmersdelight:crop":{
+                "loot": "loot_tables/farmersdelight/crops/carrot_riped.json",
+                "state":{
+                    "name":"farmersdelight:growth",
+                    "age":7
+                }
+            },
+            
             "minecraft:redstone_conductivity":{
                 "allows_wire_to_step_down": false
             },
-            "minecraft:custom_components": [
-                "farmersdelight:carrot"
-            ],
             "minecraft:liquid_detection": {
                 "detection_rules": [
                     {

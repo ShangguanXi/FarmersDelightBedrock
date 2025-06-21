@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { WorldInitializeBeforeEvent, world } from "@minecraft/server";
+import { StartupEvent, system } from "@minecraft/server";
 import { ItemUtil } from "../../lib/ItemUtil";
 import { methodEventSub } from "../../lib/eventHelper";
 class RichSoilComponent {
@@ -33,24 +33,24 @@ class RichSoilComponent {
             const topBlockId = dimension.getBlock(topLocation)?.typeId;
             if (face == 'Up' && topBlockId == "minecraft:air") {
                 if (itemId == "minecraft:sugar_cane") {
-                    world.playSound("dig.grass", block.location);
+                    dimension.playSound("dig.grass", block.location);
                     dimension.setBlockType(topLocation, "farmersdelight:rich_soil_sugar_cane_bottom");
                     ItemUtil.clearItem(container, player.selectedSlotIndex);
                 }
                 if (itemId == "minecraft:brown_mushroom") {
-                    world.playSound("dig.grass", block.location);
+                    dimension.playSound("dig.grass", block.location);
                     dimension.setBlockType(topLocation, "farmersdelight:brown_mushroom_colony");
                     ItemUtil.clearItem(container, player.selectedSlotIndex);
                 }
                 if (itemId == "minecraft:red_mushroom") {
-                    world.playSound("dig.grass", block.location);
+                    dimension.playSound("dig.grass", block.location);
                     dimension.setBlockType(topLocation, "farmersdelight:red_mushroom_colony");
                     ItemUtil.clearItem(container, player.selectedSlotIndex);
                 }
             }
             if (hoeTag) {
                 dimension.setBlockType(block.location, "farmersdelight:rich_soil_farmland");
-                world.playSound("use.gravel", block.location);
+                dimension.playSound("use.gravel", block.location);
                 ItemUtil.damageItem(container, player.selectedSlotIndex, 1);
             }
         }
@@ -64,9 +64,9 @@ export class RichSoilComponentRegister {
     }
 }
 __decorate([
-    methodEventSub(world.beforeEvents.worldInitialize),
+    methodEventSub(system.beforeEvents.startup),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [WorldInitializeBeforeEvent]),
+    __metadata("design:paramtypes", [StartupEvent]),
     __metadata("design:returntype", void 0)
 ], RichSoilComponentRegister.prototype, "register", null);
 //# sourceMappingURL=RichSoilComponent.js.map

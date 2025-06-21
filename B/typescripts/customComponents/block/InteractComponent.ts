@@ -1,4 +1,4 @@
-import { BlockCustomComponent, BlockComponentPlayerInteractEvent, WorldInitializeBeforeEvent, world, Dimension, Vector3 } from "@minecraft/server";
+import { BlockCustomComponent, BlockComponentPlayerInteractEvent, system, world, StartupEvent, Vector3 } from "@minecraft/server";
 import { methodEventSub } from "../../lib/eventHelper";
 
 export class InteractComponent implements BlockCustomComponent {
@@ -10,8 +10,8 @@ export class InteractComponent implements BlockCustomComponent {
         
 }
 export class InteractComponentRegister{
-    @methodEventSub(world.beforeEvents.worldInitialize)
-    register(args:WorldInitializeBeforeEvent){
+    @methodEventSub(system.beforeEvents.startup)
+    register(args: StartupEvent){
         args.blockComponentRegistry.registerCustomComponent('farmersdelight:interact', new InteractComponent());
     }
   

@@ -1,4 +1,4 @@
-import { Block, Entity, GameMode, ItemDurabilityComponent, ItemStack } from "@minecraft/server";
+import { Block, Entity, EquipmentSlot, GameMode, ItemDurabilityComponent, ItemStack } from "@minecraft/server";
 import { RandomUtil } from "./RandomUtil";
 export class ItemUtil {
     static damageItem(container, index, damage = 1) {
@@ -33,6 +33,21 @@ export class ItemUtil {
             return itemAmount;
         }
     }
+    static clearOffhandItem(player, amount = 1) {
+        const equip = player.getComponent('minecraft:equippable');
+        const itemStack = equip?.getEquipment(EquipmentSlot.Offhand);
+        if (!itemStack)
+            return;
+        const newItemStack = itemStack;
+        if (newItemStack.amount > amount) {
+            newItemStack.amount = newItemStack.amount - amount;
+            if (!equip?.setEquipment(EquipmentSlot.Offhand, newItemStack))
+                player.runCommand(`/clear @s ${itemStack.typeId} 0 ${amount}`);
+        }
+        else {
+            equip?.setEquipment(EquipmentSlot.Offhand, undefined);
+        }
+    }
     static replaceItem(player, slot, replaceItemStack) {
         const container = player.getComponent("inventory")?.container;
         if (!container)
@@ -40,7 +55,7 @@ export class ItemUtil {
         const itemStack = container?.getItem(slot);
         if (!itemStack)
             return;
-        if (player.getGameMode() == GameMode.creative)
+        if (player.getGameMode() == GameMode.Creative)
             return;
         const itemAmount = itemStack.amount;
         const amount = itemAmount - 1;

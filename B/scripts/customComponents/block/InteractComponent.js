@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { WorldInitializeBeforeEvent, world } from "@minecraft/server";
+import { system, StartupEvent } from "@minecraft/server";
 import { methodEventSub } from "../../lib/eventHelper";
 export class InteractComponent {
     constructor() {
@@ -21,9 +21,9 @@ export class InteractComponentRegister {
     }
 }
 __decorate([
-    methodEventSub(world.beforeEvents.worldInitialize),
+    methodEventSub(system.beforeEvents.startup),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [WorldInitializeBeforeEvent]),
+    __metadata("design:paramtypes", [StartupEvent]),
     __metadata("design:returntype", void 0)
 ], InteractComponentRegister.prototype, "register", null);
 //# sourceMappingURL=InteractComponent.js.map

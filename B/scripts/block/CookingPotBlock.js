@@ -7,17 +7,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { ItemStack, ItemUseOnBeforeEvent, PlayerPlaceBlockAfterEvent, system, world } from "@minecraft/server";
+import { ItemStack, PlayerInteractWithBlockBeforeEvent, PlayerPlaceBlockAfterEvent, system, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
 import { BlockWithEntity } from "./BlockWithEntity";
-const fireArrowEmpty = new ItemStack("farmersdelight:fire_0");
-const emptyArrow = new ItemStack("farmersdelight:cooking_pot_arrow_0");
 //potItem用于放置厨锅时暂时存储厨锅物品数据，方便读取lore
 //别问我为啥不写类里面，因为写类里面的时候在constructor里还是正常的map，一到事件里就莫名其妙变成了undefined，ts也没报错，查不出来原因
 let potItem = new Map();
 export class CookingPotBlock extends BlockWithEntity {
     beforePlaceBlock(args) {
-        potItem.set(args.source.id, args.itemStack);
+        potItem.set(args.player.id, args.itemStack);
     }
     placeBlock(args) {
         const itemStack = potItem.get(args.player.id);
@@ -30,8 +28,8 @@ export class CookingPotBlock extends BlockWithEntity {
         entity.nameTag = "farmersdelight厨锅";
         const inventory = entity?.getComponent("inventory");
         const container = inventory?.container;
-        container?.setItem(9, emptyArrow);
-        container?.setItem(10, fireArrowEmpty);
+        container?.setItem(9, new ItemStack("farmersdelight:cooking_pot_arrow_0"));
+        container?.setItem(10, new ItemStack("farmersdelight:fire_0"));
         if (!lores.length)
             return;
         for (const lore of lores) {
@@ -54,9 +52,9 @@ export class CookingPotBlock extends BlockWithEntity {
     }
 }
 __decorate([
-    methodEventSub(world.beforeEvents.itemUseOn),
+    methodEventSub(world.beforeEvents.playerInteractWithBlock),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [ItemUseOnBeforeEvent]),
+    __metadata("design:paramtypes", [PlayerInteractWithBlockBeforeEvent]),
     __metadata("design:returntype", void 0)
 ], CookingPotBlock.prototype, "beforePlaceBlock", null);
 __decorate([

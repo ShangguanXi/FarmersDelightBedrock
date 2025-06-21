@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { ItemUseOnBeforeEvent, world } from "@minecraft/server";
+import { PlayerInteractWithBlockBeforeEvent, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
 export class RiceBlock {
     //防止水被装走
@@ -20,9 +20,9 @@ export class RiceBlock {
     }
 }
 __decorate([
-    methodEventSub(world.beforeEvents.itemUseOn),
+    methodEventSub(world.beforeEvents.playerInteractWithBlock),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [ItemUseOnBeforeEvent]),
+    __metadata("design:paramtypes", [PlayerInteractWithBlockBeforeEvent]),
     __metadata("design:returntype", void 0)
 ], RiceBlock.prototype, "tryUseItem", null);
 //# sourceMappingURL=Rice.js.map

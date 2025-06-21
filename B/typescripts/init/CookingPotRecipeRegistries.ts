@@ -1,21 +1,20 @@
-import { MinecraftDimensionTypes, Scoreboard, ScoreboardObjective, system, world } from "@minecraft/server";
+import {  Scoreboard, ScoreboardObjective, system, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
 import { vanillaCookingPotRecipe } from "../data/recipe/cookingPotRecipe";
 
-const scoreboard: Scoreboard = world.scoreboard;
 let bool: boolean = true;
 let num: number = 0;
 
 export class CookingPotRecipeRegistries {
     public static initCookingPotScoRegistries() {
         system.runInterval(() => {
-            const allSco: ScoreboardObjective[] | undefined = scoreboard.getObjectives();
+            const allSco: ScoreboardObjective[] | undefined = world.scoreboard.getObjectives();
             if (!allSco?.length || !bool) return;
             for (const sco of allSco) {
                 const name: string = sco.displayName;
                 const reg: RegExpMatchArray | null = name.match(/farmersdelight_(\w+)/);
                 if (reg) {
-                    world.getDimension(MinecraftDimensionTypes.overworld).runCommandAsync(`function farmersdelight/cooking_pot_recipe_registries/${reg[1]}`);
+                    world.getDimension("overworld").runCommand(`function farmersdelight/cooking_pot_recipe_registries/${reg[1]}`);
                 }
             }
             bool = false;

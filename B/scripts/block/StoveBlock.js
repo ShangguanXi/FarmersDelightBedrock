@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { ItemStack, ItemUseOnAfterEvent, PlayerPlaceBlockAfterEvent, world } from "@minecraft/server";
+import { ItemStack, PlayerInteractWithBlockAfterEvent, PlayerPlaceBlockAfterEvent, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
 import { BlockWithEntity } from "./BlockWithEntity";
 import { vanillaItemList } from "../data/recipe/cookRecipe";
@@ -31,8 +31,10 @@ export class StoveBlock extends BlockWithEntity {
             type: args.block.typeId,
             location: args.block.location
         });
-        const player = args.source;
+        const player = args.player;
         const itemStack = args.itemStack;
+        if (!itemStack)
+            return;
         const inventory = player?.getComponent("inventory");
         const container = inventory?.container;
         if (!data || !container)
@@ -87,9 +89,9 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], StoveBlock.prototype, "placeBlock", null);
 __decorate([
-    methodEventSub(world.afterEvents.itemUseOn),
+    methodEventSub(world.afterEvents.playerInteractWithBlock),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [ItemUseOnAfterEvent]),
+    __metadata("design:paramtypes", [PlayerInteractWithBlockAfterEvent]),
     __metadata("design:returntype", void 0)
 ], StoveBlock.prototype, "useOnBlock", null);
 //# sourceMappingURL=StoveBlock.js.map

@@ -1,4 +1,4 @@
-import { BlockComponentPlayerInteractEvent, BlockCustomComponent, EntityInventoryComponent,ItemEnchantableComponent, WorldInitializeBeforeEvent, world } from "@minecraft/server";
+import { BlockComponentPlayerInteractEvent, BlockCustomComponent, EntityInventoryComponent,ItemEnchantableComponent, StartupEvent, system, world } from "@minecraft/server";
 import { ItemUtil } from "../../lib/ItemUtil";
 import { methodEventSub } from "../../lib/eventHelper";
 
@@ -26,18 +26,18 @@ class RichSoilComponent implements BlockCustomComponent {
             const topBlockId = dimension.getBlock(topLocation)?.typeId
             if (face == 'Up' && topBlockId == "minecraft:air") {
                 if (itemId == "minecraft:sugar_cane") {
-                    world.playSound("dig.grass", block.location)
+                    dimension.playSound("dig.grass", block.location)
                     dimension.setBlockType(topLocation, "farmersdelight:rich_soil_sugar_cane_bottom")
                     ItemUtil.clearItem(container,player.selectedSlotIndex)
                 }
                 if (itemId == "minecraft:brown_mushroom") {
-                    world.playSound("dig.grass", block.location)
+                    dimension.playSound("dig.grass", block.location)
                     dimension.setBlockType(topLocation, "farmersdelight:brown_mushroom_colony")
                     ItemUtil.clearItem(container,player.selectedSlotIndex)
 
                 }
                 if (itemId == "minecraft:red_mushroom") {
-                    world.playSound("dig.grass", block.location)
+                    dimension.playSound("dig.grass", block.location)
                     dimension.setBlockType(topLocation, "farmersdelight:red_mushroom_colony")
                     ItemUtil.clearItem(container,player.selectedSlotIndex)
 
@@ -46,7 +46,7 @@ class RichSoilComponent implements BlockCustomComponent {
             }
             if (hoeTag) {
                 dimension.setBlockType(block.location, "farmersdelight:rich_soil_farmland")
-                world.playSound("use.gravel", block.location)
+                dimension.playSound("use.gravel", block.location)
                 ItemUtil.damageItem(container, player.selectedSlotIndex, 1)
             }
 
@@ -58,8 +58,8 @@ class RichSoilComponent implements BlockCustomComponent {
     }
 }
 export class RichSoilComponentRegister {
-    @methodEventSub(world.beforeEvents.worldInitialize)
-    register(args: WorldInitializeBeforeEvent) {
+    @methodEventSub(system.beforeEvents.startup)
+    register(args: StartupEvent) {
         args.blockComponentRegistry.registerCustomComponent('farmersdelight:rich_soil', new RichSoilComponent());
     }
 

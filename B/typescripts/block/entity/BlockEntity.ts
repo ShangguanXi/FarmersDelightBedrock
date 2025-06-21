@@ -1,17 +1,18 @@
 import { Dimension, Entity, ItemStack, Vector3, world, Block, ScoreboardObjective, Container, EntityInventoryComponent, system } from "@minecraft/server";
 import ObjectUtil from "../../lib/ObjectUtil";
 
-const scoreboard = world.scoreboard;
+
 
 export class BlockEntity {
+    
     //获取方块实体数据
     public blockEntityData(entity: Entity): BlockEntityData | undefined {
         try {
             const dimension: Dimension = entity?.dimension ?? undefined;
             const blockEntityDataLocation = entity.getDynamicProperty('farmersdelight:blockEntityDataLocation') as Vector3;
             const block = dimension.getBlock(blockEntityDataLocation) as Block;
-            const scoreboardObjective = scoreboard.getObjective(entity.typeId + entity.id) ?? null;
-            const blockEntityData: BlockEntityData = { entity: entity, dimension: dimension, blockEntityDataLocation: blockEntityDataLocation, block: block, scoreboardObjective: scoreboardObjective }
+           // const scoreboardObjective = world.scoreboard.getObjective(entity.typeId + entity.id) ?? null;
+            const blockEntityData: BlockEntityData = { entity: entity, dimension: dimension, blockEntityDataLocation: blockEntityDataLocation, block: block, /*scoreboardObjective: scoreboardObjective */}
             return blockEntityData;
         } catch (error) {
             return undefined;
@@ -46,9 +47,9 @@ export class BlockEntity {
     };
     //清除方块实体
     public static clearEntity(args: BlockEntityData) {
-        if (args.scoreboardObjective) {
-            scoreboard.removeObjective(args.entity.typeId + args.entity.id);
-        }
+        /*if (args.scoreboardObjective) {
+            world.scoreboard.removeObjective(args.entity.typeId + args.entity.id);
+        }*/
         system.runTimeout(() => {
             args.entity.remove();
         });
@@ -60,5 +61,5 @@ export interface BlockEntityData{
     readonly dimension: Dimension, 
     readonly blockEntityDataLocation: Vector3, 
     readonly block: Block, 
-    readonly scoreboardObjective: ScoreboardObjective | null
+   // readonly scoreboardObjective: ScoreboardObjective | null
 }

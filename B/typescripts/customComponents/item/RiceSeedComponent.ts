@@ -1,4 +1,4 @@
-import { BlockCustomComponent, ItemComponentUseOnEvent, WorldInitializeBeforeEvent, world, Dimension, Vector3, ItemCustomComponentAlreadyRegisteredError, ItemCustomComponent, Direction, Container, system, Player, EntityInventoryComponent } from "@minecraft/server";
+import { BlockCustomComponent, ItemComponentUseOnEvent, StartupEvent, world, Dimension, Vector3, ItemCustomComponentAlreadyRegisteredError, ItemCustomComponent, Direction, Container, system, Player, EntityInventoryComponent } from "@minecraft/server";
 import { methodEventSub } from "../../lib/eventHelper";
 import { ItemUtil } from "../../lib/ItemUtil";
 import { EntityUtil } from "../../lib/EntityUtil";
@@ -30,8 +30,8 @@ class RiceSeedComponent implements ItemCustomComponent {
     }
 }
 export class RiceSeedComponentRegister {
-    @methodEventSub(world.beforeEvents.worldInitialize)
-    register(args: WorldInitializeBeforeEvent) {
+    @methodEventSub(system.beforeEvents.startup)
+    register(args: StartupEvent) {
         args.itemComponentRegistry.registerCustomComponent('farmersdelight:rice_seed', new RiceSeedComponent())
     }
 

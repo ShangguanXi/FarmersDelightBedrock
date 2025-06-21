@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { world, WorldInitializeBeforeEvent, BlockPermutation, BlockVolume } from "@minecraft/server";
+import { StartupEvent, system, BlockPermutation, BlockVolume } from "@minecraft/server";
 import { methodEventSub } from "../../lib/eventHelper";
 import { organicCompostDetectList } from "../../data/organicCompostDetect";
 import { ItemUtil } from "../../lib/ItemUtil";
@@ -35,12 +35,12 @@ class OrganicCompostComonent {
         const topBlockId = dimension.getBlock(topLocation)?.typeId;
         if (face == 'Up' && topBlockId == "minecraft:air") {
             if (itemId == "minecraft:brown_mushroom") {
-                world.playSound("dig.grass", block.location);
+                dimension.playSound("dig.grass", block.location);
                 dimension.setBlockType(topLocation, "farmersdelight:brown_mushroom_colony");
                 ItemUtil.clearItem(container, player.selectedSlotIndex);
             }
             if (itemId == "minecraft:red_mushroom") {
-                world.playSound("dig.grass", block.location);
+                dimension.playSound("dig.grass", block.location);
                 dimension.setBlockType(topLocation, "farmersdelight:red_mushroom_colony");
                 ItemUtil.clearItem(container, player.selectedSlotIndex);
             }
@@ -91,9 +91,9 @@ export class OrganicCompostComonentRegister {
     }
 }
 __decorate([
-    methodEventSub(world.beforeEvents.worldInitialize),
+    methodEventSub(system.beforeEvents.startup),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [WorldInitializeBeforeEvent]),
+    __metadata("design:paramtypes", [StartupEvent]),
     __metadata("design:returntype", void 0)
 ], OrganicCompostComonentRegister.prototype, "register", null);
 //# sourceMappingURL=OrganicCompostComonent.js.map

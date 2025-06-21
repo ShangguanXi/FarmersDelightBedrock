@@ -1,4 +1,4 @@
-import { Block, Container, Dimension, EntityInventoryComponent, ItemStack, ItemUseOnAfterEvent, Player, PlayerBreakBlockBeforeEvent, PlayerInteractWithBlockAfterEvent, Vector3, system, world } from "@minecraft/server";
+import { Block, Container, Dimension, EntityInventoryComponent, ItemStack, Player, PlayerBreakBlockBeforeEvent, PlayerInteractWithBlockAfterEvent, Vector3, system, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
 import { ItemUtil } from "../lib/ItemUtil";
 function spawnLoot(path: string, dimenion: Dimension, location: Vector3) {

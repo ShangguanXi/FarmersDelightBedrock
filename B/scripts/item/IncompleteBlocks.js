@@ -7,11 +7,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { ItemUseOnBeforeEvent, world } from "@minecraft/server";
+import { PlayerInteractWithBlockBeforeEvent, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
 export class IncompleteBlocks {
     place(args) {
         const itemStack = args.itemStack;
+        if (!itemStack)
+            return;
         const face = args.blockFace;
         const block = args.block;
         const redstone_list = [
@@ -37,9 +39,9 @@ export class IncompleteBlocks {
     }
 }
 __decorate([
-    methodEventSub(world.beforeEvents.itemUseOn),
+    methodEventSub(world.beforeEvents.playerInteractWithBlock),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [ItemUseOnBeforeEvent]),
+    __metadata("design:paramtypes", [PlayerInteractWithBlockBeforeEvent]),
     __metadata("design:returntype", void 0)
 ], IncompleteBlocks.prototype, "place", null);
 //# sourceMappingURL=IncompleteBlocks.js.map

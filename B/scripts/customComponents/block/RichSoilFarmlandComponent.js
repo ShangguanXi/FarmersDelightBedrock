@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { WorldInitializeBeforeEvent, world, BlockVolume, BlockPermutation } from "@minecraft/server";
+import { StartupEvent, system, BlockVolume, BlockPermutation } from "@minecraft/server";
 import { ItemUtil } from "../../lib/ItemUtil";
 import { methodEventSub } from "../../lib/eventHelper";
 function handlePlanting(seedId, crop, topLocation, container, player, block) {
@@ -18,7 +18,7 @@ function handlePlanting(seedId, crop, topLocation, container, player, block) {
     const selectedSlot = container?.getSlot(player.selectedSlotIndex);
     const itemId = selectedSlot?.typeId;
     if (itemId == seedId) {
-        world.playSound("dig.grass", block.location);
+        player.dimension.playSound("dig.grass", block.location);
         block.dimension.setBlockType(topLocation, crop);
         ItemUtil.clearItem(container, player.selectedSlotIndex);
     }
@@ -58,7 +58,7 @@ class RichSoilFarmlandComponent {
             for (const tag of tags) {
                 if (tag.includes("farmersdelight:seed")) {
                     const crop = tag.split("-")[1];
-                    world.playSound("dig.grass", block.location);
+                    dimension.playSound("dig.grass", block.location);
                     block.dimension.setBlockType(topLocation, crop);
                     ItemUtil.clearItem(container, player.selectedSlotIndex);
                 }
@@ -100,7 +100,8 @@ class RichSoilFarmlandComponent {
         const cropBlock = dimension.getBlock({ x: x, y: y + 1, z: z });
         if (!cropBlock?.hasTag('crop'))
             return;
-        let maxGrowth, growthProperty;
+        let maxGrowth;
+        let growthProperty;
         for (const tag of cropBlock.getTags()) {
             const growthTag = tag.match(/max_growth:([0-9]+)/);
             const propertyTag = tag.match(/growth_property:(.*)/);
@@ -126,9 +127,9 @@ export class RichSoilFarmlandComponentRegister {
     }
 }
 __decorate([
-    methodEventSub(world.beforeEvents.worldInitialize),
+    methodEventSub(system.beforeEvents.startup),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [WorldInitializeBeforeEvent]),
+    __metadata("design:paramtypes", [StartupEvent]),
     __metadata("design:returntype", void 0)
 ], RichSoilFarmlandComponentRegister.prototype, "register", null);
 //# sourceMappingURL=RichSoilFarmlandComponent.js.map

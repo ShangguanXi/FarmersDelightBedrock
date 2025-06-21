@@ -1,4 +1,4 @@
-import { BlockCustomComponent, BlockComponentPlayerInteractEvent, WorldInitializeBeforeEvent, world, Dimension, Vector3 } from "@minecraft/server";
+import { BlockCustomComponent, BlockComponentPlayerInteractEvent, system, StartupEvent, Dimension, Vector3 } from "@minecraft/server";
 import { methodEventSub } from "../../lib/eventHelper";
 function spawnLoot(path: string, dimenion: Dimension, location: Vector3) {
     return dimenion.runCommand(`loot spawn ${location.x} ${location.y} ${location.z} loot "${path}"`)
@@ -33,8 +33,8 @@ class RiceRollMedleyComponent implements BlockCustomComponent {
     }
 }
 export class RiceRollMedleyComponentRegister{
-    @methodEventSub(world.beforeEvents.worldInitialize)
-    register(args:WorldInitializeBeforeEvent){
+    @methodEventSub(system.beforeEvents.startup)
+    register(args:StartupEvent){
         args.blockComponentRegistry.registerCustomComponent('farmersdelight:rice_roll_medley', new RiceRollMedleyComponent());
     }
   

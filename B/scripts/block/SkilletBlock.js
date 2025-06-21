@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { ItemStack, ItemUseOnAfterEvent, PlayerPlaceBlockAfterEvent, world } from "@minecraft/server";
+import { ItemStack, PlayerInteractWithBlockAfterEvent, PlayerPlaceBlockAfterEvent, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
 import { BlockWithEntity } from "./BlockWithEntity";
 import { vanillaItemList } from "../data/recipe/cookRecipe";
@@ -31,8 +31,10 @@ export class SKilletBlock extends BlockWithEntity {
             type: 'farmersdelight:skillet',
             location: args.block.location
         });
-        const player = args.source;
+        const player = args.player;
         const itemStack = args.itemStack;
+        if (!itemStack)
+            return;
         const inventory = player?.getComponent("inventory");
         const container = inventory?.container;
         if (!data || !container)
@@ -75,7 +77,7 @@ export class SKilletBlock extends BlockWithEntity {
             const stove = entity.dimension.getBlock({ x: x, y: y - 1, z: z })?.permutation?.getState("farmersdelight:is_working");
             if (!stove)
                 return;
-            entity.runCommandAsync("playsound block.farmersdelight.skillet.add_food @a ~ ~ ~ 1 1");
+            entity.runCommand("playsound block.farmersdelight.skillet.add_food @a ~ ~ ~ 1 1");
         }
         if (vanillaItemList.includes(itemStack.typeId) == false && itemStack.hasTag('farmersdelight:can_cook') == false) {
             player.onScreenDisplay.setActionBar({ translate: 'farmersdelight.skillet.invalid_item' });
@@ -107,9 +109,9 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], SKilletBlock.prototype, "placeBlock", null);
 __decorate([
-    methodEventSub(world.afterEvents.itemUseOn),
+    methodEventSub(world.afterEvents.playerInteractWithBlock),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [ItemUseOnAfterEvent]),
+    __metadata("design:paramtypes", [PlayerInteractWithBlockAfterEvent]),
     __metadata("design:returntype", void 0)
 ], SKilletBlock.prototype, "useOnBlock", null);
 //# sourceMappingURL=SkilletBlock.js.map

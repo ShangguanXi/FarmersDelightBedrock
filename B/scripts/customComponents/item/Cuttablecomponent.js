@@ -7,22 +7,25 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { ItemUseOnBeforeEvent, world } from "@minecraft/server";
-import { methodEventSub } from "../lib/eventHelper";
-export class RedStone {
-    place(args) {
-        const ItemStack = args.itemStack;
-        const face = args.blockFace;
-        const block = args.block;
-        const redstone_list = ["minecraft:redstone", "repeater", "comparator", "redstone_torch"];
-        if (ItemStack.typeId != ("minecraft:redstone" || "minecraft:air"))
-            ;
+import { StartupEvent, system } from "@minecraft/server";
+import { methodEventSub } from "../../lib/eventHelper";
+class CuttableComponent {
+    constructor() {
+        this.onUseOn = this.onUseOn.bind(this);
+    }
+    onUseOn(args, param) {
+        param.params;
+    }
+}
+export class CuttableComponentRegister {
+    register(args) {
+        args.itemComponentRegistry.registerCustomComponent('farmersdelight:cuttable', new CuttableComponent());
     }
 }
 __decorate([
-    methodEventSub(world.beforeEvents.itemUseOn),
+    methodEventSub(system.beforeEvents.startup),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [ItemUseOnBeforeEvent]),
+    __metadata("design:paramtypes", [StartupEvent]),
     __metadata("design:returntype", void 0)
-], RedStone.prototype, "place", null);
-//# sourceMappingURL=RedStone.js.map
+], CuttableComponentRegister.prototype, "register", null);
+//# sourceMappingURL=Cuttablecomponent.js.map

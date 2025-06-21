@@ -1,4 +1,4 @@
-import { BlockComponentPlayerInteractEvent, BlockComponentRandomTickEvent,BlockComponentPlayerDestroyEvent, BlockCustomComponent, Dimension, Vector3, WorldInitializeBeforeEvent, world, EntityInventoryComponent, ItemStack } from "@minecraft/server";
+import { BlockComponentPlayerInteractEvent, BlockComponentRandomTickEvent, BlockCustomComponent, BlockComponentPlayerBreakEvent,Dimension, Vector3, world, EntityInventoryComponent, ItemStack, system, StartupEvent } from "@minecraft/server";
 import { RandomUtil } from "../../lib/RandomUtil";
 import { ItemUtil } from "../../lib/ItemUtil";
 import { methodEventSub } from "../../lib/eventHelper";
@@ -10,6 +10,7 @@ class MushroomColonyComonent implements BlockCustomComponent {
     constructor() {
         this.onRandomTick = this.onRandomTick.bind(this);
         this.onPlayerInteract = this.onPlayerInteract.bind(this);
+        this.onPlayerBreak = this.onPlayerBreak.bind(this);
     }
     onPlayerInteract(args: BlockComponentPlayerInteractEvent): void {
         const player = args.player;
@@ -53,8 +54,8 @@ class MushroomColonyComonent implements BlockCustomComponent {
         }
 
     }
-    onPlayerDestroy(args: BlockComponentPlayerDestroyEvent): void {
-        const brokenPerm = args.destroyedBlockPermutation;
+    onPlayerBreak(args: BlockComponentPlayerBreakEvent): void {
+        const brokenPerm = args.brokenBlockPermutation;
         const blockId = brokenPerm.type.id;
         const player = args.player;
         const inventory = player?.getComponent("inventory") as EntityInventoryComponent;
@@ -100,8 +101,8 @@ class MushroomColonyComonent implements BlockCustomComponent {
 
 }
 export class MushroomColonyComonentRegister{
-    @methodEventSub(world.beforeEvents.worldInitialize)
-    register(args:WorldInitializeBeforeEvent){
+    @methodEventSub(system.beforeEvents.startup)
+    register(args:StartupEvent){
         args.blockComponentRegistry.registerCustomComponent('farmersdelight:mushroom_colony', new MushroomColonyComonent());
     }
   

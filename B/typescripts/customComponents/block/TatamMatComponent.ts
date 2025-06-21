@@ -1,4 +1,4 @@
-import { Block, BlockComponentTickEvent, BlockCustomComponent, BlockComponentPlayerPlaceBeforeEvent, BlockPermutation, Container, Direction, system, EntityInventoryComponent, WorldInitializeBeforeEvent, world } from "@minecraft/server";
+import { Block, BlockComponentTickEvent, BlockCustomComponent, BlockComponentPlayerPlaceBeforeEvent, BlockPermutation, Container, Direction, system, EntityInventoryComponent, world, StartupEvent } from "@minecraft/server";
 import { EntityUtil } from "../../lib/EntityUtil";
 import { ItemUtil } from "../../lib/ItemUtil";
 import { methodEventSub } from "../../lib/eventHelper";
@@ -11,6 +11,7 @@ class TatamMatComponent implements BlockCustomComponent {
     beforeOnPlayerPlace(args: BlockComponentPlayerPlaceBeforeEvent): void {
         const block = args.block;
         const player = args.player;
+        const dimension = args.dimension;
         
         const inventory = player?.getComponent("inventory") as EntityInventoryComponent;
         const container = inventory?.container;
@@ -41,7 +42,7 @@ class TatamMatComponent implements BlockCustomComponent {
             if (!other?.isAir) return
             const mainPerm = BlockPermutation.resolve('farmersdelight:tatami_mat_main', { 'minecraft:cardinal_direction': direction, 'farmersdelight:init': true });
             const otherPerm = BlockPermutation.resolve('farmersdelight:tatami_mat_other', { 'minecraft:cardinal_direction': otherDirection, 'farmersdelight:init': true });
-            world.playSound("dig.cloth", block.location)
+            dimension.playSound("dig.cloth", block.location)
             
             block?.setPermutation(mainPerm);
             other?.setPermutation(otherPerm);
@@ -82,8 +83,8 @@ class TatamMatComponent implements BlockCustomComponent {
     }
 }
 export class TatamMatComponentRegister {
-    @methodEventSub(world.beforeEvents.worldInitialize)
-    register(args: WorldInitializeBeforeEvent) {
+    @methodEventSub(system.beforeEvents.startup)
+    register(args: StartupEvent) {
         args.blockComponentRegistry.registerCustomComponent('farmersdelight:tatami_mat', new TatamMatComponent());
     }
 
