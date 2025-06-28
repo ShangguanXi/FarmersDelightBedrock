@@ -1,6 +1,6 @@
 import { Block, Container, ContainerSlot, Entity, EntityInventoryComponent, ItemStack, ItemStartUseOnAfterEvent, PlayerInteractWithBlockBeforeEvent, PlayerPlaceBlockAfterEvent, Vector3, system, world } from "@minecraft/server";
-import { methodEventSub } from "../lib/eventHelper";
-import { BlockWithEntity } from "./BlockWithEntity";
+import { methodEventSub } from "../../lib/eventHelper";
+import { BlockWithEntity } from "../BlockWithEntity";
 
 
 //potItem用于放置厨锅时暂时存储厨锅物品数据，方便读取lore

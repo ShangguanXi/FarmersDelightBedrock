@@ -1,6 +1,6 @@
 import { Block, Container, Entity, EntityInventoryComponent, EntitySpawnAfterEvent, ItemStack, Vector3, system, world } from "@minecraft/server";
 import { methodEventSub } from "../../lib/eventHelper";
-import { BlockEntity, BlockEntityData } from "./BlockEntity";
+import { BlockEntity, BlockEntityData } from "../entity/BlockEntity";
 import ObjectUtil from "../../lib/ObjectUtil";
 import { vanillaCookingPotRecipe } from "../../data/recipe/cookingPotRecipe";
 import { CookingPotRecipe } from "../../lib/CookingPotRecipe";

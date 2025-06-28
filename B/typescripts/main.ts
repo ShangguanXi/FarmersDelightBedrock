@@ -1,6 +1,6 @@
 
-import { CookingPotBlock } from "./block/CookingPotBlock";
-import { CookingPotBlockEntity } from "./block/entity/CookingPotBlockEntity";
+import { CookingPotBlock } from "./block/cookingPot/CookingPotBlock";
+import { CookingPotBlockEntity } from "./block/cookingPot/CookingPotBlockEntity";
 import { CuttingBoardBlock } from "./block/cuttingBoard/CuttingBoardBlock";
 import { CuttingBoardBlockEntity } from "./block/cuttingBoard/CuttingBoardBlockEntity";
 import { StoveBlock } from "./block/StoveBlock";
