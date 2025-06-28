@@ -15,9 +15,11 @@
       "minecraft:tags": {
         "tags": [
           "farmersdelight:is_raw_fish",
-          "farmersdelight:can_cook",
           "farmersdelight:cabbage_roll_ingredients"
         ]
+      },
+      "farmersdelight:cookable": {
+        "result": "farmersdelight:cooked_salmon_slice"
       },
       "minecraft:use_animation": "eat",
       "minecraft:use_modifiers": {

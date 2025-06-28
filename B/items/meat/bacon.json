@@ -12,10 +12,12 @@
           "default": "farmersdelight:bacon"
         }
       },
+      "farmersdelight:cookable": {
+        "result": "farmersdelight:cooked_bacon"
+      },
       "minecraft:tags": {
         "tags": [
           "farmersdelight:is_raw_porkchop",
-          "farmersdelight:can_cook",
           "farmersdelight:cabbage_roll_ingredients"
         ]
       },

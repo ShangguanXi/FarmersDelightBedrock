@@ -1,0 +1,70 @@
+import { Block, Entity, ItemStack, ScoreboardObjective, Vector3, system, world } from "@minecraft/server";
+import { methodEventSub } from "../../lib/eventHelper";
+import { BlockEntity } from "../entity/BlockEntity";
+import { heatConductors, heatSources } from "../../data/heatBlocks";
+import { CookableComponentParams } from "../../customComponents/item/CookableComonent";
+
+const skilletV2: any[] = [];
+for (let i = 0; i < 5; i++) {
+  const json: any = {};
+  json.x = (Math.random() * 2 - 1) * 0.15 * 0.5;
+  json.z = (Math.random() * 2 - 1) * 0.15 * 0.5;
+  skilletV2.push(json);
+}
+
+//检查热源
+function heatCheck(block: Block) {
+  const blockBelow = block.below()
+  if (heatSources.includes(blockBelow?.typeId as string) || blockBelow?.hasTag('farmersdelight:heat_source')) return true
+  if (heatConductors.includes(blockBelow?.typeId as string) || blockBelow?.hasTag('farmersdelight:heat_conductors')) {
+    const blockBelow2 = block.below(2)
+    if (heatSources.includes(blockBelow2?.typeId as string) || blockBelow2?.hasTag('farmersdelight:heat_source')) return true
+  }
+  return false
+}
+
+export class SkilletEntity extends BlockEntity {
+  @methodEventSub(world.afterEvents.dataDrivenEntityTrigger, { entityTypes: ["farmersdelight:skillet"], eventTypes: ["farmersdelight:skillet_tick"] })
+  tick(args: any) {
+    const entityBlockData = super.blockEntityData(args.entity);
+    if (!entityBlockData) return;
+    const entity = entityBlockData.entity;
+    const { x, y, z } = entity.location;
+    const itemId = entity.getDynamicProperty("farmersdelight:item") as string;
+    let totalAmount = entity.getDynamicProperty("farmersdelight:amount") as number;
+    let canAddAmount = entity.getDynamicProperty("farmersdelight:canAdd") as number;
+    super.blockEntityLoot(entityBlockData, "farmersdelight:skillet_block", itemId == "undefined" ? undefined : [itemId], totalAmount);
+    const name: string[] = itemId.split(':');
+    const dimension = entity.dimension
+    const particleName: string = name[0] == 'minecraft' ? `farmersdelight:${name[0]}_skillet_${name[1]}` : `${name[0]}:skillet_${name[1]}`;
+    const count = entity.getDynamicProperty("farmersdelight:amount") as number || 0;
+    let particleCount = count > 48 ? 5 : (count > 32 ? 4 : (count > 16 ? 3 : (count > 1 ? 2 : count == 1 ? 1 : 0)));
+    for (let index = 0; index < particleCount; index++) {
+      dimension.spawnParticle(particleName, { x: x + skilletV2[index].x, y: y + 0.07 + 0.03 * (index + 1), z: z + skilletV2[index].z });
+    }
+    // 烹饪
+    if (!heatCheck(entityBlockData.block)) return;
+    const cookDataProperty = entity.getDynamicProperty("farmersdelight:cookData") as string || "{}"
+    if (cookDataProperty == "{}") return
+    let cookData = JSON.parse(cookDataProperty);
+    if (cookData.datas.length == 0) return
+    for (let i = cookData.datas.length - 1; i >= 0; i--) {
+      if (cookData.datas[i].time > 0) {
+        cookData.datas[i].time -= 1
+      }
+      if (cookData.datas[i].time == 0) {
+        const name: string[] = itemId.split(':');
+        if (name[0] == 'minecraft') entity.runCommand(`loot spawn ${x} ${y + 0.4} ${z} loot "minecraft/cook/${itemId.split(":")[1]}"`);
+        else {
+          const cookable = (new ItemStack(itemId)).getComponent("farmersdelight:cookable")?.customComponentParameters.params as CookableComponentParams
+          dimension.spawnItem(new ItemStack(cookable.result, cookData.datas[i].count), { x, y: y + 0.4, z })
+        }
+        entity.setDynamicProperty("farmersdelight:amount", totalAmount - cookData.datas[i].count);
+        entity.setDynamicProperty("farmersdelight:canAdd", canAddAmount + cookData.datas[i].count);
+        cookData.datas.splice(i, 1)
+      }
+    }
+    if (cookData.datas.length == 0) entity.setDynamicProperty("farmersdelight:item", "undefined");
+    entity.setDynamicProperty("farmersdelight:cookData", JSON.stringify(cookData));
+  }
+}

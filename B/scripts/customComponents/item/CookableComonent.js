@@ -9,17 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { StartupEvent, system } from "@minecraft/server";
 import { methodEventSub } from "../../lib/eventHelper";
-class RiceSeedComponent {
+class CookableComonent {
     constructor() {
         this.onUseOn = this.onUseOn.bind(this);
     }
     onUseOn(args, param) {
-        let params = param.params;
+        param.params;
     }
 }
-export class RiceSeedComponentRegister {
+export class CookableComonentRegister {
     register(args) {
-        args.itemComponentRegistry.registerCustomComponent('farmersdelight:cuttable', new RiceSeedComponent());
+        args.itemComponentRegistry.registerCustomComponent('farmersdelight:cookable', new CookableComonent());
     }
 }
 __decorate([
@@ -27,5 +27,5 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [StartupEvent]),
     __metadata("design:returntype", void 0)
-], RiceSeedComponentRegister.prototype, "register", null);
-//# sourceMappingURL=CuttingBroadcomponent.js.map
+], CookableComonentRegister.prototype, "register", null);
+//# sourceMappingURL=CookableComonent.js.map

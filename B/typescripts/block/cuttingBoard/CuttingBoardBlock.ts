@@ -66,12 +66,8 @@ export class CuttingBoardBlock extends BlockWithEntity {
                     const loots = CuttingBoardBlock.processCuttingLoot(params)
                     const toolType = (params.tool.type).toString()
                     if ((toolType == "tag" && mainHand.hasTag(params.tool.name)) || (mainHand.typeId == params.tool.name && toolType == "item")) {
-
                         entity.dimension.playSound(`block.farmersdelight.cutting_board`, entity.location);
-                        for (const loot of loots) {
-                            block.dimension.spawnItem(new ItemStack(loot.id, loot.count), { x: x + 0.5, y: y + 0.5, z: z + 0.5 });
-                        }
-
+                        for (const loot of loots) block.dimension.spawnItem(new ItemStack(loot.id, loot.count), { x: x + 0.5, y: y + 0.5, z: z + 0.5 });
                         if (EntityUtil.gameMode(player)) {
                             ItemUtil.clearOffhandItem(player)
                             ItemUtil.damageItem(container, player.selectedSlotIndex)
@@ -101,9 +97,7 @@ export class CuttingBoardBlock extends BlockWithEntity {
                     entity.setDynamicProperty('farmersdelight:cutTool', `{"${params.tool.type}": "${params.tool.name}", "mode": "${params.tool.type}"}`);
                     entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', `{"item":"${offHand.typeId}"}`);
                     entity.setProperty('farmersdelight:is_block_mode', params.is_block ?? false);
-                    if (params.is_block) {
-                        entity.runCommand(`replaceitem entity @s slot.weapon.mainhand 0 ${offHand.typeId}`);
-                    }
+                    if (params.is_block) entity.runCommand(`replaceitem entity @s slot.weapon.mainhand 0 ${offHand.typeId}`);
                 }
                 else {
                     for (const tool of toolMapping) {
@@ -111,18 +105,14 @@ export class CuttingBoardBlock extends BlockWithEntity {
                             entity.setDynamicProperty('farmersdelight:cutTool', `{"${tool.mode}": "${tool.tool}", "mode": "${tool.mode}"}`);
                             entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', `{"item":"${offHand.typeId}"}`);
                             entity.setProperty('farmersdelight:is_block_mode', tool.isBlock);
-                            if (tool.isBlock) {
-                                entity.runCommand(`replaceitem entity @s slot.weapon.mainhand 0 ${offHand.typeId}`);
-                            }
+                            if (tool.isBlock) entity.runCommand(`replaceitem entity @s slot.weapon.mainhand 0 ${offHand.typeId}`);
                             return;
                         }
-                       else player.onScreenDisplay.setActionBar({ translate: 'farmersdelight.tips.cant_cut' });
-                       return;
+                        else player.onScreenDisplay.setActionBar({ translate: 'farmersdelight.tips.cant_cut' });
+                        return;
                     }
                 }
-                if (EntityUtil.gameMode(player)) {
-                    ItemUtil.clearOffhandItem(player)
-                }
+                if (EntityUtil.gameMode(player)) ItemUtil.clearOffhandItem(player)
             }
 
         }
@@ -152,9 +142,7 @@ export class CuttingBoardBlock extends BlockWithEntity {
                 }
 
             }
-            if (EntityUtil.gameMode(player)) {
-                ItemUtil.clearItem(container, player.selectedSlotIndex)
-            }
+            if (EntityUtil.gameMode(player)) ItemUtil.clearItem(container, player.selectedSlotIndex)
         }
         if ((!offHand) && mainHand && itemId != "undefined") {
             const cutToolData = JSON.parse(entity.getDynamicProperty("farmersdelight:cutTool") as string) || {};
@@ -172,9 +160,7 @@ export class CuttingBoardBlock extends BlockWithEntity {
                     for (const loot of loots) {
                         block.dimension.spawnItem(new ItemStack(loot.id, loot.count), { x: x + 0.5, y: y + 0.5, z: z + 0.5 });
                     }
-                    if (EntityUtil.gameMode(player)) {
-                        ItemUtil.damageItem(container, player.selectedSlotIndex);
-                    }
+                    if (EntityUtil.gameMode(player)) ItemUtil.damageItem(container, player.selectedSlotIndex);
                 }
                 else {
                     const [namespace, id] = itemId.split(':');
@@ -182,15 +168,11 @@ export class CuttingBoardBlock extends BlockWithEntity {
                     entity.setDynamicProperty('farmersdelight:cutTool', undefined);
                     entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', '{"item":"undefined"}');
                     entity.runCommand(`replaceitem entity @s slot.weapon.mainhand 0 air`);
-                    if (EntityUtil.gameMode(player)) {
-                        ItemUtil.damageItem(container, player.selectedSlotIndex);
-                    }
+                    if (EntityUtil.gameMode(player)) ItemUtil.damageItem(container, player.selectedSlotIndex);
                 }
                 entity.dimension.playSound(`block.farmersdelight.cutting_board`, entity.location);
             }
-            else {
-                player.onScreenDisplay.setActionBar({ translate: 'farmersdelight.tips.false_tool' });
-            }
+            else player.onScreenDisplay.setActionBar({ translate: 'farmersdelight.tips.false_tool' });
 
         }
         if ((offHand || !offHand) && (!mainHand) && itemId != "undefined") {

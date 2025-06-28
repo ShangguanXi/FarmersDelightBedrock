@@ -12,10 +12,12 @@
           "default": "farmersdelight:chicken_cuts"
         }
       },
+      "farmersdelight:cookable": {
+        "result": "farmersdelight:cooked_chicken_cuts"
+      },
       "minecraft:tags": {
         "tags": [
           "farmersdelight:is_raw_chicken",
-          "farmersdelight:can_cook",
           "farmersdelight:wolf_prey",
           "farmersdelight:cabbage_roll_ingredients"
         ]
