@@ -32,7 +32,9 @@ export class Knife {
         try {
             const equipment = entity.getComponent(EntityEquippableComponent.componentId);
             const mainHand = equipment?.getEquipmentSlot(EquipmentSlot.Mainhand);
-            if (!mainHand?.hasTag('farmersdelight:is_knife'))
+            if (!mainHand.getItem())
+                return;
+            if (!mainHand.getItem()?.getComponent("farmersdelight:increase_production"))
                 return;
             const Looting = equipment?.getEquipmentSlot(EquipmentSlot.Mainhand).getItem()?.getComponent("minecraft:enchantable")?.getEnchantment("looting")?.level;
             const health = hurt.getComponent(EntityHealthComponent.componentId);

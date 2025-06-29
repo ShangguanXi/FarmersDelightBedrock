@@ -7,23 +7,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { PlayerPlaceBlockAfterEvent, world } from "@minecraft/server";
-import { methodEventSub } from "../lib/eventHelper";
-import { BlockWithEntity } from "./BlockWithEntity";
-export class Cabinets extends BlockWithEntity {
-    placeBlock(args) {
-        const block = args.block;
-        if (!block.hasTag('farmersdelight:cabinet'))
-            return;
-        const { x, y, z } = block.location;
-        const entity = super.setBlock(args.block.dimension, { x: x + 0.5, y: y, z: z + 0.5 }, block.typeId);
-        entity.nameTag = `tile.${entity.typeId}.name`;
+import { StartupEvent, system } from "@minecraft/server";
+import { methodEventSub } from "../../lib/eventHelper";
+class IncreaseProductionComponent {
+}
+export class IncreaseProductionComponentRegister {
+    register(args) {
+        args.itemComponentRegistry.registerCustomComponent('farmersdelight:increase_production', new IncreaseProductionComponent());
     }
 }
 __decorate([
-    methodEventSub(world.afterEvents.playerPlaceBlock),
+    methodEventSub(system.beforeEvents.startup),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [PlayerPlaceBlockAfterEvent]),
+    __metadata("design:paramtypes", [StartupEvent]),
     __metadata("design:returntype", void 0)
-], Cabinets.prototype, "placeBlock", null);
-//# sourceMappingURL=Cabinets.js.map
+], IncreaseProductionComponentRegister.prototype, "register", null);
+//# sourceMappingURL=IncreaseProductionComponent.js.map

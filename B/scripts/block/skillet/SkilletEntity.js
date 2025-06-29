@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { ItemStack, world } from "@minecraft/server";
 import { methodEventSub } from "../../lib/eventHelper";
-import { BlockEntity } from "../entity/BlockEntity";
+import { BlockEntity } from "../../lib/BlockEntity";
 import { heatConductors, heatSources } from "../../data/heatBlocks";
 const skilletV2 = [];
 for (let i = 0; i < 5; i++) {

@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { EquipmentSlot, ItemStack, PlayerInteractWithBlockAfterEvent, PlayerPlaceBlockAfterEvent, world } from "@minecraft/server";
 import { methodEventSub } from "../../lib/eventHelper";
-import { BlockWithEntity } from "../BlockWithEntity";
+import { BlockWithEntity } from "../../lib/BlockWithEntity";
 import { EntityUtil } from "../../lib/EntityUtil";
 import { BlockofAxeList, BlockofKnifeList, BlockofPickaxeList, ItemofPickaxeList, BlockofShovelList, ItemofAxeList, ItemofKnifeList, ItemofShearsList } from "../../data/recipe/cuttingBoardRecipe";
 import { ItemUtil } from "../../lib/ItemUtil";

@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { PlayerInteractWithEntityAfterEvent, world } from "@minecraft/server";
 import { methodEventSub } from "../../lib/eventHelper";
-import { BlockEntity } from "../entity/BlockEntity";
+import { BlockEntity } from "../../lib/BlockEntity";
 export class CabinetsBlockEntity extends BlockEntity {
     tick(args) {
         const entityBlockData = super.blockEntityData(args.entity);

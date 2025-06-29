@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { ItemStack, PlayerInteractWithBlockAfterEvent, PlayerPlaceBlockAfterEvent, world } from "@minecraft/server";
 import { methodEventSub } from "../../lib/eventHelper";
-import { BlockWithEntity } from "../BlockWithEntity";
+import { BlockWithEntity } from "../../lib/BlockWithEntity";
 import { vanillaItemList } from "../../data/recipe/cookRecipe";
 import { EntityUtil } from "../../lib/EntityUtil";
 import { ItemUtil } from "../../lib/ItemUtil";

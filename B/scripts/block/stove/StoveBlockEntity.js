@@ -1,4 +1,4 @@
-import { BlockEntity } from "./BlockEntity";
+import { BlockEntity } from "../../lib/BlockEntity";
 const xOffset = 0.3;
 const yOffset = 0.2;
 const stoveOffsets = [

@@ -1,6 +1,6 @@
 import { Block, BlockPermutation, Container, Entity, EntityInventoryComponent, EquipmentSlot, ItemStack, Player, PlayerInteractWithBlockAfterEvent, PlayerPlaceBlockAfterEvent, Vector3, world } from "@minecraft/server";
 import { methodEventSub } from "../../lib/eventHelper";
-import { BlockWithEntity } from "../BlockWithEntity";
+import { BlockWithEntity } from "../../lib/BlockWithEntity";
 import { EntityUtil } from "../../lib/EntityUtil";
 import {
     BlockofAxeList,

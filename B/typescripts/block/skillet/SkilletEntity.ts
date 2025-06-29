@@ -1,6 +1,6 @@
 import { Block, Entity, ItemStack, ScoreboardObjective, Vector3, system, world } from "@minecraft/server";
 import { methodEventSub } from "../../lib/eventHelper";
-import { BlockEntity } from "../entity/BlockEntity";
+import { BlockEntity } from "../../lib/BlockEntity";
 import { heatConductors, heatSources } from "../../data/heatBlocks";
 import { CookableComponentParams } from "../../customComponents/item/CookableComonent";
 

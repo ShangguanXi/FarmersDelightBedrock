@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { PlayerPlaceBlockAfterEvent, world } from "@minecraft/server";
 import { methodEventSub } from "../../lib/eventHelper";
-import { BlockWithEntity } from "../BlockWithEntity";
+import { BlockWithEntity } from "../../lib/BlockWithEntity";
 export class Cabinets extends BlockWithEntity {
     placeBlock(args) {
         const block = args.block;

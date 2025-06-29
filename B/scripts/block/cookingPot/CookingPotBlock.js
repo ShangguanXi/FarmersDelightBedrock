@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { ItemStack, PlayerInteractWithBlockBeforeEvent, PlayerPlaceBlockAfterEvent, system, world } from "@minecraft/server";
 import { methodEventSub } from "../../lib/eventHelper";
-import { BlockWithEntity } from "../BlockWithEntity";
+import { BlockWithEntity } from "../../lib/BlockWithEntity";
 //potItem用于放置厨锅时暂时存储厨锅物品数据，方便读取lore
 //别问我为啥不写类里面，因为写类里面的时候在constructor里还是正常的map，一到事件里就莫名其妙变成了undefined，ts也没报错，查不出来原因
 let potItem = new Map();

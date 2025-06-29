@@ -1,6 +1,6 @@
 import { Entity, PlayerInteractWithEntityAfterEvent, world } from "@minecraft/server";
 import { methodEventSub } from "../../lib/eventHelper";
-import { BlockEntity } from "../entity/BlockEntity";
+import { BlockEntity } from "../../lib/BlockEntity";
 
 
 export class CabinetsBlockEntity extends BlockEntity {

@@ -1,7 +1,5 @@
 import { Dimension, Entity, ItemStack, Vector3, world, Block, ScoreboardObjective, Container, EntityInventoryComponent, system } from "@minecraft/server";
-import ObjectUtil from "../../lib/ObjectUtil";
-
-
+import ObjectUtil from "./ObjectUtil";
 
 export class BlockEntity {
     

@@ -1,6 +1,6 @@
 import { Block, PlayerPlaceBlockAfterEvent, Vector3, world } from "@minecraft/server";
 import { methodEventSub } from "../../lib/eventHelper";
-import { BlockWithEntity } from "../BlockWithEntity";
+import { BlockWithEntity } from "../../lib/BlockWithEntity";
 
 export class Cabinets extends BlockWithEntity {
     @methodEventSub(world.afterEvents.playerPlaceBlock)

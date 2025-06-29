@@ -1,5 +1,5 @@
 import { ItemStack, system } from "@minecraft/server";
-import ObjectUtil from "../../lib/ObjectUtil";
+import ObjectUtil from "./ObjectUtil";
 export class BlockEntity {
     //获取方块实体数据
     blockEntityData(entity) {
