@@ -72,7 +72,6 @@ export class Skillet extends BlockWithEntity {
                     ItemUtil.clearItem(container, player.selectedSlotIndex, amount);
             }
             else if (itemId == currentItem) {
-                const maxAmount = itemStack.maxAmount;
                 if (canAddAmount - amount >= 0) {
                     cookData.datas.push({ count: amount, time: time });
                     entity.setDynamicProperty("farmersdelight:canAdd", canAddAmount - amount);
@@ -84,7 +83,7 @@ export class Skillet extends BlockWithEntity {
                 if (canAddAmount - amount < 0 && canAddAmount != 0) {
                     cookData.datas.push({ count: canAddAmount, time: time });
                     entity.setDynamicProperty("farmersdelight:canAdd", 0);
-                    entity.setDynamicProperty("farmersdelight:amount", maxAmount);
+                    entity.setDynamicProperty("farmersdelight:amount", 64);
                     entity.setDynamicProperty("farmersdelight:cookData", JSON.stringify(cookData));
                     if (EntityUtil.gameMode(player))
                         ItemUtil.clearItem(container, player.selectedSlotIndex, canAddAmount);

@@ -1,5 +1,5 @@
 {
-  "format_version": "1.21.70",
+  "format_version": "1.21.90",
   "minecraft:item": {
     "components": {
       "minecraft:damage": 5,
@@ -111,6 +111,7 @@
           "default": "farmersdelight:netherite_knife"
         }
       },
+      "farmersdelight:increase_production":{},
       "minecraft:max_stack_size": 1,
       "minecraft:repairable": {
         "repair_items": [

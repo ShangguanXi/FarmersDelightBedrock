@@ -10,8 +10,8 @@ import { SkilletEntity } from "./block/skillet/SkilletEntity";
 import { Knife } from "./item/Knife";
 import { CookingPotRecipeRegistries } from "./init/CookingPotRecipeRegistries";
 import { Food } from "./item/Food";
-import { Cabinets } from "./block/Cabinets"
-import { CabinetsBlockEntity } from "./block/entity/CabinetsBlockEntity";
+import { Cabinets } from "./block/cabinet/Cabinets"
+import { CabinetsBlockEntity } from "./block/cabinet/CabinetsBlockEntity";
 import { CuttingBoardRegistries } from "./init/CuttingBoardRecipeRegistries";
 import { RiceBlock } from "./block/Rice";
 import { CookRecipeRegistries } from "./init/CookRecipeRegistries";
@@ -34,14 +34,18 @@ import { StoveComponentRegister } from "./customComponents/block/StoveComponent"
 import { IncompleteBlocks } from "./item/IncompleteBlocks";
 import { CuttableComponentRegister } from "./customComponents/item/Cuttablecomponent";
 import { CookableComonentRegister } from "./customComponents/item/CookableComonent";
+import { CabinetComponentRegister } from "./customComponents/block/CabinetComponent.ts";
+import { IncreaseProductionComponentRegister } from "./customComponents/item/IncreaseProductionComponent";
 
 
 CookingPotRecipeRegistries.initCookingPotScoRegistries();
 CuttingBoardRegistries.initCuttingBoardScoRegistries();
 CookRecipeRegistries.initCookScoRegistries();
 
-new RiceRollMedleyComponentRegister();
 new CropComponentRegister()
+new CabinetComponentRegister();
+
+new RiceRollMedleyComponentRegister();
 new InteractComponentRegister()
 new WildCropComponentRegister();
 new RichSoilComponentRegister();
@@ -56,7 +60,7 @@ new StoveComponentRegister();
 
 new CuttableComponentRegister();
 new CookableComonentRegister();
-
+new IncreaseProductionComponentRegister();
 
 new ColoniesComonentRegister();
 new RiceSeedComponentRegister();

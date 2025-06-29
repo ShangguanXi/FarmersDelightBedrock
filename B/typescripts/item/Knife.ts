@@ -1,7 +1,8 @@
-import { Block, BlockPermutation, Container, ContainerSlot, Dimension, Direction, Entity, EntityEquippableComponent, EntityHealthComponent, EntityInventoryComponent, EntityIsChargedComponent, EntityOnFireComponent, EquipmentSlot, ItemEnchantableComponent, ItemStack, Player, PlayerBreakBlockAfterEvent, PlayerInteractWithBlockAfterEvent, Vector3, world } from "@minecraft/server";
+import { Block, BlockPermutation, Container, ContainerSlot, Dimension, Direction, Entity, EntityDataDrivenTriggerEventOptions, EntityEquippableComponent, EntityHealthComponent, EntityInventoryComponent, EntityIsChargedComponent, EntityOnFireComponent, EquipmentSlot, ItemEnchantableComponent, ItemStack, Player, PlayerBreakBlockAfterEvent, PlayerInteractWithBlockAfterEvent, Vector3, world } from "@minecraft/server";
 import { methodEventSub } from "../lib/eventHelper";
 import { EntityUtil } from "../lib/EntityUtil";
 import { ItemUtil } from "../lib/ItemUtil";
+import { walkUpBindingElementsAndPatterns } from "typescript";
 
 function spawnLoot(path: string, dimenion: Dimension, location: Vector3) {
     return dimenion.runCommand(`loot spawn ${location.x} ${location.y} ${location.z} loot "${path}"`)
@@ -24,8 +25,9 @@ export class Knife {
         try {
             const equipment = entity.getComponent(EntityEquippableComponent.componentId) as EntityEquippableComponent;
             const mainHand: ContainerSlot | undefined = equipment?.getEquipmentSlot(EquipmentSlot.Mainhand);
-            if (!mainHand?.hasTag('farmersdelight:is_knife')) return;
-            const Looting: number | undefined = (equipment?.getEquipmentSlot(EquipmentSlot.Mainhand).getItem()?.getComponent("minecraft:enchantable")as ItemEnchantableComponent)?.getEnchantment("looting")?.level;
+            if (!mainHand.getItem()) return;
+            if (!mainHand.getItem()?.getComponent("farmersdelight:increase_production")) return;
+            const Looting: number | undefined = (equipment?.getEquipmentSlot(EquipmentSlot.Mainhand).getItem()?.getComponent("minecraft:enchantable") as ItemEnchantableComponent)?.getEnchantment("looting")?.level;
             const health = hurt.getComponent(EntityHealthComponent.componentId) as EntityHealthComponent
             const onFire = (hurt.getComponent('minecraft:onfire') as EntityOnFireComponent)?.onFireTicksRemaining;
             const random = Math.floor(Math.random() * 10);
@@ -84,7 +86,7 @@ export class Knife {
             if (blockTypeId == "minecraft:tallgrass") {
                 spawnLoot('farmersdelight/straw_from_grass', block.dimension, block.location);
             }
-            else if (blockTypeId == "minecraft:short_grass"||blockTypeId == "minecraft:fern") {
+            else if (blockTypeId == "minecraft:short_grass" || blockTypeId == "minecraft:fern") {
                 spawnLoot('farmersdelight/straw_from_grass', block.dimension, block.location);
             }
             else if (blockTypeId == "minecraft:wheat") {
@@ -125,4 +127,15 @@ export class Knife {
             dimenion.spawnItem(new ItemStack('minecraft:pumpkin_seeds', 4), block.location);
         }
     }
+
+   /* @methodEventSub(world.afterEvents.dataDrivenEntityTrigger, { entityTypes: ["minecraft:item"], eventTypes: ["minecraft:item_tick"] })
+    tick(args: any) {
+        const entity = args.entity as Entity
+        const itemComp = entity.getComponent('minecraft:item')
+        const typeId = itemComp?.itemStack.typeId
+        if (typeId != "farmersdelight:netherite_knife") return
+        entity.triggerEvent("minecraft:fire_resistance")
+        console.warn(entity.getComponent('minecraft:health')?.currentValue);
+        
+    }*/
 }

@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.70",
+    "format_version": "1.21.90",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:acacia_cabinet",
@@ -116,6 +116,21 @@
             },
             "minecraft:destructible_by_explosion": {
                 "explosion_resistance": 36
+            },
+            "farmersdelight:cabinet": "farmersdelight:acacia_cabinet",
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "acacia_cabinet_side"
+                },
+                "up": {
+                    "texture": "acacia_cabinet_top"
+                },
+                "down": {
+                    "texture": "acacia_cabinet_top"
+                },
+                "south": {
+                    "texture": "acacia_cabinet_front"
+                }
             },
             "minecraft:geometry": "geometry.block",
             "tag:wood": {},
