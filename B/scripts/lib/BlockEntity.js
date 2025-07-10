@@ -7,8 +7,7 @@ export class BlockEntity {
             const dimension = entity?.dimension ?? undefined;
             const blockEntityDataLocation = entity.getDynamicProperty('farmersdelight:blockEntityDataLocation');
             const block = dimension.getBlock(blockEntityDataLocation);
-            // const scoreboardObjective = world.scoreboard.getObjective(entity.typeId + entity.id) ?? null;
-            const blockEntityData = { entity: entity, dimension: dimension, blockEntityDataLocation: blockEntityDataLocation, block: block, /*scoreboardObjective: scoreboardObjective */ };
+            const blockEntityData = { entity: entity, dimension: dimension, blockEntityDataLocation: blockEntityDataLocation, block: block };
             return blockEntityData;
         }
         catch (error) {
@@ -52,9 +51,6 @@ export class BlockEntity {
     ;
     //清除方块实体
     static clearEntity(args) {
-        /*if (args.scoreboardObjective) {
-            world.scoreboard.removeObjective(args.entity.typeId + args.entity.id);
-        }*/
         system.runTimeout(() => {
             args.entity.remove();
         });

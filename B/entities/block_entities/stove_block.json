@@ -45,6 +45,10 @@
           "farmersdelight_tick_block_entity"
         ]
       },
+      "minecraft:inventory": {
+        "inventory_size": 6,
+        "private": true
+      },
       "minecraft:is_hidden_when_invisible": {},
       "minecraft:breathable": {
         "breathes_solids": true

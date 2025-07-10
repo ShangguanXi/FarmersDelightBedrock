@@ -97,19 +97,23 @@
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "stove_side",
-                            "ambient_occlusion":0
+                            "ambient_occlusion": false, 
+                            "face_dimming": false
                         },
                         "up": {
                             "texture": "stove_top_on",
-                            "ambient_occlusion":0
+                            "ambient_occlusion": false, 
+                            "face_dimming": false
                         },
                         "down": {
                             "texture": "stove_bottom",
-                            "ambient_occlusion":0
+                            "ambient_occlusion": false, 
+                            "face_dimming": false
                         },
                         "north": {
                             "texture": "stove_front_on",
-                            "ambient_occlusion":0
+                            "ambient_occlusion": false, 
+                            "face_dimming": false
                         }
                     },
                     "minecraft:light_emission": 12,

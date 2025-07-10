@@ -25,10 +25,8 @@ export class BlockWithEntity {
             };
         };
         if (!entityBlock) return undefined;
-        const scoreboardObjective: ScoreboardObjective | null = 
-        world.scoreboard.getObjective(entityBlock.typeId + entityBlock.id) ?? null;
         const blockEntityDataLocation: Vector3 = entityBlock.getDynamicProperty('farmersdelight:blockEntityDataLocation') as Vector3;
-        return { block: block, dimension: dimension, entity: entityBlock, scoreboardObjective: scoreboardObjective, blockEntityDataLocation: blockEntityDataLocation };
+        return { block: block, dimension: dimension, entity: entityBlock, blockEntityDataLocation: blockEntityDataLocation };
     }
 } 
 
@@ -37,5 +35,4 @@ interface BlockEntityData{
     readonly dimension: Dimension, 
     readonly blockEntityDataLocation: Vector3, 
     readonly block: Block, 
-    readonly scoreboardObjective: ScoreboardObjective | null
 }

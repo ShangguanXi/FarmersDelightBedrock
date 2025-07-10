@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { ItemStack, world } from "@minecraft/server";
+import { ItemStack, system, world } from "@minecraft/server";
 import { methodEventSub } from "../../lib/eventHelper";
 import { BlockEntity } from "../../lib/BlockEntity";
 import { heatConductors, heatSources } from "../../data/heatBlocks";
@@ -58,14 +58,24 @@ export class SkilletEntity extends BlockEntity {
         let cookData = JSON.parse(cookDataProperty);
         if (cookData.datas.length == 0)
             return;
+        if (system.currentTick % 80 == 0)
+            entity.dimension.playSound("block.farmersdelight.skillet.sizzle", entity.location);
+        if (system.currentTick % 4 == 0) {
+            const random = Math.floor(Math.random() * 10);
+            entity.dimension.spawnParticle(`farmersdelight:skillet_steam_${random}`, { x: x, y: y + 0.25, z: z });
+        }
+        ;
         for (let i = cookData.datas.length - 1; i >= 0; i--) {
             if (cookData.datas[i].time > 0) {
                 cookData.datas[i].time -= 1;
             }
             if (cookData.datas[i].time == 0) {
                 const name = itemId.split(':');
-                if (name[0] == 'minecraft')
-                    entity.runCommand(`loot spawn ${x} ${y + 0.4} ${z} loot "minecraft/cook/${itemId.split(":")[1]}"`);
+                if (name[0] == 'minecraft') {
+                    for (let a = 0; a <= cookData.datas[i].count; a++) {
+                        entity.runCommand(`loot spawn ${x} ${y + 0.4} ${z} loot "minecraft/cook/${itemId.split(":")[1]}"`);
+                    }
+                }
                 else {
                     const cookable = (new ItemStack(itemId)).getComponent("farmersdelight:cookable")?.customComponentParameters.params;
                     dimension.spawnItem(new ItemStack(cookable.result, cookData.datas[i].count), { x, y: y + 0.4, z });

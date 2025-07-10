@@ -1,9 +1,10 @@
-import { Block, Container, Entity, EntityInventoryComponent, ItemStack, PlayerInteractWithBlockAfterEvent, Player, PlayerPlaceBlockAfterEvent, ScoreboardObjective, ScoreboardScoreInfo, Vector3, world } from "@minecraft/server";
+import { Block, Container, Entity, ItemStack, PlayerInteractWithBlockAfterEvent, Player, PlayerPlaceBlockAfterEvent, Vector3, world } from "@minecraft/server";
 import { methodEventSub } from "../../lib/eventHelper";
 import { BlockWithEntity } from "../../lib/BlockWithEntity";
 import { vanillaItemList } from "../../data/recipe/cookRecipe";
 import { EntityUtil } from "../../lib/EntityUtil";
 import { ItemUtil } from "../../lib/ItemUtil";
+import { CookableComponentParams } from "../../customComponents/item/CookableComonent";
 
 
 
@@ -11,12 +12,15 @@ export class StoveBlock extends BlockWithEntity {
     @methodEventSub(world.afterEvents.playerPlaceBlock)
     placeBlock(args: PlayerPlaceBlockAfterEvent) {
         const block: Block = args.block;
-        if (!block.hasTag("farmersdelight:stove") ) return;
+        if (!block.hasTag("farmersdelight:stove")) return;
         //放置直接为点燃状态
         block.setPermutation(block.permutation.withState('farmersdelight:is_working', true));
         const { x, y, z }: Vector3 = block.location;
         const entity: Entity = super.setBlock(args.block.dimension, { x: x + 0.5, y: y, z: z + 0.5 }, block.typeId);
-        world.scoreboard.addObjective(entity.typeId + entity.id, entity.id).setScore('amount', 0);
+        for (let i = 0; i < 6; i++) {
+            entity.setDynamicProperty(`farmersdelight:item_${i}_time`, 0);
+            entity.setDynamicProperty(`farmersdelight:item_${i}_max_time`, 0);
+        }
     }
     @methodEventSub(world.afterEvents.playerInteractWithBlock)
     useOnBlock(args: PlayerInteractWithBlockAfterEvent) {
@@ -26,51 +30,45 @@ export class StoveBlock extends BlockWithEntity {
             location: args.block.location
         });
         const player: Player = args.player;
-        const itemStack: ItemStack | undefined = args.itemStack;
-        if (!itemStack) return
-        const inventory = player?.getComponent("inventory") as EntityInventoryComponent;
-        const container:Container|undefined = inventory?.container
+        const inventory = player?.getComponent("inventory")
+        const container: Container | undefined = inventory?.container
         if (!data || !container) return;
         const entity: Entity = data.entity;
+        const itemStack: ItemStack | undefined = args.itemStack;
+        const stoveContainer = entity?.getComponent("inventory")?.container
+        if (!stoveContainer) return
         const { x, y, z }: Vector3 = args.block.location;
-        const sco: ScoreboardObjective | null = data.scoreboardObjective;
-        const air: Block | undefined = player.dimension.getBlock({ x: x, y: y + 1, z: z });
-        if (entity && sco && air?.typeId == "minecraft:air") {
-            const amount: number = sco.getScore('amount') ?? 0;
-            if (vanillaItemList.includes(itemStack.typeId) || itemStack.hasTag('farmersdelight:can_cook')) {
-                if (amount < 6) {
-                    sco.setScore('amount', amount + 1);
-                    sco.setScore(`${itemStack.typeId}/${amount + 1}`, 30);
-                    if (EntityUtil.gameMode(player)) ItemUtil.clearItem(container, player.selectedSlotIndex);
+        //空手取下
+        if (!itemStack) {
+            for (let i = 5; i >= 0; i--) {
+                const stoveitemStack = stoveContainer.getItem(i)
+                if (stoveitemStack) {
+                    entity.dimension.spawnItem(stoveitemStack, { x, y: y + 1.4, z })
+                    ItemUtil.clearItem(stoveContainer, i)
+                    return
                 }
             }
-            else {
-                const arr: string[] = [];
-                const itemStackScoresData: ScoreboardScoreInfo[] = sco.getScores();
-                for (const itemStackData of itemStackScoresData) {
-                    const itemStack: string = itemStackData.participant.displayName;
-                    if (itemStack == 'amount') continue;
-                    arr.push(itemStack);
-                }
-                for (let i = 0; i < arr.length - 1; i++) {
-                    for (let j = 0; j < arr.length - 1 - i; j++) {
-                        const num1: number = parseInt(arr[j].split('/')[1]);
-                        const num2: number = parseInt(arr[j + 1].split('/')[1]);
-                        if (num1 > num2) {
-                            [arr[j + 1], arr[j]] = [arr[j], arr[j + 1]]
-                        }
-                    }
-                }
-                if (arr.length && sco) {
-                    const itemStackData: string = arr[amount - 1];
-                    const itemStack: string = itemStackData.split('/')[0];
-                    sco.removeParticipant(itemStackData);
-                    sco.setScore('amount', (sco.getScore('amount') ?? 0) - 1);
-                    entity.dimension.spawnItem(new ItemStack(itemStack), entity.location);
-                }
-            }
-
+            return
         }
-        
+        //放置
+        const upBlock = player.dimension.getBlock({ x: x, y: y + 1, z: z })
+        if (!(upBlock?.isAir)) return
+        const cookable = itemStack.getComponent("farmersdelight:cookable")
+        if (!vanillaItemList.includes(itemStack.typeId) && !cookable) return
+        const params = cookable?.customComponentParameters.params as CookableComponentParams
+        const maxTime = cookable ? (params.time ? params.time*20 : 200*20) : 200*20
+        const emptySlotsCount = stoveContainer?.emptySlotsCount
+        if (emptySlotsCount == 0) return
+        itemStack.amount = 1
+        for (let i = 0; i < 6; i++) {
+            if (stoveContainer?.getItem(i) == undefined) {
+                stoveContainer?.setItem(i, itemStack)
+                entity.setDynamicProperty(`farmersdelight:item_${i}_max_time`, maxTime);
+                return
+            }
+        }
+        ItemUtil.clearItem(container, player.selectedSlotIndex)
+
+
     }
 }

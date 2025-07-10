@@ -62,7 +62,8 @@ export class Skillet extends BlockWithEntity {
         const amount = itemStack.amount;
         const cookable = itemStack.getComponent("farmersdelight:cookable");
         if (vanillaItemList.includes(itemId) || cookable) {
-            const time = cookable ? (cookable.customComponentParameters.params.time ? cookable.customComponentParameters.params.time : 200) : 200;
+            const params = cookable?.customComponentParameters.params;
+            const time = cookable ? (params.time ? params.time * 20 : 200 * 20) : 200 * 20;
             if (currentItem == "undefined") {
                 entity.setDynamicProperty("farmersdelight:item", itemId);
                 entity.setDynamicProperty("farmersdelight:canAdd", itemStack.maxAmount - amount);
@@ -90,7 +91,7 @@ export class Skillet extends BlockWithEntity {
                 }
             }
             if (Skillet.heatCheck(args.block) && canAddAmount > 0) {
-                entity.runCommand("playsound block.farmersdelight.skillet.add_food @a ~ ~ ~ 1 1");
+                entity.dimension.playSound("block.farmersdelight.skillet.add_food", entity.location);
             }
         }
         else {
