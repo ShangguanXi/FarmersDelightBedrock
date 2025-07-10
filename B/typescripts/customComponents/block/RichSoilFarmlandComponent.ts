@@ -2,6 +2,7 @@ import { BlockComponentPlayerInteractEvent, BlockCustomComponent, BlockComponent
 import { ItemUtil } from "../../lib/ItemUtil";
 import { methodEventSub } from "../../lib/eventHelper";
 import type * as minecraftvanilladata from '@minecraft/vanilla-data';
+import { CropsComponentParams } from "./CropComponent";
 
 function handlePlanting(seedId: string, crop: string, topLocation: Vector3, container: Container, player: Player, block: Block) {
     if (!player) return;
@@ -13,17 +14,14 @@ function handlePlanting(seedId: string, crop: string, topLocation: Vector3, cont
         block.dimension.setBlockType(topLocation, crop);
         ItemUtil.clearItem(container, player.selectedSlotIndex);
     }
+    return
 }
 class RichSoilFarmlandComponent implements BlockCustomComponent {
     constructor() {
         this.onRandomTick = this.onRandomTick.bind(this);
         this.onPlayerInteract = this.onPlayerInteract.bind(this);
 
-
-
     }
-
-  
     onPlayerInteract(args: BlockComponentPlayerInteractEvent): void {
         const player = args.player;
         const face = args.face;
@@ -34,6 +32,8 @@ class RichSoilFarmlandComponent implements BlockCustomComponent {
         if (!player) return;
         if (!container) return;
         const selectedSlot = container?.getSlot(player.selectedSlotIndex)
+        const itemStack = selectedSlot.getItem()
+        if (!itemStack) return
         const topLocation = { x: block.location.x, y: block.location.y + 1, z: block.location.z }
         const topBlockId = dimension.getBlock(topLocation)?.typeId
         if (face == 'Up' && topBlockId == "minecraft:air") {
@@ -43,21 +43,12 @@ class RichSoilFarmlandComponent implements BlockCustomComponent {
             handlePlanting("minecraft:beetroot_seeds", "farmersdelight:rich_soil_beetroot", topLocation, container, player, block)
             handlePlanting("minecraft:torchflower_seeds", "farmersdelight:rich_soil_torchflower_crop", topLocation, container, player, block)
             handlePlanting("minecraft:torchflower", "farmersdelight:rich_soil_torchflower", topLocation, container, player, block)
-            handlePlanting("farmersdelight:cabbage_seeds", "farmersdelight:cabbage_block", topLocation, container, player, block)
-            handlePlanting("farmersdelight:onion", "farmersdelight:onion_block", topLocation, container, player, block)
-            handlePlanting("farmersdelight:tomato_seeds", "farmersdelight:tomato_block", topLocation, container, player, block)
-            const tags = selectedSlot?.getTags();
-            if (!tags) return
-            for (const tag of tags){
-                if (tag.includes("farmersdelight:seed")){
-                    const crop = tag.split("-")[1]
-                    dimension.playSound("dig.grass", block.location);
-                    block.dimension.setBlockType(topLocation, crop);
-                    ItemUtil.clearItem(container, player.selectedSlotIndex);
-                }
+            const seed = itemStack.getComponent("farmersdelight:seed")
+            if (seed) {
+                const crop = (seed.customComponentParameters.params as string)
+                handlePlanting(itemStack.typeId, crop, topLocation, container, player, block)
 
             }
-           
 
         }
 
@@ -91,25 +82,15 @@ class RichSoilFarmlandComponent implements BlockCustomComponent {
             }
         };
         const cropBlock = dimension.getBlock({ x: x, y: y + 1, z: z });
-        if (!cropBlock?.hasTag('crop')) return;
-        let maxGrowth;
-        let growthProperty
-        for (const tag of cropBlock.getTags()) {
-            const growthTag: RegExpMatchArray | null = tag.match(/max_growth:([0-9]+)/);
-            const propertyTag: RegExpMatchArray | null = tag.match(/growth_property:(.*)/);
-            if (growthTag) {
-                maxGrowth = Number(growthTag[1]);
-            }
-            if (propertyTag) {
-                growthProperty = (propertyTag[1] as keyof minecraftvanilladata.BlockStateSuperset)
-            }
-        }
-        if (maxGrowth && growthProperty) {
-            const growth: number = cropBlock.permutation.getState(growthProperty) as number;
-            if (growth < maxGrowth) {
-                cropBlock.setPermutation(cropBlock.permutation.withState(growthProperty, growth + 1));
-                dimension.spawnParticle("minecraft:crop_growth_emitter", { x: block.location.x + 0.5, y: block.location.y + 1.5, z: block.location.z + 0.5 })
-            }
+        if (!cropBlock) return
+        const cropComp = cropBlock?.getComponent("farmersdelight:crop")
+        if (!cropComp) return
+        const params = cropComp?.customComponentParameters.params as CropsComponentParams
+        const growth: number = cropBlock.permutation.getState(params.state.name) as number;
+        if (growth < params.state.age) {
+            cropBlock.setPermutation(cropBlock.permutation.withState(params.state.name, growth + 1));
+            dimension.spawnParticle("minecraft:crop_growth_emitter", { x: block.location.x + 0.5, y: block.location.y + 1.5, z: block.location.z + 0.5 })
+            console.warn(growth < params.state.age)
         }
 
 

@@ -324,7 +324,6 @@ class RiceComponent {
 }
 export class CropComponentRegister {
     register(args) {
-        console.warn(4488888);
         args.blockComponentRegistry.registerCustomComponent('farmersdelight:crop', new CropsComponent());
         args.blockComponentRegistry.registerCustomComponent('farmersdelight:torchflower', new TorchflowerComponent());
         args.blockComponentRegistry.registerCustomComponent('farmersdelight:sugar_cane', new SugarCaneComponent());

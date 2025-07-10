@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.70",
+    "format_version": "1.21.90",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:tatami",
@@ -7,7 +7,15 @@
                 "category": "items"
             },
             "states": {
-                "farmersdelight:connection": ["none", "north", "south", "east", "west", "up", "down"]
+                "farmersdelight:connection": [
+                    "none",
+                    "north",
+                    "south",
+                    "east",
+                    "west",
+                    "up",
+                    "down"
+                ]
             }
         },
         "permutations": [
@@ -35,7 +43,7 @@
                         "*": {
                             "texture": "tatami_mat_half"
                         },
-                        "odd":{
+                        "odd": {
                             "texture": "tatami_mat_odd"
                         },
                         "north": "odd",
@@ -59,7 +67,7 @@
                         "*": {
                             "texture": "tatami_mat_half"
                         },
-                        "odd":{
+                        "odd": {
                             "texture": "tatami_mat_even"
                         },
                         "north": "odd",
@@ -83,7 +91,7 @@
                         "*": {
                             "texture": "tatami_mat_half"
                         },
-                        "odd":{
+                        "odd": {
                             "texture": "tatami_mat_odd"
                         },
                         "north": "odd",
@@ -107,7 +115,7 @@
                         "*": {
                             "texture": "tatami_mat_half"
                         },
-                        "odd":{
+                        "odd": {
                             "texture": "tatami_mat_even"
                         },
                         "north": "odd",
@@ -131,7 +139,7 @@
                         "*": {
                             "texture": "tatami_mat_half"
                         },
-                        "odd":{
+                        "odd": {
                             "texture": "tatami_mat_odd"
                         },
                         "north": "odd",
@@ -155,7 +163,7 @@
                         "*": {
                             "texture": "tatami_mat_half"
                         },
-                        "odd":{
+                        "odd": {
                             "texture": "tatami_mat_even"
                         },
                         "north": "odd",
@@ -180,9 +188,12 @@
                     1
                 ]
             },
-            "minecraft:custom_components": [
-              "farmersdelight:tatami"
-            ],
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "tatami_mat_half"
+                }
+            },
+            "farmersdelight:tatami": {},
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 0.6
             },
@@ -191,7 +202,7 @@
             },
             "minecraft:geometry": "geometry.tatami",
             "tag:tatami": {},
-            "tag:farmersdelight:straw_blocks":{}
+            "tag:farmersdelight:straw_blocks": {}
         }
     }
 }

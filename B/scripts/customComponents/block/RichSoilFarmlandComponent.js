@@ -22,6 +22,7 @@ function handlePlanting(seedId, crop, topLocation, container, player, block) {
         block.dimension.setBlockType(topLocation, crop);
         ItemUtil.clearItem(container, player.selectedSlotIndex);
     }
+    return;
 }
 class RichSoilFarmlandComponent {
     constructor() {
@@ -40,6 +41,9 @@ class RichSoilFarmlandComponent {
         if (!container)
             return;
         const selectedSlot = container?.getSlot(player.selectedSlotIndex);
+        const itemStack = selectedSlot.getItem();
+        if (!itemStack)
+            return;
         const topLocation = { x: block.location.x, y: block.location.y + 1, z: block.location.z };
         const topBlockId = dimension.getBlock(topLocation)?.typeId;
         if (face == 'Up' && topBlockId == "minecraft:air") {
@@ -49,19 +53,10 @@ class RichSoilFarmlandComponent {
             handlePlanting("minecraft:beetroot_seeds", "farmersdelight:rich_soil_beetroot", topLocation, container, player, block);
             handlePlanting("minecraft:torchflower_seeds", "farmersdelight:rich_soil_torchflower_crop", topLocation, container, player, block);
             handlePlanting("minecraft:torchflower", "farmersdelight:rich_soil_torchflower", topLocation, container, player, block);
-            handlePlanting("farmersdelight:cabbage_seeds", "farmersdelight:cabbage_block", topLocation, container, player, block);
-            handlePlanting("farmersdelight:onion", "farmersdelight:onion_block", topLocation, container, player, block);
-            handlePlanting("farmersdelight:tomato_seeds", "farmersdelight:tomato_block", topLocation, container, player, block);
-            const tags = selectedSlot?.getTags();
-            if (!tags)
-                return;
-            for (const tag of tags) {
-                if (tag.includes("farmersdelight:seed")) {
-                    const crop = tag.split("-")[1];
-                    dimension.playSound("dig.grass", block.location);
-                    block.dimension.setBlockType(topLocation, crop);
-                    ItemUtil.clearItem(container, player.selectedSlotIndex);
-                }
+            const seed = itemStack.getComponent("farmersdelight:seed");
+            if (seed) {
+                const crop = seed.customComponentParameters.params;
+                handlePlanting(itemStack.typeId, crop, topLocation, container, player, block);
             }
         }
     }
@@ -98,26 +93,17 @@ class RichSoilFarmlandComponent {
         }
         ;
         const cropBlock = dimension.getBlock({ x: x, y: y + 1, z: z });
-        if (!cropBlock?.hasTag('crop'))
+        if (!cropBlock)
             return;
-        let maxGrowth;
-        let growthProperty;
-        for (const tag of cropBlock.getTags()) {
-            const growthTag = tag.match(/max_growth:([0-9]+)/);
-            const propertyTag = tag.match(/growth_property:(.*)/);
-            if (growthTag) {
-                maxGrowth = Number(growthTag[1]);
-            }
-            if (propertyTag) {
-                growthProperty = propertyTag[1];
-            }
-        }
-        if (maxGrowth && growthProperty) {
-            const growth = cropBlock.permutation.getState(growthProperty);
-            if (growth < maxGrowth) {
-                cropBlock.setPermutation(cropBlock.permutation.withState(growthProperty, growth + 1));
-                dimension.spawnParticle("minecraft:crop_growth_emitter", { x: block.location.x + 0.5, y: block.location.y + 1.5, z: block.location.z + 0.5 });
-            }
+        const cropComp = cropBlock?.getComponent("farmersdelight:crop");
+        if (!cropComp)
+            return;
+        const params = cropComp?.customComponentParameters.params;
+        const growth = cropBlock.permutation.getState(params.state.name);
+        if (growth < params.state.age) {
+            cropBlock.setPermutation(cropBlock.permutation.withState(params.state.name, growth + 1));
+            dimension.spawnParticle("minecraft:crop_growth_emitter", { x: block.location.x + 0.5, y: block.location.y + 1.5, z: block.location.z + 0.5 });
+            console.warn(growth < params.state.age);
         }
     }
 }

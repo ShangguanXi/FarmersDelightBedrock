@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.70",
+    "format_version": "1.21.90",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:crimson_cabinet",
@@ -111,13 +111,28 @@
             }
         ],
         "components": {
+            "farmersdelight:cabinet": "farmersdelight:crimson_cabinet",
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "crimson_cabinet_side"
+                },
+                "up": {
+                    "texture": "crimson_cabinet_top"
+                },
+                "down": {
+                    "texture": "crimson_cabinet_top"
+                },
+                "south": {
+                    "texture": "crimson_cabinet_front"
+                }
+            },
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 1
             },
             "minecraft:destructible_by_explosion": {
                 "explosion_resistance": 36
             },
-            "minecraft:geometry": "geometry.block",
+            "minecraft:geometry": "minecraft:geometry.full_block",
             "tag:wood": {},
             "tag:farmersdelight:cabinet": {}
         }

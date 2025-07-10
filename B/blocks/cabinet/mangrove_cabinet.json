@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.70",
+    "format_version": "1.21.90",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:mangrove_cabinet",
@@ -111,13 +111,28 @@
             }
         ],
         "components": {
+            "farmersdelight:cabinet": "farmersdelight:mangrove_cabinet",
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "mangrove_cabinet_side"
+                },
+                "up": {
+                    "texture": "mangrove_cabinet_top"
+                },
+                "down": {
+                    "texture": "mangrove_cabinet_top"
+                },
+                "south": {
+                    "texture": "mangrove_cabinet_front"
+                }
+            },
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 1
             },
             "minecraft:destructible_by_explosion": {
                 "explosion_resistance": 36
             },
-            "minecraft:geometry": "geometry.block",
+            "minecraft:geometry": "minecraft:geometry.full_block",
             "tag:wood": {},
             "tag:farmersdelight:cabinet": {}
         }

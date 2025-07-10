@@ -265,7 +265,7 @@
                 "conditions": [
                     {
                         "block_filter": [
-                            "farmland",
+                            "minecraft:farmland",
                             "farmersdelight:rich_soil_farmland"
                         ],
                         "allowed_faces": [

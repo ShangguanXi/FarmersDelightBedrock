@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.70",
+    "format_version": "1.21.90",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:rich_soil_torchflower_crop",
@@ -123,12 +123,18 @@
             }
         ],
         "components": {
-            "minecraft:redstone_conductivity":{
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "torchflower_crop_stage0",
+                    "ambient_occlusion": false,
+                    "face_dimming": false,
+                    "render_method": "alpha_test"
+                }
+            },
+            "minecraft:redstone_conductivity": {
                 "allows_wire_to_step_down": false
             },
-            "minecraft:custom_components": [
-                "farmersdelight:torchflower"
-            ],
+            "farmersdelight:torchflower": {},
             "minecraft:liquid_detection": {
                 "detection_rules": [
                     {
@@ -146,7 +152,6 @@
                 "explosion_resistance": 0.0
             },
             "minecraft:collision_box": false,
-            
             "minecraft:placement_filter": {
                 "conditions": [
                     {
@@ -159,7 +164,6 @@
                     }
                 ]
             },
-            
             "minecraft:selection_box": {
                 "origin": [
                     -3,

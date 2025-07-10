@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.70",
+    "format_version": "1.21.90",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:red_mushroom_colony",
@@ -141,12 +141,18 @@
             }
         ],
         "components": {
-            "minecraft:redstone_conductivity":{
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "red_mushroom_colony_stage3",
+                    "ambient_occlusion": false,
+                    "face_dimming": false,
+                    "render_method": "alpha_test"
+                }
+            },
+            "minecraft:redstone_conductivity": {
                 "allows_wire_to_step_down": false
             },
-            "minecraft:custom_components": [
-                "farmersdelight:mushroom_colony"
-            ],
+            "farmersdelight:mushroom_colony": {},
             "minecraft:liquid_detection": {
                 "detection_rules": [
                     {
@@ -167,9 +173,7 @@
             "minecraft:destructible_by_explosion": {
                 "explosion_resistance": 0.0
             },
-            
             "minecraft:collision_box": false,
-            
             "minecraft:placement_filter": {
                 "conditions": [
                     {
@@ -184,7 +188,6 @@
                     }
                 ]
             },
-            
             "tag:crop": {},
             "tag:compost_activators": {}
         }

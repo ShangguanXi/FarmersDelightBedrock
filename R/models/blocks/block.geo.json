@@ -3,7 +3,7 @@
 	"minecraft:geometry": [
 		{
 			"description": {
-				"identifier": "geometry.block",
+				"identifier": "minecraft:geometry.full_block",
 				"texture_width": 16,
 				"texture_height": 16,
 				"visible_bounds_width": 3,

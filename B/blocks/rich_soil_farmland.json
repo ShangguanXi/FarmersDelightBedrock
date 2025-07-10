@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.70",
+    "format_version": "1.21.90",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:rich_soil_farmland",
@@ -8,7 +8,14 @@
             },
             "states": {
                 "farmersdelight:moisturized_amount": [
-                    0,1,2,3,4,5,6,7
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
                 ]
             }
         },
@@ -44,9 +51,18 @@
             }
         ],
         "components": {
-            "minecraft:custom_components": [
-                "farmersdelight:rich_soil_farmland"
-            ],
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "rich_soil_farmland_moist_side"
+                },
+                "top": {
+                    "texture": "rich_soil_farmland_moist"
+                },
+                "bottom": {
+                    "texture": "rich_soil"
+                }
+            },
+            "farmersdelight:rich_soil_farmland": {},
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 0.6
             },

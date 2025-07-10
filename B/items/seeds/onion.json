@@ -1,11 +1,11 @@
 {
-  "format_version": "1.21.70",
+  "format_version": "1.21.90",
   "minecraft:item": {
     "components": {
       "minecraft:block_placer": {
         "block": "farmersdelight:onion_block",
         "use_on": [
-          "farmland",
+          "minecraft:farmland",
           "farmersdelight:rich_soil_farmland"
         ]
       },
@@ -14,6 +14,7 @@
         "nutrition": 2,
         "saturation_modifier": 0.4
       },
+      "farmersdelight:seed": "farmersdelight:onion_block",
       "minecraft:icon": {
         "textures": {
           "default": "farmersdelight:onion"

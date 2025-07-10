@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.70",
+    "format_version": "1.21.90",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:rice_block",
@@ -139,14 +139,21 @@
             }
         ],
         "components": {
-            "minecraft:redstone_conductivity":{
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "rice_supporting",
+                    "ambient_occlusion": false,
+                    "render_method": "alpha_test"
+                }
+            },
+            "minecraft:redstone_conductivity": {
                 "allows_wire_to_step_down": false
             },
             "minecraft:liquid_detection": {
                 "detection_rules": [
                     {
                         "on_liquid_touches": "no_reaction",
-                        "can_contain_liquid":true
+                        "can_contain_liquid": true
                     }
                 ]
             },
@@ -156,9 +163,7 @@
                     1
                 ]
             },
-            "minecraft:custom_components": [
-                "farmersdelight:rice"
-            ],
+            "farmersdelight:rice": {},
             "minecraft:loot": "loot_tables/farmersdelight/crops/farmersdelight_rice.json",
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 0.0

@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.70",
+    "format_version": "1.21.90",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:bamboo_cabinet",
@@ -111,13 +111,28 @@
             }
         ],
         "components": {
+            "farmersdelight:cabinet": "farmersdelight:bamboo_cabinet",
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "bamboo_cabinet_side"
+                },
+                "up": {
+                    "texture": "bamboo_cabinet_top"
+                },
+                "down": {
+                    "texture": "bamboo_cabinet_top"
+                },
+                "south": {
+                    "texture": "bamboo_cabinet_front"
+                }
+            },
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 1
             },
             "minecraft:destructible_by_explosion": {
                 "explosion_resistance": 36
             },
-            "minecraft:geometry": "geometry.block",
+            "minecraft:geometry": "minecraft:geometry.full_block",
             "tag:wood": {},
             "tag:farmersdelight:cabinet": {}
         }

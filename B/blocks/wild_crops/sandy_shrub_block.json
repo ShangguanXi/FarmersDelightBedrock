@@ -1,13 +1,11 @@
 {
-    "format_version": "1.21.70",
+    "format_version": "1.21.90",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:sandy_shrub"
         },
         "components": {
-            "minecraft:custom_components": [
-                "farmersdelight:sandy_shrub"
-            ],
+            "farmersdelight:wild_crop":{},
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 0.0
             },
@@ -34,7 +32,7 @@
                     {
                         "block_filter": [
                             "dirt",
-                            "grass",
+                            "grass_block",
                             "sand"
                         ],
                         "allowed_faces": [

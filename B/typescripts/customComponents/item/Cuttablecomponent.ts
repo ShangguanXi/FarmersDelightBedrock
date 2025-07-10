@@ -1,7 +1,5 @@
 import { BlockCustomComponent, ItemComponentUseOnEvent, StartupEvent, world, Dimension, Vector3, ItemCustomComponentAlreadyRegisteredError, ItemCustomComponent, Direction, Container, system, Player, EntityInventoryComponent, CustomComponentParameters } from "@minecraft/server";
 import { methodEventSub } from "../../lib/eventHelper";
-import { ItemUtil } from "../../lib/ItemUtil";
-import { EntityUtil } from "../../lib/EntityUtil";
 
 type LootItem = [string, number, number?]
 export type CuttingBroadComponentParams = {

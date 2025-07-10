@@ -1,5 +1,5 @@
 {
-  "format_version": "1.21.70",
+  "format_version": "1.21.90",
   "minecraft:block": {
     "description": {
       "identifier": "farmersdelight:rope",
@@ -37,18 +37,26 @@
       }
     },
     "components": {
-      "minecraft:redstone_conductivity":{
-          "allows_wire_to_step_down": false
+      "minecraft:redstone_conductivity": {
+        "allows_wire_to_step_down": false
       },
       "minecraft:tick": {
-          "interval_range": [
-              1,
-              1
-          ]
+        "interval_range": [
+          1,
+          1
+        ]
       },
-      "minecraft:custom_components": [
-        "farmersdelight:rope"
-      ],
+      "minecraft:geometry": {
+        "identifier": "geometry.rope"
+      },
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "rope",
+          "ambient_occlusion": false,
+          "render_method": "alpha_test"
+        }
+      },
+      "farmersdelight:rope": {},
       "minecraft:destructible_by_mining": {
         "seconds_to_destroy": 0.0
       },

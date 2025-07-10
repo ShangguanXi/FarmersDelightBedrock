@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.70",
+    "format_version": "1.21.90",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:wild_rice",
@@ -43,7 +43,7 @@
                         "detection_rules": [
                             {
                                 "on_liquid_touches": "no_reaction",
-                                "can_contain_liquid":true
+                                "can_contain_liquid": true
                             }
                         ]
                     },
@@ -60,7 +60,7 @@
                             {
                                 "block_filter": [
                                     "dirt",
-                                    "grass"
+                                    "grass_block"
                                 ],
                                 "allowed_faces": [
                                     "up"
@@ -86,9 +86,7 @@
                     1
                 ]
             },
-            "minecraft:custom_components": [
-                "farmersdelight:wild_rice"
-            ],
+            "farmersdelight:wild_rice": {},
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 0.0
             },
@@ -121,10 +119,10 @@
                     10
                 ]
             },
-            "minecraft:redstone_conductivity":{
+            "minecraft:redstone_conductivity": {
                 "allows_wire_to_step_down": false
             },
-            "minecraft:loot": "loot_tables/farmersdelight/empty.json",
+            "minecraft:loot": "loot_tables/farmersdelight/crops/farmersdelight_wild_rice.json",
             "minecraft:collision_box": false
         }
     }

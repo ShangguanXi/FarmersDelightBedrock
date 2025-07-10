@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.70",
+    "format_version": "1.21.90",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:tatami_mat_main",
@@ -75,9 +75,7 @@
                     1
                 ]
             },
-            "minecraft:custom_components": [
-              "farmersdelight:tatami_mat"
-            ],
+            "farmersdelight:tatami_mat":{},
             "minecraft:material_instances": {
                 "*": {
                     "texture": "tatami_mat_odd"

@@ -1,14 +1,15 @@
 {
-  "format_version": "1.21.70",
+  "format_version": "1.21.90",
   "minecraft:item": {
     "components": {
       "minecraft:block_placer": {
         "block": "farmersdelight:tomato_block",
         "use_on": [
-          "farmland",
+          "minecraft:farmland",
           "farmersdelight:rich_soil_farmland"
         ]
       },
+      "farmersdelight:seed": "farmersdelight:tomato_block",
       "minecraft:icon": {
         "textures": {
           "default": "farmersdelight:tomato_seeds"

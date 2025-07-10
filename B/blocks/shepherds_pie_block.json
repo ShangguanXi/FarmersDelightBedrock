@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.70",
+    "format_version": "1.21.90",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:shepherds_pie_block",
@@ -105,12 +105,10 @@
             }
         ],
         "components": {
-            "minecraft:redstone_conductivity":{
+            "minecraft:redstone_conductivity": {
                 "allows_wire_to_step_down": false
             },
-            "minecraft:custom_components": [
-                "farmersdelight:interact"
-            ],
+            "farmersdelight:interact": {},
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 1.0
             },
@@ -118,6 +116,7 @@
             "minecraft:destructible_by_explosion": {
                 "explosion_resistance": 0.25
             },
+            "minecraft:geometry": "geometry.shepherds_pie_block_stage0",
             "minecraft:material_instances": {
                 "*": {
                     "texture": "shepherds_pie_side"

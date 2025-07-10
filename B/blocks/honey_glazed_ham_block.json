@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.70",
+    "format_version": "1.21.90",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:honey_glazed_ham_block",
@@ -105,7 +105,8 @@
             }
         ],
         "components": {
-            "minecraft:redstone_conductivity":{
+            "minecraft:geometry": "geometry.honey_glazed_ham_block_stage0",
+            "minecraft:redstone_conductivity": {
                 "allows_wire_to_step_down": false
             },
             "minecraft:destructible_by_mining": {
@@ -159,9 +160,7 @@
                     14.0
                 ]
             },
-            "minecraft:custom_components": [
-                "farmersdelight:interact"
-            ],
+            "farmersdelight:interact": {},
             "tag:farmersdelight.blockfood:4-item.minecraft:bowl": {},
             "tag:farmersdelight:blockfood": {}
         }

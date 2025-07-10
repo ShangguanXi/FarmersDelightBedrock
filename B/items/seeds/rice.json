@@ -1,10 +1,8 @@
 {
-  "format_version": "1.21.70",
+  "format_version": "1.21.90",
   "minecraft:item": {
     "components": {
-      "minecraft:custom_components": [
-        "farmersdelight:rice_seed"
-      ],
+      "farmersdelight:rice_seed":{},
       "minecraft:icon": {
         "textures": {
           "default": "farmersdelight:rice"

@@ -21,7 +21,7 @@ import { RiceRollMedleyComponentRegister } from "./customComponents/block/RiceRo
 import { RiceSeedComponentRegister } from "./customComponents/item/RiceSeedComponent";
 import { CropComponentRegister } from "./customComponents/block/CropComponent";
 import { InteractComponentRegister } from "./customComponents/block/InteractComponent";
-import { WildCropComponentRegister } from "./customComponents/block/WildCropComponent";
+import { WildCropComponent } from "./customComponents/block/WildCropComponent";
 import { RichSoilComponentRegister } from "./customComponents/block/RichSoilComponent";
 import { RichSoilFarmlandComponentRegister } from "./customComponents/block/RichSoilFarmlandComponent";
 import { MushroomColonyComonentRegister } from "./customComponents/block/MushroomColonyComonent";
@@ -36,6 +36,7 @@ import { CuttableComponentRegister } from "./customComponents/item/CuttableCompo
 import { CookableComonentRegister } from "./customComponents/item/CookableComponent";
 import { CabinetComponentRegister } from "./customComponents/block/CabinetComponent.ts";
 import { IncreaseProductionComponentRegister } from "./customComponents/item/IncreaseProductionComponent";
+import { SeedComponent } from "./customComponents/item/SeedComponent";
 
 
 CookingPotRecipeRegistries.initCookingPotScoRegistries();
@@ -47,7 +48,7 @@ new CabinetComponentRegister();
 
 new RiceRollMedleyComponentRegister();
 new InteractComponentRegister()
-new WildCropComponentRegister();
+new WildCropComponent();
 new RichSoilComponentRegister();
 new RichSoilFarmlandComponentRegister();
 new MushroomColonyComonentRegister();
@@ -56,7 +57,7 @@ new RopeComponentRegister();
 new TatamMatComponentRegister();
 new TatamComponentRegister();
 new StoveComponentRegister();
-
+new SeedComponent();
 
 new CuttableComponentRegister();
 new CookableComonentRegister();

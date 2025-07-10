@@ -7,14 +7,54 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { ItemComponentTypes, world, system, StartupEvent } from "@minecraft/server";
+import { system, StartupEvent, world, PlayerBreakBlockBeforeEvent, ItemComponentTypes } from "@minecraft/server";
 import { ItemUtil } from "../../lib/ItemUtil";
 import { methodEventSub } from "../../lib/eventHelper";
-function spawnLoot(path, dimenion, location) {
-    return dimenion.runCommand(`loot spawn ${location.x} ${location.y} ${location.z} loot "${path}"`);
-}
-class WildCropComponent {
+export class WildCropComponent {
     constructor() {
+        this.onPlace = this.onPlace.bind(this);
+    }
+    onPlace(args) { }
+    break(args) {
+        const block = args.block;
+        const itemStack = args.itemStack;
+        const player = args.player;
+        if (!itemStack)
+            return;
+        const enchant = itemStack.getComponent(ItemComponentTypes.Enchantable);
+        const silkTouch = enchant?.getEnchantment('silk_touch');
+        if (silkTouch || itemStack.typeId == "minecraft:shears") {
+            const container = player.getComponent("inventory")?.container;
+            if (!container)
+                return;
+            args.cancel = true;
+            system.runTimeout(() => {
+                ItemUtil.damageItem(container, player.selectedSlotIndex);
+                ItemUtil.spawnItem(block, block.typeId);
+            });
+        }
+    }
+    register(args) {
+        args.blockComponentRegistry.registerCustomComponent('farmersdelight:wild_crop', new WildCropComponent());
+        args.blockComponentRegistry.registerCustomComponent('farmersdelight:wild_rice', new WildRiceComponent());
+    }
+}
+__decorate([
+    methodEventSub(world.beforeEvents.playerBreakBlock),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [PlayerBreakBlockBeforeEvent]),
+    __metadata("design:returntype", void 0)
+], WildCropComponent.prototype, "break", null);
+__decorate([
+    methodEventSub(system.beforeEvents.startup),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [StartupEvent]),
+    __metadata("design:returntype", void 0)
+], WildCropComponent.prototype, "register", null);
+class WildRiceComponent {
+    constructor() {
+        this.beforeOnPlayerPlace = this.beforeOnPlayerPlace.bind(this);
+        this.onTick = this.onTick.bind(this);
         this.onPlayerBreak = this.onPlayerBreak.bind(this);
     }
     onPlayerBreak(args) {
@@ -40,76 +80,15 @@ class WildCropComponent {
             }
             ;
             if ((itemId != "minecraft:shears") && (!silkTouch)) {
-                spawnLoot(lootTable, dimension, block.location);
+                this.spawnLoot(lootTable, dimension, block.location);
             }
             ;
         }
         catch (error) {
-            spawnLoot(lootTable, dimension, block.location);
+            this.spawnLoot(lootTable, dimension, block.location);
         }
     }
     ;
-    getLootTable() {
-        return "";
-    }
-    lootItem() {
-        return "";
-    }
-}
-class WildBeetrootsComponent extends WildCropComponent {
-    getLootTable() {
-        return "farmersdelight/crops/farmersdelight_wild_beetroot";
-    }
-    lootItem() {
-        return "farmersdelight:wild_beetroots";
-    }
-}
-class WildCabbagesComponent extends WildCropComponent {
-    getLootTable() {
-        return "farmersdelight/crops/farmersdelight_wild_cabbage";
-    }
-    lootItem() {
-        return "farmersdelight:wild_cabbages";
-    }
-}
-class WildCarrotComponent extends WildCropComponent {
-    getLootTable() {
-        return "farmersdelight/crops/farmersdelight_wild_carrot";
-    }
-    lootItem() {
-        return "farmersdelight:wild_carrots";
-    }
-}
-class WildOnionComponent extends WildCropComponent {
-    getLootTable() {
-        return "farmersdelight/crops/farmersdelight_wild_onion";
-    }
-    lootItem() {
-        return "farmersdelight:wild_onions";
-    }
-}
-class WildPotatoComponent extends WildCropComponent {
-    getLootTable() {
-        return "farmersdelight/crops/farmersdelight_wild_potato";
-    }
-    lootItem() {
-        return "farmersdelight:wild_potatoes";
-    }
-}
-class WildTomatoComponent extends WildCropComponent {
-    getLootTable() {
-        return "farmersdelight/crops/farmersdelight_wild_tomato";
-    }
-    lootItem() {
-        return "farmersdelight:wild_tomatoes";
-    }
-}
-class WildRiceComponent extends WildCropComponent {
-    constructor() {
-        super();
-        this.beforeOnPlayerPlace = this.beforeOnPlayerPlace.bind(this);
-        this.onTick = this.onTick.bind(this);
-    }
     beforeOnPlayerPlace(args) {
         const player = args.player;
         const inventory = player?.getComponent("inventory");
@@ -143,6 +122,9 @@ class WildRiceComponent extends WildCropComponent {
             }
         }
     }
+    spawnLoot(path, dimenion, location) {
+        return dimenion.runCommand(`loot spawn ${location.x} ${location.y} ${location.z} loot "${path}"`);
+    }
     getLootTable() {
         return "farmersdelight/crops/farmersdelight_wild_rice";
     }
@@ -150,30 +132,4 @@ class WildRiceComponent extends WildCropComponent {
         return "farmersdelight:wild_rice";
     }
 }
-class SandyShrubComponent extends WildCropComponent {
-    getLootTable() {
-        return "farmersdelight/empty";
-    }
-    lootItem() {
-        return "farmersdelight:sandy_shrub";
-    }
-}
-export class WildCropComponentRegister {
-    register(args) {
-        args.blockComponentRegistry.registerCustomComponent('farmersdelight:wild_beetroots', new WildBeetrootsComponent());
-        args.blockComponentRegistry.registerCustomComponent('farmersdelight:wild_cabbages', new WildCabbagesComponent());
-        args.blockComponentRegistry.registerCustomComponent('farmersdelight:wild_carrots', new WildCarrotComponent());
-        args.blockComponentRegistry.registerCustomComponent('farmersdelight:wild_onions', new WildOnionComponent());
-        args.blockComponentRegistry.registerCustomComponent('farmersdelight:wild_potatoes', new WildPotatoComponent());
-        args.blockComponentRegistry.registerCustomComponent('farmersdelight:wild_tomatoes', new WildTomatoComponent());
-        args.blockComponentRegistry.registerCustomComponent('farmersdelight:wild_rice', new WildRiceComponent());
-        args.blockComponentRegistry.registerCustomComponent('farmersdelight:sandy_shrub', new SandyShrubComponent());
-    }
-}
-__decorate([
-    methodEventSub(system.beforeEvents.startup),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [StartupEvent]),
-    __metadata("design:returntype", void 0)
-], WildCropComponentRegister.prototype, "register", null);
 //# sourceMappingURL=WildCropComponent.js.map

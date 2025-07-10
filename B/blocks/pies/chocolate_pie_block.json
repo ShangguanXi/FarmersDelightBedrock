@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.70",
+    "format_version": "1.21.90",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:chocolate_pie_block",
@@ -98,12 +98,11 @@
             }
         ],
         "components": {
-            "minecraft:redstone_conductivity":{
+            "minecraft:geometry": "geometry.chocolate_pie",
+            "minecraft:redstone_conductivity": {
                 "allows_wire_to_step_down": false
             },
-            "minecraft:custom_components": [
-                "farmersdelight:interact"
-            ],
+            "farmersdelight:interact": {},
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 0.5
             },
@@ -153,8 +152,8 @@
                     12.0
                 ]
             },
-            "tag:farmersdelight:pie":{},
-            "tag:farmersdelight.pie:3-tag.farmersdelight:is_knife":{}
+            "tag:farmersdelight:pie": {},
+            "tag:farmersdelight.pie:3-tag.farmersdelight:is_knife": {}
         }
     }
 }

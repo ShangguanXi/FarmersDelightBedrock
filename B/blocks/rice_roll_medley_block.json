@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.70",
+    "format_version": "1.21.90",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:rice_roll_medley_block",
@@ -142,6 +142,7 @@
             }
         ],
         "components": {
+            "minecraft:geometry": "geometry.rice_roll_medley_block_stage0",
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 1.0
             },
@@ -149,9 +150,7 @@
             "minecraft:destructible_by_explosion": {
                 "explosion_resistance": 0.25
             },
-            "minecraft:custom_components": [
-                "farmersdelight:rice_roll_medley"
-            ],
+            "farmersdelight:rice_roll_medley": {},
             "minecraft:material_instances": {
                 "*": {
                     "texture": "rice_roll_medley",

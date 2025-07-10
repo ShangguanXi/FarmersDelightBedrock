@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.70",
+    "format_version": "1.21.90",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:stove",
@@ -97,22 +97,22 @@
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "stove_side",
-                            "ambient_occlusion": false, 
+                            "ambient_occlusion": false,
                             "face_dimming": false
                         },
                         "up": {
                             "texture": "stove_top_on",
-                            "ambient_occlusion": false, 
+                            "ambient_occlusion": false,
                             "face_dimming": false
                         },
                         "down": {
                             "texture": "stove_bottom",
-                            "ambient_occlusion": false, 
+                            "ambient_occlusion": false,
                             "face_dimming": false
                         },
                         "north": {
                             "texture": "stove_front_on",
-                            "ambient_occlusion": false, 
+                            "ambient_occlusion": false,
                             "face_dimming": false
                         }
                     },
@@ -122,12 +122,32 @@
             }
         ],
         "components": {
-            "minecraft:redstone_conductivity":{
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "stove_side",
+                    "ambient_occlusion": false,
+                    "face_dimming": false
+                },
+                "up": {
+                    "texture": "stove_top_on",
+                    "ambient_occlusion": false,
+                    "face_dimming": false
+                },
+                "down": {
+                    "texture": "stove_bottom",
+                    "ambient_occlusion": false,
+                    "face_dimming": false
+                },
+                "north": {
+                    "texture": "stove_front_on",
+                    "ambient_occlusion": false,
+                    "face_dimming": false
+                }
+            },
+            "minecraft:redstone_conductivity": {
                 "allows_wire_to_step_down": false
             },
-            "minecraft:custom_components": [
-                "farmersdelight:stove"
-            ],
+            "farmersdelight:stove": {},
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 1
             },

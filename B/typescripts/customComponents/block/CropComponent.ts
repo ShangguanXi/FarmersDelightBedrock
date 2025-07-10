@@ -340,7 +340,6 @@ class RiceComponent implements BlockCustomComponent {
 export class CropComponentRegister {
     @methodEventSub(system.beforeEvents.startup)
     register(args: StartupEvent) {
-        console.warn(4488888)
         args.blockComponentRegistry.registerCustomComponent('farmersdelight:crop', new CropsComponent());
         args.blockComponentRegistry.registerCustomComponent('farmersdelight:torchflower', new TorchflowerComponent());
         args.blockComponentRegistry.registerCustomComponent('farmersdelight:sugar_cane', new SugarCaneComponent());

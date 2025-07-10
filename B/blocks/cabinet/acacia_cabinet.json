@@ -132,7 +132,7 @@
                     "texture": "acacia_cabinet_front"
                 }
             },
-            "minecraft:geometry": "geometry.block",
+            "minecraft:geometry": "minecraft:geometry.full_block",
             "tag:wood": {},
             "tag:farmersdelight:cabinet": {}
         }

@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.70",
+    "format_version": "1.21.90",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:roast_chicken_block",
@@ -29,7 +29,7 @@
                 "condition": "query.block_state('farmersdelight:food_block_stage') == 0",
                 "components": {
                     "minecraft:geometry": "geometry.roast_chicken_block_stage0",
-                    "tag:farmersdelight:use_bowl":{}
+                    "tag:farmersdelight:use_bowl": {}
                 }
             },
             {
@@ -106,12 +106,11 @@
             }
         ],
         "components": {
-            "minecraft:redstone_conductivity":{
+            "minecraft:geometry": "geometry.roast_chicken_block_stage0",
+            "minecraft:redstone_conductivity": {
                 "allows_wire_to_step_down": false
             },
-            "minecraft:custom_components": [
-                "farmersdelight:interact"
-            ],
+            "farmersdelight:interact": {},
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 1.0
             },

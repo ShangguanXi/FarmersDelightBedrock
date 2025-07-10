@@ -1,16 +1,49 @@
-import { BlockCustomComponent, BlockComponentPlayerBreakEvent, StructureManager, EntityInventoryComponent, BlockComponentTickEvent, Vector3, Dimension, LocationOutOfWorldBoundariesError, ItemComponentTypes, world, BlockComponentPlayerPlaceBeforeEvent, BlockVolume, system, ItemEnchantableComponent, StartupEvent } from "@minecraft/server";
+import { BlockCustomComponent, BlockComponentOnPlaceEvent, Vector3, BlockComponentPlayerBreakEvent, system, StartupEvent, world, PlayerBreakBlockBeforeEvent, ItemComponentTypes, BlockComponentPlayerPlaceBeforeEvent, BlockComponentTickEvent, EntityInventoryComponent, ItemEnchantableComponent, Dimension } from "@minecraft/server";
 import { ItemUtil } from "../../lib/ItemUtil";
 import { methodEventSub } from "../../lib/eventHelper";
-function spawnLoot(path: string, dimenion: Dimension, location: Vector3) {
-    return dimenion.runCommand(`loot spawn ${location.x} ${location.y} ${location.z} loot "${path}"`)
-}
 
-class WildCropComponent implements BlockCustomComponent {
-
+export class WildCropComponent implements BlockCustomComponent {
     constructor() {
-        this.onPlayerBreak = this.onPlayerBreak.bind(this);
+        this.onPlace = this.onPlace.bind(this);
+
+    }
+    onPlace(args: BlockComponentOnPlaceEvent): void { }
+
+
+    @methodEventSub(world.beforeEvents.playerBreakBlock)
+    break(args: PlayerBreakBlockBeforeEvent) {
+        const block = args.block
+        const itemStack = args.itemStack
+        const player = args.player
+        if (!itemStack) return
+        const enchant = itemStack.getComponent(ItemComponentTypes.Enchantable)
+        const silkTouch = enchant?.getEnchantment('silk_touch');
+        if (silkTouch || itemStack.typeId == "minecraft:shears") {
+            const container = player.getComponent("inventory")?.container;
+            if (!container) return;
+            args.cancel = true
+            system.runTimeout(()=>{
+                ItemUtil.damageItem(container,player.selectedSlotIndex)
+                ItemUtil.spawnItem(block,block.typeId)
+            })
+        }
     }
 
+    @methodEventSub(system.beforeEvents.startup)
+    register(args: StartupEvent) {
+        args.blockComponentRegistry.registerCustomComponent('farmersdelight:wild_crop', new WildCropComponent());
+        args.blockComponentRegistry.registerCustomComponent('farmersdelight:wild_rice', new WildRiceComponent());
+    }
+
+}
+
+
+class WildRiceComponent implements BlockCustomComponent {
+    constructor() {
+        this.beforeOnPlayerPlace = this.beforeOnPlayerPlace.bind(this);
+        this.onTick = this.onTick.bind(this);
+        this.onPlayerBreak = this.onPlayerBreak.bind(this);
+    }
     onPlayerBreak(args: BlockComponentPlayerBreakEvent): void {
         const player = args.player;
         const block = args.block;
@@ -32,91 +65,13 @@ class WildCropComponent implements BlockCustomComponent {
 
             };
             if ((itemId != "minecraft:shears") && (!silkTouch)) {
-                spawnLoot(lootTable, dimension, block.location)
+                this.spawnLoot(lootTable, dimension, block.location)
             };
         } catch (error) {
-            spawnLoot(lootTable, dimension, block.location)
+            this.spawnLoot(lootTable, dimension, block.location)
         }
 
     };
-    getLootTable(): string {
-        return "";
-
-    }
-    lootItem(): string {
-        return "";
-
-    }
-
-
-
-}
-class WildBeetrootsComponent extends WildCropComponent {
-    getLootTable(): string {
-        return "farmersdelight/crops/farmersdelight_wild_beetroot";
-
-    }
-    lootItem(): string {
-        return "farmersdelight:wild_beetroots";
-
-    }
-}
-class WildCabbagesComponent extends WildCropComponent {
-    getLootTable(): string {
-        return "farmersdelight/crops/farmersdelight_wild_cabbage";
-
-    }
-    lootItem(): string {
-        return "farmersdelight:wild_cabbages";
-
-    }
-}
-class WildCarrotComponent extends WildCropComponent {
-    getLootTable(): string {
-        return "farmersdelight/crops/farmersdelight_wild_carrot";
-
-    }
-    lootItem(): string {
-        return "farmersdelight:wild_carrots";
-
-    }
-}
-class WildOnionComponent extends WildCropComponent {
-    getLootTable(): string {
-        return "farmersdelight/crops/farmersdelight_wild_onion";
-
-    }
-    lootItem(): string {
-        return "farmersdelight:wild_onions";
-
-    }
-}
-class WildPotatoComponent extends WildCropComponent {
-    getLootTable(): string {
-        return "farmersdelight/crops/farmersdelight_wild_potato";
-
-    }
-    lootItem(): string {
-        return "farmersdelight:wild_potatoes";
-
-    }
-}
-class WildTomatoComponent extends WildCropComponent {
-    getLootTable(): string {
-        return "farmersdelight/crops/farmersdelight_wild_tomato";
-
-    }
-    lootItem(): string {
-        return "farmersdelight:wild_tomatoes";
-
-    }
-}
-class WildRiceComponent extends WildCropComponent {
-    constructor() {
-        super();
-        this.beforeOnPlayerPlace = this.beforeOnPlayerPlace.bind(this);
-        this.onTick = this.onTick.bind(this);
-    }
     beforeOnPlayerPlace(args: BlockComponentPlayerPlaceBeforeEvent): void {
 
         const player = args.player;
@@ -155,7 +110,9 @@ class WildRiceComponent extends WildCropComponent {
 
 
 
-
+    spawnLoot(path: string, dimenion: Dimension, location: Vector3) {
+        return dimenion.runCommand(`loot spawn ${location.x} ${location.y} ${location.z} loot "${path}"`)
+    }
     getLootTable(): string {
         return "farmersdelight/crops/farmersdelight_wild_rice";
 
@@ -164,28 +121,4 @@ class WildRiceComponent extends WildCropComponent {
         return "farmersdelight:wild_rice";
 
     }
-}
-class SandyShrubComponent extends WildCropComponent {
-    getLootTable(): string {
-        return "farmersdelight/empty";
-
-    }
-    lootItem(): string {
-        return "farmersdelight:sandy_shrub";
-
-    }
-}
-export class WildCropComponentRegister {
-    @methodEventSub(system.beforeEvents.startup)
-    register(args: StartupEvent) {
-        args.blockComponentRegistry.registerCustomComponent('farmersdelight:wild_beetroots', new WildBeetrootsComponent());
-        args.blockComponentRegistry.registerCustomComponent('farmersdelight:wild_cabbages', new WildCabbagesComponent());
-        args.blockComponentRegistry.registerCustomComponent('farmersdelight:wild_carrots', new WildCarrotComponent());
-        args.blockComponentRegistry.registerCustomComponent('farmersdelight:wild_onions', new WildOnionComponent());
-        args.blockComponentRegistry.registerCustomComponent('farmersdelight:wild_potatoes', new WildPotatoComponent());
-        args.blockComponentRegistry.registerCustomComponent('farmersdelight:wild_tomatoes', new WildTomatoComponent());
-        args.blockComponentRegistry.registerCustomComponent('farmersdelight:wild_rice', new WildRiceComponent());
-        args.blockComponentRegistry.registerCustomComponent('farmersdelight:sandy_shrub', new SandyShrubComponent());
-    }
-
 }
