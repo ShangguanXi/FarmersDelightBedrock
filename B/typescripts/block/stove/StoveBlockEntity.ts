@@ -74,24 +74,21 @@ export class StoveBlockEntity extends BlockEntity {
                 const maxTime = entity.getDynamicProperty(`farmersdelight:item_${i}_max_time`) as number;
                 const particleName: string = name[0] == 'minecraft' ? `farmersdelight:${name[0]}_stove_${name[1]}` : `${name[0]}:stove_${name[1]}`;
                 entity.dimension.spawnParticle(particleName, { x: x + rotatedOffsets[i].x, y: y + 1.02, z: z + rotatedOffsets[i].y });
+                if (time % 20 == 0 && work) {
+                    entity.dimension.spawnParticle("farmersdelight:stove_smoke_particle", { x: x + rotatedOffsets[i].x, y: y + 1.02, z: z + rotatedOffsets[i].y });
+                }
                 if (time < maxTime && work) {
                     entity.setDynamicProperty(`farmersdelight:item_${i}_time`, time + 1)
                 }
                 if (time >= maxTime && work) {
-                    {
-                        if (name[0] == 'minecraft') entity.runCommand(`loot spawn ${x} ${y + 1.4} ${z} loot "minecraft/cook/${itemId.split(":")[1]}"`);
-                        else {
-                            const cookable = (new ItemStack(itemId)).getComponent("farmersdelight:cookable")?.customComponentParameters.params as CookableComponentParams
-                            dimension.spawnItem(new ItemStack(cookable.result, 1), { x, y: y + 1.4, z })
-                        }
-                        entity.setDynamicProperty(`farmersdelight:item_${i}_time`, 0);
-                        entity.setDynamicProperty(`farmersdelight:item_${i}_max_time`, 0);
-                        ItemUtil.clearItem(stoveContainer, i)
+                    if (name[0] == 'minecraft') entity.runCommand(`loot spawn ${x} ${y + 1.4} ${z} loot "minecraft/cook/${itemId.split(":")[1]}"`);
+                    else {
+                        const cookable = (new ItemStack(itemId)).getComponent("farmersdelight:cookable")?.customComponentParameters.params as CookableComponentParams
+                        dimension.spawnItem(new ItemStack(cookable.result, 1), { x, y: y + 1.4, z })
                     }
-                    if (time % 20 == 1) {
-                        entity.dimension.spawnParticle("farmersdelight:stove_smoke_particle", { x: x + rotatedOffsets[i].x, y: y + 1.02, z: z + rotatedOffsets[i].y });
-                    }
-
+                    entity.setDynamicProperty(`farmersdelight:item_${i}_time`, 0);
+                    entity.setDynamicProperty(`farmersdelight:item_${i}_max_time`, 0);
+                    ItemUtil.clearItem(stoveContainer, i)
                 }
             }
             if (emptySlotsCount != 6 && (system.currentTick % 20 == 0) && work) {
