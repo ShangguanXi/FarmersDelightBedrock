@@ -4,7 +4,7 @@ import { ItemUtil } from "../../lib/ItemUtil";
 import { EntityUtil } from "../../lib/EntityUtil";
 
 type LootItem = [string, number, number?]
-export type CuttingBroadcomponentParams = {
+export type CuttingBroadComponentParams = {
     loot: LootItem[];
     is_block?: boolean
     tool: {
@@ -20,7 +20,7 @@ class CuttableComponent implements ItemCustomComponent {
     }
 
     onUseOn(args: ItemComponentUseOnEvent, param: CustomComponentParameters): void {
-        param.params as CuttingBroadcomponentParams;
+        param.params as CuttingBroadComponentParams;
     }
 }
 export class CuttableComponentRegister {

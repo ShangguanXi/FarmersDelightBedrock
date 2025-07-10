@@ -7,7 +7,7 @@ import { ItemUtil } from "../../lib/ItemUtil";
 import { BlockEntity } from "../../lib/BlockEntity";
 
 import { heatConductors, heatSources } from "../../data/heatBlocks";
-import { CookableComonentRegister, CookableComponentParams } from "../../customComponents/item/CookableComonent";
+import { CookableComonentRegister, CookableComponentParams } from "../../customComponents/item/CookableComponent";
 
 export class Skillet extends BlockWithEntity {
   @methodEventSub(world.afterEvents.playerPlaceBlock)

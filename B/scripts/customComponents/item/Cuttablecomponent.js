@@ -28,4 +28,4 @@ __decorate([
     __metadata("design:paramtypes", [StartupEvent]),
     __metadata("design:returntype", void 0)
 ], CuttableComponentRegister.prototype, "register", null);
-//# sourceMappingURL=Cuttablecomponent.js.map
+//# sourceMappingURL=CuttableComponent.js.map

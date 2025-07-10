@@ -24,15 +24,15 @@ import { WildCropComponentRegister } from "./customComponents/block/WildCropComp
 import { RichSoilComponentRegister } from "./customComponents/block/RichSoilComponent";
 import { RichSoilFarmlandComponentRegister } from "./customComponents/block/RichSoilFarmlandComponent";
 import { MushroomColonyComonentRegister } from "./customComponents/block/MushroomColonyComonent";
-import { ColoniesComonentRegister } from "./customComponents/item/ColoniesComonent";
+import { ColoniesComonentRegister } from "./customComponents/item/ColoniesComponent";
 import { OrganicCompostComonentRegister } from "./customComponents/block/OrganicCompostComonent";
 import { RopeComponentRegister } from "./customComponents/block/RopeComponent";
 import { TatamMatComponentRegister } from "./customComponents/block/TatamMatComponent";
 import { TatamComponentRegister } from "./customComponents/block/TatamiComponent";
 import { StoveComponentRegister } from "./customComponents/block/StoveComponent";
 import { IncompleteBlocks } from "./item/IncompleteBlocks";
-import { CuttableComponentRegister } from "./customComponents/item/Cuttablecomponent";
-import { CookableComonentRegister } from "./customComponents/item/CookableComonent";
+import { CuttableComponentRegister } from "./customComponents/item/CuttableComponent";
+import { CookableComonentRegister } from "./customComponents/item/CookableComponent";
 import { CabinetComponentRegister } from "./customComponents/block/CabinetComponent.ts";
 import { IncreaseProductionComponentRegister } from "./customComponents/item/IncreaseProductionComponent";
 CookingPotRecipeRegistries.initCookingPotScoRegistries();

@@ -2,7 +2,7 @@ import { Block, Entity, ItemStack, ScoreboardObjective, Vector3, system, world }
 import { methodEventSub } from "../../lib/eventHelper";
 import { BlockEntity } from "../../lib/BlockEntity";
 import { heatConductors, heatSources } from "../../data/heatBlocks";
-import { CookableComponentParams } from "../../customComponents/item/CookableComonent";
+import { CookableComponentParams } from "../../customComponents/item/CookableComponent";
 
 const skilletV2: any[] = [];
 for (let i = 0; i < 5; i++) {

@@ -2,7 +2,7 @@ import { Block, DataDrivenEntityTriggerAfterEvent, Entity, ItemStack, Scoreboard
 import { methodEventSub } from "../../lib/eventHelper";
 import { BlockEntity } from "../../lib/BlockEntity";
 import { ItemUtil } from "../../lib/ItemUtil";
-import { CookableComponentParams } from "../../customComponents/item/CookableComonent";
+import { CookableComponentParams } from "../../customComponents/item/CookableComponent";
 import { heatConductors, heatSources } from "../../data/heatBlocks";
 
 const xOffset = 0.3;

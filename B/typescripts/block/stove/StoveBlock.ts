@@ -4,7 +4,7 @@ import { BlockWithEntity } from "../../lib/BlockWithEntity";
 import { vanillaItemList } from "../../data/recipe/cookRecipe";
 import { EntityUtil } from "../../lib/EntityUtil";
 import { ItemUtil } from "../../lib/ItemUtil";
-import { CookableComponentParams } from "../../customComponents/item/CookableComonent";
+import { CookableComponentParams } from "../../customComponents/item/CookableComponent";
 
 
 

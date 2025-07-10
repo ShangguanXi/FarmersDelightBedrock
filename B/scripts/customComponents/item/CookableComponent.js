@@ -28,4 +28,4 @@ __decorate([
     __metadata("design:paramtypes", [StartupEvent]),
     __metadata("design:returntype", void 0)
 ], CookableComonentRegister.prototype, "register", null);
-//# sourceMappingURL=CookableComonent.js.map
+//# sourceMappingURL=CookableComponent.js.map

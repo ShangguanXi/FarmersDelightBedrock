@@ -44,4 +44,4 @@ __decorate([
     __metadata("design:paramtypes", [StartupEvent]),
     __metadata("design:returntype", void 0)
 ], ColoniesComonentRegister.prototype, "register", null);
-//# sourceMappingURL=ColoniesComonent.js.map
+//# sourceMappingURL=ColoniesComponent.js.map

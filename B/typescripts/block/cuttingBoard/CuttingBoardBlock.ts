@@ -14,7 +14,7 @@ import {
     ItemofShearsList
 } from "../../data/recipe/cuttingBoardRecipe";
 import { ItemUtil } from "../../lib/ItemUtil";
-import { CuttingBroadcomponentParams } from "../../customComponents/item/Cuttablecomponent";
+import { CuttingBroadComponentParams } from "../../customComponents/item/CuttableComponent";
 
 const toolMapping = [
     { list: BlockofAxeList, tool: 'minecraft:is_axe', mode: 'tag', isBlock: true },
@@ -62,7 +62,7 @@ export class CuttingBoardBlock extends BlockWithEntity {
             const cuttable = offHand.getComponent("farmersdelight:cuttable")
             if (mainHand) {
                 if (cuttable) {
-                    const params = cuttable?.customComponentParameters.params as CuttingBroadcomponentParams
+                    const params = cuttable?.customComponentParameters.params as CuttingBroadComponentParams
                     const loots = CuttingBoardBlock.processCuttingLoot(params)
                     const toolType = (params.tool.type).toString()
                     if ((toolType == "tag" && mainHand.hasTag(params.tool.name)) || (mainHand.typeId == params.tool.name && toolType == "item")) {
@@ -93,7 +93,7 @@ export class CuttingBoardBlock extends BlockWithEntity {
             }
             else {
                 if (cuttable) {
-                    const params = cuttable?.customComponentParameters.params as CuttingBroadcomponentParams
+                    const params = cuttable?.customComponentParameters.params as CuttingBroadComponentParams
                     entity.setDynamicProperty('farmersdelight:cutTool', `{"${params.tool.type}": "${params.tool.name}", "mode": "${params.tool.type}"}`);
                     entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', `{"item":"${offHand.typeId}"}`);
                     entity.setProperty('farmersdelight:is_block_mode', params.is_block ?? false);
@@ -119,7 +119,7 @@ export class CuttingBoardBlock extends BlockWithEntity {
         if ((!offHand) && mainHand && itemId == "undefined") {
             const cuttable = mainHand.getComponent("farmersdelight:cuttable")
             if (cuttable) {
-                const params = cuttable?.customComponentParameters.params as CuttingBroadcomponentParams
+                const params = cuttable?.customComponentParameters.params as CuttingBroadComponentParams
                 entity.setDynamicProperty('farmersdelight:cutTool', `{"${params.tool.type}": "${params.tool.name}", "mode": "${params.tool.type}"}`);
                 entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', `{"item":"${mainHand.typeId}"}`);
                 entity.setProperty('farmersdelight:is_block_mode', params.is_block ?? false);
@@ -153,7 +153,7 @@ export class CuttingBoardBlock extends BlockWithEntity {
                 const item = new ItemStack(itemId)
                 const cuttable = item.getComponent("farmersdelight:cuttable")
                 if (cuttable) {
-                    const params = cuttable?.customComponentParameters.params as CuttingBroadcomponentParams
+                    const params = cuttable?.customComponentParameters.params as CuttingBroadComponentParams
                     const loots = CuttingBoardBlock.processCuttingLoot(params)
                     entity.setDynamicProperty('farmersdelight:cutTool', undefined);
                     entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', '{"item":"undefined"}');
@@ -187,7 +187,7 @@ export class CuttingBoardBlock extends BlockWithEntity {
     static isCorrectTool(mode: string, mainHand: ItemStack, cutToolData: Record<string, string>): boolean {
         return (mode === 'item' && cutToolData[mode] === mainHand.typeId) || (mode === 'tag' && mainHand.hasTag(cutToolData[mode]));
     }
-    static processCuttingLoot(component: CuttingBroadcomponentParams): { id: string; count: number }[] {
+    static processCuttingLoot(component: CuttingBroadComponentParams): { id: string; count: number }[] {
         const drops: { id: string; count: number }[] = [];
         for (const [id, count, chance = 1] of component.loot) {
             if (Math.random() <= chance) {
