@@ -1,4 +1,4 @@
-import { Block, Entity, EquipmentSlot, GameMode, ItemDurabilityComponent, ItemStack } from "@minecraft/server";
+import { Block, EquipmentSlot, GameMode, ItemDurabilityComponent, ItemStack } from "@minecraft/server";
 import { RandomUtil } from "./RandomUtil";
 export class ItemUtil {
     static damageItem(container, index, damage = 1) {
@@ -69,50 +69,15 @@ export class ItemUtil {
         }
         container.addItem(replaceItemStack);
     }
-    static spawnItem(target, item, number = 1, location = undefined) {
-        if (!location) {
-            if (item instanceof ItemStack) {
-                if (target instanceof Block) {
-                    if (RandomUtil.probability(50)) {
-                        target.dimension.spawnItem(item, target.center());
-                    }
-                    else {
-                        target.dimension.spawnItem(item, target.bottomCenter());
-                    }
-                    ;
-                }
-                ;
-                if (target instanceof Entity) {
-                    target.dimension.spawnItem(item, target.location);
-                }
-                ;
-            }
-            else {
-                if (target instanceof Block) {
-                    if (RandomUtil.probability(50)) {
-                        target.dimension.spawnItem(new ItemStack(item, number), target.center());
-                    }
-                    else {
-                        target.dimension.spawnItem(new ItemStack(item, number), target.bottomCenter());
-                    }
-                    ;
-                }
-                if (target instanceof Entity) {
-                    target.dimension.spawnItem(new ItemStack(item, number), target.location);
-                }
-                ;
-            }
+    static spawnItem(target, item, number = 1, location) {
+        const dimension = target.dimension;
+        const spawnPos = location ?? (target instanceof Block ? (RandomUtil.probability(50) ? target.center() : target.bottomCenter()) : target.location);
+        const stack = item instanceof ItemStack ? item : new ItemStack(item, number);
+        try {
+            dimension.spawnItem(stack, spawnPos);
         }
-        else {
-            if (item instanceof ItemStack) {
-                target.dimension.spawnItem(item, location);
-            }
-            else {
-                target.dimension.spawnItem(new ItemStack(item, number), location);
-            }
-            ;
+        catch (error) {
         }
-        ;
     }
 }
 //# sourceMappingURL=ItemUtil.js.map

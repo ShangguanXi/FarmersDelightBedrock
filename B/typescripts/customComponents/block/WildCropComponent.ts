@@ -7,24 +7,30 @@ export class WildCropComponent implements BlockCustomComponent {
         this.onPlace = this.onPlace.bind(this);
 
     }
-    onPlace(args: BlockComponentOnPlaceEvent): void { }
+    onPlace(args: BlockComponentOnPlaceEvent): void {}
 
 
     @methodEventSub(world.beforeEvents.playerBreakBlock)
     break(args: PlayerBreakBlockBeforeEvent) {
         const block = args.block
+        const wildCrop = block.getComponent('farmersdelight:wild_crop')
+        if (!wildCrop) return
         const itemStack = args.itemStack
         const player = args.player
+        const { x, y, z } = args.block.location;
         if (!itemStack) return
         const enchant = itemStack.getComponent(ItemComponentTypes.Enchantable)
         const silkTouch = enchant?.getEnchantment('silk_touch');
-        if (silkTouch || itemStack.typeId == "minecraft:shears") {
+        if (silkTouch) return
+        if (itemStack.typeId == "minecraft:shears") {
             const container = player.getComponent("inventory")?.container;
             if (!container) return;
             args.cancel = true
-            system.runTimeout(()=>{
-                ItemUtil.damageItem(container,player.selectedSlotIndex)
-                ItemUtil.spawnItem(block,block.typeId)
+            system.runTimeout(() => {
+                ItemUtil.damageItem(container, player.selectedSlotIndex)
+                ItemUtil.spawnItem(block, block.typeId)
+                block.dimension.runCommand(`/setblock ${x} ${y} ${z} air`)
+
             })
         }
     }
@@ -58,7 +64,7 @@ class WildRiceComponent implements BlockCustomComponent {
             const selectedSlot = container?.getSlot(player.selectedSlotIndex)
             const itemId = selectedSlot.typeId;
             const enchantable = container?.getItem(player.selectedSlotIndex)?.getComponent(ItemComponentTypes.Enchantable) as ItemEnchantableComponent
-            const silkTouch= enchantable?.hasEnchantment("silk_touch");
+            const silkTouch = enchantable?.hasEnchantment("silk_touch");
             if (itemId == "minecraft:shears") {
                 ItemUtil.damageItem(container, player.selectedSlotIndex, 1)
                 ItemUtil.spawnItem(block, lootItem)
@@ -85,10 +91,10 @@ class WildRiceComponent implements BlockCustomComponent {
             args.cancel = true;
         }
         else {
-            world.structureManager.place("farmersdelight:wild_rice_no_water", dimension, block.location);
             if (!player) return;
             if (!container) return;
             system.runTimeout(() => {
+                world.structureManager.place("farmersdelight:wild_rice_no_water", dimension, block.location);
                 ItemUtil.clearItem(container, player.selectedSlotIndex, 1)
                 dimension.playSound("dig.grass", block.location)
             })

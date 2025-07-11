@@ -17,13 +17,19 @@ export class WildCropComponent {
     onPlace(args) { }
     break(args) {
         const block = args.block;
+        const wildCrop = block.getComponent('farmersdelight:wild_crop');
+        if (!wildCrop)
+            return;
         const itemStack = args.itemStack;
         const player = args.player;
+        const { x, y, z } = args.block.location;
         if (!itemStack)
             return;
         const enchant = itemStack.getComponent(ItemComponentTypes.Enchantable);
         const silkTouch = enchant?.getEnchantment('silk_touch');
-        if (silkTouch || itemStack.typeId == "minecraft:shears") {
+        if (silkTouch)
+            return;
+        if (itemStack.typeId == "minecraft:shears") {
             const container = player.getComponent("inventory")?.container;
             if (!container)
                 return;
@@ -31,6 +37,7 @@ export class WildCropComponent {
             system.runTimeout(() => {
                 ItemUtil.damageItem(container, player.selectedSlotIndex);
                 ItemUtil.spawnItem(block, block.typeId);
+                block.dimension.runCommand(`/setblock ${x} ${y} ${z} air`);
             });
         }
     }
@@ -100,12 +107,12 @@ class WildRiceComponent {
             args.cancel = true;
         }
         else {
-            world.structureManager.place("farmersdelight:wild_rice_no_water", dimension, block.location);
             if (!player)
                 return;
             if (!container)
                 return;
             system.runTimeout(() => {
+                world.structureManager.place("farmersdelight:wild_rice_no_water", dimension, block.location);
                 ItemUtil.clearItem(container, player.selectedSlotIndex, 1);
                 dimension.playSound("dig.grass", block.location);
             });

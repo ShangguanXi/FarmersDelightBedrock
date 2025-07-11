@@ -90,7 +90,7 @@ class RichSoilFarmlandComponent implements BlockCustomComponent {
         if (growth < params.state.age) {
             cropBlock.setPermutation(cropBlock.permutation.withState(params.state.name, growth + 1));
             dimension.spawnParticle("minecraft:crop_growth_emitter", { x: block.location.x + 0.5, y: block.location.y + 1.5, z: block.location.z + 0.5 })
-            console.warn(growth < params.state.age)
+            
         }
 
 
