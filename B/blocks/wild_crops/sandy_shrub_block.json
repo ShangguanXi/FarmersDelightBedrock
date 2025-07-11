@@ -27,6 +27,13 @@
 				"destroy_chance_modifier": 60
 			},
            
+            "minecraft:liquid_detection": {
+                "detection_rules": [
+                    {
+                        "on_liquid_touches": "popped"
+                    }
+                ]
+            },
             "minecraft:placement_filter": {
                 "conditions": [
                     {

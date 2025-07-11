@@ -22,6 +22,13 @@
                     "face_dimming": false
 				}
 			},
+            "minecraft:liquid_detection": {
+                "detection_rules": [
+                    {
+                        "on_liquid_touches": "popped"
+                    }
+                ]
+            },
 			"minecraft:flammable": {
 				"catch_chance_modifier": 30,
 				"destroy_chance_modifier": 60

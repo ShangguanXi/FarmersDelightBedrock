@@ -51,6 +51,13 @@
                     10
                 ]
             },
+            "minecraft:liquid_detection": {
+                "detection_rules": [
+                    {
+                        "on_liquid_touches": "popped"
+                    }
+                ]
+            },
             "minecraft:redstone_conductivity":{
                 "allows_wire_to_step_down": false
             },
