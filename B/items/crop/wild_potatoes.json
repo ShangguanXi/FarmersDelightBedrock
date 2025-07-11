@@ -11,6 +11,9 @@
           "default": "farmersdelight:wild_potatoes"
         }
       },
+       "minecraft:wearable": {
+        "slot": "slot.weapon.offhand"
+      },
       "farmersdelight:cuttable": {
         "loot": [
           ["farmersdelight:potatoes", 1],

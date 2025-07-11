@@ -11,6 +11,9 @@
           "default": "farmersdelight:wild_tomatoes"
         }
       },
+       "minecraft:wearable": {
+        "slot": "slot.weapon.offhand"
+      },
       "farmersdelight:cuttable": {
         "loot": [
           ["farmersdelight:tomato", 1,0.5],

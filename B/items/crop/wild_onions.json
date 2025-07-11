@@ -11,6 +11,9 @@
           "default": "farmersdelight:wild_onions"
         }
       },
+       "minecraft:wearable": {
+        "slot": "slot.weapon.offhand"
+      },
       "farmersdelight:cuttable": {
         "loot": [
           ["farmersdelight:onion", 1],

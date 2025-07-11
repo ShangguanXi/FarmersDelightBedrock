@@ -11,6 +11,9 @@
           "default": "farmersdelight:wild_beetroots"
         }
       },
+       "minecraft:wearable": {
+        "slot": "slot.weapon.offhand"
+      },
       "farmersdelight:cuttable": {
         "loot": [
           ["minecraft:beetroot_seeds", 1],

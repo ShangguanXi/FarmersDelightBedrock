@@ -11,6 +11,9 @@
           "default": "farmersdelight:wild_cabbages"
         }
       },
+       "minecraft:wearable": {
+        "slot": "slot.weapon.offhand"
+      },
       "farmersdelight:cuttable": {
         "loot": [
           ["farmersdelight:cabbage_seeds", 1],

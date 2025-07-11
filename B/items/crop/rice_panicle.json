@@ -7,6 +7,9 @@
           "default": "farmersdelight:rice_panicle"
         }
       },
+       "minecraft:wearable": {
+        "slot": "slot.weapon.offhand"
+      },
       "farmersdelight:cuttable": {
         "loot": [
           ["farmersdelight:straw", 1],

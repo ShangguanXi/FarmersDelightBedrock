@@ -10,6 +10,9 @@
           "default": "farmersdelight:sweet_berry_cheesecake"
         }
       },
+       "minecraft:wearable": {
+        "slot": "slot.weapon.offhand"
+      },
       "farmersdelight:cuttable": {
         "loot": [
           ["farmersdelight:sweet_berry_cheesecake_slice", 4]

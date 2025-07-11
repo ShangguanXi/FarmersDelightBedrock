@@ -8,6 +8,9 @@
           "default": "farmersdelight:red_mushroom_colony"
         }
       },
+       "minecraft:wearable": {
+        "slot": "slot.weapon.offhand"
+      },
       "farmersdelight:cuttable": {
         "loot": [
           ["minecraft:red_mushroom", 5]

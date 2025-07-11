@@ -17,9 +17,15 @@
           "farmersdelight:is_cabbage"
         ]
       },
+      "minecraft:wearable": {
+        "slot": "slot.weapon.offhand"
+      },
       "farmersdelight:cuttable": {
         "loot": [
-          ["farmersdelight:cabbage_leaf", 2]
+          [
+            "farmersdelight:cabbage_leaf",
+            2
+          ]
         ],
         "tool": {
           "type": "tag",

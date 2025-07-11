@@ -12,6 +12,9 @@
           "default": "farmersdelight:ham"
         }
       },
+       "minecraft:wearable": {
+        "slot": "slot.weapon.offhand"
+      },
       "farmersdelight:cuttable": {
         "loot": [
           ["minecraft:porkchop", 2],

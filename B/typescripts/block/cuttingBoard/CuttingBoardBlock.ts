@@ -151,7 +151,7 @@ export class CuttingBoardBlock extends BlockWithEntity {
             const isCorrectTool = CuttingBoardBlock.isCorrectTool(mode, mainHand, cutToolData)
             if (isCorrectTool) {
                 const item = new ItemStack(itemId)
-                const cuttable = item.getComponent("farmersdelight:cuttable")
+                const cuttable = item.getComponent( "farmersdelight:cuttable")
                 if (cuttable) {
                     const params = cuttable?.customComponentParameters.params as CuttingBroadComponentParams
                     const loots = CuttingBoardBlock.processCuttingLoot(params)

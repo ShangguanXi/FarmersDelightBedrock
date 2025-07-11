@@ -10,6 +10,9 @@
           "default": "farmersdelight:wild_rice"
         }
       },
+       "minecraft:wearable": {
+        "slot": "slot.weapon.offhand"
+      },
       "farmersdelight:cuttable": {
         "loot": [
           ["farmersdelight:straw", 1,0.5],

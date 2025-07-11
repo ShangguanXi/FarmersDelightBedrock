@@ -12,6 +12,9 @@
           "default": "farmersdelight:kelp_roll"
         }
       },
+       "minecraft:wearable": {
+        "slot": "slot.weapon.offhand"
+      },
       "farmersdelight:cuttable": {
         "loot": [
           ["farmersdelight:kelp_roll_slice", 3]

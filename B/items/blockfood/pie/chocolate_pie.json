@@ -10,6 +10,9 @@
           "default": "farmersdelight:chocolate_pie"
         }
       },
+       "minecraft:wearable": {
+        "slot": "slot.weapon.offhand"
+      },
       "farmersdelight:cuttable": {
         "loot": [
           ["farmersdelight:chocolate_pie_slice", 4]

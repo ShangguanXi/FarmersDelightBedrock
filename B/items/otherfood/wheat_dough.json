@@ -18,6 +18,9 @@
           "farmersdelight:is_dough"
         ]
       },
+       "minecraft:wearable": {
+        "slot": "slot.weapon.offhand"
+      },
       "farmersdelight:cuttable": {
         "loot": [
           ["farmersdelight:raw_pasta", 1]

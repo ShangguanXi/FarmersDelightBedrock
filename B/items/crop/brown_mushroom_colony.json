@@ -8,6 +8,9 @@
           "default": "farmersdelight:brown_mushroom_colony"
         }
       },
+       "minecraft:wearable": {
+        "slot": "slot.weapon.offhand"
+      },
       "farmersdelight:cuttable": {
         "loot": [
           ["minecraft:brown_mushroom", 5]

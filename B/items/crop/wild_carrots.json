@@ -11,6 +11,9 @@
           "default": "farmersdelight:wild_carrots"
         }
       },
+       "minecraft:wearable": {
+        "slot": "slot.weapon.offhand"
+      },
       "farmersdelight:cuttable": {
         "loot": [
           ["minecraft:carrots", 1],
