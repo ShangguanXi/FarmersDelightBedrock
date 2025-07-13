@@ -126,6 +126,8 @@ export class CuttingBoardBlock extends BlockWithEntity {
                 if (params.is_block) {
                     entity.runCommand(`replaceitem entity @s slot.weapon.mainhand 0 ${mainHand.typeId}`);
                 }
+                if (EntityUtil.gameMode(player))
+                    ItemUtil.clearItem(container, player.selectedSlotIndex);
             }
             else {
                 for (const tool of toolMapping) {
@@ -136,13 +138,16 @@ export class CuttingBoardBlock extends BlockWithEntity {
                         if (tool.isBlock) {
                             entity.runCommand(`replaceitem entity @s slot.weapon.mainhand 0 ${mainHand.typeId}`);
                         }
+                        if (EntityUtil.gameMode(player))
+                            ItemUtil.clearItem(container, player.selectedSlotIndex);
+                        return;
                     }
-                    else
+                    else {
                         player.onScreenDisplay.setActionBar({ translate: 'farmersdelight.tips.cant_cut' });
+                        return;
+                    }
                 }
             }
-            if (EntityUtil.gameMode(player))
-                ItemUtil.clearItem(container, player.selectedSlotIndex);
         }
         if ((!offHand) && mainHand && itemId != "undefined") {
             const cutToolData = JSON.parse(entity.getDynamicProperty("farmersdelight:cutTool")) || {};

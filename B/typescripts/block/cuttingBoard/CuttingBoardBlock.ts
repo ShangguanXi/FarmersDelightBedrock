@@ -126,6 +126,7 @@ export class CuttingBoardBlock extends BlockWithEntity {
                 if (params.is_block) {
                     entity.runCommand(`replaceitem entity @s slot.weapon.mainhand 0 ${mainHand.typeId}`);
                 }
+                if (EntityUtil.gameMode(player)) ItemUtil.clearItem(container, player.selectedSlotIndex)
             }
             else {
                 for (const tool of toolMapping) {
@@ -136,13 +137,19 @@ export class CuttingBoardBlock extends BlockWithEntity {
                         if (tool.isBlock) {
                             entity.runCommand(`replaceitem entity @s slot.weapon.mainhand 0 ${mainHand.typeId}`);
                         }
-                    }
-                    else player.onScreenDisplay.setActionBar({ translate: 'farmersdelight.tips.cant_cut' });
+                        if (EntityUtil.gameMode(player)) ItemUtil.clearItem(container, player.selectedSlotIndex)
+                        return
 
+                    }
+                    else {
+                        player.onScreenDisplay.setActionBar({ translate: 'farmersdelight.tips.cant_cut' });
+                        return
+                    }
                 }
+                
 
             }
-            if (EntityUtil.gameMode(player)) ItemUtil.clearItem(container, player.selectedSlotIndex)
+
         }
         if ((!offHand) && mainHand && itemId != "undefined") {
             const cutToolData = JSON.parse(entity.getDynamicProperty("farmersdelight:cutTool") as string) || {};
@@ -151,7 +158,7 @@ export class CuttingBoardBlock extends BlockWithEntity {
             const isCorrectTool = CuttingBoardBlock.isCorrectTool(mode, mainHand, cutToolData)
             if (isCorrectTool) {
                 const item = new ItemStack(itemId)
-                const cuttable = item.getComponent( "farmersdelight:cuttable")
+                const cuttable = item.getComponent("farmersdelight:cuttable")
                 if (cuttable) {
                     const params = cuttable?.customComponentParameters.params as CuttingBroadComponentParams
                     const loots = CuttingBoardBlock.processCuttingLoot(params)
