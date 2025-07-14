@@ -144,7 +144,6 @@ export class CuttingBoardBlock extends BlockWithEntity {
                     }
                     else {
                         player.onScreenDisplay.setActionBar({ translate: 'farmersdelight.tips.cant_cut' });
-                        return;
                     }
                 }
             }

@@ -30,6 +30,7 @@ item.farmersdelight:rope=Corda
 tile.farmersdelight:safety_net.name=Rete di sicurezza
 tile.farmersdelight:canvas_rug.name=Tappeto in tela
 tile.farmersdelight:tatami.name=Blocco di tatami
+item.farmersdelight:tatami_mat=Full Tatami Mat
 tile.farmersdelight:full_tatami_mat.name=Stuoia di tatami intera
 item.farmersdelight:full_tatami_mat.name=Stuoia di tatami intera
 tile.farmersdelight:half_tatami_mat.name=Mezza stuoia di tatami

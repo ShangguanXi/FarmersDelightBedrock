@@ -27,6 +27,7 @@ entity.farmersdelight:warped_cabinet.name=Despensa deformado
 entity.farmersdelight:cherry_cabinet.name=Despensa de cerezo
 entity.farmersdelight:bamboo_cabinet.name=Despensa de bambú
 item.farmersdelight:rope=Cuerda
+item.farmersdelight:tatami_mat=Full Tatami Mat
 tile.farmersdelight:safety_net.name=Red de seguridad
 tile.farmersdelight:canvas_rug.name=Alfombra de tela
 tile.farmersdelight:tatami.name=Bloque de tatami

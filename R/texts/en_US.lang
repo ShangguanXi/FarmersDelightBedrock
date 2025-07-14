@@ -31,6 +31,7 @@ tile.farmersdelight:safety_net.name=Safety Net
 tile.farmersdelight:canvas_rug.name=Canvas Rug
 tile.farmersdelight:tatami.name=Tatami Block
 tile.farmersdelight:full_tatami_mat.name=Full Tatami Mat
+item.farmersdelight:tatami_mat=Full Tatami Mat
 tile.farmersdelight:half_tatami_mat.name=Half Tatami Mat
 item.farmersdelight:half_tatami_mat=Half Tatami Mat
 tile.farmersdelight:organic_compost.name=Organic Compost
