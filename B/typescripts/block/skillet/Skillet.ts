@@ -64,7 +64,7 @@ export class Skillet extends BlockWithEntity {
     if (vanillaItemList.includes(itemId) || cookable) {
       
       const params = cookable?.customComponentParameters.params as CookableComponentParams
-      const time = cookable ? (params.time ? params.time*20 : 200*20) : 200*20
+      const time = cookable ? (params.time ? params.time : 200) : 200
       if (currentItem == "undefined") {
         entity.setDynamicProperty("farmersdelight:item", itemId);
         entity.setDynamicProperty("farmersdelight:canAdd", itemStack.maxAmount - amount);

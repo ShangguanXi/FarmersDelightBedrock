@@ -226,7 +226,7 @@ farmersdelight.blockfood.minecraft:bowl=Bunu Yemek için Kase Gerekli.
 farmersdelight.skillet.invalid_item=Bu Pişirilebilir Durmuyor...
 
 pack.name=Farmer's Delight[RP]
-pack.description=It's time to farm a little bit of everything! Supported version is 1.21.70+
+pack.description=It's time to farm a little bit of everything! Supported version is 1.21.90+
 
 item.farmersdelight:book_farmersdelight=Farmer's Delight'n Kitab
 

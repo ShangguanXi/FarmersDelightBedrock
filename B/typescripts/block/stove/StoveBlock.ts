@@ -56,7 +56,7 @@ export class StoveBlock extends BlockWithEntity {
         const cookable = itemStack.getComponent("farmersdelight:cookable")
         if (!vanillaItemList.includes(itemStack.typeId) && !cookable) return
         const params = cookable?.customComponentParameters.params as CookableComponentParams
-        const maxTime = cookable ? (params.time ? params.time*20 : 200*20) : 200*20
+        const maxTime = cookable ? (params.time ? params.time : 200) : 200
         const emptySlotsCount = stoveContainer?.emptySlotsCount
         if (emptySlotsCount == 0) return
         itemStack.amount = 1
@@ -64,10 +64,11 @@ export class StoveBlock extends BlockWithEntity {
             if (stoveContainer?.getItem(i) == undefined) {
                 stoveContainer?.setItem(i, itemStack)
                 entity.setDynamicProperty(`farmersdelight:item_${i}_max_time`, maxTime);
+                if (EntityUtil.gameMode(player)) ItemUtil.clearItem(container, player.selectedSlotIndex);
                 return
             }
         }
-        ItemUtil.clearItem(container, player.selectedSlotIndex)
+        
 
 
     }

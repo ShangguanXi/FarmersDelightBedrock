@@ -40,6 +40,7 @@ export class BlockEntity {
                 dimension.spawnItem(itemStack, entity.location)
             }
         };
+        
         BlockEntity.clearEntity(args);
     };
     //清除方块实体
