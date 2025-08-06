@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.90",
+    "format_version": "1.21.100",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:rich_soil_sugar_cane_bottom",
@@ -61,6 +61,9 @@
                     "face_dimming": false,
                     "render_method": "alpha_test"
                 }
+            },
+            "minecraft:movable": {
+                "movement_type": "popped" 
             },
             "minecraft:placement_filter": {
                 "conditions": [

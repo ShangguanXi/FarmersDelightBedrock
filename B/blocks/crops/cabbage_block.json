@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.90",
+    "format_version": "1.21.100",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:cabbage_block",
@@ -191,6 +191,9 @@
                     "face_dimming": false,
                     "render_method": "alpha_test"
                 }
+            },
+            "minecraft:movable": {
+                "movement_type": "popped" 
             },
             "minecraft:redstone_conductivity":{
                 "allows_wire_to_step_down": false

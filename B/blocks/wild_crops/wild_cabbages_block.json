@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.90",
+    "format_version": "1.21.100",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:wild_cabbages"
@@ -22,6 +22,9 @@
                     "face_dimming": false
 				}
 			},
+            "minecraft:movable": {
+                "movement_type": "popped" 
+            },
             "minecraft:liquid_detection": {
                 "detection_rules": [
                     {
@@ -33,6 +36,22 @@
 				"catch_chance_modifier": 30,
 				"destroy_chance_modifier": 60
 			},
+            "minecraft:random_offset": {
+                "x": {
+                    "steps": 0,
+                    "range": {
+                        "min": -4,
+                        "max": 4
+                    }
+                },
+                "z": {
+                    "steps": 0,
+                    "range": {
+                        "min": -4,
+                        "max": 4
+                    }
+                }
+            },
             "minecraft:placement_filter": {
                 "conditions": [
                     {

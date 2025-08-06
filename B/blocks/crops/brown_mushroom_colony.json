@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.90",
+    "format_version": "1.21.100",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:brown_mushroom_colony",
@@ -165,6 +165,9 @@
             "minecraft:geometry": "geometry.wild_crop",
             "minecraft:destructible_by_explosion": {
                 "explosion_resistance": 0.0
+            },
+            "minecraft:movable": {
+                "movement_type": "popped" 
             },
             "minecraft:collision_box": false,
             "minecraft:placement_filter": {

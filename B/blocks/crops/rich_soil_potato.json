@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.90",
+    "format_version": "1.21.100",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:rich_soil_potato",
@@ -220,6 +220,9 @@
             }
         ],
         "components": {
+            "minecraft:movable": {
+                "movement_type": "popped" 
+            },
             "minecraft:material_instances": {
                 "*": {
                     "texture": "potatoes_stage3",

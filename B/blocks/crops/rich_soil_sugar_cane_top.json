@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.90",
+    "format_version": "1.21.100",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:rich_soil_sugar_cane_top",
@@ -41,6 +41,9 @@
                         "on_liquid_touches": "popped"
                     }
                 ]
+            },
+            "minecraft:movable": {
+                "movement_type": "popped" 
             },
             "minecraft:placement_filter": {
                 "conditions": [

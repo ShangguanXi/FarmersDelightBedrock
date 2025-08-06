@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.90",
+    "format_version": "1.21.100",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:wild_beetroots"
@@ -47,6 +47,9 @@
                     }
                 ]
             },
+            "minecraft:movable": {
+                "movement_type": "popped" 
+            },
             "minecraft:selection_box": {
                 "origin": [
                     -5,
@@ -58,6 +61,22 @@
                     16,
                     10
                 ]
+            },
+            "minecraft:random_offset": {
+                "x": {
+                    "steps": 0,
+                    "range": {
+                        "min": -4,
+                        "max": 4
+                    }
+                },
+                "z": {
+                    "steps": 0,
+                    "range": {
+                        "min": -4,
+                        "max": 4
+                    }
+                }
             },
             "minecraft:redstone_conductivity":{
                 "allows_wire_to_step_down": false

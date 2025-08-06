@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.90",
+    "format_version": "1.21.100",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:wild_rice",
@@ -85,6 +85,9 @@
                     1,
                     1
                 ]
+            },
+            "minecraft:movable": {
+                "movement_type": "popped" 
             },
             "farmersdelight:wild_rice": {},
             "minecraft:destructible_by_mining": {

@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.70",
+    "format_version": "1.21.100",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:rich_soil_torchflower",
@@ -62,6 +62,9 @@
             },
             "minecraft:redstone_conductivity":{
                 "allows_wire_to_step_down": false
+            },
+            "minecraft:movable": {
+                "movement_type": "popped" 
             },
             "minecraft:collision_box": false
         }
