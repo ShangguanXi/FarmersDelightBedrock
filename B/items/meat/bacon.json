@@ -18,7 +18,8 @@
       "minecraft:tags": {
         "tags": [
           "farmersdelight:is_raw_porkchop",
-          "farmersdelight:cabbage_roll_ingredients"
+          "farmersdelight:cabbage_roll_ingredients",
+          "farmersdelight:is_porkchop"
         ]
       },
       "minecraft:use_animation": "eat",
