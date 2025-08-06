@@ -111,6 +111,9 @@
             }
         ],
         "components": {
+            "minecraft:movable": {
+                "movement_type": "immovable" 
+            },
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 1
             },

@@ -111,6 +111,9 @@
             }
         ],
         "components": {
+            "minecraft:movable": {
+                "movement_type": "immovable" 
+            },
             "farmersdelight:cabinet": "farmersdelight:spruce_cabinet",
             "minecraft:material_instances": {
                 "*": {

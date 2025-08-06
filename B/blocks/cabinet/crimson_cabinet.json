@@ -111,6 +111,9 @@
             }
         ],
         "components": {
+            "minecraft:movable": {
+                "movement_type": "immovable" 
+            },
             "farmersdelight:cabinet": "farmersdelight:crimson_cabinet",
             "minecraft:material_instances": {
                 "*": {
