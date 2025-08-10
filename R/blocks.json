@@ -144,5 +144,14 @@
     },
     "farmersdelight:stove": {
         "sound": "stone"
+    },
+    "farmersdelight:apple_pie": {
+        "sound": "cloth"
+    },
+    "farmersdelight:chocolate_pie": {
+        "sound": "cloth"
+    },
+    "farmersdelight:sweet_berry_cheesecake": {
+        "sound": "cloth"
     }
 }
