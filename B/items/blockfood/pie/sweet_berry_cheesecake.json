@@ -3,7 +3,8 @@
   "minecraft:item": {
     "components": {
       "minecraft:block_placer": {
-        "block": "farmersdelight:sweet_berry_cheesecake_block"
+        "block": "farmersdelight:sweet_berry_cheesecake",
+        "replace_block_item":true
       },
       "minecraft:icon": {
         "textures": {

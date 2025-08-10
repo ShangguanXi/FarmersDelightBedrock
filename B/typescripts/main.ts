@@ -37,6 +37,7 @@ import { CookableComonentRegister } from "./customComponents/item/CookableCompon
 import { CabinetComponentRegister } from "./customComponents/block/CabinetComponent.ts";
 import { IncreaseProductionComponentRegister } from "./customComponents/item/IncreaseProductionComponent";
 import { SeedComponent } from "./customComponents/item/SeedComponent";
+import { PieComponent } from "./customComponents/block/PieCompostComonent";
 
 
 CookingPotRecipeRegistries.initCookingPotScoRegistries();
@@ -45,10 +46,13 @@ CookRecipeRegistries.initCookScoRegistries();
 
 new CropComponentRegister()
 new CabinetComponentRegister();
+new WildCropComponent();
+new StoveComponentRegister();
+new PieComponent();
+
 
 new RiceRollMedleyComponentRegister();
 new InteractComponentRegister()
-new WildCropComponent();
 new RichSoilComponentRegister();
 new RichSoilFarmlandComponentRegister();
 new MushroomColonyComonentRegister();
@@ -56,9 +60,10 @@ new OrganicCompostComonentRegister();
 new RopeComponentRegister();
 new TatamMatComponentRegister();
 new TatamComponentRegister();
-new StoveComponentRegister();
-new SeedComponent();
 
+
+
+new SeedComponent();
 new CuttableComponentRegister();
 new CookableComonentRegister();
 new IncreaseProductionComponentRegister();

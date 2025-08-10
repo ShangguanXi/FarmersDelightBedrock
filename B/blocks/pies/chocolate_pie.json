@@ -2,10 +2,7 @@
     "format_version": "1.21.100",
     "minecraft:block": {
         "description": {
-            "identifier": "farmersdelight:sweet_berry_cheesecake_block",
-            "menu_category": {
-                "category": "none"
-            },
+            "identifier": "farmersdelight:chocolate_pie",
             "states": {
                 "farmersdelight:food_block_stage": [
                     0,
@@ -27,25 +24,28 @@
             {
                 "condition": "query.block_state('farmersdelight:food_block_stage') == 0",
                 "components": {
-                    "minecraft:geometry": "geometry.pie"
+                    "minecraft:geometry": "geometry.chocolate_pie"
                 }
             },
             {
                 "condition": "query.block_state('farmersdelight:food_block_stage') == 1",
                 "components": {
-                    "minecraft:geometry": "geometry.pie_slice1"
+                    "minecraft:loot": "loot_tables/farmersdelight/empty.json",
+                    "minecraft:geometry": "geometry.chocolate_pie_slice1"
                 }
             },
             {
                 "condition": "query.block_state('farmersdelight:food_block_stage') == 2",
                 "components": {
-                    "minecraft:geometry": "geometry.pie_slice2"
+                    "minecraft:loot": "loot_tables/farmersdelight/empty.json",
+                    "minecraft:geometry": "geometry.chocolate_pie_slice2"
                 }
             },
             {
                 "condition": "query.block_state('farmersdelight:food_block_stage') == 3",
                 "components": {
-                    "minecraft:geometry": "geometry.pie_slice3"
+                    "minecraft:loot": "loot_tables/farmersdelight/empty.json",
+                    "minecraft:geometry": "geometry.chocolate_pie_slice3"
                 }
             },
             {
@@ -98,11 +98,22 @@
             }
         ],
         "components": {
-            "minecraft:geometry": "geometry.pie",
+            "farmersdelight:pie": {
+                "item": "farmersdelight:chocolate_pie_slice",
+                "nutrition": 3,
+                "saturation_modifier": 0.3,
+                "effects": [
+                    ["speed",600]
+                ],
+                "state": {
+                    "max_use": 3,
+                    "name": "farmersdelight:food_block_stage"
+                }
+            },
+            "minecraft:geometry": "geometry.chocolate_pie",
             "minecraft:redstone_conductivity": {
                 "allows_wire_to_step_down": false
             },
-            "farmersdelight:interact": {},
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 0.5
             },
@@ -112,16 +123,16 @@
             },
             "minecraft:material_instances": {
                 "*": {
-                    "texture": "sweet_berry_cheesecake_top"
+                    "texture": "chocolate_pie_top"
                 },
                 "inner": {
-                    "texture": "sweet_berry_cheesecake_inner"
+                    "texture": "chocolate_pie_inner"
                 },
                 "side": {
                     "texture": "pie_side"
                 },
                 "top": {
-                    "texture": "sweet_berry_cheesecake_top"
+                    "texture": "chocolate_pie_top"
                 },
                 "bottom": {
                     "texture": "pie_bottom"
@@ -152,8 +163,7 @@
                     12.0
                 ]
             },
-            "tag:farmersdelight:pie": {},
-            "tag:farmersdelight.pie:3-tag.farmersdelight:is_knife": {}
+            "tag:farmersdelight:pie": {}
         }
     }
 }

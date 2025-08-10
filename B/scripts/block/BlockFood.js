@@ -56,39 +56,6 @@ export class BlockFood {
                 break;
             }
             ;
-            if (nameSpace == "farmersdelight.pie") {
-                if (!itemStack) {
-                    if (player.isSneaking)
-                        return;
-                    if (Number(block.permutation.getState("farmersdelight:food_block_stage")) != maxUse) {
-                        block.setPermutation(block.permutation.withState("farmersdelight:food_block_stage", Number(block.permutation.getState("farmersdelight:food_block_stage")) + 1));
-                        player.addEffect('speed', 60 * 20, { amplifier: 0 });
-                    }
-                    else {
-                        block.dimension.setBlockType({ x: location.x, y: location.y, z: location.z }, "minecraft:air");
-                    }
-                    ;
-                    return;
-                }
-                ;
-                if ((itemType == "tag" && itemStack.hasTag(itemId)) || (itemType == "item" && itemStack.typeId == itemId)) {
-                    spawnLoot(block.typeId.split(":")[0] + "/pie/" + block.typeId.split(":")[1], block.dimension, { x: location.x + 0.5, y: location.y + 1, z: location.z + 0.5 });
-                    ItemUtil.damageItem(container, player.selectedSlotIndex);
-                }
-                else {
-                    player.addEffect('speed', 60 * 20, { amplifier: 0 });
-                }
-                ;
-                if (Number(block.permutation.getState("farmersdelight:food_block_stage")) != maxUse) {
-                    block.setPermutation(block.permutation.withState("farmersdelight:food_block_stage", Number(block.permutation.getState("farmersdelight:food_block_stage")) + 1));
-                }
-                else {
-                    block.dimension.setBlockType({ x: location.x, y: location.y, z: location.z }, "minecraft:air");
-                }
-                ;
-                break;
-            }
-            ;
         }
         ;
     }
@@ -120,14 +87,6 @@ export class BlockFood {
                 args.cancel = true;
             }
             ;
-            if (tag == "farmersdelight:pie") {
-                system.run(() => {
-                    block.dimension.setBlockType({ x: location.x, y: location.y, z: location.z }, "minecraft:air");
-                    player.playSound("dig.cloth");
-                    ItemUtil.damageItem(container, player.selectedSlotIndex);
-                });
-                args.cancel = true;
-            }
         }
         if (block.typeId == "farmersdelight:rice_roll_medley_block") {
             if (Number(block.permutation.getState("farmersdelight:food_block_stage")) != 0) {

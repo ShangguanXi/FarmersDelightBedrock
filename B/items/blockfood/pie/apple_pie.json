@@ -3,7 +3,8 @@
   "minecraft:item": {
     "components": {
       "minecraft:block_placer": {
-        "block": "farmersdelight:apple_pie_block"
+        "block": "farmersdelight:apple_pie",
+        "replace_block_item":true
       },
       "minecraft:icon": {
         "textures": {
