@@ -19,6 +19,9 @@
       },
       "minecraft:compostable": {
         "composting_chance": 65
+      },
+      "efm:realistic_food":{
+        "expire_time":20
       }
     },
     "description": {

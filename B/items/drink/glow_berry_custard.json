@@ -16,9 +16,12 @@
       "minecraft:max_stack_size": 16,
       "minecraft:use_animation": "drink",
       "minecraft:use_modifiers": {
-                "use_duration": 1.6,
-                "movement_modifier": 0.4
-            }
+        "use_duration": 1.6,
+        "movement_modifier": 0.4
+      },
+      "efm:realistic_food": {
+        "expire_time": 3
+      }
     },
     "description": {
       "identifier": "farmersdelight:glow_berry_custard",
