@@ -79,7 +79,7 @@
                     10
                 ]
             },
-            "minecraft:loot": "loot_tables/farmersdelight/empty.json",
+            "minecraft:loot": "loot_tables/farmersdelight/sandy_shrub.json",
             "minecraft:replaceable": {},
             "minecraft:collision_box": false
         }

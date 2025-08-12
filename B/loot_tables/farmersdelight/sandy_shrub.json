@@ -1,0 +1,18 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "weight": 1,
+                    "name": "minecraft:beetroot_seeds"
+                },
+                {
+                    "weight": 5,
+                    "type": "empty"
+                }
+            ]
+        }
+    ]
+}
