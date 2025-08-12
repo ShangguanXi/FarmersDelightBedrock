@@ -31,6 +31,21 @@
             {
                 "condition": "query.block_state('minecraft:block_face') == 'south'",
                 "components": {
+                    "minecraft:liquid_detection": {
+                        "detection_rules": [
+                            {
+                                "on_liquid_touches": "no_reaction",
+                                "can_contain_liquid": true,
+                                "stops_liquid_flowing_from_direction": [
+                                    "down",
+                                    "west",
+                                    "east",
+                                    "north",
+                                    "up"
+                                ]
+                            }
+                        ]
+                    },
                     "minecraft:transformation": {
                         "rotation": [
                             90,
@@ -43,6 +58,21 @@
             {
                 "condition": "query.block_state('minecraft:block_face') == 'west'",
                 "components": {
+                    "minecraft:liquid_detection": {
+                        "detection_rules": [
+                            {
+                                "on_liquid_touches": "no_reaction",
+                                "can_contain_liquid": true,
+                                "stops_liquid_flowing_from_direction": [
+                                    "down",
+                                    "east",
+                                    "north",
+                                    "south",
+                                    "up"
+                                ]
+                            }
+                        ]
+                    },
                     "minecraft:transformation": {
                         "rotation": [
                             0,
@@ -55,6 +85,21 @@
             {
                 "condition": "query.block_state('minecraft:block_face') == 'east'",
                 "components": {
+                    "minecraft:liquid_detection": {
+                        "detection_rules": [
+                            {
+                                "on_liquid_touches": "no_reaction",
+                                "can_contain_liquid": true,
+                                "stops_liquid_flowing_from_direction": [
+                                    "down",
+                                    "west",
+                                    "north",
+                                    "south",
+                                    "up"
+                                ]
+                            }
+                        ]
+                    },
                     "minecraft:transformation": {
                         "rotation": [
                             0,
@@ -67,6 +112,21 @@
             {
                 "condition": "query.block_state('minecraft:block_face') == 'down'",
                 "components": {
+                    "minecraft:liquid_detection": {
+                        "detection_rules": [
+                            {
+                                "on_liquid_touches": "no_reaction",
+                                "can_contain_liquid": true,
+                                "stops_liquid_flowing_from_direction": [
+                                    "down",
+                                    "west",
+                                    "east",
+                                    "north",
+                                    "south"
+                                ]
+                            }
+                        ]
+                    },
                     "minecraft:transformation": {
                         "rotation": [
                             0,
@@ -79,6 +139,21 @@
             {
                 "condition": "query.block_state('minecraft:block_face') == 'up'",
                 "components": {
+                    "minecraft:liquid_detection": {
+                        "detection_rules": [
+                            {
+                                "on_liquid_touches": "no_reaction",
+                                "can_contain_liquid": true,
+                                "stops_liquid_flowing_from_direction": [
+                                    "up",
+                                    "west",
+                                    "east",
+                                    "north",
+                                    "south"
+                                ]
+                            }
+                        ]
+                    },
                     "minecraft:transformation": {
                         "rotation": [
                             180,
