@@ -5,25 +5,25 @@
             "identifier": "farmersdelight:wild_carrots"
         },
         "components": {
-            "farmersdelight:wild_crop":{},
+            "farmersdelight:wild_crop": {},
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 0.0
             },
-			"minecraft:light_dampening": 0,
+            "minecraft:light_dampening": 0,
             "minecraft:destructible_by_explosion": {
                 "explosion_resistance": 0.1
             },
             "minecraft:geometry": "geometry.wild_crop",
-			"minecraft:material_instances": {
-				"*": {
-					"texture": "wild_carrots",
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "wild_carrots",
                     "render_method": "alpha_test",
                     "ambient_occlusion": false,
                     "face_dimming": false
-				}
-			},
+                }
+            },
             "minecraft:movable": {
-                "movement_type": "popped" 
+                "movement_type": "popped"
             },
             "minecraft:random_offset": {
                 "x": {
@@ -48,17 +48,17 @@
                     }
                 ]
             },
-			"minecraft:flammable": {
-				"catch_chance_modifier": 30,
-				"destroy_chance_modifier": 60
-			},
-           
+            "minecraft:flammable": {
+                "catch_chance_modifier": 30,
+                "destroy_chance_modifier": 60
+            },
             "minecraft:placement_filter": {
                 "conditions": [
                     {
                         "block_filter": [
-                            "dirt",
-                            "grass_block"
+                            {
+                                "tags": "q.any_tag('dirt')"
+                            }
                         ],
                         "allowed_faces": [
                             "up"
@@ -78,11 +78,10 @@
                     10
                 ]
             },
-            "minecraft:redstone_conductivity":{
+            "minecraft:redstone_conductivity": {
                 "allows_wire_to_step_down": false
             },
             "minecraft:loot": "loot_tables/farmersdelight/crops/farmersdelight_wild_carrot.json",
-            
             "minecraft:collision_box": false
         }
     }

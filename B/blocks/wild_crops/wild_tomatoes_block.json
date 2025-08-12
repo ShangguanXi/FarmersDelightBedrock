@@ -30,8 +30,9 @@
                 "conditions": [
                     {
                         "block_filter": [
-                            "dirt",
-                            "grass_block"
+                            {
+                                "tags": "q.any_tag('dirt')"
+                            }
                         ],
                         "allowed_faces": [
                             "up"
