@@ -1,0 +1,27 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "farmersdelight:basket"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "key": {
+            "#": {
+                "item": "farmersdelight:canvas"
+            },
+            "b": {
+                "item": "minecraft:bamboo"
+            }
+        },
+        "pattern": [
+            "b b",
+            "# #",
+            "b#b"
+        ],
+        "result": {
+            "item": "farmersdelight:basket"
+        }
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shapeless": {
+        "description": {
+            "identifier": "farmersdelight:tomato_seeds"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "ingredients": [
+            {
+                "item": "farmersdelight:rotten_tomato"
+            }
+        ],
+        "result": {
+            "item": "farmersdelight:tomato_seeds"
+        }
+    }
+}
