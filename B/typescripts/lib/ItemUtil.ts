@@ -63,15 +63,16 @@ export class ItemUtil {
         container.addItem(replaceItemStack)
 
     }
-    public static spawnItem(target: Block | Entity,item: string | ItemStack,number: number = 1,location?: Vector3): void {
+    public static spawnItem(target: Block | Entity,item: string | ItemStack,number: number = 1,location?: Vector3): Entity|undefined {
         const dimension = target.dimension;
         const spawnPos = location ?? (target instanceof Block? (RandomUtil.probability(50) ? target.center() : target.bottomCenter()): target.location);
         const stack = item instanceof ItemStack ? item : new ItemStack(item, number);
         try {
-            dimension.spawnItem(stack, spawnPos);
+            return dimension.spawnItem(stack, spawnPos);
         } catch (error) {
-            
+            return undefined
         }
+        
         
     }
 }

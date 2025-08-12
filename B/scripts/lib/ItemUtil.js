@@ -74,9 +74,10 @@ export class ItemUtil {
         const spawnPos = location ?? (target instanceof Block ? (RandomUtil.probability(50) ? target.center() : target.bottomCenter()) : target.location);
         const stack = item instanceof ItemStack ? item : new ItemStack(item, number);
         try {
-            dimension.spawnItem(stack, spawnPos);
+            return dimension.spawnItem(stack, spawnPos);
         }
         catch (error) {
+            return undefined;
         }
     }
 }

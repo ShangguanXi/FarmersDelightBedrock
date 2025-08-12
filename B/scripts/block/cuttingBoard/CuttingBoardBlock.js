@@ -52,6 +52,14 @@ export class CuttingBoardBlock extends BlockWithEntity {
         const offHand = equip?.getEquipment(EquipmentSlot.Offhand);
         const itemData = JSON.parse(entity.getDynamicProperty("farmersdelight:blockEntityItemStackData"));
         const itemId = itemData?.item ?? "undefined";
+        const face = block.permutation.getState("minecraft:cardinal_direction");
+        const offsets = {
+            south: { x: -0.15, y: 0, z: 0 },
+            north: { x: 0.15, y: 0, z: 0 },
+            west: { x: 0, y: 0, z: -0.15 },
+            east: { x: 0, y: 0, z: 0.15 }
+        };
+        const offset = offsets[face] ?? { x: 0, y: 0, z: 0 };
         if (offHand && itemId == "undefined") {
             const cuttable = offHand.getComponent("farmersdelight:cuttable");
             if (mainHand) {
@@ -61,8 +69,10 @@ export class CuttingBoardBlock extends BlockWithEntity {
                     const toolType = (params.tool.type).toString();
                     if ((toolType == "tag" && mainHand.hasTag(params.tool.name)) || (mainHand.typeId == params.tool.name && toolType == "item")) {
                         entity.dimension.playSound(`block.farmersdelight.cutting_board`, entity.location);
-                        for (const loot of loots)
-                            block.dimension.spawnItem(new ItemStack(loot.id, loot.count), { x: x + 0.5, y: y + 0.5, z: z + 0.5 });
+                        for (const loot of loots) {
+                            const item = block.dimension.spawnItem(new ItemStack(loot.id, loot.count), { x: x + 0.5, y: y + 0.5, z: z + 0.5 });
+                            item.applyImpulse(offset);
+                        }
                         if (EntityUtil.gameMode(player)) {
                             ItemUtil.clearOffhandItem(player);
                             ItemUtil.damageItem(container, player.selectedSlotIndex);
@@ -161,7 +171,8 @@ export class CuttingBoardBlock extends BlockWithEntity {
                     entity.setDynamicProperty('farmersdelight:cutTool', undefined);
                     entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', '{"item":"undefined"}');
                     for (const loot of loots) {
-                        block.dimension.spawnItem(new ItemStack(loot.id, loot.count), { x: x + 0.5, y: y + 0.5, z: z + 0.5 });
+                        const item = block.dimension.spawnItem(new ItemStack(loot.id, loot.count), { x: x + 0.5, y: y + 0.5, z: z + 0.5 });
+                        item.applyImpulse(offset);
                     }
                     if (EntityUtil.gameMode(player))
                         ItemUtil.damageItem(container, player.selectedSlotIndex);
@@ -184,7 +195,7 @@ export class CuttingBoardBlock extends BlockWithEntity {
             entity.setDynamicProperty('farmersdelight:cutTool', undefined);
             entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', '{"item":"undefined"}');
             entity.runCommand(`replaceitem entity @s slot.weapon.mainhand 0 air`);
-            ItemUtil.spawnItem(block, itemId, 1, { x: x + 0.5, y: y + 0.5, z: z + 0.5 });
+            ItemUtil.spawnItem(block, itemId, 1, { x: x + 0.5, y: y + 0.5, z: z + 0.5 })?.applyImpulse(offset);
         }
     }
     static isCorrectTool(mode, mainHand, cutToolData) {

@@ -38,6 +38,8 @@ import { CabinetComponentRegister } from "./customComponents/block/CabinetCompon
 import { IncreaseProductionComponentRegister } from "./customComponents/item/IncreaseProductionComponent";
 import { SeedComponent } from "./customComponents/item/SeedComponent";
 import { PieComponent } from "./customComponents/block/PieCompostComonent";
+import { Basket } from "./block/basket/Basket";
+import { BasketBlockEntity } from "./block/basket/BasketBlockEntity";
 
 
 CookingPotRecipeRegistries.initCookingPotScoRegistries();
@@ -70,16 +72,27 @@ new IncreaseProductionComponentRegister();
 
 new ColoniesComonentRegister();
 new RiceSeedComponentRegister();
+
+
 new CookingPotBlock();
 new CookingPotBlockEntity();
+
 new CuttingBoardBlock();
 new CuttingBoardBlockEntity();
+
 new StoveBlock();
 new StoveBlockEntity();
+
 new Skillet();
 new SkilletEntity();
+
 new Cabinets();
 new CabinetsBlockEntity();
+
+new Basket();
+new BasketBlockEntity();
+
+
 new RiceBlock();
 new FarmersBook();
 new Food();
