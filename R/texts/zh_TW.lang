@@ -236,7 +236,7 @@ farmersdelight.blockfood.minecraft:bowl=你需要一個碗以食用它。
 farmersdelight.skillet.invalid_item=這東西可放不進去……
 
 pack.name=農夫樂事[資源包]
-pack.description=是時候種點好東西了！支持的版本爲1.21.100+
+pack.description=是時候種點好東西了！支持的版本爲1.21.111+
 
 item.farmersdelight:book_farmersdelight=農夫大典
 

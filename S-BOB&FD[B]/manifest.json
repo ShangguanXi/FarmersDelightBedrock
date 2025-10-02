@@ -4,8 +4,8 @@
             "uuid": "d0131071-9ec1-edcd-6871-857c700703d8",
             "version": [
                 4,
-                1,
-                1
+                2,
+                0
             ]
         },
         {
@@ -23,14 +23,14 @@
         "min_engine_version": [
             1,
             21,
-            100
+            110
         ],
         "name": "pack.name",
         "uuid": "30bfef42-da1c-468f-b1ee-e8a3f0914c63",
         "version": [
             4,
-            1,
-            1
+            2,
+            0
         ]
     },
     "metadata": {
@@ -43,8 +43,8 @@
             "uuid": "8e3ed073-1648-41f6-bd4e-f4aca4cf1fbf",
             "version": [
                 4,
-                1,
-                1
+                2,
+                0
             ]
         }
     ]
