@@ -111,7 +111,8 @@
           "default": "farmersdelight:netherite_knife"
         }
       },
-      "farmersdelight:increase_production":{},
+      "minecraft:fire_resistant": {},
+      "farmersdelight:increase_production": {},
       "minecraft:max_stack_size": 1,
       "minecraft:repairable": {
         "repair_items": [
