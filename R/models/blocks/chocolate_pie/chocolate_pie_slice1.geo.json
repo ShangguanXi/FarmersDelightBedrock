@@ -42,7 +42,7 @@
 							"origin": [0, 0, 0],
 							"size": [6, 4, 6],
 							"uv": {
-								"east": {"uv": [2, 12], "uv_size": [6, 4]},
+								"east": {"uv": [2, 10], "uv_size": [6, 4]},
 								"south": {"uv": [2, 12], "uv_size": [6, 4], "material_instance": "side"},
 								"west": {"uv": [8, 12], "uv_size": [6, 4], "material_instance": "side"},
 								"up": {"uv": [8, 14], "uv_size": [-6, -6], "material_instance": "top"},
