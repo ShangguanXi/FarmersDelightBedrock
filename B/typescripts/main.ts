@@ -40,7 +40,7 @@ import { SeedComponent } from "./customComponents/item/SeedComponent";
 import { PieComponent } from "./customComponents/block/PieCompostComonent";
 import { Basket } from "./block/basket/Basket";
 import { BasketBlockEntity } from "./block/basket/BasketBlockEntity";
-
+import "./customComponents/item/KnifeComponent"
 
 CookingPotRecipeRegistries.initCookingPotScoRegistries();
 CuttingBoardRegistries.initCuttingBoardScoRegistries();

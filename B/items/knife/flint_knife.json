@@ -105,8 +105,10 @@
         "slot": "sword",
         "value": 5
       },
-      "farmersdelight:increase_production":{},
+      "farmersdelight:increase_production": {},
+      "farmersdelight:knife": {},
       "minecraft:hand_equipped": true,
+      "minecraft:can_destroy_in_creative": false,
       "minecraft:icon": {
         "textures": {
           "default": "farmersdelight:flint_knife"
