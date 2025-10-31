@@ -60,7 +60,7 @@
                             {
                                 "block_filter": [
                                     {
-                                        "tags": "q.any_tag('dirt')"
+                                        "tags": "q.any_tag('dirt','sand')"
                                     }
                                 ],
                                 "allowed_faces": [
