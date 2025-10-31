@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.110",
+    "format_version": "1.21.120",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:sandy_shrub"
@@ -13,6 +13,18 @@
             "minecraft:destructible_by_explosion": {
                 "explosion_resistance": 0.1
             },
+            /*"minecraft:flower_pottable": {},
+            "minecraft:embedded_visual": {
+                "geometry": "geometry.wild_crop",
+                "material_instances": {
+                    "*": {
+                        "texture": "sandy_shrub",
+                        "render_method": "alpha_test",
+                        "ambient_occlusion": false,
+                        "face_dimming": false
+                    }
+                }
+            },*/
             "minecraft:geometry": "geometry.wild_crop",
             "minecraft:material_instances": {
                 "*": {
@@ -49,7 +61,7 @@
                 ]
             },
             "minecraft:movable": {
-                "movement_type": "popped" 
+                "movement_type": "popped"
             },
             "minecraft:random_offset": {
                 "x": {
