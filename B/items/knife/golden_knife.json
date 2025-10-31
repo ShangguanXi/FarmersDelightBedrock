@@ -3,7 +3,8 @@
   "minecraft:item": {
     "components": {
       "minecraft:damage": 1,
-      "farmersdelight:increase_production":{},
+      "farmersdelight:increase_production": {},
+      "farmersdelight:knife": {},
       "minecraft:digger": {
         "destroy_speeds": [
           {
@@ -107,6 +108,7 @@
         "value": 22
       },
       "minecraft:hand_equipped": true,
+      "minecraft:can_destroy_in_creative": false,
       "minecraft:icon": {
         "textures": {
           "default": "farmersdelight:golden_knife"

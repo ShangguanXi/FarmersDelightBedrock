@@ -1,7 +1,6 @@
 {
   "include": [
-    "../typescripts/**/*",
-    "../scripts/data/mojang-effect.js"
+    "../typescripts/**/*"
   ],
   "compilerOptions": {
     "allowJs": true,

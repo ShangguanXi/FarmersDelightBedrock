@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "build": "tsc -p ./B/typescripts/tsconfig.json"
+  },
+  "dependencies": {
+    "@minecraft/server": "^2.0.0",
+    "@minecraft/server-ui": "^2.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4"
+  }
+}

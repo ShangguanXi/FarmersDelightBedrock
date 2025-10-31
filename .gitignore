@@ -1,0 +1,5 @@
+node_modules/
+B/scripts/
+.idea/
+
+package-lock.json
