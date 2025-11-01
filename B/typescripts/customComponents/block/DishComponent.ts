@@ -49,13 +49,20 @@ export class DishComponent implements BlockCustomComponent {
             block.setType("minecraft:air");
             return;
         }
-        let slot: ContainerSlot | undefined;
         if (spec.utensil) {
             if (!player) return;
-            slot = container?.getSlot(player.selectedSlotIndex);
+            const slot = container?.getSlot(player.selectedSlotIndex);
             if (!slot || isInvalidItem(slot, spec.utensil)) {
                 player.onScreenDisplay.setActionBar({ translate: requiresItem(spec.utensil) });
                 return;
+            }
+            if (player.getGameMode() !== GameMode.Creative) {
+                const amount = slot.amount - 1;
+                if (amount) {
+                    slot.amount = amount;
+                } else {
+                    slot.setItem(undefined);
+                }
             }
         }
         let content = spec.contents;
@@ -83,13 +90,6 @@ export class DishComponent implements BlockCustomComponent {
             block.setPermutation(permutation.withState("farmersdelight:food_block_stage", consumed + 1));
         } else {
             block.setType("minecraft:air");
-        }
-        if (!slot || player?.getGameMode() === GameMode.Creative) return;
-        const amount = slot.amount - 1;
-        if (amount) {
-            slot.amount = amount;
-        } else {
-            slot.setItem(undefined);
         }
     }
 
