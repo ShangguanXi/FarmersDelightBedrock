@@ -106,4 +106,4 @@ class KnifeComponent implements ItemCustomComponent {
     }
 }
 
-export const {} = KnifeComponent;
+void KnifeComponent;
