@@ -41,6 +41,7 @@ import { PieComponent } from "./customComponents/block/PieCompostComonent";
 import { Basket } from "./block/basket/Basket";
 import { BasketBlockEntity } from "./block/basket/BasketBlockEntity";
 import "./customComponents/item/KnifeComponent"
+import "./customComponents/block/DishComponent"
 
 CookingPotRecipeRegistries.initCookingPotScoRegistries();
 CuttingBoardRegistries.initCuttingBoardScoRegistries();
