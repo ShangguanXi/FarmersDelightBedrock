@@ -8,13 +8,12 @@ import {
 } from "@minecraft/server";
 import { subscribeEvent, attachedBlockEntity } from "../lib/EventSubscriber";
 import { offsetByDirection } from "../lib/DirectionUtil";
-import { dropsItems, discard } from "../lib/EntityUtil";
+import { dropsItems } from "../lib/EntityUtil";
 
 @attachedBlockEntity({ eventTypes: ["farmersdelight:basket_tick"] })
 export class BasketBlockEntity {
-    static onDiscard(entity: Entity) {
+    static onDiscard(entity: Entity): undefined {
         dropsItems(entity);
-        discard(entity);
     }
 
     static onTick(entity: Entity, block: Block) {

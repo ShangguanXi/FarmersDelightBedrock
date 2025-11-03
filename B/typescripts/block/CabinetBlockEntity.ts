@@ -5,14 +5,13 @@ import {
     world,
 } from "@minecraft/server";
 import { subscribeEvent, attachedBlockEntity } from "../lib/EventSubscriber";
-import { discard, dropsItems } from "../lib/EntityUtil";
+import { dropsItems } from "../lib/EntityUtil";
 import { locateBlock } from "../lib/BlockEntity";
 
 @attachedBlockEntity({ eventTypes: ["farmersdelight:cabinet_tick"] })
 export class CabinetBlockEntity {
-    static onDiscard(entity: Entity) {
+    static onDiscard(entity: Entity): undefined {
         dropsItems(entity);
-        discard(entity);
     }
 
     @subscribeEvent(world.afterEvents.playerInteractWithEntity)

@@ -36,10 +36,6 @@ export function dropsItems(
     container.clearAll();
 }
 
-export function discard(entity: Entity) {
-    system.run(() => entity.remove());
-}
-
 export class EntityUtil {
     //检测传入的玩家是否为非创造模式
     public static gameMode(player: Entity) {
