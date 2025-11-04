@@ -1,206 +1,222 @@
 {
-    "format_version": "1.21.120",
-    "minecraft:block": {
-        "description": {
-            "identifier": "farmersdelight:basket",
-            "menu_category": {
-                "category": "items",
-                "group": "farmersdelight:itemGroup.name.cooker"
-            },
-            "traits": {
-                "minecraft:placement_position": {
-                    "enabled_states": [
-                        "minecraft:block_face"
-                    ]
-                }
-            }
-        },
-        "permutations": [
-            {
-                "condition": "query.block_state('minecraft:block_face') == 'north'",
-                "components": {
-                    "minecraft:transformation": {
-                        "rotation": [
-                            -90,
-                            0,
-                            0
-                        ]
-                    }
-                }
-            },
-            {
-                "condition": "query.block_state('minecraft:block_face') == 'south'",
-                "components": {
-                    "minecraft:liquid_detection": {
-                        "detection_rules": [
-                            {
-                                "on_liquid_touches": "no_reaction",
-                                "can_contain_liquid": true,
-                                "stops_liquid_flowing_from_direction": [
-                                    "down",
-                                    "west",
-                                    "east",
-                                    "north",
-                                    "up"
-                                ]
-                            }
-                        ]
-                    },
-                    "minecraft:transformation": {
-                        "rotation": [
-                            90,
-                            0,
-                            0
-                        ]
-                    }
-                }
-            },
-            {
-                "condition": "query.block_state('minecraft:block_face') == 'west'",
-                "components": {
-                    "minecraft:liquid_detection": {
-                        "detection_rules": [
-                            {
-                                "on_liquid_touches": "no_reaction",
-                                "can_contain_liquid": true,
-                                "stops_liquid_flowing_from_direction": [
-                                    "down",
-                                    "east",
-                                    "north",
-                                    "south",
-                                    "up"
-                                ]
-                            }
-                        ]
-                    },
-                    "minecraft:transformation": {
-                        "rotation": [
-                            0,
-                            0,
-                            90
-                        ]
-                    }
-                }
-            },
-            {
-                "condition": "query.block_state('minecraft:block_face') == 'east'",
-                "components": {
-                    "minecraft:liquid_detection": {
-                        "detection_rules": [
-                            {
-                                "on_liquid_touches": "no_reaction",
-                                "can_contain_liquid": true,
-                                "stops_liquid_flowing_from_direction": [
-                                    "down",
-                                    "west",
-                                    "north",
-                                    "south",
-                                    "up"
-                                ]
-                            }
-                        ]
-                    },
-                    "minecraft:transformation": {
-                        "rotation": [
-                            0,
-                            0,
-                            -90
-                        ]
-                    }
-                }
-            },
-            {
-                "condition": "query.block_state('minecraft:block_face') == 'down'",
-                "components": {
-                    "minecraft:liquid_detection": {
-                        "detection_rules": [
-                            {
-                                "on_liquid_touches": "no_reaction",
-                                "can_contain_liquid": true,
-                                "stops_liquid_flowing_from_direction": [
-                                    "down",
-                                    "west",
-                                    "east",
-                                    "north",
-                                    "south"
-                                ]
-                            }
-                        ]
-                    },
-                    "minecraft:transformation": {
-                        "rotation": [
-                            0,
-                            0,
-                            0
-                        ]
-                    }
-                }
-            },
-            {
-                "condition": "query.block_state('minecraft:block_face') == 'up'",
-                "components": {
-                    "minecraft:liquid_detection": {
-                        "detection_rules": [
-                            {
-                                "on_liquid_touches": "no_reaction",
-                                "can_contain_liquid": true,
-                                "stops_liquid_flowing_from_direction": [
-                                    "up",
-                                    "west",
-                                    "east",
-                                    "north",
-                                    "south"
-                                ]
-                            }
-                        ]
-                    },
-                    "minecraft:transformation": {
-                        "rotation": [
-                            180,
-                            0,
-                            0
-                        ]
-                    }
-                }
-            }
-        ],
-        "components": {
-            "minecraft:movable": {
-                "movement_type": "immovable"
-            },
-            "minecraft:material_instances": {
-                "*": {
-                    "texture": "basket_side",
-                    "render_method": "alpha_test"
-                },
-                "basket_top": {
-                    "texture": "basket_top",
-                    "render_method": "alpha_test"
-                },
-                "basket_side": {
-                    "texture": "basket_side",
-                    "render_method": "alpha_test"
-                },
-                "basket_handle": {
-                    "texture": "basket_handle",
-                    "render_method": "alpha_test"
-                },
-                "basket_bottom": {
-                    "texture": "basket_bottom",
-                    "render_method": "alpha_test"
-                }
-            },
-            "minecraft:redstone_conductivity": {
-                "allows_wire_to_step_down": false
-            },
-            "minecraft:destructible_by_mining": {
-                "seconds_to_destroy": 1
-            },
-            "minecraft:destructible_by_explosion": {
-                "explosion_resistance": 6
-            },
-            "minecraft:geometry": "geometry.basket",
-            "tag:minecraft:is_axe_item_destructible": {}
+  "format_version": "1.21.120",
+  "minecraft:block": {
+    "description": {
+      "identifier": "farmersdelight:basket",
+      "menu_category": {
+        "category": "items",
+        "group": "farmersdelight:itemGroup.name.cooker"
+      },
+      "traits": {
+        "minecraft:placement_position": {
+          "enabled_states": [
+            "minecraft:block_face"
+          ]
         }
+      }
+    },
+    "permutations": [
+      {
+        "condition": "query.block_state('minecraft:block_face') == 'north'",
+        "components": {
+          "minecraft:liquid_detection": {
+            "detection_rules": [
+              {
+                "on_liquid_touches": "no_reaction",
+                "can_contain_liquid": true,
+                "stops_liquid_flowing_from_direction": [
+                  "down",
+                  "west",
+                  "east",
+                  "south",
+                  "up"
+                ]
+              }
+            ]
+          },
+          "minecraft:transformation": {
+            "rotation": [
+              -90,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('minecraft:block_face') == 'south'",
+        "components": {
+          "minecraft:liquid_detection": {
+            "detection_rules": [
+              {
+                "on_liquid_touches": "no_reaction",
+                "can_contain_liquid": true,
+                "stops_liquid_flowing_from_direction": [
+                  "down",
+                  "west",
+                  "east",
+                  "north",
+                  "up"
+                ]
+              }
+            ]
+          },
+          "minecraft:transformation": {
+            "rotation": [
+              90,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('minecraft:block_face') == 'west'",
+        "components": {
+          "minecraft:liquid_detection": {
+            "detection_rules": [
+              {
+                "on_liquid_touches": "no_reaction",
+                "can_contain_liquid": true,
+                "stops_liquid_flowing_from_direction": [
+                  "down",
+                  "east",
+                  "north",
+                  "south",
+                  "up"
+                ]
+              }
+            ]
+          },
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              0,
+              90
+            ]
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('minecraft:block_face') == 'east'",
+        "components": {
+          "minecraft:liquid_detection": {
+            "detection_rules": [
+              {
+                "on_liquid_touches": "no_reaction",
+                "can_contain_liquid": true,
+                "stops_liquid_flowing_from_direction": [
+                  "down",
+                  "west",
+                  "north",
+                  "south",
+                  "up"
+                ]
+              }
+            ]
+          },
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              0,
+              -90
+            ]
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('minecraft:block_face') == 'up'",
+        "components": {
+          "minecraft:liquid_detection": {
+            "detection_rules": [
+              {
+                "on_liquid_touches": "no_reaction",
+                "can_contain_liquid": true,
+                "stops_liquid_flowing_from_direction": [
+                  "down",
+                  "west",
+                  "east",
+                  "north",
+                  "south"
+                ]
+              }
+            ]
+          },
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('minecraft:block_face') == 'down'",
+        "components": {
+          "minecraft:liquid_detection": {
+            "detection_rules": [
+              {
+                "on_liquid_touches": "no_reaction",
+                "can_contain_liquid": true,
+                "stops_liquid_flowing_from_direction": [
+                  "up",
+                  "west",
+                  "east",
+                  "north",
+                  "south"
+                ]
+              }
+            ]
+          },
+          "minecraft:transformation": {
+            "rotation": [
+              180,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    ],
+    "components": {
+      "farmersdelight:block_entity": "farmersdelight:basket",
+      "minecraft:movable": {
+        "movement_type": "immovable"
+      },
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "basket_side",
+          "render_method": "alpha_test"
+        },
+        "basket_top": {
+          "texture": "basket_top",
+          "render_method": "alpha_test"
+        },
+        "basket_side": {
+          "texture": "basket_side",
+          "render_method": "alpha_test"
+        },
+        "basket_handle": {
+          "texture": "basket_handle",
+          "render_method": "alpha_test"
+        },
+        "basket_bottom": {
+          "texture": "basket_bottom",
+          "render_method": "alpha_test"
+        }
+      },
+      "minecraft:redstone_conductivity": {
+        "allows_wire_to_step_down": false
+      },
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 1
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 6
+      },
+      "minecraft:geometry": "geometry.basket",
+      "tag:minecraft:is_axe_item_destructible": {}
     }
+  }
 }
