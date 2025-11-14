@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 import { ItemStack, system, world } from "@minecraft/server";
 import { methodEventSub } from "../../lib/eventHelper";
 import { BlockEntity } from "../../lib/BlockEntity";
-import ObjectUtil from "../../lib/ObjectUtil";
+import { isSamePos } from "../../lib/ObjectUtil";
 import { vanillaCookingPotRecipe } from "../../data/recipe/cookingPotRecipe";
 import { CookingPotRecipe } from "../../lib/CookingPotRecipe";
 import { heatConductors, heatSources } from "../../data/heatBlocks";
@@ -37,11 +37,10 @@ function heatCheck(block) {
     }
     return false;
 }
-world.afterEvents.pistonActivate;
 //刷新方块实体状态以及防TP
 function blockEntityLoot(args, id) {
     const cookingPotblock = new ItemStack('farmersdelight:cooking_pot');
-    if (!ObjectUtil.isEqual(args.entity.location, args.blockEntityDataLocation))
+    if (!isSamePos(args.entity.location, args.blockEntityDataLocation))
         args.entity.teleport(args.blockEntityDataLocation);
     if (args.block?.typeId == id)
         return;

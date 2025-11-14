@@ -1,14 +1,41 @@
-import { ItemStack, system } from "@minecraft/server";
-import ObjectUtil from "./ObjectUtil";
+import { ItemStack, system, } from "@minecraft/server";
+import { isSamePos } from "./ObjectUtil";
+export function locateBlock(entity) {
+    try {
+        const pos = entity.getDynamicProperty("farmersdelight:blockEntityDataLocation");
+        return pos ? entity.dimension.getBlock(pos) : undefined;
+    }
+    catch {
+        return undefined;
+    }
+}
+export function getAttachedBlock(entity) {
+    try {
+        const pos = entity.getDynamicProperty("farmersdelight:blockEntityDataLocation");
+        if (!pos)
+            return undefined;
+        if (!isSamePos(entity.location, pos)) {
+            entity.teleport(pos);
+        }
+        return entity.dimension.getBlock(pos);
+    }
+    catch {
+        return undefined;
+    }
+}
 export class BlockEntity {
     //获取方块实体数据
     blockEntityData(entity) {
         try {
             const dimension = entity?.dimension ?? undefined;
-            const blockEntityDataLocation = entity.getDynamicProperty('farmersdelight:blockEntityDataLocation');
+            const blockEntityDataLocation = entity.getDynamicProperty("farmersdelight:blockEntityDataLocation");
             const block = dimension.getBlock(blockEntityDataLocation);
-            const blockEntityData = { entity: entity, dimension: dimension, blockEntityDataLocation: blockEntityDataLocation, block: block };
-            return blockEntityData;
+            return {
+                entity: entity,
+                dimension: dimension,
+                blockEntityDataLocation: blockEntityDataLocation,
+                block: block,
+            };
         }
         catch (error) {
             return undefined;
@@ -17,7 +44,7 @@ export class BlockEntity {
     ;
     //对使用动态属性存储物品的方块实体检测掉落
     blockEntityLoot(args, id, list, amount = 1) {
-        if (!ObjectUtil.isEqual(args.entity.location, args.blockEntityDataLocation))
+        if (!isSamePos(args.entity.location, args.blockEntityDataLocation))
             args.entity.teleport(args.blockEntityDataLocation);
         if (args.block?.typeId == id)
             return;
@@ -29,9 +56,9 @@ export class BlockEntity {
         BlockEntity.clearEntity(args);
     }
     ;
-    //对使用容器组件存储物品的方块实体检测掉落 仅供橱柜使用
+    //对使用容器组件存储物品的方块实体检测掉落
     entityContainerLoot(args, id) {
-        if (!ObjectUtil.isEqual(args.entity.location, args.blockEntityDataLocation))
+        if (!isSamePos(args.entity.location, args.blockEntityDataLocation))
             args.entity.teleport(args.blockEntityDataLocation);
         if (args.block?.typeId == id)
             return;
@@ -45,13 +72,12 @@ export class BlockEntity {
                 dimension.spawnItem(itemStack, entity.location);
             }
         }
-        ;
         BlockEntity.clearEntity(args);
     }
     ;
     //清除方块实体
     static clearEntity(args) {
-        system.runTimeout(() => {
+        system.run(() => {
             args.entity.remove();
         });
     }

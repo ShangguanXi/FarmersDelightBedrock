@@ -8,9 +8,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { BlockPermutation, Direction, EntityComponentTypes, EquipmentSlot, GameMode, ItemComponentTypes, ItemStack, Player, StartupEvent, system, } from "@minecraft/server";
-import { methodEventSub } from "../../lib/eventHelper";
-import { EntityUtil } from "../../lib/EntityUtil";
-import { toVector3 } from "../../lib/DirectionUtil";
+import { horizontalDirectionOf } from "../../lib/EntityUtil";
+import { oppositeOf, offsetByDirection } from "../../lib/DirectionUtil";
+import { subscribeEvent } from "../../lib/EventSubscriber";
 function blockLoot(table) {
     return (_, __) => table;
 }
@@ -36,7 +36,7 @@ function hurtEquippedItem(entity, stack, slot = EquipmentSlot.Mainhand) {
     }
 }
 class KnifeComponent {
-    onMineBlock(event, params) {
+    onMineBlock(event, _) {
         const stack = event.itemStack;
         if (!stack)
             return;
@@ -51,7 +51,7 @@ class KnifeComponent {
             }
         }
     }
-    onUseOn(event, params) {
+    onUseOn(event, _) {
         const block = event.block;
         if (block.typeId !== "minecraft:pumpkin")
             return;
@@ -61,36 +61,36 @@ class KnifeComponent {
         }
         const face = event.blockFace;
         const direction = face === Direction.Up || face === Direction.Down
-            ? EntityUtil.cardinalDirection(entity) ?? Direction.North
+            ? oppositeOf(horizontalDirectionOf(entity))
             : face;
-        const vector = toVector3(direction);
+        const offset = offsetByDirection(direction);
         block.setPermutation(BlockPermutation.resolve("minecraft:carved_pumpkin", {
             "minecraft:cardinal_direction": direction.toLowerCase(),
         }));
         const { dimension, x, y, z } = block;
         dimension.playSound("pumpkin.carve", block);
         const item = dimension.spawnItem(new ItemStack("minecraft:pumpkin_seeds", 4), {
-            x: x + 0.5 + vector.x * 0.65,
+            x: x + 0.5 + offset.x * 0.65,
             y: y + 0.1,
-            z: z + 0.5 + vector.z * 0.65,
+            z: z + 0.5 + offset.z * 0.65,
         });
         if (item) {
             item.clearVelocity();
             item.applyImpulse({
-                x: 0.05 * vector.x + Math.random() * 0.02,
+                x: 0.05 * offset.x + Math.random() * 0.02,
                 y: 0.05,
-                z: 0.05 * vector.z + Math.random() * 0.02,
+                z: 0.05 * offset.z + Math.random() * 0.02,
             });
         }
     }
-    static init(args) {
-        args.itemComponentRegistry.registerCustomComponent("farmersdelight:knife", new KnifeComponent());
+    static init(event) {
+        event.itemComponentRegistry.registerCustomComponent("farmersdelight:knife", new KnifeComponent());
     }
 }
 __decorate([
-    methodEventSub(system.beforeEvents.startup),
+    subscribeEvent(system.beforeEvents.startup),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [StartupEvent]),
     __metadata("design:returntype", void 0)
 ], KnifeComponent, "init", null);
-export const {} = KnifeComponent;
+void KnifeComponent;

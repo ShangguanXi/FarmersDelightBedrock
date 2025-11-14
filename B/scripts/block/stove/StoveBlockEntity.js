@@ -12,6 +12,7 @@ import { methodEventSub } from "../../lib/eventHelper";
 import { BlockEntity } from "../../lib/BlockEntity";
 import { ItemUtil } from "../../lib/ItemUtil";
 import { heatConductors, heatSources } from "../../data/heatBlocks";
+import { CookRecipeManager } from "../../data/recipe/cookRecipe";
 const xOffset = 0.3;
 const yOffset = 0.2;
 const stoveOffsets = [
@@ -86,12 +87,8 @@ export class StoveBlockEntity extends BlockEntity {
                     entity.setDynamicProperty(`farmersdelight:item_${i}_time`, time + 1);
                 }
                 if (time >= maxTime && work) {
-                    if (name[0] == 'minecraft')
-                        entity.runCommand(`loot spawn ${x} ${y + 1.4} ${z} loot "minecraft/cook/${itemId.split(":")[1]}"`);
-                    else {
-                        const cookable = (new ItemStack(itemId)).getComponent("farmersdelight:cookable")?.customComponentParameters.params;
-                        dimension.spawnItem(new ItemStack(cookable.result, 1), { x, y: y + 1.4, z });
-                    }
+                    const result = CookRecipeManager.getCookResult(itemStack)?.result ?? "minecraft:air";
+                    dimension.spawnItem(new ItemStack(result, 1), { x, y: y + 1.4, z });
                     entity.setDynamicProperty(`farmersdelight:item_${i}_time`, 0);
                     entity.setDynamicProperty(`farmersdelight:item_${i}_max_time`, 0);
                     ItemUtil.clearItem(stoveContainer, i);

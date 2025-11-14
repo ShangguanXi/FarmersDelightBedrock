@@ -1,7 +1,7 @@
 import { Block, Container, Entity, ItemStack, PlayerInteractWithBlockAfterEvent, Player, PlayerPlaceBlockAfterEvent, Vector3, world } from "@minecraft/server";
 import { methodEventSub } from "../../lib/eventHelper";
 import { BlockWithEntity } from "../../lib/BlockWithEntity";
-import { vanillaItemList } from "../../data/recipe/cookRecipe";
+import { CookRecipeManager } from "../../data/recipe/cookRecipe";
 import { EntityUtil } from "../../lib/EntityUtil";
 import { ItemUtil } from "../../lib/ItemUtil";
 import { CookableComponentParams } from "../../customComponents/item/CookableComponent";
@@ -53,10 +53,15 @@ export class StoveBlock extends BlockWithEntity {
         //放置
         const upBlock = player.dimension.getBlock({ x: x, y: y + 1, z: z })
         if (!(upBlock?.isAir)) return
-        const cookable = itemStack.getComponent("farmersdelight:cookable")
-        if (!vanillaItemList.includes(itemStack.typeId) && !cookable) return
-        const params = cookable?.customComponentParameters.params as CookableComponentParams
-        const maxTime = cookable ? (params.time ? params.time : 200) : 200
+
+
+        const isCookable = CookRecipeManager.isCookable(itemStack)
+        if (!isCookable){
+            return
+        }
+        const cookData = CookRecipeManager.getCookResult(itemStack)
+        if (!cookData) return
+        const maxTime = cookData.time
         const emptySlotsCount = stoveContainer?.emptySlotsCount
         if (emptySlotsCount == 0) return
         itemStack.amount = 1
@@ -68,8 +73,5 @@ export class StoveBlock extends BlockWithEntity {
                 return
             }
         }
-        
-
-
     }
 }
