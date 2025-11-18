@@ -1,9 +1,8 @@
-import { Block, DataDrivenEntityTriggerAfterEvent, Entity, ItemStack, ScoreboardObjective, ScoreboardScoreInfo, Vector3, system, world } from "@minecraft/server";
+import { Block, DataDrivenEntityTriggerAfterEvent, Entity, ItemStack, Vector3, system, world } from "@minecraft/server";
 import { methodEventSub } from "../../lib/eventHelper";
 import { BlockEntity } from "../../lib/BlockEntity";
 import { ItemUtil } from "../../lib/ItemUtil";
-import { heatConductors, heatSources } from "../../data/heatBlocks";
-import { CookRecipeManager } from "../../data/recipe/cookRecipe";
+import { findCookingRecipe } from "../../data/recipe/cookRecipe";
 
 const xOffset = 0.3;
 const yOffset = 0.2;
@@ -35,7 +34,6 @@ const stoveOffsets = [
 ];
 
 export class StoveBlockEntity extends BlockEntity {
-
     static getRotatedOffsets(direction: string): { x: number, y: number }[] {
         switch (direction) {
             case "south":
@@ -64,7 +62,7 @@ export class StoveBlockEntity extends BlockEntity {
         const work = block.permutation.getState('farmersdelight:is_working');
         const rotatedOffsets = StoveBlockEntity.getRotatedOffsets(state as string);
 
-        const emptySlotsCount = stoveContainer?.emptySlotsCount
+        const notEmpty = stoveContainer.emptySlotsCount != 6
         for (let i = 0; i < 6; i++) {
             const itemStack = stoveContainer.getItem(i)
             if (itemStack != undefined) {
@@ -81,25 +79,19 @@ export class StoveBlockEntity extends BlockEntity {
                     entity.setDynamicProperty(`farmersdelight:item_${i}_time`, time + 1)
                 }
                 if (time >= maxTime && work) {
-                    const result = CookRecipeManager.getCookResult(itemStack)?.result ?? "minecraft:air"
-                    dimension.spawnItem(new ItemStack(result, 1), { x, y: y + 1.4, z })
+                    const recipe = findCookingRecipe(itemStack);
+                    if (recipe) {
+                        const count = recipe.count ?? 1;
+                        dimension.spawnItem(new ItemStack(recipe.result, count > 0 ? count : 1), { x, y: y + 1.4, z })
+                    }
                     entity.setDynamicProperty(`farmersdelight:item_${i}_time`, 0);
                     entity.setDynamicProperty(`farmersdelight:item_${i}_max_time`, 0);
                     ItemUtil.clearItem(stoveContainer, i)
                 }
             }
-            if (emptySlotsCount != 6 && (system.currentTick % 20 == 0) && work) {
+            if (notEmpty && (system.currentTick % 20 == 0) && work) {
                 dimension.playSound("block.campfire.crackle", { x, y, z })
             }
         }
-    }
-    static heatCheck(block: Block) {
-        const blockBelow = block.below()
-        if (heatSources.includes(blockBelow?.typeId as string) || blockBelow?.hasTag('farmersdelight:heat_source')) return true
-        if (heatConductors.includes(blockBelow?.typeId as string) || blockBelow?.hasTag('farmersdelight:heat_conductors')) {
-            const blockBelow2 = block.below(2)
-            if (heatSources.includes(blockBelow2?.typeId as string) || blockBelow2?.hasTag('farmersdelight:heat_source')) return true
-        }
-        return false
     }
 }
