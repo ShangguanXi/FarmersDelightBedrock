@@ -5,11 +5,13 @@ import {
     CustomComponentParameters,
     EntityComponentTypes,
     GameMode,
-    ItemStack, ItemTypes,
+    ItemStack,
+    ItemTypes,
     StartupEvent,
-    system, world,
+    system,
+    world,
 } from "@minecraft/server";
-import { methodEventSub } from "../../lib/eventHelper";
+import { subscribeEvent } from "../../lib/EventSubscriber";
 
 interface DishSpec {
     has_leftovers?: boolean,
@@ -93,7 +95,7 @@ export class DishComponent implements BlockCustomComponent {
         }
     }
 
-    @methodEventSub(system.beforeEvents.startup)
+    @subscribeEvent(system.beforeEvents.startup)
     static init(event: StartupEvent) {
         event.blockComponentRegistry.registerCustomComponent("farmersdelight:dish", new DishComponent());
     }

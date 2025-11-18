@@ -1,5 +1,12 @@
-import { BlockComponentTickEvent, BlockCustomComponent, BlockComponentPlayerPlaceBeforeEvent, StartupEvent, system, world, Direction } from "@minecraft/server";
-import { methodEventSub } from "../../lib/eventHelper";
+import {
+    BlockComponentPlayerPlaceBeforeEvent,
+    BlockComponentTickEvent,
+    BlockCustomComponent,
+    Direction,
+    StartupEvent,
+    system,
+} from "@minecraft/server";
+import { subscribeEvent } from "../../lib/EventSubscriber";
 
 class TatamMatComponent implements BlockCustomComponent {
     constructor() {
@@ -85,7 +92,7 @@ class TatamMatComponent implements BlockCustomComponent {
 
 }
 export class TatamComponentRegister {
-    @methodEventSub(system.beforeEvents.startup)
+    @subscribeEvent(system.beforeEvents.startup)
     register(args: StartupEvent) {
         args.blockComponentRegistry.registerCustomComponent('farmersdelight:tatami', new TatamMatComponent());
     }

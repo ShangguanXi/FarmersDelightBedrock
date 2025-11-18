@@ -1,6 +1,21 @@
-import { BlockCustomComponent, BlockComponentOnPlaceEvent, Vector3, BlockComponentPlayerBreakEvent, system, StartupEvent, world, PlayerBreakBlockBeforeEvent, ItemComponentTypes, BlockComponentPlayerPlaceBeforeEvent, BlockComponentTickEvent, EntityInventoryComponent, ItemEnchantableComponent, Dimension } from "@minecraft/server";
+import {
+    BlockComponentOnPlaceEvent,
+    BlockComponentPlayerBreakEvent,
+    BlockComponentPlayerPlaceBeforeEvent,
+    BlockComponentTickEvent,
+    BlockCustomComponent,
+    Dimension,
+    EntityInventoryComponent,
+    ItemComponentTypes,
+    ItemEnchantableComponent,
+    PlayerBreakBlockBeforeEvent,
+    StartupEvent,
+    system,
+    Vector3,
+    world,
+} from "@minecraft/server";
 import { ItemUtil } from "../../lib/ItemUtil";
-import { methodEventSub } from "../../lib/eventHelper";
+import { subscribeEvent } from "../../lib/EventSubscriber";
 
 export class WildCropComponent implements BlockCustomComponent {
     constructor() {
@@ -10,7 +25,7 @@ export class WildCropComponent implements BlockCustomComponent {
     onPlace(args: BlockComponentOnPlaceEvent): void {}
 
 
-    @methodEventSub(world.beforeEvents.playerBreakBlock)
+    @subscribeEvent(world.beforeEvents.playerBreakBlock)
     break(args: PlayerBreakBlockBeforeEvent) {
         const block = args.block
         const wildCrop = block.getComponent('farmersdelight:wild_crop')
@@ -35,7 +50,7 @@ export class WildCropComponent implements BlockCustomComponent {
         }
     }
 
-    @methodEventSub(system.beforeEvents.startup)
+    @subscribeEvent(system.beforeEvents.startup)
     register(args: StartupEvent) {
         args.blockComponentRegistry.registerCustomComponent('farmersdelight:wild_crop', new WildCropComponent());
         args.blockComponentRegistry.registerCustomComponent('farmersdelight:wild_rice', new WildRiceComponent());

@@ -1,5 +1,11 @@
-import { BlockCustomComponent, ItemComponentUseOnEvent, StartupEvent, world, Dimension, Vector3, ItemCustomComponentAlreadyRegisteredError, ItemCustomComponent, Direction, Container, system, Player, EntityInventoryComponent, CustomComponentParameters } from "@minecraft/server";
-import { methodEventSub } from "../../lib/eventHelper";
+import {
+    CustomComponentParameters,
+    ItemComponentUseOnEvent,
+    ItemCustomComponent,
+    StartupEvent,
+    system,
+} from "@minecraft/server";
+import { subscribeEvent } from "../../lib/EventSubscriber";
 
 type LootItem = [string, number, number?]
 export type CuttingBroadComponentParams = {
@@ -22,7 +28,7 @@ class CuttableComponent implements ItemCustomComponent {
     }
 }
 export class CuttableComponentRegister {
-    @methodEventSub(system.beforeEvents.startup)
+    @subscribeEvent(system.beforeEvents.startup)
     register(args: StartupEvent) {
         args.itemComponentRegistry.registerCustomComponent('farmersdelight:cuttable', new CuttableComponent())
     }

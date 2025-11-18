@@ -1,7 +1,21 @@
-import { BlockCustomComponent, BlockComponentPlayerInteractEvent, CustomComponentParameters, Dimension, Vector3, BlockComponentRandomTickEvent, EntityInventoryComponent, Container, Direction, BlockComponentTickEvent, system, GameMode, StartupEvent, ItemStack } from "@minecraft/server";
-import type * as minecraftvanilladata from '@minecraft/vanilla-data';
-import { methodEventSub } from "../../lib/eventHelper";
+import {
+    BlockComponentPlayerInteractEvent,
+    BlockComponentRandomTickEvent,
+    BlockComponentTickEvent,
+    BlockCustomComponent,
+    CustomComponentParameters,
+    Dimension,
+    Direction,
+    EntityInventoryComponent,
+    GameMode,
+    StartupEvent,
+    system,
+    Vector3,
+} from "@minecraft/server";
+import type * as minecraftvanilladata from "@minecraft/vanilla-data";
 import { ItemUtil } from "../../lib/ItemUtil";
+import { subscribeEvent } from "../../lib/EventSubscriber";
+
 function spawnLoot(path: string, dimenion: Dimension, location: Vector3) {
     return dimenion.runCommand(`loot spawn ${location.x} ${location.y} ${location.z} loot "${path}"`)
 }
@@ -338,7 +352,7 @@ class RiceComponent implements BlockCustomComponent {
 
 }
 export class CropComponentRegister {
-    @methodEventSub(system.beforeEvents.startup)
+    @subscribeEvent(system.beforeEvents.startup)
     register(args: StartupEvent) {
         args.blockComponentRegistry.registerCustomComponent('farmersdelight:crop', new CropsComponent());
         args.blockComponentRegistry.registerCustomComponent('farmersdelight:torchflower', new TorchflowerComponent());

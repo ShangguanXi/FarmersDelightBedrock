@@ -1,10 +1,19 @@
-import { Block, Container, Entity, EntityInventoryComponent, ItemStack, Vector3, system, world } from "@minecraft/server";
-import { methodEventSub } from "../../lib/eventHelper";
+import {
+    Block,
+    Container,
+    Entity,
+    EntityInventoryComponent,
+    ItemStack,
+    system,
+    Vector3,
+    world,
+} from "@minecraft/server";
 import { BlockEntity, BlockEntityData } from "../../lib/BlockEntity";
 import { isSamePos } from "../../lib/ObjectUtil";
 import { vanillaCookingPotRecipe } from "../../data/recipe/cookingPotRecipe";
 import { CookingPotRecipe } from "../../lib/CookingPotRecipe";
 import { heatConductors, heatSources } from "../../data/heatBlocks";
+import { subscribeEvent } from "../../lib/EventSubscriber";
 
 
 const recipes: any[] = vanillaCookingPotRecipe.recipe;
@@ -66,7 +75,7 @@ function blockEntityLoot(args: BlockEntityData, id: string) {
     }
 }
 export class CookingPotBlockEntity extends BlockEntity {
-    @methodEventSub(world.afterEvents.dataDrivenEntityTrigger, { entityTypes: ["farmersdelight:cooking_pot"], eventTypes: ["farmersdelight:cooking_pot_tick"] })
+    @subscribeEvent(world.afterEvents.dataDrivenEntityTrigger, { entityTypes: ["farmersdelight:cooking_pot"], eventTypes: ["farmersdelight:cooking_pot_tick"] })
     tick(args: any) {
         const entityBlockData = super.blockEntityData(args.entity);
         if (!entityBlockData) return;

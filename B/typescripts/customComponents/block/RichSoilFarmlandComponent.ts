@@ -1,8 +1,20 @@
-import { BlockComponentPlayerInteractEvent, BlockCustomComponent, BlockComponentRandomTickEvent, StartupEvent, system, world, BlockVolume, BlockPermutation, EntityInventoryComponent, Vector3, Container, Player, Block } from "@minecraft/server";
+import {
+    Block,
+    BlockComponentPlayerInteractEvent,
+    BlockComponentRandomTickEvent,
+    BlockCustomComponent,
+    BlockPermutation,
+    BlockVolume,
+    Container,
+    EntityInventoryComponent,
+    Player,
+    StartupEvent,
+    system,
+    Vector3,
+} from "@minecraft/server";
 import { ItemUtil } from "../../lib/ItemUtil";
-import { methodEventSub } from "../../lib/eventHelper";
-import type * as minecraftvanilladata from '@minecraft/vanilla-data';
 import { CropsComponentParams } from "./CropComponent";
+import { subscribeEvent } from "../../lib/EventSubscriber";
 
 function handlePlanting(seedId: string, crop: string, topLocation: Vector3, container: Container, player: Player, block: Block) {
     if (!player) return;
@@ -97,7 +109,7 @@ class RichSoilFarmlandComponent implements BlockCustomComponent {
     }
 }
 export class RichSoilFarmlandComponentRegister {
-    @methodEventSub(system.beforeEvents.startup)
+    @subscribeEvent(system.beforeEvents.startup)
     register(args: StartupEvent) {
         args.blockComponentRegistry.registerCustomComponent('farmersdelight:rich_soil_farmland', new RichSoilFarmlandComponent());
     }

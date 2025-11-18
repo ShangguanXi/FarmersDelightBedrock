@@ -1,5 +1,11 @@
-import { BlockCustomComponent, ItemComponentUseOnEvent, StartupEvent,ItemCustomComponent, system, EntityInventoryComponent, CustomComponentParameters } from "@minecraft/server";
-import { methodEventSub } from "../../lib/eventHelper";
+import {
+    CustomComponentParameters,
+    ItemComponentUseOnEvent,
+    ItemCustomComponent,
+    StartupEvent,
+    system,
+} from "@minecraft/server";
+import { subscribeEvent } from "../../lib/EventSubscriber";
 
 export type CookableComponentParams = {
     result: string;
@@ -16,7 +22,7 @@ class CookableComonent implements ItemCustomComponent {
     }
 }
 export class CookableComonentRegister {
-    @methodEventSub(system.beforeEvents.startup)
+    @subscribeEvent(system.beforeEvents.startup)
     register(args: StartupEvent) {
         args.itemComponentRegistry.registerCustomComponent('farmersdelight:cookable', new CookableComonent())
     }

@@ -1,6 +1,12 @@
-import { BlockComponentPlayerInteractEvent, BlockCustomComponent, EntityInventoryComponent,ItemEnchantableComponent, StartupEvent, system, world } from "@minecraft/server";
+import {
+    BlockComponentPlayerInteractEvent,
+    BlockCustomComponent,
+    EntityInventoryComponent,
+    StartupEvent,
+    system,
+} from "@minecraft/server";
 import { ItemUtil } from "../../lib/ItemUtil";
-import { methodEventSub } from "../../lib/eventHelper";
+import { subscribeEvent } from "../../lib/EventSubscriber";
 
 class RichSoilComponent implements BlockCustomComponent {
     constructor() {
@@ -58,7 +64,7 @@ class RichSoilComponent implements BlockCustomComponent {
     }
 }
 export class RichSoilComponentRegister {
-    @methodEventSub(system.beforeEvents.startup)
+    @subscribeEvent(system.beforeEvents.startup)
     register(args: StartupEvent) {
         args.blockComponentRegistry.registerCustomComponent('farmersdelight:rich_soil', new RichSoilComponent());
     }

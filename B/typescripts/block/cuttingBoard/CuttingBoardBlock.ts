@@ -1,20 +1,27 @@
-import { Block, BlockPermutation, Container, Entity, EntityInventoryComponent, EquipmentSlot, ItemStack, Player, PlayerInteractWithBlockAfterEvent, PlayerPlaceBlockAfterEvent, Vector3, world } from "@minecraft/server";
-import { methodEventSub } from "../../lib/eventHelper";
+import {
+    EntityInventoryComponent,
+    EquipmentSlot,
+    ItemStack,
+    PlayerInteractWithBlockAfterEvent,
+    PlayerPlaceBlockAfterEvent,
+    Vector3,
+    world,
+} from "@minecraft/server";
 import { BlockWithEntity } from "../../lib/BlockWithEntity";
 import { EntityUtil } from "../../lib/EntityUtil";
 import {
     BlockofAxeList,
     BlockofKnifeList,
     BlockofPickaxeList,
-    ItemofPickaxeList,
     BlockofShovelList,
     ItemofAxeList,
-    ItemofBlockList,
     ItemofKnifeList,
-    ItemofShearsList
+    ItemofPickaxeList,
+    ItemofShearsList,
 } from "../../data/recipe/cuttingBoardRecipe";
 import { ItemUtil } from "../../lib/ItemUtil";
 import { CuttingBroadComponentParams } from "../../customComponents/item/CuttableComponent";
+import { subscribeEvent } from "../../lib/EventSubscriber";
 
 const toolMapping = [
     { list: BlockofAxeList, tool: 'minecraft:is_axe', mode: 'tag', isBlock: true },
@@ -29,7 +36,7 @@ const toolMapping = [
 export { toolMapping };
 
 export class CuttingBoardBlock extends BlockWithEntity {
-    @methodEventSub(world.afterEvents.playerPlaceBlock)
+    @subscribeEvent(world.afterEvents.playerPlaceBlock)
     placeBlock(args: PlayerPlaceBlockAfterEvent) {
         if (args.block.typeId !== "farmersdelight:cutting_board") return;
         const { x, y, z } = args.block.location;
@@ -37,7 +44,7 @@ export class CuttingBoardBlock extends BlockWithEntity {
         entity.setDynamicProperty("farmersdelight:blockEntityItemStackData", '{"item":"undefined"}');
     }
 
-    @methodEventSub(world.afterEvents.playerInteractWithBlock)
+    @subscribeEvent(world.afterEvents.playerInteractWithBlock)
     interactWithBlock(args: PlayerInteractWithBlockAfterEvent): void {
         const block = args.block
         if (block?.typeId !== "farmersdelight:cutting_board") return;

@@ -1,12 +1,10 @@
-import { Container, Dimension, Direction, ItemUseBeforeEvent, PlayerInteractWithBlockBeforeEvent, Vector3, system, world } from "@minecraft/server";
-import { methodEventSub } from "../lib/eventHelper";
-import { ItemUtil } from "../lib/ItemUtil";
-import { EntityUtil } from "../lib/EntityUtil";
+import { PlayerInteractWithBlockBeforeEvent, world } from "@minecraft/server";
+import { subscribeEvent } from "../lib/EventSubscriber";
 
 
 export class RiceBlock {
     //防止水被装走
-    @methodEventSub(world.beforeEvents.playerInteractWithBlock)
+    @subscribeEvent(world.beforeEvents.playerInteractWithBlock)
     tryUseItem(args: PlayerInteractWithBlockBeforeEvent){
         const itemStack = args.itemStack;
         const block = args.block;

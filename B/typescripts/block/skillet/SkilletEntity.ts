@@ -1,8 +1,8 @@
-import { Block, Entity, ItemStack, ScoreboardObjective, Vector3, system, world } from "@minecraft/server";
-import { methodEventSub } from "../../lib/eventHelper";
+import { Block, ItemStack, system, world } from "@minecraft/server";
 import { BlockEntity } from "../../lib/BlockEntity";
 import { heatConductors, heatSources } from "../../data/heatBlocks";
 import { CookableComponentParams } from "../../customComponents/item/CookableComponent";
+import { subscribeEvent } from "../../lib/EventSubscriber";
 
 const skilletV2: any[] = [];
 for (let i = 0; i < 5; i++) {
@@ -24,7 +24,7 @@ function heatCheck(block: Block) {
 }
 
 export class SkilletEntity extends BlockEntity {
-  @methodEventSub(world.afterEvents.dataDrivenEntityTrigger, { entityTypes: ["farmersdelight:skillet"], eventTypes: ["farmersdelight:skillet_tick"] })
+  @subscribeEvent(world.afterEvents.dataDrivenEntityTrigger, { entityTypes: ["farmersdelight:skillet"], eventTypes: ["farmersdelight:skillet_tick"] })
   tick(args: any) {
     const entityBlockData = super.blockEntityData(args.entity);
     if (!entityBlockData) return;

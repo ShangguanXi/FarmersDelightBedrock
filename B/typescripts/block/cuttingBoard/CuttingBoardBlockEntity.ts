@@ -1,10 +1,10 @@
-import {  Entity, Vector3, system, world } from "@minecraft/server";
-import { methodEventSub } from "../../lib/eventHelper";
-import { BlockEntity } from "../../lib/BlockEntity"
+import { Entity, system, Vector3, world } from "@minecraft/server";
+import { BlockEntity } from "../../lib/BlockEntity";
+import { subscribeEvent } from "../../lib/EventSubscriber";
 
 
 export class CuttingBoardBlockEntity extends BlockEntity {
-    @methodEventSub(world.afterEvents.dataDrivenEntityTrigger, { entityTypes: ["farmersdelight:cutting_board"], eventTypes: ["farmersdelight:cutting_board_tick"] })
+    @subscribeEvent(world.afterEvents.dataDrivenEntityTrigger, { entityTypes: ["farmersdelight:cutting_board"], eventTypes: ["farmersdelight:cutting_board_tick"] })
     tick(args: any) {
         const entityBlockData = super.blockEntityData(args.entity);
         if (!entityBlockData) return;

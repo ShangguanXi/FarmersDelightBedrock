@@ -1,7 +1,19 @@
-import { BlockCustomComponent, ItemComponentUseOnEvent, StartupEvent, world, Dimension, Vector3, ItemCustomComponentAlreadyRegisteredError, ItemCustomComponent, Direction, Container, system, Player, EntityInventoryComponent } from "@minecraft/server";
-import { methodEventSub } from "../../lib/eventHelper";
+import {
+    Container,
+    Dimension,
+    Direction,
+    EntityInventoryComponent,
+    ItemComponentUseOnEvent,
+    ItemCustomComponent,
+    Player,
+    StartupEvent,
+    system,
+    Vector3,
+} from "@minecraft/server";
 import { ItemUtil } from "../../lib/ItemUtil";
 import { EntityUtil } from "../../lib/EntityUtil";
+import { subscribeEvent } from "../../lib/EventSubscriber";
+
 function placeStructure(dimension: Dimension, structure: string, location: Vector3) {
     dimension.runCommand(`structure load ${structure} ${location.x} ${location.y} ${location.z}`)
 }
@@ -30,7 +42,7 @@ class RiceSeedComponent implements ItemCustomComponent {
     }
 }
 export class RiceSeedComponentRegister {
-    @methodEventSub(system.beforeEvents.startup)
+    @subscribeEvent(system.beforeEvents.startup)
     register(args: StartupEvent) {
         args.itemComponentRegistry.registerCustomComponent('farmersdelight:rice_seed', new RiceSeedComponent())
     }

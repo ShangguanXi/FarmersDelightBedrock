@@ -1,6 +1,15 @@
-import {  Scoreboard, ScoreboardObjective, system, world } from "@minecraft/server";
-import { methodEventSub } from "../lib/eventHelper";
-import { BlockofAxeList, BlockofKnifeList, BlockofPickaxeList, BlockofShovelList, ItemofAxeList, ItemofKnifeList, ItemofPickaxeList, ItemofShearsList } from "../data/recipe/cuttingBoardRecipe";
+import { ScoreboardObjective, system, world } from "@minecraft/server";
+import {
+  BlockofAxeList,
+  BlockofKnifeList,
+  BlockofPickaxeList,
+  BlockofShovelList,
+  ItemofAxeList,
+  ItemofKnifeList,
+  ItemofPickaxeList,
+  ItemofShearsList,
+} from "../data/recipe/cuttingBoardRecipe";
+import { subscribeEvent } from "../lib/EventSubscriber";
 
 let bool: boolean = true;
 let num: number = 0;
@@ -20,7 +29,7 @@ export class CuttingBoardRegistries {
             bool = false;
         })
     }
-    @methodEventSub(system.afterEvents.scriptEventReceive, { namespaces: ["farmersdelight"] })
+    @subscribeEvent(system.afterEvents.scriptEventReceive, { namespaces: ["farmersdelight"] })
     registries(args: any) {
         const id: string = args.id;
         if (id != "farmersdelight:cutting_board_recipe") return;

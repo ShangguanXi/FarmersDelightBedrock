@@ -1,12 +1,22 @@
-import { Block, Container, Entity, ItemStack, PlayerInteractWithBlockAfterEvent, Player, PlayerPlaceBlockAfterEvent, Vector3, world } from "@minecraft/server";
-import { methodEventSub } from "../../lib/eventHelper";
+import {
+    Block,
+    Container,
+    Entity,
+    ItemStack,
+    Player,
+    PlayerInteractWithBlockAfterEvent,
+    PlayerPlaceBlockAfterEvent,
+    Vector3,
+    world,
+} from "@minecraft/server";
 import { BlockWithEntity } from "../../lib/BlockWithEntity";
 import { EntityUtil } from "../../lib/EntityUtil";
 import { ItemUtil } from "../../lib/ItemUtil";
 import { findCookingRecipe } from "../../data/recipe/cookRecipe";
+import { subscribeEvent } from "../../lib/EventSubscriber";
 
 export class StoveBlock extends BlockWithEntity {
-    @methodEventSub(world.afterEvents.playerPlaceBlock)
+    @subscribeEvent(world.afterEvents.playerPlaceBlock)
     placeBlock(args: PlayerPlaceBlockAfterEvent) {
         const block: Block = args.block;
         if (!block.hasTag("farmersdelight:stove")) return;
@@ -19,7 +29,7 @@ export class StoveBlock extends BlockWithEntity {
             entity.setDynamicProperty(`farmersdelight:item_${i}_max_time`, 0);
         }
     }
-    @methodEventSub(world.afterEvents.playerInteractWithBlock)
+    @subscribeEvent(world.afterEvents.playerInteractWithBlock)
     useOnBlock(args: PlayerInteractWithBlockAfterEvent) {
         if (!args.block.hasTag("farmersdelight:stove")) return;
         const data = super.entityBlockData(args.block, {

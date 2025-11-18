@@ -4,27 +4,23 @@ import {
     Container,
     ContainerSlot,
     Dimension,
-    Direction,
     Entity,
-    EntityDataDrivenTriggerEventOptions,
     EntityEquippableComponent,
-    EntityHealthComponent, EntityHitBlockAfterEvent,
+    EntityHealthComponent,
     EntityInventoryComponent,
-    EntityIsChargedComponent,
     EntityOnFireComponent,
     EquipmentSlot,
     ItemEnchantableComponent,
     ItemStack,
     Player,
-    PlayerBreakBlockAfterEvent,
-    PlayerBreakBlockBeforeEvent,
-    PlayerInteractWithBlockAfterEvent, PlayerInteractWithBlockBeforeEvent, system,
+    PlayerInteractWithBlockBeforeEvent,
+    system,
     Vector3,
     world,
 } from "@minecraft/server";
-import { methodEventSub } from "../lib/eventHelper";
 import { EntityUtil } from "../lib/EntityUtil";
 import { ItemUtil } from "../lib/ItemUtil";
+import { subscribeEvent } from "../lib/EventSubscriber";
 
 function spawnLoot(path: string, dimenion: Dimension, location: Vector3) {
     return dimenion.runCommand(`loot spawn ${location.x} ${location.y} ${location.z} loot "${path}"`);
@@ -61,7 +57,7 @@ const DROPS_CAKE_SLICE: Set<string> = new Set([
 
 export class Knife {
     //刀掉落物改变机制有关的战利品
-    @methodEventSub(world.afterEvents.entityHurt)
+    @subscribeEvent(world.afterEvents.entityHurt)
     hurt(args: any) {
         const entity: Entity = args.damageSource.damagingEntity;
         const hurt: Entity = args.hurtEntity;
@@ -120,7 +116,7 @@ export class Knife {
     }
 
     //草秆
-    @methodEventSub(world.afterEvents.playerBreakBlock)
+    @subscribeEvent(world.afterEvents.playerBreakBlock)
     break(args: any) {
         const player: Player = args.player;
         const itemStack: ItemStack = args.itemStackAfterBreak;
@@ -150,7 +146,7 @@ export class Knife {
         }
     }
 
-    @methodEventSub(world.beforeEvents.playerInteractWithBlock)
+    @subscribeEvent(world.beforeEvents.playerInteractWithBlock)
     static sliceCake(event: PlayerInteractWithBlockBeforeEvent) {
         const stack = event.itemStack;
         if (!stack || !DROPS_CAKE_SLICE.has(event.block.typeId) || !stack.hasTag("farmersdelight:is_knife")) return;

@@ -1,7 +1,16 @@
-import { BlockCustomComponent, BlockComponentRandomTickEvent, world, StartupEvent, system, BlockPermutation, BlockVolume, BlockComponentPlayerPlaceBeforeEvent, BlockComponentPlayerInteractEvent, EntityInventoryComponent } from "@minecraft/server";
-import { methodEventSub } from "../../lib/eventHelper"
+import {
+    BlockComponentPlayerInteractEvent,
+    BlockComponentRandomTickEvent,
+    BlockCustomComponent,
+    BlockPermutation,
+    BlockVolume,
+    EntityInventoryComponent,
+    StartupEvent,
+    system,
+} from "@minecraft/server";
 import { organicCompostDetectList } from "../../data/organicCompostDetect";
 import { ItemUtil } from "../../lib/ItemUtil";
+import { subscribeEvent } from "../../lib/EventSubscriber";
 
 class OrganicCompostComonent implements BlockCustomComponent {
     constructor() {
@@ -76,7 +85,7 @@ class OrganicCompostComonent implements BlockCustomComponent {
     }
 }
 export class OrganicCompostComonentRegister {
-    @methodEventSub(system.beforeEvents.startup)
+    @subscribeEvent(system.beforeEvents.startup)
     register(args: StartupEvent) {
         args.blockComponentRegistry.registerCustomComponent('farmersdelight:organic_compost', new OrganicCompostComonent());
     }

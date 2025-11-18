@@ -1,8 +1,8 @@
-import { Block, DataDrivenEntityTriggerAfterEvent, Entity, ItemStack, Vector3, system, world } from "@minecraft/server";
-import { methodEventSub } from "../../lib/eventHelper";
+import { Block, DataDrivenEntityTriggerAfterEvent, Entity, ItemStack, system, Vector3, world } from "@minecraft/server";
 import { BlockEntity } from "../../lib/BlockEntity";
 import { ItemUtil } from "../../lib/ItemUtil";
 import { findCookingRecipe } from "../../data/recipe/cookRecipe";
+import { subscribeEvent } from "../../lib/EventSubscriber";
 
 const xOffset = 0.3;
 const yOffset = 0.2;
@@ -47,7 +47,7 @@ export class StoveBlockEntity extends BlockEntity {
                 return stoveOffsets;
         }
     }
-    @methodEventSub(world.afterEvents.dataDrivenEntityTrigger, { eventTypes: ["farmersdelight:stove_tick"] })
+    @subscribeEvent(world.afterEvents.dataDrivenEntityTrigger, { eventTypes: ["farmersdelight:stove_tick"] })
     tick(args: DataDrivenEntityTriggerAfterEvent) {
         const entityBlockData = super.blockEntityData(args.entity);
         if (!entityBlockData) return;

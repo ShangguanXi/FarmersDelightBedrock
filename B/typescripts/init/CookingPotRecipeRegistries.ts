@@ -1,6 +1,6 @@
-import {  Scoreboard, ScoreboardObjective, system, world } from "@minecraft/server";
-import { methodEventSub } from "../lib/eventHelper";
+import { ScoreboardObjective, system, world } from "@minecraft/server";
 import { vanillaCookingPotRecipe } from "../data/recipe/cookingPotRecipe";
+import { subscribeEvent } from "../lib/EventSubscriber";
 
 let bool: boolean = true;
 let num: number = 0;
@@ -20,7 +20,7 @@ export class CookingPotRecipeRegistries {
             bool = false;
         })
     }
-    @methodEventSub(system.afterEvents.scriptEventReceive, { namespaces: ["farmersdelight"] })
+    @subscribeEvent(system.afterEvents.scriptEventReceive, { namespaces: ["farmersdelight"] })
     registries(args: any) {
         const id: string = args.id;
         if (id != "farmersdelight:cooking_pot_recipe") return;

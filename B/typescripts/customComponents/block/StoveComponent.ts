@@ -1,6 +1,13 @@
-import { BlockCustomComponent, BlockComponentPlayerInteractEvent, StartupEvent, system, world, Dimension, Vector3, Block, ItemStack, Player, EntityInventoryComponent } from "@minecraft/server";
-import { methodEventSub } from "../../lib/eventHelper";
+import {
+    BlockComponentPlayerInteractEvent,
+    BlockCustomComponent,
+    EntityInventoryComponent,
+    ItemStack,
+    StartupEvent,
+    system,
+} from "@minecraft/server";
 import { ItemUtil } from "../../lib/ItemUtil";
+import { subscribeEvent } from "../../lib/EventSubscriber";
 
 export class StoveComponent implements BlockCustomComponent {
     constructor() {
@@ -38,7 +45,7 @@ export class StoveComponent implements BlockCustomComponent {
         
 }
 export class StoveComponentRegister{
-    @methodEventSub(system.beforeEvents.startup)
+    @subscribeEvent(system.beforeEvents.startup)
     register(args:StartupEvent){
         args.blockComponentRegistry.registerCustomComponent('farmersdelight:stove', new StoveComponent());
     }

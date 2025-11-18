@@ -1,11 +1,9 @@
-import { Block, BlockPermutation, Container, ContainerSlot, Dimension, Direction, Entity, EntityEquippableComponent, EntityHealthComponent, EntityInventoryComponent, EntityIsChargedComponent, EntityOnFireComponent, EquipmentSlot, ItemEnchantableComponent, ItemStack, Player, PlayerBreakBlockAfterEvent, PlayerInteractWithBlockAfterEvent, PlayerInteractWithBlockBeforeEvent, Vector3, world } from "@minecraft/server";
-import { methodEventSub } from "../lib/eventHelper";
-import { EntityUtil } from "../lib/EntityUtil";
-import { ItemUtil } from "../lib/ItemUtil";
+import { PlayerInteractWithBlockBeforeEvent, world } from "@minecraft/server";
+import { subscribeEvent } from "../lib/EventSubscriber";
 
 
 export class IncompleteBlocks {
-    @methodEventSub(world.beforeEvents.playerInteractWithBlock)
+    @subscribeEvent(world.beforeEvents.playerInteractWithBlock)
     place(args: PlayerInteractWithBlockBeforeEvent) {
         const itemStack = args.itemStack
         if (!itemStack) return

@@ -1,6 +1,18 @@
-import { Block, Container, ContainerSlot, Entity, EntityInventoryComponent, ItemStack, ItemStartUseOnAfterEvent, PlayerInteractWithBlockBeforeEvent, PlayerPlaceBlockAfterEvent, Vector3, system, world } from "@minecraft/server";
-import { methodEventSub } from "../../lib/eventHelper";
+import {
+    Block,
+    Container,
+    ContainerSlot,
+    Entity,
+    EntityInventoryComponent,
+    ItemStack,
+    PlayerInteractWithBlockBeforeEvent,
+    PlayerPlaceBlockAfterEvent,
+    system,
+    Vector3,
+    world,
+} from "@minecraft/server";
 import { BlockWithEntity } from "../../lib/BlockWithEntity";
+import { subscribeEvent } from "../../lib/EventSubscriber";
 
 
 //potItem用于放置厨锅时暂时存储厨锅物品数据，方便读取lore
@@ -8,12 +20,12 @@ import { BlockWithEntity } from "../../lib/BlockWithEntity";
 let potItem = new Map();
 
 export class CookingPotBlock extends BlockWithEntity {
-    @methodEventSub(world.beforeEvents.playerInteractWithBlock)
+    @subscribeEvent(world.beforeEvents.playerInteractWithBlock)
     beforePlaceBlock(args: PlayerInteractWithBlockBeforeEvent){
         potItem.set(args.player.id, args.itemStack);
     }
 
-    @methodEventSub(world.afterEvents.playerPlaceBlock)
+    @subscribeEvent(world.afterEvents.playerPlaceBlock)
     placeBlock(args: PlayerPlaceBlockAfterEvent) {
         const itemStack = potItem.get(args.player.id) as ItemStack;
         const block: Block = args.block;
@@ -36,7 +48,7 @@ export class CookingPotBlock extends BlockWithEntity {
             slot?.setItem(cookingItemStack);
         }
     }
-    @methodEventSub(world.beforeEvents.playerBreakBlock, { blockTypes: ["farmersdelight:cooking_pot"] })
+    @subscribeEvent(world.beforeEvents.playerBreakBlock, { blockTypes: ["farmersdelight:cooking_pot"] })
     breakBlock(args: any) {
         const block: Block = args.block;
         const location: Vector3 = block.location;

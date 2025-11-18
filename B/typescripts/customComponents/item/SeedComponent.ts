@@ -1,5 +1,11 @@
-import { BlockCustomComponent, ItemComponentUseOnEvent, StartupEvent,ItemCustomComponent, system, EntityInventoryComponent, CustomComponentParameters } from "@minecraft/server";
-import { methodEventSub } from "../../lib/eventHelper";
+import {
+    CustomComponentParameters,
+    ItemComponentUseOnEvent,
+    ItemCustomComponent,
+    StartupEvent,
+    system,
+} from "@minecraft/server";
+import { subscribeEvent } from "../../lib/EventSubscriber";
 
 
 export class SeedComponent implements ItemCustomComponent {
@@ -12,7 +18,7 @@ export class SeedComponent implements ItemCustomComponent {
         param.params as string
     }
 
-    @methodEventSub(system.beforeEvents.startup)
+    @subscribeEvent(system.beforeEvents.startup)
     register(args: StartupEvent) {
         args.itemComponentRegistry.registerCustomComponent('farmersdelight:seed', new SeedComponent())
     }

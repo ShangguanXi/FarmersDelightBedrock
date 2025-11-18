@@ -1,8 +1,21 @@
-import { BlockComponentPlayerInteractEvent, BlockComponentRandomTickEvent, BlockCustomComponent, BlockComponentPlayerBreakEvent,Dimension, Vector3, world, EntityInventoryComponent, ItemStack, system, StartupEvent } from "@minecraft/server";
+import {
+    BlockComponentPlayerBreakEvent,
+    BlockComponentPlayerInteractEvent,
+    BlockComponentRandomTickEvent,
+    BlockCustomComponent,
+    Dimension,
+    EntityInventoryComponent,
+    ItemStack,
+    StartupEvent,
+    system,
+    Vector3,
+    world,
+} from "@minecraft/server";
 import { RandomUtil } from "../../lib/RandomUtil";
 import { ItemUtil } from "../../lib/ItemUtil";
-import { methodEventSub } from "../../lib/eventHelper";
 import { EntityUtil } from "../../lib/EntityUtil";
+import { subscribeEvent } from "../../lib/EventSubscriber";
+
 function spawnLoot(path: string, dimenion: Dimension, location: Vector3) {
     return dimenion.runCommand(`loot spawn ${location.x} ${location.y} ${location.z} loot "${path}"`)
 }
@@ -101,7 +114,7 @@ class MushroomColonyComonent implements BlockCustomComponent {
 
 }
 export class MushroomColonyComonentRegister{
-    @methodEventSub(system.beforeEvents.startup)
+    @subscribeEvent(system.beforeEvents.startup)
     register(args:StartupEvent){
         args.blockComponentRegistry.registerCustomComponent('farmersdelight:mushroom_colony', new MushroomColonyComonent());
     }

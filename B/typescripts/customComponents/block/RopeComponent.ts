@@ -1,7 +1,22 @@
-import { BlockCustomComponent, BlockComponentTickEvent, system, world, BlockComponentRandomTickEvent, BlockComponentPlayerInteractEvent, ItemComponentTypes, BlockComponentPlayerBreakEvent, EntityInventoryComponent, Dimension, Vector3, ItemEnchantableComponent, GameMode, StartupEvent } from "@minecraft/server";
-import { methodEventSub } from "../../lib/eventHelper";
+import {
+    BlockComponentPlayerBreakEvent,
+    BlockComponentPlayerInteractEvent,
+    BlockComponentRandomTickEvent,
+    BlockComponentTickEvent,
+    BlockCustomComponent,
+    Dimension,
+    EntityInventoryComponent,
+    GameMode,
+    ItemComponentTypes,
+    ItemEnchantableComponent,
+    StartupEvent,
+    system,
+    Vector3,
+} from "@minecraft/server";
 import { ItemUtil } from "../../lib/ItemUtil";
-import type * as minecraftvanilladata from '@minecraft/vanilla-data';
+import type * as minecraftvanilladata from "@minecraft/vanilla-data";
+import { subscribeEvent } from "../../lib/EventSubscriber";
+
 function spawnLoot(path: string, dimenion: Dimension, location: Vector3) {
     return dimenion.runCommand(`loot spawn ${location.x} ${location.y} ${location.z} loot "${path}"`)
 }
@@ -160,7 +175,7 @@ export class RopeComponent implements BlockCustomComponent {
     }
 }
 export class RopeComponentRegister {
-    @methodEventSub(system.beforeEvents.startup)
+    @subscribeEvent(system.beforeEvents.startup)
     register(args: StartupEvent) {
         args.blockComponentRegistry.registerCustomComponent('farmersdelight:rope', new RopeComponent());
     }

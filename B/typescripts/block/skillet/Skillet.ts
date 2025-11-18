@@ -1,16 +1,22 @@
-import { Block, Container, ContainerSlot, Dimension, Entity, EntityDamageCause, EntityEquippableComponent, EntityInventoryComponent, EquipmentSlot, ItemStack, Player, PlayerInteractWithBlockAfterEvent, PlayerPlaceBlockAfterEvent, ScoreboardObjective, ScoreboardScoreInfo, Vector3, world } from "@minecraft/server";
-import { methodEventSub } from "../../lib/eventHelper";
+import {
+    Block,
+    EntityInventoryComponent,
+    ItemStack,
+    PlayerInteractWithBlockAfterEvent,
+    PlayerPlaceBlockAfterEvent,
+    world,
+} from "@minecraft/server";
 import { BlockWithEntity } from "../../lib/BlockWithEntity";
 import { vanillaItemList } from "../../data/recipe/cookRecipe";
 import { EntityUtil } from "../../lib/EntityUtil";
 import { ItemUtil } from "../../lib/ItemUtil";
-import { BlockEntity } from "../../lib/BlockEntity";
 
 import { heatConductors, heatSources } from "../../data/heatBlocks";
-import { CookableComonentRegister, CookableComponentParams } from "../../customComponents/item/CookableComponent";
+import { CookableComponentParams } from "../../customComponents/item/CookableComponent";
+import { subscribeEvent } from "../../lib/EventSubscriber";
 
 export class Skillet extends BlockWithEntity {
-  @methodEventSub(world.afterEvents.playerPlaceBlock)
+  @subscribeEvent(world.afterEvents.playerPlaceBlock)
   placeBlock(args: PlayerPlaceBlockAfterEvent) {
     const block = args.block;
     if (block.typeId !== "farmersdelight:skillet_block") return;
@@ -24,7 +30,7 @@ export class Skillet extends BlockWithEntity {
     entity.setDynamicProperty("farmersdelight:cookData", "{}");
   }
 
-  @methodEventSub(world.afterEvents.playerInteractWithBlock)
+  @subscribeEvent(world.afterEvents.playerInteractWithBlock)
   useOnBlock(args: PlayerInteractWithBlockAfterEvent) {
     if (args?.block?.typeId !== "farmersdelight:skillet_block") return;
 

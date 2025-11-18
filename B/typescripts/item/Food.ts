@@ -1,11 +1,20 @@
-import { Container, EntityHealthComponent, EntityInventoryComponent, ItemStack, Player, PlayerInteractWithEntityBeforeEvent, system, world } from "@minecraft/server";
-import { methodEventSub } from "../lib/eventHelper";
+import {
+    Container,
+    EntityHealthComponent,
+    EntityInventoryComponent,
+    ItemStack,
+    Player,
+    PlayerInteractWithEntityBeforeEvent,
+    system,
+    world,
+} from "@minecraft/server";
 import { ItemUtil } from "../lib/ItemUtil";
 import { EntityUtil } from "../lib/EntityUtil";
+import { subscribeEvent } from "../lib/EventSubscriber";
 
 
 export class Food {
-    @methodEventSub(world.afterEvents.itemStopUse)
+    @subscribeEvent(world.afterEvents.itemStopUse)
     eat(args: any) {
         const itemStack: ItemStack = args.itemStack;
         const player: Player = args.source
@@ -78,7 +87,7 @@ export class Food {
         }
     }
     //狗粮与马食
-    @methodEventSub(world.beforeEvents.playerInteractWithEntity)
+    @subscribeEvent(world.beforeEvents.playerInteractWithEntity)
     feed(args: PlayerInteractWithEntityBeforeEvent){
         const itemStack = args.itemStack;
         if (!itemStack) return;

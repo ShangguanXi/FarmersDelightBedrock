@@ -1,6 +1,6 @@
-import { ItemStack, Player, ItemUseAfterEvent, world } from "@minecraft/server";
-import { methodEventSub } from "../lib/eventHelper";
-import { ActionFormData, ActionFormResponse } from '@minecraft/server-ui';
+import { ItemStack, ItemUseAfterEvent, world } from "@minecraft/server";
+import { ActionFormData, ActionFormResponse } from "@minecraft/server-ui";
+import { subscribeEvent } from "../lib/EventSubscriber";
 
 function thanksForm(player: any) {
     const thanks = new ActionFormData()
@@ -206,7 +206,7 @@ function mainForm(player: any) {
 export class FarmersBook {
 
 
-    @methodEventSub(world.afterEvents.itemUse)
+    @subscribeEvent(world.afterEvents.itemUse)
     itemUse(args: ItemUseAfterEvent) {
         const player = args.source;
         const itemStack: ItemStack | undefined = args.itemStack;

@@ -1,7 +1,17 @@
-import { BlockCustomComponent, BlockComponentOnPlaceEvent, Vector3, BlockComponentPlayerBreakEvent, system, StartupEvent, world, PlayerBreakBlockBeforeEvent, ItemComponentTypes, BlockComponentPlayerPlaceBeforeEvent, BlockComponentTickEvent, EntityInventoryComponent, ItemEnchantableComponent, Dimension, CustomComponentParameters, BlockComponentPlayerInteractEvent, Effect, ItemStack } from "@minecraft/server";
+import {
+    BlockComponentPlayerInteractEvent,
+    BlockCustomComponent,
+    CustomComponentParameters,
+    ItemComponentTypes,
+    ItemStack,
+    PlayerBreakBlockBeforeEvent,
+    StartupEvent,
+    system,
+    world,
+} from "@minecraft/server";
 import { ItemUtil } from "../../lib/ItemUtil";
-import { methodEventSub } from "../../lib/eventHelper";
-import type * as minecraftvanilladata from '@minecraft/vanilla-data';
+import type * as minecraftvanilladata from "@minecraft/vanilla-data";
+import { subscribeEvent } from "../../lib/EventSubscriber";
 
 type effect = [string, number, number?]
 export type Params = {
@@ -57,7 +67,7 @@ export class PieComponent implements BlockCustomComponent {
     }
 
 
-    @methodEventSub(world.beforeEvents.playerBreakBlock)
+    @subscribeEvent(world.beforeEvents.playerBreakBlock)
     break(args: PlayerBreakBlockBeforeEvent) {
         const block = args.block
         const pie = block.getComponent('farmersdelight:pie')
@@ -85,7 +95,7 @@ export class PieComponent implements BlockCustomComponent {
         }
     }
 
-    @methodEventSub(system.beforeEvents.startup)
+    @subscribeEvent(system.beforeEvents.startup)
     register(args: StartupEvent) {
         args.blockComponentRegistry.registerCustomComponent('farmersdelight:pie', new PieComponent());
     }
