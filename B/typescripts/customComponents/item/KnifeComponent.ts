@@ -36,8 +36,8 @@ export const BLOCK_LOOT_TABLE: Map<string, BlockLoot> = new Map([
     ["minecraft:short_grass", STRAW_FROM_GRASS],
     ["minecraft:fern", STRAW_FROM_GRASS],
     ["minecraft:wheat", STRAW_FROM_WHEAT],
-    ["minecraft:rice_block_upper", STRAW_FROM_RICE],
-    ["minecraft:sandy_shrub_block", blockLoot("farmersdelight/straw_from_sandy_shrub")],
+    ["farmersdelight:rice_block_upper", STRAW_FROM_RICE],
+    ["farmersdelight:sandy_shrub_block", blockLoot("farmersdelight/straw_from_sandy_shrub")],
 ]);
 
 function hurtEquippedItem(entity: Entity, stack?: ItemStack, slot: EquipmentSlot = EquipmentSlot.Mainhand) {
