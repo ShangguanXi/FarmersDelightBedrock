@@ -12,7 +12,7 @@ import { BlockEntity, BlockEntityData } from "../../lib/BlockEntity";
 import { isSamePos } from "../../lib/ObjectUtil";
 import { vanillaCookingPotRecipe } from "../../data/recipe/cookingPotRecipe";
 import { CookingPotRecipe } from "../../lib/CookingPotRecipe";
-import { heatConductors, heatSources } from "../../data/heatBlocks";
+import { isHeated } from "../../data/heatBlocks";
 import { subscribeEvent } from "../../lib/EventSubscriber";
 
 
@@ -26,17 +26,6 @@ function arrowheadUtil(entity: Entity, oldItemStack: ItemStack, slot: number, co
     if (itemStack?.typeId != oldItemStack.typeId) {
         container.setItem(slot, oldItemStack);
     }
-}
-
-//检查热源  自定义热源可以使用farmersdelight:heat_source的tag进行定义
-function heatCheck(block: Block) {
-    const blockBelow = block.below()
-    if (heatSources.includes(blockBelow?.typeId as string) || blockBelow?.hasTag('farmersdelight:heat_source')) return true
-    if (heatConductors.includes(blockBelow?.typeId as string) || blockBelow?.hasTag('farmersdelight:heat_conductors')) {
-        const blockBelow2 = block.below(2)
-        if (heatSources.includes(blockBelow2?.typeId as string) || blockBelow2?.hasTag('farmersdelight:heat_source')) return true
-    }
-    return false
 }
 
 //刷新方块实体状态以及防TP
@@ -89,7 +78,7 @@ export class CookingPotBlockEntity extends BlockEntity {
         const map: Map<string, number> = new Map();
         const progress: number = entity.getDynamicProperty("farmersdelight:cooking_pot_progress") as number ?? 0
         //热源检测
-        const heated = heatCheck(block);
+        const heated = isHeated(block);
         //配方管理器初始化, 每tick更新一次
         let cookingPotRecipe
         if (!recipeFactory.get(entity.id)) {

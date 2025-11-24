@@ -1,5 +1,4 @@
 import {
-    Block,
     EntityInventoryComponent,
     ItemStack,
     PlayerInteractWithBlockAfterEvent,
@@ -11,7 +10,7 @@ import { vanillaItemList } from "../../data/recipe/cookRecipe";
 import { EntityUtil } from "../../lib/EntityUtil";
 import { ItemUtil } from "../../lib/ItemUtil";
 
-import { heatConductors, heatSources } from "../../data/heatBlocks";
+import { isHeated } from "../../data/heatBlocks";
 import { CookableComponentParams } from "../../customComponents/item/CookableComponent";
 import { subscribeEvent } from "../../lib/EventSubscriber";
 
@@ -96,24 +95,13 @@ export class Skillet extends BlockWithEntity {
           if (EntityUtil.gameMode(player)) ItemUtil.clearItem(container, player.selectedSlotIndex, canAddAmount);
         }
       }
-      
-      if (Skillet.heatCheck(args.block) && canAddAmount > 0) {
+
+        if (isHeated(args.block) && canAddAmount > 0) {
         entity.dimension.playSound("block.farmersdelight.skillet.add_food",entity.location);
       }
     } 
     else {
       player.onScreenDisplay.setActionBar({ translate: "farmersdelight.skillet.invalid_item" });
     }
-  }
-
-
-  static heatCheck(block: Block) {
-    const blockBelow = block.below()
-    if (heatSources.includes(blockBelow?.typeId as string) || blockBelow?.hasTag('farmersdelight:heat_source')) return true
-    if (heatConductors.includes(blockBelow?.typeId as string) || blockBelow?.hasTag('farmersdelight:heat_conductors')) {
-      const blockBelow2 = block.below(2)
-      if (heatSources.includes(blockBelow2?.typeId as string) || blockBelow2?.hasTag('farmersdelight:heat_source')) return true
-    }
-    return false
   }
 }

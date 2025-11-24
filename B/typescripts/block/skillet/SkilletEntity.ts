@@ -1,6 +1,6 @@
-import { Block, ItemStack, system, world } from "@minecraft/server";
+import { ItemStack, system, world } from "@minecraft/server";
 import { BlockEntity } from "../../lib/BlockEntity";
-import { heatConductors, heatSources } from "../../data/heatBlocks";
+import { isHeated } from "../../data/heatBlocks";
 import { CookableComponentParams } from "../../customComponents/item/CookableComponent";
 import { subscribeEvent } from "../../lib/EventSubscriber";
 
@@ -13,16 +13,6 @@ for (let i = 0; i < 5; i++) {
 }
 
 //检查热源
-function heatCheck(block: Block) {
-  const blockBelow = block.below()
-  if (heatSources.includes(blockBelow?.typeId as string) || blockBelow?.hasTag('farmersdelight:heat_source')) return true
-  if (heatConductors.includes(blockBelow?.typeId as string) || blockBelow?.hasTag('farmersdelight:heat_conductors')) {
-    const blockBelow2 = block.below(2)
-    if (heatSources.includes(blockBelow2?.typeId as string) || blockBelow2?.hasTag('farmersdelight:heat_source')) return true
-  }
-  return false
-}
-
 export class SkilletEntity extends BlockEntity {
   @subscribeEvent(world.afterEvents.dataDrivenEntityTrigger, { entityTypes: ["farmersdelight:skillet"], eventTypes: ["farmersdelight:skillet_tick"] })
   tick(args: any) {
@@ -43,7 +33,7 @@ export class SkilletEntity extends BlockEntity {
       dimension.spawnParticle(particleName, { x: x + skilletV2[index].x, y: y + 0.07 + 0.03 * (index + 1), z: z + skilletV2[index].z });
     }
     // 烹饪
-    if (!heatCheck(entityBlockData.block)) return;
+      if (!isHeated(entityBlockData.block)) return;
     const cookDataProperty = entity.getDynamicProperty("farmersdelight:cookData") as string || "{}"
     if (cookDataProperty == "{}") return
     let cookData = JSON.parse(cookDataProperty);
