@@ -16,6 +16,7 @@ import {
 } from "@minecraft/server";
 import { ItemUtil } from "../../lib/ItemUtil";
 import { subscribeEvent } from "../../lib/EventSubscriber";
+import { spawnLootAtBlock } from "../../lib/LootUtil";
 
 export class WildCropComponent implements BlockCustomComponent {
     constructor() {
@@ -68,7 +69,6 @@ class WildRiceComponent implements BlockCustomComponent {
     onPlayerBreak(args: BlockComponentPlayerBreakEvent): void {
         const player = args.player;
         const block = args.block;
-        const dimension = args.dimension;
         const inventory = player?.getComponent("inventory") as EntityInventoryComponent;
         const container = inventory?.container;
         const lootTable = this.getLootTable();
@@ -84,12 +84,12 @@ class WildRiceComponent implements BlockCustomComponent {
                 ItemUtil.damageItem(container, player.selectedSlotIndex, 1)
                 ItemUtil.spawnItem(block, lootItem)
 
-            };
+            }
             if ((itemId != "minecraft:shears") && (!silkTouch)) {
-                this.spawnLoot(lootTable, dimension, block.location)
-            };
+                spawnLootAtBlock(block, lootTable)
+            }
         } catch (error) {
-            this.spawnLoot(lootTable, dimension, block.location)
+            spawnLootAtBlock(block, lootTable)
         }
 
     };
@@ -131,9 +131,6 @@ class WildRiceComponent implements BlockCustomComponent {
 
 
 
-    spawnLoot(path: string, dimenion: Dimension, location: Vector3) {
-        return dimenion.runCommand(`loot spawn ${location.x} ${location.y} ${location.z} loot "${path}"`)
-    }
     getLootTable(): string {
         return "farmersdelight/crops/farmersdelight_wild_rice";
 

@@ -6,7 +6,7 @@ import { StoveBlock } from "./block/stove/StoveBlock";
 import { StoveBlockEntity } from "./block/stove/StoveBlockEntity";
 import { Skillet } from "./block/skillet/Skillet";
 import { SkilletEntity } from "./block/skillet/SkilletEntity";
-import { Knife } from "./item/Knife";
+import "./item/Knife";
 import { CookingPotRecipeRegistries } from "./init/CookingPotRecipeRegistries";
 import { Food } from "./item/Food";
 import "./block/CabinetBlockEntity";
@@ -85,6 +85,5 @@ new SkilletEntity();
 
 new FarmersBook();
 new Food();
-new Knife();
 new BlockFood();
 new CookingPotRecipeRegistries();

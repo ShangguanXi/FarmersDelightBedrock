@@ -1,28 +1,27 @@
 import {
     Block,
     Container,
-    Dimension,
     EntityInventoryComponent,
     ItemStack,
     Player,
     PlayerBreakBlockBeforeEvent,
     PlayerInteractWithBlockAfterEvent,
     system,
-    Vector3,
     world,
 } from "@minecraft/server";
 import { ItemUtil } from "../lib/ItemUtil";
 import { subscribeEvent } from "../lib/EventSubscriber";
+import { spawnLoot } from "../lib/LootUtil";
 
-function spawnLoot(path: string, dimenion: Dimension, location: Vector3) {
-    return dimenion.runCommand(`loot spawn ${location.x} ${location.y} ${location.z} loot "${path}"`)
-}
+
+/**
+ * @deprecated
+ */
 export class BlockFood {
     @subscribeEvent(world.afterEvents.playerInteractWithBlock)
     itemUseOn(args: PlayerInteractWithBlockAfterEvent) {
         const player: Player = args.player;
         const block: Block = args.block;
-        const location = args.block.location;
         const itemStack: ItemStack | undefined = args.itemStack;
         const blockFoodAllTag = block.getTags();
         const inventory = args.player?.getComponent("inventory") as EntityInventoryComponent;
@@ -42,26 +41,30 @@ export class BlockFood {
                     }
                     if ((itemType == "tag" && itemStack.hasTag(itemId)) || (itemType == "item" && itemStack.typeId == itemId)) {
                         block.setPermutation(block.permutation.withState("farmersdelight:food_block_stage", Number(block.permutation.getState("farmersdelight:food_block_stage")) + 1));
-                        spawnLoot(block.typeId.split(":")[0] + "/food_block/" + block.typeId.split(":")[1], block.dimension, { x: location.x + 0.5, y: location.y + 1, z: location.z + 0.5 });
+                        const { x, y, z } = block;
+                        const info = block.typeId.split(":");
+                        spawnLoot(block.dimension, {
+                            x: x + 0.5,
+                            y: y + 1,
+                            z: z + 0.5,
+                        }, info[0] + "/food_block/" + info[1]);
                         ItemUtil.clearItem(container, player.selectedSlotIndex)
-
-                    }
-                    else {
+                    } else {
                         player.onScreenDisplay.setActionBar({ translate: 'farmersdelight.blockfood.' + itemId });
                     }
+                } else {
+                    const { x, y, z } = block;
+                    const info = block.typeId.split(":");
+                    spawnLoot(block.dimension, {
+                        x: x + 0.5,
+                        y: y + 1,
+                        z: z + 0.5,
+                    }, info[0] + "/food_block/" + info[1] + "_over");
+                    block.setType("minecraft:air");
                 }
-                else {
-                    if (block.typeId == "farmersdelight:stuffed_pumpkin_block") {
-                        spawnLoot(block.typeId.split(":")[0] + "/food_block/" + block.typeId.split(":")[1], block.dimension, { x: location.x + 0.5, y: location.y + 1, z: location.z + 0.5 });
-                    }
-                    spawnLoot(block.typeId.split(":")[0] + "/food_block/" + block.typeId.split(":")[1] + "_over", block.dimension, { x: location.x + 0.5, y: location.y + 1, z: location.z + 0.5 });
-                    block.dimension.setBlockType({ x: location.x, y: location.y, z: location.z }, "minecraft:air")
-
-                };
                 break
-
-            };
-        };
+            }
+        }
 
     }
     @subscribeEvent(world.beforeEvents.playerBreakBlock)

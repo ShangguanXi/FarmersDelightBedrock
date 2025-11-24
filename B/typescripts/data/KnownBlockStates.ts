@@ -15,7 +15,7 @@ type FarmersDelightBlockStates = {
     ["farmersdelight:wild_rice"]: number;
 };
 
-type KnownBlockStates = VanillaBlockStates & FarmersDelightBlockStates;
+export type KnownBlockStates = VanillaBlockStates & FarmersDelightBlockStates;
 
 declare module "@minecraft/server" {
     export interface BlockPermutation {

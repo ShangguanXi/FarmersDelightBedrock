@@ -18,6 +18,7 @@ import {
 import { horizontalDirectionOf } from "../../lib/EntityUtil";
 import { oppositeOf, offsetByDirection } from "../../lib/DirectionUtil";
 import { subscribeEvent } from "../../lib/EventSubscriber";
+import { spawnLootAtBlock } from "../../lib/LootUtil";
 
 export type BlockLoot = (stack: ItemStack, state: BlockPermutation) => string | undefined;
 
@@ -60,8 +61,7 @@ class KnifeComponent implements ItemCustomComponent {
             const permutation = event.minedBlockPermutation;
             const loot = BLOCK_LOOT_TABLE.get(permutation.type.id)?.(stack, permutation);
             if (loot) {
-                const { dimension, x, y, z } = event.block;
-                dimension.runCommand(`loot spawn ${x} ${y} ${z} loot "${loot}"`);
+                spawnLootAtBlock(event.block, loot);
             }
         }
     }

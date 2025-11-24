@@ -7,10 +7,11 @@ import {
     Vector3,
 } from "@minecraft/server";
 import { subscribeEvent } from "../../lib/EventSubscriber";
+import { spawnLootAtBlock } from "../../lib/LootUtil";
 
-function spawnLoot(path: string, dimenion: Dimension, location: Vector3) {
-    return dimenion.runCommand(`loot spawn ${location.x} ${location.y} ${location.z} loot "${path}"`)
-}
+/**
+ * @deprecated
+ */
 class RiceRollMedleyComponent implements BlockCustomComponent {
     constructor() {
         this.onPlayerInteract = this.onPlayerInteract.bind(this);
@@ -21,16 +22,16 @@ class RiceRollMedleyComponent implements BlockCustomComponent {
         const location = args.block.location;
         if (block.typeId=="farmersdelight:rice_roll_medley_block"){
             if(Number(block.permutation.getState("farmersdelight:food_block_stage"))<=2){
-                spawnLoot("farmersdelight/food_block/kelp_roll_slice", block.dimension, { x: location.x + 0.5, y: location.y + 1, z: location.z + 0.5 });
+                spawnLootAtBlock(block, "farmersdelight/food_block/kelp_roll_slice");
             }
             if(Number(block.permutation.getState("farmersdelight:food_block_stage"))>2&&Number(block.permutation.getState("farmersdelight:food_block_stage"))<=5){
-                spawnLoot( "farmersdelight/food_block/salmon_roll", block.dimension, { x: location.x + 0.5, y: location.y + 1, z: location.z + 0.5 });
+                spawnLootAtBlock(block, "farmersdelight/food_block/salmon_roll");
             }
             if(Number(block.permutation.getState("farmersdelight:food_block_stage"))>5&&Number(block.permutation.getState("farmersdelight:food_block_stage"))<=7){
-                spawnLoot( "farmersdelight/food_block/cod_roll", block.dimension, { x: location.x + 0.5, y: location.y + 1, z: location.z + 0.5 });
+                spawnLootAtBlock(block, "farmersdelight/food_block/cod_roll");
             }
             if(Number(block.permutation.getState("farmersdelight:food_block_stage"))==8){
-                spawnLoot("farmersdelight/food_block/rice_roll_medley_block_over", block.dimension, { x: location.x + 0.5, y: location.y + 1, z: location.z + 0.5 });
+                spawnLootAtBlock(block, "farmersdelight/food_block/rice_roll_medley_block_over");
                 block.dimension.setBlockType({ x: location.x, y: location.y, z: location.z }, "minecraft:air")
             }
             if(Number(block.permutation.getState("farmersdelight:food_block_stage"))<8){

@@ -16,10 +16,8 @@ import {
 import { ItemUtil } from "../../lib/ItemUtil";
 import type * as minecraftvanilladata from "@minecraft/vanilla-data";
 import { subscribeEvent } from "../../lib/EventSubscriber";
+import { spawnLootAtBlock } from "../../lib/LootUtil";
 
-function spawnLoot(path: string, dimenion: Dimension, location: Vector3) {
-    return dimenion.runCommand(`loot spawn ${location.x} ${location.y} ${location.z} loot "${path}"`)
-}
 export class RopeComponent implements BlockCustomComponent {
     constructor() {
         this.onTick = this.onTick.bind(this);
@@ -57,7 +55,7 @@ export class RopeComponent implements BlockCustomComponent {
             }
             if (stage == 4) {
                 block.setPermutation(block.permutation.withState("farmersdelight:stage", 1))
-                spawnLoot("farmersdelight/crops/farmersdelight_tomato_riped", dimension, { x: block.location.x, y: block.location.y, z: block.location.z })
+                spawnLootAtBlock(block, "farmersdelight/crops/farmersdelight_tomato_riped")
             }
         } catch (error) {
 

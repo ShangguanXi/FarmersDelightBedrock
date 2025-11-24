@@ -3,36 +3,23 @@ import {
     BlockPermutation,
     Container,
     ContainerSlot,
-    Dimension,
-    Entity,
+    Entity, EntityComponentTypes,
     EntityEquippableComponent,
     EntityHealthComponent,
     EntityInventoryComponent,
     EntityOnFireComponent,
     EquipmentSlot,
+    GameMode,
     ItemEnchantableComponent,
     ItemStack,
-    Player,
+    Player, PlayerBreakBlockAfterEvent,
     PlayerInteractWithBlockBeforeEvent,
     system,
-    Vector3,
     world,
 } from "@minecraft/server";
-import { EntityUtil } from "../lib/EntityUtil";
 import { ItemUtil } from "../lib/ItemUtil";
 import { subscribeEvent } from "../lib/EventSubscriber";
-
-function spawnLoot(path: string, dimenion: Dimension, location: Vector3) {
-    return dimenion.runCommand(`loot spawn ${location.x} ${location.y} ${location.z} loot "${path}"`);
-}
-
-function level(level: number | undefined) {
-    if (!level) {
-        return 0;
-    } else {
-        return level;
-    }
-}
+import { spawnLootAtBlock } from "../lib/LootUtil";
 
 const DROPS_CAKE_SLICE: Set<string> = new Set([
     "minecraft:cake",
@@ -55,7 +42,7 @@ const DROPS_CAKE_SLICE: Set<string> = new Set([
     "minecraft:black_candle_cake",
 ]);
 
-export class Knife {
+class Knife {
     //刀掉落物改变机制有关的战利品
     @subscribeEvent(world.afterEvents.entityHurt)
     hurt(args: any) {
@@ -71,7 +58,7 @@ export class Knife {
             const health = hurt.getComponent(EntityHealthComponent.componentId) as EntityHealthComponent;
             const onFire = (hurt.getComponent("minecraft:onfire") as EntityOnFireComponent)?.onFireTicksRemaining;
             const random = Math.floor(Math.random() * 10);
-            if (!health?.currentValue && hurt.typeId === "minecraft:pig" && random < (5 + level(Looting))) {
+            if (!health?.currentValue && hurt.typeId === "minecraft:pig" && random < 5 + (Looting ?? 0)) {
                 if (!onFire) {
                     hurt.dimension.spawnItem(new ItemStack("farmersdelight:ham"), hurt.location);
                 } else {
@@ -115,34 +102,41 @@ export class Knife {
 
     }
 
-    //草秆
+
+    /**
+     * @deprecated
+     */
     @subscribeEvent(world.afterEvents.playerBreakBlock)
-    break(args: any) {
+    break(args: PlayerBreakBlockAfterEvent) {
         const player: Player = args.player;
-        const itemStack: ItemStack = args.itemStackAfterBreak;
-        const block: Block = args.block;
-        const permutation = args.brokenBlockPermutation;
-        const blockTypeId: string = args.brokenBlockPermutation.type.id;
+        if (player.getGameMode() === GameMode.Creative) return;
+        const stack = args.itemStackAfterBreak;
         // 使用刀组件的物品已经处理了掉落物
-        if (!itemStack || !itemStack.hasTag("farmersdelight:is_knife") || itemStack.hasComponent("farmersdelight:knife")) return;
-        if (EntityUtil.gameMode(player)) {
-            const inventory = player?.getComponent("inventory") as EntityInventoryComponent;
-            const container = inventory?.container as Container;
-            if (!container) return;
+        if (!stack || !stack.hasTag("farmersdelight:is_knife") || stack.hasComponent("farmersdelight:knife")) return;
+        const container = player.getComponent(EntityComponentTypes.Inventory)?.container;
+        if (container) {
             ItemUtil.damageItem(container, player.selectedSlotIndex);
-            if (blockTypeId == "minecraft:tallgrass") {
-                spawnLoot("farmersdelight/straw_from_grass", block.dimension, block.location);
-            } else if (blockTypeId == "minecraft:short_grass" || blockTypeId == "minecraft:fern") {
-                spawnLoot("farmersdelight/straw_from_grass", block.dimension, block.location);
-            } else if (blockTypeId == "minecraft:wheat") {
-                const age = permutation.getState("growth");
-                if (age == 7) spawnLoot("farmersdelight/straw", block.dimension, block.location);
-            } else if (blockTypeId == "farmersdelight:rice_block_upper") {
-                const age = permutation.getState("farmersdelight:growth");
-                if (age == 3) spawnLoot("farmersdelight/straw", block.dimension, block.location);
-            } else if (blockTypeId == "farmersdelight:sandy_shrub_block") {
-                spawnLoot("farmersdelight/straw_from_sandy_shrub", block.dimension, block.location);
-            }
+        }
+        const permutation = args.brokenBlockPermutation;
+        switch (permutation.type.id) {
+            case "minecraft:tallgrass":
+            case "minecraft:short_grass":
+            case  "minecraft:fern":
+                spawnLootAtBlock(args.block, "farmersdelight/straw_from_grass");
+                break;
+            case "minecraft:wheat":
+                if (permutation.getState("growth") === 7) {
+                    spawnLootAtBlock(args.block, "farmersdelight/straw");
+                }
+                break;
+            case "farmersdelight:rice_block_upper":
+                if (permutation.getState("farmersdelight:growth") === 3) {
+                    spawnLootAtBlock(args.block, "farmersdelight/straw");
+                }
+                break;
+            case "farmersdelight:sandy_shrub_block":
+                spawnLootAtBlock(args.block, "farmersdelight/straw_from_sandy_shrub");
+                break;
         }
     }
 
@@ -173,15 +167,6 @@ export class Knife {
             }
         });
     }
-
-    /* @methodEventSub(world.afterEvents.dataDrivenEntityTrigger, { entityTypes: ["minecraft:item"], eventTypes: ["minecraft:item_tick"] })
-     tick(args: any) {
-         const entity = args.entity as Entity
-         const itemComp = entity.getComponent('minecraft:item')
-         const typeId = itemComp?.itemStack.typeId
-         if (typeId != "farmersdelight:netherite_knife") return
-         entity.triggerEvent("minecraft:fire_resistance")
-         console.warn(entity.getComponent('minecraft:health')?.currentValue);
-
-     }*/
 }
+
+void Knife;

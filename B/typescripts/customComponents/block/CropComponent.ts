@@ -4,26 +4,22 @@ import {
     BlockComponentTickEvent,
     BlockCustomComponent,
     CustomComponentParameters,
-    Dimension,
     Direction,
     EntityInventoryComponent,
     GameMode,
     StartupEvent,
     system,
-    Vector3,
 } from "@minecraft/server";
-import type * as minecraftvanilladata from "@minecraft/vanilla-data";
 import { ItemUtil } from "../../lib/ItemUtil";
 import { subscribeEvent } from "../../lib/EventSubscriber";
+import { KnownBlockStates } from "../../data/KnownBlockStates";
+import { spawnLootAtBlock } from "../../lib/LootUtil";
 
-function spawnLoot(path: string, dimenion: Dimension, location: Vector3) {
-    return dimenion.runCommand(`loot spawn ${location.x} ${location.y} ${location.z} loot "${path}"`)
-}
 
 export type CropsComponentParams = {
     loot: string;
     state: {
-        name: keyof minecraftvanilladata.BlockStateSuperset;
+        name: keyof KnownBlockStates;
         age: number
         age_after_harvest?: number
     }
@@ -63,7 +59,7 @@ class CropsComponent implements BlockCustomComponent {
         }
         else{
             block.setPermutation(block.permutation.withState(params.state.name, params.state.age_after_harvest??0))
-            spawnLoot(params.loot.replace("loot_tables/","").replace(".json",""),dimension,block.location)
+            spawnLootAtBlock(block, params.loot.replace("loot_tables/", "").replace(".json", ""));
 
         }
 
@@ -302,14 +298,14 @@ class RiceComponent implements BlockCustomComponent {
                 }
                 if (growth == 3) {
                     block.setPermutation(block.permutation.withState("farmersdelight:growth", 0))
-                    spawnLoot("farmersdelight/crops/farmersdelight_rice_riped", dimension, { x: block.location.x, y: block.location.y, z: block.location.z })
+                    spawnLootAtBlock(block, "farmersdelight/crops/farmersdelight_rice_riped");
                 }
 
 
             } catch (error) {
                 if (growth == 3) {
                     block.setPermutation(block.permutation.withState("farmersdelight:growth", 0))
-                    spawnLoot("farmersdelight/crops/farmersdelight_rice_riped", dimension, { x: block.location.x, y: block.location.y, z: block.location.z })
+                    spawnLootAtBlock(block, "farmersdelight/crops/farmersdelight_rice_riped");
                 }
             }
         }
