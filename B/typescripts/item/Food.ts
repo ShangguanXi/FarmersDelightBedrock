@@ -2,7 +2,7 @@ import {
     Container,
     EntityHealthComponent,
     EntityInventoryComponent,
-    ItemStack,
+    ItemCompleteUseAfterEvent,
     Player,
     PlayerInteractWithEntityBeforeEvent,
     system,
@@ -12,16 +12,13 @@ import { ItemUtil } from "../lib/ItemUtil";
 import { EntityUtil } from "../lib/EntityUtil";
 import { subscribeEvent } from "../lib/EventSubscriber";
 
-
 export class Food {
-    @subscribeEvent(world.afterEvents.itemStopUse)
-    eat(args: any) {
-        const itemStack: ItemStack = args.itemStack;
-        const player: Player = args.source
-        const useDuration: number = args.useDuration;
-        if (useDuration) return;
+    @subscribeEvent(world.afterEvents.itemCompleteUse)
+    onConsume(event: ItemCompleteUseAfterEvent) {
+        if (event.useDuration) return;
+        const player: Player = event.source;
         const weight = Math.floor(Math.random() * 11)
-        switch (itemStack.typeId) {
+        switch (event.itemStack.typeId) {
             case "farmersdelight:apple_cider":
                 player.addEffect('absorption', 60 * 20, { amplifier: 0 });
                 break;

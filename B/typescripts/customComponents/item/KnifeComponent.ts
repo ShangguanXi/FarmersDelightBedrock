@@ -2,12 +2,8 @@ import {
     BlockPermutation,
     CustomComponentParameters,
     Direction,
-    Entity,
-    EntityComponentTypes,
-    EquipmentSlot,
     GameMode,
     ItemComponentMineBlockEvent,
-    ItemComponentTypes,
     ItemComponentUseOnEvent,
     ItemCustomComponent,
     ItemStack,
@@ -19,50 +15,20 @@ import { horizontalDirectionOf } from "../../lib/EntityUtil";
 import { oppositeOf, offsetByDirection } from "../../lib/DirectionUtil";
 import { subscribeEvent } from "../../lib/EventSubscriber";
 import { spawnLootAtBlock } from "../../lib/LootUtil";
-
-export type BlockLoot = (stack: ItemStack, state: BlockPermutation) => string | undefined;
-
-function blockLoot(table: string): BlockLoot {
-    return (_, __) => table;
-}
-
-const STRAW_FROM_GRASS: BlockLoot = blockLoot("farmersdelight/straw_from_grass");
-const STRAW_FROM_WHEAT: BlockLoot = (_, state) =>
-    state.getState("growth") === 7 ? "farmersdelight/straw" : undefined;
-const STRAW_FROM_RICE: BlockLoot = (_, state) =>
-    state.getState("farmersdelight:growth") === 3 ? "farmersdelight/straw" : undefined;
-
-export const BLOCK_LOOT_TABLE: Map<string, BlockLoot> = new Map([
-    ["minecraft:tallgrass", STRAW_FROM_GRASS],
-    ["minecraft:short_grass", STRAW_FROM_GRASS],
-    ["minecraft:fern", STRAW_FROM_GRASS],
-    ["minecraft:wheat", STRAW_FROM_WHEAT],
-    ["farmersdelight:rice_block_upper", STRAW_FROM_RICE],
-    ["farmersdelight:sandy_shrub_block", blockLoot("farmersdelight/straw_from_sandy_shrub")],
-]);
-
-function hurtEquippedItem(entity: Entity, stack?: ItemStack, slot: EquipmentSlot = EquipmentSlot.Mainhand) {
-    const durability = stack?.getComponent(ItemComponentTypes.Durability);
-    if (durability && durability.maxDurability > durability.damage) {
-        ++durability.damage;
-        entity.getComponent(EntityComponentTypes.Equippable)?.setEquipment(slot, stack);
-    } else {
-        entity.getComponent(EntityComponentTypes.Equippable)?.setEquipment(slot, undefined);
-    }
-}
+import { BLOCK_LOOT_WITH_KNIFE } from "../../data/KnifeLoot";
+import { hurtEquippedItem } from "../../lib/ItemUtil";
 
 class KnifeComponent implements ItemCustomComponent {
     onMineBlock(event: ItemComponentMineBlockEvent, _: CustomComponentParameters) {
         const stack = event.itemStack;
         if (!stack) return;
         const entity = event.source;
-        if (entity ! instanceof Player || (entity as Player).getGameMode() !== GameMode.Creative) {
-            hurtEquippedItem(entity, stack);
-            const permutation = event.minedBlockPermutation;
-            const loot = BLOCK_LOOT_TABLE.get(permutation.type.id)?.(stack, permutation);
-            if (loot) {
-                spawnLootAtBlock(event.block, loot);
-            }
+        if (entity instanceof Player && (entity as Player).getGameMode() === GameMode.Creative) return;
+        hurtEquippedItem(entity, stack);
+        const permutation = event.minedBlockPermutation;
+        const loot = BLOCK_LOOT_WITH_KNIFE.get(permutation.type.id)?.(stack, permutation);
+        if (loot) {
+            spawnLootAtBlock(event.block, loot);
         }
     }
 

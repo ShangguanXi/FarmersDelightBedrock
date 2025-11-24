@@ -1,6 +1,34 @@
-import { Block, Container, Entity, EntityInventoryComponent, EquipmentSlot, GameMode, ItemDurabilityComponent, ItemStack, ItemType, Player, Vector3 } from "@minecraft/server";
+import {
+    Block,
+    Container,
+    EnchantmentType,
+    Entity,
+    EntityComponentTypes,
+    EntityInventoryComponent,
+    EquipmentSlot,
+    GameMode,
+    ItemComponentTypes,
+    ItemDurabilityComponent,
+    ItemStack,
+    Player,
+    Vector3,
+} from "@minecraft/server";
 import { RandomUtil } from "./RandomUtil";
 
+export function enchantmentLevelOf(stack: ItemStack | undefined, enchantment: string | EnchantmentType): number {
+    const instance = stack?.getComponent(ItemComponentTypes.Enchantable)?.getEnchantment(enchantment);
+    return instance ? instance.level : 0;
+}
+
+export function hurtEquippedItem(entity: Entity, stack?: ItemStack, slot: EquipmentSlot = EquipmentSlot.Mainhand) {
+    const durability = stack?.getComponent(ItemComponentTypes.Durability);
+    if (durability && durability.maxDurability > durability.damage) {
+        ++durability.damage;
+        entity.getComponent(EntityComponentTypes.Equippable)?.setEquipment(slot, stack);
+    } else {
+        entity.getComponent(EntityComponentTypes.Equippable)?.setEquipment(slot, undefined);
+    }
+}
 
 export class ItemUtil {
     public static damageItem(container: Container, index: number, damage: number = 1) {
