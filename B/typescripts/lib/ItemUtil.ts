@@ -1,6 +1,6 @@
 import {
     Block,
-    Container,
+    Container, ContainerSlot,
     EnchantmentType,
     Entity,
     EntityComponentTypes,
@@ -28,6 +28,19 @@ export function hurtEquippedItem(entity: Entity, stack?: ItemStack, slot: Equipm
     } else {
         entity.getComponent(EntityComponentTypes.Equippable)?.setEquipment(slot, undefined);
     }
+}
+
+/**
+ * @return 仍需取出的物品量
+ */
+export function takeItemInSlot(slot: ContainerSlot, max: number = 1): number {
+    const remaining = slot.amount;
+    if (remaining > max) {
+        slot.amount = remaining - max;
+        return 0;
+    }
+    slot.setItem(undefined);
+    return max - remaining;
 }
 
 export class ItemUtil {

@@ -2,92 +2,91 @@ import {
     BlockComponentPlayerInteractEvent,
     BlockComponentRandomTickEvent,
     BlockCustomComponent,
-    BlockPermutation,
-    BlockVolume,
-    EntityInventoryComponent,
+    BlockVolume, CustomComponentParameters,
+    Direction,
+    EntityComponentTypes,
+    EquipmentSlot,
+    GameMode,
     StartupEvent,
     system,
 } from "@minecraft/server";
-import { organicCompostDetectList } from "../../data/organicCompostDetect";
-import { ItemUtil } from "../../lib/ItemUtil";
+import { COMPOST_ACTIVATORS } from "../../data/organicCompostDetect";
+import { takeItemInSlot } from "../../lib/ItemUtil";
 import { subscribeEvent } from "../../lib/EventSubscriber";
 
-class OrganicCompostComonent implements BlockCustomComponent {
-    constructor() {
-        this.onRandomTick = this.onRandomTick.bind(this);
-        this.onPlayerInteract = this.onPlayerInteract.bind(this);
-    }
-
-    onPlayerInteract(args: BlockComponentPlayerInteractEvent): void {
-        const player = args.player;
-        const face = args.face;
-        const inventory = player?.getComponent("inventory") as EntityInventoryComponent;
-        const container = inventory?.container;
-        const block = args.block;
-        const dimension = args.dimension;
-        if (!player) return;
-        if (!container) return;
-        const selectedSlot = container?.getSlot(player.selectedSlotIndex)
-        if (!selectedSlot.getItem()) return
-        const itemId = selectedSlot?.typeId;
-        const topLocation = { x: block.location.x, y: block.location.y + 1, z: block.location.z }
-        const topBlockId = dimension.getBlock(topLocation)?.typeId
-        if (face == 'Up' && topBlockId == "minecraft:air") {
-            if (itemId == "minecraft:brown_mushroom") {
-                dimension.playSound("dig.grass", block.location)
-                dimension.setBlockType(topLocation, "farmersdelight:brown_mushroom_colony")
-                ItemUtil.clearItem(container, player.selectedSlotIndex)
-
-            }
-            if (itemId == "minecraft:red_mushroom") {
-                dimension.playSound("dig.grass", block.location)
-                dimension.setBlockType(topLocation, "farmersdelight:red_mushroom_colony")
-                ItemUtil.clearItem(container, player.selectedSlotIndex)
-
-            }
-
+class OrganicCompostComponent implements BlockCustomComponent {
+    onPlayerInteract(event: BlockComponentPlayerInteractEvent, _: CustomComponentParameters): void {
+        if (event.face !== Direction.Up) return;
+        const player = event.player;
+        const slot = player?.getComponent(EntityComponentTypes.Equippable)?.getEquipmentSlot(EquipmentSlot.Mainhand);
+        if (!slot) return; // assert player
+        const stack = slot.getItem();
+        let block: string;
+        switch (stack?.typeId) {
+            case "minecraft:brown_mushroom":
+                block = "farmersdelight:brown_mushroom_colony";
+                break;
+            case "minecraft:red_mushroom":
+                block = "farmersdelight:red_mushroom_colony";
+                break;
+            default:
+                return;
         }
+        const pos = event.block;
+        const { dimension, x, y, z } = pos;
+        dimension.playSound("dig.grass", pos);
+        dimension.setBlockType({ x: x, y: y + 1, z: z }, block);
+        if (player!!.getGameMode() === GameMode.Creative) return;
+        takeItemInSlot(slot);
     }
-    onRandomTick(args: BlockComponentRandomTickEvent): void {
-        let transChance: number = 0.1;
-        let hasWater: boolean = false;
-        const compostBlock = args.block;
-        if (compostBlock?.typeId !== "farmersdelight:organic_compost") return;
-        const currentProcess = compostBlock.permutation.getState("farmersdelight:process") as number ?? 0;
-        const { x, y, z } = compostBlock.location;
-        const dimension = compostBlock.dimension;
-        const fromLocation = { x: x - 1, y: y - 1, z: z - 1 };
-        const toLocation = { x: x + 1, y: y + 1, z: z + 1 };
-        const detectLocs = new BlockVolume(fromLocation, toLocation).getBlockLocationIterator();
-        for (const location of detectLocs) {
+
+    onRandomTick(event: BlockComponentRandomTickEvent, _: CustomComponentParameters): void {
+        const center = event.block;
+        const { dimension, x, y, z } = center;
+        let moisturized = false;
+        let chance = 0.05;
+        let maxLight = 0;
+        for (const location of new BlockVolume(
+            { x: x - 1, y: y - 1, z: z - 1 },
+            { x: x + 1, y: y + 1, z: z + 1 },
+        ).getBlockLocationIterator()) {
             const block = dimension.getBlock(location);
             if (!block) continue;
-            if (organicCompostDetectList.includes(block.typeId)) {
-                transChance += 0.02;
+            if (COMPOST_ACTIVATORS.has(block.typeId) || block.hasTag("compost_activators")) {
+                chance += 0.02;
             }
-            else if (block.hasTag('compost_activators')) {
-                transChance += 0.02;
+            if (block.isWaterlogged || block.typeId === "minecraft:water") { // 为什么水不含水
+                moisturized = true;
             }
-            else if (block.typeId == 'minecraft:water') {
-                hasWater = true;
-            }
-        };
-        if (hasWater) transChance += 0.1;
-        if (Math.random() < transChance) {
-            if (currentProcess < 7) {
-                compostBlock.setPermutation(compostBlock.permutation.withState('farmersdelight:process', currentProcess + 1));
-            }
-            else {
-                compostBlock.setPermutation(BlockPermutation.resolve('farmersdelight:rich_soil'));
+            const light = dimension.getSkyLightLevel({
+                x: location.x,
+                y: location.y + 1,
+                z: location.z,
+            });
+            if (light > maxLight) {
+                maxLight = light;
             }
         }
-
+        if (maxLight > 12) {
+            chance += 0.05;
+        }
+        if (moisturized) {
+            chance += 0.1;
+        }
+        if (Math.random() < chance) {
+            const process = center.permutation.getState("farmersdelight:process") ?? 0;
+            if (process < 7) {
+                center.setPermutation(center.permutation.withState("farmersdelight:process", process + 1));
+            } else {
+                center.setType("farmersdelight:rich_soil");
+            }
+        }
     }
-}
-export class OrganicCompostComonentRegister {
+
     @subscribeEvent(system.beforeEvents.startup)
-    register(args: StartupEvent) {
-        args.blockComponentRegistry.registerCustomComponent('farmersdelight:organic_compost', new OrganicCompostComonent());
+    static init(event: StartupEvent) {
+        event.blockComponentRegistry.registerCustomComponent("farmersdelight:organic_compost", new OrganicCompostComponent());
     }
-
 }
+
+void OrganicCompostComponent;

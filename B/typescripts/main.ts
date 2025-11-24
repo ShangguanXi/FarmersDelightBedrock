@@ -24,7 +24,7 @@ import { RichSoilComponentRegister } from "./customComponents/block/RichSoilComp
 import { RichSoilFarmlandComponentRegister } from "./customComponents/block/RichSoilFarmlandComponent";
 import { MushroomColonyComonentRegister } from "./customComponents/block/MushroomColonyComonent";
 import { ColoniesComonentRegister } from "./customComponents/item/ColoniesComponent";
-import { OrganicCompostComonentRegister } from "./customComponents/block/OrganicCompostComonent";
+import "./customComponents/block/OrganicCompostComonent";
 import { RopeComponentRegister } from "./customComponents/block/RopeComponent";
 import { TatamMatComponentRegister } from "./customComponents/block/TatamMatComponent";
 import { TatamComponentRegister } from "./customComponents/block/TatamiComponent";
@@ -55,7 +55,6 @@ new InteractComponentRegister()
 new RichSoilComponentRegister();
 new RichSoilFarmlandComponentRegister();
 new MushroomColonyComonentRegister();
-new OrganicCompostComonentRegister();
 new RopeComponentRegister();
 new TatamMatComponentRegister();
 new TatamComponentRegister();
