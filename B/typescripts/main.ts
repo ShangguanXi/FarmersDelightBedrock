@@ -13,12 +13,10 @@ import "./block/CabinetBlockEntity";
 import { CuttingBoardRegistries } from "./init/CuttingBoardRecipeRegistries";
 import "./block/Rice";
 import { CookRecipeRegistries } from "./init/CookRecipeRegistries";
-import { FarmersBook } from "./item/FarmersBook";
 import { BlockFood } from "./block/BlockFood";
-import { RiceRollMedleyComponentRegister } from "./customComponents/block/RiceRollMedleyComponent";
 import { RiceSeedComponentRegister } from "./customComponents/item/RiceSeedComponent";
 import { CropComponentRegister } from "./customComponents/block/CropComponent";
-import { InteractComponentRegister } from "./customComponents/block/InteractComponent";
+import "./customComponents/block/InteractComponent";
 import { WildCropComponent } from "./customComponents/block/WildCropComponent";
 import { RichSoilComponentRegister } from "./customComponents/block/RichSoilComponent";
 import { RichSoilFarmlandComponentRegister } from "./customComponents/block/RichSoilFarmlandComponent";
@@ -33,12 +31,13 @@ import "./item/IncompleteBlocks";
 import { CuttableComponentRegister } from "./customComponents/item/CuttableComponent";
 import { CookableComonentRegister } from "./customComponents/item/CookableComponent";
 import "./customComponents/block/BlockEntityComponent";
-import { IncreaseProductionComponentRegister } from "./customComponents/item/IncreaseProductionComponent";
+import "./customComponents/item/IncreaseProductionComponent";
 import { SeedComponent } from "./customComponents/item/SeedComponent";
 import { PieComponent } from "./customComponents/block/PieCompostComonent";
 import "./block/BasketBlockEntity";
-import "./customComponents/item/KnifeComponent"
-import "./customComponents/block/DishComponent"
+import "./customComponents/item/KnifeComponent";
+import "./customComponents/item/FarmersBookComponent";
+import "./customComponents/block/DishComponent";
 
 CookingPotRecipeRegistries.initCookingPotScoRegistries();
 CuttingBoardRegistries.initCuttingBoardScoRegistries();
@@ -50,8 +49,6 @@ new StoveComponentRegister();
 new PieComponent();
 
 
-new RiceRollMedleyComponentRegister();
-new InteractComponentRegister()
 new RichSoilComponentRegister();
 new RichSoilFarmlandComponentRegister();
 new MushroomColonyComonentRegister();
@@ -64,7 +61,6 @@ new TatamComponentRegister();
 new SeedComponent();
 new CuttableComponentRegister();
 new CookableComonentRegister();
-new IncreaseProductionComponentRegister();
 
 new ColoniesComonentRegister();
 new RiceSeedComponentRegister();
@@ -82,7 +78,6 @@ new StoveBlockEntity();
 new Skillet();
 new SkilletEntity();
 
-new FarmersBook();
 new Food();
 new BlockFood();
 new CookingPotRecipeRegistries();

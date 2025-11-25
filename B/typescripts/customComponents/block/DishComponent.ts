@@ -7,11 +7,9 @@ import {
     GameMode,
     ItemStack,
     ItemTypes,
-    StartupEvent,
-    system,
     world,
 } from "@minecraft/server";
-import { subscribeEvent } from "../../lib/EventSubscriber";
+import { blockComponent } from "../../lib/EventSubscriber";
 
 interface DishSpec {
     has_leftovers?: boolean,
@@ -30,6 +28,7 @@ function isInvalidItem(slot: ContainerSlot, tagOrId: string): boolean {
     return tagOrId[0] === "#" ? !stack.hasTag(tagOrId.substring(1)) : stack.typeId !== tagOrId;
 }
 
+@blockComponent("farmersdelight:dish")
 export class DishComponent implements BlockCustomComponent {
     onPlayerInteract(event: BlockComponentPlayerInteractEvent, params: CustomComponentParameters) {
         const spec = params.params as DishSpec;
@@ -94,11 +93,4 @@ export class DishComponent implements BlockCustomComponent {
             block.setType("minecraft:air");
         }
     }
-
-    @subscribeEvent(system.beforeEvents.startup)
-    static init(event: StartupEvent) {
-        event.blockComponentRegistry.registerCustomComponent("farmersdelight:dish", new DishComponent());
-    }
 }
-
-void DishComponent;

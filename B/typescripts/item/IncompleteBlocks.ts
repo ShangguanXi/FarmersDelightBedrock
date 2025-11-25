@@ -16,7 +16,8 @@ const SUPPORT_NEEDED: Set<string> = new Set([
     "minecraft:painting",
 ]);
 
-class PartialBlocks {
+// noinspection JSUnusedGlobalSymbols
+export class PartialBlocks {
     @subscribeEvent(world.beforeEvents.playerInteractWithBlock)
     static preventPlacing(args: PlayerInteractWithBlockBeforeEvent) {
         const stack = args.itemStack;
@@ -27,5 +28,3 @@ class PartialBlocks {
         args.cancel = true;
     }
 }
-
-void PartialBlocks;

@@ -15,7 +15,8 @@ import { subscribeEvent } from "../lib/EventSubscriber";
 import { BLOCK_LOOT_WITH_KNIFE, DROPS_CAKE_SLICE, ENTITY_LOOT_WITH_KNIFE } from "../data/KnifeLoot";
 import { spawnLootAtBlock } from "../lib/LootUtil";
 
-class Knife {
+// noinspection JSUnusedGlobalSymbols
+export class Knife {
     //刀掉落物改变机制有关的战利品
     @subscribeEvent(world.afterEvents.entityDie)
     static onKill(event: EntityDieAfterEvent) {
@@ -74,5 +75,3 @@ class Knife {
         });
     }
 }
-
-void Knife;

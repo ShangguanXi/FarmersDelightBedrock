@@ -15,7 +15,7 @@ export class CabinetBlockEntity {
     }
 
     @subscribeEvent(world.afterEvents.playerInteractWithEntity)
-    onInteract(event: PlayerInteractWithEntityAfterEvent) {
+    static onInteract(event: PlayerInteractWithEntityAfterEvent) {
         const entity = event.target;
         const block = locateBlock(entity);
         if (!block || !block.hasTag('farmersdelight:cabinet')) return;
@@ -28,7 +28,7 @@ export class CabinetBlockEntity {
     }
 
     @subscribeEvent(world.afterEvents.dataDrivenEntityTrigger, { eventTypes: ["farmersdelight:cabinet_try_close"] })
-    tryClose(event: DataDrivenEntityTriggerAfterEvent) {
+    static tryClose(event: DataDrivenEntityTriggerAfterEvent) {
         const entity = event.entity;
         const block = locateBlock(entity);
         if (!block) return;
@@ -44,5 +44,3 @@ export class CabinetBlockEntity {
         entity.triggerEvent('farmersdelight:cabinet_close');
     }
 }
-
-void CabinetBlockEntity;

@@ -8,17 +8,16 @@ import {
     ItemCustomComponent,
     ItemStack,
     Player,
-    StartupEvent,
-    system,
 } from "@minecraft/server";
 import { horizontalDirectionOf } from "../../lib/EntityUtil";
 import { oppositeOf, offsetByDirection } from "../../lib/DirectionUtil";
-import { subscribeEvent } from "../../lib/EventSubscriber";
+import { itemComponent } from "../../lib/EventSubscriber";
 import { spawnLootAtBlock } from "../../lib/LootUtil";
 import { BLOCK_LOOT_WITH_KNIFE } from "../../data/KnifeLoot";
 import { hurtEquippedItem } from "../../lib/ItemUtil";
 
-class KnifeComponent implements ItemCustomComponent {
+@itemComponent("farmersdelight:knife")
+export class KnifeComponent implements ItemCustomComponent {
     onMineBlock(event: ItemComponentMineBlockEvent, _: CustomComponentParameters) {
         const stack = event.itemStack;
         if (!stack) return;
@@ -65,11 +64,4 @@ class KnifeComponent implements ItemCustomComponent {
             });
         }
     }
-
-    @subscribeEvent(system.beforeEvents.startup)
-    static init(event: StartupEvent) {
-        event.itemComponentRegistry.registerCustomComponent("farmersdelight:knife", new KnifeComponent());
-    }
 }
-
-void KnifeComponent;

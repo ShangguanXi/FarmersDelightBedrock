@@ -5,9 +5,11 @@ import {
     StartupEvent,
     system,
 } from "@minecraft/server";
-import { subscribeEvent } from "../../lib/EventSubscriber";
+import { blockComponent, subscribeEvent } from "../../lib/EventSubscriber";
 import { getBlockEntityType, initBlockEntity } from "../../lib/BlockWithEntity";
 
+@blockComponent("farmersdelight:block_entity")
+@blockComponent("farmersdelight:cabinet") // deprecated alias
 export class BlockEntityComponent implements BlockCustomComponent {
     constructor() {
         this.onPlace = this.onPlace.bind(this);
@@ -19,13 +21,4 @@ export class BlockEntityComponent implements BlockCustomComponent {
         if (!typeId) throw new Error("Failed to init block entity for "+ block.typeId);
         initBlockEntity(block, typeId).nameTag = `tile.${typeId}.name`;
     }
-
-    @subscribeEvent(system.beforeEvents.startup)
-    static init(event: StartupEvent) {
-        const component = new BlockEntityComponent();
-        event.blockComponentRegistry.registerCustomComponent("farmersdelight:cabinet", component);
-        event.blockComponentRegistry.registerCustomComponent("farmersdelight:block_entity", component);
-    }
 }
-
-void BlockEntityComponent;

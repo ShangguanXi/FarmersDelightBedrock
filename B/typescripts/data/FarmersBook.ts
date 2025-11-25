@@ -170,7 +170,8 @@ function cropForm(player: any) {
         }
     })
 }
-function mainForm(player: any) {
+
+export function mainForm(player: any) {
     const form = new ActionFormData()
         .title({ "rawtext": [{ "text": "farmersdelight.book.title" }] })
         .button({ "rawtext": [{ "text": "tile.farmersdelight:cutting_board.name" }] })
@@ -199,21 +200,7 @@ function mainForm(player: any) {
         if (response.selection === 4) {
             cropForm(player);
         }
-
-
     })
-};
-export class FarmersBook {
-
-
-    @subscribeEvent(world.afterEvents.itemUse)
-    itemUse(args: ItemUseAfterEvent) {
-        const player = args.source;
-        const itemStack: ItemStack | undefined = args.itemStack;
-        if (itemStack?.typeId == "farmersdelight:book_farmersdelight") {
-            mainForm(player);
-        }
-    }
-};
+}
 
 

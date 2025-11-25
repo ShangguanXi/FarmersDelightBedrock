@@ -1,11 +1,5 @@
-import { ItemCustomComponent, StartupEvent, system } from "@minecraft/server";
-import { subscribeEvent } from "../../lib/EventSubscriber";
+import { ItemCustomComponent } from "@minecraft/server";
+import { itemComponent } from "../../lib/EventSubscriber";
 
-class IncreaseProductionComponent implements ItemCustomComponent {}
-export class IncreaseProductionComponentRegister {
-    @subscribeEvent(system.beforeEvents.startup)
-    register(args: StartupEvent) {
-        args.itemComponentRegistry.registerCustomComponent('farmersdelight:increase_production', new IncreaseProductionComponent())
-    }
-
-}
+@itemComponent("farmersdelight:increase_production")
+export class IncreaseProductionComponent implements ItemCustomComponent {}

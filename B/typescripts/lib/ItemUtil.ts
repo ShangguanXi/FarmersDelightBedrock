@@ -31,16 +31,20 @@ export function hurtEquippedItem(entity: Entity, stack?: ItemStack, slot: Equipm
 }
 
 /**
+ * @param slot 物品所在槽位
+ * @param desired 取出的物品数量
+ * @param check 是否在访问物品数量前检测有无物品
  * @return 仍需取出的物品量
  */
-export function takeItemInSlot(slot: ContainerSlot, max: number = 1): number {
+export function takeItemInSlot(slot: ContainerSlot, desired: number = 1, check: boolean = true): number {
+    if (check && !slot.hasItem()) return desired;
     const remaining = slot.amount;
-    if (remaining > max) {
-        slot.amount = remaining - max;
+    if (remaining > desired) {
+        slot.amount = remaining - desired;
         return 0;
     }
     slot.setItem(undefined);
-    return max - remaining;
+    return desired - remaining;
 }
 
 export class ItemUtil {

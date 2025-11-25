@@ -7,14 +7,13 @@ import {
     EntityComponentTypes,
     EquipmentSlot,
     GameMode,
-    StartupEvent,
-    system,
 } from "@minecraft/server";
 import { COMPOST_ACTIVATORS } from "../../data/organicCompostDetect";
 import { takeItemInSlot } from "../../lib/ItemUtil";
-import { subscribeEvent } from "../../lib/EventSubscriber";
+import { blockComponent } from "../../lib/EventSubscriber";
 
-class OrganicCompostComponent implements BlockCustomComponent {
+@blockComponent("farmersdelight:organic_compost")
+export class OrganicCompostComponent implements BlockCustomComponent {
     onPlayerInteract(event: BlockComponentPlayerInteractEvent, _: CustomComponentParameters): void {
         if (event.face !== Direction.Up) return;
         const player = event.player;
@@ -82,11 +81,4 @@ class OrganicCompostComponent implements BlockCustomComponent {
             }
         }
     }
-
-    @subscribeEvent(system.beforeEvents.startup)
-    static init(event: StartupEvent) {
-        event.blockComponentRegistry.registerCustomComponent("farmersdelight:organic_compost", new OrganicCompostComponent());
-    }
 }
-
-void OrganicCompostComponent;

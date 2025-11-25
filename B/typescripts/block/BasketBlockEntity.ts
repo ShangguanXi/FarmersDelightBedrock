@@ -59,5 +59,3 @@ export class BasketBlockEntity {
         }
     }
 }
-
-void BasketBlockEntity;

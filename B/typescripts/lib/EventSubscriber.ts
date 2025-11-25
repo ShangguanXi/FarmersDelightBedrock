@@ -1,4 +1,11 @@
-import { Block, Entity, EntityDataDrivenTriggerEventOptions, system, world } from "@minecraft/server";
+import {
+    Block,
+    BlockCustomComponent,
+    Entity,
+    EntityDataDrivenTriggerEventOptions, ItemCustomComponent,
+    system,
+    world,
+} from "@minecraft/server";
 import { getAttachedBlock } from "./BlockEntity";
 import { getBlockEntityType } from "./BlockWithEntity";
 
@@ -19,10 +26,10 @@ export function subscribeEvent<E, T>(event: EventSignal<E, T>, filter?: T) {
 }
 
 export function attachedBlockEntity(filter: EntityDataDrivenTriggerEventOptions) {
-    return function(constructor: {
+    return function <T extends {
         onDiscard: (entity: Entity) => undefined | "DO NOT DISCARD"
         onTick?: (entity: Entity, block: Block) => void
-    }) {
+    }>(constructor: T) {
         world.afterEvents.dataDrivenEntityTrigger.subscribe((event) => {
             const entity = event.entity;
             const block = getAttachedBlock(entity);
@@ -33,5 +40,24 @@ export function attachedBlockEntity(filter: EntityDataDrivenTriggerEventOptions)
                 system.run(() => entity.remove());
             }
         }, filter);
+        return constructor;
+    };
+}
+
+export function blockComponent(name: string) {
+    return function <T extends new () => BlockCustomComponent>(constructor: T) {
+        system.beforeEvents.startup.subscribe((event) => {
+            event.blockComponentRegistry.registerCustomComponent(name, new constructor());
+        });
+        return constructor;
+    };
+}
+
+export function itemComponent(name: string) {
+    return function <T extends new () => ItemCustomComponent>(constructor: T) {
+        system.beforeEvents.startup.subscribe((event) => {
+            event.itemComponentRegistry.registerCustomComponent(name, new constructor());
+        });
+        return constructor;
     };
 }

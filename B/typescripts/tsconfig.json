@@ -19,10 +19,11 @@
     "noImplicitAny": true,
     "noImplicitReturns": false,
     "noImplicitUseStrict": false,
+    "removeComments": true,
     "outDir": "../scripts",
     "rootDir": "../typescripts",
     "baseUrl": "behavior_packs/",
-    "listFiles": false,
+    "listFiles": false
   },
   "compileOnSave": false
 }
