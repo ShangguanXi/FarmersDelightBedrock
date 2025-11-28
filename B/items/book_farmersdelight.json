@@ -2,6 +2,7 @@
   "format_version": "1.21.120",
   "minecraft:item": {
     "components": {
+      "farmersdelight:farmers_book": {},
       "minecraft:tags": {
         "tags": [
           "minecraft:bookshelf_books"

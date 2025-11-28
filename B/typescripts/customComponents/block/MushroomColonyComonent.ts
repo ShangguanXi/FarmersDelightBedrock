@@ -1,113 +1,204 @@
 import {
+    Block,
     BlockComponentPlayerBreakEvent,
     BlockComponentPlayerInteractEvent,
+    BlockComponentPlayerPlaceBeforeEvent,
     BlockComponentRandomTickEvent,
     BlockCustomComponent,
-    Dimension,
-    EntityInventoryComponent,
+    CustomComponentParameters,
+    EntityComponentTypes,
+    EquipmentSlot,
+    GameMode,
+    ItemComponentTypes,
     ItemStack,
-    StartupEvent,
-    system,
-    Vector3,
     world,
 } from "@minecraft/server";
-import { RandomUtil } from "../../lib/RandomUtil";
-import { ItemUtil } from "../../lib/ItemUtil";
-import { EntityUtil } from "../../lib/EntityUtil";
-import { subscribeEvent } from "../../lib/EventSubscriber";
-import { spawnLootAtBlock } from "../../lib/LootUtil";
+import { hurtItemInSlot } from "../../lib/ItemUtil";
+import { blockComponent } from "../../lib/EventSubscriber";
+import { volumeAround } from "../../lib/BlockUtil";
+import { randomInt } from "../../lib/RandomUtil";
 
-class MushroomColonyComonent implements BlockCustomComponent {
-    constructor() {
-        this.onRandomTick = this.onRandomTick.bind(this);
-        this.onPlayerInteract = this.onPlayerInteract.bind(this);
-        this.onPlayerBreak = this.onPlayerBreak.bind(this);
-    }
-    onPlayerInteract(args: BlockComponentPlayerInteractEvent): void {
-        const player = args.player;
-        const inventory = player?.getComponent("inventory") as EntityInventoryComponent;
-        const container = inventory?.container;
-        const block = args.block;
-        const dimension = args.dimension;
-        if (!player) return;
-        if (!container) return;
-        const growth = block.permutation.getState('farmersdelight:growth') as number;
-        const selectedSlot = container?.getSlot(player.selectedSlotIndex)
-        if (!selectedSlot.getItem()) return
-        const itemId = selectedSlot?.typeId;
-        if (itemId=="minecraft:bone_meal"){
-            if (growth<4&&growth>0&&RandomUtil.probability(70)){
-                block.setPermutation(block.permutation.withState('farmersdelight:growth', growth + 1));
-            }
-            if(growth==0&&RandomUtil.probability(70)){
-                if (block.typeId=="farmersdelight:brown_mushroom_colony"){
-                    world.structureManager.place("farmersdelight:brown_mushroom_tree",dimension,{ x: block.location.x-3, y: block.location.y, z: block.location.z-3 })
-                };
-                if (block.typeId=="farmersdelight:red_mushroom_colony"){
-                    world.structureManager.place("farmersdelight:red_mushroom_tree",dimension,{ x: block.location.x-2, y: block.location.y, z: block.location.z-2 })
-                };
-            }
-            dimension.spawnParticle("minecraft:crop_growth_emitter",block.center())
-            dimension.playSound("item.bone_meal.use",block.center())
-            ItemUtil.clearItem(container,player.selectedSlotIndex)
-        }
-        if(itemId=="minecraft:shears"&&growth>0){
-            block.setPermutation(block.permutation.withState('farmersdelight:growth', growth - 1));
-            if (block.typeId=="farmersdelight:brown_mushroom_colony"){
-                spawnLootAtBlock(block, "farmersdelight/crops/farmersdelight_brown_mushroom_colony0");
-            }
-            if (block.typeId=="farmersdelight:red_mushroom_colony"){
-                spawnLootAtBlock(block, "farmersdelight/crops/farmersdelight_red_mushroom_colony0");
-            }
-            ItemUtil.damageItem(container,player.selectedSlotIndex)
-            dimension.playSound("mob.sheep.shear",block.center())
-        }
-
-    }
-    onPlayerBreak(args: BlockComponentPlayerBreakEvent): void {
-        const brokenPerm = args.brokenBlockPermutation;
-        const blockId = brokenPerm.type.id;
-        const player = args.player;
-        const inventory = player?.getComponent("inventory") as EntityInventoryComponent;
-        const container = inventory?.container;
-        if (!player) return
-        if (!container) return;
-        const selectedSlot = container?.getSlot(player.selectedSlotIndex)
-        if ((blockId != 'farmersdelight:brown_mushroom_colony' && blockId != 'farmersdelight:red_mushroom_colony') || !EntityUtil.gameMode(player)) return
-        const growth = brokenPerm.getState('farmersdelight:growth') as number;
-        try {
-            const itemId = selectedSlot?.typeId;
-            if (growth == 4 && itemId == 'minecraft:shears'){
-                player.dimension.spawnItem(new ItemStack(`${blockId}_item`), args.block.bottomCenter());
-                const invComp = player.getComponent(EntityInventoryComponent.componentId) as EntityInventoryComponent
-                const container = invComp?.container
-                if (!container) return
-                ItemUtil.damageItem(container, player.selectedSlotIndex)
-            } else {
-                spawnLootAtBlock(args.block, `farmersdelight/crops/farmersdelight_${blockId.substring(15)}${growth}`);
-            }
-        } catch {}
-    }
-    onRandomTick(args: BlockComponentRandomTickEvent): void {
-        const block = args.block;
-        const growth = block.permutation.getState('farmersdelight:growth') as number;
-        if (growth<4){
-            block.setPermutation(block.permutation.withState('farmersdelight:growth', growth + 1));
-        }
-        const belowBlock = block.below()
-        if (belowBlock?.typeId!="farmersdelight:organic_compost") return
-        const process = belowBlock.permutation.getState("farmersdelight:process") as number
-        if (process < 7){
-            belowBlock.setPermutation(belowBlock.permutation.withState('farmersdelight:process', process + 1));
-        }
-
-    }
-
+type MushroomClusterSpec = {
+    readonly maturity: number;
+    readonly mushroom: string;
+    readonly harvest?: string;
+    readonly mushtree?: string;
+    readonly offset?: [number, number, number];
 }
-export class MushroomColonyComonentRegister{
-    @subscribeEvent(system.beforeEvents.startup)
-    register(args:StartupEvent){
-        args.blockComponentRegistry.registerCustomComponent('farmersdelight:mushroom_colony', new MushroomColonyComonent());
+
+const MUSHROOM_GROW_BLOCK: Set<string> = new Set([
+    "minecraft:mycelium",
+    "minecraft:podzol",
+    "minecraft:crimson_nylium",
+    "minecraft:warped_nylium",
+]);
+
+function getMaturity(spec: MushroomClusterSpec) {
+    return spec.maturity ?? 4;
+}
+
+function growMushtree(block: Block, mushtree: string, offset?: [number, number, number]) {
+    world.structureManager.place(mushtree, block.dimension, offset ? {
+        x: block.x + offset[0],
+        y: block.y + offset[1],
+        z: block.z + offset[2],
+    } : block);
+}
+
+function canPlaceAt(block: Block): boolean | undefined {
+    const field = block.below();
+    return field && (MUSHROOM_GROW_BLOCK.has(field.typeId) || field.hasTag("mushroom_grow_block"));
+}
+
+@blockComponent("farmersdelight:mushroom_cluster")
+export class MushroomClusterComponent implements BlockCustomComponent {
+    beforeOnPlayerPlace(event: BlockComponentPlayerPlaceBeforeEvent, params: CustomComponentParameters): void {
+        if (canPlaceAt(event.block)) {
+            event.permutationToPlace = event.permutationToPlace.withState(
+                "farmersdelight:growth",
+                getMaturity(params.params as MushroomClusterSpec),
+            );
+        } else {
+            event.cancel = true;
+        }
     }
 
+    onPlayerInteract(event: BlockComponentPlayerInteractEvent, params: CustomComponentParameters): void {
+        const { block, player } = event;
+        const slot = player?.getComponent(EntityComponentTypes.Equippable)?.getEquipmentSlot(EquipmentSlot.Mainhand);
+        const stack = slot?.getItem();
+        switch (stack?.typeId) { // assert player && slot && stack
+            case "minecraft:bone_meal": {
+                const spec = params.params as MushroomClusterSpec;
+                const permutation = block.permutation;
+                const age = permutation.getState("farmersdelight:growth");
+                if (age === 0) {
+                    const mushtree = spec.mushtree;
+                    if (mushtree) {
+                        if (Math.random() < 0.4) {
+                            growMushtree(block, mushtree, spec.offset);
+                        }
+                        break;
+                    }
+                }
+                const maturity = getMaturity(spec);
+                if (age === undefined || age >= maturity) return;
+                block.setPermutation(permutation.withState(
+                    "farmersdelight:growth",
+                    Math.min(Math.random() < 0.5 ? age + 2 : age + 1, maturity),
+                ));
+                break;
+            }
+            case "minecraft:rapid_fertilizer": {
+                const spec = params.params as MushroomClusterSpec;
+                const permutation = block.permutation;
+                const age = permutation.getState("farmersdelight:growth");
+                if (age === 0) {
+                    const mushtree = spec.mushtree;
+                    if (mushtree) {
+                        growMushtree(block, mushtree, spec.offset);
+                        break;
+                    }
+                }
+                const maturity = getMaturity(spec);
+                if (age === undefined || age >= maturity) return;
+                block.setPermutation(permutation.withState("farmersdelight:growth", maturity));
+                break;
+            }
+            default:
+                const mushroom = (params.params as MushroomClusterSpec).mushroom;
+                if (mushroom && stack?.hasTag("minecraft:is_shears")) {
+                    const permutation = block.permutation;
+                    const age = permutation.getState("farmersdelight:growth");
+                    if (age) {
+                        const dimension = block.dimension;
+                        dimension.spawnItem(new ItemStack(mushroom), block.bottomCenter());
+                        block.setPermutation(permutation.withState("farmersdelight:growth", age - 1));
+                        dimension.playSound("mob.sheep.shear", block.center());
+                        if (player!!.getGameMode() !== GameMode.Creative) {
+                            hurtItemInSlot(slot!!, stack);
+                        }
+                    }
+                }
+                return;
+        }
+        const dimension = block.dimension;
+        const center = block.center();
+        dimension.spawnParticle("minecraft:crop_growth_emitter", center);
+        dimension.playSound("item.bone_meal.use", center);
+        if (player!!.getGameMode() === GameMode.Creative) return;
+        const amount = stack!!.amount - 1;
+        if (amount) {
+            slot!!.amount = amount;
+        } else {
+            slot!!.setItem(undefined);
+        }
+    }
+
+    onPlayerBreak(event: BlockComponentPlayerBreakEvent, params: CustomComponentParameters): void {
+        const player = event.player;
+        if (!player || player.getGameMode() === GameMode.Creative) return;
+        const slot = player.getComponent(EntityComponentTypes.Equippable)?.getEquipmentSlot(EquipmentSlot.Mainhand);
+        const stack = slot?.getItem();
+        const age = event.brokenBlockPermutation.getState("farmersdelight:growth") ?? 0;
+        const spec = params.params as MushroomClusterSpec;
+        if (stack && age === getMaturity(spec) && (
+            stack.hasTag("minecraft:is_shears") || stack.getComponent(ItemComponentTypes.Enchantable)?.hasEnchantment("silk_touch")
+        )) {
+            const harvest = spec.harvest;
+            if (harvest) {
+                event.dimension.spawnItem(new ItemStack(harvest), event.block.bottomCenter());
+                // 原版剪刀的耐久是原版扣的
+                return;
+            }
+        }
+        const mushroom = spec.mushroom;
+        if (mushroom) {
+            event.dimension.spawnItem(new ItemStack(mushroom, age + 1), event.block.bottomCenter());
+        }
+    }
+
+    onRandomTick(event: BlockComponentRandomTickEvent, params: CustomComponentParameters): void {
+        const block = event.block;
+        const age = block.permutation.getState("farmersdelight:growth");
+        if (!age) {
+            if (Math.random() >= 0.04) return;
+            const dimension = block.dimension;
+            const mushroom = (params.params as MushroomClusterSpec).mushroom;
+            if (block.dimension.getBlocks(
+                volumeAround(block, 4, 1, 4),
+                { includeTypes: mushroom ? [block.typeId, mushroom] : [block.typeId] },
+                true,
+            ).getCapacity() >= 5) return;
+            let destination: Block | undefined = undefined;
+            const pos = block.location;
+            for (let i = 0, { x, y, z } = pos; i < 5; ++i) {
+                pos.x = x + randomInt(3) - 1;
+                pos.y = y + randomInt(2) - randomInt(2);
+                pos.z = z + randomInt(3) - 1;
+                destination = dimension.getBlock(pos);
+                if (destination?.typeId === "minecraft:air" && canPlaceAt(destination)) {
+                    x = pos.x;
+                    y = pos.y;
+                    z = pos.z;
+                } else {
+                    destination = undefined;
+                }
+            }
+            if (destination) {
+                const field = destination.below();
+                if (field?.typeId?.startsWith("minecraft:")) {
+                    destination.setType(mushroom);
+                } else {
+                    destination.setPermutation(block.permutation);
+                }
+            }
+        } else if (age < getMaturity(params.params as MushroomClusterSpec)
+            && Math.random() < 0.25
+            && block.below()?.hasTag("farmersdelight:mushroom_cluster_habitat")
+        ) {
+            console.info("grow");
+            block.setPermutation(block.permutation.withState("farmersdelight:growth", age + 1));
+        }
+    }
 }

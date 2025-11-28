@@ -1,198 +1,152 @@
 {
-    "format_version": "1.21.120",
-    "minecraft:block": {
-        "description": {
-            "identifier": "farmersdelight:red_mushroom_colony",
-            "states": {
-                "farmersdelight:growth": [
-                    0,
-                    1,
-                    2,
-                    3,
-                    4
-                ]
-            }
-        },
-        "permutations": [
-            {
-                "condition": "query.block_state('farmersdelight:growth') == 0",
-                "components": {
-                    "minecraft:material_instances": {
-                        "*": {
-                            "texture": "mushroom_red",
-                            "ambient_occlusion": false,
-                            "face_dimming": false,
-                            "render_method": "alpha_test"
-                        }
-                    },
-                    "minecraft:selection_box": {
-                        "origin": [
-                            -3,
-                            0,
-                            -3
-                        ],
-                        "size": [
-                            6,
-                            7,
-                            6
-                        ]
-                    }
-                }
-            },
-            {
-                "condition": "query.block_state('farmersdelight:growth') == 1",
-                "components": {
-                    "minecraft:material_instances": {
-                        "*": {
-                            "texture": "red_mushroom_colony_stage0",
-                            "ambient_occlusion": false,
-                            "face_dimming": false,
-                            "render_method": "alpha_test"
-                        }
-                    },
-                    "minecraft:selection_box": {
-                        "origin": [
-                            -4,
-                            0,
-                            -4
-                        ],
-                        "size": [
-                            8,
-                            9,
-                            8
-                        ]
-                    }
-                }
-            },
-            {
-                "condition": "query.block_state('farmersdelight:growth') == 2",
-                "components": {
-                    "minecraft:material_instances": {
-                        "*": {
-                            "texture": "red_mushroom_colony_stage1",
-                            "ambient_occlusion": false,
-                            "face_dimming": false,
-                            "render_method": "alpha_test"
-                        }
-                    },
-                    "minecraft:selection_box": {
-                        "origin": [
-                            -5,
-                            0,
-                            -5
-                        ],
-                        "size": [
-                            10,
-                            11,
-                            10
-                        ]
-                    }
-                }
-            },
-            {
-                "condition": "query.block_state('farmersdelight:growth') == 3",
-                "components": {
-                    "minecraft:material_instances": {
-                        "*": {
-                            "texture": "red_mushroom_colony_stage2",
-                            "ambient_occlusion": false,
-                            "face_dimming": false,
-                            "render_method": "alpha_test"
-                        }
-                    },
-                    "minecraft:selection_box": {
-                        "origin": [
-                            -5,
-                            0,
-                            -5
-                        ],
-                        "size": [
-                            10,
-                            13,
-                            10
-                        ]
-                    }
-                }
-            },
-            {
-                "condition": "query.block_state('farmersdelight:growth') == 4",
-                "components": {
-                    "minecraft:material_instances": {
-                        "*": {
-                            "texture": "red_mushroom_colony_stage3",
-                            "ambient_occlusion": false,
-                            "face_dimming": false,
-                            "render_method": "alpha_test"
-                        }
-                    },
-                    "minecraft:selection_box": {
-                        "origin": [
-                            -6,
-                            0,
-                            -6
-                        ],
-                        "size": [
-                            12,
-                            15,
-                            12
-                        ]
-                    }
-                }
-            }
-        ],
+  "format_version": "1.21.120",
+  "minecraft:block": {
+    "description": {
+      "identifier": "farmersdelight:red_mushroom_colony",
+      "states": {
+        "farmersdelight:growth": [0, 1, 2, 3, 4]
+      }
+    },
+    "permutations": [
+      {
+        "condition": "query.block_state('farmersdelight:growth') == 0",
         "components": {
-            "minecraft:material_instances": {
-                "*": {
-                    "texture": "red_mushroom_colony_stage3",
-                    "ambient_occlusion": false,
-                    "face_dimming": false,
-                    "render_method": "alpha_test"
-                }
-            },
-            "minecraft:movable": {
-                "movement_type": "popped" 
-            },
-            "minecraft:redstone_conductivity": {
-                "allows_wire_to_step_down": false
-            },
-            "farmersdelight:mushroom_colony": {},
-            "minecraft:liquid_detection": {
-                "detection_rules": [
-                    {
-                        "on_liquid_touches": "popped"
-                    }
-                ]
-            },
-            "minecraft:loot": "loot_tables/empty.json",
-            "minecraft:destructible_by_mining": {
-                "seconds_to_destroy": 0.0
-            },
-            "minecraft:flammable": {
-                "catch_chance_modifier": 30,
-                "destroy_chance_modifier": 30
-            },
-            "minecraft:light_dampening": 0,
-            "minecraft:geometry": "geometry.wild_crop",
-            "minecraft:destructible_by_explosion": {
-                "explosion_resistance": 0.0
-            },
-            "minecraft:collision_box": false,
-            "minecraft:placement_filter": {
-                "conditions": [
-                    {
-                        "block_filter": [
-                            "farmersdelight:rich_soil",
-                            "minecraft:mycelium",
-                            "farmersdelight:organic_compost"
-                        ],
-                        "allowed_faces": [
-                            "up"
-                        ]
-                    }
-                ]
-            },
-            "tag:crop": {},
-            "tag:compost_activators": {}
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "mushroom_red",
+              "ambient_occlusion": false,
+              "face_dimming": false,
+              "render_method": "alpha_test"
+            }
+          },
+          "minecraft:selection_box": {
+            "origin": [-3, 0, -3],
+            "size": [6, 7, 6]
+          }
         }
+      }, {
+        "condition": "query.block_state('farmersdelight:growth') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "red_mushroom_colony_stage0",
+              "ambient_occlusion": false,
+              "face_dimming": false,
+              "render_method": "alpha_test"
+            }
+          },
+          "minecraft:selection_box": {
+            "origin": [-4, 0, -4],
+            "size": [8, 9, 8]
+          }
+        }
+      }, {
+        "condition": "query.block_state('farmersdelight:growth') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "red_mushroom_colony_stage1",
+              "ambient_occlusion": false,
+              "face_dimming": false,
+              "render_method": "alpha_test"
+            }
+          },
+          "minecraft:selection_box": {
+            "origin": [-5, 0, -5],
+            "size": [10, 11, 10]
+          }
+        }
+      }, {
+        "condition": "query.block_state('farmersdelight:growth') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "red_mushroom_colony_stage2",
+              "ambient_occlusion": false,
+              "face_dimming": false,
+              "render_method": "alpha_test"
+            }
+          },
+          "minecraft:selection_box": {
+            "origin": [-5, 0, -5],
+            "size": [10, 13, 10]
+          }
+        }
+      }, {
+        "condition": "query.block_state('farmersdelight:growth') == 4",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "red_mushroom_colony_stage3",
+              "ambient_occlusion": false,
+              "face_dimming": false,
+              "render_method": "alpha_test"
+            }
+          },
+          "minecraft:selection_box": {
+            "origin": [-6, 0, -6],
+            "size": [12, 15, 12]
+          }
+        }
+      }
+    ],
+    "components": {
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "red_mushroom_colony_stage3",
+          "ambient_occlusion": false,
+          "face_dimming": false,
+          "render_method": "alpha_test"
+        }
+      },
+      "minecraft:movable": {
+        "movement_type": "popped"
+      },
+      "minecraft:redstone_conductivity": {
+        "allows_wire_to_step_down": false
+      },
+      "farmersdelight:mushroom_cluster": {
+        "maturity": 4,
+        "mushroom": "minecraft:red_mushroom",
+        "harvest": "farmersdelight:red_mushroom_colony_item",
+        "mushtree": "farmersdelight:red_mushroom_tree",
+        "offset": [-2, 0, -2]
+      },
+      "minecraft:liquid_detection": {
+        "detection_rules": [
+          {
+            "on_liquid_touches": "popped"
+          }
+        ]
+      },
+      "minecraft:loot": "loot_tables/empty.json",
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0.0
+      },
+      "minecraft:flammable": {
+        "catch_chance_modifier": 30,
+        "destroy_chance_modifier": 30
+      },
+      "minecraft:light_dampening": 0,
+      "minecraft:geometry": "geometry.wild_crop",
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 0.0
+      },
+      "minecraft:collision_box": false,
+      "minecraft:placement_filter": {
+        "conditions": [
+          {
+            "block_filter": [
+              "farmersdelight:rich_soil",
+              "minecraft:mycelium",
+              "farmersdelight:organic_compost"
+            ],
+            "allowed_faces": ["up"]
+          }
+        ]
+      },
+      "tag:crop": {},
+      "tag:compost_activators": {}
     }
+  }
 }

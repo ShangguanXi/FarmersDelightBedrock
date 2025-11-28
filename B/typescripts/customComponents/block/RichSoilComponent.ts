@@ -1,21 +1,17 @@
 import {
     BlockComponentPlayerInteractEvent,
+    BlockComponentRandomTickEvent,
     BlockCustomComponent,
+    BlockPermutation,
+    CustomComponentParameters,
     EntityInventoryComponent,
-    StartupEvent,
-    system,
 } from "@minecraft/server";
 import { ItemUtil } from "../../lib/ItemUtil";
-import { subscribeEvent } from "../../lib/EventSubscriber";
+import { blockComponent } from "../../lib/EventSubscriber";
 
-class RichSoilComponent implements BlockCustomComponent {
-    constructor() {
-        this.onPlayerInteract = this.onPlayerInteract.bind(this);
-
-
-    }
+@blockComponent("farmersdelight:rich_soil")
+export class RichSoilComponent implements BlockCustomComponent {
     onPlayerInteract(args: BlockComponentPlayerInteractEvent): void {
-
         const player = args.player;
         const face = args.face;
         const inventory = player?.getComponent("inventory") as EntityInventoryComponent;
@@ -59,14 +55,30 @@ class RichSoilComponent implements BlockCustomComponent {
         } catch (error) {
 
         }
-
-
-    }
-}
-export class RichSoilComponentRegister {
-    @subscribeEvent(system.beforeEvents.startup)
-    register(args: StartupEvent) {
-        args.blockComponentRegistry.registerCustomComponent('farmersdelight:rich_soil', new RichSoilComponent());
     }
 
+    onRandomTick(event: BlockComponentRandomTickEvent, _: CustomComponentParameters): void {
+        const above = event.block.above();
+        switch (above?.typeId) {
+            case "minecraft:brown_mushroom":
+                above!!.setPermutation(BlockPermutation.resolve(
+                    "farmersdelight:brown_mushroom_colony",
+                    { "farmersdelight:growth": 1 },
+                ));
+                return;
+            case "minecraft:red_mushroom":
+                above!!.setPermutation(BlockPermutation.resolve(
+                    "farmersdelight:red_mushroom_colony",
+                    { "farmersdelight:growth": 1 },
+                ));
+                return;
+        }
+        if (above?.getComponent("farmersdelight:mushroom_colony")) { // 怎么没有hasComponent
+            const permutation = above!!.permutation;
+            if (permutation.getState("farmersdelight:growth") === 0) {
+                above!!.setPermutation(permutation.withState("farmersdelight:growth", 1));
+                // return;
+            }
+        }
+    }
 }

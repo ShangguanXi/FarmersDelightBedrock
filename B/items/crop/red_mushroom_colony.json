@@ -2,7 +2,9 @@
   "format_version": "1.21.120",
   "minecraft:item": {
     "components": {
-      "farmersdelight:colonies": {},
+      "minecraft:block_placer": {
+        "block": "farmersdelight:red_mushroom_colony"
+      },
       "minecraft:icon": {
         "textures": {
           "default": "farmersdelight:red_mushroom_colony"

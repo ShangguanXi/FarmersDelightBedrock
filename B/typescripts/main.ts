@@ -18,10 +18,9 @@ import { RiceSeedComponentRegister } from "./customComponents/item/RiceSeedCompo
 import { CropComponentRegister } from "./customComponents/block/CropComponent";
 import "./customComponents/block/InteractComponent";
 import { WildCropComponent } from "./customComponents/block/WildCropComponent";
-import { RichSoilComponentRegister } from "./customComponents/block/RichSoilComponent";
+import "./customComponents/block/RichSoilComponent";
 import { RichSoilFarmlandComponentRegister } from "./customComponents/block/RichSoilFarmlandComponent";
-import { MushroomColonyComonentRegister } from "./customComponents/block/MushroomColonyComonent";
-import { ColoniesComonentRegister } from "./customComponents/item/ColoniesComponent";
+import "./customComponents/block/MushroomColonyComonent";
 import "./customComponents/block/OrganicCompostComonent";
 import { RopeComponentRegister } from "./customComponents/block/RopeComponent";
 import { TatamMatComponentRegister } from "./customComponents/block/TatamMatComponent";
@@ -49,9 +48,7 @@ new StoveComponentRegister();
 new PieComponent();
 
 
-new RichSoilComponentRegister();
 new RichSoilFarmlandComponentRegister();
-new MushroomColonyComonentRegister();
 new RopeComponentRegister();
 new TatamMatComponentRegister();
 new TatamComponentRegister();
@@ -62,7 +59,6 @@ new SeedComponent();
 new CuttableComponentRegister();
 new CookableComonentRegister();
 
-new ColoniesComonentRegister();
 new RiceSeedComponentRegister();
 
 

@@ -1,29 +1,30 @@
 {
-    "format_version": "1.21.120",
-    "minecraft:block": {
-        "description": {
-            "identifier": "farmersdelight:rich_soil",
-            "menu_category": {
-                "category": "nature"
-            }
-        },
-        "components": {
-            "farmersdelight:rich_soil":{},
-            "minecraft:destructible_by_mining": {
-                "seconds_to_destroy": 0.6
-            },
-            "minecraft:destructible_by_explosion": {
-                "explosion_resistance": 3
-            },
-            "minecraft:geometry": "minecraft:geometry.full_block",
-            "minecraft:material_instances": {
-                "*": {
-                    "texture": "rich_soil"
-                }
-            },
-            "tag:dirt": {},
-            "tag:sand": {},
-            "tag:compost_activators": {}
+  "format_version": "1.21.120",
+  "minecraft:block": {
+    "description": {
+      "identifier": "farmersdelight:rich_soil",
+      "menu_category": {
+        "category": "nature"
+      }
+    },
+    "components": {
+      "farmersdelight:rich_soil": {},
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0.6
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 3
+      },
+      "minecraft:geometry": "minecraft:geometry.full_block",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "rich_soil"
         }
+      },
+      "tag:dirt": {},
+      "tag:sand": {},
+      "tag:compost_activators": {},
+      "tag:farmersdelight:mushroom_colony_habitat": {}
     }
+  }
 }

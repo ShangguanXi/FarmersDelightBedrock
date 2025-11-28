@@ -20,14 +20,54 @@ export function enchantmentLevelOf(stack: ItemStack | undefined, enchantment: st
     return instance ? instance.level : 0;
 }
 
-export function hurtEquippedItem(entity: Entity, stack?: ItemStack, slot: EquipmentSlot = EquipmentSlot.Mainhand) {
+type SlotLike = {
+    setItem: (stack?: ItemStack) => void;
+}
+
+function hurtItemInSlotImpl(stack: ItemStack | undefined, amount: number, avoidable: boolean, slot: SlotLike) {
     const durability = stack?.getComponent(ItemComponentTypes.Durability);
-    if (durability && durability.maxDurability > durability.damage) {
-        ++durability.damage;
-        entity.getComponent(EntityComponentTypes.Equippable)?.setEquipment(slot, stack);
-    } else {
-        entity.getComponent(EntityComponentTypes.Equippable)?.setEquipment(slot, undefined);
+    if (durability) {
+        // 即将到来 if (durability.unbreakable) return;
+        let damage = 0;
+        if (avoidable) {
+            const chance = durability.getDamageChance(Math.min(enchantmentLevelOf(stack, "unbreaking"), 3));
+            while (amount-- > 0) {
+                if (Math.random() < chance) {
+                    ++damage;
+                }
+            }
+            if (!damage) return;
+            damage += durability.damage;
+        } else {
+            damage = durability.damage + amount;
+        }
+        if (durability.maxDurability < damage) {
+            slot.setItem(undefined);
+        } else {
+            durability.damage = damage;
+            slot.setItem(stack);
+        }
+    } else if (stack) {
+        slot.setItem(undefined);
     }
+}
+
+export function hurtEquippedItem(
+    entity: Entity,
+    stack?: ItemStack,
+    amount: number = 1,
+    avoidable: boolean = true,
+    slot: EquipmentSlot = EquipmentSlot.Mainhand,
+) {
+    hurtItemInSlotImpl(stack, amount, avoidable, {
+        setItem(result) {
+            entity.getComponent(EntityComponentTypes.Equippable)?.setEquipment(slot, result);
+        },
+    });
+}
+
+export function hurtItemInSlot(slot: ContainerSlot, stack?: ItemStack, amount: number = 1, avoidable: boolean = true) {
+    hurtItemInSlotImpl(stack ?? slot.getItem(), amount, avoidable, slot);
 }
 
 /**
@@ -48,6 +88,9 @@ export function takeItemInSlot(slot: ContainerSlot, desired: number = 1, check: 
 }
 
 export class ItemUtil {
+    /**
+     * @deprecated
+     */
     public static damageItem(container: Container, index: number, damage: number = 1) {
         const itemStack: ItemStack | undefined = container.getItem(index);
         if (!itemStack) return;

@@ -9,7 +9,7 @@ import {
     system,
     world,
 } from "@minecraft/server";
-import { ItemUtil } from "../lib/ItemUtil";
+import { hurtEquippedItem, ItemUtil } from "../lib/ItemUtil";
 import { subscribeEvent } from "../lib/EventSubscriber";
 import { spawnLoot } from "../lib/LootUtil";
 
@@ -68,29 +68,20 @@ export class BlockFood {
 
     }
     @subscribeEvent(world.beforeEvents.playerBreakBlock)
-    break(args: PlayerBreakBlockBeforeEvent) {
-        const block: Block = args.block;
-        const location = args.block.location;
-        const player: Player = args.player;
-        const inventory = args.player?.getComponent("inventory") as EntityInventoryComponent;
-        const container: Container | undefined = inventory?.container
-        if (!container) return;
+    break(event: PlayerBreakBlockBeforeEvent) {
+        const block: Block = event.block;
         if (block.hasTag("farmersdelight:blockfood") && !block.getComponent("farmersdelight:dish")) {
-            if (Number(block.permutation.getState("farmersdelight:food_block_stage")) != 0) {
+            if (block.permutation.getState("farmersdelight:food_block_stage")) {
+                system.run(() => block.setType("minecraft:air"));
+            } else {
                 system.run(() => {
-                    block.dimension.setBlockType({ x: location.x, y: location.y, z: location.z }, "minecraft:air")
-
+                    block.dimension.spawnItem(new ItemStack(block.typeId + "_item"), block);
+                    block.setType("minecraft:air");
+                    block.dimension.playSound("dig.cloth", block);
+                    hurtEquippedItem(event.player, event.itemStack);
                 });
             }
-            if (Number(block.permutation.getState("farmersdelight:food_block_stage")) == 0) {
-                system.run(() => {
-                    block.dimension.spawnItem(new ItemStack(block.typeId + "_item"), block.location);
-                    block.dimension.setBlockType({ x: location.x, y: location.y, z: location.z }, "minecraft:air")
-                    player.playSound("dig.cloth")
-                    ItemUtil.damageItem(container, player.selectedSlotIndex)
-                });
-            }
-            args.cancel = true;
+            event.cancel = true;
         }
     }
 }

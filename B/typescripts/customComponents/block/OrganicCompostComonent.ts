@@ -2,7 +2,7 @@ import {
     BlockComponentPlayerInteractEvent,
     BlockComponentRandomTickEvent,
     BlockCustomComponent,
-    BlockVolume, CustomComponentParameters,
+    CustomComponentParameters,
     Direction,
     EntityComponentTypes,
     EquipmentSlot,
@@ -11,6 +11,7 @@ import {
 import { COMPOST_ACTIVATORS } from "../../data/organicCompostDetect";
 import { takeItemInSlot } from "../../lib/ItemUtil";
 import { blockComponent } from "../../lib/EventSubscriber";
+import { volumeAround } from "../../lib/BlockUtil";
 
 @blockComponent("farmersdelight:organic_compost")
 export class OrganicCompostComponent implements BlockCustomComponent {
@@ -41,14 +42,11 @@ export class OrganicCompostComponent implements BlockCustomComponent {
 
     onRandomTick(event: BlockComponentRandomTickEvent, _: CustomComponentParameters): void {
         const center = event.block;
-        const { dimension, x, y, z } = center;
+        const dimension = center.dimension;
         let moisturized = false;
         let chance = 0.05;
         let maxLight = 0;
-        for (const location of new BlockVolume(
-            { x: x - 1, y: y - 1, z: z - 1 },
-            { x: x + 1, y: y + 1, z: z + 1 },
-        ).getBlockLocationIterator()) {
+        for (const location of volumeAround(center, 1, 1, 1).getBlockLocationIterator()) {
             const block = dimension.getBlock(location);
             if (!block) continue;
             if (COMPOST_ACTIVATORS.has(block.typeId) || block.hasTag("compost_activators")) {
