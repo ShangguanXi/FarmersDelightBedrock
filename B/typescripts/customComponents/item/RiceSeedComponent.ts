@@ -1,6 +1,5 @@
 import {
     Container,
-    Dimension,
     Direction,
     EntityInventoryComponent,
     ItemComponentUseOnEvent,
@@ -8,15 +7,14 @@ import {
     Player,
     StartupEvent,
     system,
-    Vector3,
 } from "@minecraft/server";
 import { ItemUtil } from "../../lib/ItemUtil";
 import { EntityUtil } from "../../lib/EntityUtil";
 import { subscribeEvent } from "../../lib/EventSubscriber";
 
-function placeStructure(dimension: Dimension, structure: string, location: Vector3) {
-    dimension.runCommand(`structure load ${structure} ${location.x} ${location.y} ${location.z}`)
-}
+/**
+ * @deprecated
+ */
 class RiceSeedComponent implements ItemCustomComponent {
     constructor() {
         this.onUseOn = this.onUseOn.bind(this);
@@ -27,7 +25,7 @@ class RiceSeedComponent implements ItemCustomComponent {
         const block = args.block;
         const source = args.source;
         if (source instanceof Player) {
-            if (!itemStack || itemStack.typeId != 'farmersdelight:rice' || args.blockFace != Direction.Up || (!block.getTags().includes('dirt'))) return
+            if (!itemStack || args.blockFace != Direction.Up || (!block.getTags().includes("dirt"))) return;
             system.run(() => {
                 const water = block.above();
                 if (!(water?.typeId == 'minecraft:water' && water?.permutation.getState('liquid_depth') == 0)) return

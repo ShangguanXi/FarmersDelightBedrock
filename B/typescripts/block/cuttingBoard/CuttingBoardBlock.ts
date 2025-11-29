@@ -19,7 +19,7 @@ import {
     ItemofPickaxeList,
     ItemofShearsList,
 } from "../../data/recipe/cuttingBoardRecipe";
-import { ItemUtil } from "../../lib/ItemUtil";
+import { ItemUtil, spawnStack } from "../../lib/ItemUtil";
 import { CuttingBroadComponentParams } from "../../customComponents/item/CuttableComponent";
 import { subscribeEvent } from "../../lib/EventSubscriber";
 
@@ -204,7 +204,7 @@ export class CuttingBoardBlock extends BlockWithEntity {
             entity.setDynamicProperty('farmersdelight:cutTool', undefined);
             entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', '{"item":"undefined"}');
             entity.runCommand(`replaceitem entity @s slot.weapon.mainhand 0 air`);
-            ItemUtil.spawnItem(block, itemId, 1, { x: x + 0.5, y: y + 0.5, z: z + 0.5 })?.applyImpulse(offset)
+            spawnStack(new ItemStack(itemId), block, block.center())?.applyImpulse(offset);
         }
 
 

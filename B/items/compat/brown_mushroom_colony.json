@@ -3,11 +3,7 @@
   "minecraft:item": {
     "components": {
       "minecraft:block_placer": {
-        "block": "farmersdelight:brown_mushroom_colony",
-        "replace_block_item": true
-      },
-      "minecraft:display_name": {
-        "value": "tile.farmersdelight:brown_mushroom_colony.name"
+        "block": "farmersdelight:brown_mushroom_colony"
       },
       "minecraft:icon": {
         "textures": {
@@ -31,10 +27,10 @@
       }
     },
     "description": {
-      "identifier": "farmersdelight:brown_mushroom_colony",
+      "identifier": "farmersdelight:brown_mushroom_colony_item",
       "menu_category": {
-        "category": "nature",
-        "group": "farmersdelight:itemGroup.name.wildcrop"
+        "category": "none",
+        "is_hidden_in_commands": true
       }
     }
   }

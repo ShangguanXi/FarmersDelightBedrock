@@ -1,12 +1,23 @@
 import {
     Container,
+    ContainerSlot,
     Direction,
     Entity,
     EntityComponentTypes,
     EntityQueryOptions,
+    EquipmentSlot,
     GameMode,
-    Player, system,
+    ItemStack,
+    Player,
 } from "@minecraft/server";
+
+export function getEquipment(entity: Entity | undefined, slot: EquipmentSlot): ItemStack | undefined {
+    return entity?.getComponent(EntityComponentTypes.Equippable)?.getEquipment(slot);
+}
+
+export function getEquipmentSlot(entity: Entity | undefined, slot: EquipmentSlot): ContainerSlot | undefined {
+    return entity?.getComponent(EntityComponentTypes.Equippable)?.getEquipmentSlot(slot);
+}
 
 // 返回实体水平朝向（JE LivingEntity#getDirecion)
 export function horizontalDirectionOf(entity: Entity): Direction {

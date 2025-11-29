@@ -3,14 +3,18 @@
   "minecraft:item": {
     "components": {
       "minecraft:block_placer": {
-        "block": "farmersdelight:red_mushroom_colony"
+        "block": "farmersdelight:red_mushroom_colony",
+        "replace_block_item": true
+      },
+      "minecraft:display_name": {
+        "value": "tile.farmersdelight:red_mushroom_colony.name"
       },
       "minecraft:icon": {
         "textures": {
           "default": "farmersdelight:red_mushroom_colony"
         }
       },
-       "minecraft:wearable": {
+      "minecraft:wearable": {
         "slot": "slot.weapon.offhand"
       },
       "farmersdelight:cuttable": {
@@ -27,7 +31,7 @@
       }
     },
     "description": {
-      "identifier": "farmersdelight:red_mushroom_colony_item",
+      "identifier": "farmersdelight:red_mushroom_colony",
       "menu_category": {
         "category": "nature",
         "group": "farmersdelight:itemGroup.name.wildcrop"

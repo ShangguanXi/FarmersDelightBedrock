@@ -8,7 +8,7 @@ import { Skillet } from "./block/skillet/Skillet";
 import { SkilletEntity } from "./block/skillet/SkilletEntity";
 import "./item/Knife";
 import { CookingPotRecipeRegistries } from "./init/CookingPotRecipeRegistries";
-import { Food } from "./item/Food";
+import "./item/Food";
 import "./block/CabinetBlockEntity";
 import { CuttingBoardRegistries } from "./init/CuttingBoardRecipeRegistries";
 import "./block/Rice";
@@ -27,11 +27,11 @@ import { TatamMatComponentRegister } from "./customComponents/block/TatamMatComp
 import { TatamComponentRegister } from "./customComponents/block/TatamiComponent";
 import { StoveComponentRegister } from "./customComponents/block/StoveComponent";
 import "./item/IncompleteBlocks";
-import { CuttableComponentRegister } from "./customComponents/item/CuttableComponent";
-import { CookableComonentRegister } from "./customComponents/item/CookableComponent";
+import "./customComponents/item/CuttableComponent";
+import "./customComponents/item/CookableComponent";
 import "./customComponents/block/BlockEntityComponent";
 import "./customComponents/item/IncreaseProductionComponent";
-import { SeedComponent } from "./customComponents/item/SeedComponent";
+import "./customComponents/item/SeedComponent";
 import { PieComponent } from "./customComponents/block/PieCompostComonent";
 import "./block/BasketBlockEntity";
 import "./customComponents/item/KnifeComponent";
@@ -53,12 +53,6 @@ new RopeComponentRegister();
 new TatamMatComponentRegister();
 new TatamComponentRegister();
 
-
-
-new SeedComponent();
-new CuttableComponentRegister();
-new CookableComonentRegister();
-
 new RiceSeedComponentRegister();
 
 
@@ -74,6 +68,5 @@ new StoveBlockEntity();
 new Skillet();
 new SkilletEntity();
 
-new Food();
 new BlockFood();
 new CookingPotRecipeRegistries();

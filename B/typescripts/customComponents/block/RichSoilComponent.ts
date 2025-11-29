@@ -73,7 +73,7 @@ export class RichSoilComponent implements BlockCustomComponent {
                 ));
                 return;
         }
-        if (above?.getComponent("farmersdelight:mushroom_colony")) { // 怎么没有hasComponent
+        if (above?.getComponent("farmersdelight:mushroom_cluster")) { // 怎么没有hasComponent
             const permutation = above!!.permutation;
             if (permutation.getState("farmersdelight:growth") === 0) {
                 above!!.setPermutation(permutation.withState("farmersdelight:growth", 1));

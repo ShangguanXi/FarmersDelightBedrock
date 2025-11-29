@@ -6,17 +6,16 @@ import {
     BlockComponentRandomTickEvent,
     BlockCustomComponent,
     CustomComponentParameters,
-    EntityComponentTypes,
     EquipmentSlot,
     GameMode,
-    ItemComponentTypes,
     ItemStack,
     world,
 } from "@minecraft/server";
-import { hurtItemInSlot } from "../../lib/ItemUtil";
+import { hurtItemInSlot, isEnchanted } from "../../lib/ItemUtil";
 import { blockComponent } from "../../lib/EventSubscriber";
 import { volumeAround } from "../../lib/BlockUtil";
 import { randomInt } from "../../lib/RandomUtil";
+import { getEquipment, getEquipmentSlot } from "../../lib/EntityUtil";
 
 type MushroomClusterSpec = {
     readonly maturity: number;
@@ -65,7 +64,7 @@ export class MushroomClusterComponent implements BlockCustomComponent {
 
     onPlayerInteract(event: BlockComponentPlayerInteractEvent, params: CustomComponentParameters): void {
         const { block, player } = event;
-        const slot = player?.getComponent(EntityComponentTypes.Equippable)?.getEquipmentSlot(EquipmentSlot.Mainhand);
+        const slot = getEquipmentSlot(player, EquipmentSlot.Mainhand);
         const stack = slot?.getItem();
         switch (stack?.typeId) { // assert player && slot && stack
             case "minecraft:bone_meal": {
@@ -138,13 +137,11 @@ export class MushroomClusterComponent implements BlockCustomComponent {
     onPlayerBreak(event: BlockComponentPlayerBreakEvent, params: CustomComponentParameters): void {
         const player = event.player;
         if (!player || player.getGameMode() === GameMode.Creative) return;
-        const slot = player.getComponent(EntityComponentTypes.Equippable)?.getEquipmentSlot(EquipmentSlot.Mainhand);
-        const stack = slot?.getItem();
+        const stack = getEquipment(player, EquipmentSlot.Mainhand);
+        if (isEnchanted(stack, "silk_touch")) return; // 原版强行处理了精准采集
         const age = event.brokenBlockPermutation.getState("farmersdelight:growth") ?? 0;
         const spec = params.params as MushroomClusterSpec;
-        if (stack && age === getMaturity(spec) && (
-            stack.hasTag("minecraft:is_shears") || stack.getComponent(ItemComponentTypes.Enchantable)?.hasEnchantment("silk_touch")
-        )) {
+        if (stack && age === getMaturity(spec) && stack.hasTag("minecraft:is_shears")) {
             const harvest = spec.harvest;
             if (harvest) {
                 event.dimension.spawnItem(new ItemStack(harvest), event.block.bottomCenter());

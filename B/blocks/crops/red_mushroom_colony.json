@@ -108,7 +108,7 @@
       "farmersdelight:mushroom_cluster": {
         "maturity": 4,
         "mushroom": "minecraft:red_mushroom",
-        "harvest": "farmersdelight:red_mushroom_colony_item",
+        "harvest": "farmersdelight:red_mushroom_colony",
         "mushtree": "farmersdelight:red_mushroom_tree",
         "offset": [-2, 0, -2]
       },
@@ -137,9 +137,13 @@
         "conditions": [
           {
             "block_filter": [
-              "farmersdelight:rich_soil",
               "minecraft:mycelium",
-              "farmersdelight:organic_compost"
+              "minecraft:podzol",
+              "minecraft:crimson_nylium",
+              "minecraft:warped_nylium",
+              {
+                "tags": "q.any_tag('mushroom_grow_block')"
+              }
             ],
             "allowed_faces": ["up"]
           }

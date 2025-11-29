@@ -76,7 +76,8 @@
             },
             "minecraft:geometry": "minecraft:geometry.full_block",
             "tag:dirt": {},
-            "tag:compost_activators": {}
+            "tag:compost_activators": {},
+            "tag:mushroom_grow_block": {}
         }
     }
 }

@@ -4,19 +4,19 @@ import {
     BlockComponentRandomTickEvent,
     BlockComponentTickEvent,
     BlockCustomComponent,
-    Dimension,
     EntityInventoryComponent,
+    EquipmentSlot,
     GameMode,
-    ItemComponentTypes,
-    ItemEnchantableComponent,
+    Player,
     StartupEvent,
     system,
-    Vector3,
 } from "@minecraft/server";
-import { ItemUtil } from "../../lib/ItemUtil";
-import type * as minecraftvanilladata from "@minecraft/vanilla-data";
+import { isEnchanted, ItemUtil } from "../../lib/ItemUtil";
 import { subscribeEvent } from "../../lib/EventSubscriber";
 import { spawnLootAtBlock } from "../../lib/LootUtil";
+import { getEquipment } from "../../lib/EntityUtil";
+import { KnownBlockStates } from "../../data/KnownBlockStates";
+import { PlayerTickEvent } from "../../lib/Events";
 
 export class RopeComponent implements BlockCustomComponent {
     constructor() {
@@ -64,24 +64,9 @@ export class RopeComponent implements BlockCustomComponent {
     }
     onPlayerBreak(args: BlockComponentPlayerBreakEvent): void {
         const player = args.player;
-        const blockPermutation = args.brokenBlockPermutation
-        const inventory = player?.getComponent("inventory") as EntityInventoryComponent;
-        const container = inventory?.container;
-        const block = args.block;
-        const dimension = args.dimension;
         if (!player) return;
-        if (!container) return;
-        const stage = blockPermutation.getState('farmersdelight:stage') as number;
-        const enchantable = container?.getItem(player.selectedSlotIndex)?.getComponent(ItemComponentTypes.Enchantable) as ItemEnchantableComponent
-        const silkTouch= enchantable?.hasEnchantment("silk_touch");
-        if(stage>0){
-            try {
-                if(!silkTouch){
-                    dimension.setBlockType(block.location,"farmersdelight:rope")
-                }
-            } catch (error) {
-                dimension.setBlockType(block.location,"farmersdelight:rope")
-            }
+        if ((args.brokenBlockPermutation.getState("farmersdelight:stage") ?? 0) > 0 && !isEnchanted(getEquipment(player, EquipmentSlot.Mainhand), "silk_touch")) {
+            args.block.setType("farmersdelight:rope");
         }
        
     }
@@ -134,42 +119,29 @@ export class RopeComponent implements BlockCustomComponent {
             ];
 
             ropePositions.forEach(pos => {
-                const rope = dimension.getBlock(pos)?.hasTag('rope');
-                block.setPermutation(block.permutation.withState(`farmersdelight:${pos.direction}_connected` as keyof minecraftvanilladata.BlockStateSuperset, Boolean(rope)));
+                const rope = dimension.getBlock(pos)?.hasTag("rope") ?? false;
+                block.setPermutation(block.permutation.withState(`farmersdelight:${pos.direction}_connected` as keyof KnownBlockStates, rope));
             })
-            const players = dimension.getPlayers()
-            for (const player of players){
-                const playerLocation = player.location
-                const blockId = dimension.getBlock(playerLocation)?.typeId
-                if (!blockId) return
-                if (blockId=="farmersdelight:rope"){
-                    if (player.getViewDirection().y>0){
-                        player.addEffect('levitation',1*5, { amplifier: 0 })
-                    } 
-                    if (player.getViewDirection().y<0){
-                        player.addEffect('slow_falling',1*5, { amplifier: 0 })
-
-                    }
-                   
-
-                }
-            }
-        }
-        if (stage > 0) {
-            const pos = { x: location.x, y: location.y - 1, z: location.z }
-            const tomatoCrop = dimension.getBlock(pos)?.hasTag('tomato_crop');
-            const tomatoCropWithRope = dimension.getBlock(pos)?.hasTag('tomato_crop_with_rope');
-            const canGrow = block.permutation.getState('farmersdelight:can_grow') as boolean;
-            if ((!tomatoCrop) && (!tomatoCropWithRope)) {
-
+        } else {
+            const tomato = block.below();
+            if (!tomato || !tomato.hasTag("tomato_crop") && !tomato.hasTag("tomato_crop_with_rope")) {
                 block.setPermutation(block.permutation.withState('farmersdelight:stage', 0));
                 block.setPermutation(block.permutation.withState('farmersdelight:can_grow', true));
             }
-
-
-
         }
+    }
 
+    @subscribeEvent(PlayerTickEvent)
+    static simulateClimbing(player: Player) {
+        if (player.dimension.getBlock(player.location)?.getComponent("farmersdelight:rope")) {
+            const pitch = player.getViewDirection().y;
+            if (pitch > 0) {
+                player.addEffect("levitation", 5, { showParticles: false });
+            } else if (pitch < 0) {
+                player.addEffect("slow_falling", 5, { showParticles: false });
+
+            }
+        }
     }
 }
 export class RopeComponentRegister {

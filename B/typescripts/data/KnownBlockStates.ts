@@ -17,6 +17,10 @@ type FarmersDelightBlockStates = {
 
 export type KnownBlockStates = VanillaBlockStates & FarmersDelightBlockStates;
 
+export type KnownTypedBlockStateKeys<T> = keyof {
+    [K in keyof KnownBlockStates as KnownBlockStates[K] extends T ? K : never]: never
+};
+
 declare module "@minecraft/server" {
     export interface BlockPermutation {
         getState<T extends keyof KnownBlockStates>(name: T): KnownBlockStates[T] | undefined;

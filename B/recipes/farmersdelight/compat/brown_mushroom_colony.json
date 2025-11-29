@@ -1,0 +1,17 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "farmersdelight:brown_mushroom_colony_compat"
+    },
+    "tags": ["crafting_table"],
+    "ingredients": [
+      {
+        "item": "farmersdelight:brown_mushroom_colony_item"
+      }
+    ],
+    "result": {
+      "item": "farmersdelight:brown_mushroom_colony"
+    }
+  }
+}

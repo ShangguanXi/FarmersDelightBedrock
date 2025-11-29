@@ -1,6 +1,5 @@
 import {
     BlockPermutation,
-    EntityComponentTypes,
     EntityDieAfterEvent,
     EquipmentSlot,
     GameMode,
@@ -14,6 +13,7 @@ import { hurtEquippedItem } from "../lib/ItemUtil";
 import { subscribeEvent } from "../lib/EventSubscriber";
 import { BLOCK_LOOT_WITH_KNIFE, DROPS_CAKE_SLICE, ENTITY_LOOT_WITH_KNIFE } from "../data/KnifeLoot";
 import { spawnLootAtBlock } from "../lib/LootUtil";
+import { getEquipment } from "../lib/EntityUtil";
 
 // noinspection JSUnusedGlobalSymbols
 export class Knife {
@@ -22,10 +22,7 @@ export class Knife {
     static onKill(event: EntityDieAfterEvent) {
         const victim = event.deadEntity;
         if (!victim) return;
-        const stack = event.damageSource.damagingEntity
-            ?.getComponent(EntityComponentTypes.Equippable)
-            ?.getEquipmentSlot(EquipmentSlot.Mainhand)
-            ?.getItem();
+        const stack = getEquipment(event.damageSource.damagingEntity, EquipmentSlot.Mainhand);
         if (!stack || !stack.hasComponent("farmersdelight:increase_production")) return;
         const loot = ENTITY_LOOT_WITH_KNIFE.get(victim.typeId)?.(stack, victim);
         if (loot) {

@@ -1,38 +1,37 @@
 import {
     BlockComponentPlayerInteractEvent,
     BlockCustomComponent,
-    CustomComponentParameters,
-    ItemComponentTypes,
+    CustomComponentParameters, EntityComponentTypes,
     ItemStack,
     PlayerBreakBlockBeforeEvent,
-    StartupEvent,
     system,
     world,
 } from "@minecraft/server";
-import { ItemUtil } from "../../lib/ItemUtil";
-import type * as minecraftvanilladata from "@minecraft/vanilla-data";
-import { subscribeEvent } from "../../lib/EventSubscriber";
+import { hurtEquippedItem, isEnchanted, spawnStack } from "../../lib/ItemUtil";
+import { blockComponent, subscribeEvent } from "../../lib/EventSubscriber";
+import { KnownTypedBlockStateKeys } from "../../data/KnownBlockStates";
+import { resolveSpec } from "../../lib/ObjectUtil";
 
-type effect = [string, number, number?]
-export type Params = {
+type Identifier = string;
+type Duration = number;
+type Amplifier = number
+type Effect = [Identifier, Duration, Amplifier?]
+export type PieSpec = {
     item: string;
     nutrition:number;
     saturation_modifier:number;
-    effects:effect[];
+    effects: Effect[];
     state: {
-        name: keyof minecraftvanilladata.BlockStateSuperset;
+        name: KnownTypedBlockStateKeys<number>;
         max_use: number
         min_use?: number
     }
 }
 
+@blockComponent("farmersdelight:pie")
 export class PieComponent implements BlockCustomComponent {
-    constructor() {
-        this.onPlayerInteract = this.onPlayerInteract.bind(this);
-
-    }
     onPlayerInteract(args: BlockComponentPlayerInteractEvent, param: CustomComponentParameters): void {
-        const params = param.params as Params;
+        const params = param.params as PieSpec;
         const player = args.player
         if (!player) return
         const isSneaking = player?.isSneaking
@@ -40,64 +39,50 @@ export class PieComponent implements BlockCustomComponent {
         const inventory = player?.getComponent("inventory");
         if (!inventory) return
         const block = args.block
-        const { x, y, z } = args.block.location;
         const container = inventory?.container;
         const itemStack = container.getItem(player.selectedSlotIndex)
         const state = block.permutation.getState(params.state.name) as number
-        if (!itemStack||!itemStack.hasTag("farmersdelight:is_knife")){
-            block.dimension.playSound("random.eat",{ x, y, z })
+        if (!itemStack?.hasTag("farmersdelight:is_knife")) {
+            block.dimension.playSound("random.eat", block);
             if (state != (params.state.max_use)) block.setPermutation(block.permutation.withState(params.state.name, state + 1));
-            else block.dimension.setBlockType({ x, y, z }, "minecraft:air")
-            const hunger = player.getComponent('minecraft:player.hunger')
-            const saturation = player.getComponent('minecraft:player.saturation')
+            else block.setType("minecraft:air");
+            const hunger = player.getComponent(EntityComponentTypes.Hunger);
+            const saturation = player.getComponent(EntityComponentTypes.Saturation);
             const nutrition= params.nutrition
             const saturation_modifier= params.saturation_modifier
-            hunger?.setCurrentValue(hunger.currentValue+nutrition>hunger.effectiveMax?hunger.effectiveMax:hunger.currentValue+nutrition)
-            saturation?.setCurrentValue(saturation.currentValue+saturation_modifier*nutrition*2>saturation.effectiveMax?saturation.effectiveMax:saturation.currentValue+saturation_modifier*nutrition*2)
+            hunger?.setCurrentValue(hunger.currentValue + nutrition > hunger.effectiveMax
+                ? hunger.effectiveMax
+                : hunger.currentValue + nutrition,
+            );
+            saturation?.setCurrentValue(saturation.currentValue + saturation_modifier * nutrition * 2 > saturation.effectiveMax
+                ? saturation.effectiveMax
+                : saturation.currentValue + saturation_modifier * nutrition * 2,
+            );
             for (const [id, time, amplifier = 0] of params.effects) {
                 player.addEffect(id, time, { amplifier: amplifier })
             }
             return
         }
-        if (!itemStack.hasTag("farmersdelight:is_knife")) return
-        block.dimension.playSound("use.cloth",{ x, y, z })
-        block.dimension.spawnItem(new ItemStack(params.item),{ x:x+0.5, y:y+0.5, z:z+0.5 })
+        block.dimension.playSound("use.cloth", block);
+        block.dimension.spawnItem(new ItemStack(params.item), block.center());
         if (state != (params.state.max_use)) block.setPermutation(block.permutation.withState(params.state.name, state + 1));
-        else block.dimension.setBlockType({ x, y, z }, "minecraft:air")
+        else block.setType("minecraft:air");
     }
-
 
     @subscribeEvent(world.beforeEvents.playerBreakBlock)
-    break(args: PlayerBreakBlockBeforeEvent) {
-        const block = args.block
-        const pie = block.getComponent('farmersdelight:pie')
-        if (!pie) return
-        const params = pie.customComponentParameters.params as Params;
-        const itemStack = args.itemStack
-        const player = args.player
-        const { x, y, z } = args.block.location;
-        const state = block.permutation.getState(params.state.name) as number
-        const minUse = params.state.min_use || 0
-        if (state==minUse) return
-        if (!itemStack) return
-        const enchant = itemStack.getComponent(ItemComponentTypes.Enchantable)
-        const silkTouch = enchant?.getEnchantment('silk_touch');
-        if (silkTouch) {
-            const container = player.getComponent("inventory")?.container;
-            if (!container) return;
-            args.cancel = true
-            system.runTimeout(() => {
-                ItemUtil.damageItem(container, player.selectedSlotIndex)
-                ItemUtil.spawnItem(block, block.typeId)
-                block.dimension.runCommand(`/setblock ${x} ${y} ${z} air`)
-
-            })
-        }
+    static performSilkTouch(event: PlayerBreakBlockBeforeEvent) {
+        const block = event.block;
+        const limit = resolveSpec<PieSpec>(block, "farmersdelight:pie")?.state;
+        if (!limit) return;
+        const stack = event.itemStack;
+        if (!isEnchanted(stack, "silk_touch")) return;
+        if ((block.permutation.getState(limit.name) ?? 0) > (limit.min_use ?? 0)) return;
+        const player = event.player;
+        system.run(() => {
+            spawnStack(new ItemStack(block.typeId), block);
+            block.setType("minecraft:air");
+            hurtEquippedItem(player, stack);
+        });
+        event.cancel = true;
     }
-
-    @subscribeEvent(system.beforeEvents.startup)
-    register(args: StartupEvent) {
-        args.blockComponentRegistry.registerCustomComponent('farmersdelight:pie', new PieComponent());
-    }
-
 }

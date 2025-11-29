@@ -15,6 +15,7 @@ import {
 import { ItemUtil } from "../../lib/ItemUtil";
 import { CropsComponentParams } from "./CropComponent";
 import { subscribeEvent } from "../../lib/EventSubscriber";
+import { resolveSpec } from "../../lib/ObjectUtil";
 
 function handlePlanting(seedId: string, crop: string, topLocation: Vector3, container: Container, player: Player, block: Block) {
     if (!player) return;
@@ -55,13 +56,10 @@ class RichSoilFarmlandComponent implements BlockCustomComponent {
             handlePlanting("minecraft:beetroot_seeds", "farmersdelight:rich_soil_beetroot", topLocation, container, player, block)
             handlePlanting("minecraft:torchflower_seeds", "farmersdelight:rich_soil_torchflower_crop", topLocation, container, player, block)
             handlePlanting("minecraft:torchflower", "farmersdelight:rich_soil_torchflower", topLocation, container, player, block)
-            const seed = itemStack.getComponent("farmersdelight:seed")
-            if (seed) {
-                const crop = (seed.customComponentParameters.params as string)
+            const crop = resolveSpec<string>(itemStack, "farmersdelight:seed");
+            if (crop) {
                 handlePlanting(itemStack.typeId, crop, topLocation, container, player, block)
-
             }
-
         }
 
     }
@@ -95,9 +93,8 @@ class RichSoilFarmlandComponent implements BlockCustomComponent {
         };
         const cropBlock = dimension.getBlock({ x: x, y: y + 1, z: z });
         if (!cropBlock) return
-        const cropComp = cropBlock?.getComponent("farmersdelight:crop")
-        if (!cropComp) return
-        const params = cropComp?.customComponentParameters.params as CropsComponentParams
+        const params = resolveSpec<CropsComponentParams>(cropBlock, "farmersdelight:crop");
+        if (!params) return;
         const growth: number = cropBlock.permutation.getState(params.state.name) as number;
         if (growth < params.state.age) {
             cropBlock.setPermutation(cropBlock.permutation.withState(params.state.name, growth + 1));

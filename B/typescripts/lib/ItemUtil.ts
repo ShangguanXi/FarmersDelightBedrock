@@ -13,11 +13,14 @@ import {
     Player,
     Vector3,
 } from "@minecraft/server";
-import { RandomUtil } from "./RandomUtil";
 
 export function enchantmentLevelOf(stack: ItemStack | undefined, enchantment: string | EnchantmentType): number {
     const instance = stack?.getComponent(ItemComponentTypes.Enchantable)?.getEnchantment(enchantment);
     return instance ? instance.level : 0;
+}
+
+export function isEnchanted(stack: ItemStack | undefined, enchantment: string | EnchantmentType): boolean | undefined {
+    return stack?.getComponent(ItemComponentTypes.Enchantable)?.hasEnchantment(enchantment);
 }
 
 type SlotLike = {
@@ -87,6 +90,39 @@ export function takeItemInSlot(slot: ContainerSlot, desired: number = 1, check: 
     return desired - remaining;
 }
 
+/**
+ * @param entity 目标实体
+ * @param slot 物品所在槽位
+ * @param desired 取出的物品数量
+ * @param check 是否在访问物品数量前检测有无物品
+ * @return 仍需取出的物品量
+ */
+export function takeEquippedItem(
+    entity: Entity,
+    slot: EquipmentSlot = EquipmentSlot.Mainhand,
+    desired: number = 1,
+    check: boolean = true,
+): number {
+    const $slot = entity.getComponent(EntityComponentTypes.Equippable)?.getEquipmentSlot(slot);
+    return $slot ? takeItemInSlot($slot, desired, check) : desired;
+}
+
+export function spawnStack(
+    stack: ItemStack,
+    source: Block | Entity,
+    pos: Vector3 = source instanceof Entity
+        ? source.location
+        : Math.random() < 0.5
+            ? source.center()
+            : source.bottomCenter(),
+): Entity | undefined {
+    try {
+        return source.dimension.spawnItem(stack, pos);
+    } catch {
+        return undefined;
+    }
+}
+
 export class ItemUtil {
     /**
      * @deprecated
@@ -150,17 +186,5 @@ export class ItemUtil {
         }
         container.addItem(replaceItemStack)
 
-    }
-    public static spawnItem(target: Block | Entity,item: string | ItemStack,number: number = 1,location?: Vector3): Entity|undefined {
-        const dimension = target.dimension;
-        const spawnPos = location ?? (target instanceof Block? (RandomUtil.probability(50) ? target.center() : target.bottomCenter()): target.location);
-        const stack = item instanceof ItemStack ? item : new ItemStack(item, number);
-        try {
-            return dimension.spawnItem(stack, spawnPos);
-        } catch (error) {
-            return undefined
-        }
-        
-        
     }
 }

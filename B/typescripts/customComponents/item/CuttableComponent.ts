@@ -2,10 +2,8 @@ import {
     CustomComponentParameters,
     ItemComponentUseOnEvent,
     ItemCustomComponent,
-    StartupEvent,
-    system,
 } from "@minecraft/server";
-import { subscribeEvent } from "../../lib/EventSubscriber";
+import { itemComponent } from "../../lib/EventSubscriber";
 
 type LootItem = [string, number, number?]
 export type CuttingBroadComponentParams = {
@@ -17,20 +15,11 @@ export type CuttingBroadComponentParams = {
 
     }
 };
-class CuttableComponent implements ItemCustomComponent {
 
-    constructor() {
-        this.onUseOn = this.onUseOn.bind(this);
-    }
-
-    onUseOn(args: ItemComponentUseOnEvent, param: CustomComponentParameters): void {
-        param.params as CuttingBroadComponentParams;
-    }
-}
-export class CuttableComponentRegister {
-    @subscribeEvent(system.beforeEvents.startup)
-    register(args: StartupEvent) {
-        args.itemComponentRegistry.registerCustomComponent('farmersdelight:cuttable', new CuttableComponent())
-    }
-
+@itemComponent("farmersdelight:cuttable")
+export class CuttableComponent implements ItemCustomComponent {
+    /**
+     * @deprecated
+     */
+    onUseOn(args: ItemComponentUseOnEvent, param: CustomComponentParameters): void {}
 }

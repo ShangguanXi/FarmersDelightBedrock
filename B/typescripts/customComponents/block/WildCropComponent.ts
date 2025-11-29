@@ -4,17 +4,14 @@ import {
     BlockComponentPlayerPlaceBeforeEvent,
     BlockComponentTickEvent,
     BlockCustomComponent,
-    Dimension,
     EntityInventoryComponent,
-    ItemComponentTypes,
-    ItemEnchantableComponent,
+    ItemStack,
     PlayerBreakBlockBeforeEvent,
     StartupEvent,
     system,
-    Vector3,
     world,
 } from "@minecraft/server";
-import { ItemUtil } from "../../lib/ItemUtil";
+import { isEnchanted, ItemUtil, spawnStack } from "../../lib/ItemUtil";
 import { subscribeEvent } from "../../lib/EventSubscriber";
 import { spawnLootAtBlock } from "../../lib/LootUtil";
 
@@ -35,16 +32,14 @@ export class WildCropComponent implements BlockCustomComponent {
         const player = args.player
         const { x, y, z } = args.block.location;
         if (!itemStack) return
-        const enchant = itemStack.getComponent(ItemComponentTypes.Enchantable)
-        const silkTouch = enchant?.getEnchantment('silk_touch');
-        if (silkTouch) return
+        if (isEnchanted(itemStack, "silk_touch")) return;
         if (itemStack.typeId == "minecraft:shears") {
             const container = player.getComponent("inventory")?.container;
             if (!container) return;
             args.cancel = true
             system.runTimeout(() => {
                 ItemUtil.damageItem(container, player.selectedSlotIndex)
-                ItemUtil.spawnItem(block, block.typeId)
+                spawnStack(new ItemStack(block.typeId), block);
                 block.dimension.runCommand(`/setblock ${x} ${y} ${z} air`)
 
             })
@@ -75,23 +70,13 @@ class WildRiceComponent implements BlockCustomComponent {
         const lootItem = this.lootItem();
         if (!player) return;
         if (!container) return;
-        try {
-            const selectedSlot = container?.getSlot(player.selectedSlotIndex)
-            const itemId = selectedSlot.typeId;
-            const enchantable = container?.getItem(player.selectedSlotIndex)?.getComponent(ItemComponentTypes.Enchantable) as ItemEnchantableComponent
-            const silkTouch = enchantable?.hasEnchantment("silk_touch");
-            if (itemId == "minecraft:shears") {
-                ItemUtil.damageItem(container, player.selectedSlotIndex, 1)
-                ItemUtil.spawnItem(block, lootItem)
-
-            }
-            if ((itemId != "minecraft:shears") && (!silkTouch)) {
-                spawnLootAtBlock(block, lootTable)
-            }
-        } catch (error) {
+        const stack = container?.getItem(player.selectedSlotIndex);
+        if (stack?.typeId === "minecraft:shears") {
+            ItemUtil.damageItem(container, player.selectedSlotIndex, 1);
+            spawnStack(new ItemStack(lootItem), block);
+        } else if (!isEnchanted(stack, "silk_touch")) {
             spawnLootAtBlock(block, lootTable)
         }
-
     };
     beforeOnPlayerPlace(args: BlockComponentPlayerPlaceBeforeEvent): void {
 

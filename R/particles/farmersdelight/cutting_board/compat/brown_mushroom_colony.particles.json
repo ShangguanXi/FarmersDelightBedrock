@@ -34,9 +34,9 @@
     "description": {
       "basic_render_parameters": {
         "material": "particles_alpha",
-        "texture": "textures/blocks/red_mushroom_colony_stage3"
+        "texture": "textures/blocks/brown_mushroom_colony_stage3"
       },
-      "identifier": "farmersdelight:red_mushroom_colony"
+      "identifier": "farmersdelight:brown_mushroom_colony_item"
     }
   }
 }

@@ -4,7 +4,6 @@ import {
     BlockCustomComponent,
     CustomComponentParameters,
     Direction,
-    EntityComponentTypes,
     EquipmentSlot,
     GameMode,
 } from "@minecraft/server";
@@ -12,15 +11,15 @@ import { COMPOST_ACTIVATORS } from "../../data/organicCompostDetect";
 import { takeItemInSlot } from "../../lib/ItemUtil";
 import { blockComponent } from "../../lib/EventSubscriber";
 import { volumeAround } from "../../lib/BlockUtil";
+import { getEquipmentSlot } from "../../lib/EntityUtil";
 
 @blockComponent("farmersdelight:organic_compost")
 export class OrganicCompostComponent implements BlockCustomComponent {
     onPlayerInteract(event: BlockComponentPlayerInteractEvent, _: CustomComponentParameters): void {
         if (event.face !== Direction.Up) return;
         const player = event.player;
-        const slot = player?.getComponent(EntityComponentTypes.Equippable)?.getEquipmentSlot(EquipmentSlot.Mainhand);
-        if (!slot) return; // assert player
-        const stack = slot.getItem();
+        const slot = getEquipmentSlot(player, EquipmentSlot.Mainhand);
+        const stack = slot?.getItem();
         let block: string;
         switch (stack?.typeId) {
             case "minecraft:brown_mushroom":
@@ -32,12 +31,13 @@ export class OrganicCompostComponent implements BlockCustomComponent {
             default:
                 return;
         }
+        // assert player && slot
         const pos = event.block;
         const { dimension, x, y, z } = pos;
         dimension.playSound("dig.grass", pos);
         dimension.setBlockType({ x: x, y: y + 1, z: z }, block);
         if (player!!.getGameMode() === GameMode.Creative) return;
-        takeItemInSlot(slot);
+        takeItemInSlot(slot!!);
     }
 
     onRandomTick(event: BlockComponentRandomTickEvent, _: CustomComponentParameters): void {

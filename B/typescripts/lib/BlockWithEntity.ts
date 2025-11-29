@@ -7,13 +7,11 @@ import {
     EntityTypes,
     Vector3,
 } from "@minecraft/server";
-import { isSamePos } from "./ObjectUtil";
+import { resolveSpec, isSamePos } from "./ObjectUtil";
 
 export function getBlockEntityType(
     block: Block,
-    params: unknown = block.getComponent(
-        "farmersdelight:block_entity"
-    )?.customComponentParameters?.params
+    params: unknown = resolveSpec(block, "farmersdelight:block_entity"),
 ): EntityType | undefined {
     if (params) {
         const type = EntityTypes.get(params.toString())

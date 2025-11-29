@@ -24,7 +24,8 @@
       "tag:dirt": {},
       "tag:sand": {},
       "tag:compost_activators": {},
-      "tag:farmersdelight:mushroom_colony_habitat": {}
+      "tag:mushroom_grow_block": {},
+      "tag:farmersdelight:mushroom_cluster_habitat": {}
     }
   }
 }
