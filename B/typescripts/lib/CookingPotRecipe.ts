@@ -1,6 +1,6 @@
-import { Entity, ItemStack, system, world } from "@minecraft/server";
+import { Entity, ItemStack, world } from "@minecraft/server";
 import { RecipeHolder } from "./RecipeHolder";
-import { ItemUtil } from "./ItemUtil";
+import { takeItem } from "./ItemUtil";
 
 export class CookingPotRecipe extends RecipeHolder {
     private currentRecipe2: any
@@ -26,15 +26,15 @@ export class CookingPotRecipe extends RecipeHolder {
                     //若菜品不需要容器
                     if (!this.currentRecipe2.container) {
                         if (result && this.setItem(itemStack, 8)) {
-                            ItemUtil.clearItem(this.container, 6);
+                            takeItem(this.container, 6, 1);
                             this.currentRecipe2 = false
                         }
                     }
                     //若容器栏容器正确
                     else if (container && this.isIngredient(container, this.currentRecipe2.container)) {
                         if (this.setItem(itemStack, 8)) {
-                            ItemUtil.clearItem(this.container, 6);
-                            ItemUtil.clearItem(this.container, 7);
+                            takeItem(this.container, 6, 1);
+                            takeItem(this.container, 7, 1);
                             this.currentRecipe2 = false
                         }
                     }

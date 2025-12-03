@@ -12,7 +12,7 @@ import {
     system,
     Vector3,
 } from "@minecraft/server";
-import { ItemUtil } from "../../lib/ItemUtil";
+import { takeItem } from "../../lib/ItemUtil";
 import { CropsComponentParams } from "./CropComponent";
 import { subscribeEvent } from "../../lib/EventSubscriber";
 import { resolveSpec } from "../../lib/ObjectUtil";
@@ -25,7 +25,7 @@ function handlePlanting(seedId: string, crop: string, topLocation: Vector3, cont
     if (itemId == seedId) {
         player.dimension.playSound("dig.grass", block.location);
         block.dimension.setBlockType(topLocation, crop);
-        ItemUtil.clearItem(container, player.selectedSlotIndex);
+        takeItem(container, player.selectedSlotIndex, 1);
     }
     return
 }

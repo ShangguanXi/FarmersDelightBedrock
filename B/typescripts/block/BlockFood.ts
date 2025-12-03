@@ -1,74 +1,69 @@
 import {
-    Block,
-    Container,
-    EntityInventoryComponent,
+    Block, EquipmentSlot,
     ItemStack,
-    Player,
     PlayerBreakBlockBeforeEvent,
     PlayerInteractWithBlockAfterEvent,
     system,
     world,
 } from "@minecraft/server";
-import { hurtEquippedItem, ItemUtil } from "../lib/ItemUtil";
+import { hurtEquippedItem, takeEquippedItem } from "../lib/ItemUtil";
 import { subscribeEvent } from "../lib/EventSubscriber";
 import { spawnLoot } from "../lib/LootUtil";
-
 
 /**
  * @deprecated
  */
 export class BlockFood {
     @subscribeEvent(world.afterEvents.playerInteractWithBlock)
-    itemUseOn(args: PlayerInteractWithBlockAfterEvent) {
-        const player: Player = args.player;
-        const block: Block = args.block;
-        const itemStack: ItemStack | undefined = args.itemStack;
-        const blockFoodAllTag = block.getTags();
-        const inventory = args.player?.getComponent("inventory") as EntityInventoryComponent;
-        const container: Container | undefined = inventory?.container
-        if (!container) return;
-        for (const tag of blockFoodAllTag) {
-            const nameSpace = tag?.split("-")[0]?.split(":")[0];
-            const maxUse = Number(tag.split("-")[0]?.split(":")[1]);
-            const item = tag?.split("-")[1];
-            const itemType = item?.split(".")[0];
-            const itemId = item?.split(".")[1];
-            if (nameSpace == "farmersdelight.blockfood") {
-                if (Number(block.permutation.getState("farmersdelight:food_block_stage")) != maxUse) {
-                    if (!itemStack) {
-                        player.onScreenDisplay.setActionBar({ translate: 'farmersdelight.blockfood.' + itemId });
-                        return
-                    }
-                    if ((itemType == "tag" && itemStack.hasTag(itemId)) || (itemType == "item" && itemStack.typeId == itemId)) {
-                        block.setPermutation(block.permutation.withState("farmersdelight:food_block_stage", Number(block.permutation.getState("farmersdelight:food_block_stage")) + 1));
-                        const { x, y, z } = block;
-                        const info = block.typeId.split(":");
-                        spawnLoot(block.dimension, {
-                            x: x + 0.5,
-                            y: y + 1,
-                            z: z + 0.5,
-                        }, info[0] + "/food_block/" + info[1]);
-                        ItemUtil.clearItem(container, player.selectedSlotIndex)
-                    } else {
-                        player.onScreenDisplay.setActionBar({ translate: 'farmersdelight.blockfood.' + itemId });
-                    }
-                } else {
-                    const { x, y, z } = block;
-                    const info = block.typeId.split(":");
-                    spawnLoot(block.dimension, {
-                        x: x + 0.5,
-                        y: y + 1,
-                        z: z + 0.5,
-                    }, info[0] + "/food_block/" + info[1] + "_over");
-                    block.setType("minecraft:air");
-                }
-                break
+    static itemUseOn(event: PlayerInteractWithBlockAfterEvent) {
+        const block: Block = event.block;
+        const permutation = block.permutation;
+        const stack: ItemStack | undefined = event.itemStack;
+        let notice: string | undefined = undefined;
+        let stage: number | undefined = undefined;
+        for (const tag of block.getTags()) {
+            const spec = tag.split("-");
+            if (!spec[0].startsWith("farmersdelight.blockfood:")) continue;
+            if (stage === undefined) {
+                stage = permutation.getState("farmersdelight:food_block_stage");
+                if (stage === undefined) return;
+            }
+            if (stage === parseInt(spec[0].substring(25))) {
+                const { x, y, z } = block;
+                const info = block.typeId.split(":");
+                spawnLoot(block.dimension, {
+                    x: x + 0.5,
+                    y: y + 1,
+                    z: z + 0.5,
+                }, info[0] + "/food_block/" + info[1] + "_over");
+                block.setType("minecraft:air");
+                return;
+            }
+            const predicate = spec[1].split(".");
+            const itemId = predicate[1];
+            if (!stack) {
+                notice = "farmersdelight.blockfood." + itemId;
+                continue;
+            }
+            if (stack.typeId === itemId && (predicate[0] === "tag" && stack.hasTag(itemId))) {
+                const { x, y, z } = block;
+                const info = block.typeId.split(":");
+                spawnLoot(block.dimension, {
+                    x: x + 0.5,
+                    y: y + 1,
+                    z: z + 0.5,
+                }, info[0] + "/food_block/" + info[1]);
+                block.setPermutation(permutation.withState("farmersdelight:food_block_stage", stage + 1));
+                takeEquippedItem(event.player, EquipmentSlot.Mainhand, 1, false);
+                return;
             }
         }
-
+        if (notice) {
+            event.player.onScreenDisplay.setActionBar({ translate: "farmersdelight.blockfood." + notice });
+        }
     }
     @subscribeEvent(world.beforeEvents.playerBreakBlock)
-    break(event: PlayerBreakBlockBeforeEvent) {
+    static break(event: PlayerBreakBlockBeforeEvent) {
         const block: Block = event.block;
         if (block.hasTag("farmersdelight:blockfood") && !block.getComponent("farmersdelight:dish")) {
             if (block.permutation.getState("farmersdelight:food_block_stage")) {

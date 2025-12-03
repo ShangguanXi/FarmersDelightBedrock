@@ -6,7 +6,7 @@ import {
     CustomComponentParameters,
     EntityInventoryComponent,
 } from "@minecraft/server";
-import { ItemUtil } from "../../lib/ItemUtil";
+import { hurtItem, takeItem } from "../../lib/ItemUtil";
 import { blockComponent } from "../../lib/EventSubscriber";
 
 @blockComponent("farmersdelight:rich_soil")
@@ -30,18 +30,18 @@ export class RichSoilComponent implements BlockCustomComponent {
                 if (itemId == "minecraft:sugar_cane") {
                     dimension.playSound("dig.grass", block.location)
                     dimension.setBlockType(topLocation, "farmersdelight:rich_soil_sugar_cane_bottom")
-                    ItemUtil.clearItem(container,player.selectedSlotIndex)
+                    takeItem(container, player.selectedSlotIndex, 1);
                 }
                 if (itemId == "minecraft:brown_mushroom") {
                     dimension.playSound("dig.grass", block.location)
                     dimension.setBlockType(topLocation, "farmersdelight:brown_mushroom_colony")
-                    ItemUtil.clearItem(container,player.selectedSlotIndex)
+                    takeItem(container, player.selectedSlotIndex, 1);
 
                 }
                 if (itemId == "minecraft:red_mushroom") {
                     dimension.playSound("dig.grass", block.location)
                     dimension.setBlockType(topLocation, "farmersdelight:red_mushroom_colony")
-                    ItemUtil.clearItem(container,player.selectedSlotIndex)
+                    takeItem(container, player.selectedSlotIndex, 1);
 
                 }
 
@@ -49,7 +49,7 @@ export class RichSoilComponent implements BlockCustomComponent {
             if (hoeTag) {
                 dimension.setBlockType(block.location, "farmersdelight:rich_soil_farmland")
                 dimension.playSound("use.gravel", block.location)
-                ItemUtil.damageItem(container, player.selectedSlotIndex, 1)
+                hurtItem(container, player.selectedSlotIndex, 1);
             }
 
         } catch (error) {

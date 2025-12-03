@@ -9,7 +9,7 @@ import {
 import { getAttachedBlock } from "./BlockEntity";
 import { getBlockEntityType } from "./BlockWithEntity";
 
-export interface EventSignal<E, T> {
+export type EventSignal<E, T> = {
     subscribe(callback: (event: E) => any, option?: T): any;
 }
 
@@ -32,7 +32,7 @@ export function attachedBlockEntity(filter: EntityDataDrivenTriggerEventOptions)
     }>(constructor: T) {
         world.afterEvents.dataDrivenEntityTrigger.subscribe((event) => {
             const entity = event.entity;
-            const block = getAttachedBlock(entity);
+            const block = getAttachedBlock(entity, true);
             if (!block) return;
             if (getBlockEntityType(block)?.id === entity.typeId) {
                 constructor.onTick?.(entity, block);

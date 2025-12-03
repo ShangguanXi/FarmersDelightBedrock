@@ -10,20 +10,11 @@ import {
 } from "@minecraft/server";
 import { isSamePos } from "./ObjectUtil";
 
-export function locateBlock(entity: Entity): Block | undefined {
-    try {
-        const pos = entity.getDynamicProperty("farmersdelight:blockEntityDataLocation") as Vector3;
-        return pos ? entity.dimension.getBlock(pos) : undefined;
-    } catch {
-        return undefined;
-    }
-}
-
-export function getAttachedBlock(entity: Entity): Block | undefined {
+export function getAttachedBlock(entity: Entity, validate?: boolean): Block | undefined {
     try {
         const pos = entity.getDynamicProperty("farmersdelight:blockEntityDataLocation") as Vector3;
         if (!pos) return undefined;
-        if (!isSamePos(entity.location, pos)) {
+        if (validate && !isSamePos(entity.location, pos)) {
             entity.teleport(pos);
         }
         return entity.dimension.getBlock(pos);

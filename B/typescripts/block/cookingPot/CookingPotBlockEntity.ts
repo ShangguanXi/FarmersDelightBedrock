@@ -12,7 +12,7 @@ import { BlockEntity, BlockEntityData } from "../../lib/BlockEntity";
 import { isSamePos } from "../../lib/ObjectUtil";
 import { vanillaCookingPotRecipe } from "../../data/recipe/cookingPotRecipe";
 import { CookingPotRecipe } from "../../lib/CookingPotRecipe";
-import { isHeated } from "../../data/heatBlocks";
+import { isHeated } from "../../data/Heaters";
 import { subscribeEvent } from "../../lib/EventSubscriber";
 
 

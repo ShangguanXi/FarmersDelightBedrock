@@ -11,7 +11,7 @@ import {
     system,
     world,
 } from "@minecraft/server";
-import { isEnchanted, ItemUtil, spawnStack } from "../../lib/ItemUtil";
+import { hurtItem, isEnchanted, spawnStack, takeItem } from "../../lib/ItemUtil";
 import { subscribeEvent } from "../../lib/EventSubscriber";
 import { spawnLootAtBlock } from "../../lib/LootUtil";
 
@@ -38,7 +38,7 @@ export class WildCropComponent implements BlockCustomComponent {
             if (!container) return;
             args.cancel = true
             system.runTimeout(() => {
-                ItemUtil.damageItem(container, player.selectedSlotIndex)
+                hurtItem(container, player.selectedSlotIndex, 1);
                 spawnStack(new ItemStack(block.typeId), block);
                 block.dimension.runCommand(`/setblock ${x} ${y} ${z} air`)
 
@@ -72,7 +72,7 @@ class WildRiceComponent implements BlockCustomComponent {
         if (!container) return;
         const stack = container?.getItem(player.selectedSlotIndex);
         if (stack?.typeId === "minecraft:shears") {
-            ItemUtil.damageItem(container, player.selectedSlotIndex, 1);
+            hurtItem(container, player.selectedSlotIndex, 1);
             spawnStack(new ItemStack(lootItem), block);
         } else if (!isEnchanted(stack, "silk_touch")) {
             spawnLootAtBlock(block, lootTable)
@@ -95,7 +95,7 @@ class WildRiceComponent implements BlockCustomComponent {
             if (!container) return;
             system.runTimeout(() => {
                 world.structureManager.place("farmersdelight:wild_rice_no_water", dimension, block.location);
-                ItemUtil.clearItem(container, player.selectedSlotIndex, 1)
+                takeItem(container, player.selectedSlotIndex, 1);
                 dimension.playSound("dig.grass", block.location)
             })
 

@@ -1,20 +1,27 @@
 import {
+    Block,
     BlockComponentPlayerInteractEvent,
     BlockComponentRandomTickEvent,
     BlockComponentTickEvent,
     BlockCustomComponent,
     CustomComponentParameters,
+    Dimension,
     Direction,
     EntityInventoryComponent,
     GameMode,
     StartupEvent,
     system,
+    Vector3,
 } from "@minecraft/server";
-import { ItemUtil } from "../../lib/ItemUtil";
+import { takeItem } from "../../lib/ItemUtil";
 import { subscribeEvent } from "../../lib/EventSubscriber";
 import { KnownBlockStates } from "../../data/KnownBlockStates";
 import { spawnLootAtBlock } from "../../lib/LootUtil";
 
+export function playBoneMealEffect(block: Block, dimension: Dimension = block.dimension, pos: Vector3 = block.center()) {
+    dimension.playSound("item.bone_meal.use", pos);
+    dimension.spawnParticle("minecraft:crop_growth_emitter", pos);
+}
 
 export type CropsComponentParams = {
     loot: string;
@@ -54,7 +61,7 @@ class CropsComponent implements BlockCustomComponent {
             }
             if (random>25){
                 block.setPermutation(block.permutation.withState(params.state.name, age + 1))
-                ItemUtil.clearItem(container,player.selectedSlotIndex)
+                takeItem(container, player.selectedSlotIndex, 1);
             }
         }
         else{
@@ -105,7 +112,7 @@ class TorchflowerComponent implements BlockCustomComponent {
                     }
                     block.dimension.spawnParticle("minecraft:crop_growth_emitter", { x: block.location.x + 0.5, y: block.location.y + 0.5, z: block.location.z + 0.5 });
                     if (!container) return;
-                    ItemUtil.clearItem(container, player?.selectedSlotIndex)
+                    takeItem(container, player?.selectedSlotIndex, 1);
                 }
                 dimension.playSound("item.bone_meal.use", block.location)
 
@@ -180,7 +187,7 @@ class SugarCaneComponent implements BlockCustomComponent {
                         block.dimension.spawnParticle("minecraft:crop_growth_emitter", { x: block.location.x + 0.5, y: block.location.y + 0.5, z: block.location.z + 0.5 });
                         dimension.playSound("item.bone_meal.use", block.location)
                         if (!container) return;
-                        ItemUtil.clearItem(container, player?.selectedSlotIndex)
+                        takeItem(container, player?.selectedSlotIndex, 1);
                     }
 
                 }
@@ -190,7 +197,7 @@ class SugarCaneComponent implements BlockCustomComponent {
                         block.dimension.spawnParticle("minecraft:crop_growth_emitter", { x: block.location.x + 0.5, y: block.location.y + 0.5, z: block.location.z + 0.5 });
                         dimension.playSound("item.bone_meal.use", block.location)
                         if (!container) return;
-                        ItemUtil.clearItem(container, player?.selectedSlotIndex)
+                        takeItem(container, player?.selectedSlotIndex, 1);
                     }
                 }
 
@@ -268,7 +275,7 @@ class RiceComponent implements BlockCustomComponent {
                         }
                         block.dimension.spawnParticle("minecraft:crop_growth_emitter", { x: block.location.x + 0.5, y: block.location.y + 0.5, z: block.location.z + 0.5 });
                         if (!container) return;
-                        ItemUtil.clearItem(container, player?.selectedSlotIndex)
+                        takeItem(container, player?.selectedSlotIndex, 1);
                     }
 
                 }
@@ -292,7 +299,7 @@ class RiceComponent implements BlockCustomComponent {
                         }
                         block.dimension.spawnParticle("minecraft:crop_growth_emitter", { x: block.location.x + 0.5, y: block.location.y + 0.5, z: block.location.z + 0.5 });
                         if (!container) return;
-                        ItemUtil.clearItem(container, player?.selectedSlotIndex)
+                        takeItem(container, player?.selectedSlotIndex, 1);
                     }
 
                 }

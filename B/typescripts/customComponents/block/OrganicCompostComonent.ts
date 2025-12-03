@@ -7,7 +7,7 @@ import {
     EquipmentSlot,
     GameMode,
 } from "@minecraft/server";
-import { COMPOST_ACTIVATORS } from "../../data/organicCompostDetect";
+import { COMPOST_ACTIVATORS } from "../../data/CompostActivators";
 import { takeItemInSlot } from "../../lib/ItemUtil";
 import { blockComponent } from "../../lib/EventSubscriber";
 import { volumeAround } from "../../lib/BlockUtil";

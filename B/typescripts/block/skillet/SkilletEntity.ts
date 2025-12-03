@@ -1,6 +1,6 @@
 import { ItemStack, system, world } from "@minecraft/server";
 import { BlockEntity } from "../../lib/BlockEntity";
-import { isHeated } from "../../data/heatBlocks";
+import { isHeated } from "../../data/Heaters";
 import { CookableComponentParams } from "../../customComponents/item/CookableComponent";
 import { subscribeEvent } from "../../lib/EventSubscriber";
 

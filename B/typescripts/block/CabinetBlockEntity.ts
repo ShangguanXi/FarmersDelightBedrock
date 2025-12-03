@@ -6,7 +6,7 @@ import {
 } from "@minecraft/server";
 import { subscribeEvent, attachedBlockEntity } from "../lib/EventSubscriber";
 import { dropsItems } from "../lib/EntityUtil";
-import { locateBlock } from "../lib/BlockEntity";
+import { getAttachedBlock } from "../lib/BlockEntity";
 
 @attachedBlockEntity({ eventTypes: ["farmersdelight:cabinet_tick"] })
 export class CabinetBlockEntity {
@@ -17,7 +17,7 @@ export class CabinetBlockEntity {
     @subscribeEvent(world.afterEvents.playerInteractWithEntity)
     static onInteract(event: PlayerInteractWithEntityAfterEvent) {
         const entity = event.target;
-        const block = locateBlock(entity);
+        const block = getAttachedBlock(entity);
         if (!block || !block.hasTag('farmersdelight:cabinet')) return;
         const player = event.player;
         entity.dimension.playSound('block.barrel.open', entity.location);
@@ -30,7 +30,7 @@ export class CabinetBlockEntity {
     @subscribeEvent(world.afterEvents.dataDrivenEntityTrigger, { eventTypes: ["farmersdelight:cabinet_try_close"] })
     static tryClose(event: DataDrivenEntityTriggerAfterEvent) {
         const entity = event.entity;
-        const block = locateBlock(entity);
+        const block = getAttachedBlock(entity);
         if (!block) return;
         const dimension = entity.dimension;
         const players = dimension.getPlayers({name: entity.getDynamicProperty('farmersdelight:player_open') as string});

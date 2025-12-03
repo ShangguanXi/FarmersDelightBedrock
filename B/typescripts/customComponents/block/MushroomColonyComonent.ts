@@ -16,6 +16,7 @@ import { blockComponent } from "../../lib/EventSubscriber";
 import { volumeAround } from "../../lib/BlockUtil";
 import { randomInt } from "../../lib/RandomUtil";
 import { getEquipment, getEquipmentSlot } from "../../lib/EntityUtil";
+import { playBoneMealEffect } from "./CropComponent";
 
 type MushroomClusterSpec = {
     readonly maturity: number;
@@ -121,10 +122,7 @@ export class MushroomClusterComponent implements BlockCustomComponent {
                 }
                 return;
         }
-        const dimension = block.dimension;
-        const center = block.center();
-        dimension.spawnParticle("minecraft:crop_growth_emitter", center);
-        dimension.playSound("item.bone_meal.use", center);
+        playBoneMealEffect(block);
         if (player!!.getGameMode() === GameMode.Creative) return;
         const amount = stack!!.amount - 1;
         if (amount) {
@@ -174,7 +172,7 @@ export class MushroomClusterComponent implements BlockCustomComponent {
                 pos.y = y + randomInt(2) - randomInt(2);
                 pos.z = z + randomInt(3) - 1;
                 destination = dimension.getBlock(pos);
-                if (destination?.typeId === "minecraft:air" && canPlaceAt(destination)) {
+                if (destination?.isAir && canPlaceAt(destination)) {
                     x = pos.x;
                     y = pos.y;
                     z = pos.z;

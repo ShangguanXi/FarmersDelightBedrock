@@ -11,7 +11,7 @@ import {
     StartupEvent,
     system,
 } from "@minecraft/server";
-import { isEnchanted, ItemUtil } from "../../lib/ItemUtil";
+import { isEnchanted, takeItem } from "../../lib/ItemUtil";
 import { subscribeEvent } from "../../lib/EventSubscriber";
 import { spawnLootAtBlock } from "../../lib/LootUtil";
 import { getEquipment } from "../../lib/EntityUtil";
@@ -49,7 +49,7 @@ export class RopeComponent implements BlockCustomComponent {
                     }
                     block.dimension.spawnParticle("minecraft:crop_growth_emitter", { x: block.location.x + 0.5, y: block.location.y + 0.5, z: block.location.z + 0.5 });
                     if (!container) return;
-                    ItemUtil.clearItem(container, player?.selectedSlotIndex)
+                    takeItem(container, player?.selectedSlotIndex, 1);
                 }
 
             }

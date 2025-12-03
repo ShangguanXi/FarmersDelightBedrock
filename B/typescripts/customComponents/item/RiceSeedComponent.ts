@@ -8,8 +8,8 @@ import {
     StartupEvent,
     system,
 } from "@minecraft/server";
-import { ItemUtil } from "../../lib/ItemUtil";
-import { EntityUtil } from "../../lib/EntityUtil";
+import { takeItem } from "../../lib/ItemUtil";
+import { hasLimitedMaterials } from "../../lib/EntityUtil";
 import { subscribeEvent } from "../../lib/EventSubscriber";
 
 /**
@@ -32,7 +32,7 @@ class RiceSeedComponent implements ItemCustomComponent {
                 block.dimension.setBlockType(water.location,"farmersdelight:rice_block")
                 const inventory = source?.getComponent("inventory") as EntityInventoryComponent;
                 const container: Container = inventory?.container as Container
-                if (EntityUtil.gameMode(source)) ItemUtil.clearItem(container, source.selectedSlotIndex)
+                if (hasLimitedMaterials(source)) takeItem(container, source.selectedSlotIndex, 1);
             })
         }
 

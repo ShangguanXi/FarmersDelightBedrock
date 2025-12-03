@@ -9,6 +9,7 @@ import {
 import { subscribeEvent, attachedBlockEntity } from "../lib/EventSubscriber";
 import { offsetByDirection } from "../lib/DirectionUtil";
 import { dropsItems } from "../lib/EntityUtil";
+import { getAttachedBlock } from "../lib/BlockEntity";
 
 @attachedBlockEntity({ eventTypes: ["farmersdelight:basket_tick"] })
 export class BasketBlockEntity {
@@ -44,17 +45,14 @@ export class BasketBlockEntity {
         const version = entity.getDynamicProperty("farmersdelight:storage_version") as number;
         if (version) return;
         entity.setDynamicProperty("farmersdelight:storage_version", 1);
-        const pos = entity.getDynamicProperty("farmersdelight:blockEntityDataLocation");
-        if (!pos) return;
-        const block = entity.dimension.getBlock(pos as Vector3);
-        if (!block) return;
-        const permutation = block.permutation;
-        switch (permutation.getState("minecraft:block_face")) {
+        const block = getAttachedBlock(entity);
+        const permutation = block?.permutation;
+        switch (permutation?.getState("minecraft:block_face")) {
             case "up":
-                block.setPermutation(permutation.withState("minecraft:block_face", "down"));
+                block!!.setPermutation(permutation.withState("minecraft:block_face", "down"));
                 break;
             case "down":
-                block.setPermutation(permutation.withState("minecraft:block_face", "up"));
+                block!!.setPermutation(permutation.withState("minecraft:block_face", "up"));
                 break;
         }
     }

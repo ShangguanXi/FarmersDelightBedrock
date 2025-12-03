@@ -1,6 +1,6 @@
 import { Block, DataDrivenEntityTriggerAfterEvent, Entity, ItemStack, system, Vector3, world } from "@minecraft/server";
 import { BlockEntity } from "../../lib/BlockEntity";
-import { ItemUtil } from "../../lib/ItemUtil";
+import { takeItem } from "../../lib/ItemUtil";
 import { findCookingRecipe } from "../../data/recipe/cookRecipe";
 import { subscribeEvent } from "../../lib/EventSubscriber";
 
@@ -86,7 +86,7 @@ export class StoveBlockEntity extends BlockEntity {
                     }
                     entity.setDynamicProperty(`farmersdelight:item_${i}_time`, 0);
                     entity.setDynamicProperty(`farmersdelight:item_${i}_max_time`, 0);
-                    ItemUtil.clearItem(stoveContainer, i)
+                    takeItem(stoveContainer, i, 1);
                 }
             }
             if (notEmpty && (system.currentTick % 20 == 0) && work) {
