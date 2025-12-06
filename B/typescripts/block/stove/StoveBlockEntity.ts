@@ -1,8 +1,13 @@
-import { Block, DataDrivenEntityTriggerAfterEvent, Entity, ItemStack, system, Vector3, world } from "@minecraft/server";
-import { BlockEntity } from "../../lib/BlockEntity";
+import {
+    Block,
+    Entity,
+    ItemStack,
+    Vector3,
+} from "@minecraft/server";
 import { takeItem } from "../../lib/ItemUtil";
 import { findCookingRecipe } from "../../data/recipe/cookRecipe";
-import { subscribeEvent } from "../../lib/EventSubscriber";
+import { attachedBlockEntity } from "../../lib/EventSubscriber";
+import { dropsItems } from "../../lib/EntityUtil";
 
 const xOffset = 0.3;
 const yOffset = 0.2;
@@ -33,36 +38,35 @@ const stoveOffsets = [
     }
 ];
 
-export class StoveBlockEntity extends BlockEntity {
-    static getRotatedOffsets(direction: string): { x: number, y: number }[] {
-        switch (direction) {
-            case "south":
-                return stoveOffsets.map(offset => ({ x: -offset.x, y: -offset.y }));
-            case "east":
-                return stoveOffsets.map(offset => ({ x: -offset.y, y: offset.x }));
-            case "west":
-                return stoveOffsets.map(offset => ({ x: offset.y, y: -offset.x }));
-            case "north":
-            default:
-                return stoveOffsets;
-        }
+function getRotatedOffsets(direction: string): { x: number, y: number }[] {
+    switch (direction) {
+        case "south":
+            return stoveOffsets.map(offset => ({ x: -offset.x, y: -offset.y }));
+        case "east":
+            return stoveOffsets.map(offset => ({ x: -offset.y, y: offset.x }));
+        case "west":
+            return stoveOffsets.map(offset => ({ x: offset.y, y: -offset.x }));
+        case "north":
+        default:
+            return stoveOffsets;
     }
-    @subscribeEvent(world.afterEvents.dataDrivenEntityTrigger, { eventTypes: ["farmersdelight:stove_tick"] })
-    tick(args: DataDrivenEntityTriggerAfterEvent) {
-        const entityBlockData = super.blockEntityData(args.entity);
-        if (!entityBlockData) return;
-        const block: Block = entityBlockData.block;
-        const entity: Entity = entityBlockData.entity;
-        super.entityContainerLoot(entityBlockData, entity.typeId)
-        const { x, y, z }: Vector3 = entity.location;
+}
+
+@attachedBlockEntity({ eventTypes: ["farmersdelight:stove_tick"] })
+export class BasketBlockEntity {
+    static onDiscard(entity: Entity): undefined {
+        dropsItems(entity);
+    }
+
+    static onTick(entity: Entity, block: Block) {
+        const { x, y, z }: Vector3 = block.bottomCenter();
         const dimension = entity.dimension
         const stoveContainer = entity?.getComponent("inventory")?.container
         if (!stoveContainer) return
         const state = block.permutation.getState("minecraft:cardinal_direction")
         const work = block.permutation.getState('farmersdelight:is_working');
-        const rotatedOffsets = StoveBlockEntity.getRotatedOffsets(state as string);
+        const rotatedOffsets = getRotatedOffsets(state as string);
 
-        const notEmpty = stoveContainer.emptySlotsCount != 6
         for (let i = 0; i < 6; i++) {
             const itemStack = stoveContainer.getItem(i)
             if (itemStack != undefined) {
@@ -89,9 +93,9 @@ export class StoveBlockEntity extends BlockEntity {
                     takeItem(stoveContainer, i, 1);
                 }
             }
-            if (notEmpty && (system.currentTick % 20 == 0) && work) {
-                dimension.playSound("block.campfire.crackle", { x, y, z })
-            }
+        }
+        if (work && Math.random() < 0.1) {
+            dimension.playSound("block.campfire.crackle", { x, y: y + 0.5, z });
         }
     }
 }

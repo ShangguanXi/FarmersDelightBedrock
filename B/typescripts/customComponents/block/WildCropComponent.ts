@@ -4,16 +4,19 @@ import {
     BlockComponentPlayerPlaceBeforeEvent,
     BlockComponentTickEvent,
     BlockCustomComponent,
-    EntityInventoryComponent,
+    CustomComponentParameters,
+    EquipmentSlot,
+    GameMode,
     ItemStack,
     PlayerBreakBlockBeforeEvent,
     StartupEvent,
     system,
     world,
 } from "@minecraft/server";
-import { hurtItem, isEnchanted, spawnStack, takeItem } from "../../lib/ItemUtil";
-import { subscribeEvent } from "../../lib/EventSubscriber";
-import { spawnLootAtBlock } from "../../lib/LootUtil";
+import { hurtItem, isEnchanted, spawnStack } from "../../lib/ItemUtil";
+import { blockComponent, subscribeEvent } from "../../lib/EventSubscriber";
+import { getEquipment } from "../../lib/EntityUtil";
+import { destroyBlock, removeBlock } from "../../lib/BlockUtil";
 
 export class WildCropComponent implements BlockCustomComponent {
     constructor() {
@@ -26,8 +29,7 @@ export class WildCropComponent implements BlockCustomComponent {
     @subscribeEvent(world.beforeEvents.playerBreakBlock)
     break(args: PlayerBreakBlockBeforeEvent) {
         const block = args.block
-        const wildCrop = block.getComponent('farmersdelight:wild_crop')
-        if (!wildCrop) return
+        if (!block.getComponent("farmersdelight:wild_crop")) return;
         const itemStack = args.itemStack
         const player = args.player
         const { x, y, z } = args.block.location;
@@ -49,79 +51,58 @@ export class WildCropComponent implements BlockCustomComponent {
     @subscribeEvent(system.beforeEvents.startup)
     register(args: StartupEvent) {
         args.blockComponentRegistry.registerCustomComponent('farmersdelight:wild_crop', new WildCropComponent());
-        args.blockComponentRegistry.registerCustomComponent('farmersdelight:wild_rice', new WildRiceComponent());
     }
-
 }
 
-
-class WildRiceComponent implements BlockCustomComponent {
-    constructor() {
-        this.beforeOnPlayerPlace = this.beforeOnPlayerPlace.bind(this);
-        this.onTick = this.onTick.bind(this);
-        this.onPlayerBreak = this.onPlayerBreak.bind(this);
+@blockComponent("farmersdelight:wild_rice")
+export class WildRiceComponent implements BlockCustomComponent {
+    beforeOnPlayerPlace(event: BlockComponentPlayerPlaceBeforeEvent, params: CustomComponentParameters): void {
+        const block = event.block;
+        if (params.params === "upper") {
+            if (block.below()?.getComponent("farmersdelight:wild_rice")) return;
+        } else if (block.typeId === "minecraft:water" && !block.permutation.getState("liquid_depth")) {
+            const upper = block.above();
+            if (upper?.isAir) {
+                const permutation = event.permutationToPlace.withState("farmersdelight:upper", true);
+                system.run(() => {
+                    // 在onPlace里放会导致两个方块都过不了placement_filter
+                    if (upper.isValid && upper.isAir && upper?.below()?.getComponent("farmersdelight:wild_rice")) {
+                        upper.setPermutation(permutation);
+                    }
+                });
+                return;
+            }
+        }
+        event.cancel = true;
     }
-    onPlayerBreak(args: BlockComponentPlayerBreakEvent): void {
-        const player = args.player;
-        const block = args.block;
-        const inventory = player?.getComponent("inventory") as EntityInventoryComponent;
-        const container = inventory?.container;
-        const lootTable = this.getLootTable();
-        const lootItem = this.lootItem();
-        if (!player) return;
-        if (!container) return;
-        const stack = container?.getItem(player.selectedSlotIndex);
-        if (stack?.typeId === "minecraft:shears") {
-            hurtItem(container, player.selectedSlotIndex, 1);
-            spawnStack(new ItemStack(lootItem), block);
-        } else if (!isEnchanted(stack, "silk_touch")) {
-            spawnLootAtBlock(block, lootTable)
-        }
-    };
-    beforeOnPlayerPlace(args: BlockComponentPlayerPlaceBeforeEvent): void {
 
-        const player = args.player;
-        const inventory = player?.getComponent("inventory") as EntityInventoryComponent;
-        const container = inventory?.container;
-        const block = args.block;
-        const dimension = args.dimension;
-        const upBlockId = dimension.getBlock({ x: block.location.x, y: block.location.y + 1, z: block.location.z })?.typeId
-
-        if (upBlockId == "minecraft:water" || upBlockId != "minecraft:air") {
-            args.cancel = true;
-        }
-        else {
-            if (!player) return;
-            if (!container) return;
-            system.runTimeout(() => {
-                world.structureManager.place("farmersdelight:wild_rice_no_water", dimension, block.location);
-                takeItem(container, player.selectedSlotIndex, 1);
-                dimension.playSound("dig.grass", block.location)
-            })
-
-
-        }
-    }
-    onTick(args: BlockComponentTickEvent): void {
-        const block = args.block;
-        const dimension = args.dimension;
-        const blockState = block.permutation.getState("farmersdelight:wild_rice")
-        if (blockState == 0) {
-            const upBlockId = dimension.getBlock({ x: block.location.x, y: block.location.y + 1, z: block.location.z })?.typeId
-            if (upBlockId != "farmersdelight:wild_rice") {
-                dimension.setBlockType(block.location, "minecraft:air")
+    onPlayerBreak(event: BlockComponentPlayerBreakEvent, params: CustomComponentParameters): void {
+        if (params.params !== "upper") return;
+        const player = event.player;
+        if (player?.getGameMode() === GameMode.Creative) return;
+        const stack = getEquipment(player, EquipmentSlot.Mainhand);
+        if (isEnchanted(stack, "silk_touch")) return;
+        const block = event.block;
+        const loots = world.getLootTableManager()
+            .generateLootFromBlockPermutation(event.brokenBlockPermutation.withState("farmersdelight:upper", false), stack);
+        if (loots) {
+            const dimension = block.dimension;
+            const pos = block.bottomCenter();
+            for (const stack of loots) {
+                dimension.spawnItem(stack, pos);
             }
         }
     }
 
-
-
-    getLootTable(): string {
-        return "farmersdelight/crops/farmersdelight_wild_rice";
-
-    }
-    lootItem(): string {
-        return "farmersdelight:wild_rice";
-
+    onTick(event: BlockComponentTickEvent, params: CustomComponentParameters): void {
+        if (params.params === "upper") return;
+        const block = event.block;
+        if (block.above()?.getComponent("farmersdelight:wild_rice")) {
+            if (block.below()?.isAir) { // 懒得管下面的是土还是石头啥的了
+                destroyBlock(block);
+            }
+        } else {
+            removeBlock(block);
+        }
     }
 }

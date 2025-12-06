@@ -1,140 +1,116 @@
 {
-    "format_version": "1.21.120",
-    "minecraft:block": {
-        "description": {
-            "identifier": "farmersdelight:wild_rice",
-            "states": {
-                "farmersdelight:wild_rice": [
-                    0,
-                    1
-                ]
-            }
-        },
-        "permutations": [
-            {
-                "condition": "query.block_state('farmersdelight:wild_rice') == 1",
-                "components": {
-                    "minecraft:placement_filter": {
-                        "conditions": [
-                            {
-                                "block_filter": [
-                                    "farmersdelight:wild_rice"
-                                ],
-                                "allowed_faces": [
-                                    "up"
-                                ]
-                            }
-                        ]
-                    },
-                    "minecraft:material_instances": {
-                        "*": {
-                            "texture": "wild_rice_top",
-                            "render_method": "alpha_test",
-                            "ambient_occlusion": false,
-                            "face_dimming": false
-                        }
-                    }
-                }
-            },
-            {
-                "condition": "query.block_state('farmersdelight:wild_rice') == 0",
-                "components": {
-                    "minecraft:liquid_detection": {
-                        "detection_rules": [
-                            {
-                                "on_liquid_touches": "no_reaction",
-                                "can_contain_liquid": true
-                            }
-                        ]
-                    },
-                    "minecraft:material_instances": {
-                        "*": {
-                            "texture": "wild_rice_bottom",
-                            "render_method": "alpha_test",
-                            "ambient_occlusion": false,
-                            "face_dimming": false
-                        }
-                    },
-                    "minecraft:placement_filter": {
-                        "conditions": [
-                            {
-                                "block_filter": [
-                                    {
-                                        "tags": "q.any_tag('dirt','sand')"
-                                    }
-                                ],
-                                "allowed_faces": [
-                                    "up"
-                                ]
-                            },
-                            {
-                                "block_filter": [
-                                    "farmersdelight:wild_rice"
-                                ],
-                                "allowed_faces": [
-                                    "down"
-                                ]
-                            }
-                        ]
-                    }
-                }
-            }
-        ],
+  "format_version": "1.21.120",
+  "minecraft:block": {
+    "description": {
+      "identifier": "farmersdelight:wild_rice",
+      "states": {
+        "farmersdelight:upper": [false, true]
+      }
+    },
+    "permutations": [
+      {
+        "condition": "query.block_state('farmersdelight:upper')",
         "components": {
-            "minecraft:tick": {
-                "interval_range": [
-                    1,
-                    1
-                ]
-            },
-            "minecraft:movable": {
-                "movement_type": "popped" 
-            },
-            "farmersdelight:wild_rice": {},
-            "minecraft:destructible_by_mining": {
-                "seconds_to_destroy": 0.0
-            },
-            "minecraft:light_dampening": 0,
-            "minecraft:destructible_by_explosion": {
-                "explosion_resistance": 0.1
-            },
-            "minecraft:geometry": "geometry.rice_crop_support",
-            "minecraft:material_instances": {
-                "*": {
-                    "texture": "wild_rice_bottom",
-                    "render_method": "alpha_test",
-                    "ambient_occlusion": false,
-                    "face_dimming": false
-                }
-            },
-            "minecraft:flammable": {
-                "catch_chance_modifier": 30,
-                "destroy_chance_modifier": 60
-            },
-            "minecraft:liquid_detection": {
-                "detection_rules": [
-                    {
-                        "on_liquid_touches": "popped"
-                    }
-                ]
-            },
-            "minecraft:selection_box": {
-                "origin": [
-                    -5,
-                    0,
-                    -5
-                ],
-                "size": [
-                    10,
-                    16,
-                    10
-                ]
-            },
-            "minecraft:redstone_conductivity": {
-                "allows_wire_to_step_down": false
-            },
-            "minecraft:loot": "loot_tables/farmersdelight/crops/farmersdelight_wild_rice.json",
-            "minecraft:collision_box": false
+          "farmersdelight:wild_rice": "upper",
+          "minecraft:loot": "loot_tables/empty.json",
+          "minecraft:placement_filter": {
+            "conditions": [
+              {
+                "block_filter": ["farmersdelight:wild_rice"],
+                "allowed_faces": ["up"]
+              }
+            ]
+          },
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "wild_rice_top",
+              "render_method": "alpha_test",
+              "ambient_occlusion": false,
+              "face_dimming": false
+            }
+          }
         }
+      }, {
+        "condition": "!query.block_state('farmersdelight:upper')",
+        "components": {
+          "minecraft:liquid_detection": {
+            "detection_rules": [
+              {
+                "on_liquid_touches": "no_reaction",
+                "can_contain_liquid": true
+              }
+            ]
+          },
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "wild_rice_bottom",
+              "render_method": "alpha_test",
+              "ambient_occlusion": false,
+              "face_dimming": false
+            }
+          },
+          "minecraft:placement_filter": {
+            "conditions": [
+              {
+                "block_filter": [
+                  {
+                    "tags": "q.any_tag('dirt','sand')"
+                  }
+                ],
+                "allowed_faces": ["up"]
+              }, {
+                "block_filter": ["farmersdelight:wild_rice"],
+                "allowed_faces": ["down"]
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "components": {
+      "minecraft:tick": {
+        "interval_range": [1, 1]
+      },
+      "minecraft:movable": {
+        "movement_type": "popped"
+      },
+      "farmersdelight:wild_rice": "lower",
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0.0
+      },
+      "minecraft:light_dampening": 0,
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 0.1
+      },
+      "minecraft:geometry": "geometry.rice_crop_support",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "wild_rice_bottom",
+          "render_method": "alpha_test",
+          "ambient_occlusion": false,
+          "face_dimming": false
+        }
+      },
+      "minecraft:flammable": {
+        "catch_chance_modifier": 30,
+        "destroy_chance_modifier": 60
+      },
+      "minecraft:liquid_detection": {
+        "detection_rules": [
+          {
+            "on_liquid_touches": "popped"
+          }
+        ]
+      },
+      "minecraft:selection_box": {
+        "origin": [-5, 0, -5],
+        "size": [10, 16, 10]
+      },
+      "minecraft:redstone_conductivity": {
+        "allows_wire_to_step_down": false
+      },
+      "minecraft:loot": "loot_tables/farmersdelight/crops/farmersdelight_wild_rice.json",
+      "minecraft:collision_box": false
     }
+  }
 }

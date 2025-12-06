@@ -5,23 +5,27 @@
       "entries": [
         {
           "type": "item",
-          "weight": 10,
           "name": "farmersdelight:rice",
-          "functions": [
+          "conditions": [
             {
-              "function": "set_count",
-              "count": 1
+              "condition": "match_tool",
+              "minecraft:match_tool_filter_none": [
+                "minecraft:is_shears"
+              ]
             }
           ]
-        },
-        {
+        }, {
           "type": "item",
-          "weight": 1,
-          "name": "farmersdelight:rice_panicle",
-          "functions": [
+          "name": "farmersdelight:wild_rice",
+          "conditions": [
             {
-              "function": "set_count",
-              "count": 1
+              "condition": "match_tool",
+              "count": {
+                "range_min": 1
+              },
+              "minecraft:match_tool_filter_any": [
+                "minecraft:is_shears"
+              ]
             }
           ]
         }

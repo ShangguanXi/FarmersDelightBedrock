@@ -1,6 +1,4 @@
 import {
-    CustomComponentParameters,
-    ItemComponentUseOnEvent,
     ItemCustomComponent,
 } from "@minecraft/server";
 import { itemComponent } from "../../lib/EventSubscriber";
@@ -17,9 +15,4 @@ export type CuttingBroadComponentParams = {
 };
 
 @itemComponent("farmersdelight:cuttable")
-export class CuttableComponent implements ItemCustomComponent {
-    /**
-     * @deprecated
-     */
-    onUseOn(args: ItemComponentUseOnEvent, param: CustomComponentParameters): void {}
-}
+export class CuttableComponent implements ItemCustomComponent {}

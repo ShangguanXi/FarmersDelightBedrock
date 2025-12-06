@@ -3,7 +3,7 @@ import { CookingPotBlockEntity } from "./block/cookingPot/CookingPotBlockEntity"
 import { CuttingBoardBlock } from "./block/cuttingBoard/CuttingBoardBlock";
 import { CuttingBoardBlockEntity } from "./block/cuttingBoard/CuttingBoardBlockEntity";
 import { StoveBlock } from "./block/stove/StoveBlock";
-import { StoveBlockEntity } from "./block/stove/StoveBlockEntity";
+import "./block/stove/StoveBlockEntity";
 import { Skillet } from "./block/skillet/Skillet";
 import { SkilletEntity } from "./block/skillet/SkilletEntity";
 import "./item/Knife";
@@ -25,7 +25,7 @@ import "./customComponents/block/OrganicCompostComonent";
 import { RopeComponentRegister } from "./customComponents/block/RopeComponent";
 import { TatamMatComponentRegister } from "./customComponents/block/TatamMatComponent";
 import { TatamComponentRegister } from "./customComponents/block/TatamiComponent";
-import { StoveComponentRegister } from "./customComponents/block/StoveComponent";
+import "./customComponents/block/StoveComponent";
 import "./item/PartialBlocks";
 import "./customComponents/item/CuttableComponent";
 import "./customComponents/item/CookableComponent";
@@ -44,7 +44,6 @@ CookRecipeRegistries.initCookScoRegistries();
 
 new CropComponentRegister()
 new WildCropComponent();
-new StoveComponentRegister();
 new PieComponent();
 
 
@@ -63,7 +62,6 @@ new CuttingBoardBlock();
 new CuttingBoardBlockEntity();
 
 new StoveBlock();
-new StoveBlockEntity();
 
 new Skillet();
 new SkilletEntity();

@@ -3,7 +3,6 @@ import {
     Entity,
     EntityComponentTypes,
     EntityLoadAfterEvent,
-    Vector3,
     world,
 } from "@minecraft/server";
 import { subscribeEvent, attachedBlockEntity } from "../lib/EventSubscriber";

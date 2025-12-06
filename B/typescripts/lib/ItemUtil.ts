@@ -6,10 +6,8 @@ import {
     Entity,
     EntityComponentTypes,
     EquipmentSlot,
-    GameMode,
     ItemComponentTypes,
     ItemStack,
-    Player,
     Vector3,
 } from "@minecraft/server";
 
@@ -130,28 +128,35 @@ export function takeItem(
     return proxy ? takeItemInSlot(proxy, desired, check) : desired;
 }
 
-export function consumeItem(player: Player, container: Container | undefined, slot: number = player.selectedSlotIndex, convertTo?: ItemStack) {
+/**
+ * @return 仍需给予玩家的物品
+ */
+export function convertItemInSlot(slot: ContainerSlot, result: ItemStack, check = true): ItemStack | undefined {
+    if (check && !slot.hasItem()) return undefined;
+    const remaining = slot.amount - 1;
+    if (remaining) {
+        slot.amount = remaining;
+        return result;
+    }
+    slot.setItem(result);
+    return undefined;
+}
+
+/**
+ * @return 仍需给予玩家的物品
+ */
+export function giveItem(entity: Entity, stack: ItemStack | undefined, container?: Container): ItemStack | undefined {
     if (!container) {
-        container = player.getComponent(EntityComponentTypes.Inventory)?.container;
-        if (!container) return;
+        container = entity.getComponent(EntityComponentTypes.Inventory)?.container;
+        if (!container) return stack;
     }
-    const limited = player.getGameMode() !== GameMode.Creative;
-    if (limited) {
-        const proxy = container.getSlot(slot);
-        const remaining = proxy.hasItem() ? proxy.amount : 0;
-        if (remaining > 1) {
-            proxy.amount = remaining - 1;
-        } else {
-            proxy.setItem(convertTo);
-            return;
+    if (stack) {
+        stack = container.addItem(stack);
+        if (stack) {
+            entity.dimension.spawnItem(stack, entity.location);
         }
     }
-    if (convertTo) {
-        const remaining = container.addItem(convertTo);
-        if (limited && remaining) {
-            player.dimension.spawnItem(remaining, player.location);
-        }
-    }
+    return undefined;
 }
 
 export function spawnStack(

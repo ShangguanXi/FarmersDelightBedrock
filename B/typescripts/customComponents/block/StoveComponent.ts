@@ -1,52 +1,50 @@
 import {
     BlockComponentPlayerInteractEvent,
-    BlockCustomComponent,
-    EntityInventoryComponent,
+    BlockComponentPlayerPlaceBeforeEvent,
+    CustomComponentParameters,
+    EntityComponentTypes,
+    GameMode,
     ItemStack,
-    StartupEvent,
-    system,
 } from "@minecraft/server";
-import { consumeItem, hurtItem } from "../../lib/ItemUtil";
-import { subscribeEvent } from "../../lib/EventSubscriber";
+import { convertItemInSlot, giveItem, hurtItem } from "../../lib/ItemUtil";
+import { blockComponent } from "../../lib/EventSubscriber";
+import { BlockEntityComponent } from "./BlockEntityComponent";
 
-export class StoveComponent implements BlockCustomComponent {
-    constructor() {
-        this.onPlayerInteract = this.onPlayerInteract.bind(this);
+@blockComponent("farmersdelight:stove")
+export class StoveComponent extends BlockEntityComponent {
+    beforeOnPlayerPlace(event: BlockComponentPlayerPlaceBeforeEvent, _: CustomComponentParameters): void {
+        event.permutationToPlace = event.permutationToPlace.withState("farmersdelight:is_working", true);
     }
 
-    onPlayerInteract(args: BlockComponentPlayerInteractEvent): void {
-        const player = args.player;
-        const dimension = args.dimension;
-        const block = args.block;
-        const inventory = player?.getComponent("inventory") as EntityInventoryComponent;
-        const container = inventory?.container;
-        const { x, y, z } = args.block.location; if (!player) return;
-        const itemStack = container?.getItem(player.selectedSlotIndex);
-        if (!container) return
-        if (!itemStack) return
-        if (itemStack.typeId == "farmersdelight:skillet" ||itemStack.typeId == "farmersdelight:cooking_pot") return
-        if (itemStack.typeId == "minecraft:water_bucket" && block.permutation.getState('farmersdelight:is_working') == true) {
-            consumeItem(player, container, player.selectedSlotIndex, new ItemStack("minecraft:bucket"));
+    onPlayerInteract(event: BlockComponentPlayerInteractEvent): void {
+        const player = event.player;
+        const container = player?.getComponent(EntityComponentTypes.Inventory)?.container;
+        if (!container) return;
+        const selected = container!!.getSlot(player!!.selectedSlotIndex);
+        const stack = selected.getItem();
+        const block = event.block;
+        const lit = block.permutation.getState("farmersdelight:is_working");
+        const dimension = event.dimension;
+        if (stack?.typeId == "minecraft:water_bucket" && lit) {
+            const limited = player!!.getGameMode() !== GameMode.Creative;
+            let remaining: ItemStack | undefined = new ItemStack("minecraft:bucket");
+            if (limited) {
+                remaining = convertItemInSlot(selected, remaining);
+            }
+            giveItem(player, remaining, container);
             block.setPermutation(block.permutation.withState('farmersdelight:is_working', false));
-            dimension.playSound("random.fizz",{ x, y, z })
+            dimension.playSound("random.fizz", block);
         };
-        if (itemStack.hasTag("minecraft:is_shovel") && block.permutation.getState('farmersdelight:is_working') == true) {
+        if (stack?.hasTag("minecraft:is_shovel") && lit) {
             hurtItem(container, player.selectedSlotIndex, 1);
             block.setPermutation(block.permutation.withState('farmersdelight:is_working', false));
-            dimension.playSound("random.fizz",{ x, y, z })
+            dimension.playSound("random.fizz", block);
         };
-        if (itemStack.typeId == "minecraft:flint_and_steel"&& block.permutation.getState('farmersdelight:is_working') == false) {
+        if (stack?.typeId == "minecraft:flint_and_steel" && !lit) {
             hurtItem(container, player.selectedSlotIndex, 1);
             block.setPermutation(block.permutation.withState('farmersdelight:is_working', true));
-            dimension.playSound("fire.ignite",{ x, y, z })
+            dimension.playSound("fire.ignite", block);
         };
     }
         
-}
-export class StoveComponentRegister{
-    @subscribeEvent(system.beforeEvents.startup)
-    register(args:StartupEvent){
-        args.blockComponentRegistry.registerCustomComponent('farmersdelight:stove', new StoveComponent());
-    }
-  
 }

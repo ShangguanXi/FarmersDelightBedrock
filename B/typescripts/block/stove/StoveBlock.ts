@@ -16,19 +16,6 @@ import { findCookingRecipe } from "../../data/recipe/cookRecipe";
 import { subscribeEvent } from "../../lib/EventSubscriber";
 
 export class StoveBlock extends BlockWithEntity {
-    @subscribeEvent(world.afterEvents.playerPlaceBlock)
-    placeBlock(args: PlayerPlaceBlockAfterEvent) {
-        const block: Block = args.block;
-        if (!block.hasTag("farmersdelight:stove")) return;
-        //放置直接为点燃状态
-        block.setPermutation(block.permutation.withState('farmersdelight:is_working', true));
-        const { x, y, z }: Vector3 = block.location;
-        const entity: Entity = super.setBlock(args.block.dimension, { x: x + 0.5, y: y, z: z + 0.5 }, block.typeId);
-        for (let i = 0; i < 6; i++) {
-            entity.setDynamicProperty(`farmersdelight:item_${i}_time`, 0);
-            entity.setDynamicProperty(`farmersdelight:item_${i}_max_time`, 0);
-        }
-    }
     @subscribeEvent(world.afterEvents.playerInteractWithBlock)
     useOnBlock(args: PlayerInteractWithBlockAfterEvent) {
         if (!args.block.hasTag("farmersdelight:stove")) return;

@@ -12,7 +12,6 @@ type FarmersDelightBlockStates = {
     ["farmersdelight:process"]: number;
     ["farmersdelight:stage"]: number;
     ["farmersdelight:upper"]: boolean;
-    ["farmersdelight:wild_rice"]: number;
 };
 
 export type KnownBlockStates = VanillaBlockStates & FarmersDelightBlockStates;

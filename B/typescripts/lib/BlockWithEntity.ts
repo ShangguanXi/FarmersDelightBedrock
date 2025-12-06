@@ -41,6 +41,9 @@ export function getBlockEntity(block: Block, typeId: string): Entity | undefined
     return undefined;
 }
 
+/**
+ * @deprecated
+ */
 export class BlockWithEntity {
     //名为setblock实际上是放置对应方块实体的实体，若成功则返回放置的实体
     public setBlock(dimension: Dimension, location: Vector3, entityId: string): Entity {

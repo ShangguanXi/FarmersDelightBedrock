@@ -23,6 +23,9 @@ export function getAttachedBlock(entity: Entity, validate?: boolean): Block | un
     }
 }
 
+/**
+ * @deprecated
+ */
 export class BlockEntity {
     //获取方块实体数据
     public blockEntityData(entity: Entity): BlockEntityData | undefined {
