@@ -7,7 +7,7 @@ import {
     world,
 } from "@minecraft/server";
 import { getAttachedBlock } from "./BlockEntity";
-import { getBlockEntityType } from "./BlockWithEntity";
+import { resolveBlockEntityType } from "./BlockWithEntity";
 
 export type EventSignal<E, T> = {
     subscribe(callback: (event: E) => any, option?: T): any;
@@ -34,7 +34,7 @@ export function attachedBlockEntity(filter: EntityDataDrivenTriggerEventOptions)
             const entity = event.entity;
             const block = getAttachedBlock(entity, true);
             if (!block) return;
-            if (getBlockEntityType(block)?.id === entity.typeId) {
+            if (resolveBlockEntityType(block)?.id === entity.typeId) {
                 constructor.onTick?.(entity, block);
             } else if (constructor.onDiscard(entity) !== "DO NOT DISCARD") { // 不用boolean是为了防手贱
                 system.run(() => entity.remove());

@@ -2,7 +2,6 @@ import { CookingPotBlock } from "./block/cookingPot/CookingPotBlock";
 import { CookingPotBlockEntity } from "./block/cookingPot/CookingPotBlockEntity";
 import { CuttingBoardBlock } from "./block/cuttingBoard/CuttingBoardBlock";
 import { CuttingBoardBlockEntity } from "./block/cuttingBoard/CuttingBoardBlockEntity";
-import { StoveBlock } from "./block/stove/StoveBlock";
 import "./block/stove/StoveBlockEntity";
 import { Skillet } from "./block/skillet/Skillet";
 import { SkilletEntity } from "./block/skillet/SkilletEntity";
@@ -20,8 +19,8 @@ import "./customComponents/block/InteractComponent";
 import "./customComponents/block/WildCropComponent";
 import "./customComponents/block/RichSoilComponent";
 import { RichSoilFarmlandComponentRegister } from "./customComponents/block/RichSoilFarmlandComponent";
-import "./customComponents/block/MushroomColonyComonent";
-import "./customComponents/block/OrganicCompostComonent";
+import "./customComponents/block/MushroomClusterComponent";
+import "./customComponents/block/OrganicCompostComponent";
 import { RopeComponentRegister } from "./customComponents/block/RopeComponent";
 import { TatamMatComponentRegister } from "./customComponents/block/TatamMatComponent";
 import { TatamComponentRegister } from "./customComponents/block/TatamiComponent";
@@ -59,8 +58,6 @@ new CookingPotBlockEntity();
 
 new CuttingBoardBlock();
 new CuttingBoardBlockEntity();
-
-new StoveBlock();
 
 new Skillet();
 new SkilletEntity();

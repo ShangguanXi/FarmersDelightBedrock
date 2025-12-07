@@ -1,10 +1,9 @@
 import {
-    Block,
-    Entity,
+    Block, ContainerSlot,
+    Entity, EntityComponentTypes,
     ItemStack,
     Vector3,
 } from "@minecraft/server";
-import { takeItem } from "../../lib/ItemUtil";
 import { findCookingRecipe } from "../../data/recipe/cookRecipe";
 import { attachedBlockEntity } from "../../lib/EventSubscriber";
 import { dropsItems } from "../../lib/EntityUtil";
@@ -38,7 +37,7 @@ const stoveOffsets = [
     }
 ];
 
-function getRotatedOffsets(direction: string): { x: number, y: number }[] {
+function getRotatedOffsets(direction?: string): { x: number, y: number }[] {
     switch (direction) {
         case "south":
             return stoveOffsets.map(offset => ({ x: -offset.x, y: -offset.y }));
@@ -52,6 +51,13 @@ function getRotatedOffsets(direction: string): { x: number, y: number }[] {
     }
 }
 
+function getRecipeRequiredTime(slot: ContainerSlot): number {
+    const stack = slot.getItem();
+    if (!stack) return 0;
+    const recipe = findCookingRecipe(stack);
+    return recipe ? recipe.time : 0;
+}
+
 @attachedBlockEntity({ eventTypes: ["farmersdelight:stove_tick"] })
 export class BasketBlockEntity {
     static onDiscard(entity: Entity): undefined {
@@ -59,42 +65,51 @@ export class BasketBlockEntity {
     }
 
     static onTick(entity: Entity, block: Block) {
+        const container = entity?.getComponent(EntityComponentTypes.Inventory)?.container;
+        if (!container) return;
+        const extinguished = !block.permutation.getState("farmersdelight:is_working");
+        const rotatedOffsets = getRotatedOffsets(block.permutation.getState("minecraft:cardinal_direction"));
         const { x, y, z }: Vector3 = block.bottomCenter();
-        const dimension = entity.dimension
-        const stoveContainer = entity?.getComponent("inventory")?.container
-        if (!stoveContainer) return
-        const state = block.permutation.getState("minecraft:cardinal_direction")
-        const work = block.permutation.getState('farmersdelight:is_working');
-        const rotatedOffsets = getRotatedOffsets(state as string);
-
-        for (let i = 0; i < 6; i++) {
-            const itemStack = stoveContainer.getItem(i)
-            if (itemStack != undefined) {
-                const itemId = itemStack.typeId
-                const name: string[] = itemId.split(':');
-                const time = entity.getDynamicProperty(`farmersdelight:item_${i}_time`) as number;
-                const maxTime = entity.getDynamicProperty(`farmersdelight:item_${i}_max_time`) as number;
-                const particleName: string = name[0] == 'minecraft' ? `farmersdelight:${name[0]}_stove_${name[1]}` : `${name[0]}:stove_${name[1]}`;
-                entity.dimension.spawnParticle(particleName, { x: x + rotatedOffsets[i].x, y: y + 1.02, z: z + rotatedOffsets[i].y });
-                if (time % 20 == 0 && work) {
-                    entity.dimension.spawnParticle("farmersdelight:stove_smoke_particle", { x: x + rotatedOffsets[i].x, y: y + 1.02, z: z + rotatedOffsets[i].y });
+        const dimension = entity.dimension;
+        for (let i = 0; i < 6; ++i) {
+            const slot = container.getSlot(i);
+            if (!slot.hasItem()) continue;
+            const itemId = slot.typeId;
+            const name: string[] = itemId.split(":");
+            const particle: string = name[0] == "minecraft" ? `farmersdelight:minecraft_stove_${name[1]}` : `${name[0]}:stove_${name[1]}`;
+            dimension.spawnParticle(particle, {
+                x: x + rotatedOffsets[i].x,
+                y: y + 1.02,
+                z: z + rotatedOffsets[i].y,
+            });
+            if (extinguished) continue;
+            const time = entity.getDynamicProperty(`farmersdelight:item_${i}_time`) as number ?? 0;
+            if (time % 20 == 0) {
+                dimension.spawnParticle("farmersdelight:stove_smoke_particle", {
+                    x: x + rotatedOffsets[i].x,
+                    y: y + 1.02,
+                    z: z + rotatedOffsets[i].y,
+                });
+            }
+            if (time < (entity.getDynamicProperty(`farmersdelight:item_${i}_max_time`) as number ?? getRecipeRequiredTime(slot))) {
+                entity.setDynamicProperty(`farmersdelight:item_${i}_time`, time + 1);
+            } else {
+                let stack = slot.getItem();
+                if (!stack) continue;
+                const recipe = findCookingRecipe(stack);
+                if (recipe) {
+                    const count = recipe.count ?? 1;
+                    stack = new ItemStack(recipe.result, count > 0 ? count * slot.amount : slot.amount);
                 }
-                if (time < maxTime && work) {
-                    entity.setDynamicProperty(`farmersdelight:item_${i}_time`, time + 1)
-                }
-                if (time >= maxTime && work) {
-                    const recipe = findCookingRecipe(itemStack);
-                    if (recipe) {
-                        const count = recipe.count ?? 1;
-                        dimension.spawnItem(new ItemStack(recipe.result, count > 0 ? count : 1), { x, y: y + 1.4, z })
-                    }
-                    entity.setDynamicProperty(`farmersdelight:item_${i}_time`, 0);
-                    entity.setDynamicProperty(`farmersdelight:item_${i}_max_time`, 0);
-                    takeItem(stoveContainer, i, 1);
-                }
+                dimension.spawnItem(stack, { x, y: y + 1.0, z })?.clearVelocity();
+                slot.setItem(undefined);
+                entity.setDynamicProperties({
+                    [`farmersdelight:item_${i}_time`]: undefined,
+                    [`farmersdelight:item_${i}_max_time`]: undefined,
+                });
             }
         }
-        if (work && Math.random() < 0.1) {
+        if (!extinguished && Math.random() < 0.1) {
             dimension.playSound("block.campfire.crackle", { x, y: y + 0.5, z });
         }
     }

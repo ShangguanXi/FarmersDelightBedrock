@@ -7,14 +7,15 @@ import {
     EntityTypes,
     Vector3,
 } from "@minecraft/server";
-import { resolveSpec, isSamePos } from "./ObjectUtil";
+import { resolveSpec, isSamePos, ComponentSpec } from "./ObjectUtil";
+import { DynamicProperties } from "./DynamicProperties";
 
-export function getBlockEntityType(
+export function resolveBlockEntityType<T>(
     block: Block,
-    params: unknown = resolveSpec(block, "farmersdelight:block_entity"),
+    spec: ComponentSpec<T> | undefined = resolveSpec<T>(block, "farmersdelight:block_entity"),
 ): EntityType | undefined {
-    if (params) {
-        const type = EntityTypes.get(params.toString())
+    if (spec) {
+        const type = EntityTypes.get(spec.toString());
         if (type) return type;
     }
     return EntityTypes.get(block.typeId);
@@ -22,21 +23,21 @@ export function getBlockEntityType(
 
 export function initBlockEntity(block: Block, typeId: string): Entity {
     const pos = block.bottomCenter();
-    const impl = block.dimension.spawnEntity(typeId, pos);
-    impl.setDynamicProperty("farmersdelight:blockEntityDataLocation", pos);
-    impl.setDynamicProperty("farmersdelight:entityId", impl.id);
-    impl.setDynamicProperty("farmersdelight:storage_version", 1);
-    return impl;
+    const entity = block.dimension.spawnEntity(typeId, pos);
+    entity.setDynamicProperties({
+        [DynamicProperties.STORAGE_VERSION]: 1,
+        [DynamicProperties.BLOCK_LOCATION]: pos,
+    });
+    return entity;
 }
 
-export function getBlockEntity(block: Block, typeId: string): Entity | undefined {
+export function getBlockEntity<T>(block: Block, spec: ComponentSpec<T>): Entity | undefined {
+    const id = resolveBlockEntityType(block, spec)?.id;
+    if (!id) return undefined;
     const pos = block.bottomCenter();
-    const candidates = block.dimension.getEntities({ location: pos, type: typeId });
+    const candidates = block.dimension.getEntities({ location: pos, type: id });
     for (const candidate of candidates) {
-        if (candidate.id !== candidate.getDynamicProperty("farmersdelight:entityId")) continue;
-        if (isSamePos(pos, candidate.getDynamicProperty("farmersdelight:blockEntityDataLocation"))) {
-            return candidate;
-        }
+        if (isSamePos(pos, candidate.getDynamicProperty(DynamicProperties.BLOCK_LOCATION))) return candidate;
     }
     return undefined;
 }

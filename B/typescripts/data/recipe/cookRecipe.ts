@@ -44,7 +44,6 @@ const RECIPES_BY_ID: Map<string, CookingRecipe> = new Map([
     ["minecraft:beef", { result: "minecraft:cooked_beef", time: 200, exp: 0.35 }],
     ["minecraft:porkchop", { result: "minecraft:cooked_porkchop", time: 200, exp: 0.35 }],
     ["minecraft:chicken", { result: "minecraft:cooked_chicken", time: 200, exp: 0.35 }],
-
     ["#minecraft:egg", { result: "farmersdelight:fried_egg", time: 200, exp: 0.35 }],
 ]);
 

@@ -12,6 +12,10 @@ export function volumeAround({ x, y, z }: Vector3, offsetX: number, offsetY: num
     });
 }
 
+export function makeUniqueId(block: Block) {
+    return `${block.dimension.id}@${block.x}@${block.y}@${block.z}`;
+}
+
 export function removeBlock(block?: Block) {
     block?.setType(block.isWaterlogged ? "minecraft:water" : "minecraft:air");
 }
