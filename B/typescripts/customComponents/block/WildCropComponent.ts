@@ -1,5 +1,4 @@
 import {
-    BlockComponentOnPlaceEvent,
     BlockComponentPlayerBreakEvent,
     BlockComponentPlayerPlaceBeforeEvent,
     BlockComponentTickEvent,
@@ -7,50 +6,37 @@ import {
     CustomComponentParameters,
     EquipmentSlot,
     GameMode,
-    ItemStack,
     PlayerBreakBlockBeforeEvent,
-    StartupEvent,
     system,
     world,
 } from "@minecraft/server";
-import { hurtItem, isEnchanted, spawnStack } from "../../lib/ItemUtil";
+import { hurtEquippedItem, isEnchanted, spawnStack } from "../../lib/ItemUtil";
 import { blockComponent, subscribeEvent } from "../../lib/EventSubscriber";
 import { getEquipment } from "../../lib/EntityUtil";
 import { destroyBlock, removeBlock } from "../../lib/BlockUtil";
 
+/**
+ * @deprecated
+ */
+@blockComponent("farmersdelight:wild_crop")
 export class WildCropComponent implements BlockCustomComponent {
-    constructor() {
-        this.onPlace = this.onPlace.bind(this);
-
-    }
-    onPlace(args: BlockComponentOnPlaceEvent): void {}
-
-
     @subscribeEvent(world.beforeEvents.playerBreakBlock)
-    break(args: PlayerBreakBlockBeforeEvent) {
-        const block = args.block
+    static harvest(event: PlayerBreakBlockBeforeEvent) {
+        const player = event.player;
+        if (player.getGameMode() === GameMode.Creative) return;
+        const block = event.block;
         if (!block.getComponent("farmersdelight:wild_crop")) return;
-        const itemStack = args.itemStack
-        const player = args.player
-        const { x, y, z } = args.block.location;
-        if (!itemStack) return
-        if (isEnchanted(itemStack, "silk_touch")) return;
-        if (itemStack.typeId == "minecraft:shears") {
-            const container = player.getComponent("inventory")?.container;
-            if (!container) return;
-            args.cancel = true
-            system.runTimeout(() => {
-                hurtItem(container, player.selectedSlotIndex, 1);
-                spawnStack(new ItemStack(block.typeId), block);
-                block.dimension.runCommand(`/setblock ${x} ${y} ${z} air`)
-
-            })
+        const stack = event.itemStack;
+        if (!isEnchanted(stack, "silk_touch") && stack?.hasTag("minecraft:is_shears")) {
+            const loot = event.block.getItemStack(1, false);
+            if (!loot) return;
+            system.run(() => {
+                spawnStack(loot, block);
+                removeBlock(block);
+                hurtEquippedItem(player, stack);
+            });
+            event.cancel = true;
         }
-    }
-
-    @subscribeEvent(system.beforeEvents.startup)
-    register(args: StartupEvent) {
-        args.blockComponentRegistry.registerCustomComponent('farmersdelight:wild_crop', new WildCropComponent());
     }
 }
 

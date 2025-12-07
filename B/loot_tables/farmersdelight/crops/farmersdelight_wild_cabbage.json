@@ -4,26 +4,55 @@
       "rolls": 1,
       "entries": [
         {
+          "conditions": [
+            {
+              "condition": "match_tool",
+              "minecraft:match_tool_filter_none": [
+                "minecraft:is_shears"
+              ]
+            }
+          ],
           "type": "item",
-          "weight": 8,
           "name": "farmersdelight:cabbage_seeds",
           "functions": [
             {
-              "function": "set_count",
-              "count": 1
+              "function": "explosion_decay"
             }
           ]
+        }, {
+          "conditions": [
+            {
+              "condition": "match_tool",
+              "count": {
+                "range_min": 1
+              },
+              "minecraft:match_tool_filter_any": [
+                "minecraft:is_shears"
+              ]
+            }
+          ],
+          "type": "item",
+          "name": "farmersdelight:wild_cabbages"
+        }
+      ]
+    }, {
+      "conditions": [
+        {
+          "condition": "random_chance",
+          "chance": 0.2
         },
         {
-          "type": "item",
-          "weight": 2,
-          "name": "farmersdelight:cabbage",
-          "functions": [
-            {
-              "function": "set_count",
-              "count": 1
-            }
+          "condition": "match_tool",
+          "minecraft:match_tool_filter_none": [
+            "minecraft:is_shears"
           ]
+        }
+      ],
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "farmersdelight:cabbage"
         }
       ]
     }

@@ -31,7 +31,7 @@ const toolMapping = [
     { list: ItemofAxeList, tool: 'minecraft:is_axe', mode: 'tag', isBlock: false },
     { list: ItemofKnifeList, tool: 'farmersdelight:is_knife', mode: 'tag', isBlock: false },
     { list: ItemofPickaxeList, tool: 'minecraft:is_pickaxe', mode: 'tag', isBlock: false },
-    { list: ItemofShearsList, tool: 'minecraft:shears', mode: 'item', isBlock: false }
+    { list: ItemofShearsList, tool: "minecraft:is_shears", mode: "tag", isBlock: false },
 ];
 export { toolMapping };
 

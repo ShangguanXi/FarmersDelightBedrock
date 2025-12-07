@@ -13,11 +13,11 @@ import "./block/CabinetBlockEntity";
 import { CuttingBoardRegistries } from "./init/CuttingBoardRecipeRegistries";
 import "./block/RiceBlock";
 import { CookRecipeRegistries } from "./init/CookRecipeRegistries";
-import { BlockFood } from "./block/BlockFood";
+import "./block/BlockFood";
 import { RiceSeedComponentRegister } from "./customComponents/item/RiceSeedComponent";
 import { CropComponentRegister } from "./customComponents/block/CropComponent";
 import "./customComponents/block/InteractComponent";
-import { WildCropComponent } from "./customComponents/block/WildCropComponent";
+import "./customComponents/block/WildCropComponent";
 import "./customComponents/block/RichSoilComponent";
 import { RichSoilFarmlandComponentRegister } from "./customComponents/block/RichSoilFarmlandComponent";
 import "./customComponents/block/MushroomColonyComonent";
@@ -43,7 +43,6 @@ CuttingBoardRegistries.initCuttingBoardScoRegistries();
 CookRecipeRegistries.initCookScoRegistries();
 
 new CropComponentRegister()
-new WildCropComponent();
 new PieComponent();
 
 
@@ -66,5 +65,4 @@ new StoveBlock();
 new Skillet();
 new SkilletEntity();
 
-new BlockFood();
 new CookingPotRecipeRegistries();

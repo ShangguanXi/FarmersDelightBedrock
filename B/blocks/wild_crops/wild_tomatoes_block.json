@@ -1,88 +1,78 @@
 {
-    "format_version": "1.21.120",
-    "minecraft:block": {
-        "description": {
-            "identifier": "farmersdelight:wild_tomatoes"
-        },
-        "components": {
-            "farmersdelight:wild_crop": {},
-            "minecraft:destructible_by_mining": {
-                "seconds_to_destroy": 0.0
-            },
-            "minecraft:light_dampening": 0,
-            "minecraft:destructible_by_explosion": {
-                "explosion_resistance": 0.1
-            },
-            "minecraft:geometry": "geometry.wild_crop",
-            "minecraft:material_instances": {
-                "*": {
-                    "texture": "wild_tomatoes",
-                    "render_method": "alpha_test",
-                    "ambient_occlusion": false,
-                    "face_dimming": false
-                }
-            },
-            "minecraft:flammable": {
-                "catch_chance_modifier": 30,
-                "destroy_chance_modifier": 60
-            },
-            "minecraft:placement_filter": {
-                "conditions": [
-                    {
-                        "block_filter": [
-                            {
-                                "tags": "q.any_tag('dirt','sand')"
-                            }
-                        ],
-                        "allowed_faces": [
-                            "up"
-                        ]
-                    }
-                ]
-            },
-            "minecraft:random_offset": {
-                "x": {
-                    "steps": 0,
-                    "range": {
-                        "min": -4,
-                        "max": 4
-                    }
-                },
-                "z": {
-                    "steps": 0,
-                    "range": {
-                        "min": -4,
-                        "max": 4
-                    }
-                }
-            },
-            "minecraft:movable": {
-                "movement_type": "popped" 
-            },
-            "minecraft:selection_box": {
-                "origin": [
-                    -5,
-                    0,
-                    -5
-                ],
-                "size": [
-                    10,
-                    16,
-                    10
-                ]
-            },
-            "minecraft:liquid_detection": {
-                "detection_rules": [
-                    {
-                        "on_liquid_touches": "popped"
-                    }
-                ]
-            },
-            "minecraft:redstone_conductivity": {
-                "allows_wire_to_step_down": false
-            },
-            "minecraft:loot": "loot_tables/farmersdelight/crops/farmersdelight_wild_tomato.json",
-            "minecraft:collision_box": false
+  "format_version": "1.21.120",
+  "minecraft:block": {
+    "description": {
+      "identifier": "farmersdelight:wild_tomatoes"
+    },
+    "components": {
+      "tag:farmersdelight:wild_crop": {},
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0.0
+      },
+      "minecraft:light_dampening": 0,
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 0.1
+      },
+      "minecraft:geometry": "geometry.wild_crop",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "wild_tomatoes",
+          "render_method": "alpha_test",
+          "ambient_occlusion": false,
+          "face_dimming": false
         }
+      },
+      "minecraft:flammable": {
+        "catch_chance_modifier": 30,
+        "destroy_chance_modifier": 60
+      },
+      "minecraft:placement_filter": {
+        "conditions": [
+          {
+            "block_filter": [
+              {
+                "tags": "q.any_tag('dirt','sand')"
+              }
+            ],
+            "allowed_faces": ["up"]
+          }
+        ]
+      },
+      "minecraft:random_offset": {
+        "x": {
+          "steps": 0,
+          "range": {
+            "min": -4,
+            "max": 4
+          }
+        },
+        "z": {
+          "steps": 0,
+          "range": {
+            "min": -4,
+            "max": 4
+          }
+        }
+      },
+      "minecraft:movable": {
+        "movement_type": "popped"
+      },
+      "minecraft:selection_box": {
+        "origin": [-5, 0, -5],
+        "size": [10, 16, 10]
+      },
+      "minecraft:liquid_detection": {
+        "detection_rules": [
+          {
+            "on_liquid_touches": "popped"
+          }
+        ]
+      },
+      "minecraft:redstone_conductivity": {
+        "allows_wire_to_step_down": false
+      },
+      "minecraft:loot": "loot_tables/farmersdelight/crops/farmersdelight_wild_tomato.json",
+      "minecraft:collision_box": false
     }
+  }
 }

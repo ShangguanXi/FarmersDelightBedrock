@@ -4,8 +4,6 @@
       "rolls": 1,
       "entries": [
         {
-          "type": "item",
-          "name": "farmersdelight:rice",
           "conditions": [
             {
               "condition": "match_tool",
@@ -13,10 +11,15 @@
                 "minecraft:is_shears"
               ]
             }
+          ],
+          "type": "item",
+          "name": "farmersdelight:rice",
+          "functions": [
+            {
+              "function": "explosion_decay"
+            }
           ]
         }, {
-          "type": "item",
-          "name": "farmersdelight:wild_rice",
           "conditions": [
             {
               "condition": "match_tool",
@@ -26,6 +29,13 @@
               "minecraft:match_tool_filter_any": [
                 "minecraft:is_shears"
               ]
+            }
+          ],
+          "type": "item",
+          "name": "farmersdelight:wild_rice",
+          "functions": [
+            {
+              "function": "explosion_decay"
             }
           ]
         }
