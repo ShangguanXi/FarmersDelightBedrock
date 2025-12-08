@@ -1,10 +1,12 @@
 import {
+    Block,
     BlockPermutation,
     Entity,
     EntityComponentTypes,
     ItemStack,
 } from "@minecraft/server";
 import { enchantmentLevelOf } from "../lib/ItemUtil";
+import { spawnLootAtBlock } from "../lib/LootUtil";
 
 export type BlockLoot = (stack: ItemStack, state: BlockPermutation) => string | undefined;
 export type EntityLoot = (stack: ItemStack, victim: Entity) => ItemStack | undefined;
@@ -87,3 +89,20 @@ export const DROPS_CAKE_SLICE: Set<string> = new Set([
     "minecraft:red_candle_cake",
     "minecraft:black_candle_cake",
 ]);
+
+export function spawnKnifeLoot(
+    block: Block,
+    permutation: BlockPermutation,
+    tool: ItemStack,
+) {
+    const blockId = permutation.type.id;
+    const loot = BLOCK_LOOT_WITH_KNIFE.get(blockId)?.(tool, permutation);
+    if (loot) {
+        spawnLootAtBlock(block, loot);
+    } else if (DROPS_CAKE_SLICE.has(blockId)) {
+        block.dimension.spawnItem(new ItemStack("farmersdelight:cake_slice", blockId === "minecraft:cake"
+            ? 7 - (permutation.getState("bite_counter") ?? 0)
+            : 7,
+        ), block.center());
+    }
+}

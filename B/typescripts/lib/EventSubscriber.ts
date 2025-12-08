@@ -46,18 +46,18 @@ export function attachedBlockEntity(filter: EntityDataDrivenTriggerEventOptions)
 
 export function blockComponent(name: string) {
     return function <T extends new () => BlockCustomComponent>(constructor: T) {
-        system.beforeEvents.startup.subscribe((event) => {
-            event.blockComponentRegistry.registerCustomComponent(name, new constructor());
-        });
+        system.beforeEvents.startup.subscribe((event) =>
+            event.blockComponentRegistry.registerCustomComponent(name, new constructor()),
+        );
         return constructor;
     };
 }
 
 export function itemComponent(name: string) {
     return function <T extends new () => ItemCustomComponent>(constructor: T) {
-        system.beforeEvents.startup.subscribe((event) => {
-            event.itemComponentRegistry.registerCustomComponent(name, new constructor());
-        });
+        system.beforeEvents.startup.subscribe((event) =>
+            event.itemComponentRegistry.registerCustomComponent(name, new constructor()),
+        );
         return constructor;
     };
 }

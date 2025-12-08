@@ -12,8 +12,7 @@ import {
 import { horizontalDirectionOf } from "../../lib/EntityUtil";
 import { oppositeOf, offsetByDirection } from "../../lib/DirectionUtil";
 import { itemComponent } from "../../lib/EventSubscriber";
-import { spawnLootAtBlock } from "../../lib/LootUtil";
-import { BLOCK_LOOT_WITH_KNIFE } from "../../data/KnifeLoot";
+import { spawnKnifeLoot } from "../../data/KnifeLoot";
 import { hurtEquippedItem } from "../../lib/ItemUtil";
 
 @itemComponent("farmersdelight:knife")
@@ -23,12 +22,8 @@ export class KnifeComponent implements ItemCustomComponent {
         if (!stack) return;
         const entity = event.source;
         if (entity instanceof Player && (entity as Player).getGameMode() === GameMode.Creative) return;
+        spawnKnifeLoot(event.block, event.minedBlockPermutation, stack);
         hurtEquippedItem(entity, stack);
-        const permutation = event.minedBlockPermutation;
-        const loot = BLOCK_LOOT_WITH_KNIFE.get(permutation.type.id)?.(stack, permutation);
-        if (loot) {
-            spawnLootAtBlock(event.block, loot);
-        }
     }
 
     onUseOn(event: ItemComponentUseOnEvent, _: CustomComponentParameters) {

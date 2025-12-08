@@ -11,8 +11,7 @@ import {
 } from "@minecraft/server";
 import { hurtEquippedItem } from "../lib/ItemUtil";
 import { subscribeEvent } from "../lib/EventSubscriber";
-import { BLOCK_LOOT_WITH_KNIFE, DROPS_CAKE_SLICE, ENTITY_LOOT_WITH_KNIFE } from "../data/KnifeLoot";
-import { spawnLootAtBlock } from "../lib/LootUtil";
+import { DROPS_CAKE_SLICE, ENTITY_LOOT_WITH_KNIFE, spawnKnifeLoot } from "../data/KnifeLoot";
 import { getEquipment } from "../lib/EntityUtil";
 
 // noinspection JSUnusedGlobalSymbols
@@ -36,12 +35,8 @@ export class Knife {
         if (player.getGameMode() === GameMode.Creative) return;
         const stack = event.itemStackAfterBreak;
         if (!stack || !stack.hasTag("farmersdelight:is_knife") || stack.hasComponent("farmersdelight:knife")) return;
+        spawnKnifeLoot(event.block, event.brokenBlockPermutation, stack);
         hurtEquippedItem(player, stack);
-        const permutation = event.brokenBlockPermutation;
-        const loot = BLOCK_LOOT_WITH_KNIFE.get(permutation.type.id)?.(stack, permutation);
-        if (loot) {
-            spawnLootAtBlock(event.block, loot);
-        }
     }
 
     @subscribeEvent(world.beforeEvents.playerInteractWithBlock)
@@ -66,7 +61,7 @@ export class Knife {
             } else {
                 world.getLootTableManager()
                     .generateLootFromBlockPermutation(block.permutation)
-                    ?.forEach((stack) => dimension.spawnItem(stack, pos));
+                    ?.forEach((stack) => dimension.spawnItem(stack, pos)); // 掉落蜡烛
                 block.setPermutation(BlockPermutation.resolve("minecraft:cake", { "bite_counter": 1 }));
             }
         });
