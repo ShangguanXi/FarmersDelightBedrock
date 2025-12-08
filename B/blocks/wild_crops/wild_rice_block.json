@@ -4,7 +4,10 @@
     "description": {
       "identifier": "farmersdelight:wild_rice",
       "states": {
-        "farmersdelight:upper": [false, true]
+        "farmersdelight:upper": [
+          false,
+          true
+        ]
       }
     },
     "permutations": [
@@ -16,8 +19,12 @@
           "minecraft:placement_filter": {
             "conditions": [
               {
-                "block_filter": ["farmersdelight:wild_rice"],
-                "allowed_faces": ["up"]
+                "block_filter": [
+                  "farmersdelight:wild_rice"
+                ],
+                "allowed_faces": [
+                  "up"
+                ]
               }
             ]
           },
@@ -30,7 +37,8 @@
             }
           }
         }
-      }, {
+      },
+      {
         "condition": "!query.block_state('farmersdelight:upper')",
         "components": {
           "minecraft:liquid_detection": {
@@ -57,10 +65,17 @@
                     "tags": "q.any_tag('dirt','sand')"
                   }
                 ],
-                "allowed_faces": ["up"]
-              }, {
-                "block_filter": ["farmersdelight:wild_rice"],
-                "allowed_faces": ["down"]
+                "allowed_faces": [
+                  "up"
+                ]
+              },
+              {
+                "block_filter": [
+                  "farmersdelight:wild_rice"
+                ],
+                "allowed_faces": [
+                  "down"
+                ]
               }
             ]
           }
@@ -69,7 +84,10 @@
     ],
     "components": {
       "minecraft:tick": {
-        "interval_range": [1, 1]
+        "interval_range": [
+          1,
+          1
+        ]
       },
       "minecraft:movable": {
         "movement_type": "popped"
@@ -103,8 +121,16 @@
         ]
       },
       "minecraft:selection_box": {
-        "origin": [-5, 0, -5],
-        "size": [10, 16, 10]
+        "origin": [
+          -5,
+          0,
+          -5
+        ],
+        "size": [
+          10,
+          16,
+          10
+        ]
       },
       "minecraft:redstone_conductivity": {
         "allows_wire_to_step_down": false
