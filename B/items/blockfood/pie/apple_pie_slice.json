@@ -22,7 +22,13 @@
       },
       "efm:realistic_food":{
         "expire_time":20
-      }
+      },
+      "farmersdelight:consume_effects": [
+        {
+          "effect": "speed",
+          "duration": 600
+        }
+      ]
     },
     "description": {
       "identifier": "farmersdelight:apple_pie_slice",

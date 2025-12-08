@@ -3,8 +3,9 @@ import {
     ContainerSlot,
     Direction,
     Entity,
+    EntityAttributeComponent,
+    EntityComponentTypeMap,
     EntityComponentTypes,
-    EntityQueryOptions,
     EquipmentSlot,
     GameMode,
     ItemStack,
@@ -54,4 +55,16 @@ export function dropsItems(
         }
     }
     container.clearAll();
+}
+
+type EntityAttributeComponentKeys = {
+    [K in keyof EntityComponentTypeMap]: EntityComponentTypeMap[K] extends EntityAttributeComponent ? K : never
+}[keyof EntityComponentTypeMap];
+
+export function increaseAttribute(entity: Entity, attribute: EntityAttributeComponentKeys, delta: number) {
+    const component = entity.getComponent(attribute);
+    if (component) {
+        const value = component.currentValue + delta, max = component.effectiveMax;
+        component.setCurrentValue(value > max ? max : value);
+    }
 }

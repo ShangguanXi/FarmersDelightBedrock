@@ -1,171 +1,121 @@
 {
-    "format_version": "1.21.120",
-    "minecraft:block": {
-        "description": {
-            "identifier": "farmersdelight:apple_pie_block",
-            "menu_category": {
-                "category": "none"
-            },
-            "states": {
-                "farmersdelight:food_block_stage": [
-                    0,
-                    1,
-                    2,
-                    3
-                ]
-            },
-            "traits": {
-                "minecraft:placement_direction": {
-                    "enabled_states": [
-                        "minecraft:cardinal_direction"
-                    ],
-                    "y_rotation_offset": 0.0
-                }
-            }
-        },
-        "permutations": [
-            {
-                "condition": "query.block_state('farmersdelight:food_block_stage') == 0",
-                "components": {
-                    "minecraft:geometry": "geometry.pie"
-                }
-            },
-            {
-                "condition": "query.block_state('farmersdelight:food_block_stage') == 1",
-                "components": {
-                    "minecraft:loot": "loot_tables/farmersdelight/empty.json",
-                    "minecraft:geometry": "geometry.pie_slice1"
-                }
-            },
-            {
-                "condition": "query.block_state('farmersdelight:food_block_stage') == 2",
-                "components": {
-                    "minecraft:loot": "loot_tables/farmersdelight/empty.json",
-                    "minecraft:geometry": "geometry.pie_slice2"
-                }
-            },
-            {
-                "condition": "query.block_state('farmersdelight:food_block_stage') == 3",
-                "components": {
-                    "minecraft:loot": "loot_tables/farmersdelight/empty.json",
-                    "minecraft:geometry": "geometry.pie_slice3"
-                }
-            },
-            {
-                "condition": "query.block_state('minecraft:cardinal_direction') == 'north'",
-                "components": {
-                    "minecraft:transformation": {
-                        "rotation": [
-                            0,
-                            180,
-                            0
-                        ]
-                    }
-                }
-            },
-            {
-                "condition": "query.block_state('minecraft:cardinal_direction') == 'south'",
-                "components": {
-                    "minecraft:transformation": {
-                        "rotation": [
-                            0,
-                            0,
-                            0
-                        ]
-                    }
-                }
-            },
-            {
-                "condition": "query.block_state('minecraft:cardinal_direction') == 'west'",
-                "components": {
-                    "minecraft:transformation": {
-                        "rotation": [
-                            0,
-                            270,
-                            0
-                        ]
-                    }
-                }
-            },
-            {
-                "condition": "query.block_state('minecraft:cardinal_direction') == 'east'",
-                "components": {
-                    "minecraft:transformation": {
-                        "rotation": [
-                            0,
-                            90,
-                            0
-                        ]
-                    }
-                }
-            }
-        ],
-        "components": {
-            "farmersdelight:pie": {
-                "item": "farmersdelight:apple_pie_slice",
-                "nutrition": 3,
-                "saturation_modifier": 0.3,
-                "effects": [
-                    ["speed",600]
-                ],
-                "state": {
-                    "max_use": 3,
-                    "name": "farmersdelight:food_block_stage"
-                }
-            },
-            "minecraft:geometry": "geometry.pie",
-            "minecraft:redstone_conductivity": {
-                "allows_wire_to_step_down": false
-            },
-            "minecraft:destructible_by_mining": {
-                "seconds_to_destroy": 0.5
-            },
-            "minecraft:light_dampening": 0,
-            "minecraft:destructible_by_explosion": {
-                "explosion_resistance": 0.5
-            },
-            "minecraft:material_instances": {
-                "*": {
-                    "texture": "apple_pie_top"
-                },
-                "inner": {
-                    "texture": "apple_pie_inner"
-                },
-                "side": {
-                    "texture": "pie_side"
-                },
-                "top": {
-                    "texture": "apple_pie_top"
-                },
-                "bottom": {
-                    "texture": "pie_bottom"
-                }
-            },
-            "minecraft:collision_box": {
-                "origin": [
-                    -6.0,
-                    0.0,
-                    -6.0
-                ],
-                "size": [
-                    12.0,
-                    4.0,
-                    12.0
-                ]
-            },
-            "minecraft:selection_box": {
-                "origin": [
-                    -6.0,
-                    0.0,
-                    -6.0
-                ],
-                "size": [
-                    12.0,
-                    4.0,
-                    12.0
-                ]
-            },
-            "tag:farmersdelight:pie": {}
+  "format_version": "1.21.120",
+  "minecraft:block": {
+    "description": {
+      "identifier": "farmersdelight:apple_pie_block",
+      "menu_category": {
+        "category": "none"
+      },
+      "states": {
+        "farmersdelight:food_block_stage": [0, 1, 2, 3]
+      },
+      "traits": {
+        "minecraft:placement_direction": {
+          "enabled_states": [
+            "minecraft:cardinal_direction"
+          ],
+          "y_rotation_offset": 0.0
         }
+      }
+    },
+    "permutations": [
+      {
+        "condition": "query.block_state('farmersdelight:food_block_stage') == 0",
+        "components": {
+          "minecraft:geometry": "geometry.pie"
+        }
+      }, {
+        "condition": "query.block_state('farmersdelight:food_block_stage') == 1",
+        "components": {
+          "minecraft:loot": "loot_tables/farmersdelight/empty.json",
+          "minecraft:geometry": "geometry.pie_slice1"
+        }
+      }, {
+        "condition": "query.block_state('farmersdelight:food_block_stage') == 2",
+        "components": {
+          "minecraft:loot": "loot_tables/farmersdelight/empty.json",
+          "minecraft:geometry": "geometry.pie_slice2"
+        }
+      }, {
+        "condition": "query.block_state('farmersdelight:food_block_stage') == 3",
+        "components": {
+          "minecraft:loot": "loot_tables/farmersdelight/empty.json",
+          "minecraft:geometry": "geometry.pie_slice3"
+        }
+      }, {
+        "condition": "query.block_state('minecraft:cardinal_direction') == 'north'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [0, 180, 0]
+          }
+        }
+      }, {
+        "condition": "query.block_state('minecraft:cardinal_direction') == 'south'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [0, 0, 0]
+          }
+        }
+      }, {
+        "condition": "query.block_state('minecraft:cardinal_direction') == 'west'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [0, 270, 0]
+          }
+        }
+      }, {
+        "condition": "query.block_state('minecraft:cardinal_direction') == 'east'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [0, 90, 0]
+          }
+        }
+      }
+    ],
+    "components": {
+      "farmersdelight:pastry": {
+        "slice": "farmersdelight:apple_pie_slice",
+        "counter": "farmersdelight:food_block_stage",
+        "servings": 4
+      },
+      "minecraft:loot": "loot_tables/empty.json",
+      "minecraft:geometry": "geometry.pie",
+      "minecraft:redstone_conductivity": {
+        "allows_wire_to_step_down": false
+      },
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0.5
+      },
+      "minecraft:light_dampening": 0,
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 0.5
+      },
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "apple_pie_top"
+        },
+        "inner": {
+          "texture": "apple_pie_inner"
+        },
+        "side": {
+          "texture": "pie_side"
+        },
+        "top": {
+          "texture": "apple_pie_top"
+        },
+        "bottom": {
+          "texture": "pie_bottom"
+        }
+      },
+      "minecraft:collision_box": {
+        "origin": [-6.0, 0.0, -6.0],
+        "size": [12.0, 4.0, 12.0]
+      },
+      "minecraft:selection_box": {
+        "origin": [-6.0, 0.0, -6.0],
+        "size": [12.0, 4.0, 12.0]
+      },
+      "tag:farmersdelight:pie": {}
     }
+  }
 }
