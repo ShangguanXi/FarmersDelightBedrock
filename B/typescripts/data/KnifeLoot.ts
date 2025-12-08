@@ -29,6 +29,9 @@ export function dispatchOnFire(raw: string, cooked: string): EntityLoot {
 const STRAW_FROM_GRASS: BlockLoot = blockLoot("farmersdelight/straw_from_grass");
 const STRAW_FROM_WHEAT: BlockLoot = (_, state) =>
     state.getState("growth") === 7 ? "farmersdelight/straw" : undefined;
+
+const STRAW_FROM_FD_WHEAT: BlockLoot = (_, state) =>
+    state.getState("farmersdelight:growth") === 7 ? "farmersdelight/straw" : undefined;
 const STRAW_FROM_RICE: BlockLoot = (_, state) =>
     state.getState("farmersdelight:growth") === 3 ? "farmersdelight/straw" : undefined;
 
@@ -65,8 +68,9 @@ export const BLOCK_LOOT_WITH_KNIFE: Map<string, BlockLoot> = new Map([
     ["minecraft:short_grass", STRAW_FROM_GRASS],
     ["minecraft:fern", STRAW_FROM_GRASS],
     ["minecraft:wheat", STRAW_FROM_WHEAT],
+    ["farmersdelight:rich_soil_wheat", STRAW_FROM_WHEAT],
     ["farmersdelight:rice_block_upper", STRAW_FROM_RICE],
-    ["farmersdelight:sandy_shrub_block", blockLoot("farmersdelight/straw_from_sandy_shrub")],
+    ["farmersdelight:sandy_shrub", blockLoot("farmersdelight/straw_from_sandy_shrub")],
 ]);
 
 export const DROPS_CAKE_SLICE: Set<string> = new Set([
