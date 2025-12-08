@@ -36,7 +36,6 @@ const ItemofKnifeList = [
     "minecraft:white_tulip",
     "minecraft:wither_rose",
     "minecraft:torchflower",
-    // better on bedrock
     "better_on_bedrock:dough",
     "better_on_bedrock:berry_pie",
     "better_on_bedrock:grape_pie"
@@ -67,7 +66,6 @@ const ItemofAxeList = [
     "minecraft:warped_sign",
     "minecraft:bamboo_sign",
     "minecraft:pale_oak_sign",
-    // better on bedrock
     "better_on_bedrock:chorus_door",
     "better_on_bedrock:voiding_door",
     "better_on_bedrock:vacant_door"
@@ -108,7 +106,6 @@ const BlockofAxeList = [
     "minecraft:warped_trapdoor",
     "minecraft:bamboo_trapdoor",
     "minecraft:pale_oak_trapdoor",
-    // better on bedrock
     "better_on_bedrock:chorus_log",
     "better_on_bedrock:voiding_log",
     "better_on_bedrock:shrublog",
@@ -126,7 +123,6 @@ const BlockofPickaxeList = [
     "minecraft:quartz_block",
     "minecraft:stone",
     "minecraft:nether_brick",
-    // better on bedrock
     "better_on_bedrock:cracked_dripstone_bricks",
     "better_on_bedrock:dripstone_brick_wall",
     "better_on_bedrock:dripstone_bricks",

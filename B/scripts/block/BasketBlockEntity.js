@@ -11,6 +11,7 @@ import { EntityComponentTypes, EntityLoadAfterEvent, world, } from "@minecraft/s
 import { subscribeEvent, attachedBlockEntity } from "../lib/EventSubscriber";
 import { offsetByDirection } from "../lib/DirectionUtil";
 import { dropsItems } from "../lib/EntityUtil";
+import { getAttachedBlock } from "../lib/BlockEntity";
 let BasketBlockEntity = class BasketBlockEntity {
     static onDiscard(entity) {
         dropsItems(entity);
@@ -48,14 +49,9 @@ let BasketBlockEntity = class BasketBlockEntity {
         if (version)
             return;
         entity.setDynamicProperty("farmersdelight:storage_version", 1);
-        const pos = entity.getDynamicProperty("farmersdelight:blockEntityDataLocation");
-        if (!pos)
-            return;
-        const block = entity.dimension.getBlock(pos);
-        if (!block)
-            return;
-        const permutation = block.permutation;
-        switch (permutation.getState("minecraft:block_face")) {
+        const block = getAttachedBlock(entity);
+        const permutation = block?.permutation;
+        switch (permutation?.getState("minecraft:block_face")) {
             case "up":
                 block.setPermutation(permutation.withState("minecraft:block_face", "down"));
                 break;
@@ -75,4 +71,3 @@ BasketBlockEntity = __decorate([
     attachedBlockEntity({ eventTypes: ["farmersdelight:basket_tick"] })
 ], BasketBlockEntity);
 export { BasketBlockEntity };
-void BasketBlockEntity;

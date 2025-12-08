@@ -7,8 +7,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { StartupEvent, system, Direction } from "@minecraft/server";
-import { methodEventSub } from "../../lib/eventHelper";
+import { Direction, StartupEvent, system, } from "@minecraft/server";
+import { subscribeEvent } from "../../lib/EventSubscriber";
 class TatamMatComponent {
     constructor() {
         this.onTick = this.onTick.bind(this);
@@ -95,7 +95,7 @@ export class TatamComponentRegister {
     }
 }
 __decorate([
-    methodEventSub(system.beforeEvents.startup),
+    subscribeEvent(system.beforeEvents.startup),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [StartupEvent]),
     __metadata("design:returntype", void 0)

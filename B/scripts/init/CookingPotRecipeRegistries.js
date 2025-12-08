@@ -8,8 +8,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { system, world } from "@minecraft/server";
-import { methodEventSub } from "../lib/eventHelper";
 import { vanillaCookingPotRecipe } from "../data/recipe/cookingPotRecipe";
+import { subscribeEvent } from "../lib/EventSubscriber";
 let bool = true;
 let num = 0;
 export class CookingPotRecipeRegistries {
@@ -49,7 +49,7 @@ export class CookingPotRecipeRegistries {
     }
 }
 __decorate([
-    methodEventSub(system.afterEvents.scriptEventReceive, { namespaces: ["farmersdelight"] }),
+    subscribeEvent(system.afterEvents.scriptEventReceive, { namespaces: ["farmersdelight"] }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)

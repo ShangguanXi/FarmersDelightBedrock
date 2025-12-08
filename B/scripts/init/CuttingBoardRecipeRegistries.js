@@ -8,8 +8,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { system, world } from "@minecraft/server";
-import { methodEventSub } from "../lib/eventHelper";
-import { BlockofAxeList, BlockofKnifeList, BlockofPickaxeList, BlockofShovelList, ItemofAxeList, ItemofKnifeList, ItemofPickaxeList, ItemofShearsList } from "../data/recipe/cuttingBoardRecipe";
+import { BlockofAxeList, BlockofKnifeList, BlockofPickaxeList, BlockofShovelList, ItemofAxeList, ItemofKnifeList, ItemofPickaxeList, ItemofShearsList, } from "../data/recipe/cuttingBoardRecipe";
+import { subscribeEvent } from "../lib/EventSubscriber";
 let bool = true;
 let num = 0;
 export class CuttingBoardRegistries {
@@ -77,7 +77,7 @@ export class CuttingBoardRegistries {
     }
 }
 __decorate([
-    methodEventSub(system.afterEvents.scriptEventReceive, { namespaces: ["farmersdelight"] }),
+    subscribeEvent(system.afterEvents.scriptEventReceive, { namespaces: ["farmersdelight"] }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)

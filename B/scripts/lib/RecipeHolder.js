@@ -1,19 +1,5 @@
 import { EntityInventoryComponent, ItemStack } from "@minecraft/server";
-/**
- * @remarks
- * 配方管理器by诗栩MSolo
- * 提供配方管理器的基础功能
-*/
 export class RecipeHolder {
-    /**
-     * @remarks
-     * 创建配方管理器
-     * @param entity 配方管理器绑定的实体
-     * @param inputSlots 输入栏位的数量
-     * @param outputSlots 输出栏位的数量
-     * @param tags 接受的配方tag
-     * @param recipeList 初始配方数组
-    */
     constructor(entity, inputSlots, outputSlots, tags, recipeList) {
         this.entity = entity;
         this.inputSlots = inputSlots;
@@ -29,11 +15,6 @@ export class RecipeHolder {
             return;
         }
     }
-    /**
-     * @remarks
-     * 添加配方, 若添加的配方的标识符与已有配方相同则会根据优先级选择保留哪个配方
-     * @param addingRecipe 要添加的配方
-    */
     addRecipe(addingRecipe) {
         let alter = false;
         for (const index in this.recipeList) {
@@ -48,11 +29,6 @@ export class RecipeHolder {
             this.recipeList.push(addingRecipe);
         }
     }
-    /**
-     * @remarks
-     * 通过原料获取配方
-     * @param ingredients 原料数组, 可通过 getInputs() 方法获取
-    */
     getRecipe(ingredients) {
         for (const recipe of this.recipeList) {
             let needs = JSON.parse(JSON.stringify(recipe.ingredients));
@@ -72,11 +48,6 @@ export class RecipeHolder {
         }
         return false;
     }
-    /**
-     * @remarks
-     * 通过配方标识符获取配方
-     * @param recipeId 配方标识符
-    */
     getRecipeById(recipeId) {
         for (const recipe of this.recipeList) {
             if (recipe.identifer == recipeId) {
@@ -85,10 +56,6 @@ export class RecipeHolder {
         }
         return false;
     }
-    /**
-     * @remarks
-     * 根据条件获取配方, 若无条件则获取所有配方
-    */
     getRecipes(options) {
         if (!options)
             return this.recipeList;
@@ -106,17 +73,8 @@ export class RecipeHolder {
             return list;
         }
     }
-    /**
-     * @remarks
-     * 更新配方进度, 每tick调用
-     * 具体功能在子类中实现
-    */
     update() {
     }
-    /**
-     * @remarks
-     * 获取当前配方进度(0-1小数), 若当前没有配方进行则返回false
-    */
     getProgress() {
         if (this.currentRecipe) {
             return this.currentTick / this.currentRecipe.time;
@@ -125,10 +83,6 @@ export class RecipeHolder {
             return false;
         }
     }
-    /**
-     * @remarks
-     * 获取当前实体容器输入槽中的物品, 不包括空槽位
-    */
     getInputs() {
         let itemList = [];
         for (let i = 0; i < this.inputSlots; i++) {
@@ -138,10 +92,6 @@ export class RecipeHolder {
         }
         return itemList;
     }
-    /**
-     * @remarks
-     * 获取当前实体容器输出槽中的物品, 不包括空槽位
-    */
     getOutputs() {
         let itemList = [];
         for (let i = 0; i < this.outputSlots; i++) {
@@ -151,20 +101,9 @@ export class RecipeHolder {
         }
         return itemList;
     }
-    /**
-     * @remarks
-     * 设置输出槽物品
-     * @param slot 输出槽位
-     * @param item 设置的物品堆叠
-    */
     setOutput(slot, item) {
         this.container?.setItem(slot + this.inputSlots, item);
     }
-    /**
-     * @remarks
-     * 向输出槽添加物品, 若添加失败返回false, 添加成功返回true
-     * @param item 添加的物品堆叠
-    */
     addOutput(item) {
         let added = false;
         for (let i = 0; i < this.outputSlots; i++) {
@@ -187,11 +126,6 @@ export class RecipeHolder {
         }
         return added;
     }
-    /**
-     * @remarks
-     * 完成一次配方, 按传入的配方调整物品
-     * @param recipe 配方
-    */
     consume(recipe) {
         const resultItem = new ItemStack(recipe.result.item, recipe.result.amount);
         if (this.addOutput(resultItem)) {
@@ -207,10 +141,6 @@ export class RecipeHolder {
             }
         }
     }
-    /**
-     * @remarks
-     * 判断传入的物品是否为所需原料
-    */
     isIngredient(need, ingredient) {
         if ('tag' in ingredient) {
             ingredient;

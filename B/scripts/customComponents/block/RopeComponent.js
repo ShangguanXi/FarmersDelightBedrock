@@ -7,12 +7,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { system, ItemComponentTypes, GameMode, StartupEvent } from "@minecraft/server";
-import { methodEventSub } from "../../lib/eventHelper";
-import { ItemUtil } from "../../lib/ItemUtil";
-function spawnLoot(path, dimenion, location) {
-    return dimenion.runCommand(`loot spawn ${location.x} ${location.y} ${location.z} loot "${path}"`);
-}
+import { EquipmentSlot, GameMode, Player, StartupEvent, system, } from "@minecraft/server";
+import { isEnchanted, takeItem } from "../../lib/ItemUtil";
+import { subscribeEvent } from "../../lib/EventSubscriber";
+import { spawnLootAtBlock } from "../../lib/LootUtil";
+import { getEquipment } from "../../lib/EntityUtil";
+import { PlayerTickEvent } from "../../lib/Events";
 export class RopeComponent {
     constructor() {
         this.onTick = this.onTick.bind(this);
@@ -45,12 +45,12 @@ export class RopeComponent {
                     block.dimension.spawnParticle("minecraft:crop_growth_emitter", { x: block.location.x + 0.5, y: block.location.y + 0.5, z: block.location.z + 0.5 });
                     if (!container)
                         return;
-                    ItemUtil.clearItem(container, player?.selectedSlotIndex);
+                    takeItem(container, player?.selectedSlotIndex, 1);
                 }
             }
             if (stage == 4) {
                 block.setPermutation(block.permutation.withState("farmersdelight:stage", 1));
-                spawnLoot("farmersdelight/crops/farmersdelight_tomato_riped", dimension, { x: block.location.x, y: block.location.y, z: block.location.z });
+                spawnLootAtBlock(block, "farmersdelight/crops/farmersdelight_tomato_riped");
             }
         }
         catch (error) {
@@ -58,27 +58,10 @@ export class RopeComponent {
     }
     onPlayerBreak(args) {
         const player = args.player;
-        const blockPermutation = args.brokenBlockPermutation;
-        const inventory = player?.getComponent("inventory");
-        const container = inventory?.container;
-        const block = args.block;
-        const dimension = args.dimension;
         if (!player)
             return;
-        if (!container)
-            return;
-        const stage = blockPermutation.getState('farmersdelight:stage');
-        const enchantable = container?.getItem(player.selectedSlotIndex)?.getComponent(ItemComponentTypes.Enchantable);
-        const silkTouch = enchantable?.hasEnchantment("silk_touch");
-        if (stage > 0) {
-            try {
-                if (!silkTouch) {
-                    dimension.setBlockType(block.location, "farmersdelight:rope");
-                }
-            }
-            catch (error) {
-                dimension.setBlockType(block.location, "farmersdelight:rope");
-            }
+        if ((args.brokenBlockPermutation.getState("farmersdelight:stage") ?? 0) > 0 && !isEnchanted(getEquipment(player, EquipmentSlot.Mainhand), "silk_touch")) {
+            args.block.setType("farmersdelight:rope");
         }
     }
     onRandomTick(args) {
@@ -87,10 +70,10 @@ export class RopeComponent {
         const dimension = args.dimension;
         const stage = block.permutation.getState('farmersdelight:stage');
         const directions = [
-            { x: 0, z: -1 }, // N
-            { x: 0, z: 1 }, // S
-            { x: -1, z: 0 }, // E
-            { x: 1, z: 0 } // W
+            { x: 0, z: -1 },
+            { x: 0, z: 1 },
+            { x: -1, z: 0 },
+            { x: 1, z: 0 }
         ];
         const hasRopeAround = directions.some(({ x, z }) => dimension.getBlock({ x: location.x + x, y: location.y, z: location.z + z })?.hasTag("rope"));
         const blockBelow = dimension.getBlock({ x: location.x, y: location.y - 1, z: location.z });
@@ -121,44 +104,43 @@ export class RopeComponent {
                 { x: location.x + 1, y: location.y, z: location.z, direction: 'west' }
             ];
             ropePositions.forEach(pos => {
-                const rope = dimension.getBlock(pos)?.hasTag('rope');
-                block.setPermutation(block.permutation.withState(`farmersdelight:${pos.direction}_connected`, Boolean(rope)));
+                const rope = dimension.getBlock(pos)?.hasTag("rope") ?? false;
+                block.setPermutation(block.permutation.withState(`farmersdelight:${pos.direction}_connected`, rope));
             });
-            const players = dimension.getPlayers();
-            for (const player of players) {
-                const playerLocation = player.location;
-                const blockId = dimension.getBlock(playerLocation)?.typeId;
-                if (!blockId)
-                    return;
-                if (blockId == "farmersdelight:rope") {
-                    if (player.getViewDirection().y > 0) {
-                        player.addEffect('levitation', 1 * 5, { amplifier: 0 });
-                    }
-                    if (player.getViewDirection().y < 0) {
-                        player.addEffect('slow_falling', 1 * 5, { amplifier: 0 });
-                    }
-                }
-            }
         }
-        if (stage > 0) {
-            const pos = { x: location.x, y: location.y - 1, z: location.z };
-            const tomatoCrop = dimension.getBlock(pos)?.hasTag('tomato_crop');
-            const tomatoCropWithRope = dimension.getBlock(pos)?.hasTag('tomato_crop_with_rope');
-            const canGrow = block.permutation.getState('farmersdelight:can_grow');
-            if ((!tomatoCrop) && (!tomatoCropWithRope)) {
+        else {
+            const tomato = block.below();
+            if (!tomato || !tomato.hasTag("tomato_crop") && !tomato.hasTag("tomato_crop_with_rope")) {
                 block.setPermutation(block.permutation.withState('farmersdelight:stage', 0));
                 block.setPermutation(block.permutation.withState('farmersdelight:can_grow', true));
             }
         }
     }
+    static simulateClimbing(player) {
+        if (player.dimension.getBlock(player.location)?.getComponent("farmersdelight:rope")) {
+            const pitch = player.getViewDirection().y;
+            if (pitch > 0) {
+                player.addEffect("levitation", 5, { showParticles: false });
+            }
+            else if (pitch < 0) {
+                player.addEffect("slow_falling", 5, { showParticles: false });
+            }
+        }
+    }
 }
+__decorate([
+    subscribeEvent(PlayerTickEvent),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Player]),
+    __metadata("design:returntype", void 0)
+], RopeComponent, "simulateClimbing", null);
 export class RopeComponentRegister {
     register(args) {
         args.blockComponentRegistry.registerCustomComponent('farmersdelight:rope', new RopeComponent());
     }
 }
 __decorate([
-    methodEventSub(system.beforeEvents.startup),
+    subscribeEvent(system.beforeEvents.startup),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [StartupEvent]),
     __metadata("design:returntype", void 0)

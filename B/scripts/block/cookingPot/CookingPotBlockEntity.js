@@ -7,16 +7,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { ItemStack, system, world } from "@minecraft/server";
-import { methodEventSub } from "../../lib/eventHelper";
+import { ItemStack, system, world, } from "@minecraft/server";
 import { BlockEntity } from "../../lib/BlockEntity";
 import { isSamePos } from "../../lib/ObjectUtil";
 import { vanillaCookingPotRecipe } from "../../data/recipe/cookingPotRecipe";
 import { CookingPotRecipe } from "../../lib/CookingPotRecipe";
-import { heatConductors, heatSources } from "../../data/heatBlocks";
+import { isHeated } from "../../data/Heaters";
+import { subscribeEvent } from "../../lib/EventSubscriber";
 const recipes = vanillaCookingPotRecipe.recipe;
 const recipeFactory = new Map();
-// 意义不明的进度函数
 function arrowheadUtil(entity, oldItemStack, slot, container) {
     if (entity.getDynamicProperty("farmersdelight:not_can_set"))
         return;
@@ -25,19 +24,6 @@ function arrowheadUtil(entity, oldItemStack, slot, container) {
         container.setItem(slot, oldItemStack);
     }
 }
-//检查热源  自定义热源可以使用farmersdelight:heat_source的tag进行定义
-function heatCheck(block) {
-    const blockBelow = block.below();
-    if (heatSources.includes(blockBelow?.typeId) || blockBelow?.hasTag('farmersdelight:heat_source'))
-        return true;
-    if (heatConductors.includes(blockBelow?.typeId) || blockBelow?.hasTag('farmersdelight:heat_conductors')) {
-        const blockBelow2 = block.below(2);
-        if (heatSources.includes(blockBelow2?.typeId) || blockBelow2?.hasTag('farmersdelight:heat_source'))
-            return true;
-    }
-    return false;
-}
-//刷新方块实体状态以及防TP
 function blockEntityLoot(args, id) {
     const cookingPotblock = new ItemStack('farmersdelight:cooking_pot');
     if (!isSamePos(args.entity.location, args.blockEntityDataLocation))
@@ -87,9 +73,7 @@ export class CookingPotBlockEntity extends BlockEntity {
         blockEntityLoot(entityBlockData, "farmersdelight:cooking_pot");
         const map = new Map();
         const progress = entity.getDynamicProperty("farmersdelight:cooking_pot_progress") ?? 0;
-        //热源检测
-        const heated = heatCheck(block);
-        //配方管理器初始化, 每tick更新一次
+        const heated = isHeated(block);
         let cookingPotRecipe;
         if (!recipeFactory.get(entity.id)) {
             cookingPotRecipe = new CookingPotRecipe(entity, 6, 1, ['cooking_pot'], recipes);
@@ -126,7 +110,7 @@ export class CookingPotBlockEntity extends BlockEntity {
     }
 }
 __decorate([
-    methodEventSub(world.afterEvents.dataDrivenEntityTrigger, { entityTypes: ["farmersdelight:cooking_pot"], eventTypes: ["farmersdelight:cooking_pot_tick"] }),
+    subscribeEvent(world.afterEvents.dataDrivenEntityTrigger, { entityTypes: ["farmersdelight:cooking_pot"], eventTypes: ["farmersdelight:cooking_pot_tick"] }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)

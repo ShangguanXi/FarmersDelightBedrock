@@ -8,27 +8,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { ItemStack, system, world } from "@minecraft/server";
-import { methodEventSub } from "../../lib/eventHelper";
 import { BlockEntity } from "../../lib/BlockEntity";
-import { heatConductors, heatSources } from "../../data/heatBlocks";
+import { isHeated } from "../../data/Heaters";
+import { subscribeEvent } from "../../lib/EventSubscriber";
 const skilletV2 = [];
 for (let i = 0; i < 5; i++) {
     const json = {};
     json.x = (Math.random() * 2 - 1) * 0.15 * 0.5;
     json.z = (Math.random() * 2 - 1) * 0.15 * 0.5;
     skilletV2.push(json);
-}
-//检查热源
-function heatCheck(block) {
-    const blockBelow = block.below();
-    if (heatSources.includes(blockBelow?.typeId) || blockBelow?.hasTag('farmersdelight:heat_source'))
-        return true;
-    if (heatConductors.includes(blockBelow?.typeId) || blockBelow?.hasTag('farmersdelight:heat_conductors')) {
-        const blockBelow2 = block.below(2);
-        if (heatSources.includes(blockBelow2?.typeId) || blockBelow2?.hasTag('farmersdelight:heat_source'))
-            return true;
-    }
-    return false;
 }
 export class SkilletEntity extends BlockEntity {
     tick(args) {
@@ -49,8 +37,7 @@ export class SkilletEntity extends BlockEntity {
         for (let index = 0; index < particleCount; index++) {
             dimension.spawnParticle(particleName, { x: x + skilletV2[index].x, y: y + 0.07 + 0.03 * (index + 1), z: z + skilletV2[index].z });
         }
-        // 烹饪
-        if (!heatCheck(entityBlockData.block))
+        if (!isHeated(entityBlockData.block))
             return;
         const cookDataProperty = entity.getDynamicProperty("farmersdelight:cookData") || "{}";
         if (cookDataProperty == "{}")
@@ -70,10 +57,10 @@ export class SkilletEntity extends BlockEntity {
                 cookData.datas[i].time -= 1;
             }
             if (cookData.datas[i].time == 0) {
-                const name = itemId.split(':');
-                if (name[0] == 'minecraft') {
+                if (itemId.startsWith("minecraft:")) {
+                    const path = itemId.substring(10);
                     for (let a = 0; a <= cookData.datas[i].count; a++) {
-                        entity.runCommand(`loot spawn ${x} ${y + 0.4} ${z} loot "minecraft/cook/${itemId.split(":")[1]}"`);
+                        entity.runCommand(`loot spawn ${x} ${y + 0.4} ${z} loot "minecraft/cook/${path}"`);
                     }
                 }
                 else {
@@ -91,7 +78,7 @@ export class SkilletEntity extends BlockEntity {
     }
 }
 __decorate([
-    methodEventSub(world.afterEvents.dataDrivenEntityTrigger, { entityTypes: ["farmersdelight:skillet"], eventTypes: ["farmersdelight:skillet_tick"] }),
+    subscribeEvent(world.afterEvents.dataDrivenEntityTrigger, { entityTypes: ["farmersdelight:skillet"], eventTypes: ["farmersdelight:skillet_tick"] }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)

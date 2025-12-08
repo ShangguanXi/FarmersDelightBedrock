@@ -7,12 +7,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { EquipmentSlot, ItemStack, PlayerInteractWithBlockAfterEvent, PlayerPlaceBlockAfterEvent, world } from "@minecraft/server";
-import { methodEventSub } from "../../lib/eventHelper";
+import { EquipmentSlot, ItemStack, PlayerInteractWithBlockAfterEvent, PlayerPlaceBlockAfterEvent, world, } from "@minecraft/server";
 import { BlockWithEntity } from "../../lib/BlockWithEntity";
-import { EntityUtil } from "../../lib/EntityUtil";
-import { BlockofAxeList, BlockofKnifeList, BlockofPickaxeList, ItemofPickaxeList, BlockofShovelList, ItemofAxeList, ItemofKnifeList, ItemofShearsList } from "../../data/recipe/cuttingBoardRecipe";
-import { ItemUtil } from "../../lib/ItemUtil";
+import { hasLimitedMaterials } from "../../lib/EntityUtil";
+import { BlockofAxeList, BlockofKnifeList, BlockofPickaxeList, BlockofShovelList, ItemofAxeList, ItemofKnifeList, ItemofPickaxeList, ItemofShearsList, } from "../../data/recipe/cuttingBoardRecipe";
+import { hurtItem, spawnStack, takeEquippedItem, takeItem } from "../../lib/ItemUtil";
+import { subscribeEvent } from "../../lib/EventSubscriber";
 const toolMapping = [
     { list: BlockofAxeList, tool: 'minecraft:is_axe', mode: 'tag', isBlock: true },
     { list: BlockofKnifeList, tool: 'farmersdelight:is_knife', mode: 'tag', isBlock: true },
@@ -21,7 +21,7 @@ const toolMapping = [
     { list: ItemofAxeList, tool: 'minecraft:is_axe', mode: 'tag', isBlock: false },
     { list: ItemofKnifeList, tool: 'farmersdelight:is_knife', mode: 'tag', isBlock: false },
     { list: ItemofPickaxeList, tool: 'minecraft:is_pickaxe', mode: 'tag', isBlock: false },
-    { list: ItemofShearsList, tool: 'minecraft:shears', mode: 'item', isBlock: false }
+    { list: ItemofShearsList, tool: "minecraft:is_shears", mode: "tag", isBlock: false },
 ];
 export { toolMapping };
 export class CuttingBoardBlock extends BlockWithEntity {
@@ -73,9 +73,9 @@ export class CuttingBoardBlock extends BlockWithEntity {
                             const item = block.dimension.spawnItem(new ItemStack(loot.id, loot.count), { x: x + 0.5, y: y + 0.5, z: z + 0.5 });
                             item.applyImpulse(offset);
                         }
-                        if (EntityUtil.gameMode(player)) {
-                            ItemUtil.clearOffhandItem(player);
-                            ItemUtil.damageItem(container, player.selectedSlotIndex);
+                        if (hasLimitedMaterials(player)) {
+                            takeEquippedItem(player, EquipmentSlot.Offhand, 1);
+                            hurtItem(container, player.selectedSlotIndex, 1);
                         }
                         return;
                     }
@@ -87,9 +87,9 @@ export class CuttingBoardBlock extends BlockWithEntity {
                         if (tool.list.includes(offHand.typeId) && (mainHand.hasTag(tool.tool) && tool.mode == "tag") || (mainHand.typeId == tool.tool && tool.mode == "item")) {
                             const [namespace, id] = offHand.typeId.split(':');
                             entity.runCommand(`loot spawn ${entity.location.x} ${entity.location.y} ${entity.location.z} loot "${namespace}/cutting_board/${id}"`);
-                            if (EntityUtil.gameMode(player)) {
-                                ItemUtil.clearOffhandItem(player);
-                                ItemUtil.damageItem(container, player.selectedSlotIndex);
+                            if (hasLimitedMaterials(player)) {
+                                takeEquippedItem(player, EquipmentSlot.Offhand, 1);
+                                hurtItem(container, player.selectedSlotIndex, 1);
                             }
                             return;
                         }
@@ -122,8 +122,8 @@ export class CuttingBoardBlock extends BlockWithEntity {
                         return;
                     }
                 }
-                if (EntityUtil.gameMode(player))
-                    ItemUtil.clearOffhandItem(player);
+                if (hasLimitedMaterials(player))
+                    takeEquippedItem(player, EquipmentSlot.Offhand, 1);
             }
         }
         if ((!offHand) && mainHand && itemId == "undefined") {
@@ -136,8 +136,8 @@ export class CuttingBoardBlock extends BlockWithEntity {
                 if (params.is_block) {
                     entity.runCommand(`replaceitem entity @s slot.weapon.mainhand 0 ${mainHand.typeId}`);
                 }
-                if (EntityUtil.gameMode(player))
-                    ItemUtil.clearItem(container, player.selectedSlotIndex);
+                if (hasLimitedMaterials(player))
+                    takeItem(container, player.selectedSlotIndex, 1);
             }
             else {
                 for (const tool of toolMapping) {
@@ -148,8 +148,8 @@ export class CuttingBoardBlock extends BlockWithEntity {
                         if (tool.isBlock) {
                             entity.runCommand(`replaceitem entity @s slot.weapon.mainhand 0 ${mainHand.typeId}`);
                         }
-                        if (EntityUtil.gameMode(player))
-                            ItemUtil.clearItem(container, player.selectedSlotIndex);
+                        if (hasLimitedMaterials(player))
+                            takeItem(container, player.selectedSlotIndex, 1);
                         return;
                     }
                     else {
@@ -174,8 +174,8 @@ export class CuttingBoardBlock extends BlockWithEntity {
                         const item = block.dimension.spawnItem(new ItemStack(loot.id, loot.count), { x: x + 0.5, y: y + 0.5, z: z + 0.5 });
                         item.applyImpulse(offset);
                     }
-                    if (EntityUtil.gameMode(player))
-                        ItemUtil.damageItem(container, player.selectedSlotIndex);
+                    if (hasLimitedMaterials(player))
+                        hurtItem(container, player.selectedSlotIndex, 1);
                 }
                 else {
                     const [namespace, id] = itemId.split(':');
@@ -183,8 +183,8 @@ export class CuttingBoardBlock extends BlockWithEntity {
                     entity.setDynamicProperty('farmersdelight:cutTool', undefined);
                     entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', '{"item":"undefined"}');
                     entity.runCommand(`replaceitem entity @s slot.weapon.mainhand 0 air`);
-                    if (EntityUtil.gameMode(player))
-                        ItemUtil.damageItem(container, player.selectedSlotIndex);
+                    if (hasLimitedMaterials(player))
+                        hurtItem(container, player.selectedSlotIndex, 1);
                 }
                 entity.dimension.playSound(`block.farmersdelight.cutting_board`, entity.location);
             }
@@ -195,7 +195,7 @@ export class CuttingBoardBlock extends BlockWithEntity {
             entity.setDynamicProperty('farmersdelight:cutTool', undefined);
             entity.setDynamicProperty('farmersdelight:blockEntityItemStackData', '{"item":"undefined"}');
             entity.runCommand(`replaceitem entity @s slot.weapon.mainhand 0 air`);
-            ItemUtil.spawnItem(block, itemId, 1, { x: x + 0.5, y: y + 0.5, z: z + 0.5 })?.applyImpulse(offset);
+            spawnStack(new ItemStack(itemId), block, block.center())?.applyImpulse(offset);
         }
     }
     static isCorrectTool(mode, mainHand, cutToolData) {
@@ -212,13 +212,13 @@ export class CuttingBoardBlock extends BlockWithEntity {
     }
 }
 __decorate([
-    methodEventSub(world.afterEvents.playerPlaceBlock),
+    subscribeEvent(world.afterEvents.playerPlaceBlock),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [PlayerPlaceBlockAfterEvent]),
     __metadata("design:returntype", void 0)
 ], CuttingBoardBlock.prototype, "placeBlock", null);
 __decorate([
-    methodEventSub(world.afterEvents.playerInteractWithBlock),
+    subscribeEvent(world.afterEvents.playerInteractWithBlock),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [PlayerInteractWithBlockAfterEvent]),
     __metadata("design:returntype", void 0)

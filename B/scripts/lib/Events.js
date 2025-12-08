@@ -5,7 +5,6 @@ export const TickEvent = {
         system.runInterval(callback);
     },
 };
-// 替代原本lib/event/里的TickEvent（未使用）
 export const PlayerTickEvent = {
     subscribe(callback) {
         system.runInterval(() => {

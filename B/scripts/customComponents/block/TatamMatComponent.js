@@ -7,10 +7,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { BlockPermutation, Direction, system, StartupEvent } from "@minecraft/server";
-import { EntityUtil } from "../../lib/EntityUtil";
-import { ItemUtil } from "../../lib/ItemUtil";
-import { methodEventSub } from "../../lib/eventHelper";
+import { BlockPermutation, Direction, StartupEvent, system, } from "@minecraft/server";
+import { hasLimitedMaterials, horizontalDirectionOf } from "../../lib/EntityUtil";
+import { takeItem } from "../../lib/ItemUtil";
+import { oppositeOf } from "../../lib/DirectionUtil";
+import { subscribeEvent } from "../../lib/EventSubscriber";
 class TatamMatComponent {
     constructor() {
         this.onTick = this.onTick.bind(this);
@@ -32,31 +33,36 @@ class TatamMatComponent {
             if (!player)
                 return;
             let other;
-            const direction = EntityUtil.cardinalDirection(player, 180)?.toLowerCase();
-            const otherDirection = EntityUtil.cardinalDirection(player)?.toLowerCase();
+            const direction = horizontalDirectionOf(player);
             switch (direction) {
-                case 'east':
+                case Direction.East:
                     other = block?.east();
                     break;
-                case 'west':
+                case Direction.West:
                     other = block?.west();
                     break;
-                case 'north':
+                case Direction.North:
                     other = block?.north();
                     break;
-                case 'south':
+                case Direction.South:
                     other = block?.south();
                     break;
             }
             if (!other?.isAir)
                 return;
-            const mainPerm = BlockPermutation.resolve('farmersdelight:tatami_mat_main', { 'minecraft:cardinal_direction': direction, 'farmersdelight:init': true });
-            const otherPerm = BlockPermutation.resolve('farmersdelight:tatami_mat_other', { 'minecraft:cardinal_direction': otherDirection, 'farmersdelight:init': true });
+            const mainPerm = BlockPermutation.resolve("farmersdelight:tatami_mat_main", {
+                "minecraft:cardinal_direction": direction.toLowerCase(),
+                "farmersdelight:init": true,
+            });
+            const otherPerm = BlockPermutation.resolve("farmersdelight:tatami_mat_other", {
+                "minecraft:cardinal_direction": oppositeOf(direction).toLowerCase(),
+                "farmersdelight:init": true,
+            });
             dimension.playSound("dig.cloth", block.location);
             block?.setPermutation(mainPerm);
             other?.setPermutation(otherPerm);
-            if (EntityUtil.gameMode(player))
-                ItemUtil.clearItem(container, player.selectedSlotIndex);
+            if (hasLimitedMaterials(player))
+                takeItem(container, player.selectedSlotIndex);
         });
     }
     onTick(args) {
@@ -97,7 +103,7 @@ export class TatamMatComponentRegister {
     }
 }
 __decorate([
-    methodEventSub(system.beforeEvents.startup),
+    subscribeEvent(system.beforeEvents.startup),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [StartupEvent]),
     __metadata("design:returntype", void 0)

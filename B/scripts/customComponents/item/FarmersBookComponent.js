@@ -5,9 +5,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 import { itemComponent } from "../../lib/EventSubscriber";
-let CuttableComponent = class CuttableComponent {
+import { mainForm } from "../../data/FarmersBook";
+let FarmersBookComponent = class FarmersBookComponent {
+    onUse(event, _) {
+        mainForm(event.source);
+    }
 };
-CuttableComponent = __decorate([
-    itemComponent("farmersdelight:cuttable")
-], CuttableComponent);
-export { CuttableComponent };
+FarmersBookComponent = __decorate([
+    itemComponent("farmersdelight:farmers_book")
+], FarmersBookComponent);
+export { FarmersBookComponent };

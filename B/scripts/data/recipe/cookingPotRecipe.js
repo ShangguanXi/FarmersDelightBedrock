@@ -1,6 +1,5 @@
 export const vanillaCookingPotRecipe = {
     "recipe": [
-        //finish
         {
             'identifer': 'farmersdelight:bone_broth',
             'tags': ['cooking_pot'],
@@ -21,7 +20,6 @@ export const vanillaCookingPotRecipe = {
                 "item": "farmersdelight:bone_broth"
             }
         },
-        //finish
         {
             'identifer': 'farmersdelight:glow_berry_custard',
             'tags': ['cooking_pot'],
@@ -45,7 +43,6 @@ export const vanillaCookingPotRecipe = {
                 "item": "farmersdelight:glow_berry_custard"
             }
         },
-        //finish
         {
             'identifer': 'farmersdelight:apple_cider',
             'tags': ['cooking_pot'],
@@ -69,7 +66,6 @@ export const vanillaCookingPotRecipe = {
                 "item": "farmersdelight:apple_cider"
             }
         },
-        //finish
         {
             'identifer': 'farmersdelight:hot_cocoa',
             'tags': ['cooking_pot'],
@@ -95,7 +91,6 @@ export const vanillaCookingPotRecipe = {
                 "item": "farmersdelight:hot_cocoa"
             }
         },
-        //finish
         {
             'identifer': 'farmersdelight:dumplings',
             'tags': ['cooking_pot'],
@@ -136,7 +131,6 @@ export const vanillaCookingPotRecipe = {
                 "count": 2
             }
         },
-        //finish
         {
             'identifer': 'farmersdelight:cooked_rice',
             'tags': ['cooking_pot'],
@@ -156,7 +150,6 @@ export const vanillaCookingPotRecipe = {
                 "item": "farmersdelight:cooked_rice"
             }
         },
-        //finish
         {
             'identifer': 'farmersdelight:beef_stew',
             'tags': ['cooking_pot'],
@@ -184,7 +177,6 @@ export const vanillaCookingPotRecipe = {
                 "item": "farmersdelight:beef_stew"
             }
         },
-        //finish
         {
             'identifer': 'farmersdelight:chicken_soup',
             'tags': ['cooking_pot'],
@@ -221,7 +213,6 @@ export const vanillaCookingPotRecipe = {
                 "item": "farmersdelight:chicken_soup"
             }
         },
-        //finish
         {
             'identifer': 'farmersdelight:vegetable_soup',
             'tags': ['cooking_pot'],
@@ -251,7 +242,6 @@ export const vanillaCookingPotRecipe = {
                 "item": "farmersdelight:vegetable_soup"
             }
         },
-        //finish
         {
             'identifer': 'farmersdelight:fish_stew',
             'tags': ['cooking_pot'],
@@ -277,7 +267,6 @@ export const vanillaCookingPotRecipe = {
                 "item": "farmersdelight:fish_stew"
             }
         },
-        //finish
         {
             'identifer': 'farmersdelight:fried_rice',
             'tags': ['cooking_pot'],
@@ -307,7 +296,6 @@ export const vanillaCookingPotRecipe = {
                 "item": "farmersdelight:fried_rice"
             }
         },
-        //finish
         {
             'identifer': 'farmersdelight:pumpkin_soup',
             'tags': ['cooking_pot'],
@@ -338,7 +326,6 @@ export const vanillaCookingPotRecipe = {
                 "item": "farmersdelight:pumpkin_soup"
             }
         },
-        //finish
         {
             'identifer': 'farmersdelight:tomato_sauce',
             'tags': ['cooking_pot'],
@@ -362,7 +349,6 @@ export const vanillaCookingPotRecipe = {
                 "item": "farmersdelight:tomato_sauce"
             }
         },
-        //finish
         {
             'identifer': 'farmersdelight:baked_cod_stew',
             'tags': ['cooking_pot'],
@@ -394,7 +380,6 @@ export const vanillaCookingPotRecipe = {
                 "item": "farmersdelight:baked_cod_stew"
             }
         },
-        //finish
         {
             'identifer': 'farmersdelight:pasta_with_meatballs',
             'tags': ['cooking_pot'],
@@ -420,7 +405,6 @@ export const vanillaCookingPotRecipe = {
                 "item": "farmersdelight:pasta_with_meatballs"
             }
         },
-        //finish
         {
             'identifer': 'farmersdelight:pasta_with_mutton_chop',
             'tags': ['cooking_pot'],
@@ -449,7 +433,6 @@ export const vanillaCookingPotRecipe = {
                 "item": "farmersdelight:pasta_with_mutton_chop"
             }
         },
-        //finish
         {
             'identifer': 'farmersdelight:vegetable_noodles',
             'tags': ['cooking_pot'],
@@ -488,7 +471,6 @@ export const vanillaCookingPotRecipe = {
                 "item": "farmersdelight:vegetable_noodles"
             }
         },
-        //finish
         {
             'identifer': 'farmersdelight:squid_ink_pasta',
             'tags': ['cooking_pot'],
@@ -520,7 +502,6 @@ export const vanillaCookingPotRecipe = {
                 "item": "farmersdelight:squid_ink_pasta"
             }
         },
-        //finish
         {
             'identifer': 'farmersdelight:stuffed_pumpkin_block_item',
             'tags': ['cooking_pot'],
@@ -564,7 +545,6 @@ export const vanillaCookingPotRecipe = {
                 "item": "farmersdelight:stuffed_pumpkin_block_item"
             }
         },
-        //finish
         {
             'identifer': 'farmersdelight:rabbit_stew',
             'tags': ['cooking_pot'],
@@ -598,7 +578,6 @@ export const vanillaCookingPotRecipe = {
                 "item": "minecraft:rabbit_stew"
             }
         },
-        //finish
         {
             'identifer': 'farmersdelight:cabbage_rolls',
             'tags': ['cooking_pot'],
@@ -655,7 +634,6 @@ export const vanillaCookingPotRecipe = {
                 "item": "farmersdelight:cabbage_rolls"
             }
         },
-        //finish
         {
             'identifer': 'farmersdelight:noodle_soup',
             'tags': ['cooking_pot'],
@@ -726,7 +704,6 @@ export const vanillaCookingPotRecipe = {
                 "item": "farmersdelight:dog_food"
             }
         },
-        //finish
         {
             'identifer': 'farmersdelight:mushroom_rice',
             'tags': ['cooking_pot'],

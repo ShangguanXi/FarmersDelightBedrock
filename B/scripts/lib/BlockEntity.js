@@ -1,20 +1,11 @@
 import { ItemStack, system, } from "@minecraft/server";
 import { isSamePos } from "./ObjectUtil";
-export function locateBlock(entity) {
-    try {
-        const pos = entity.getDynamicProperty("farmersdelight:blockEntityDataLocation");
-        return pos ? entity.dimension.getBlock(pos) : undefined;
-    }
-    catch {
-        return undefined;
-    }
-}
-export function getAttachedBlock(entity) {
+export function getAttachedBlock(entity, validate) {
     try {
         const pos = entity.getDynamicProperty("farmersdelight:blockEntityDataLocation");
         if (!pos)
             return undefined;
-        if (!isSamePos(entity.location, pos)) {
+        if (validate && !isSamePos(entity.location, pos)) {
             entity.teleport(pos);
         }
         return entity.dimension.getBlock(pos);
@@ -24,7 +15,6 @@ export function getAttachedBlock(entity) {
     }
 }
 export class BlockEntity {
-    //获取方块实体数据
     blockEntityData(entity) {
         try {
             const dimension = entity?.dimension ?? undefined;
@@ -42,7 +32,6 @@ export class BlockEntity {
         }
     }
     ;
-    //对使用动态属性存储物品的方块实体检测掉落
     blockEntityLoot(args, id, list, amount = 1) {
         if (!isSamePos(args.entity.location, args.blockEntityDataLocation))
             args.entity.teleport(args.blockEntityDataLocation);
@@ -56,26 +45,6 @@ export class BlockEntity {
         BlockEntity.clearEntity(args);
     }
     ;
-    //对使用容器组件存储物品的方块实体检测掉落
-    entityContainerLoot(args, id) {
-        if (!isSamePos(args.entity.location, args.blockEntityDataLocation))
-            args.entity.teleport(args.blockEntityDataLocation);
-        if (args.block?.typeId == id)
-            return;
-        const entity = args.entity;
-        const dimension = args.dimension;
-        const inventory = entity?.getComponent("inventory");
-        const container = inventory?.container;
-        for (let i = 0, length = container.size; i < length; i++) {
-            const itemStack = container.getItem(i);
-            if (itemStack) {
-                dimension.spawnItem(itemStack, entity.location);
-            }
-        }
-        BlockEntity.clearEntity(args);
-    }
-    ;
-    //清除方块实体
     static clearEntity(args) {
         system.run(() => {
             args.entity.remove();

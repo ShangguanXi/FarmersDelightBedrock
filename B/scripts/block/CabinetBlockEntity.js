@@ -10,14 +10,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 import { DataDrivenEntityTriggerAfterEvent, PlayerInteractWithEntityAfterEvent, world, } from "@minecraft/server";
 import { subscribeEvent, attachedBlockEntity } from "../lib/EventSubscriber";
 import { dropsItems } from "../lib/EntityUtil";
-import { locateBlock } from "../lib/BlockEntity";
+import { getAttachedBlock } from "../lib/BlockEntity";
 let CabinetBlockEntity = class CabinetBlockEntity {
     static onDiscard(entity) {
         dropsItems(entity);
     }
-    onInteract(event) {
+    static onInteract(event) {
         const entity = event.target;
-        const block = locateBlock(entity);
+        const block = getAttachedBlock(entity);
         if (!block || !block.hasTag('farmersdelight:cabinet'))
             return;
         const player = event.player;
@@ -27,9 +27,9 @@ let CabinetBlockEntity = class CabinetBlockEntity {
         entity.triggerEvent('farmersdelight:cabinet_interact');
         player.setDynamicProperty('farmersdelight:is_checking_cabinet', true);
     }
-    tryClose(event) {
+    static tryClose(event) {
         const entity = event.entity;
-        const block = locateBlock(entity);
+        const block = getAttachedBlock(entity);
         if (!block)
             return;
         const dimension = entity.dimension;
@@ -51,15 +51,14 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [PlayerInteractWithEntityAfterEvent]),
     __metadata("design:returntype", void 0)
-], CabinetBlockEntity.prototype, "onInteract", null);
+], CabinetBlockEntity, "onInteract", null);
 __decorate([
     subscribeEvent(world.afterEvents.dataDrivenEntityTrigger, { eventTypes: ["farmersdelight:cabinet_try_close"] }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [DataDrivenEntityTriggerAfterEvent]),
     __metadata("design:returntype", void 0)
-], CabinetBlockEntity.prototype, "tryClose", null);
+], CabinetBlockEntity, "tryClose", null);
 CabinetBlockEntity = __decorate([
     attachedBlockEntity({ eventTypes: ["farmersdelight:cabinet_tick"] })
 ], CabinetBlockEntity);
 export { CabinetBlockEntity };
-void CabinetBlockEntity;

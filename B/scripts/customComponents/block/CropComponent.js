@@ -7,11 +7,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Direction, system, GameMode, StartupEvent } from "@minecraft/server";
-import { methodEventSub } from "../../lib/eventHelper";
-import { ItemUtil } from "../../lib/ItemUtil";
-function spawnLoot(path, dimenion, location) {
-    return dimenion.runCommand(`loot spawn ${location.x} ${location.y} ${location.z} loot "${path}"`);
+import { Direction, GameMode, StartupEvent, system, } from "@minecraft/server";
+import { takeItem } from "../../lib/ItemUtil";
+import { subscribeEvent } from "../../lib/EventSubscriber";
+import { spawnLootAtBlock } from "../../lib/LootUtil";
+export function playBoneMealEffect(block, dimension = block.dimension, pos = block.center()) {
+    dimension.playSound("item.bone_meal.use", pos);
+    dimension.spawnParticle("minecraft:crop_growth_emitter", pos);
 }
 class CropsComponent {
     constructor() {
@@ -43,12 +45,12 @@ class CropsComponent {
             }
             if (random > 25) {
                 block.setPermutation(block.permutation.withState(params.state.name, age + 1));
-                ItemUtil.clearItem(container, player.selectedSlotIndex);
+                takeItem(container, player.selectedSlotIndex, 1);
             }
         }
         else {
             block.setPermutation(block.permutation.withState(params.state.name, params.state.age_after_harvest ?? 0));
-            spawnLoot(params.loot.replace("loot_tables/", "").replace(".json", ""), dimension, block.location);
+            spawnLootAtBlock(block, params.loot.replace("loot_tables/", "").replace(".json", ""));
         }
     }
     onRandomTick(args, param) {
@@ -90,7 +92,7 @@ class TorchflowerComponent {
                     block.dimension.spawnParticle("minecraft:crop_growth_emitter", { x: block.location.x + 0.5, y: block.location.y + 0.5, z: block.location.z + 0.5 });
                     if (!container)
                         return;
-                    ItemUtil.clearItem(container, player?.selectedSlotIndex);
+                    takeItem(container, player?.selectedSlotIndex, 1);
                 }
                 dimension.playSound("item.bone_meal.use", block.location);
             }
@@ -164,7 +166,7 @@ class SugarCaneComponent {
                         dimension.playSound("item.bone_meal.use", block.location);
                         if (!container)
                             return;
-                        ItemUtil.clearItem(container, player?.selectedSlotIndex);
+                        takeItem(container, player?.selectedSlotIndex, 1);
                     }
                 }
                 if (block.typeId == "farmersdelight:rich_soil_sugar_cane_middle") {
@@ -174,7 +176,7 @@ class SugarCaneComponent {
                         dimension.playSound("item.bone_meal.use", block.location);
                         if (!container)
                             return;
-                        ItemUtil.clearItem(container, player?.selectedSlotIndex);
+                        takeItem(container, player?.selectedSlotIndex, 1);
                     }
                 }
             }
@@ -250,7 +252,7 @@ class RiceComponent {
                         block.dimension.spawnParticle("minecraft:crop_growth_emitter", { x: block.location.x + 0.5, y: block.location.y + 0.5, z: block.location.z + 0.5 });
                         if (!container)
                             return;
-                        ItemUtil.clearItem(container, player?.selectedSlotIndex);
+                        takeItem(container, player?.selectedSlotIndex, 1);
                     }
                 }
             }
@@ -273,18 +275,18 @@ class RiceComponent {
                         block.dimension.spawnParticle("minecraft:crop_growth_emitter", { x: block.location.x + 0.5, y: block.location.y + 0.5, z: block.location.z + 0.5 });
                         if (!container)
                             return;
-                        ItemUtil.clearItem(container, player?.selectedSlotIndex);
+                        takeItem(container, player?.selectedSlotIndex, 1);
                     }
                 }
                 if (growth == 3) {
                     block.setPermutation(block.permutation.withState("farmersdelight:growth", 0));
-                    spawnLoot("farmersdelight/crops/farmersdelight_rice_riped", dimension, { x: block.location.x, y: block.location.y, z: block.location.z });
+                    spawnLootAtBlock(block, "farmersdelight/crops/farmersdelight_rice_riped");
                 }
             }
             catch (error) {
                 if (growth == 3) {
                     block.setPermutation(block.permutation.withState("farmersdelight:growth", 0));
-                    spawnLoot("farmersdelight/crops/farmersdelight_rice_riped", dimension, { x: block.location.x, y: block.location.y, z: block.location.z });
+                    spawnLootAtBlock(block, "farmersdelight/crops/farmersdelight_rice_riped");
                 }
             }
         }
@@ -331,7 +333,7 @@ export class CropComponentRegister {
     }
 }
 __decorate([
-    methodEventSub(system.beforeEvents.startup),
+    subscribeEvent(system.beforeEvents.startup),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [StartupEvent]),
     __metadata("design:returntype", void 0)

@@ -7,13 +7,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { StartupEvent, Direction, system, Player } from "@minecraft/server";
-import { methodEventSub } from "../../lib/eventHelper";
-import { ItemUtil } from "../../lib/ItemUtil";
-import { EntityUtil } from "../../lib/EntityUtil";
-function placeStructure(dimension, structure, location) {
-    dimension.runCommand(`structure load ${structure} ${location.x} ${location.y} ${location.z}`);
-}
+import { Direction, Player, StartupEvent, system, } from "@minecraft/server";
+import { takeItem } from "../../lib/ItemUtil";
+import { hasLimitedMaterials } from "../../lib/EntityUtil";
+import { subscribeEvent } from "../../lib/EventSubscriber";
 class RiceSeedComponent {
     constructor() {
         this.onUseOn = this.onUseOn.bind(this);
@@ -23,7 +20,7 @@ class RiceSeedComponent {
         const block = args.block;
         const source = args.source;
         if (source instanceof Player) {
-            if (!itemStack || itemStack.typeId != 'farmersdelight:rice' || args.blockFace != Direction.Up || (!block.getTags().includes('dirt')))
+            if (!itemStack || args.blockFace != Direction.Up || (!block.getTags().includes("dirt")))
                 return;
             system.run(() => {
                 const water = block.above();
@@ -32,8 +29,8 @@ class RiceSeedComponent {
                 block.dimension.setBlockType(water.location, "farmersdelight:rice_block");
                 const inventory = source?.getComponent("inventory");
                 const container = inventory?.container;
-                if (EntityUtil.gameMode(source))
-                    ItemUtil.clearItem(container, source.selectedSlotIndex);
+                if (hasLimitedMaterials(source))
+                    takeItem(container, source.selectedSlotIndex, 1);
             });
         }
     }
@@ -44,7 +41,7 @@ export class RiceSeedComponentRegister {
     }
 }
 __decorate([
-    methodEventSub(system.beforeEvents.startup),
+    subscribeEvent(system.beforeEvents.startup),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [StartupEvent]),
     __metadata("design:returntype", void 0)

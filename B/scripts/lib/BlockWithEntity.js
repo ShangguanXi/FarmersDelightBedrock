@@ -1,8 +1,8 @@
 import { EntityTypes, } from "@minecraft/server";
-import { isSamePos } from "./ObjectUtil";
-export function getBlockEntityType(block, params = block.getComponent("farmersdelight:block_entity")?.customComponentParameters?.params) {
-    if (params) {
-        const type = EntityTypes.get(params.toString());
+import { resolveSpec, isSamePos } from "./ObjectUtil";
+export function resolveBlockEntityType(block, spec = resolveSpec(block, "farmersdelight:block_entity")) {
+    if (spec) {
+        const type = EntityTypes.get(spec.toString());
         if (type)
             return type;
     }
@@ -10,33 +10,32 @@ export function getBlockEntityType(block, params = block.getComponent("farmersde
 }
 export function initBlockEntity(block, typeId) {
     const pos = block.bottomCenter();
-    const impl = block.dimension.spawnEntity(typeId, pos);
-    impl.setDynamicProperty("farmersdelight:blockEntityDataLocation", pos);
-    impl.setDynamicProperty("farmersdelight:entityId", impl.id);
-    impl.setDynamicProperty("farmersdelight:storage_version", 1);
-    return impl;
+    const entity = block.dimension.spawnEntity(typeId, pos);
+    entity.setDynamicProperties({
+        ["farmersdelight:storage_version"]: 1,
+        ["farmersdelight:blockEntityDataLocation"]: pos,
+    });
+    return entity;
 }
-export function getBlockEntity(block, typeId) {
+export function getBlockEntity(block, spec) {
+    const id = resolveBlockEntityType(block, spec)?.id;
+    if (!id)
+        return undefined;
     const pos = block.bottomCenter();
-    const candidates = block.dimension.getEntities({ location: pos, type: typeId });
+    const candidates = block.dimension.getEntities({ location: pos, type: id });
     for (const candidate of candidates) {
-        if (candidate.id !== candidate.getDynamicProperty("farmersdelight:entityId"))
-            continue;
-        if (isSamePos(pos, candidate.getDynamicProperty("farmersdelight:blockEntityDataLocation"))) {
+        if (isSamePos(pos, candidate.getDynamicProperty("farmersdelight:blockEntityDataLocation")))
             return candidate;
-        }
     }
     return undefined;
 }
 export class BlockWithEntity {
-    //名为setblock实际上是放置对应方块实体的实体，若成功则返回放置的实体
     setBlock(dimension, location, entityId) {
         const entity = dimension.spawnEntity(entityId, location);
         entity.setDynamicProperty("farmersdelight:blockEntityDataLocation", location);
         entity.setDynamicProperty("farmersdelight:entityId", entity.id);
         return entity;
     }
-    //获取方块实体数据
     entityBlockData(block, opt) {
         const dimension = block.dimension;
         const entities = dimension.getEntitiesAtBlockLocation(opt.location);

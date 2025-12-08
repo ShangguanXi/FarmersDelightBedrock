@@ -7,9 +7,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { StartupEvent, system, BlockVolume, BlockPermutation } from "@minecraft/server";
-import { ItemUtil } from "../../lib/ItemUtil";
-import { methodEventSub } from "../../lib/eventHelper";
+import { BlockPermutation, BlockVolume, StartupEvent, system, } from "@minecraft/server";
+import { takeItem } from "../../lib/ItemUtil";
+import { subscribeEvent } from "../../lib/EventSubscriber";
+import { resolveSpec } from "../../lib/ObjectUtil";
 function handlePlanting(seedId, crop, topLocation, container, player, block) {
     if (!player)
         return;
@@ -20,7 +21,7 @@ function handlePlanting(seedId, crop, topLocation, container, player, block) {
     if (itemId == seedId) {
         player.dimension.playSound("dig.grass", block.location);
         block.dimension.setBlockType(topLocation, crop);
-        ItemUtil.clearItem(container, player.selectedSlotIndex);
+        takeItem(container, player.selectedSlotIndex, 1);
     }
     return;
 }
@@ -53,9 +54,8 @@ class RichSoilFarmlandComponent {
             handlePlanting("minecraft:beetroot_seeds", "farmersdelight:rich_soil_beetroot", topLocation, container, player, block);
             handlePlanting("minecraft:torchflower_seeds", "farmersdelight:rich_soil_torchflower_crop", topLocation, container, player, block);
             handlePlanting("minecraft:torchflower", "farmersdelight:rich_soil_torchflower", topLocation, container, player, block);
-            const seed = itemStack.getComponent("farmersdelight:seed");
-            if (seed) {
-                const crop = seed.customComponentParameters.params;
+            const crop = resolveSpec(itemStack, "farmersdelight:seed");
+            if (crop) {
                 handlePlanting(itemStack.typeId, crop, topLocation, container, player, block);
             }
         }
@@ -95,10 +95,9 @@ class RichSoilFarmlandComponent {
         const cropBlock = dimension.getBlock({ x: x, y: y + 1, z: z });
         if (!cropBlock)
             return;
-        const cropComp = cropBlock?.getComponent("farmersdelight:crop");
-        if (!cropComp)
+        const params = resolveSpec(cropBlock, "farmersdelight:crop");
+        if (!params)
             return;
-        const params = cropComp?.customComponentParameters.params;
         const growth = cropBlock.permutation.getState(params.state.name);
         if (growth < params.state.age) {
             cropBlock.setPermutation(cropBlock.permutation.withState(params.state.name, growth + 1));
@@ -112,7 +111,7 @@ export class RichSoilFarmlandComponentRegister {
     }
 }
 __decorate([
-    methodEventSub(system.beforeEvents.startup),
+    subscribeEvent(system.beforeEvents.startup),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [StartupEvent]),
     __metadata("design:returntype", void 0)

@@ -7,11 +7,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { ItemStack, PlayerInteractWithBlockBeforeEvent, PlayerPlaceBlockAfterEvent, system, world } from "@minecraft/server";
-import { methodEventSub } from "../../lib/eventHelper";
+import { ItemStack, PlayerInteractWithBlockBeforeEvent, PlayerPlaceBlockAfterEvent, system, world, } from "@minecraft/server";
 import { BlockWithEntity } from "../../lib/BlockWithEntity";
-//potItem用于放置厨锅时暂时存储厨锅物品数据，方便读取lore
-//别问我为啥不写类里面，因为写类里面的时候在constructor里还是正常的map，一到事件里就莫名其妙变成了undefined，ts也没报错，查不出来原因
+import { subscribeEvent } from "../../lib/EventSubscriber";
 let potItem = new Map();
 export class CookingPotBlock extends BlockWithEntity {
     beforePlaceBlock(args) {
@@ -52,19 +50,19 @@ export class CookingPotBlock extends BlockWithEntity {
     }
 }
 __decorate([
-    methodEventSub(world.beforeEvents.playerInteractWithBlock),
+    subscribeEvent(world.beforeEvents.playerInteractWithBlock),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [PlayerInteractWithBlockBeforeEvent]),
     __metadata("design:returntype", void 0)
 ], CookingPotBlock.prototype, "beforePlaceBlock", null);
 __decorate([
-    methodEventSub(world.afterEvents.playerPlaceBlock),
+    subscribeEvent(world.afterEvents.playerPlaceBlock),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [PlayerPlaceBlockAfterEvent]),
     __metadata("design:returntype", void 0)
 ], CookingPotBlock.prototype, "placeBlock", null);
 __decorate([
-    methodEventSub(world.beforeEvents.playerBreakBlock, { blockTypes: ["farmersdelight:cooking_pot"] }),
+    subscribeEvent(world.beforeEvents.playerBreakBlock, { blockTypes: ["farmersdelight:cooking_pot"] }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)

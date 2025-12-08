@@ -1,0 +1,24 @@
+export const HEAT_SOURCES = new Set([
+    "minecraft:fire",
+    "minecraft:campfire",
+    "minecraft:soul_fire",
+    "minecraft:soul_campfire",
+    "minecraft:flowing_lava",
+    "minecraft:lava",
+]);
+export const HEAT_CONDUCTORS = new Set([
+    "minecraft:hopper",
+]);
+export function isHeated(block) {
+    const support = block.below();
+    if (!support)
+        return false;
+    if (HEAT_SOURCES.has(support.typeId) || support.hasTag("farmersdelight:heat_source"))
+        return true;
+    if (HEAT_CONDUCTORS.has(support.typeId) || support.hasTag("farmersdelight:heat_conductors")) {
+        const distal = support.below();
+        if (distal && (HEAT_SOURCES.has(distal.typeId) || distal.hasTag("farmersdelight:heat_source")))
+            return true;
+    }
+    return false;
+}

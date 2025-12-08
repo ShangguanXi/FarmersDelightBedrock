@@ -1,83 +1,107 @@
-import { Block, EquipmentSlot, GameMode, ItemDurabilityComponent, ItemStack } from "@minecraft/server";
-import { RandomUtil } from "./RandomUtil";
-export class ItemUtil {
-    static damageItem(container, index, damage = 1) {
-        const itemStack = container.getItem(index);
-        if (!itemStack)
-            return;
-        const durability = itemStack.getComponent(ItemDurabilityComponent.componentId);
-        if (!durability)
-            return;
-        if (durability.maxDurability > durability.damage) {
-            durability.damage += damage;
-            container.setItem(index, itemStack);
-            return damage;
+import { Entity, EntityComponentTypes, EquipmentSlot, ItemComponentTypes, } from "@minecraft/server";
+export function enchantmentLevelOf(stack, enchantment) {
+    const instance = stack?.getComponent(ItemComponentTypes.Enchantable)?.getEnchantment(enchantment);
+    return instance ? instance.level : 0;
+}
+export function isEnchanted(stack, enchantment) {
+    return stack?.getComponent(ItemComponentTypes.Enchantable)?.hasEnchantment(enchantment);
+}
+function hurtItemInSlotImpl(stack, amount, avoidable, slot) {
+    const durability = stack?.getComponent(ItemComponentTypes.Durability);
+    if (durability) {
+        let damage = 0;
+        if (avoidable) {
+            const chance = durability.getDamageChance(Math.min(enchantmentLevelOf(stack, "unbreaking"), 3));
+            while (amount-- > 0) {
+                if (Math.random() < chance) {
+                    ++damage;
+                }
+            }
+            if (!damage)
+                return;
+            damage += durability.damage;
         }
         else {
-            container.setItem(index, undefined);
-            return durability.maxDurability;
+            damage = durability.damage + amount;
         }
-    }
-    static clearItem(container, index, amount = 1) {
-        const itemStack = container.getItem(index);
-        if (!itemStack)
-            return;
-        const itemAmount = itemStack.amount;
-        if (itemAmount > amount) {
-            itemStack.amount = itemAmount - amount;
-            container.setItem(index, itemStack);
-            return amount;
+        if (durability.maxDurability < damage) {
+            slot.setItem(undefined);
         }
         else {
-            container.setItem(index, undefined);
-            return itemAmount;
+            durability.damage = damage;
+            slot.setItem(stack);
         }
     }
-    static clearOffhandItem(player, amount = 1) {
-        const equip = player.getComponent('minecraft:equippable');
-        const itemStack = equip?.getEquipment(EquipmentSlot.Offhand);
-        if (!itemStack)
-            return;
-        const newItemStack = itemStack;
-        if (newItemStack.amount > amount) {
-            newItemStack.amount = newItemStack.amount - amount;
-            if (!equip?.setEquipment(EquipmentSlot.Offhand, newItemStack))
-                player.runCommand(`/clear @s ${itemStack.typeId} 0 ${amount}`);
-        }
-        else {
-            equip?.setEquipment(EquipmentSlot.Offhand, undefined);
-        }
+    else if (stack) {
+        slot.setItem(undefined);
     }
-    static replaceItem(player, slot, replaceItemStack) {
-        const container = player.getComponent("inventory")?.container;
+}
+export function hurtItem(container, index, amount = 1, avoidable = true) {
+    hurtItemInSlot(container.getSlot(index), undefined, amount, avoidable);
+}
+export function hurtEquippedItem(entity, stack, amount = 1, avoidable = true, slot = EquipmentSlot.Mainhand) {
+    hurtItemInSlotImpl(stack, amount, avoidable, {
+        setItem(result) {
+            entity.getComponent(EntityComponentTypes.Equippable)?.setEquipment(slot, result);
+        },
+    });
+}
+export function hurtItemInSlot(slot, stack, amount = 1, avoidable = true) {
+    hurtItemInSlotImpl(stack ?? slot.getItem(), amount, avoidable, slot);
+}
+export function takeItemInSlot(slot, desired = 1, check = true) {
+    if (check && !slot.hasItem())
+        return desired;
+    const remaining = slot.amount;
+    if (remaining > desired) {
+        slot.amount = remaining - desired;
+        return 0;
+    }
+    slot.setItem(undefined);
+    return desired - remaining;
+}
+export function takeEquippedItem(entity, slot = EquipmentSlot.Mainhand, desired = 1, check = true) {
+    const proxy = entity.getComponent(EntityComponentTypes.Equippable)?.getEquipmentSlot(slot);
+    return proxy ? takeItemInSlot(proxy, desired, check) : desired;
+}
+export function takeItem(container, slot, desired = 1, check = true) {
+    const proxy = container.getSlot(slot);
+    return proxy ? takeItemInSlot(proxy, desired, check) : desired;
+}
+export function convertItemInSlot(slot, result, check = true) {
+    if (check && !slot.hasItem())
+        return undefined;
+    const remaining = slot.amount - 1;
+    if (remaining) {
+        slot.amount = remaining;
+        return result;
+    }
+    slot.setItem(result);
+    return undefined;
+}
+export function giveItem(entity, stack, container) {
+    if (!container) {
+        container = entity.getComponent(EntityComponentTypes.Inventory)?.container;
         if (!container)
-            return;
-        const itemStack = container?.getItem(slot);
-        if (!itemStack)
-            return;
-        if (player.getGameMode() == GameMode.Creative)
-            return;
-        const itemAmount = itemStack.amount;
-        const amount = itemAmount - 1;
-        if (amount <= 0) {
-            container.setItem(slot, undefined);
-        }
-        else {
-            let newItemStack = itemStack;
-            newItemStack.amount = amount;
-            container.setItem(slot, newItemStack);
-        }
-        container.addItem(replaceItemStack);
+            return stack;
     }
-    static spawnItem(target, item, number = 1, location) {
-        const dimension = target.dimension;
-        const spawnPos = location ?? (target instanceof Block ? (RandomUtil.probability(50) ? target.center() : target.bottomCenter()) : target.location);
-        const stack = item instanceof ItemStack ? item : new ItemStack(item, number);
-        try {
-            return dimension.spawnItem(stack, spawnPos);
+    if (stack) {
+        stack = container.addItem(stack);
+        if (stack) {
+            entity.dimension.spawnItem(stack, entity.location);
         }
-        catch (error) {
-            return undefined;
-        }
+    }
+    return undefined;
+}
+export function spawnStack(stack, source, pos = source instanceof Entity
+    ? source.location
+    : Math.random() < 0.5
+        ? source.center()
+        : source.bottomCenter()) {
+    try {
+        return source.dimension.spawnItem(stack, pos);
+    }
+    catch {
+        return undefined;
     }
 }

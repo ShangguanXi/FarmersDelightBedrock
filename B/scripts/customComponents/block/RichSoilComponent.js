@@ -4,16 +4,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-import { StartupEvent, system } from "@minecraft/server";
-import { ItemUtil } from "../../lib/ItemUtil";
-import { methodEventSub } from "../../lib/eventHelper";
-class RichSoilComponent {
-    constructor() {
-        this.onPlayerInteract = this.onPlayerInteract.bind(this);
-    }
+import { BlockPermutation, } from "@minecraft/server";
+import { hurtItem, takeItem } from "../../lib/ItemUtil";
+import { blockComponent } from "../../lib/EventSubscriber";
+let RichSoilComponent = class RichSoilComponent {
     onPlayerInteract(args) {
         const player = args.player;
         const face = args.face;
@@ -35,37 +29,47 @@ class RichSoilComponent {
                 if (itemId == "minecraft:sugar_cane") {
                     dimension.playSound("dig.grass", block.location);
                     dimension.setBlockType(topLocation, "farmersdelight:rich_soil_sugar_cane_bottom");
-                    ItemUtil.clearItem(container, player.selectedSlotIndex);
+                    takeItem(container, player.selectedSlotIndex, 1);
                 }
                 if (itemId == "minecraft:brown_mushroom") {
                     dimension.playSound("dig.grass", block.location);
                     dimension.setBlockType(topLocation, "farmersdelight:brown_mushroom_colony");
-                    ItemUtil.clearItem(container, player.selectedSlotIndex);
+                    takeItem(container, player.selectedSlotIndex, 1);
                 }
                 if (itemId == "minecraft:red_mushroom") {
                     dimension.playSound("dig.grass", block.location);
                     dimension.setBlockType(topLocation, "farmersdelight:red_mushroom_colony");
-                    ItemUtil.clearItem(container, player.selectedSlotIndex);
+                    takeItem(container, player.selectedSlotIndex, 1);
                 }
             }
             if (hoeTag) {
                 dimension.setBlockType(block.location, "farmersdelight:rich_soil_farmland");
                 dimension.playSound("use.gravel", block.location);
-                ItemUtil.damageItem(container, player.selectedSlotIndex, 1);
+                hurtItem(container, player.selectedSlotIndex, 1);
             }
         }
         catch (error) {
         }
     }
-}
-export class RichSoilComponentRegister {
-    register(args) {
-        args.blockComponentRegistry.registerCustomComponent('farmersdelight:rich_soil', new RichSoilComponent());
+    onRandomTick(event, _) {
+        const above = event.block.above();
+        switch (above?.typeId) {
+            case "minecraft:brown_mushroom":
+                above.setPermutation(BlockPermutation.resolve("farmersdelight:brown_mushroom_colony", { "farmersdelight:growth": 1 }));
+                return;
+            case "minecraft:red_mushroom":
+                above.setPermutation(BlockPermutation.resolve("farmersdelight:red_mushroom_colony", { "farmersdelight:growth": 1 }));
+                return;
+        }
+        if (above?.getComponent("farmersdelight:mushroom_cluster")) {
+            const permutation = above.permutation;
+            if (permutation.getState("farmersdelight:growth") === 0) {
+                above.setPermutation(permutation.withState("farmersdelight:growth", 1));
+            }
+        }
     }
-}
-__decorate([
-    methodEventSub(system.beforeEvents.startup),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [StartupEvent]),
-    __metadata("design:returntype", void 0)
-], RichSoilComponentRegister.prototype, "register", null);
+};
+RichSoilComponent = __decorate([
+    blockComponent("farmersdelight:rich_soil")
+], RichSoilComponent);
+export { RichSoilComponent };

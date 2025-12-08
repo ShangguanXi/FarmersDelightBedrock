@@ -8,8 +8,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { system, world } from "@minecraft/server";
-import { methodEventSub } from "../../lib/eventHelper";
 import { BlockEntity } from "../../lib/BlockEntity";
+import { subscribeEvent } from "../../lib/EventSubscriber";
 export class CuttingBoardBlockEntity extends BlockEntity {
     tick(args) {
         const entityBlockData = super.blockEntityData(args.entity);
@@ -29,7 +29,7 @@ export class CuttingBoardBlockEntity extends BlockEntity {
     }
 }
 __decorate([
-    methodEventSub(world.afterEvents.dataDrivenEntityTrigger, { entityTypes: ["farmersdelight:cutting_board"], eventTypes: ["farmersdelight:cutting_board_tick"] }),
+    subscribeEvent(world.afterEvents.dataDrivenEntityTrigger, { entityTypes: ["farmersdelight:cutting_board"], eventTypes: ["farmersdelight:cutting_board_tick"] }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)

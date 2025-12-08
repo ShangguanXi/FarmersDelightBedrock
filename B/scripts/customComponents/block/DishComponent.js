@@ -4,13 +4,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-import { EntityComponentTypes, GameMode, ItemStack, ItemTypes, StartupEvent, system, world, } from "@minecraft/server";
-import { methodEventSub } from "../../lib/eventHelper";
+import { EntityComponentTypes, GameMode, ItemStack, ItemTypes, world, } from "@minecraft/server";
+import { blockComponent } from "../../lib/EventSubscriber";
 function requiresItem(tagOrId) {
-    return "farmersdelight.blockfood." + (tagOrId[0] === "#" ? tagOrId.substring(1) : tagOrId); // sic
+    return "farmersdelight.blockfood." + (tagOrId[0] === "#" ? tagOrId.substring(1) : tagOrId);
 }
 function isInvalidItem(slot, tagOrId) {
     const stack = slot.getItem();
@@ -18,7 +15,7 @@ function isInvalidItem(slot, tagOrId) {
         return true;
     return tagOrId[0] === "#" ? !stack.hasTag(tagOrId.substring(1)) : stack.typeId !== tagOrId;
 }
-export class DishComponent {
+let DishComponent = class DishComponent {
     onPlayerInteract(event, params) {
         const spec = params.params;
         const servings = spec.servings ?? 1;
@@ -61,7 +58,6 @@ export class DishComponent {
         if (Array.isArray(content)) {
             content = content[consumed];
             if (!content) {
-                // 这里要不要打个日志
                 content = spec.contents[0];
             }
         }
@@ -86,14 +82,8 @@ export class DishComponent {
             block.setType("minecraft:air");
         }
     }
-    static init(event) {
-        event.blockComponentRegistry.registerCustomComponent("farmersdelight:dish", new DishComponent());
-    }
-}
-__decorate([
-    methodEventSub(system.beforeEvents.startup),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [StartupEvent]),
-    __metadata("design:returntype", void 0)
-], DishComponent, "init", null);
-void DishComponent;
+};
+DishComponent = __decorate([
+    blockComponent("farmersdelight:dish")
+], DishComponent);
+export { DishComponent };
