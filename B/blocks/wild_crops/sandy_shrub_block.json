@@ -13,9 +13,9 @@
       "minecraft:destructible_by_explosion": {
         "explosion_resistance": 0.1
       },
-      /*"minecraft:flower_pottable": {},
+      "minecraft:flower_pottable": {},
       "minecraft:embedded_visual": {
-          "geometry": "geometry.wild_crop",
+          "geometry": "geometry.cross_crop_pot",
           "material_instances": {
               "*": {
                   "texture": "sandy_shrub",
@@ -24,12 +24,12 @@
                   "face_dimming": false
               }
           }
-      },*/
-      "minecraft:geometry": "geometry.wild_crop",
+      },
+      "minecraft:geometry": "minecraft:geometry.cross",
       "minecraft:material_instances": {
         "*": {
           "texture": "sandy_shrub",
-          "render_method": "alpha_test",
+          "render_method": "alpha_test_single_sided",
           "ambient_occlusion": false,
           "face_dimming": false
         }

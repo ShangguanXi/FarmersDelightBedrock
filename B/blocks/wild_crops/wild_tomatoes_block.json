@@ -13,14 +13,26 @@
       "minecraft:destructible_by_explosion": {
         "explosion_resistance": 0.1
       },
-      "minecraft:geometry": "geometry.wild_crop",
+      "minecraft:geometry": "minecraft:geometry.cross",
       "minecraft:material_instances": {
         "*": {
           "texture": "wild_tomatoes",
-          "render_method": "alpha_test",
+          "render_method": "alpha_test_single_sided",
           "ambient_occlusion": false,
           "face_dimming": false
         }
+      },
+      "minecraft:flower_pottable": {},
+      "minecraft:embedded_visual": {
+          "geometry": "geometry.cross_crop_pot",
+          "material_instances": {
+              "*": {
+                  "texture": "wild_tomatoes",
+                  "render_method": "alpha_test",
+                  "ambient_occlusion": false,
+                  "face_dimming": false
+              }
+          }
       },
       "minecraft:flammable": {
         "catch_chance_modifier": 30,
