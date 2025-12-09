@@ -35,3 +35,10 @@ export function dropsItems(entity, container) {
     }
     container.clearAll();
 }
+export function increaseAttribute(entity, attribute, delta) {
+    const component = entity.getComponent(attribute);
+    if (component) {
+        const value = component.currentValue + delta, max = component.effectiveMax;
+        component.setCurrentValue(value > max ? max : value);
+    }
+}

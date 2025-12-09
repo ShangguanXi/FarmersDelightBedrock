@@ -78,8 +78,6 @@ export function spawnKnifeLoot(block, permutation, tool) {
         spawnLootAtBlock(block, loot);
     }
     else if (DROPS_CAKE_SLICE.has(blockId)) {
-        block.dimension.spawnItem(new ItemStack("farmersdelight:cake_slice", blockId === "minecraft:cake"
-            ? 7 - (permutation.getState("bite_counter") ?? 0)
-            : 7), block.center());
+        block.dimension.spawnItem(new ItemStack("farmersdelight:cake_slice", blockId === "minecraft:cake" ? 7 - (permutation.getState("bite_counter") ?? 0) : 7), block.center());
     }
 }

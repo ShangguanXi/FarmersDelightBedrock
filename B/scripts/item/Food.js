@@ -37,11 +37,6 @@ export class Food {
                     player.addEffect("hunger", 30 * 20, { amplifier: 0 });
                 }
                 break;
-            case "farmersdelight:sweet_berry_cheesecake_slice":
-            case "farmersdelight:apple_pie_slice":
-            case "farmersdelight:chocolate_pie_slice":
-                player.addEffect("speed", 30 * 20, { amplifier: 0 });
-                break;
             case "farmersdelight:mixed_salad":
             case "farmersdelight:fruit_salad":
                 player.addEffect("regeneration", 5 * 20, { amplifier: 0 });
