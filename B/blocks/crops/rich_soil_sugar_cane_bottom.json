@@ -35,6 +35,9 @@
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 0
             },
+            "minecraft:precipitation_interactions": {
+                "precipitation_behavior": "none"
+            },
             "minecraft:liquid_detection": {
                 "detection_rules": [
                     {

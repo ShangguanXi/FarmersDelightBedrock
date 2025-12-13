@@ -37,6 +37,9 @@
       }
     },
     "components": {
+      "minecraft:precipitation_interactions": {
+        "precipitation_behavior": "none"
+      },
       "minecraft:redstone_conductivity": {
         "allows_wire_to_step_down": false
       },

@@ -25,6 +25,9 @@
               }
           }
       },
+      "minecraft:precipitation_interactions": {
+        "precipitation_behavior": "none"
+      },
       "minecraft:geometry": "minecraft:geometry.cross",
       "minecraft:material_instances": {
         "*": {

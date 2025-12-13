@@ -38,6 +38,9 @@
         "catch_chance_modifier": 30,
         "destroy_chance_modifier": 60
       },
+      "minecraft:precipitation_interactions": {
+        "precipitation_behavior": "none"
+      },
       "minecraft:placement_filter": {
         "conditions": [
           {

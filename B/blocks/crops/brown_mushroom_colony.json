@@ -117,6 +117,9 @@
         "catch_chance_modifier": 30,
         "destroy_chance_modifier": 30
       },
+      "minecraft:precipitation_interactions": {
+        "precipitation_behavior": "none"
+      },
       "minecraft:light_dampening": 0,
       "minecraft:geometry": "minecraft:geometry.cross",
       "minecraft:destructible_by_explosion": {

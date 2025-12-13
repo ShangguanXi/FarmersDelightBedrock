@@ -177,11 +177,11 @@
             }
         ],
         "components": {
-            "farmersdelight:crop":{
+            "farmersdelight:crop": {
                 "loot": "loot_tables/farmersdelight/crops/farmersdelight_cabbage_riped.json",
-                "state":{
-                    "name":"farmersdelight:growth",
-                    "age":7
+                "state": {
+                    "name": "farmersdelight:growth",
+                    "age": 7
                 }
             },
             "minecraft:material_instances": {
@@ -192,10 +192,13 @@
                     "render_method": "alpha_test"
                 }
             },
-            "minecraft:movable": {
-                "movement_type": "popped" 
+            "minecraft:precipitation_interactions": {
+                "precipitation_behavior": "none"
             },
-            "minecraft:redstone_conductivity":{
+            "minecraft:movable": {
+                "movement_type": "popped"
+            },
+            "minecraft:redstone_conductivity": {
                 "allows_wire_to_step_down": false
             },
             "minecraft:loot": "loot_tables/farmersdelight/crops/farmersdelight_cabbage.json",

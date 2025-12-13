@@ -15,15 +15,18 @@
       },
       "minecraft:flower_pottable": {},
       "minecraft:embedded_visual": {
-          "geometry": "geometry.cross_crop_pot",
-          "material_instances": {
-              "*": {
-                  "texture": "sandy_shrub",
-                  "render_method": "alpha_test",
-                  "ambient_occlusion": false,
-                  "face_dimming": false
-              }
+        "geometry": "geometry.cross_crop_pot",
+        "material_instances": {
+          "*": {
+            "texture": "sandy_shrub",
+            "render_method": "alpha_test",
+            "ambient_occlusion": false,
+            "face_dimming": false
           }
+        }
+      },
+      "minecraft:precipitation_interactions": {
+        "precipitation_behavior": "none"
       },
       "minecraft:geometry": "minecraft:geometry.cross",
       "minecraft:material_instances": {
@@ -53,7 +56,9 @@
                 "tags": "q.any_tag('sand')"
               }
             ],
-            "allowed_faces": ["up"]
+            "allowed_faces": [
+              "up"
+            ]
           }
         ]
       },
@@ -77,8 +82,16 @@
         }
       },
       "minecraft:selection_box": {
-        "origin": [-5, 0, -5],
-        "size": [10, 8, 10]
+        "origin": [
+          -5,
+          0,
+          -5
+        ],
+        "size": [
+          10,
+          8,
+          10
+        ]
       },
       "minecraft:loot": "loot_tables/farmersdelight/sandy_shrub.json",
       "minecraft:replaceable": {},

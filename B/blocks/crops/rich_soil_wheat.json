@@ -220,6 +220,9 @@
             }
         ],
         "components": {
+            "minecraft:precipitation_interactions": {
+                "precipitation_behavior": "none"
+            },
             "minecraft:material_instances": {
                 "*": {
                     "texture": "wheat_stage7",

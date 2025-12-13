@@ -109,6 +109,9 @@
           "face_dimming": false
         }
       },
+      "minecraft:precipitation_interactions": {
+        "precipitation_behavior": "none"
+      },
       "minecraft:flammable": {
         "catch_chance_modifier": 30,
         "destroy_chance_modifier": 60

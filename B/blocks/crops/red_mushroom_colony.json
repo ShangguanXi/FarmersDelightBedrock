@@ -4,7 +4,13 @@
     "description": {
       "identifier": "farmersdelight:red_mushroom_colony",
       "states": {
-        "farmersdelight:growth": [0, 1, 2, 3, 4]
+        "farmersdelight:growth": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
       }
     },
     "permutations": [
@@ -20,11 +26,20 @@
             }
           },
           "minecraft:selection_box": {
-            "origin": [-3, 0, -3],
-            "size": [6, 7, 6]
+            "origin": [
+              -3,
+              0,
+              -3
+            ],
+            "size": [
+              6,
+              7,
+              6
+            ]
           }
         }
-      }, {
+      },
+      {
         "condition": "query.block_state('farmersdelight:growth') == 1",
         "components": {
           "minecraft:material_instances": {
@@ -36,11 +51,20 @@
             }
           },
           "minecraft:selection_box": {
-            "origin": [-4, 0, -4],
-            "size": [8, 9, 8]
+            "origin": [
+              -4,
+              0,
+              -4
+            ],
+            "size": [
+              8,
+              9,
+              8
+            ]
           }
         }
-      }, {
+      },
+      {
         "condition": "query.block_state('farmersdelight:growth') == 2",
         "components": {
           "minecraft:material_instances": {
@@ -52,11 +76,20 @@
             }
           },
           "minecraft:selection_box": {
-            "origin": [-5, 0, -5],
-            "size": [10, 11, 10]
+            "origin": [
+              -5,
+              0,
+              -5
+            ],
+            "size": [
+              10,
+              11,
+              10
+            ]
           }
         }
-      }, {
+      },
+      {
         "condition": "query.block_state('farmersdelight:growth') == 3",
         "components": {
           "minecraft:material_instances": {
@@ -68,11 +101,20 @@
             }
           },
           "minecraft:selection_box": {
-            "origin": [-5, 0, -5],
-            "size": [10, 13, 10]
+            "origin": [
+              -5,
+              0,
+              -5
+            ],
+            "size": [
+              10,
+              13,
+              10
+            ]
           }
         }
-      }, {
+      },
+      {
         "condition": "query.block_state('farmersdelight:growth') == 4",
         "components": {
           "minecraft:material_instances": {
@@ -84,13 +126,24 @@
             }
           },
           "minecraft:selection_box": {
-            "origin": [-6, 0, -6],
-            "size": [12, 15, 12]
+            "origin": [
+              -6,
+              0,
+              -6
+            ],
+            "size": [
+              12,
+              15,
+              12
+            ]
           }
         }
       }
     ],
     "components": {
+      "minecraft:precipitation_interactions": {
+        "precipitation_behavior": "none"
+      },
       "minecraft:material_instances": {
         "*": {
           "texture": "red_mushroom_colony_stage3",
@@ -110,7 +163,11 @@
         "mushroom": "minecraft:red_mushroom",
         "harvest": "farmersdelight:red_mushroom_colony",
         "mushtree": "farmersdelight:red_mushroom_tree",
-        "offset": [-2, 0, -2]
+        "offset": [
+          -2,
+          0,
+          -2
+        ]
       },
       "minecraft:liquid_detection": {
         "detection_rules": [
@@ -145,7 +202,9 @@
                 "tags": "q.any_tag('mushroom_grow_block')"
               }
             ],
-            "allowed_faces": ["up"]
+            "allowed_faces": [
+              "up"
+            ]
           }
         ]
       },

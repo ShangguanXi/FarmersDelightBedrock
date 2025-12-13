@@ -119,6 +119,9 @@
             }
         ],
         "components": {
+            "minecraft:precipitation_interactions": {
+                "precipitation_behavior": "none"
+            },
             "minecraft:movable": {
                 "movement_type": "popped" 
             },

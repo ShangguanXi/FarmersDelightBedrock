@@ -220,17 +220,19 @@
             }
         ],
         "components": {
-            "minecraft:movable": {
-                "movement_type": "popped" 
+            "minecraft:precipitation_interactions": {
+                "precipitation_behavior": "none"
             },
-            "farmersdelight:crop":{
+            "minecraft:movable": {
+                "movement_type": "popped"
+            },
+            "farmersdelight:crop": {
                 "loot": "loot_tables/farmersdelight/crops/farmersdelight_onion_riped.json",
-                "state":{
-                    "name":"farmersdelight:growth",
-                    "age":7
+                "state": {
+                    "name": "farmersdelight:growth",
+                    "age": 7
                 }
             },
-            
             "minecraft:material_instances": {
                 "*": {
                     "texture": "onions_stage0",
@@ -239,7 +241,7 @@
                     "render_method": "alpha_test"
                 }
             },
-            "minecraft:redstone_conductivity":{
+            "minecraft:redstone_conductivity": {
                 "allows_wire_to_step_down": false
             },
             "minecraft:loot": "loot_tables/farmersdelight/crops/farmersdelight_onion.json",
@@ -262,7 +264,6 @@
             "minecraft:destructible_by_explosion": {
                 "explosion_resistance": 0.0
             },
-            
             "minecraft:collision_box": false,
             "minecraft:placement_filter": {
                 "conditions": [
