@@ -1,6 +1,6 @@
 import {
     Block,
-    BlockComponentPlayerBreakEvent,
+    BlockComponentBlockBreakEvent,
     BlockComponentPlayerInteractEvent,
     BlockComponentPlayerPlaceBeforeEvent,
     BlockComponentRandomTickEvent,
@@ -9,6 +9,7 @@ import {
     EquipmentSlot,
     GameMode,
     ItemStack,
+    Player,
     world,
 } from "@minecraft/server";
 import { hurtItemInSlot, isEnchanted } from "../../lib/ItemUtil";
@@ -132,10 +133,10 @@ export class MushroomClusterComponent implements BlockCustomComponent {
         }
     }
 
-    onPlayerBreak(event: BlockComponentPlayerBreakEvent, params: CustomComponentParameters): void {
-        const player = event.player;
-        if (!player || player.getGameMode() === GameMode.Creative) return;
-        const stack = getEquipment(player, EquipmentSlot.Mainhand);
+    onBreak(event: BlockComponentBlockBreakEvent, params: CustomComponentParameters): void {
+        const entity = event.entitySource;
+        if (entity instanceof Player && entity.getGameMode() === GameMode.Creative) return;
+        const stack = getEquipment(entity, EquipmentSlot.Mainhand);
         if (isEnchanted(stack, "silk_touch")) return; // 原版强行处理了精准采集
         const age = event.brokenBlockPermutation.getState("farmersdelight:growth") ?? 0;
         const spec = params.params as MushroomClusterSpec;

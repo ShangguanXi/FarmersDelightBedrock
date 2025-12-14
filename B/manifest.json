@@ -5,7 +5,7 @@
     "name": "pack.name",
     "uuid": "d0131071-9ec1-edcd-6871-857c700703d8",
     "version": [4, 2, 0],
-    "min_engine_version": [1, 21, 110]
+    "min_engine_version": [1, 21, 130]
   },
   "modules": [
     {
@@ -28,7 +28,7 @@
       "version": [4, 2, 0]
     }, {
       "module_name": "@minecraft/server",
-      "version": "2.3.0"
+      "version": "2.4.0"
     }, {
       "module_name": "@minecraft/server-ui",
       "version": "2.0.0"

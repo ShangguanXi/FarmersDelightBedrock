@@ -68,7 +68,7 @@ export const BLOCK_LOOT_WITH_KNIFE: Map<string, BlockLoot> = new Map([
     ["minecraft:short_grass", STRAW_FROM_GRASS],
     ["minecraft:fern", STRAW_FROM_GRASS],
     ["minecraft:wheat", STRAW_FROM_WHEAT],
-    ["farmersdelight:rich_soil_wheat", STRAW_FROM_WHEAT],
+    ["farmersdelight:rich_soil_wheat", STRAW_FROM_FD_WHEAT],
     ["farmersdelight:rice_block_upper", STRAW_FROM_RICE],
     ["farmersdelight:sandy_shrub", blockLoot("farmersdelight/straw_from_sandy_shrub")],
 ]);

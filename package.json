@@ -3,7 +3,7 @@
     "build": "tsc -p ./B/typescripts/tsconfig.json"
   },
   "dependencies": {
-    "@minecraft/server": "^2.0.0",
+    "@minecraft/server": "^2.4.0",
     "@minecraft/server-ui": "^2.0.0"
   },
   "devDependencies": {

@@ -1,11 +1,12 @@
 import {
-    BlockComponentPlayerBreakEvent,
+    BlockComponentBlockBreakEvent,
     BlockComponentPlayerPlaceBeforeEvent,
     BlockComponentTickEvent,
     BlockCustomComponent,
     CustomComponentParameters,
     EquipmentSlot,
     GameMode,
+    Player,
     PlayerBreakBlockBeforeEvent,
     system,
     world,
@@ -62,13 +63,17 @@ export class WildRiceComponent implements BlockCustomComponent {
         event.cancel = true;
     }
 
-    onPlayerBreak(event: BlockComponentPlayerBreakEvent, params: CustomComponentParameters): void {
+    onBreak(event: BlockComponentBlockBreakEvent, params: CustomComponentParameters): void {
         if (params.params !== "upper") return;
-        const player = event.player;
-        if (player?.getGameMode() === GameMode.Creative) return;
-        const stack = getEquipment(player, EquipmentSlot.Mainhand);
-        if (isEnchanted(stack, "silk_touch")) return;
         const block = event.block;
+        const lower = block.below();
+        if (lower?.getComponent("farmersdelight:wild_rice")) { // TODO hasComponent
+            removeBlock(lower);
+        }
+        const entity = event.entitySource;
+        if (entity instanceof Player && entity.getGameMode() === GameMode.Creative) return;
+        const stack = getEquipment(entity, EquipmentSlot.Mainhand);
+        if (isEnchanted(stack, "silk_touch")) return;
         const loots = world.getLootTableManager()
             .generateLootFromBlockPermutation(event.brokenBlockPermutation.withState("farmersdelight:upper", false), stack);
         if (loots) {
