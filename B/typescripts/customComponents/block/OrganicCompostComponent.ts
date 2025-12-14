@@ -17,11 +17,10 @@ import { getEquipmentSlot } from "../../lib/EntityUtil";
 export class OrganicCompostComponent implements BlockCustomComponent {
     onPlayerInteract(event: BlockComponentPlayerInteractEvent, _: CustomComponentParameters): void {
         if (event.face !== Direction.Up) return;
+        let block: string;
         const player = event.player;
         const slot = getEquipmentSlot(player, EquipmentSlot.Mainhand);
-        const stack = slot?.getItem();
-        let block: string;
-        switch (stack?.typeId) {
+        switch (slot?.getItem()?.typeId) { // empty -> undefined
             case "minecraft:brown_mushroom":
                 block = "farmersdelight:brown_mushroom_colony";
                 break;

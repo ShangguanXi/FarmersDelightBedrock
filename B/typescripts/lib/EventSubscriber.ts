@@ -1,8 +1,10 @@
 import {
     Block,
     BlockCustomComponent,
+    CustomCommandParamType,
     Entity,
-    EntityDataDrivenTriggerEventOptions, ItemCustomComponent,
+    EntityDataDrivenTriggerEventOptions,
+    ItemCustomComponent,
     system,
     world,
 } from "@minecraft/server";

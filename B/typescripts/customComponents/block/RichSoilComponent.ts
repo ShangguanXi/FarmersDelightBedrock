@@ -4,79 +4,74 @@ import {
     BlockCustomComponent,
     BlockPermutation,
     CustomComponentParameters,
-    EntityInventoryComponent,
+    Direction,
+    EquipmentSlot,
+    GameMode,
 } from "@minecraft/server";
-import { hurtItem, takeItem } from "../../lib/ItemUtil";
+import { hurtItemInSlot, takeItemInSlot } from "../../lib/ItemUtil";
 import { blockComponent } from "../../lib/EventSubscriber";
+import { getEquipmentSlot } from "../../lib/EntityUtil";
 
 @blockComponent("farmersdelight:rich_soil")
 export class RichSoilComponent implements BlockCustomComponent {
-    onPlayerInteract(args: BlockComponentPlayerInteractEvent): void {
-        const player = args.player;
-        const face = args.face;
-        const inventory = player?.getComponent("inventory") as EntityInventoryComponent;
-        const container = inventory?.container;
-        const block = args.block;
-        const dimension = args.dimension;
-        if (!player) return;
-        if (!container) return;
-        const selectedSlot = container?.getSlot(player.selectedSlotIndex)
-        try {
-            const itemId = selectedSlot?.typeId;
-            const hoeTag = selectedSlot.hasTag("minecraft:is_hoe");
-            const topLocation = { x: block.location.x, y: block.location.y + 1, z: block.location.z }
-            const topBlockId = dimension.getBlock(topLocation)?.typeId
-            if (face == 'Up' && topBlockId == "minecraft:air") {
-                if (itemId == "minecraft:sugar_cane") {
-                    dimension.playSound("dig.grass", block.location)
-                    dimension.setBlockType(topLocation, "farmersdelight:rich_soil_sugar_cane_bottom")
-                    takeItem(container, player.selectedSlotIndex, 1);
+    onPlayerInteract(event: BlockComponentPlayerInteractEvent, _: CustomComponentParameters): void {
+        if (event.face !== Direction.Up) return;
+        let block: string;
+        const player = event.player;
+        const slot = getEquipmentSlot(player, EquipmentSlot.Mainhand);
+        const stack = slot?.getItem();
+        switch (stack?.typeId) {
+            case "minecraft:brown_mushroom":
+                block = "farmersdelight:brown_mushroom_colony";
+                break;
+            case "minecraft:red_mushroom":
+                block = "farmersdelight:red_mushroom_colony";
+                break;
+            case "minecraft:sugar_cane":
+                block = "minecraft:reeds";
+                break;
+            default:
+                if (stack?.hasTag("minecraft:is_hoe")) {
+                    const pos = event.block;
+                    if (pos.above()?.isAir) {
+                        pos.setType("farmersdelight:rich_soil_farmland");
+                        pos.dimension.playSound("use.gravel", pos.center());
+                        if (player!!.getGameMode() !== GameMode.Creative) {
+                            hurtItemInSlot(slot!!, stack);
+                        }
+                    }
                 }
-                if (itemId == "minecraft:brown_mushroom") {
-                    dimension.playSound("dig.grass", block.location)
-                    dimension.setBlockType(topLocation, "farmersdelight:brown_mushroom_colony")
-                    takeItem(container, player.selectedSlotIndex, 1);
-
-                }
-                if (itemId == "minecraft:red_mushroom") {
-                    dimension.playSound("dig.grass", block.location)
-                    dimension.setBlockType(topLocation, "farmersdelight:red_mushroom_colony")
-                    takeItem(container, player.selectedSlotIndex, 1);
-
-                }
-
-            }
-            if (hoeTag) {
-                dimension.setBlockType(block.location, "farmersdelight:rich_soil_farmland")
-                dimension.playSound("use.gravel", block.location)
-                hurtItem(container, player.selectedSlotIndex, 1);
-            }
-
-        } catch (error) {
-
+                return;
         }
+        // assert player && slot
+        const pos = event.block;
+        const { dimension, x, y, z } = pos;
+        dimension.playSound("dig.grass", pos.center());
+        dimension.setBlockType({ x: x, y: y + 1, z: z }, block); // TODO: use trySetPermutation
+        if (player!!.getGameMode() === GameMode.Creative) return;
+        takeItemInSlot(slot!!, 1, false);
     }
 
     onRandomTick(event: BlockComponentRandomTickEvent, _: CustomComponentParameters): void {
-        const above = event.block.above();
-        switch (above?.typeId) {
+        const crop = event.block.above();
+        switch (crop?.typeId) {
             case "minecraft:brown_mushroom":
-                above!!.setPermutation(BlockPermutation.resolve(
+                crop!!.setPermutation(BlockPermutation.resolve(
                     "farmersdelight:brown_mushroom_colony",
                     { "farmersdelight:growth": 1 },
                 ));
                 return;
             case "minecraft:red_mushroom":
-                above!!.setPermutation(BlockPermutation.resolve(
+                crop!!.setPermutation(BlockPermutation.resolve(
                     "farmersdelight:red_mushroom_colony",
                     { "farmersdelight:growth": 1 },
                 ));
                 return;
         }
-        if (above?.getComponent("farmersdelight:mushroom_cluster")) { // 怎么没有hasComponent
-            const permutation = above!!.permutation;
+        if (crop?.getComponent("farmersdelight:mushroom_cluster")) { // 怎么没有hasComponent
+            const permutation = crop!!.permutation;
             if (permutation.getState("farmersdelight:growth") === 0) {
-                above!!.setPermutation(permutation.withState("farmersdelight:growth", 1));
+                crop!!.setPermutation(permutation.withState("farmersdelight:growth", 1));
                 // return;
             }
         }

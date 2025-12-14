@@ -142,89 +142,6 @@ class TorchflowerComponent implements BlockCustomComponent {
     }
 
 }
-class SugarCaneComponent implements BlockCustomComponent {
-    constructor() {
-        this.onPlayerInteract = this.onPlayerInteract.bind(this);
-        this.onRandomTick = this.onRandomTick.bind(this);
-    }
-    onPlayerInteract(args: BlockComponentPlayerInteractEvent): void {
-        const block = args.block;
-        const face = args.face;
-        const player = args.player;
-        const dimension = args.dimension
-
-        const age = Number(block.permutation.getState("farmersdelight:growth"))
-        const random = Math.floor(Math.random() * 101)
-        const topLocation = { x: block.location.x, y: block.location.y + 1, z: block.location.z }
-        if (!player) return;
-        const inventory = player?.getComponent("inventory") as EntityInventoryComponent;
-        const container = inventory?.container;
-        try {
-            const itemId = container?.getSlot(player.selectedSlotIndex).typeId
-            if (itemId == "minecraft:sugar_cane") {
-                if (face != Direction.Up) return
-                if (block.typeId == "farmersdelight:rich_soil_sugar_cane_bottom") {
-                    dimension.playSound("dig.grass", block.location)
-                    dimension.setBlockType(topLocation, "farmersdelight:rich_soil_sugar_cane_middle")
-                };
-                if (block.typeId == "farmersdelight:rich_soil_sugar_cane_middle") {
-                    dimension.playSound("dig.grass", block.location)
-                    dimension.setBlockType(topLocation, "farmersdelight:rich_soil_sugar_cane_top")
-                };
-                if (block.typeId == "farmersdelight:rich_soil_sugar_cane_top") {
-                    dimension.playSound("dig.grass", block.location)
-                    dimension.setBlockType(topLocation, "farmersdelight:rich_soil_sugar_cane_top")
-                };
-
-            }
-            if (itemId == "minecraft:bone_meal") {
-                if (block.typeId == "farmersdelight:rich_soil_sugar_cane_bottom") {
-                    if (dimension.getBlock(topLocation)?.typeId == "minecraft:air") {
-                        if (dimension.getBlock({ x: block.location.x, y: block.location.y + 2, z: block.location.z })?.typeId == "minecraft:air") {
-                            dimension.setBlockType({ x: block.location.x, y: block.location.y + 2, z: block.location.z }, "farmersdelight:rich_soil_sugar_cane_top")
-                        }
-                        dimension.setBlockType(topLocation, "farmersdelight:rich_soil_sugar_cane_middle")
-                        block.dimension.spawnParticle("minecraft:crop_growth_emitter", { x: block.location.x + 0.5, y: block.location.y + 0.5, z: block.location.z + 0.5 });
-                        dimension.playSound("item.bone_meal.use", block.location)
-                        if (!container) return;
-                        takeItem(container, player?.selectedSlotIndex, 1);
-                    }
-
-                }
-                if (block.typeId == "farmersdelight:rich_soil_sugar_cane_middle") {
-                    if (dimension.getBlock(topLocation)?.typeId == "minecraft:air") {
-                        dimension.setBlockType(topLocation, "farmersdelight:rich_soil_sugar_cane_top")
-                        block.dimension.spawnParticle("minecraft:crop_growth_emitter", { x: block.location.x + 0.5, y: block.location.y + 0.5, z: block.location.z + 0.5 });
-                        dimension.playSound("item.bone_meal.use", block.location)
-                        if (!container) return;
-                        takeItem(container, player?.selectedSlotIndex, 1);
-                    }
-                }
-
-            }
-        } catch (error) {
-
-        }
-    }
-    onRandomTick(args: BlockComponentRandomTickEvent): void {
-        const block = args.block;
-        const dimension = args.dimension
-        const age = Number(block.permutation.getState("farmersdelight:growth"))
-        const topLocation = { x: block.location.x, y: block.location.y + 1, z: block.location.z }
-        if (age < 15) {
-            block.setPermutation(block.permutation.withState("farmersdelight:growth", age + 1))
-        }
-        else {
-            if (dimension.getBlock(topLocation)?.typeId == "minecraft:air" && block.typeId == "farmersdelight:rich_soil_sugar_cane_bottom") {
-                dimension.setBlockType(topLocation, "farmersdelight:rich_soil_sugar_cane_middle")
-            };
-            if (dimension.getBlock(topLocation)?.typeId == "minecraft:air" && block.typeId == "farmersdelight:rich_soil_sugar_cane_middle") {
-                dimension.setBlockType(topLocation, "farmersdelight:rich_soil_sugar_cane_top")
-            }
-
-        }
-    }
-}
 class RiceComponent implements BlockCustomComponent {
 
     constructor() {
@@ -359,7 +276,6 @@ export class CropComponentRegister {
     register(args: StartupEvent) {
         args.blockComponentRegistry.registerCustomComponent('farmersdelight:crop', new CropsComponent());
         args.blockComponentRegistry.registerCustomComponent('farmersdelight:torchflower', new TorchflowerComponent());
-        args.blockComponentRegistry.registerCustomComponent('farmersdelight:sugar_cane', new SugarCaneComponent());
         args.blockComponentRegistry.registerCustomComponent('farmersdelight:rice', new RiceComponent());
     }
 

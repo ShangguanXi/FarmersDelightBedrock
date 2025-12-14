@@ -24,7 +24,7 @@ type SlotLike = {
     setItem: (stack?: ItemStack) => void;
 }
 
-function hurtItemInSlotImpl(stack: ItemStack | undefined, amount: number, avoidable: boolean, slot: SlotLike) {
+function hurtItemInSlotImpl(stack: ItemStack | undefined, amount: number, consumable: boolean, avoidable: boolean, slot: SlotLike) {
     const durability = stack?.getComponent(ItemComponentTypes.Durability);
     if (durability) {
         // 即将到来 if (durability.unbreakable) return;
@@ -47,7 +47,7 @@ function hurtItemInSlotImpl(stack: ItemStack | undefined, amount: number, avoida
             durability.damage = damage;
             slot.setItem(stack);
         }
-    } else if (stack) {
+    } else if (consumable && stack) {
         slot.setItem(undefined);
     }
 }
@@ -55,26 +55,33 @@ function hurtItemInSlotImpl(stack: ItemStack | undefined, amount: number, avoida
 /**
  * @deprecated 应直接调用{@link hurtItemInSlot}
  */
-export function hurtItem(container: Container, index: number, amount: number = 1, avoidable: boolean = true) {
-    hurtItemInSlot(container.getSlot(index), undefined, amount, avoidable);
+export function hurtItem(container: Container, index: number, amount: number = 1) {
+    hurtItemInSlot(container.getSlot(index), undefined, amount);
 }
 
 export function hurtEquippedItem(
     entity: Entity,
     stack?: ItemStack,
     amount: number = 1,
+    consumable: boolean = false,
     avoidable: boolean = true,
     slot: EquipmentSlot = EquipmentSlot.Mainhand,
 ) {
-    hurtItemInSlotImpl(stack, amount, avoidable, {
+    hurtItemInSlotImpl(stack, amount, consumable, avoidable, {
         setItem(result) {
             entity.getComponent(EntityComponentTypes.Equippable)?.setEquipment(slot, result);
         },
     });
 }
 
-export function hurtItemInSlot(slot: ContainerSlot, stack?: ItemStack, amount: number = 1, avoidable: boolean = true) {
-    hurtItemInSlotImpl(stack ?? slot.getItem(), amount, avoidable, slot);
+export function hurtItemInSlot(
+    slot: ContainerSlot,
+    stack?: ItemStack,
+    amount: number = 1,
+    consumable: boolean = false,
+    avoidable: boolean = true,
+) {
+    hurtItemInSlotImpl(stack ?? slot.getItem(), amount, consumable, avoidable, slot);
 }
 
 /**

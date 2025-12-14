@@ -38,6 +38,7 @@ import "./customComponents/item/ConsumeEffectsComponent";
 import "./customComponents/item/FarmersBookComponent";
 import "./customComponents/block/DishComponent";
 import "./customComponents/block/PastryComponent";
+import "./customComponents/block/SugarCaneComponent";
 
 CookingPotRecipeRegistries.initCookingPotScoRegistries();
 CuttingBoardRegistries.initCuttingBoardScoRegistries();

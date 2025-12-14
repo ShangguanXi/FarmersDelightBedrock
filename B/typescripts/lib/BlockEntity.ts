@@ -1,9 +1,7 @@
 import {
     Block,
-    Container,
     Dimension,
     Entity,
-    EntityInventoryComponent,
     ItemStack,
     system,
     Vector3,

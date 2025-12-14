@@ -15,7 +15,7 @@
             "minecraft:redstone_conductivity":{
                 "allows_wire_to_step_down": false
             },
-            "farmersdelight:sugar_cane":{},
+            "farmersdelight:sugar_cane": "farmersdelight:rich_soil_sugar_cane_top",
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 0
             },
