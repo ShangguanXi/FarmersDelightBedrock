@@ -18,9 +18,6 @@
           "farmersdelight:wolf_prey"
         ]
       },
-      "farmersdelight:cookable": {
-        "result": "farmersdelight:cooked_mutton_chops"
-      },
       "minecraft:use_animation": "eat",
       "minecraft:use_modifiers": {
         "use_duration": 0.8

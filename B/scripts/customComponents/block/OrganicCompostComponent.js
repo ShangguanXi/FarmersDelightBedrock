@@ -14,11 +14,10 @@ let OrganicCompostComponent = class OrganicCompostComponent {
     onPlayerInteract(event, _) {
         if (event.face !== Direction.Up)
             return;
+        let block;
         const player = event.player;
         const slot = getEquipmentSlot(player, EquipmentSlot.Mainhand);
-        const stack = slot?.getItem();
-        let block;
-        switch (stack?.typeId) {
+        switch (slot?.getItem()?.typeId) {
             case "minecraft:brown_mushroom":
                 block = "farmersdelight:brown_mushroom_colony";
                 break;

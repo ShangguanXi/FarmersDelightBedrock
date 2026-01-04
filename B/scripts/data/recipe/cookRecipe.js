@@ -27,14 +27,12 @@ const RECIPES_BY_ID = new Map([
     ["minecraft:potato", { result: "minecraft:baked_potato", time: 200, exp: 0.35 }],
     ["minecraft:rabbit", { result: "minecraft:cooked_rabbit", time: 200, exp: 0.35 }],
     ["minecraft:salmon", { result: "minecraft:cooked_salmon", time: 200, exp: 0.35 }],
-
     ["farmersdelight:bacon", { result: "farmersdelight:cooked_bacon", time: 200, exp: 0.35 }],
     ["farmersdelight:chicken_cuts", { result: "farmersdelight:cooked_chicken_cuts", time: 200, exp: 0.35 }],
     ["farmersdelight:cod_slice", { result: "farmersdelight:cooked_cod_slice", time: 200, exp: 0.35 }],
     ["farmersdelight:minced_beef", { result: "farmersdelight:beef_patty", time: 200, exp: 0.35 }],
     ["farmersdelight:mutton_chops", { result: "farmersdelight:cooked_mutton_chops", time: 200, exp: 0.35 }],
     ["farmersdelight:salmon_slice", { result: "farmersdelight:cooked_salmon_slice", time: 200, exp: 0.35 }],
-
     ["#minecraft:egg", { result: "farmersdelight:fried_egg", time: 200, exp: 0.35 }],
 ]);
 export function registerCookable(tagOrId, recipe) {

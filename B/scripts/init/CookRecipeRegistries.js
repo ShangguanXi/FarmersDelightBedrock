@@ -8,9 +8,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { system, world } from "@minecraft/server";
-import { vanillaItemList } from "../data/recipe/cookRecipe";
+import { registerCookable } from "../data/recipe/cookRecipe";
 import { subscribeEvent } from "../lib/EventSubscriber";
-;
 let bool = true;
 let num = 0;
 export class CookRecipeRegistries {
@@ -31,15 +30,25 @@ export class CookRecipeRegistries {
     }
     registries(args) {
         const id = args.id;
+        console.warn(id);
         if (id != "farmersdelight:cook")
             return;
         const message = args.message;
         try {
-            vanillaItemList.unshift(message);
+            const data = JSON.parse(message);
+            const itemId = data.id;
+            const recipe = {
+                result: data.result,
+                time: data.time || 200,
+                exp: data.exp || 0.35,
+                count: data.count
+            };
+            registerCookable(itemId, recipe);
             num++;
-            console.warn(`已加载 §4${num}§f 个烧炼配方`);
+            console.warn(`已加载 §4${num}§f 个烧炼配方: ${itemId} -> ${recipe.result}`);
         }
         catch (error) {
+            console.error(`配方注册失败: ${error}`);
             return;
         }
     }

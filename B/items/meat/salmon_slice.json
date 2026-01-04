@@ -18,9 +18,6 @@
           "farmersdelight:cabbage_roll_ingredients"
         ]
       },
-      "farmersdelight:cookable": {
-        "result": "farmersdelight:cooked_salmon_slice"
-      },
       "minecraft:use_animation": "eat",
       "minecraft:use_modifiers": {
         "use_duration": 1.6,

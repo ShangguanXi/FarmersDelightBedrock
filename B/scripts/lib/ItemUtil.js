@@ -6,7 +6,7 @@ export function enchantmentLevelOf(stack, enchantment) {
 export function isEnchanted(stack, enchantment) {
     return stack?.getComponent(ItemComponentTypes.Enchantable)?.hasEnchantment(enchantment);
 }
-function hurtItemInSlotImpl(stack, amount, avoidable, slot) {
+function hurtItemInSlotImpl(stack, amount, consumable, avoidable, slot) {
     const durability = stack?.getComponent(ItemComponentTypes.Durability);
     if (durability) {
         let damage = 0;
@@ -32,22 +32,22 @@ function hurtItemInSlotImpl(stack, amount, avoidable, slot) {
             slot.setItem(stack);
         }
     }
-    else if (stack) {
+    else if (consumable && stack) {
         slot.setItem(undefined);
     }
 }
-export function hurtItem(container, index, amount = 1, avoidable = true) {
-    hurtItemInSlot(container.getSlot(index), undefined, amount, avoidable);
+export function hurtItem(container, index, amount = 1) {
+    hurtItemInSlot(container.getSlot(index), undefined, amount);
 }
-export function hurtEquippedItem(entity, stack, amount = 1, avoidable = true, slot = EquipmentSlot.Mainhand) {
-    hurtItemInSlotImpl(stack, amount, avoidable, {
+export function hurtEquippedItem(entity, stack, amount = 1, consumable = false, avoidable = true, slot = EquipmentSlot.Mainhand) {
+    hurtItemInSlotImpl(stack, amount, consumable, avoidable, {
         setItem(result) {
             entity.getComponent(EntityComponentTypes.Equippable)?.setEquipment(slot, result);
         },
     });
 }
-export function hurtItemInSlot(slot, stack, amount = 1, avoidable = true) {
-    hurtItemInSlotImpl(stack ?? slot.getItem(), amount, avoidable, slot);
+export function hurtItemInSlot(slot, stack, amount = 1, consumable = false, avoidable = true) {
+    hurtItemInSlotImpl(stack ?? slot.getItem(), amount, consumable, avoidable, slot);
 }
 export function takeItemInSlot(slot, desired = 1, check = true) {
     if (check && !slot.hasItem())

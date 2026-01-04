@@ -1,8 +1,7 @@
 import { ScoreboardObjective, system, world } from "@minecraft/server";
-import { vanillaItemList } from "../data/recipe/cookRecipe";
+import { registerCookable } from "../data/recipe/cookRecipe";
 import { subscribeEvent } from "../lib/EventSubscriber";
 
-;
 let bool: boolean = true;
 let num: number = 0;
 
@@ -24,14 +23,25 @@ export class CookRecipeRegistries {
     @subscribeEvent(system.afterEvents.scriptEventReceive, { namespaces: ["farmersdelight"] })
     registries(args: any) {
         const id: string = args.id;
+        console.warn(id);
+        
         if (id != "farmersdelight:cook") return;
         const message: string = args.message;
         try {
+            const data = JSON.parse(message);
+            const itemId = data.id;
+            const recipe = {
+                result: data.result,
+                time: data.time || 200,
+                exp: data.exp || 0.35,
+                count: data.count
+            };
             
-            vanillaItemList.unshift(message)
+            registerCookable(itemId, recipe);
             num++;
-            console.warn(`已加载 §4${num}§f 个烧炼配方`);
+            console.warn(`已加载 §4${num}§f 个烧炼配方: ${itemId} -> ${recipe.result}`);
         } catch (error) {
+            console.error(`配方注册失败: ${error}`);
             return;
         }
     }

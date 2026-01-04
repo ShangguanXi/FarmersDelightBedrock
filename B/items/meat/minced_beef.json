@@ -12,9 +12,6 @@
           "default": "farmersdelight:minced_beef"
         }
       },
-      "farmersdelight:cookable": {
-        "result": "farmersdelight:beef_patty"
-      },
       "minecraft:tags": {
         "tags": [
           "farmersdelight:is_raw_beef",

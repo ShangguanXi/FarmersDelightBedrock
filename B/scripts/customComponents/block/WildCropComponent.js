@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { EquipmentSlot, GameMode, PlayerBreakBlockBeforeEvent, system, world, } from "@minecraft/server";
+import { EquipmentSlot, GameMode, Player, PlayerBreakBlockBeforeEvent, system, world, } from "@minecraft/server";
 import { hurtEquippedItem, isEnchanted, spawnStack } from "../../lib/ItemUtil";
 import { blockComponent, subscribeEvent } from "../../lib/EventSubscriber";
 import { getEquipment } from "../../lib/EntityUtil";
@@ -65,16 +65,20 @@ let WildRiceComponent = class WildRiceComponent {
         }
         event.cancel = true;
     }
-    onPlayerBreak(event, params) {
+    onBreak(event, params) {
         if (params.params !== "upper")
             return;
-        const player = event.player;
-        if (player?.getGameMode() === GameMode.Creative)
+        const block = event.block;
+        const lower = block.below();
+        if (lower?.getComponent("farmersdelight:wild_rice")) {
+            removeBlock(lower);
+        }
+        const entity = event.entitySource;
+        if (entity instanceof Player && entity.getGameMode() === GameMode.Creative)
             return;
-        const stack = getEquipment(player, EquipmentSlot.Mainhand);
+        const stack = getEquipment(entity, EquipmentSlot.Mainhand);
         if (isEnchanted(stack, "silk_touch"))
             return;
-        const block = event.block;
         const loots = world.getLootTableManager()
             .generateLootFromBlockPermutation(event.brokenBlockPermutation.withState("farmersdelight:upper", false), stack);
         if (loots) {

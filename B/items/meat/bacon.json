@@ -12,9 +12,6 @@
           "default": "farmersdelight:bacon"
         }
       },
-      "farmersdelight:cookable": {
-        "result": "farmersdelight:cooked_bacon"
-      },
       "minecraft:tags": {
         "tags": [
           "farmersdelight:is_raw_porkchop",

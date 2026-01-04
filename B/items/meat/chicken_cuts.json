@@ -12,9 +12,6 @@
           "default": "farmersdelight:chicken_cuts"
         }
       },
-      "farmersdelight:cookable": {
-        "result": "farmersdelight:cooked_chicken_cuts"
-      },
       "minecraft:tags": {
         "tags": [
           "farmersdelight:is_raw_chicken",
