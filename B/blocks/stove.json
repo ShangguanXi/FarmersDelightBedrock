@@ -1,5 +1,5 @@
 {
-  "format_version": "1.21.120",
+  "format_version": "1.26.0",
   "minecraft:block": {
     "description": {
       "identifier": "farmersdelight:stove",
@@ -8,7 +8,10 @@
         "group": "farmersdelight:itemGroup.name.cooker"
       },
       "states": {
-        "farmersdelight:is_working": [false, true]
+        "farmersdelight:is_working": [
+          false,
+          true
+        ]
       },
       "traits": {
         "minecraft:placement_direction": {
@@ -24,33 +27,54 @@
         "condition": "query.block_state('minecraft:cardinal_direction') == 'north'",
         "components": {
           "minecraft:transformation": {
-            "rotation": [0, 0, 0]
+            "rotation": [
+              0,
+              0,
+              0
+            ]
           }
         }
-      }, {
+      },
+      {
         "condition": "query.block_state('minecraft:cardinal_direction') == 'south'",
         "components": {
           "minecraft:transformation": {
-            "rotation": [0, 180, 0]
+            "rotation": [
+              0,
+              180,
+              0
+            ]
           }
         }
-      }, {
+      },
+      {
         "condition": "query.block_state('minecraft:cardinal_direction') == 'west'",
         "components": {
           "minecraft:transformation": {
-            "rotation": [0, 90, 0]
+            "rotation": [
+              0,
+              90,
+              0
+            ]
           }
         }
-      }, {
+      },
+      {
         "condition": "query.block_state('minecraft:cardinal_direction') == 'east'",
         "components": {
           "minecraft:transformation": {
-            "rotation": [0, 270, 0]
+            "rotation": [
+              0,
+              270,
+              0
+            ]
           }
         }
-      }, {
+      },
+      {
         "condition": "query.block_state('farmersdelight:is_working') == false",
         "components": {
+          "minecraft:geometry": "minecraft:geometry.full_block",
           "minecraft:material_instances": {
             "*": {
               "texture": "stove_side"
@@ -67,9 +91,11 @@
           },
           "minecraft:light_emission": 0
         }
-      }, {
+      },
+      {
         "condition": "query.block_state('farmersdelight:is_working') == true",
         "components": {
+          "minecraft:geometry": "minecraft:geometry.full_block",
           "minecraft:material_instances": {
             "*": {
               "texture": "stove_side",
@@ -133,7 +159,7 @@
       "minecraft:destructible_by_explosion": {
         "explosion_resistance": 6
       },
-      "minecraft:geometry": "geometry.stove_block",
+      "minecraft:geometry": "minecraft:geometry.full_block",
       "tag:farmersdelight:stove": {}
     }
   }

@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.120",
+    "format_version": "1.26.0",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:rich_soil_beetroot",
@@ -20,6 +20,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 0",
                 "components": {
+                    "minecraft:geometry": "geometry.bush_crop",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "beetroots_stage0",
@@ -45,6 +46,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 1",
                 "components": {
+                    "minecraft:geometry": "geometry.bush_crop",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "beetroots_stage0",
@@ -70,6 +72,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 2",
                 "components": {
+                    "minecraft:geometry": "geometry.bush_crop",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "beetroots_stage1",
@@ -95,6 +98,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 3",
                 "components": {
+                    "minecraft:geometry": "geometry.bush_crop",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "beetroots_stage1",
@@ -120,6 +124,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 4",
                 "components": {
+                    "minecraft:geometry": "geometry.bush_crop",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "beetroots_stage2",
@@ -145,6 +150,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 5",
                 "components": {
+                    "minecraft:geometry": "geometry.bush_crop",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "beetroots_stage2",
@@ -170,6 +176,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 6",
                 "components": {
+                    "minecraft:geometry": "geometry.bush_crop",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "beetroots_stage2",
@@ -195,6 +202,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 7",
                 "components": {
+                    "minecraft:geometry": "geometry.bush_crop",
                     "minecraft:loot": "loot_tables/farmersdelight/crops/beetroot_riped.json",
                     "minecraft:material_instances": {
                         "*": {

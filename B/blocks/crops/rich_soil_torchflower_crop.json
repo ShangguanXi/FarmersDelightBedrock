@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.120",
+    "format_version": "1.26.0",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:rich_soil_torchflower_crop",
@@ -20,6 +20,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 0",
                 "components": {
+                    "minecraft:geometry": "minecraft:geometry.cross",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "torchflower_crop_stage0",
@@ -33,6 +34,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 1",
                 "components": {
+                    "minecraft:geometry": "minecraft:geometry.cross",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "torchflower_crop_stage1",
@@ -46,6 +48,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 2",
                 "components": {
+                    "minecraft:geometry": "minecraft:geometry.cross",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "torchflower_crop_stage1",
@@ -59,6 +62,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 3",
                 "components": {
+                    "minecraft:geometry": "minecraft:geometry.cross",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "torchflower_crop_stage1",
@@ -72,6 +76,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 4",
                 "components": {
+                    "minecraft:geometry": "minecraft:geometry.cross",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "torchflower_crop_stage1",
@@ -85,6 +90,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 5",
                 "components": {
+                    "minecraft:geometry": "minecraft:geometry.cross",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "torchflower_crop_stage1",
@@ -98,6 +104,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 6",
                 "components": {
+                    "minecraft:geometry": "minecraft:geometry.cross",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "torchflower_crop_stage1",
@@ -111,6 +118,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 7",
                 "components": {
+                    "minecraft:geometry": "minecraft:geometry.cross",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "torchflower_crop_stage1",
@@ -127,7 +135,7 @@
                 "precipitation_behavior": "none"
             },
             "minecraft:movable": {
-                "movement_type": "popped" 
+                "movement_type": "popped"
             },
             "minecraft:material_instances": {
                 "*": {
@@ -153,7 +161,7 @@
                 "seconds_to_destroy": 0.0
             },
             "minecraft:light_dampening": 0,
-            "minecraft:geometry": "geometry.reeds",
+            "minecraft:geometry": "minecraft:geometry.cross",
             "minecraft:destructible_by_explosion": {
                 "explosion_resistance": 0.0
             },

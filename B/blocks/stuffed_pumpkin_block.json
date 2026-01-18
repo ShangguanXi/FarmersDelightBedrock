@@ -1,5 +1,5 @@
 {
-  "format_version": "1.21.120",
+  "format_version": "1.26.0",
   "minecraft:block": {
     "description": {
       "identifier": "farmersdelight:stuffed_pumpkin_block",
@@ -27,6 +27,23 @@
       {
         "condition": "query.block_state('farmersdelight:food_block_stage') == 0",
         "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "stuffed_pumpkin_bottom"
+            },
+            "stuffed_pumpkin_bottom": {
+              "texture": "stuffed_pumpkin_bottom"
+            },
+            "stuffed_pumpkin_details": {
+              "texture": "stuffed_pumpkin_details"
+            },
+            "stuffed_pumpkin_side": {
+              "texture": "stuffed_pumpkin_side"
+            },
+            "stuffed_pumpkin_top_eaten": {
+              "texture": "stuffed_pumpkin_top_eaten"
+            }
+          },
           "minecraft:geometry": "geometry.stuffed_pumpkin_block_stage0",
           "minecraft:collision_box": {
             "origin": [
@@ -57,6 +74,23 @@
       {
         "condition": "query.block_state('farmersdelight:food_block_stage') == 1",
         "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "stuffed_pumpkin_bottom"
+            },
+            "stuffed_pumpkin_bottom": {
+              "texture": "stuffed_pumpkin_bottom"
+            },
+            "stuffed_pumpkin_details": {
+              "texture": "stuffed_pumpkin_details"
+            },
+            "stuffed_pumpkin_side": {
+              "texture": "stuffed_pumpkin_side"
+            },
+            "stuffed_pumpkin_top_eaten": {
+              "texture": "stuffed_pumpkin_top_eaten"
+            }
+          },
           "minecraft:geometry": "geometry.stuffed_pumpkin_block_stage1",
           "minecraft:loot": "loot_tables/farmersdelight/food_block/stuffed_pumpkin_block_over.json",
           "minecraft:collision_box": {
@@ -88,6 +122,23 @@
       {
         "condition": "query.block_state('farmersdelight:food_block_stage') == 2",
         "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "stuffed_pumpkin_bottom"
+            },
+            "stuffed_pumpkin_bottom": {
+              "texture": "stuffed_pumpkin_bottom"
+            },
+            "stuffed_pumpkin_details": {
+              "texture": "stuffed_pumpkin_details"
+            },
+            "stuffed_pumpkin_side": {
+              "texture": "stuffed_pumpkin_side"
+            },
+            "stuffed_pumpkin_top_eaten": {
+              "texture": "stuffed_pumpkin_top_eaten"
+            }
+          },
           "minecraft:geometry": "geometry.stuffed_pumpkin_block_stage2",
           "minecraft:loot": "loot_tables/farmersdelight/food_block/stuffed_pumpkin_block_over.json",
           "minecraft:collision_box": {
@@ -119,6 +170,23 @@
       {
         "condition": "query.block_state('farmersdelight:food_block_stage') == 3",
         "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "stuffed_pumpkin_bottom"
+            },
+            "stuffed_pumpkin_bottom": {
+              "texture": "stuffed_pumpkin_bottom"
+            },
+            "stuffed_pumpkin_details": {
+              "texture": "stuffed_pumpkin_details"
+            },
+            "stuffed_pumpkin_side": {
+              "texture": "stuffed_pumpkin_side"
+            },
+            "stuffed_pumpkin_top_eaten": {
+              "texture": "stuffed_pumpkin_top_eaten"
+            }
+          },
           "minecraft:geometry": "geometry.stuffed_pumpkin_block_stage3",
           "minecraft:loot": "loot_tables/farmersdelight/food_block/stuffed_pumpkin_block_over.json",
           "minecraft:collision_box": {

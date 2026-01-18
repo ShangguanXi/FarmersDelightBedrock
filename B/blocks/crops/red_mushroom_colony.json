@@ -1,5 +1,5 @@
 {
-  "format_version": "1.21.120",
+  "format_version": "1.26.0",
   "minecraft:block": {
     "description": {
       "identifier": "farmersdelight:red_mushroom_colony",
@@ -17,6 +17,7 @@
       {
         "condition": "query.block_state('farmersdelight:growth') == 0",
         "components": {
+          "minecraft:geometry": "minecraft:geometry.cross",
           "minecraft:material_instances": {
             "*": {
               "texture": "mushroom_red",
@@ -42,6 +43,7 @@
       {
         "condition": "query.block_state('farmersdelight:growth') == 1",
         "components": {
+          "minecraft:geometry": "minecraft:geometry.cross",
           "minecraft:material_instances": {
             "*": {
               "texture": "red_mushroom_colony_stage0",
@@ -67,6 +69,7 @@
       {
         "condition": "query.block_state('farmersdelight:growth') == 2",
         "components": {
+          "minecraft:geometry": "minecraft:geometry.cross",
           "minecraft:material_instances": {
             "*": {
               "texture": "red_mushroom_colony_stage1",
@@ -92,6 +95,7 @@
       {
         "condition": "query.block_state('farmersdelight:growth') == 3",
         "components": {
+          "minecraft:geometry": "minecraft:geometry.cross",
           "minecraft:material_instances": {
             "*": {
               "texture": "red_mushroom_colony_stage2",
@@ -117,6 +121,7 @@
       {
         "condition": "query.block_state('farmersdelight:growth') == 4",
         "components": {
+          "minecraft:geometry": "minecraft:geometry.cross",
           "minecraft:material_instances": {
             "*": {
               "texture": "red_mushroom_colony_stage3",

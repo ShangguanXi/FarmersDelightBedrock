@@ -1,5 +1,5 @@
 {
-  "format_version": "1.21.120",
+  "format_version": "1.26.0",
   "minecraft:block": {
     "description": {
       "identifier": "farmersdelight:honey_glazed_ham_block",
@@ -28,12 +28,52 @@
       {
         "condition": "query.block_state('farmersdelight:food_block_stage') == 0",
         "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "honey_glazed_ham_body"
+            },
+            "honey_glazed_ham_bone": {
+              "texture": "honey_glazed_ham_bone"
+            },
+            "honey_glazed_ham_body": {
+              "texture": "honey_glazed_ham_body"
+            },
+            "tray_bottom": {
+              "texture": "tray_bottom"
+            },
+            "tray_rice_berry_garnish": {
+              "texture": "tray_rice_berry_garnish"
+            },
+            "tray_rice_berry_leftover": {
+              "texture": "tray_rice_berry_leftover"
+            }
+          },
           "minecraft:geometry": "geometry.honey_glazed_ham_block_stage0"
         }
       },
       {
         "condition": "query.block_state('farmersdelight:food_block_stage') == 1",
         "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "honey_glazed_ham_body"
+            },
+            "honey_glazed_ham_bone": {
+              "texture": "honey_glazed_ham_bone"
+            },
+            "honey_glazed_ham_body": {
+              "texture": "honey_glazed_ham_body"
+            },
+            "tray_bottom": {
+              "texture": "tray_bottom"
+            },
+            "tray_rice_berry_garnish": {
+              "texture": "tray_rice_berry_garnish"
+            },
+            "tray_rice_berry_leftover": {
+              "texture": "tray_rice_berry_leftover"
+            }
+          },
           "minecraft:geometry": "geometry.honey_glazed_ham_block_stage1",
           "minecraft:loot": "loot_tables/farmersdelight/food_block/honey_glazed_ham_block_over.json"
         }
@@ -41,6 +81,26 @@
       {
         "condition": "query.block_state('farmersdelight:food_block_stage') == 2",
         "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "honey_glazed_ham_body"
+            },
+            "honey_glazed_ham_bone": {
+              "texture": "honey_glazed_ham_bone"
+            },
+            "honey_glazed_ham_body": {
+              "texture": "honey_glazed_ham_body"
+            },
+            "tray_bottom": {
+              "texture": "tray_bottom"
+            },
+            "tray_rice_berry_garnish": {
+              "texture": "tray_rice_berry_garnish"
+            },
+            "tray_rice_berry_leftover": {
+              "texture": "tray_rice_berry_leftover"
+            }
+          },
           "minecraft:geometry": "geometry.honey_glazed_ham_block_stage2",
           "minecraft:loot": "loot_tables/farmersdelight/food_block/honey_glazed_ham_block_over.json"
         }
@@ -48,6 +108,26 @@
       {
         "condition": "query.block_state('farmersdelight:food_block_stage') == 3",
         "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "honey_glazed_ham_body"
+            },
+            "honey_glazed_ham_bone": {
+              "texture": "honey_glazed_ham_bone"
+            },
+            "honey_glazed_ham_body": {
+              "texture": "honey_glazed_ham_body"
+            },
+            "tray_bottom": {
+              "texture": "tray_bottom"
+            },
+            "tray_rice_berry_garnish": {
+              "texture": "tray_rice_berry_garnish"
+            },
+            "tray_rice_berry_leftover": {
+              "texture": "tray_rice_berry_leftover"
+            }
+          },
           "minecraft:geometry": "geometry.honey_glazed_ham_block_stage3",
           "minecraft:loot": "loot_tables/farmersdelight/food_block/honey_glazed_ham_block_over.json"
         }
@@ -55,6 +135,26 @@
       {
         "condition": "query.block_state('farmersdelight:food_block_stage') == 4",
         "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "honey_glazed_ham_body"
+            },
+            "honey_glazed_ham_bone": {
+              "texture": "honey_glazed_ham_bone"
+            },
+            "honey_glazed_ham_body": {
+              "texture": "honey_glazed_ham_body"
+            },
+            "tray_bottom": {
+              "texture": "tray_bottom"
+            },
+            "tray_rice_berry_garnish": {
+              "texture": "tray_rice_berry_garnish"
+            },
+            "tray_rice_berry_leftover": {
+              "texture": "tray_rice_berry_leftover"
+            }
+          },
           "minecraft:geometry": "geometry.honey_glazed_ham_block_leftover",
           "minecraft:loot": "loot_tables/farmersdelight/food_block/honey_glazed_ham_block_over.json"
         }

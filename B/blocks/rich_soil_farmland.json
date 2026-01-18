@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.120",
+    "format_version": "1.26.0",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:rich_soil_farmland",
@@ -23,6 +23,7 @@
             {
                 "condition": "query.block_state('farmersdelight:moisturized_amount') > 0",
                 "components": {
+                    "minecraft:geometry": "geometry.rich_soil_farmland",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "rich_soil_farmland_moist_side"
@@ -39,6 +40,7 @@
             {
                 "condition": "query.block_state('farmersdelight:moisturized_amount') == 0",
                 "components": {
+                    "minecraft:geometry": "geometry.rich_soil_farmland",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "rich_soil"

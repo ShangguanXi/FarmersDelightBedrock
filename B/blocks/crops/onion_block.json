@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.120",
+    "format_version": "1.26.0",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:onion_block",
@@ -28,6 +28,7 @@
                             "render_method": "alpha_test"
                         }
                     },
+                    "minecraft:geometry": "geometry.bush_crop",
                     "minecraft:selection_box": {
                         "origin": [
                             -8,
@@ -53,6 +54,7 @@
                             "render_method": "alpha_test"
                         }
                     },
+                    "minecraft:geometry": "geometry.bush_crop",
                     "minecraft:selection_box": {
                         "origin": [
                             -8,
@@ -70,6 +72,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 2",
                 "components": {
+                    "minecraft:geometry": "geometry.bush_crop",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "onions_stage1",
@@ -95,6 +98,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 3",
                 "components": {
+                    "minecraft:geometry": "geometry.bush_crop",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "onions_stage1",
@@ -120,6 +124,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 4",
                 "components": {
+                    "minecraft:geometry": "geometry.bush_crop",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "onions_stage2",
@@ -145,6 +150,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 5",
                 "components": {
+                    "minecraft:geometry": "geometry.bush_crop",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "onions_stage2",
@@ -170,6 +176,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 6",
                 "components": {
+                    "minecraft:geometry": "geometry.bush_crop",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "onions_stage2",
@@ -195,6 +202,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 7",
                 "components": {
+                    "minecraft:geometry": "geometry.bush_crop",
                     "minecraft:loot": "loot_tables/farmersdelight/crops/farmersdelight_onion_riped.json",
                     "minecraft:material_instances": {
                         "*": {

@@ -1,5 +1,5 @@
 {
-  "format_version": "1.21.120",
+  "format_version": "1.26.0",
   "minecraft:block": {
     "description": {
       "identifier": "farmersdelight:shepherds_pie_block",
@@ -28,12 +28,52 @@
       {
         "condition": "query.block_state('farmersdelight:food_block_stage') == 0",
         "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "shepherds_pie_side"
+            },
+            "shepherds_pie_top": {
+              "texture": "shepherds_pie_top"
+            },
+            "shepherds_pie_side": {
+              "texture": "shepherds_pie_side"
+            },
+            "tray_bottom": {
+              "texture": "tray_bottom"
+            },
+            "shepherds_pie_inner": {
+              "texture": "shepherds_pie_inner"
+            },
+            "tray_pie_leftover": {
+              "texture": "tray_pie_leftover"
+            }
+          },
           "minecraft:geometry": "geometry.shepherds_pie_block_stage0"
         }
       },
       {
         "condition": "query.block_state('farmersdelight:food_block_stage') == 1",
         "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "shepherds_pie_side"
+            },
+            "shepherds_pie_top": {
+              "texture": "shepherds_pie_top"
+            },
+            "shepherds_pie_side": {
+              "texture": "shepherds_pie_side"
+            },
+            "tray_bottom": {
+              "texture": "tray_bottom"
+            },
+            "shepherds_pie_inner": {
+              "texture": "shepherds_pie_inner"
+            },
+            "tray_pie_leftover": {
+              "texture": "tray_pie_leftover"
+            }
+          },
           "minecraft:geometry": "geometry.shepherds_pie_block_stage1",
           "minecraft:loot": "loot_tables/farmersdelight/food_block/shepherds_pie_block_over.json"
         }
@@ -41,6 +81,26 @@
       {
         "condition": "query.block_state('farmersdelight:food_block_stage') == 2",
         "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "shepherds_pie_side"
+            },
+            "shepherds_pie_top": {
+              "texture": "shepherds_pie_top"
+            },
+            "shepherds_pie_side": {
+              "texture": "shepherds_pie_side"
+            },
+            "tray_bottom": {
+              "texture": "tray_bottom"
+            },
+            "shepherds_pie_inner": {
+              "texture": "shepherds_pie_inner"
+            },
+            "tray_pie_leftover": {
+              "texture": "tray_pie_leftover"
+            }
+          },
           "minecraft:geometry": "geometry.shepherds_pie_block_stage2",
           "minecraft:loot": "loot_tables/farmersdelight/food_block/shepherds_pie_block_over.json"
         }
@@ -48,6 +108,26 @@
       {
         "condition": "query.block_state('farmersdelight:food_block_stage') == 3",
         "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "shepherds_pie_side"
+            },
+            "shepherds_pie_top": {
+              "texture": "shepherds_pie_top"
+            },
+            "shepherds_pie_side": {
+              "texture": "shepherds_pie_side"
+            },
+            "tray_bottom": {
+              "texture": "tray_bottom"
+            },
+            "shepherds_pie_inner": {
+              "texture": "shepherds_pie_inner"
+            },
+            "tray_pie_leftover": {
+              "texture": "tray_pie_leftover"
+            }
+          },
           "minecraft:geometry": "geometry.shepherds_pie_block_stage3",
           "minecraft:loot": "loot_tables/farmersdelight/food_block/shepherds_pie_block_over.json"
         }
@@ -55,6 +135,26 @@
       {
         "condition": "query.block_state('farmersdelight:food_block_stage') == 4",
         "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "shepherds_pie_side"
+            },
+            "shepherds_pie_top": {
+              "texture": "shepherds_pie_top"
+            },
+            "shepherds_pie_side": {
+              "texture": "shepherds_pie_side"
+            },
+            "tray_bottom": {
+              "texture": "tray_bottom"
+            },
+            "shepherds_pie_inner": {
+              "texture": "shepherds_pie_inner"
+            },
+            "tray_pie_leftover": {
+              "texture": "tray_pie_leftover"
+            }
+          },
           "minecraft:geometry": "geometry.shepherds_pie_block_leftover",
           "minecraft:loot": "loot_tables/farmersdelight/food_block/shepherds_pie_block_over.json"
         }

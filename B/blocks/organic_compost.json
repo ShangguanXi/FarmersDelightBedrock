@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.120",
+    "format_version": "1.26.0",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:organic_compost",
@@ -23,6 +23,7 @@
             {
                 "condition": "query.block_state('farmersdelight:process') == 0 || query.block_state('farmersdelight:process') == 1",
                 "components": {
+                    "minecraft:geometry": "minecraft:geometry.full_block",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "organic_compost_stage0"
@@ -33,6 +34,7 @@
             {
                 "condition": "query.block_state('farmersdelight:process') == 2 || query.block_state('farmersdelight:process') == 3",
                 "components": {
+                    "minecraft:geometry": "minecraft:geometry.full_block",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "organic_compost_stage1"
@@ -43,6 +45,7 @@
             {
                 "condition": "query.block_state('farmersdelight:process') == 4 || query.block_state('farmersdelight:process') == 5",
                 "components": {
+                    "minecraft:geometry": "minecraft:geometry.full_block",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "organic_compost_stage2"
@@ -53,6 +56,7 @@
             {
                 "condition": "query.block_state('farmersdelight:process') == 6 || query.block_state('farmersdelight:process') == 7",
                 "components": {
+                    "minecraft:geometry": "minecraft:geometry.full_block",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "organic_compost_stage3"

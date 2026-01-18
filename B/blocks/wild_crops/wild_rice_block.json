@@ -1,5 +1,5 @@
 {
-  "format_version": "1.21.120",
+  "format_version": "1.26.0",
   "minecraft:block": {
     "description": {
       "identifier": "farmersdelight:wild_rice",
@@ -15,6 +15,7 @@
         "condition": "query.block_state('farmersdelight:upper')",
         "components": {
           "farmersdelight:wild_rice": "upper",
+          "minecraft:geometry": "geometry.rice_crop_support",
           "minecraft:loot": "loot_tables/empty.json",
           "minecraft:placement_filter": {
             "conditions": [
@@ -41,6 +42,7 @@
       {
         "condition": "!query.block_state('farmersdelight:upper')",
         "components": {
+          "minecraft:geometry": "geometry.rice_crop_support",
           "minecraft:liquid_detection": {
             "detection_rules": [
               {

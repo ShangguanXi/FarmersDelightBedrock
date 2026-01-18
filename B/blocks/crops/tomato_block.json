@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.120",
+    "format_version": "1.26.0",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:tomato_block",
@@ -20,6 +20,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 0",
                 "components": {
+                    "minecraft:geometry": "geometry.crop_cross",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "budding_tomatoes_stage0",
@@ -44,6 +45,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 1",
                 "components": {
+                    "minecraft:geometry": "geometry.crop_cross",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "budding_tomatoes_stage1",
@@ -68,6 +70,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 2",
                 "components": {
+                    "minecraft:geometry": "geometry.crop_cross",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "budding_tomatoes_stage2",
@@ -92,6 +95,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 3",
                 "components": {
+                    "minecraft:geometry": "geometry.crop_cross",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "budding_tomatoes_stage3",
@@ -104,6 +108,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 4",
                 "components": {
+                    "minecraft:geometry": "geometry.crop_cross",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "tomatoes_stage0",
@@ -117,6 +122,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 5",
                 "components": {
+                    "minecraft:geometry": "geometry.crop_cross",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "tomatoes_stage1",
@@ -130,6 +136,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 6",
                 "components": {
+                    "minecraft:geometry": "geometry.crop_cross",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "tomatoes_stage2",
@@ -144,6 +151,7 @@
                 "condition": "query.block_state('farmersdelight:growth') == 7",
                 "components": {
                     "minecraft:loot": "loot_tables/farmersdelight/crops/farmersdelight_tomato_riped.json",
+                    "minecraft:geometry": "geometry.crop_cross",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "tomatoes_stage3",
@@ -177,14 +185,14 @@
                 "precipitation_behavior": "none"
             },
             "minecraft:movable": {
-                "movement_type": "popped" 
+                "movement_type": "popped"
             },
-            "farmersdelight:crop":{
+            "farmersdelight:crop": {
                 "loot": "loot_tables/farmersdelight/crops/farmersdelight_tomato_riped.json",
-                "state":{
-                    "name":"farmersdelight:growth",
-                    "age_after_harvest":4,
-                    "age":7
+                "state": {
+                    "name": "farmersdelight:growth",
+                    "age_after_harvest": 4,
+                    "age": 7
                 }
             },
             "minecraft:material_instances": {
@@ -194,7 +202,7 @@
                     "render_method": "alpha_test"
                 }
             },
-            "minecraft:redstone_conductivity":{
+            "minecraft:redstone_conductivity": {
                 "allows_wire_to_step_down": false
             },
             "minecraft:loot": "loot_tables/farmersdelight/crops/farmersdelight_tomato.json",

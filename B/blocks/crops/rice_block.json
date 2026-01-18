@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.120",
+    "format_version": "1.26.0",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:rice_block",
@@ -20,6 +20,7 @@
             {
                 "condition": "query.block_state('farmersdelight:age') == 0",
                 "components": {
+                    "minecraft:geometry": "geometry.rice_crop_support",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "rice_stage0",
@@ -44,6 +45,7 @@
             {
                 "condition": "query.block_state('farmersdelight:age') == 1",
                 "components": {
+                    "minecraft:geometry": "geometry.rice_crop_support",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "rice_stage1",
@@ -68,6 +70,7 @@
             {
                 "condition": "query.block_state('farmersdelight:age') == 2",
                 "components": {
+                    "minecraft:geometry": "geometry.rice_crop_support",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "rice_stage2",
@@ -92,6 +95,7 @@
             {
                 "condition": "query.block_state('farmersdelight:age') == 3 && query.block_state('farmersdelight:upper') == false",
                 "components": {
+                    "minecraft:geometry": "geometry.rice_crop_support",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "rice_stage3",
@@ -116,6 +120,7 @@
             {
                 "condition": "query.block_state('farmersdelight:age') == 3 && query.block_state('farmersdelight:upper') == true",
                 "components": {
+                    "minecraft:geometry": "geometry.rice_crop_support",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "rice_supporting",
@@ -143,7 +148,7 @@
                 "precipitation_behavior": "none"
             },
             "minecraft:movable": {
-                "movement_type": "popped" 
+                "movement_type": "popped"
             },
             "minecraft:material_instances": {
                 "*": {

@@ -1,16 +1,23 @@
 {
-  "format_version": "1.21.120",
+  "format_version": "1.26.0",
   "minecraft:block": {
     "description": {
       "identifier": "farmersdelight:brown_mushroom_colony",
       "states": {
-        "farmersdelight:growth": [0, 1, 2, 3, 4]
+        "farmersdelight:growth": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
       }
     },
     "permutations": [
       {
         "condition": "query.block_state('farmersdelight:growth') == 0",
         "components": {
+          "minecraft:geometry": "minecraft:geometry.cross",
           "minecraft:material_instances": {
             "*": {
               "texture": "mushroom_brown",
@@ -20,13 +27,23 @@
             }
           },
           "minecraft:selection_box": {
-            "origin": [-3, 0, -3],
-            "size": [6, 7, 6]
+            "origin": [
+              -3,
+              0,
+              -3
+            ],
+            "size": [
+              6,
+              7,
+              6
+            ]
           }
         }
-      }, {
+      },
+      {
         "condition": "query.block_state('farmersdelight:growth') == 1",
         "components": {
+          "minecraft:geometry": "minecraft:geometry.cross",
           "minecraft:material_instances": {
             "*": {
               "texture": "brown_mushroom_colony_stage0",
@@ -36,13 +53,23 @@
             }
           },
           "minecraft:selection_box": {
-            "origin": [-4, 0, -4],
-            "size": [8, 9, 8]
+            "origin": [
+              -4,
+              0,
+              -4
+            ],
+            "size": [
+              8,
+              9,
+              8
+            ]
           }
         }
-      }, {
+      },
+      {
         "condition": "query.block_state('farmersdelight:growth') == 2",
         "components": {
+          "minecraft:geometry": "minecraft:geometry.cross",
           "minecraft:material_instances": {
             "*": {
               "texture": "brown_mushroom_colony_stage1",
@@ -52,13 +79,23 @@
             }
           },
           "minecraft:selection_box": {
-            "origin": [-5, 0, -5],
-            "size": [10, 11, 10]
+            "origin": [
+              -5,
+              0,
+              -5
+            ],
+            "size": [
+              10,
+              11,
+              10
+            ]
           }
         }
-      }, {
+      },
+      {
         "condition": "query.block_state('farmersdelight:growth') == 3",
         "components": {
+          "minecraft:geometry": "minecraft:geometry.cross",
           "minecraft:material_instances": {
             "*": {
               "texture": "brown_mushroom_colony_stage2",
@@ -68,13 +105,23 @@
             }
           },
           "minecraft:selection_box": {
-            "origin": [-5, 0, -5],
-            "size": [10, 13, 10]
+            "origin": [
+              -5,
+              0,
+              -5
+            ],
+            "size": [
+              10,
+              13,
+              10
+            ]
           }
         }
-      }, {
+      },
+      {
         "condition": "query.block_state('farmersdelight:growth') == 4",
         "components": {
+          "minecraft:geometry": "minecraft:geometry.cross",
           "minecraft:material_instances": {
             "*": {
               "texture": "brown_mushroom_colony_stage3",
@@ -84,8 +131,16 @@
             }
           },
           "minecraft:selection_box": {
-            "origin": [-6, 0, -6],
-            "size": [12, 15, 12]
+            "origin": [
+              -6,
+              0,
+              -6
+            ],
+            "size": [
+              12,
+              15,
+              12
+            ]
           }
         }
       }
@@ -107,7 +162,11 @@
         "mushroom": "minecraft:brown_mushroom",
         "harvest": "farmersdelight:brown_mushroom_colony",
         "mushtree": "farmersdelight:brown_mushroom_tree",
-        "offset": [-3, 0, -3]
+        "offset": [
+          -3,
+          0,
+          -3
+        ]
       },
       "minecraft:loot": "loot_tables/empty.json",
       "minecraft:destructible_by_mining": {
@@ -141,7 +200,9 @@
                 "tags": "q.any_tag('mushroom_grow_block')"
               }
             ],
-            "allowed_faces": ["up"]
+            "allowed_faces": [
+              "up"
+            ]
           }
         ]
       },

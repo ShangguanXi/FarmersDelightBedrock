@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.120",
+    "format_version": "1.26.0",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:rich_soil_wheat",
@@ -20,6 +20,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 0",
                 "components": {
+                    "minecraft:geometry": "geometry.bush_crop",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "wheat_stage0",
@@ -45,6 +46,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 1",
                 "components": {
+                    "minecraft:geometry": "geometry.bush_crop",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "wheat_stage1",
@@ -70,6 +72,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 2",
                 "components": {
+                    "minecraft:geometry": "geometry.bush_crop",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "wheat_stage2",
@@ -95,6 +98,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 3",
                 "components": {
+                    "minecraft:geometry": "geometry.bush_crop",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "wheat_stage3",
@@ -120,6 +124,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 4",
                 "components": {
+                    "minecraft:geometry": "geometry.bush_crop",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "wheat_stage4",
@@ -145,6 +150,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 5",
                 "components": {
+                    "minecraft:geometry": "geometry.bush_crop",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "wheat_stage5",
@@ -170,6 +176,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 6",
                 "components": {
+                    "minecraft:geometry": "geometry.bush_crop",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "wheat_stage6",
@@ -195,6 +202,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 7",
                 "components": {
+                    "minecraft:geometry": "geometry.bush_crop",
                     "minecraft:loot": "loot_tables/farmersdelight/crops/wheat_riped.json",
                     "minecraft:material_instances": {
                         "*": {
@@ -232,16 +240,16 @@
                 }
             },
             "minecraft:movable": {
-                "movement_type": "popped" 
+                "movement_type": "popped"
             },
-            "farmersdelight:crop":{
+            "farmersdelight:crop": {
                 "loot": "loot_tables/farmersdelight/crops/wheat_riped.json",
-                "state":{
-                    "name":"farmersdelight:growth",
-                    "age":7
+                "state": {
+                    "name": "farmersdelight:growth",
+                    "age": 7
                 }
             },
-            "minecraft:redstone_conductivity":{
+            "minecraft:redstone_conductivity": {
                 "allows_wire_to_step_down": false
             },
             "minecraft:liquid_detection": {
@@ -261,7 +269,6 @@
                 "explosion_resistance": 0.0
             },
             "minecraft:collision_box": false,
-            
             "minecraft:placement_filter": {
                 "conditions": [
                     {
@@ -274,7 +281,6 @@
                     }
                 ]
             },
-            
             "tag:crop": {},
             "tag:max_growth:7": {},
             "tag:growth_property:farmersdelight:growth": {}

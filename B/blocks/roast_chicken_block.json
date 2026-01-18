@@ -1,5 +1,5 @@
 {
-  "format_version": "1.21.120",
+  "format_version": "1.26.0",
   "minecraft:block": {
     "description": {
       "identifier": "farmersdelight:roast_chicken_block",
@@ -28,6 +28,32 @@
       {
         "condition": "query.block_state('farmersdelight:food_block_stage') == 0",
         "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "roast_chicken_eaten",
+              "render_method": "alpha_test"
+            },
+            "roast_chicken_eaten": {
+              "texture": "roast_chicken_eaten",
+              "render_method": "alpha_test"
+            },
+            "roast_chicken_gibs": {
+              "texture": "roast_chicken_gibs",
+              "render_method": "alpha_test"
+            },
+            "tray_bottom": {
+              "texture": "tray_bottom",
+              "render_method": "alpha_test"
+            },
+            "tray_top_veggies": {
+              "texture": "tray_top_veggies",
+              "render_method": "alpha_test"
+            },
+            "tray_top_leftover": {
+              "texture": "tray_top_leftover",
+              "render_method": "alpha_test"
+            }
+          },
           "minecraft:geometry": "geometry.roast_chicken_block_stage0",
           "tag:farmersdelight:use_bowl": {}
         }
@@ -35,6 +61,32 @@
       {
         "condition": "query.block_state('farmersdelight:food_block_stage') == 1",
         "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "roast_chicken_eaten",
+              "render_method": "alpha_test"
+            },
+            "roast_chicken_eaten": {
+              "texture": "roast_chicken_eaten",
+              "render_method": "alpha_test"
+            },
+            "roast_chicken_gibs": {
+              "texture": "roast_chicken_gibs",
+              "render_method": "alpha_test"
+            },
+            "tray_bottom": {
+              "texture": "tray_bottom",
+              "render_method": "alpha_test"
+            },
+            "tray_top_veggies": {
+              "texture": "tray_top_veggies",
+              "render_method": "alpha_test"
+            },
+            "tray_top_leftover": {
+              "texture": "tray_top_leftover",
+              "render_method": "alpha_test"
+            }
+          },
           "minecraft:geometry": "geometry.roast_chicken_block_stage1",
           "minecraft:loot": "loot_tables/farmersdelight/food_block/roast_chicken_block_over.json"
         }
@@ -42,6 +94,32 @@
       {
         "condition": "query.block_state('farmersdelight:food_block_stage') == 2",
         "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "roast_chicken_eaten",
+              "render_method": "alpha_test"
+            },
+            "roast_chicken_eaten": {
+              "texture": "roast_chicken_eaten",
+              "render_method": "alpha_test"
+            },
+            "roast_chicken_gibs": {
+              "texture": "roast_chicken_gibs",
+              "render_method": "alpha_test"
+            },
+            "tray_bottom": {
+              "texture": "tray_bottom",
+              "render_method": "alpha_test"
+            },
+            "tray_top_veggies": {
+              "texture": "tray_top_veggies",
+              "render_method": "alpha_test"
+            },
+            "tray_top_leftover": {
+              "texture": "tray_top_leftover",
+              "render_method": "alpha_test"
+            }
+          },
           "minecraft:geometry": "geometry.roast_chicken_block_stage2",
           "minecraft:loot": "loot_tables/farmersdelight/food_block/roast_chicken_block_over.json"
         }
@@ -49,6 +127,32 @@
       {
         "condition": "query.block_state('farmersdelight:food_block_stage') == 3",
         "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "roast_chicken_eaten",
+              "render_method": "alpha_test"
+            },
+            "roast_chicken_eaten": {
+              "texture": "roast_chicken_eaten",
+              "render_method": "alpha_test"
+            },
+            "roast_chicken_gibs": {
+              "texture": "roast_chicken_gibs",
+              "render_method": "alpha_test"
+            },
+            "tray_bottom": {
+              "texture": "tray_bottom",
+              "render_method": "alpha_test"
+            },
+            "tray_top_veggies": {
+              "texture": "tray_top_veggies",
+              "render_method": "alpha_test"
+            },
+            "tray_top_leftover": {
+              "texture": "tray_top_leftover",
+              "render_method": "alpha_test"
+            }
+          },
           "minecraft:geometry": "geometry.roast_chicken_block_stage3",
           "minecraft:loot": "loot_tables/farmersdelight/food_block/roast_chicken_block_over.json"
         }
@@ -56,6 +160,32 @@
       {
         "condition": "query.block_state('farmersdelight:food_block_stage') == 4",
         "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "roast_chicken_eaten",
+              "render_method": "alpha_test"
+            },
+            "roast_chicken_eaten": {
+              "texture": "roast_chicken_eaten",
+              "render_method": "alpha_test"
+            },
+            "roast_chicken_gibs": {
+              "texture": "roast_chicken_gibs",
+              "render_method": "alpha_test"
+            },
+            "tray_bottom": {
+              "texture": "tray_bottom",
+              "render_method": "alpha_test"
+            },
+            "tray_top_veggies": {
+              "texture": "tray_top_veggies",
+              "render_method": "alpha_test"
+            },
+            "tray_top_leftover": {
+              "texture": "tray_top_leftover",
+              "render_method": "alpha_test"
+            }
+          },
           "minecraft:geometry": "geometry.roast_chicken_block_leftover",
           "minecraft:loot": "loot_tables/farmersdelight/food_block/roast_chicken_block_over.json"
         }

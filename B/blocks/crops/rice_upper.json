@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.120",
+    "format_version": "1.26.0",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:rice_block_upper",
@@ -16,6 +16,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 0",
                 "components": {
+                    "minecraft:geometry": "geometry.rice_crop_support",
                     "minecraft:loot": "loot_tables/farmersdelight/empty.json",
                     "minecraft:material_instances": {
                         "*": {
@@ -42,6 +43,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 1",
                 "components": {
+                    "minecraft:geometry": "geometry.rice_crop_support",
                     "minecraft:loot": "loot_tables/farmersdelight/empty.json",
                     "minecraft:material_instances": {
                         "*": {
@@ -68,6 +70,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 2",
                 "components": {
+                    "minecraft:geometry": "geometry.rice_crop_support",
                     "minecraft:loot": "loot_tables/farmersdelight/empty.json",
                     "minecraft:material_instances": {
                         "*": {
@@ -94,6 +97,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 3",
                 "components": {
+                    "minecraft:geometry": "geometry.rice_crop_support",
                     "minecraft:loot": "loot_tables/farmersdelight/crops/farmersdelight_rice_riped.json",
                     "minecraft:material_instances": {
                         "*": {
@@ -123,7 +127,7 @@
                 "precipitation_behavior": "none"
             },
             "minecraft:movable": {
-                "movement_type": "popped" 
+                "movement_type": "popped"
             },
             "minecraft:material_instances": {
                 "*": {

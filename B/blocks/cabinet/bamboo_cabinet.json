@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.120",
+    "format_version": "1.26.0",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:bamboo_cabinet",
@@ -72,8 +72,10 @@
                 }
             },
             {
+                
                 "condition": "query.block_state('farmersdelight:cabinet_is_open') == false",
                 "components": {
+                    "minecraft:geometry": "minecraft:geometry.full_block",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "bamboo_cabinet_side"
@@ -93,6 +95,7 @@
             {
                 "condition": "query.block_state('farmersdelight:cabinet_is_open') == true",
                 "components": {
+                    "minecraft:geometry": "minecraft:geometry.full_block",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "bamboo_cabinet_side"

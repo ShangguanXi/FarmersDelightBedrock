@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.120",
+    "format_version": "1.26.0",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:cabbage_block",
@@ -20,6 +20,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 0",
                 "components": {
+                    "minecraft:geometry": "geometry.crop_cross",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "cabbages_stage0",
@@ -45,6 +46,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 1",
                 "components": {
+                    "minecraft:geometry": "geometry.crop_cross",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "cabbages_stage1",
@@ -70,6 +72,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 2",
                 "components": {
+                    "minecraft:geometry": "geometry.crop_cross",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "cabbages_stage2",
@@ -95,6 +98,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 3",
                 "components": {
+                    "minecraft:geometry": "geometry.crop_cross",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "cabbages_stage3",
@@ -108,6 +112,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 4",
                 "components": {
+                    "minecraft:geometry": "geometry.crop_cross",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "cabbages_stage4",
@@ -121,6 +126,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 5",
                 "components": {
+                    "minecraft:geometry": "geometry.crop_cross",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "cabbages_stage5",
@@ -134,6 +140,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 6",
                 "components": {
+                    "minecraft:geometry": "geometry.crop_cross",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "cabbages_stage6",
@@ -147,6 +154,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 7",
                 "components": {
+                    "minecraft:geometry": "geometry.crop_cross",
                     "minecraft:loot": "loot_tables/farmersdelight/crops/farmersdelight_cabbage_riped.json",
                     "minecraft:material_instances": {
                         "*": {

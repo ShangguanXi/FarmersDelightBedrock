@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.120",
+    "format_version": "1.26.0",
     "minecraft:block": {
         "description": {
             "identifier": "farmersdelight:tatami",
@@ -22,6 +22,7 @@
             {
                 "condition": "query.block_state('farmersdelight:connection') == 'none'",
                 "components": {
+                    "minecraft:geometry": "geometry.tatami",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "tatami_mat_half"
@@ -39,6 +40,7 @@
             {
                 "condition": "query.block_state('farmersdelight:connection') == 'west'",
                 "components": {
+                    "minecraft:geometry": "geometry.tatami",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "tatami_mat_half"
@@ -63,6 +65,7 @@
             {
                 "condition": "query.block_state('farmersdelight:connection') == 'east'",
                 "components": {
+                    "minecraft:geometry": "geometry.tatami",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "tatami_mat_half"
@@ -87,6 +90,7 @@
             {
                 "condition": "query.block_state('farmersdelight:connection') == 'north'",
                 "components": {
+                    "minecraft:geometry": "geometry.tatami",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "tatami_mat_half"
@@ -111,6 +115,7 @@
             {
                 "condition": "query.block_state('farmersdelight:connection') == 'south'",
                 "components": {
+                    "minecraft:geometry": "geometry.tatami",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "tatami_mat_half"
@@ -135,6 +140,7 @@
             {
                 "condition": "query.block_state('farmersdelight:connection') == 'up'",
                 "components": {
+                    "minecraft:geometry": "geometry.tatami",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "tatami_mat_half"
@@ -159,6 +165,7 @@
             {
                 "condition": "query.block_state('farmersdelight:connection') == 'down'",
                 "components": {
+                    "minecraft:geometry": "geometry.tatami",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "tatami_mat_half"
