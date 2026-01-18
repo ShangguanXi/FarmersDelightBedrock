@@ -24,6 +24,18 @@
       {
         "condition": "query.block_state('farmersdelight:food_block_stage') == 0",
         "components": {
+          "minecraft:collision_box": {
+            "origin": [
+              -6.0,
+              0.0,
+              -6.0
+            ],
+            "size": [
+              12.0,
+              4.0,
+              12.0
+            ]
+          },
           "minecraft:material_instances": {
             "*": {
               "texture": "apple_pie_top"
@@ -47,6 +59,44 @@
       {
         "condition": "query.block_state('farmersdelight:food_block_stage') == 1",
         "components": {
+          "minecraft:selection_box": {
+            "origin": [
+              -6.0,
+              0.0,
+              -6.0
+            ],
+            "size": [
+              12.0,
+              4.0,
+              12.0
+            ]
+          },
+          "minecraft:collision_box": [
+            {
+              "origin": [
+                -6.0,
+                0.0,
+                -6.0
+              ],
+              "size": [
+                12.0,
+                4.0,
+                6.0
+              ]
+            },
+            {
+              "origin": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "size": [
+                6.0,
+                4.0,
+                6.0
+              ]
+            }
+          ],
           "minecraft:material_instances": {
             "*": {
               "texture": "apple_pie_top"
@@ -71,6 +121,32 @@
       {
         "condition": "query.block_state('farmersdelight:food_block_stage') == 2",
         "components": {
+          "minecraft:selection_box": {
+            "origin": [
+              -6.0,
+              0.0,
+              -6.0
+            ],
+            "size": [
+              12.0,
+              4.0,
+              6.0
+            ]
+          },
+          "minecraft:collision_box": [
+            {
+              "origin": [
+                -6.0,
+                0.0,
+                -6.0
+              ],
+              "size": [
+                12.0,
+                4.0,
+                6.0
+              ]
+            }
+          ],
           "minecraft:material_instances": {
             "*": {
               "texture": "apple_pie_top"
@@ -95,6 +171,32 @@
       {
         "condition": "query.block_state('farmersdelight:food_block_stage') == 3",
         "components": {
+          "minecraft:selection_box": {
+            "origin": [
+              -6.0,
+              0.0,
+              -6.0
+            ],
+            "size": [
+              6.0,
+              4.0,
+              6.0
+            ]
+          },
+          "minecraft:collision_box": [
+            {
+              "origin": [
+                -6.0,
+                0.0,
+                -6.0
+              ],
+              "size": [
+                6.0,
+                4.0,
+                6.0
+              ]
+            }
+          ],
           "minecraft:material_instances": {
             "*": {
               "texture": "apple_pie_top"
@@ -171,6 +273,18 @@
         "counter": "farmersdelight:food_block_stage",
         "servings": 4
       },
+      "minecraft:selection_box": {
+        "origin": [
+          -6.0,
+          0.0,
+          -6.0
+        ],
+        "size": [
+          12.0,
+          4.0,
+          12.0
+        ]
+      },
       "minecraft:loot": "loot_tables/empty.json",
       "minecraft:geometry": "geometry.pie",
       "minecraft:redstone_conductivity": {
@@ -199,30 +313,6 @@
         "bottom": {
           "texture": "pie_bottom"
         }
-      },
-      "minecraft:collision_box": {
-        "origin": [
-          -6.0,
-          0.0,
-          -6.0
-        ],
-        "size": [
-          12.0,
-          4.0,
-          12.0
-        ]
-      },
-      "minecraft:selection_box": {
-        "origin": [
-          -6.0,
-          0.0,
-          -6.0
-        ],
-        "size": [
-          12.0,
-          4.0,
-          12.0
-        ]
       },
       "tag:farmersdelight:pie": {}
     }

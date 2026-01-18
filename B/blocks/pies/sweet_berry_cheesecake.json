@@ -24,6 +24,18 @@
       {
         "condition": "query.block_state('farmersdelight:food_block_stage') == 0",
         "components": {
+          "minecraft:collision_box": {
+            "origin": [
+              -6.0,
+              0.0,
+              -6.0
+            ],
+            "size": [
+              12.0,
+              4.0,
+              12.0
+            ]
+          },
           "minecraft:material_instances": {
             "*": {
               "texture": "sweet_berry_cheesecake_top"
@@ -48,6 +60,44 @@
       {
         "condition": "query.block_state('farmersdelight:food_block_stage') == 1",
         "components": {
+          "minecraft:selection_box": {
+            "origin": [
+              -6.0,
+              0.0,
+              -6.0
+            ],
+            "size": [
+              12.0,
+              4.0,
+              12.0
+            ]
+          },
+          "minecraft:collision_box": [
+            {
+              "origin": [
+                -6.0,
+                0.0,
+                -6.0
+              ],
+              "size": [
+                12.0,
+                4.0,
+                6.0
+              ]
+            },
+            {
+              "origin": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "size": [
+                6.0,
+                4.0,
+                6.0
+              ]
+            }
+          ],
           "minecraft:material_instances": {
             "*": {
               "texture": "sweet_berry_cheesecake_top"
@@ -72,6 +122,32 @@
       {
         "condition": "query.block_state('farmersdelight:food_block_stage') == 2",
         "components": {
+          "minecraft:selection_box": {
+            "origin": [
+              -6.0,
+              0.0,
+              -6.0
+            ],
+            "size": [
+              12.0,
+              4.0,
+              6.0
+            ]
+          },
+          "minecraft:collision_box": [
+            {
+              "origin": [
+                -6.0,
+                0.0,
+                -6.0
+              ],
+              "size": [
+                12.0,
+                4.0,
+                6.0
+              ]
+            }
+          ],
           "minecraft:material_instances": {
             "*": {
               "texture": "sweet_berry_cheesecake_top"
@@ -96,6 +172,32 @@
       {
         "condition": "query.block_state('farmersdelight:food_block_stage') == 3",
         "components": {
+          "minecraft:selection_box": {
+            "origin": [
+              -6.0,
+              0.0,
+              -6.0
+            ],
+            "size": [
+              6.0,
+              4.0,
+              6.0
+            ]
+          },
+          "minecraft:collision_box": [
+            {
+              "origin": [
+                -6.0,
+                0.0,
+                -6.0
+              ],
+              "size": [
+                6.0,
+                4.0,
+                6.0
+              ]
+            }
+          ],
           "minecraft:material_instances": {
             "*": {
               "texture": "sweet_berry_cheesecake_top"
