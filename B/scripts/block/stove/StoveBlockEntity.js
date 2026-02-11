@@ -56,7 +56,7 @@ function getRecipeRequiredTime(slot) {
     const recipe = findCookingRecipe(stack);
     return recipe ? recipe.time : 0;
 }
-let BasketBlockEntity = class BasketBlockEntity {
+let StoveBlockEntity = class StoveBlockEntity {
     static onDiscard(entity) {
         dropsItems(entity);
     }
@@ -115,7 +115,7 @@ let BasketBlockEntity = class BasketBlockEntity {
         }
     }
 };
-BasketBlockEntity = __decorate([
+StoveBlockEntity = __decorate([
     attachedBlockEntity({ eventTypes: ["farmersdelight:stove_tick"] })
-], BasketBlockEntity);
-export { BasketBlockEntity };
+], StoveBlockEntity);
+export { StoveBlockEntity };

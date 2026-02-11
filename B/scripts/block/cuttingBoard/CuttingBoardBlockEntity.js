@@ -25,7 +25,7 @@ export class CuttingBoardBlockEntity extends BlockEntity {
             entity.dimension.spawnParticle(name, { x: x, y: y + 0.0563, z: z });
         }
         ;
-        super.blockEntityLoot(entityBlockData, "farmersdelight:cutting_board", itemStack == "undefined" ? undefined : [itemStack]);
+        super.entityContainerLoot(entityBlockData, "farmersdelight:cutting_board");
     }
 }
 __decorate([

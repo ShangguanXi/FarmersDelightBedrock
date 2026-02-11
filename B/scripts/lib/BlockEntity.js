@@ -39,7 +39,26 @@ export class BlockEntity {
             return;
         if (list?.length) {
             for (const itemStack of list) {
+                console.warn(`Spawning item ${itemStack} at ${args.blockEntityDataLocation}`);
                 args.entity.dimension.spawnItem(new ItemStack(itemStack, amount), args.blockEntityDataLocation);
+            }
+        }
+        BlockEntity.clearEntity(args);
+    }
+    ;
+    entityContainerLoot(args, id) {
+        if (!isSamePos(args.entity.location, args.blockEntityDataLocation))
+            args.entity.teleport(args.blockEntityDataLocation);
+        if (args.block?.typeId == id)
+            return;
+        const entity = args.entity;
+        const dimension = args.dimension;
+        const inventory = entity?.getComponent("inventory");
+        const container = inventory?.container;
+        for (let i = 0, length = container.size; i < length; i++) {
+            const itemStack = container.getItem(i);
+            if (itemStack) {
+                dimension.spawnItem(itemStack, entity.location);
             }
         }
         BlockEntity.clearEntity(args);

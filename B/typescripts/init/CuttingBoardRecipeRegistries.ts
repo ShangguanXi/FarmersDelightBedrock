@@ -1,13 +1,10 @@
 import { ScoreboardObjective, system, world } from "@minecraft/server";
 import {
-  BlockofAxeList,
-  BlockofKnifeList,
-  BlockofPickaxeList,
-  BlockofShovelList,
-  ItemofAxeList,
-  ItemofKnifeList,
-  ItemofPickaxeList,
-  ItemofShearsList,
+    CuttingBoardRecipe,
+    CuttingBoardTool,
+    CuttingBoardIngredient,
+    CuttingBoardResult,
+    cuttingBoardRecipeManager
 } from "../data/recipe/cuttingBoardRecipe";
 import { subscribeEvent } from "../lib/EventSubscriber";
 
@@ -29,52 +26,55 @@ export class CuttingBoardRegistries {
             bool = false;
         })
     }
+
+    /**
+     * 通过 scriptEvent 注册砧板配方
+     * message 格式 (JSON):
+     * {
+     *   "ingredients": { "item": "mod:item_id" } 或 { "tag": "mod:tag_id" } 或数组,
+     *   "tool": { "tag": "minecraft:is_axe" } 或 { "item": "mod:tool_id" },
+     *   "result": [{ "item": "mod:output_id", "count": 1, "chance": 1.0 }],
+     *   "is_block_type": true/false,
+     *   "sound": "use.wood",
+     *   "exp": 0  // 可选
+     * }
+     */
     @subscribeEvent(system.afterEvents.scriptEventReceive, { namespaces: ["farmersdelight"] })
     registries(args: any) {
         const id: string = args.id;
         if (id != "farmersdelight:cutting_board_recipe") return;
         const message: string = args.message;
-        try {
-            if( message.includes("?")&&(message.split("?").length==2)){
-                const recipeType = message.split("?")[1]
-                if(recipeType=="ItemofPickaxeList"){
-                    ItemofPickaxeList.unshift(message.split("?")[0])
-                    num++;
-                }
-                if(recipeType=="ItemofAxeList"){
-                    ItemofAxeList.unshift(message.split("?")[0])
-                    num++;
-                }
-                if(recipeType=="ItemofShearsList"){
-                    ItemofShearsList.unshift(message.split("?")[0])
-                    num++;
-                }
-                if(recipeType=="BlockofAxeList"){
-                    BlockofAxeList.unshift(message.split("?")[0])
-                    num++;
-                }
-                if(recipeType=="BlockofPickaxeList"){
-                    BlockofPickaxeList.unshift(message.split("?")[0])
-                    num++;
-                }
-                if(recipeType=="BlockofKnifeList"){
-                    BlockofKnifeList.unshift(message.split("?")[0])
-                    num++;
-                }
-                if(recipeType=="BlockofShovelList"){
-                    BlockofShovelList.unshift(message.split("?")[0])
-                    num++;
-                }
 
+        try {
+            const data = JSON.parse(message);
+            const ingredients: CuttingBoardIngredient | CuttingBoardIngredient[] = data.ingredients;
+            if (!ingredients) { console.warn(`[FarmersDelight] Missing 'ingredients' field in cutting board recipe: ${message}`); return; }
+
+            const tool: CuttingBoardTool = data.tool;
+            if (!tool || (!tool.tag && !tool.item)) { console.warn(`[FarmersDelight] Missing or invalid 'tool' field in cutting board recipe: ${message}`); return; }
+
+            const result: CuttingBoardResult[] = data.result;
+            if (!result || !Array.isArray(result) || result.length === 0) { console.warn(`[FarmersDelight] Missing or empty 'result' field in cutting board recipe: ${message}`); return; }
+
+            const is_block_type: boolean = !!data.is_block_type;
+            const sound: string = data.sound ?? "use.wood";
+
+            const recipe: CuttingBoardRecipe = {
+                ingredients,
+                tool,
+                result,
+                is_block_type,
+                sound,
+            };
+
+            // 可选的经验值
+            if (typeof data.exp === "number") {
+                recipe.exp = data.exp;
             }
-            else{
-                ItemofKnifeList.unshift(message)
-                num++;
-            }
-          
-            console.warn(`已加载 §4${num}§f 个砧板配方`);
-        } catch (error) {
-            return;
+
+            cuttingBoardRecipeManager.addRecipe(recipe);
+        } catch (e) {
+            console.warn(`[FarmersDelight] Failed to register cutting board recipe: ${e}\nOriginal message: ${message}`);
         }
     }
 }

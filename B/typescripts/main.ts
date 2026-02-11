@@ -65,4 +65,5 @@ new CuttingBoardBlockEntity();
 new Skillet();
 new SkilletEntity();
 
+
 new CookingPotRecipeRegistries();

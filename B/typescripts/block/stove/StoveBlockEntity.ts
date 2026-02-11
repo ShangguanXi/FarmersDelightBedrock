@@ -59,7 +59,7 @@ function getRecipeRequiredTime(slot: ContainerSlot): number {
 }
 
 @attachedBlockEntity({ eventTypes: ["farmersdelight:stove_tick"] })
-export class BasketBlockEntity {
+export class StoveBlockEntity {
     static onDiscard(entity: Entity): undefined {
         dropsItems(entity);
     }
