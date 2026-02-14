@@ -185,6 +185,9 @@
             }
         ],
         "components": {
+      "minecraft:connection_rule": {
+        "accepts_connections_from":"none"
+      },
             "farmersdelight:crop": {
                 "loot": "loot_tables/farmersdelight/crops/farmersdelight_cabbage_riped.json",
                 "state": {

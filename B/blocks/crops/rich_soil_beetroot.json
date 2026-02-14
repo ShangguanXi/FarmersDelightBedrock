@@ -228,17 +228,19 @@
             }
         ],
         "components": {
-            "minecraft:redstone_conductivity":{
+            "minecraft:connection_rule": {
+                "accepts_connections_from": "none"
+            },
+            "minecraft:redstone_conductivity": {
                 "allows_wire_to_step_down": false
             },
-            "farmersdelight:crop":{
+            "farmersdelight:crop": {
                 "loot": "loot_tables/farmersdelight/crops/beetroot_riped.json",
-                "state":{
-                    "name":"farmersdelight:growth",
-                    "age":7
+                "state": {
+                    "name": "farmersdelight:growth",
+                    "age": 7
                 }
             },
-            
             "minecraft:material_instances": {
                 "*": {
                     "texture": "beetroots_stage0",
@@ -251,7 +253,7 @@
                 "precipitation_behavior": "none"
             },
             "minecraft:movable": {
-                "movement_type": "popped" 
+                "movement_type": "popped"
             },
             "minecraft:liquid_detection": {
                 "detection_rules": [
@@ -270,7 +272,6 @@
                 "explosion_resistance": 0.0
             },
             "minecraft:collision_box": false,
-            
             "minecraft:placement_filter": {
                 "conditions": [
                     {

@@ -258,6 +258,9 @@
       "minecraft:destructible_by_explosion": {
         "explosion_resistance": 0.25
       },
+      "minecraft:connection_rule": {
+        "accepts_connections_from":"none"
+      },
       "minecraft:material_instances": {
         "*": {
           "texture": "roast_chicken_eaten",

@@ -72,6 +72,9 @@
             }
         ],
         "components": {
+      "minecraft:connection_rule": {
+        "accepts_connections_from":"none"
+      },
             "minecraft:tick": {
                 "interval_range": [
                     1,

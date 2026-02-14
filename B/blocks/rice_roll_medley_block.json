@@ -304,6 +304,9 @@
       }
     ],
     "components": {
+      "minecraft:connection_rule": {
+        "accepts_connections_from":"none"
+      },
       "minecraft:geometry": "geometry.rice_roll_medley_block_stage0",
       "minecraft:destructible_by_mining": {
         "seconds_to_destroy": 1.0

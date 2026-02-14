@@ -265,6 +265,9 @@
       }
     ],
     "components": {
+      "minecraft:connection_rule": {
+        "accepts_connections_from":"none"
+      },
       "minecraft:redstone_conductivity": {
         "allows_wire_to_step_down": false
       },

@@ -91,6 +91,9 @@
           1
         ]
       },
+      "minecraft:connection_rule": {
+        "accepts_connections_from":"none"
+      },
       "minecraft:movable": {
         "movement_type": "popped"
       },

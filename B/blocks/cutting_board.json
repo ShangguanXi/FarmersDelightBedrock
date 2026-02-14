@@ -1,19 +1,21 @@
 {
-    "format_version": "1.26.0",
-    "minecraft:block": {
-        "description": {
-            "identifier": "farmersdelight:cutting_board",
-			"menu_category":{
+	"format_version": "1.26.0",
+	"minecraft:block": {
+		"description": {
+			"identifier": "farmersdelight:cutting_board",
+			"menu_category": {
 				"category": "items",
-                "group": "farmersdelight:itemGroup.name.cooker"
+				"group": "farmersdelight:itemGroup.name.cooker"
 			},
-            "traits" : {
-                "minecraft:placement_direction": {
-                      "enabled_states": ["minecraft:cardinal_direction"],
-                      "y_rotation_offset": 0.0
-                 }
-            }
-        },
+			"traits": {
+				"minecraft:placement_direction": {
+					"enabled_states": [
+						"minecraft:cardinal_direction"
+					],
+					"y_rotation_offset": 0.0
+				}
+			}
+		},
 		"permutations": [
 			{
 				"condition": "query.block_state('minecraft:cardinal_direction') == 'north'",
@@ -64,51 +66,54 @@
 				}
 			}
 		],
-        "components": {
-            "minecraft:movable": {
-                "movement_type": "immovable" 
-            },
-            "minecraft:redstone_conductivity":{
-                "allows_wire_to_step_down": false
-            },
-            "farmersdelight:interact":{},
-            "minecraft:destructible_by_mining": {
-                "seconds_to_destroy": 1.0
-            },
+		"components": {
+			"minecraft:connection_rule": {
+				"accepts_connections_from": "none"
+			},
+			"minecraft:movable": {
+				"movement_type": "immovable"
+			},
+			"minecraft:redstone_conductivity": {
+				"allows_wire_to_step_down": false
+			},
+			"farmersdelight:interact": {},
+			"minecraft:destructible_by_mining": {
+				"seconds_to_destroy": 1.0
+			},
 			"minecraft:light_dampening": 0,
-            "minecraft:destructible_by_explosion": {
-                "explosion_resistance": 0.25
-            },
-            "minecraft:geometry": "geometry.cutting_board",
+			"minecraft:destructible_by_explosion": {
+				"explosion_resistance": 0.25
+			},
+			"minecraft:geometry": "geometry.cutting_board",
 			"minecraft:material_instances": {
 				"*": {
 					"texture": "cutting_board"
 				}
 			},
-            "minecraft:collision_box": {
-                "origin": [
-                    -7.0,
-                    0.0,
-                    -7.0
-                ],
-                "size": [
-                    14.0,
-                    1.0,
-                    14.0
-                ]
-            },
-            "minecraft:selection_box": {
-                "origin": [
-                    -7.0,
-                    0.0,
-                    -7.0
-                ],
-                "size": [
-                    14.0,
-                    1.0,
-                    14.0
-                ]
-            }
-        }
-    }
+			"minecraft:collision_box": {
+				"origin": [
+					-7.0,
+					0.0,
+					-7.0
+				],
+				"size": [
+					14.0,
+					1.0,
+					14.0
+				]
+			},
+			"minecraft:selection_box": {
+				"origin": [
+					-7.0,
+					0.0,
+					-7.0
+				],
+				"size": [
+					14.0,
+					1.0,
+					14.0
+				]
+			}
+		}
+	}
 }

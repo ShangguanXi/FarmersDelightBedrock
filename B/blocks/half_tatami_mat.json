@@ -53,7 +53,10 @@
                     16.0
                 ]
             },
-            "minecraft:redstone_conductivity":{
+            "minecraft:connection_rule": {
+                "accepts_connections_from": "none"
+            },
+            "minecraft:redstone_conductivity": {
                 "allows_wire_to_step_down": false
             },
             "minecraft:loot": "loot_tables/farmersdelight/half_tatami_mat.json",
@@ -63,7 +66,7 @@
             "minecraft:destructible_by_explosion": {
                 "explosion_resistance": 0.3
             },
-            "tag:farmersdelight:straw_blocks":{}
+            "tag:farmersdelight:straw_blocks": {}
         }
     }
 }

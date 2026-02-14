@@ -269,6 +269,9 @@
       }
     ],
     "components": {
+      "minecraft:connection_rule": {
+        "accepts_connections_from":"none"
+      },
       "farmersdelight:pastry": {
         "slice": "farmersdelight:sweet_berry_cheesecake_slice",
         "counter": "farmersdelight:food_block_stage",

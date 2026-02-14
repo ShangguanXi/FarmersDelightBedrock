@@ -15,7 +15,10 @@
                 }
             },
             "states": {
-                "farmersdelight:init": [false, true]
+                "farmersdelight:init": [
+                    false,
+                    true
+                ]
             }
         },
         "permutations": [
@@ -75,7 +78,10 @@
                     1
                 ]
             },
-            "farmersdelight:tatami_mat":{},
+            "minecraft:connection_rule": {
+                "accepts_connections_from": "none"
+            },
+            "farmersdelight:tatami_mat": {},
             "minecraft:material_instances": {
                 "*": {
                     "texture": "tatami_mat_odd"
@@ -97,7 +103,7 @@
                     }
                 ]
             },
-            "minecraft:redstone_conductivity":{
+            "minecraft:redstone_conductivity": {
                 "allows_wire_to_step_down": false
             },
             "minecraft:collision_box": {
