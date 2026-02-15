@@ -16,7 +16,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 0",
                 "components": {
-                    "minecraft:geometry": "geometry.rice_crop_support",
+                    "minecraft:geometry": "minecraft:geometry.cross",
                     "minecraft:loot": "loot_tables/farmersdelight/empty.json",
                     "minecraft:material_instances": {
                         "*": {
@@ -43,7 +43,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 1",
                 "components": {
-                    "minecraft:geometry": "geometry.rice_crop_support",
+                    "minecraft:geometry": "minecraft:geometry.cross",
                     "minecraft:loot": "loot_tables/farmersdelight/empty.json",
                     "minecraft:material_instances": {
                         "*": {
@@ -70,7 +70,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 2",
                 "components": {
-                    "minecraft:geometry": "geometry.rice_crop_support",
+                    "minecraft:geometry": "minecraft:geometry.cross",
                     "minecraft:loot": "loot_tables/farmersdelight/empty.json",
                     "minecraft:material_instances": {
                         "*": {
@@ -97,7 +97,7 @@
             {
                 "condition": "query.block_state('farmersdelight:growth') == 3",
                 "components": {
-                    "minecraft:geometry": "geometry.rice_crop_support",
+                    "minecraft:geometry": "minecraft:geometry.cross",
                     "minecraft:loot": "loot_tables/farmersdelight/crops/farmersdelight_rice_riped.json",
                     "minecraft:material_instances": {
                         "*": {
@@ -165,7 +165,7 @@
                 "destroy_chance_modifier": 30
             },
             "minecraft:light_dampening": 0,
-            "minecraft:geometry": "geometry.rice_crop_support",
+            "minecraft:geometry": "minecraft:geometry.cross",
             "minecraft:destructible_by_explosion": {
                 "explosion_resistance": 0.0
             },

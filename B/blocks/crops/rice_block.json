@@ -20,7 +20,7 @@
             {
                 "condition": "query.block_state('farmersdelight:age') == 0",
                 "components": {
-                    "minecraft:geometry": "geometry.rice_crop_support",
+                    "minecraft:geometry": "minecraft:geometry.cross",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "rice_stage0",
@@ -45,7 +45,7 @@
             {
                 "condition": "query.block_state('farmersdelight:age') == 1",
                 "components": {
-                    "minecraft:geometry": "geometry.rice_crop_support",
+                    "minecraft:geometry": "minecraft:geometry.cross",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "rice_stage1",
@@ -70,7 +70,7 @@
             {
                 "condition": "query.block_state('farmersdelight:age') == 2",
                 "components": {
-                    "minecraft:geometry": "geometry.rice_crop_support",
+                    "minecraft:geometry": "minecraft:geometry.cross",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "rice_stage2",
@@ -95,7 +95,7 @@
             {
                 "condition": "query.block_state('farmersdelight:age') == 3 && query.block_state('farmersdelight:upper') == false",
                 "components": {
-                    "minecraft:geometry": "geometry.rice_crop_support",
+                    "minecraft:geometry": "minecraft:geometry.cross",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "rice_stage3",
@@ -120,7 +120,7 @@
             {
                 "condition": "query.block_state('farmersdelight:age') == 3 && query.block_state('farmersdelight:upper') == true",
                 "components": {
-                    "minecraft:geometry": "geometry.rice_crop_support",
+                    "minecraft:geometry": "minecraft:geometry.cross",
                     "minecraft:material_instances": {
                         "*": {
                             "texture": "rice_supporting",
@@ -187,7 +187,7 @@
                 "destroy_chance_modifier": 30
             },
             "minecraft:light_dampening": 0,
-            "minecraft:geometry": "geometry.rice_crop_support",
+            "minecraft:geometry": "minecraft:geometry.cross",
             "minecraft:destructible_by_explosion": {
                 "explosion_resistance": 0.0
             },

@@ -15,7 +15,7 @@
         "condition": "query.block_state('farmersdelight:upper')",
         "components": {
           "farmersdelight:wild_rice": "upper",
-          "minecraft:geometry": "geometry.rice_crop_support",
+          "minecraft:geometry": "minecraft:geometry.cross",
           "minecraft:loot": "loot_tables/empty.json",
           "minecraft:placement_filter": {
             "conditions": [
@@ -42,7 +42,7 @@
       {
         "condition": "!query.block_state('farmersdelight:upper')",
         "components": {
-          "minecraft:geometry": "geometry.rice_crop_support",
+          "minecraft:geometry": "minecraft:geometry.cross",
           "minecraft:liquid_detection": {
             "detection_rules": [
               {
@@ -105,7 +105,7 @@
       "minecraft:destructible_by_explosion": {
         "explosion_resistance": 0.1
       },
-      "minecraft:geometry": "geometry.rice_crop_support",
+      "minecraft:geometry": "minecraft:geometry.cross",
       "minecraft:material_instances": {
         "*": {
           "texture": "wild_rice_bottom",
