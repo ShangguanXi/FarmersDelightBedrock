@@ -1,0 +1,42 @@
+{
+    "world_name": "MC_DEV_WORLD",
+    "world_folder_name": "MC_DEV_WORLD",
+    "world_seed": null,
+    "world_type": 1,
+    "game_mode": 1,
+    "experiment_options": {
+        "data_driven_biomes": false,
+        "data_driven_items": false,
+        "experimental_molang_features": false
+    },
+    "reset_world": false,
+    "auto_join_game": true,
+    "include_debug_mod": true,
+    "auto_hot_reload_mods": true,
+    "enable_cheats": true,
+    "keep_inventory": true,
+    "do_daylight_cycle": true,
+    "do_weather_cycle": true,
+    "window_style": {
+        "always_on_top": false,
+        "hide_title_bar": false,
+        "title_bar_color": null,
+        "fixed_size": null,
+        "fixed_position": null,
+        "lock_corner": null
+    },
+    "skin_info": {
+        "slim": false,
+        "skin": ""
+    },
+    "debug_options": {
+        "reload_key": "",
+        "reload_world_key": "",
+        "reload_addon_key": "",
+        "reload_shaders_key": "",
+        "reload_key_global": false
+    },
+    "included_mod_dirs": [
+        "./"
+    ]
+}
