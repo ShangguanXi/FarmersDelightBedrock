@@ -22,13 +22,36 @@ jobs:
           ACTOR="${{ github.actor }}"
           URL="https://github.com/${REPO}"
 
-          # 单行消息，用 \n 表示换行
-          MESSAGE="📢 ${EVENT}\nRepo: ${REPO}\nBy: ${ACTOR}\n${URL}"
+          # 获取事件标题或提交信息
+          if [[ "$EVENT" == "push" ]]; then
+            TITLE=$(git log -1 --pretty=format:"%s")
+          elif [[ "$EVENT" == "pull_request" ]]; then
+            TITLE="${{ github.event.pull_request.title }}"
+          elif [[ "$EVENT" == "issues" ]]; then
+            TITLE="${{ github.event.issue.title }}"
+          else
+            TITLE=""
+          fi
+
+          # 根据事件类型选择 emoji
+          case "$EVENT" in
+            push) EMOJI="📢" ;;
+            pull_request) EMOJI="📝" ;;
+            issues) EMOJI="✨" ;;
+            release) EMOJI="🏷️" ;;
+            create) EMOJI="➕" ;;
+            delete) EMOJI="❌" ;;
+            fork) EMOJI="🍴" ;;
+            watch) EMOJI="👀" ;;
+            *) EMOJI="🔔" ;;
+          esac
+
+          # 构建消息（单行，用 \n 换行）
+          MESSAGE="${EMOJI} ${EVENT} in **${REPO}**\nBy: ${ACTOR}\nTitle/Message: ${TITLE}\nURL: ${URL}"
 
           # 发送到 Discord
           curl -H "Content-Type: application/json" \
                -d "{\"content\": \"${MESSAGE}\"}" \
                "${{ secrets.DISCORD_WEBHOOK }}"
-
 
 
