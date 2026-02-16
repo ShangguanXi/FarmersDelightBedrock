@@ -1,13 +1,13 @@
 name: Discord Notifications
 
 on:
+  workflow_dispatch:
   push:
   pull_request:
   issues:
   release:
   create:
   delete:
-  workflow_run:
   fork:
   watch:
 
@@ -22,12 +22,9 @@ jobs:
           ACTOR="${{ github.actor }}"
           URL="https://github.com/${REPO}"
 
-          MESSAGE="📢 **${EVENT}**
-          Repo: ${REPO}
-          By: ${ACTOR}
-          🔗 ${URL}"
+          MESSAGE="📢 ${EVENT}
+Repo: ${REPO}
+By: ${ACTOR}
+${URL}"
 
-          curl -H "Content-Type: application/json" \
-               -d "{\"content\": \"${MESSAGE}\"}" \
-               ${{ secrets.DISCORD_WEBHOOK }}
 
