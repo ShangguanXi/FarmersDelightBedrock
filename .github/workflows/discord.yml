@@ -22,12 +22,13 @@ jobs:
           ACTOR="${{ github.actor }}"
           URL="https://github.com/${REPO}"
 
-          MESSAGE="📢 ${EVENT}
-Repo: ${REPO}
-By: ${ACTOR}
-${URL}
+          # 单行消息，用 \n 表示换行
+          MESSAGE="📢 ${EVENT}\nRepo: ${REPO}\nBy: ${ACTOR}\n${URL}"
 
+          # 发送到 Discord
           curl -H "Content-Type: application/json" \
                -d "{\"content\": \"${MESSAGE}\"}" \
-               ${{ secrets.DISCORD_WEBHOOK }}
+               "${{ secrets.DISCORD_WEBHOOK }}"
+
+
 
