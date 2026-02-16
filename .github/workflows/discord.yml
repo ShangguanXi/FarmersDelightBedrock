@@ -15,6 +15,9 @@ jobs:
   notify:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4  # 确保 checkout 代码 
+        
       - name: Send event to Discord
         run: |
           EVENT="${{ github.event_name }}"
