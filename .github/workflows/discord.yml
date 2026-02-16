@@ -27,4 +27,7 @@ Repo: ${REPO}
 By: ${ACTOR}
 ${URL}"
 
+          curl -H "Content-Type: application/json" \
+               -d "{\"content\": \"${MESSAGE}\"}" \
+               ${{ secrets.DISCORD_WEBHOOK }}
 
