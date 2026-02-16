@@ -25,7 +25,7 @@ jobs:
           MESSAGE="📢 ${EVENT}
 Repo: ${REPO}
 By: ${ACTOR}
-${URL}"
+${URL}
 
           curl -H "Content-Type: application/json" \
                -d "{\"content\": \"${MESSAGE}\"}" \
