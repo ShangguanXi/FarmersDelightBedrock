@@ -1,1 +1,33 @@
+name: Discord Notifications
+
+on:
+  push:
+  pull_request:
+  issues:
+  release:
+  create:
+  delete:
+  workflow_run:
+  fork:
+  watch:
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send event to Discord
+        run: |
+          EVENT="${{ github.event_name }}"
+          REPO="${{ github.repository }}"
+          ACTOR="${{ github.actor }}"
+          URL="https://github.com/${REPO}"
+
+          MESSAGE="📢 **${EVENT}**
+          Repo: ${REPO}
+          By: ${ACTOR}
+          🔗 ${URL}"
+
+          curl -H "Content-Type: application/json" \
+               -d "{\"content\": \"${MESSAGE}\"}" \
+               ${{ secrets.DISCORD_WEBHOOK }}
 
