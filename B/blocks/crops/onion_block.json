@@ -228,9 +228,9 @@
             }
         ],
         "components": {
-      "minecraft:connection_rule": {
-        "accepts_connections_from":"none"
-      },
+            "minecraft:connection_rule": {
+                "accepts_connections_from": "none"
+            },
             "minecraft:precipitation_interactions": {
                 "precipitation_behavior": "none"
             },

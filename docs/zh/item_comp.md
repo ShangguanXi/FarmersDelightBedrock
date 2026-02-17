@@ -24,6 +24,8 @@
 | duration | int    | 是   | 效果持续的时间长度（通常单位为刻 tick，20刻=1秒）。       |
 | chance   | int    | 否   | 触发该效果的概率，范围是 0.0 到 1.0 (例如 0.5 代表 50%)。 |
 
+**示例：**
+
 ```json
 "farmersdelight:consume_effects": [
   {
@@ -43,6 +45,8 @@
 
 ###### Type: object
 
+**示例：**
+
 ```json
 "farmersdelight:farmers_book"：{}
 ```
@@ -54,6 +58,8 @@
 使用含有该组件的物品击杀生物时会根据农夫乐事脚本中的相关逻辑额外掉落物品。
 
 ###### Type: object
+
+**示例：**
 
 ```json
 "farmersdelight:increase_production"：{}
@@ -69,6 +75,8 @@
 
 ###### Type: object
 
+**示例：**
+
 ```json
 "farmersdelight:knife"：{}
 ```
@@ -82,6 +90,8 @@
 种子，可直接种植指定作物到沃土耕地上。
 
 ###### Type: string
+
+**示例：**
 
 ```json
 "farmersdelight:seed"："exmaple:crop"
