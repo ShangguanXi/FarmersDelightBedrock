@@ -101,9 +101,11 @@ export class CuttingBoardBlock extends BlockWithEntity {
                         }
                     }
                     hurtEquippedItem(player, itemStack, boardItemAmount);
+                    block.dimension.playSound(recipe.sound, block.location);
                     entityInv?.container?.setItem(0, undefined);
                     entity.setDynamicProperty("farmersdelight:blockEntityItemStackData", '{"item":"minecraft:air"}');
                     entity.setProperty("farmersdelight:is_block_mode", false);
+                    entity.runCommand(`replaceitem entity @s slot.weapon.mainhand 0 minecraft:air`);
                 }
                 else {
                     for (let i = 0; i < remainingDurability; i++) {
@@ -115,6 +117,7 @@ export class CuttingBoardBlock extends BlockWithEntity {
                             }
                         }
                     }
+                    block.dimension.playSound(recipe.sound, block.location);
                     const newAmount = boardItemAmount - remainingDurability;
                     if (newAmount > 0) {
                         boardItemStack.amount = newAmount;
@@ -139,7 +142,9 @@ export class CuttingBoardBlock extends BlockWithEntity {
                         }
                     }
                 }
+                block.dimension.playSound(recipe.sound, block.location);
                 entityInv?.container?.setItem(0, undefined);
+                entity.runCommand(`replaceitem entity @s slot.weapon.mainhand 0 minecraft:air`);
                 entity.setDynamicProperty("farmersdelight:blockEntityItemStackData", '{"item":"minecraft:air"}');
                 entity.setProperty("farmersdelight:is_block_mode", false);
             }

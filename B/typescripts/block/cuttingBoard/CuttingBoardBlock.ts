@@ -119,10 +119,13 @@ export class CuttingBoardBlock extends BlockWithEntity {
                     }
                     // 扣除工具耐久
                     hurtEquippedItem(player, itemStack, boardItemAmount);
+                    // 播放配方声音
+                    block.dimension.playSound(recipe.sound, block.location);
                     // 清空砧板
                     entityInv?.container?.setItem(0, undefined);
                     entity.setDynamicProperty("farmersdelight:blockEntityItemStackData", '{"item":"minecraft:air"}');
                     entity.setProperty("farmersdelight:is_block_mode", false)
+                    entity.runCommand(`replaceitem entity @s slot.weapon.mainhand 0 minecraft:air`);
                 } else {
                     // 耐久度小于等于背包物品数量：按耐久度次数处理
                     for (let i = 0; i < remainingDurability; i++) {
@@ -134,6 +137,8 @@ export class CuttingBoardBlock extends BlockWithEntity {
                             }
                         }
                     }
+                    // 播放配方声音
+                    block.dimension.playSound(recipe.sound, block.location);
                     // 扣除背包中对应数量的物品
                     const newAmount = boardItemAmount - remainingDurability;
                     if (newAmount > 0) {
@@ -143,7 +148,6 @@ export class CuttingBoardBlock extends BlockWithEntity {
                         entityInv?.container?.setItem(0, undefined);
                         entity.setDynamicProperty("farmersdelight:blockEntityItemStackData", '{"item":"minecraft:air"}');
                         entity.setProperty("farmersdelight:is_block_mode", false)
-
                         entity.runCommand(`replaceitem entity @s slot.weapon.mainhand 0 minecraft:air`);
                     }
                     // 工具耗尽，清空玩家主手
@@ -160,8 +164,11 @@ export class CuttingBoardBlock extends BlockWithEntity {
                         }
                     }
                 }
+                // 播放配方声音
+                block.dimension.playSound(recipe.sound, block.location);
                 // 清空砧板
                 entityInv?.container?.setItem(0, undefined);
+                entity.runCommand(`replaceitem entity @s slot.weapon.mainhand 0 minecraft:air`);
                 entity.setDynamicProperty("farmersdelight:blockEntityItemStackData", '{"item":"minecraft:air"}');
                 entity.setProperty("farmersdelight:is_block_mode", false)
             }

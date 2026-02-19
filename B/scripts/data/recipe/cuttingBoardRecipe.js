@@ -90,6 +90,7 @@ const meatSlicingRecipes = [
     { ingredients: { item: "minecraft:mutton" }, result: [{ item: "farmersdelight:mutton_chops", count: 2 }, { item: "minecraft:bone_meal", count: 1 }], tool: { tag: "farmersdelight:is_knife" }, is_block_type: false, sound: "use.wood" },
     { ingredients: { item: "minecraft:cooked_mutton" }, result: [{ item: "farmersdelight:cooked_mutton_chops", count: 2 }, { item: "minecraft:bone_meal", count: 1 }], tool: { tag: "farmersdelight:is_knife" }, is_block_type: false, sound: "use.wood" },
     { ingredients: { item: "minecraft:cooked_chicken" }, result: [{ item: "farmersdelight:cooked_chicken_cuts", count: 2 }, { item: "minecraft:bone_meal", count: 1 }], tool: { tag: "farmersdelight:is_knife" }, is_block_type: false, sound: "use.wood" },
+    { ingredients: { item: "farmersdelight:ham" }, result: [{ item: "farmersdelight:porkchop", count: 2 }, { item: "minecraft:bone_meal", count: 1 }], tool: { tag: "farmersdelight:is_knife" }, is_block_type: false, sound: "use.wood" },
 ];
 const wildCropRecipes = [
     { ingredients: { item: "farmersdelight:wild_cabbages" }, result: [{ item: "farmersdelight:cabbage_seeds", count: 1 }, { item: "minecraft:yellow_dye", count: 2, chance: 0.5 }], tool: { tag: "farmersdelight:is_knife" }, is_block_type: false, sound: "use.wood" },
@@ -149,6 +150,13 @@ export const CuttingBoardRecipes = [
     ...pickaxeBlockRecipes,
     ...knifeBlockRecipes,
     ...shovelBlockRecipes,
+    { ingredients: { item: "farmersdelight:cabbage" }, result: [{ item: "farmersdelight:cabbage_leaf", count: 2 }], tool: { tag: "farmersdelight:is_knife" }, is_block_type: false, sound: "use.wood" },
+    { ingredients: { item: "farmersdelight:kelp_roll" }, result: [{ item: "farmersdelight:kelp_roll_slice", count: 3 }], tool: { tag: "farmersdelight:is_knife" }, is_block_type: false, sound: "use.wood" },
+    { ingredients: { item: "farmersdelight:rice_panicle" }, result: [{ item: "farmersdelight:straw", count: 1 }, { item: "farmersdelight:rice", count: 1 }], tool: { tag: "farmersdelight:is_knife" }, is_block_type: false, sound: "use.wood" },
+    { ingredients: { item: "farmersdelight:chocolate_pie" }, result: [{ item: "farmersdelight:chocolate_pie_slice", count: 4 }], tool: { tag: "farmersdelight:is_knife" }, is_block_type: false, sound: "use.wood" },
+    { ingredients: { item: "farmersdelight:apple_pie" }, result: [{ item: "farmersdelight:apple_pie_slice", count: 4 }], tool: { tag: "farmersdelight:is_knife" }, is_block_type: false, sound: "use.wood" },
+    { ingredients: { item: "farmersdelight:sweet_berry_cheesecake" }, result: [{ item: "farmersdelight:sweet_berry_cheesecake_slice", count: 4 }], tool: { tag: "farmersdelight:is_knife" }, is_block_type: false, sound: "use.wood" },
+    { ingredients: { item: "farmersdelight:wheat_dough" }, result: [{ item: "farmersdelight:raw_pasta", count: 1 }], tool: { tag: "farmersdelight:is_knife" }, is_block_type: false, sound: "use.wood" },
     { ingredients: { item: "better_on_bedrock:chorus_log" }, result: [{ item: "farmersdelight:tree_bark", count: 1 }, { item: "better_on_bedrock:chorus_log_stripped", count: 1 }], tool: { tag: "minecraft:is_axe" }, is_block_type: true, sound: "use.wood" },
     { ingredients: { item: "better_on_bedrock:voiding_log" }, result: [{ item: "farmersdelight:tree_bark", count: 1 }, { item: "better_on_bedrock:shrublog_stripped", count: 1 }], tool: { tag: "minecraft:is_axe" }, is_block_type: true, sound: "use.wood" },
     { ingredients: { item: "better_on_bedrock:shrublog" }, result: [{ item: "farmersdelight:tree_bark", count: 1 }, { item: "better_on_bedrock:shrublog_stripped", count: 1 }], tool: { tag: "minecraft:is_axe" }, is_block_type: true, sound: "use.wood" },

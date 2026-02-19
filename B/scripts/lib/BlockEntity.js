@@ -39,7 +39,6 @@ export class BlockEntity {
             return;
         if (list?.length) {
             for (const itemStack of list) {
-                console.warn(`Spawning item ${itemStack} at ${args.blockEntityDataLocation}`);
                 args.entity.dimension.spawnItem(new ItemStack(itemStack, amount), args.blockEntityDataLocation);
             }
         }
