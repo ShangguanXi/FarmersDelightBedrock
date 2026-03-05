@@ -1,7 +1,7 @@
 import { ItemStack, system, world } from "@minecraft/server";
 import { BlockEntity } from "../../lib/BlockEntity";
 import { isHeated } from "../../data/Heaters";
-import { CookableComponentParams } from "../../customComponents/item/CookableComponent";
+import { findCookingRecipe } from "../../data/recipe/cookRecipe";
 import { subscribeEvent } from "../../lib/EventSubscriber";
 
 const skilletV2: any[] = [];
@@ -33,7 +33,7 @@ export class SkilletEntity extends BlockEntity {
       dimension.spawnParticle(particleName, { x: x + skilletV2[index].x, y: y + 0.07 + 0.03 * (index + 1), z: z + skilletV2[index].z });
     }
     // 烹饪
-      if (!isHeated(entityBlockData.block)) return;
+    if (!isHeated(entityBlockData.block)) return;
     const cookDataProperty = entity.getDynamicProperty("farmersdelight:cookData") as string || "{}"
     if (cookDataProperty == "{}") return
     let cookData = JSON.parse(cookDataProperty);
@@ -48,18 +48,22 @@ export class SkilletEntity extends BlockEntity {
         cookData.datas[i].time -= 1
       }
       if (cookData.datas[i].time == 0) {
-          if (itemId.startsWith("minecraft:")) {
-              const path = itemId.substring(10);
-              for (let a = 0; a <= cookData.datas[i].count; a++) {
-                  entity.runCommand(`loot spawn ${x} ${y + 0.4} ${z} loot "minecraft/cook/${path}"`);
-              }
-          } else {
-              const cookable = (new ItemStack(itemId)).getComponent("farmersdelight:cookable")?.customComponentParameters.params as CookableComponentParams;
-              dimension.spawnItem(new ItemStack(cookable.result, cookData.datas[i].count), { x, y: y + 0.4, z });
+          const recipe = findCookingRecipe(new ItemStack(itemId));
+          if (recipe) {
+              const resultCount = recipe.count ? recipe.count : 1;
+              dimension.spawnItem(new ItemStack(recipe.result, resultCount), { x, y: y + 0.4, z });
           }
-          entity.setDynamicProperty("farmersdelight:amount", totalAmount - cookData.datas[i].count);
-          entity.setDynamicProperty("farmersdelight:canAdd", canAddAmount + cookData.datas[i].count);
-          cookData.datas.splice(i, 1);
+          totalAmount -= 1;
+          canAddAmount += 1;
+          entity.setDynamicProperty("farmersdelight:amount", totalAmount);
+          entity.setDynamicProperty("farmersdelight:canAdd", canAddAmount);
+          cookData.datas[i].count -= 1;
+          if (cookData.datas[i].count <= 0) {
+              cookData.datas.splice(i, 1);
+          } else {
+              // 重置计时器，继续烧下一个
+              cookData.datas[i].time = recipe ? recipe.time : 200;
+          }
       }
     }
     if (cookData.datas.length == 0) entity.setDynamicProperty("farmersdelight:item", "undefined");

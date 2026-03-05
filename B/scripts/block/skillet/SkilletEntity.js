@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 import { ItemStack, system, world } from "@minecraft/server";
 import { BlockEntity } from "../../lib/BlockEntity";
 import { isHeated } from "../../data/Heaters";
+import { findCookingRecipe } from "../../data/recipe/cookRecipe";
 import { subscribeEvent } from "../../lib/EventSubscriber";
 const skilletV2 = [];
 for (let i = 0; i < 5; i++) {
@@ -57,19 +58,22 @@ export class SkilletEntity extends BlockEntity {
                 cookData.datas[i].time -= 1;
             }
             if (cookData.datas[i].time == 0) {
-                if (itemId.startsWith("minecraft:")) {
-                    const path = itemId.substring(10);
-                    for (let a = 0; a <= cookData.datas[i].count; a++) {
-                        entity.runCommand(`loot spawn ${x} ${y + 0.4} ${z} loot "minecraft/cook/${path}"`);
-                    }
+                const recipe = findCookingRecipe(new ItemStack(itemId));
+                if (recipe) {
+                    const resultCount = recipe.count ? recipe.count : 1;
+                    dimension.spawnItem(new ItemStack(recipe.result, resultCount), { x, y: y + 0.4, z });
+                }
+                totalAmount -= 1;
+                canAddAmount += 1;
+                entity.setDynamicProperty("farmersdelight:amount", totalAmount);
+                entity.setDynamicProperty("farmersdelight:canAdd", canAddAmount);
+                cookData.datas[i].count -= 1;
+                if (cookData.datas[i].count <= 0) {
+                    cookData.datas.splice(i, 1);
                 }
                 else {
-                    const cookable = (new ItemStack(itemId)).getComponent("farmersdelight:cookable")?.customComponentParameters.params;
-                    dimension.spawnItem(new ItemStack(cookable.result, cookData.datas[i].count), { x, y: y + 0.4, z });
+                    cookData.datas[i].time = recipe ? recipe.time : 200;
                 }
-                entity.setDynamicProperty("farmersdelight:amount", totalAmount - cookData.datas[i].count);
-                entity.setDynamicProperty("farmersdelight:canAdd", canAddAmount + cookData.datas[i].count);
-                cookData.datas.splice(i, 1);
             }
         }
         if (cookData.datas.length == 0)

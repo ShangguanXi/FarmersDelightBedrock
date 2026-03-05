@@ -6,12 +6,11 @@ import {
     world,
 } from "@minecraft/server";
 import { BlockWithEntity } from "../../lib/BlockWithEntity";
-import { vanillaItemList } from "../../data/recipe/cookRecipe";
+import { vanillaItemList, findCookingRecipe, isCookable } from "../../data/recipe/cookRecipe";
 import { hasLimitedMaterials } from "../../lib/EntityUtil";
 import { takeItem } from "../../lib/ItemUtil";
 
 import { isHeated } from "../../data/Heaters";
-import { CookableComponentParams } from "../../customComponents/item/CookableComponent";
 import { subscribeEvent } from "../../lib/EventSubscriber";
 
 export class Skillet extends BlockWithEntity {
@@ -65,11 +64,10 @@ export class Skillet extends BlockWithEntity {
     }
     const itemId = itemStack.typeId;
     const amount = itemStack.amount;
-    const cookable  = itemStack.getComponent("farmersdelight:cookable")
-    if (vanillaItemList.includes(itemId) || cookable) {
+    const recipe = findCookingRecipe(itemStack);
+    if (recipe) {
       
-      const params = cookable?.customComponentParameters.params as CookableComponentParams
-      const time = cookable ? (params.time ? params.time : 200) : 200
+      const time = recipe.time ?? 200;
       if (currentItem == "undefined") {
         entity.setDynamicProperty("farmersdelight:item", itemId);
         entity.setDynamicProperty("farmersdelight:canAdd", itemStack.maxAmount - amount);
