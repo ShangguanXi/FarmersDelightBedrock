@@ -2,14 +2,14 @@
 
 | 组件名称 | 描述 |
 | --- | --- |
-| [`farmersdelight:block_entity`](#farmersdelightblock_entity) | 方块实体组件，用于初始化容器方块的名称标签 |
-| [`farmersdelight:cabinet`](#farmersdelightblock_entity) | 橱柜组件，定义方块为橱柜。 |
-| [`farmersdelight:crop`](#farmersdelightcrop) | 作物组件，处理普通作物的生长、骨粉催熟和收获 |
-| [`farmersdelight:dish`](#farmersdelightdish) | 餐盘组件，用于处理方块食物交互。 |
-| [`farmersdelight:interact`](#farmersdelightinteract) | 交互组件，触发通用交互事件监听。 |
-| [`farmersdelight:mushroom_cluster`](#farmersdelightmushroom_cluster) | 菌落组件，处理菌落的生长和骨粉催熟 |
-| [`farmersdelight:pastry`](#farmersdelightpastry) | 糕点组件，处理蛋糕类方块的切片和食用 |
-| [`farmersdelight:stove`](#farmersdelightstove) | 炉灶组件，处理炉灶的点火、熄灭和烹饪逻辑 |
+| [farmersdelight:block_entity](#farmersdelightblock_entity) | 方块实体组件，用于初始化容器方块的名称标签 |
+| [farmersdelight:cabinet](#farmersdelightblock_entity) | 橱柜组件，定义方块为橱柜。 |
+| [farmersdelight:crop](#farmersdelightcrop) | 作物组件，处理普通作物的生长、骨粉催熟和收获 |
+| [farmersdelight:dish](#farmersdelightdish) | 餐盘组件，用于处理方块食物交互。 |
+| [farmersdelight:interact](#farmersdelightinteract) | 交互组件，触发通用交互事件监听。 |
+| [farmersdelight:mushroom_cluster](#farmersdelightmushroom_cluster) | 菌落组件，处理菌落的生长和骨粉催熟 |
+| [farmersdelight:pastry](#farmersdelightpastry) | 糕点组件，处理蛋糕类方块的切片和食用 |
+| [farmersdelight:stove](#farmersdelightstove) | 炉灶组件，处理炉灶的点火、熄灭和烹饪逻辑 |
 
 ---
 
@@ -23,9 +23,9 @@
 
 **示例：**
 
-```json
+json
 "farmersdelight:block_entity":"example:block_entity"
-```
+
 
 ---
 
@@ -50,7 +50,7 @@ state字段：
 
 **示例：**
 
-```json
+json
 "farmersdelight:crop": {
     "loot": "loot_tables/farmersdelight/crops/farmersdelight_onion_riped.json",
     "state": {
@@ -58,7 +58,7 @@ state字段：
         "age": 7
     }
 },
-```
+
 
 ---
 
@@ -72,21 +72,21 @@ state字段：
 | --- | --- | --- | --- | --- |
 | servings | int | 否 | 1 | 总份数 |
 | contents | string \| string[] | 是 |  | 使用后获得的物品id；值可为数组形式用于返回多个物品。 |
-| utensil | string | 否 |  | 使用所需的餐具的物品id；当以 `#` 开头时，会识别为物品标签。此字段不填则默认所有物品（包括空手）均可与其交互。 |
+| utensil | string | 否 |  | 使用所需的餐具的物品id；当以 # 开头时，会识别为物品标签。此字段不填则默认所有物品（包括空手）均可与其交互。 |
 | has_leftovers | boolean | 否 | false | 使用完是否保留剩余部分（如空盘子） |
 
 **示例**：
 
-```json
+json
 "farmersdelight:dish": {
     "has_leftovers": true,
     "servings": 4,
     "contents": "farmersdelight:honey_glazed_ham",
     "utensil": "minecraft:bowl"
 }
-```
 
-> 每次使用增加 `farmersdelight:food_block_stage` 状态，故若使用此组件，此方块食物需使用farmersdelight:food_block_stage状态。
+
+> 每次使用增加 farmersdelight:food_block_stage 状态，故若使用此组件，此方块食物需使用farmersdelight:food_block_stage状态。
 
 ---
 
@@ -98,9 +98,9 @@ state字段：
 
 **示例：**
 
-```json
+json
 "farmersdelight:interact":{}
-```
+
 
 ---
 
@@ -144,8 +144,8 @@ Type: string
 
 **示例：**
 
-```json
+json
 "farmersdelight:stove"："farmersdelight:stove"
-```
+
 
 > 注：值与方块id要保持一致，并且表示是否点燃的方块状态名要为farmersdelight:stove。
