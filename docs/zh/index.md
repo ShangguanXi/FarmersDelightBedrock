@@ -12,6 +12,6 @@
 
 ### 配方
 
-- 砧板配方
-- 烧制配方
-- 厨锅配方
+- [**砧板配方**](cutting_board_recipe.md)
+- [**烧制配方**](cook_recipe.md)
+- [**厨锅配方**](cooking_pot_recipe.md)
