@@ -1,3 +1,5 @@
 
 pack.name=Farmer's Delight[RP]
 pack.description=É hora de cultivar um pouco de tudo! Versão suportada: 26.0+
+tile.farmersdelight:pumpkin_pie.name=Torta de Abóbora
+item.farmersdelight:pumpkin_pie_slice.name=Fatia de torta de abóbora

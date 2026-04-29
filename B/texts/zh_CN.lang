@@ -1,2 +1,4 @@
 pack.name=农夫乐事[行为包]
 pack.description=是时候种点好东西了！支持的版本为26.0+
+tile.farmersdelight:pumpkin_pie.name=南瓜派
+item.farmersdelight:pumpkin_pie_slice.name=南瓜派切片

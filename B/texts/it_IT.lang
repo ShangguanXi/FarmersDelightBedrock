@@ -1,2 +1,4 @@
 pack.name=Farmer's Delight[BP]
 pack.description=È ora di coltivare un po' di tutto! La versione supportata è la 26.0+
+tile.farmersdelight:pumpkin_pie.name=Torta di zucca
+item.farmersdelight:pumpkin_pie_slice.name=Fetta di torta di zucca

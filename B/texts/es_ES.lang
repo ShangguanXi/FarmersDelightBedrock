@@ -1,2 +1,4 @@
 pack.name=Farmer's Delight[RP]
 pack.description=¡Es hora de cultivar un poco de todo! La versión compatible es 26.0+
+tile.farmersdelight:pumpkin_pie.name=Tarta de calabaza
+item.farmersdelight:pumpkin_pie_slice.name=Porción de tarta de calabaza

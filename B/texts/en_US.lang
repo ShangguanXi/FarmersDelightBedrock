@@ -1,2 +1,4 @@
 pack.name=Farmer's Delight[BP]
-pack.description=It's time to farm a little bit of everything!Supported version is 26.0+
+pack.description=It's time to farm a little bit of everything! Supported version is 26.0+
+tile.farmersdelight:pumpkin_pie.name=Pumpkin Pie
+item.farmersdelight:pumpkin_pie_slice.name=Slice of Pumpkin Pie
