@@ -645,6 +645,12 @@
 		},
 		"bamboo_cabinet_front": {
 			"textures": "textures/blocks/bamboo_cabinet_front"
+		},
+		"pumpkin_pie_top": {
+			"textures": "textures/blocks/pumpkin_pie_top"
+		},
+		"pumpkin_pie_inner": {
+			"textures": "textures/blocks/pumpkin_pie_inner"
 		}
 	}
 }

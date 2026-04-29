@@ -1,0 +1,41 @@
+{
+  "format_version": "1.26.0",
+  "minecraft:item": {
+    "components": {
+      "minecraft:food": {
+        "can_always_eat": false,
+        "nutrition": 3,
+        "saturation_modifier": 0.3
+      },
+      "minecraft:icon": {
+        "textures": {
+          "default": "farmersdelight:pumpkin_pie_slice"
+        }
+      },
+      "minecraft:use_animation": "eat",
+      "minecraft:use_modifiers": {
+        "use_duration": 1.6,
+        "movement_modifier": 0.4
+      },
+      "minecraft:compostable": {
+        "composting_chance": 35
+      },
+      "efm:realistic_food":{
+        "expire_time":20
+      },
+      "farmersdelight:consume_effects": [
+        {
+          "effect": "speed",
+          "duration": 600
+        }
+      ]
+    },
+    "description": {
+      "identifier": "farmersdelight:pumpkin_pie_slice",
+      "menu_category": {
+        "category": "equipment",
+        "group": "farmersdelight:itemGroup.name.miscFood"
+      }
+    }
+  }
+}

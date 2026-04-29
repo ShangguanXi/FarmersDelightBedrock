@@ -39,6 +39,7 @@ import "./customComponents/item/FarmersBookComponent";
 import "./customComponents/block/DishComponent";
 import "./customComponents/block/PastryComponent";
 import "./customComponents/block/SugarCaneComponent";
+import { PumpkinPie } from "./item/PumpkinPie";
 
 CookingPotRecipeRegistries.initCookingPotScoRegistries();
 CuttingBoardRegistries.initCuttingBoardScoRegistries();
@@ -47,6 +48,7 @@ CookRecipeRegistries.initCookScoRegistries();
 new CropComponentRegister()
 new PieComponent();
 
+new PumpkinPie();
 
 new RichSoilFarmlandComponentRegister();
 new RopeComponentRegister();

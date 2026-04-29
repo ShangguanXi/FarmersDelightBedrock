@@ -3,7 +3,7 @@
 	"minecraft:geometry": [
 		{
 			"description": {
-				"identifier": "minecraft:geometry.cross",
+				"identifier": "geometry.rice_crop_support",
 				"texture_width": 16,
 				"texture_height": 16,
 				"visible_bounds_width": 2,

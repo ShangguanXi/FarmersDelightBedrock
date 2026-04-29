@@ -1,0 +1,3 @@
+[submodule "FarmersDelight"]
+	path = FarmersDelight
+	url = https://github.com/vectorwing/FarmersDelight.git

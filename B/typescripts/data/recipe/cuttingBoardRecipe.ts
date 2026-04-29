@@ -260,7 +260,9 @@ export const CuttingBoardRecipes: CuttingBoardRecipe[] = [
     { ingredients: { item: "farmersdelight:chocolate_pie" }, result: [{ item: "farmersdelight:chocolate_pie_slice", count: 4 }], tool: { tag: "farmersdelight:is_knife" }, is_block_type: false, sound: "use.wood" },
     { ingredients: { item: "farmersdelight:apple_pie" }, result: [{ item: "farmersdelight:apple_pie_slice", count: 4 }], tool: { tag: "farmersdelight:is_knife" }, is_block_type: false, sound: "use.wood" },
     { ingredients: { item: "farmersdelight:sweet_berry_cheesecake" }, result: [{ item: "farmersdelight:sweet_berry_cheesecake_slice", count: 4 }], tool: { tag: "farmersdelight:is_knife" }, is_block_type: false, sound: "use.wood" },
+    { ingredients: { item: "minecraft:pumpkin_pie" }, result: [{ item: "farmersdelight:pumpkin_pie_slice", count: 4 }], tool: { tag: "farmersdelight:is_knife" }, is_block_type: false, sound: "use.wood" },
    
+
     { ingredients: { item: "farmersdelight:wheat_dough" }, result: [{ item: "farmersdelight:raw_pasta", count: 1 }], tool: { tag: "farmersdelight:is_knife" }, is_block_type: false, sound: "use.wood" },
    
    
