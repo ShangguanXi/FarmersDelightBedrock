@@ -287,4 +287,8 @@ farmersdelight:itemGroup.name.furniture=Farmer`s Delight - Móveis
 farmersdelight:itemGroup.name.animal_food=Farmer`s Delight - Ração Animal
 farmersdelight:itemGroup.name.cooker=Farmer`s Delight - Utensílios de Cozinha
 farmersdelight:itemGroup.name.miscItem=Farmer`s Delight - Itens Diversos
-farmersdelight:itemGroup.name.soil=Farmer`s Delight - Solos
+
+tile.farmersdelight:pumpkin_pie.name=Torta de Abóbora
+item.farmersdelight:pumpkin_pie_slice.name=Fatia de torta de abóbora
+tile.farmersdelight:gleaming_salad_block.name=Salada Brilhante
+item.farmersdelight:gleaming_salad.name=Salada Brilhante

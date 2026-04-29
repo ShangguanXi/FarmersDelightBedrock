@@ -298,4 +298,8 @@ farmersdelight:itemGroup.name.furniture=农夫乐事-家具
 farmersdelight:itemGroup.name.animal_food=农夫乐事-动物食品
 farmersdelight:itemGroup.name.cooker=农夫乐事-厨房用品
 farmersdelight:itemGroup.name.miscItem=农夫乐事-杂项物品
-farmersdelight:itemGroup.name.soil=农夫乐事-土壤
+
+tile.farmersdelight:pumpkin_pie.name=南瓜派
+item.farmersdelight:pumpkin_pie_slice.name=南瓜派切片
+tile.farmersdelight:gleaming_salad_block.name=闪耀沙拉
+item.farmersdelight:gleaming_salad.name=闪耀沙拉

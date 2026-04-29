@@ -287,4 +287,8 @@ farmersdelight:itemGroup.name.furniture=Farmer`s Delight-Furniture
 farmersdelight:itemGroup.name.animal_food=Farmer`s Delight - Animal Food
 farmersdelight:itemGroup.name.cooker=Farmer`s Delight-Cooker
 farmersdelight:itemGroup.name.miscItem=Farmer`s Delight-Misc Items
-farmersdelight:itemGroup.name.soil=Farmer`s Delight-Soil
+
+tile.farmersdelight:pumpkin_pie.name=Pumpkin Pie
+item.farmersdelight:pumpkin_pie_slice.name=Slice of Pumpkin Pie
+tile.farmersdelight:gleaming_salad_block.name=Gleaming Salad
+item.farmersdelight:gleaming_salad.name=Gleaming Salad

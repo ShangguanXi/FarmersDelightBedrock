@@ -287,4 +287,8 @@ farmersdelight:itemGroup.name.furniture=Farmer`s Delight-家具
 farmersdelight:itemGroup.name.animal_food=Farmer`s Delight - 動物の餌
 farmersdelight:itemGroup.name.cooker=Farmer`s Delight-調理器具
 farmersdelight:itemGroup.name.miscItem=Farmer`s Delight-その他アイテム
-farmersdelight:itemGroup.name.soil=Farmer`s Delight-土壌
+
+tile.farmersdelight:pumpkin_pie.name=南瓜派
+item.farmersdelight:pumpkin_pie_slice.name=南瓜派のスライス
+tile.farmersdelight:gleaming_salad_block.name=きらめきサラダ
+item.farmersdelight:gleaming_salad.name=きらめきサラダ

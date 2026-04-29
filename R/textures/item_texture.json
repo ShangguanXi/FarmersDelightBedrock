@@ -385,6 +385,12 @@
 		},
 		"farmersdelight:pumpkin_pie_slice": {
 			"textures": "textures/items/pumpkin_pie_slice"
+		},
+		"farmersdelight:gleaming_salad": {
+			"textures": "textures/items/gleaming_salad"
+		},
+		"farmersdelight:gleaming_salad_block": {
+			"textures": "textures/items/gleaming_salad_block"
 		}
 	}
 }

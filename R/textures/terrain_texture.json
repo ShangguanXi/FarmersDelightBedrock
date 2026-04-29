@@ -651,6 +651,18 @@
 		},
 		"pumpkin_pie_inner": {
 			"textures": "textures/blocks/pumpkin_pie_inner"
+		},
+		"bowl": {
+			"textures": "textures/blocks/bowl"
+		},
+		"gleaming_salad": {
+			"textures": "textures/blocks/gleaming_salad"
+		},
+		"gleaming_salad_details": {
+			"textures": "textures/blocks/gleaming_salad_details"
+		},
+		"gleaming_salad_leftovers": {
+			"textures": "textures/blocks/gleaming_salad_leftovers"
 		}
 	}
 }

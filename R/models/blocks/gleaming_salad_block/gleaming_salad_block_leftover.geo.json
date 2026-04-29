@@ -1,0 +1,47 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.gleaming_salad_block_leftover",
+				"texture_width": 16,
+				"texture_height": 16,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 1.5,
+				"visible_bounds_offset": [0, 0.25, 0]
+			},
+			"bones": [
+				{
+					"name": "bone",
+					"pivot": [8, 0, -8],
+					"cubes": [
+						{
+							"origin": [-5, 0, -5],
+							"size": [10, 2, 10],
+							"uv": {
+								"north": {"uv": [3, 14], "uv_size": [10, 2], "material_instance": "bowl"},
+								"east": {"uv": [3, 14], "uv_size": [10, 2], "material_instance": "bowl"},
+								"south": {"uv": [3, 14], "uv_size": [10, 2], "material_instance": "bowl"},
+								"west": {"uv": [3, 14], "uv_size": [10, 2], "material_instance": "bowl"},
+								"up": {"uv": [3, 3], "uv_size": [10, 10], "material_instance": "gleaming_salad_leftovers"},
+								"down": {"uv": [3, 3], "uv_size": [10, 10], "material_instance": "tray_bottom"}
+							}
+						},
+						{
+							"origin": [-6, 2, -6],
+							"size": [12, 1, 12],
+							"uv": {
+								"north": {"uv": [2, 10], "uv_size": [12, 4], "material_instance": "bowl"},
+								"east": {"uv": [2, 10], "uv_size": [12, 4], "material_instance": "bowl"},
+								"south": {"uv": [2, 10], "uv_size": [12, 4], "material_instance": "bowl"},
+								"west": {"uv": [2, 10], "uv_size": [12, 4], "material_instance": "bowl"},
+								"up": {"uv": [14, 14], "uv_size": [-12, -12], "material_instance": "gleaming_salad"},
+								"down": {"uv": [2, 2], "uv_size": [12, 12], "material_instance": "tray_bottom"}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

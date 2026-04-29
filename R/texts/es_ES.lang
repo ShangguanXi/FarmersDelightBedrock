@@ -292,4 +292,8 @@ farmersdelight:itemGroup.name.furniture=Farmer`s Delight - Furniture
 farmersdelight:itemGroup.name.animal_food=Farmer`s Delight - Animal Food
 farmersdelight:itemGroup.name.cooker=Farmer`s Delight - Cooker
 farmersdelight:itemGroup.name.miscItem=Farmer`s Delight - Misc Items
-farmersdelight:itemGroup.name.soil=Farmer`s Delight - Soil
+
+tile.farmersdelight:pumpkin_pie.name=Tarta de calabaza
+item.farmersdelight:pumpkin_pie_slice.name=Porción de tarta de calabaza
+tile.farmersdelight:gleaming_salad_block.name=Ensalada Brillante
+item.farmersdelight:gleaming_salad.name=Ensalada Brillante

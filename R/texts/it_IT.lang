@@ -270,4 +270,8 @@ farmersdelight:itemGroup.name.furniture=Farmer`s Delight - Furniture
 farmersdelight:itemGroup.name.animal_food=Farmer`s Delight - Animal Food
 farmersdelight:itemGroup.name.cooker=Farmer`s Delight - Cooker
 farmersdelight:itemGroup.name.miscItem=Farmer`s Delight - Misc Items
-farmersdelight:itemGroup.name.soil=Farmer`s Delight - Soil
+
+tile.farmersdelight:pumpkin_pie.name=Torta di zucca
+item.farmersdelight:pumpkin_pie_slice.name=Fetta di torta di zucca
+tile.farmersdelight:gleaming_salad_block.name=Insalata Luminosa
+item.farmersdelight:gleaming_salad.name=Insalata Luminosa

@@ -1,0 +1,288 @@
+{
+  "format_version": "1.26.0",
+  "minecraft:block": {
+    "description": {
+      "identifier": "farmersdelight:gleaming_salad_block",
+      "menu_category": {
+        "category": "none"
+      },
+      "states": {
+        "farmersdelight:food_block_stage": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "traits": {
+        "minecraft:placement_direction": {
+          "enabled_states": [
+            "minecraft:cardinal_direction"
+          ],
+          "y_rotation_offset": 0.0
+        }
+      }
+    },
+    "permutations": [
+      {
+        "condition": "query.block_state('farmersdelight:food_block_stage') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "bowl",
+              "render_method": "alpha_test"
+            },
+            "bowl": {
+              "texture": "bowl",
+              "render_method": "alpha_test"
+            },
+            "gleaming_salad": {
+              "texture": "gleaming_salad",
+              "render_method": "alpha_test"
+            },
+            "gleaming_salad_details": {
+              "texture": "gleaming_salad_details",
+              "render_method": "alpha_test"
+            },
+            "gleaming_salad_leftovers": {
+              "texture": "gleaming_salad_leftovers",
+              "render_method": "alpha_test"
+            },
+            "tray_bottom": {
+              "texture": "tray_bottom",
+              "render_method": "alpha_test"
+            }
+          },
+          "minecraft:geometry": "geometry.gleaming_salad_block_stage0",
+          "minecraft:light_emission": 0.47
+        }
+      },
+      {
+        "condition": "query.block_state('farmersdelight:food_block_stage') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "bowl",
+              "render_method": "alpha_test"
+            },
+            "bowl": {
+              "texture": "bowl",
+              "render_method": "alpha_test"
+            },
+            "gleaming_salad": {
+              "texture": "gleaming_salad",
+              "render_method": "alpha_test"
+            },
+            "gleaming_salad_details": {
+              "texture": "gleaming_salad_details",
+              "render_method": "alpha_test"
+            },
+            "gleaming_salad_leftovers": {
+              "texture": "gleaming_salad_leftovers",
+              "render_method": "alpha_test"
+            },
+            "tray_bottom": {
+              "texture": "tray_bottom",
+              "render_method": "alpha_test"
+            }
+          },
+          "minecraft:geometry": "geometry.gleaming_salad_block_stage1",
+          "minecraft:loot": "loot_tables/farmersdelight/food_block/gleaming_salad_block_over.json",
+          "minecraft:light_emission": 0.35
+        }
+      },
+      {
+        "condition": "query.block_state('farmersdelight:food_block_stage') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "bowl",
+              "render_method": "alpha_test"
+            },
+            "bowl": {
+              "texture": "bowl",
+              "render_method": "alpha_test"
+            },
+            "gleaming_salad": {
+              "texture": "gleaming_salad",
+              "render_method": "alpha_test"
+            },
+            "gleaming_salad_details": {
+              "texture": "gleaming_salad_details",
+              "render_method": "alpha_test"
+            },
+            "gleaming_salad_leftovers": {
+              "texture": "gleaming_salad_leftovers",
+              "render_method": "alpha_test"
+            },
+            "tray_bottom": {
+              "texture": "tray_bottom",
+              "render_method": "alpha_test"
+            }
+          },
+          "minecraft:geometry": "geometry.gleaming_salad_block_stage2",
+          "minecraft:loot": "loot_tables/farmersdelight/food_block/gleaming_salad_block_over.json",
+          "minecraft:light_emission": 0.24
+        }
+      },
+      {
+        "condition": "query.block_state('farmersdelight:food_block_stage') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "bowl",
+              "render_method": "alpha_test"
+            },
+            "bowl": {
+              "texture": "bowl",
+              "render_method": "alpha_test"
+            },
+            "gleaming_salad": {
+              "texture": "gleaming_salad",
+              "render_method": "alpha_test"
+            },
+            "gleaming_salad_details": {
+              "texture": "gleaming_salad_details",
+              "render_method": "alpha_test"
+            },
+            "gleaming_salad_leftovers": {
+              "texture": "gleaming_salad_leftovers",
+              "render_method": "alpha_test"
+            },
+            "tray_bottom": {
+              "texture": "tray_bottom",
+              "render_method": "alpha_test"
+            }
+          },
+          "minecraft:geometry": "geometry.gleaming_salad_block_stage3",
+          "minecraft:loot": "loot_tables/farmersdelight/food_block/gleaming_salad_block_over.json",
+          "minecraft:light_emission": 0.12
+        }
+      },
+      {
+        "condition": "query.block_state('farmersdelight:food_block_stage') == 4",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "bowl",
+              "render_method": "alpha_test"
+            },
+            "bowl": {
+              "texture": "bowl",
+              "render_method": "alpha_test"
+            },
+            "gleaming_salad": {
+              "texture": "gleaming_salad",
+              "render_method": "alpha_test"
+            },
+            "gleaming_salad_details": {
+              "texture": "gleaming_salad_details",
+              "render_method": "alpha_test"
+            },
+            "gleaming_salad_leftovers": {
+              "texture": "gleaming_salad_leftovers",
+              "render_method": "alpha_test"
+            },
+            "tray_bottom": {
+              "texture": "tray_bottom",
+              "render_method": "alpha_test"
+            }
+          },
+          "minecraft:geometry": "geometry.gleaming_salad_block_leftover",
+          "minecraft:loot": "loot_tables/farmersdelight/food_block/gleaming_salad_block_over.json"
+        }
+      },
+      {
+        "condition": "query.block_state('minecraft:cardinal_direction') == 'north'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [0, 180, 0]
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('minecraft:cardinal_direction') == 'south'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [0, 0, 0]
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('minecraft:cardinal_direction') == 'west'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [0, 270, 0]
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('minecraft:cardinal_direction') == 'east'",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [0, 90, 0]
+          }
+        }
+      }
+    ],
+    "components": {
+      "minecraft:geometry": "geometry.gleaming_salad_block_stage0",
+      "minecraft:redstone_conductivity": {
+        "allows_wire_to_step_down": false
+      },
+      "farmersdelight:dish": {
+        "has_leftovers": true,
+        "servings": 4,
+        "contents": "farmersdelight:gleaming_salad",
+        "utensil": "minecraft:bowl"
+      },
+      "minecraft:loot": "loot_tables/farmersdelight/dish/gleaming_salad_block.json",
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 1.0
+      },
+      "minecraft:light_dampening": 0,
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 0.25
+      },
+      "minecraft:connection_rule": {
+        "accepts_connections_from": "none"
+      },
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "bowl",
+          "render_method": "alpha_test"
+        },
+        "bowl": {
+          "texture": "bowl",
+          "render_method": "alpha_test"
+        },
+        "gleaming_salad": {
+          "texture": "gleaming_salad",
+          "render_method": "alpha_test"
+        },
+        "gleaming_salad_details": {
+          "texture": "gleaming_salad_details",
+          "render_method": "alpha_test"
+        },
+        "gleaming_salad_leftovers": {
+          "texture": "gleaming_salad_leftovers",
+          "render_method": "alpha_test"
+        },
+        "tray_bottom": {
+          "texture": "tray_bottom",
+          "render_method": "alpha_test"
+        }
+      },
+      "minecraft:collision_box": {
+        "origin": [-6.0, 0.0, -6.0],
+        "size": [12.0, 6.0, 12.0]
+      },
+      "minecraft:selection_box": {
+        "origin": [-6.0, 0.0, -6.0],
+        "size": [12.0, 10.0, 12.0]
+      },
+      "tag:farmersdelight:blockfood": {}
+    }
+  }
+}
