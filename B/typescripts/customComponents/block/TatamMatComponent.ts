@@ -6,15 +6,16 @@ import {
     BlockPermutation,
     Direction,
     EntityInventoryComponent,
-    StartupEvent,
-    system,
+    system
+    
 } from "@minecraft/server";
 import { hasLimitedMaterials, horizontalDirectionOf } from "../../lib/EntityUtil";
 import { takeItem } from "../../lib/ItemUtil";
 import { oppositeOf } from "../../lib/DirectionUtil";
-import { subscribeEvent } from "../../lib/EventSubscriber";
+import { blockComponent } from "../../lib/EventSubscriber";
 
-class TatamMatComponent implements BlockCustomComponent {
+@blockComponent("farmersdelight:tatami_mat")
+export class TatamMatComponent implements BlockCustomComponent {
     constructor() {
         this.onTick = this.onTick.bind(this);
         this.beforeOnPlayerPlace = this.beforeOnPlayerPlace.bind(this);
@@ -97,11 +98,4 @@ class TatamMatComponent implements BlockCustomComponent {
             }
         }
     }
-}
-export class TatamMatComponentRegister {
-    @subscribeEvent(system.beforeEvents.startup)
-    register(args: StartupEvent) {
-        args.blockComponentRegistry.registerCustomComponent('farmersdelight:tatami_mat', new TatamMatComponent());
-    }
-
 }

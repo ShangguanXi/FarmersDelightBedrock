@@ -8,13 +8,11 @@ import {
     Container,
     EntityInventoryComponent,
     Player,
-    StartupEvent,
-    system,
     Vector3,
 } from "@minecraft/server";
 import { takeItem } from "../../lib/ItemUtil";
 import { CropsComponentParams } from "./CropComponent";
-import { subscribeEvent } from "../../lib/EventSubscriber";
+import { blockComponent } from "../../lib/EventSubscriber";
 import { resolveSpec } from "../../lib/ObjectUtil";
 
 function handlePlanting(seedId: string, crop: string, topLocation: Vector3, container: Container, player: Player, block: Block) {
@@ -29,7 +27,8 @@ function handlePlanting(seedId: string, crop: string, topLocation: Vector3, cont
     }
     return
 }
-class RichSoilFarmlandComponent implements BlockCustomComponent {
+@blockComponent("farmersdelight:rich_soil_farmland")
+export class RichSoilFarmlandComponent implements BlockCustomComponent {
     constructor() {
         this.onRandomTick = this.onRandomTick.bind(this);
         this.onPlayerInteract = this.onPlayerInteract.bind(this);
@@ -104,11 +103,4 @@ class RichSoilFarmlandComponent implements BlockCustomComponent {
 
 
     }
-}
-export class RichSoilFarmlandComponentRegister {
-    @subscribeEvent(system.beforeEvents.startup)
-    register(args: StartupEvent) {
-        args.blockComponentRegistry.registerCustomComponent('farmersdelight:rich_soil_farmland', new RichSoilFarmlandComponent());
-    }
-
 }

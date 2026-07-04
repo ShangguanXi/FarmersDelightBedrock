@@ -7,9 +7,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { BlockPermutation, BlockVolume, StartupEvent, system, } from "@minecraft/server";
+import { BlockPermutation, BlockVolume, } from "@minecraft/server";
 import { takeItem } from "../../lib/ItemUtil";
-import { subscribeEvent } from "../../lib/EventSubscriber";
+import { blockComponent } from "../../lib/EventSubscriber";
 import { resolveSpec } from "../../lib/ObjectUtil";
 function handlePlanting(seedId, crop, topLocation, container, player, block) {
     if (!player)
@@ -25,7 +25,7 @@ function handlePlanting(seedId, crop, topLocation, container, player, block) {
     }
     return;
 }
-class RichSoilFarmlandComponent {
+let RichSoilFarmlandComponent = class RichSoilFarmlandComponent {
     constructor() {
         this.onRandomTick = this.onRandomTick.bind(this);
         this.onPlayerInteract = this.onPlayerInteract.bind(this);
@@ -104,15 +104,9 @@ class RichSoilFarmlandComponent {
             dimension.spawnParticle("minecraft:crop_growth_emitter", { x: block.location.x + 0.5, y: block.location.y + 1.5, z: block.location.z + 0.5 });
         }
     }
-}
-export class RichSoilFarmlandComponentRegister {
-    register(args) {
-        args.blockComponentRegistry.registerCustomComponent('farmersdelight:rich_soil_farmland', new RichSoilFarmlandComponent());
-    }
-}
-__decorate([
-    subscribeEvent(system.beforeEvents.startup),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [StartupEvent]),
-    __metadata("design:returntype", void 0)
-], RichSoilFarmlandComponentRegister.prototype, "register", null);
+};
+RichSoilFarmlandComponent = __decorate([
+    blockComponent("farmersdelight:rich_soil_farmland"),
+    __metadata("design:paramtypes", [])
+], RichSoilFarmlandComponent);
+export { RichSoilFarmlandComponent };

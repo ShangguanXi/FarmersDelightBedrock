@@ -238,7 +238,7 @@ farmersdelight.book.thanks.license=§rLa versione originale Java Edition di Farm
 farmersdelight.book.thanks.developers_title=§l§6Membri del team di sviluppo
 farmersdelight.book.thanks.developers=§r@Moaswies @ShiXuMSolo @一条小黑龙 @dofes @2190303755 
 farmersdelight.book.thanks.contributors_title=§l§aContributori
-farmersdelight.book.thanks.contributors=§r@语翌制作组 @Sanjy @MysticLintha @Emeraldx392 @阁南飞 @HamzaMsrc @大队长
+farmersdelight.book.thanks.contributors=§r@语翌制作组 @Sanjy @MysticLintha @Emeraldx392 @阁南飞 @HamzaMsrc @星零大队长
 farmersdelight.book.thanks.chat_group_title=§l§4Community
 farmersdelight.book.thanks.chat_group.qqchat=§rQQ Gruppo: 851992067
 farmersdelight.book.thanks.chat_group.discord=§rCanale discord: https://discord.gg/52putAfXnQ
@@ -272,6 +272,6 @@ farmersdelight:itemGroup.name.cooker=Farmer`s Delight - Cooker
 farmersdelight:itemGroup.name.miscItem=Farmer`s Delight - Misc Items
 
 tile.farmersdelight:pumpkin_pie.name=Torta di zucca
-item.farmersdelight:pumpkin_pie_slice.name=Fetta di torta di zucca
+item.farmersdelight:pumpkin_pie_slice=Fetta di torta di zucca
 tile.farmersdelight:gleaming_salad_block.name=Insalata Luminosa
-item.farmersdelight:gleaming_salad.name=Insalata Luminosa
+item.farmersdelight:gleaming_salad=Insalata Luminosa

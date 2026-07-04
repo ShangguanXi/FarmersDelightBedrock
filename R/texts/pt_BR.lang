@@ -255,7 +255,7 @@ farmersdelight.book.thanks.license=§rA versão original de Java do Farmer's Del
 farmersdelight.book.thanks.developers_title=§l§6Membros da Equipe de Desenvolvimento
 farmersdelight.book.thanks.developers=§r@Moaswies @ShiXuMSolo @一条小黑龙 @dofes @2190303755
 farmersdelight.book.thanks.contributors_title=§l§aContribuidores
-farmersdelight.book.thanks.contributors=§r@语翌制作组 @Sanjy @MysticLintha @Emeraldx392 @阁南飞 @HamzaMsrc @大队长
+farmersdelight.book.thanks.contributors=§r@语翌制作组 @Sanjy @MysticLintha @Emeraldx392 @阁南飞 @HamzaMsrc @星零大队长
 farmersdelight.book.thanks.chat_group_title=§l§4Comunidade
 farmersdelight.book.thanks.chat_group.qqchat=§rGrupo QQ: 851992067
 farmersdelight.book.thanks.chat_group.discord=§rCanal do Discord: https://discord.gg/52putAfXnQ
@@ -289,6 +289,6 @@ farmersdelight:itemGroup.name.cooker=Farmer`s Delight - Utensílios de Cozinha
 farmersdelight:itemGroup.name.miscItem=Farmer`s Delight - Itens Diversos
 
 tile.farmersdelight:pumpkin_pie.name=Torta de Abóbora
-item.farmersdelight:pumpkin_pie_slice.name=Fatia de torta de abóbora
+item.farmersdelight:pumpkin_pie_slice=Fatia de torta de abóbora
 tile.farmersdelight:gleaming_salad_block.name=Salada Brilhante
-item.farmersdelight:gleaming_salad.name=Salada Brilhante
+item.farmersdelight:gleaming_salad=Salada Brilhante

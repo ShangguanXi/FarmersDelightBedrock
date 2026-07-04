@@ -7,9 +7,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Direction, StartupEvent, system, } from "@minecraft/server";
-import { subscribeEvent } from "../../lib/EventSubscriber";
-class TatamMatComponent {
+import { Direction, system } from "@minecraft/server";
+import { blockComponent } from "../../lib/EventSubscriber";
+let TatamMatComponent = class TatamMatComponent {
     constructor() {
         this.onTick = this.onTick.bind(this);
         this.beforeOnPlayerPlace = this.beforeOnPlayerPlace.bind(this);
@@ -88,15 +88,9 @@ class TatamMatComponent {
             }
         }
     }
-}
-export class TatamComponentRegister {
-    register(args) {
-        args.blockComponentRegistry.registerCustomComponent('farmersdelight:tatami', new TatamMatComponent());
-    }
-}
-__decorate([
-    subscribeEvent(system.beforeEvents.startup),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [StartupEvent]),
-    __metadata("design:returntype", void 0)
-], TatamComponentRegister.prototype, "register", null);
+};
+TatamMatComponent = __decorate([
+    blockComponent("farmersdelight:tatami"),
+    __metadata("design:paramtypes", [])
+], TatamMatComponent);
+export { TatamMatComponent };

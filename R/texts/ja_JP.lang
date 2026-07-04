@@ -255,7 +255,7 @@ farmersdelight.book.thanks.license=§rThe original Java edition Farmer's Delight
 farmersdelight.book.thanks.developers_title=§l§6Members of Dev Team
 farmersdelight.book.thanks.developers=§r@Moaswies @ShiXuMSolo @一条小黑龙 @dofes
 farmersdelight.book.thanks.contributors_title=§l§aContributors
-farmersdelight.book.thanks.contributors=§r@语翌制作组 @Sanjy @MysticLintha @Emeraldx392 @阁南飞 @HamzaMsrc @大队长
+farmersdelight.book.thanks.contributors=§r@语翌制作组 @Sanjy @MysticLintha @Emeraldx392 @阁南飞 @HamzaMsrc @星零大队长
 farmersdelight.book.thanks.chat_group_title=§l§4Community
 farmersdelight.book.thanks.chat_group.qqchat=§rQQ Group: 851992067
 farmersdelight.book.thanks.chat_group.discord=§rDiscord Channel: https://discord.gg/52putAfXnQ
@@ -289,6 +289,6 @@ farmersdelight:itemGroup.name.cooker=Farmer`s Delight-調理器具
 farmersdelight:itemGroup.name.miscItem=Farmer`s Delight-その他アイテム
 
 tile.farmersdelight:pumpkin_pie.name=南瓜派
-item.farmersdelight:pumpkin_pie_slice.name=南瓜派のスライス
+item.farmersdelight:pumpkin_pie_slice=南瓜派のスライス
 tile.farmersdelight:gleaming_salad_block.name=きらめきサラダ
-item.farmersdelight:gleaming_salad.name=きらめきサラダ
+item.farmersdelight:gleaming_salad=きらめきサラダ

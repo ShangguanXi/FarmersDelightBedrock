@@ -266,7 +266,7 @@ farmersdelight.book.thanks.license=§r原Java版农夫乐事在GitHub及Cursefor
 farmersdelight.book.thanks.developers_title=§l§6开发组成员
 farmersdelight.book.thanks.developers=§r@Moaswies @诗栩MSolo@一条小黑龙 @dofes @2190303755
 farmersdelight.book.thanks.contributors_title=§l§a贡献者
-farmersdelight.book.thanks.contributors=§r@语翌制作组 @Sanjy @lintha暮辰 @Emeraldx392 @阁南飞 @HamzaMsrc @大队长
+farmersdelight.book.thanks.contributors=§r@语翌制作组 @Sanjy @lintha暮辰 @Emeraldx392 @阁南飞 @HamzaMsrc @星零大队长
 farmersdelight.book.thanks.chat_group_title=§l§4聊天群组
 farmersdelight.book.thanks.chat_group.qqchat=§rqq群号：851992067
 farmersdelight.book.thanks.chat_group.discord=§rdiscord链接： https://discord.gg/52putAfXnQ
@@ -300,6 +300,6 @@ farmersdelight:itemGroup.name.cooker=农夫乐事-厨房用品
 farmersdelight:itemGroup.name.miscItem=农夫乐事-杂项物品
 
 tile.farmersdelight:pumpkin_pie.name=南瓜派
-item.farmersdelight:pumpkin_pie_slice.name=南瓜派切片
+item.farmersdelight:pumpkin_pie_slice=南瓜派切片
 tile.farmersdelight:gleaming_salad_block.name=闪耀沙拉
-item.farmersdelight:gleaming_salad.name=闪耀沙拉
+item.farmersdelight:gleaming_salad=闪耀沙拉

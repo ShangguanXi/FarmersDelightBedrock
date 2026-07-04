@@ -7,15 +7,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { GameMode, StartupEvent, system, } from "@minecraft/server";
+import { system, GameMode, } from "@minecraft/server";
 import { takeItem } from "../../lib/ItemUtil";
-import { subscribeEvent } from "../../lib/EventSubscriber";
+import { blockComponent } from "../../lib/EventSubscriber";
 import { spawnLootAtBlock } from "../../lib/LootUtil";
 export function playBoneMealEffect(block, dimension = block.dimension, pos = block.center()) {
     dimension.playSound("item.bone_meal.use", pos);
     dimension.spawnParticle("minecraft:crop_growth_emitter", pos);
 }
-class CropsComponent {
+let CropsComponent = class CropsComponent {
     constructor() {
         this.onPlayerInteract = this.onPlayerInteract.bind(this);
         this.onRandomTick = this.onRandomTick.bind(this);
@@ -62,8 +62,13 @@ class CropsComponent {
             block.setPermutation(block.permutation.withState(params.state.name, age + 1));
         }
     }
-}
-class TorchflowerComponent {
+};
+CropsComponent = __decorate([
+    blockComponent("farmersdelight:crop"),
+    __metadata("design:paramtypes", [])
+], CropsComponent);
+export { CropsComponent };
+let TorchflowerComponent = class TorchflowerComponent {
     constructor() {
         this.onPlayerInteract = this.onPlayerInteract.bind(this);
         this.onRandomTick = this.onRandomTick.bind(this);
@@ -116,8 +121,13 @@ class TorchflowerComponent {
             dimension.setBlockType(block.location, "farmersdelight:rich_soil_torchflower");
         }
     }
-}
-class RiceComponent {
+};
+TorchflowerComponent = __decorate([
+    blockComponent("farmersdelight:torchflower"),
+    __metadata("design:paramtypes", [])
+], TorchflowerComponent);
+export { TorchflowerComponent };
+let RiceComponent = class RiceComponent {
     constructor() {
         this.onPlayerInteract = this.onPlayerInteract.bind(this);
         this.onRandomTick = this.onRandomTick.bind(this);
@@ -237,17 +247,9 @@ class RiceComponent {
             block.setPermutation(block.permutation.withState("farmersdelight:upper", false));
         }
     }
-}
-export class CropComponentRegister {
-    register(args) {
-        args.blockComponentRegistry.registerCustomComponent('farmersdelight:crop', new CropsComponent());
-        args.blockComponentRegistry.registerCustomComponent('farmersdelight:torchflower', new TorchflowerComponent());
-        args.blockComponentRegistry.registerCustomComponent('farmersdelight:rice', new RiceComponent());
-    }
-}
-__decorate([
-    subscribeEvent(system.beforeEvents.startup),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [StartupEvent]),
-    __metadata("design:returntype", void 0)
-], CropComponentRegister.prototype, "register", null);
+};
+RiceComponent = __decorate([
+    blockComponent("farmersdelight:rice"),
+    __metadata("design:paramtypes", [])
+], RiceComponent);
+export { RiceComponent };

@@ -8,16 +8,15 @@ import {
     EquipmentSlot,
     GameMode,
     Player,
-    StartupEvent,
-    system,
 } from "@minecraft/server";
 import { isEnchanted, takeItem } from "../../lib/ItemUtil";
-import { subscribeEvent } from "../../lib/EventSubscriber";
+import { blockComponent, subscribeEvent } from "../../lib/EventSubscriber";
 import { spawnLootAtBlock } from "../../lib/LootUtil";
 import { getEquipment } from "../../lib/EntityUtil";
 import { KnownBlockStates } from "../../data/KnownBlockStates";
 import { PlayerTickEvent } from "../../lib/Events";
 
+@blockComponent("farmersdelight:rope")
 export class RopeComponent implements BlockCustomComponent {
     constructor() {
         this.onTick = this.onTick.bind(this);
@@ -143,11 +142,4 @@ export class RopeComponent implements BlockCustomComponent {
             }
         }
     }
-}
-export class RopeComponentRegister {
-    @subscribeEvent(system.beforeEvents.startup)
-    register(args: StartupEvent) {
-        args.blockComponentRegistry.registerCustomComponent('farmersdelight:rope', new RopeComponent());
-    }
-
 }

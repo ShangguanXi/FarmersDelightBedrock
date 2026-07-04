@@ -7,13 +7,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { EquipmentSlot, GameMode, Player, StartupEvent, system, } from "@minecraft/server";
+import { EquipmentSlot, GameMode, Player, } from "@minecraft/server";
 import { isEnchanted, takeItem } from "../../lib/ItemUtil";
-import { subscribeEvent } from "../../lib/EventSubscriber";
+import { blockComponent, subscribeEvent } from "../../lib/EventSubscriber";
 import { spawnLootAtBlock } from "../../lib/LootUtil";
 import { getEquipment } from "../../lib/EntityUtil";
 import { PlayerTickEvent } from "../../lib/Events";
-export class RopeComponent {
+let RopeComponent = class RopeComponent {
     constructor() {
         this.onTick = this.onTick.bind(this);
         this.onRandomTick = this.onRandomTick.bind(this);
@@ -127,21 +127,15 @@ export class RopeComponent {
             }
         }
     }
-}
+};
 __decorate([
     subscribeEvent(PlayerTickEvent),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Player]),
     __metadata("design:returntype", void 0)
 ], RopeComponent, "simulateClimbing", null);
-export class RopeComponentRegister {
-    register(args) {
-        args.blockComponentRegistry.registerCustomComponent('farmersdelight:rope', new RopeComponent());
-    }
-}
-__decorate([
-    subscribeEvent(system.beforeEvents.startup),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [StartupEvent]),
-    __metadata("design:returntype", void 0)
-], RopeComponentRegister.prototype, "register", null);
+RopeComponent = __decorate([
+    blockComponent("farmersdelight:rope"),
+    __metadata("design:paramtypes", [])
+], RopeComponent);
+export { RopeComponent };

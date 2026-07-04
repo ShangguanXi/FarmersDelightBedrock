@@ -3,12 +3,12 @@ import {
     BlockComponentTickEvent,
     BlockCustomComponent,
     Direction,
-    StartupEvent,
-    system,
+    system
 } from "@minecraft/server";
-import { subscribeEvent } from "../../lib/EventSubscriber";
+import { blockComponent } from "../../lib/EventSubscriber";
 
-class TatamMatComponent implements BlockCustomComponent {
+@blockComponent("farmersdelight:tatami")
+export class TatamMatComponent implements BlockCustomComponent {
     constructor() {
         this.onTick = this.onTick.bind(this);
         this.beforeOnPlayerPlace = this.beforeOnPlayerPlace.bind(this);
@@ -88,13 +88,6 @@ class TatamMatComponent implements BlockCustomComponent {
                 block.setPermutation(block.permutation.withState("farmersdelight:connection","none"))
             }
         }
-    }
-
-}
-export class TatamComponentRegister {
-    @subscribeEvent(system.beforeEvents.startup)
-    register(args: StartupEvent) {
-        args.blockComponentRegistry.registerCustomComponent('farmersdelight:tatami', new TatamMatComponent());
     }
 
 }

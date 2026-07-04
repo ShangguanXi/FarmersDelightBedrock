@@ -6,15 +6,13 @@ import {
     BlockCustomComponent,
     CustomComponentParameters,
     Dimension,
-    Direction,
+    system,
     EntityInventoryComponent,
     GameMode,
-    StartupEvent,
-    system,
     Vector3,
 } from "@minecraft/server";
 import { takeItem } from "../../lib/ItemUtil";
-import { subscribeEvent } from "../../lib/EventSubscriber";
+import { blockComponent } from "../../lib/EventSubscriber";
 import { KnownBlockStates } from "../../data/KnownBlockStates";
 import { spawnLootAtBlock } from "../../lib/LootUtil";
 
@@ -32,7 +30,8 @@ export type CropsComponentParams = {
     }
 };
 
-class CropsComponent implements BlockCustomComponent {
+@blockComponent("farmersdelight:crop")
+export class CropsComponent implements BlockCustomComponent {
 
     constructor() {
         this.onPlayerInteract = this.onPlayerInteract.bind(this);
@@ -81,7 +80,8 @@ class CropsComponent implements BlockCustomComponent {
         }
     }
 }
-class TorchflowerComponent implements BlockCustomComponent {
+@blockComponent("farmersdelight:torchflower")
+export class TorchflowerComponent implements BlockCustomComponent {
 
     constructor() {
         this.onPlayerInteract = this.onPlayerInteract.bind(this);
@@ -142,7 +142,8 @@ class TorchflowerComponent implements BlockCustomComponent {
     }
 
 }
-class RiceComponent implements BlockCustomComponent {
+@blockComponent("farmersdelight:rice")
+export class RiceComponent implements BlockCustomComponent {
 
     constructor() {
         this.onPlayerInteract = this.onPlayerInteract.bind(this);
@@ -268,15 +269,6 @@ class RiceComponent implements BlockCustomComponent {
         if (age == 3 && topBlockId != "farmersdelight:rice_block_upper") {
             block.setPermutation(block.permutation.withState("farmersdelight:upper", false))
         }
-    }
-
-}
-export class CropComponentRegister {
-    @subscribeEvent(system.beforeEvents.startup)
-    register(args: StartupEvent) {
-        args.blockComponentRegistry.registerCustomComponent('farmersdelight:crop', new CropsComponent());
-        args.blockComponentRegistry.registerCustomComponent('farmersdelight:torchflower', new TorchflowerComponent());
-        args.blockComponentRegistry.registerCustomComponent('farmersdelight:rice', new RiceComponent());
     }
 
 }
