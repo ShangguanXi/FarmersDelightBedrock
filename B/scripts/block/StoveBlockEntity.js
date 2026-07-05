@@ -5,9 +5,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 import { EntityComponentTypes, ItemStack, } from "@minecraft/server";
-import { findCookingRecipe } from "../../data/recipe/cookRecipe";
-import { attachedBlockEntity } from "../../lib/EventSubscriber";
-import { dropsItems } from "../../lib/EntityUtil";
+import { findCookingRecipe } from "../data/recipe/cookRecipe";
+import { attachedBlockEntity } from "../lib/EventSubscriber";
+import { dropsItems } from "../lib/EntityUtil";
 const xOffset = 0.3;
 const yOffset = 0.2;
 const stoveOffsets = [

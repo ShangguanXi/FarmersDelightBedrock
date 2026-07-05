@@ -76,6 +76,7 @@
                 "allows_wire_to_step_down": false
             },
             "farmersdelight:interact": {},
+            "farmersdelight:block_entity": "farmersdelight:cooking_pot",
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 1
             },

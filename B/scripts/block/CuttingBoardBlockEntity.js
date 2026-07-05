@@ -7,38 +7,40 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { EquipmentSlot, ItemComponentTypes, ItemStack, PlayerInteractWithBlockAfterEvent, PlayerPlaceBlockAfterEvent, world, } from "@minecraft/server";
-import { BlockWithEntity } from "../../lib/BlockWithEntity";
-import { cuttingBoardRecipeManager } from "../../data/recipe/cuttingBoardRecipe";
-import { hurtEquippedItem, spawnStack } from "../../lib/ItemUtil";
-import { subscribeEvent } from "../../lib/EventSubscriber";
-export class CuttingBoardBlock extends BlockWithEntity {
-    placeBlock(args) {
-        if (args.block.typeId !== "farmersdelight:cutting_board")
-            return;
-        const { x, y, z } = args.block.location;
-        const entity = super.setBlock(args.block.dimension, { x: x + 0.5, y, z: z + 0.5 }, "farmersdelight:cutting_board");
-        entity.setDynamicProperty("farmersdelight:blockEntityItemStackData", '{"item":"minecraft:air"}');
-        entity.setProperty("farmersdelight:is_block_mode", false);
+import { EquipmentSlot, ItemComponentTypes, ItemStack, PlayerInteractWithBlockAfterEvent, system, world, } from "@minecraft/server";
+import { attachedBlockEntity, subscribeEvent } from "../lib/EventSubscriber";
+import { getBlockEntity } from "../lib/BlockWithEntity";
+import { dropsItems } from "../lib/EntityUtil";
+import { cuttingBoardRecipeManager } from "../data/recipe/cuttingBoardRecipe";
+import { hurtEquippedItem, spawnStack } from "../lib/ItemUtil";
+let CuttingBoardBlockEntity = class CuttingBoardBlockEntity {
+    static onDiscard(entity) {
+        dropsItems(entity);
     }
-    interactWithBlock(args) {
+    static onTick(entity, block) {
+        const { x, y, z } = entity.location;
+        const currentTick = system.currentTick % 2;
+        const itemStack = JSON.parse(entity.getDynamicProperty('farmersdelight:blockEntityItemStackData') ?? '{"item":"minecraft:air"}')["item"];
+        if (!currentTick && itemStack) {
+            const id = itemStack.split(':');
+            const name = id[0] == 'minecraft' ? `farmersdelight:${id[0]}_${id[1]}` : itemStack;
+            entity.dimension.spawnParticle(name, { x: x, y: y + 0.0563, z: z });
+        }
+    }
+    static onInteract(args) {
         const block = args.block;
         if (block?.typeId !== "farmersdelight:cutting_board")
             return;
-        const data = super.entityBlockData(block, {
-            type: 'farmersdelight:cutting_board',
-            location: block.location
-        });
+        const entity = getBlockEntity(block);
         const { x, y, z } = block.location;
         const player = args.player;
         const inventory = player.getComponent("inventory");
         const container = inventory?.container;
-        if (!data || !container)
+        if (!entity || !container)
             return;
-        const entity = data.entity;
         const itemStack = args.itemStack;
         const equip = player.getComponent('minecraft:equippable');
-        const itemData = JSON.parse(entity.getDynamicProperty("farmersdelight:blockEntityItemStackData"));
+        const itemData = JSON.parse(entity.getDynamicProperty("farmersdelight:blockEntityItemStackData") ?? '{"item":"minecraft:air"}');
         const entityInv = entity.getComponent('minecraft:inventory');
         const currentItem = itemData.item;
         const face = block.permutation.getState("minecraft:cardinal_direction");
@@ -150,28 +152,14 @@ export class CuttingBoardBlock extends BlockWithEntity {
             }
         }
     }
-    static isCorrectTool(mode, mainHand, cutToolData) {
-        return (mode === 'item' && cutToolData[mode] === mainHand.typeId) || (mode === 'tag' && mainHand.hasTag(cutToolData[mode]));
-    }
-    static processCuttingLoot(component) {
-        const drops = [];
-        for (const [id, count, chance = 1] of component.loot) {
-            if (Math.random() <= chance) {
-                drops.push({ id, count });
-            }
-        }
-        return drops;
-    }
-}
-__decorate([
-    subscribeEvent(world.afterEvents.playerPlaceBlock),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [PlayerPlaceBlockAfterEvent]),
-    __metadata("design:returntype", void 0)
-], CuttingBoardBlock.prototype, "placeBlock", null);
+};
 __decorate([
     subscribeEvent(world.afterEvents.playerInteractWithBlock),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [PlayerInteractWithBlockAfterEvent]),
     __metadata("design:returntype", void 0)
-], CuttingBoardBlock.prototype, "interactWithBlock", null);
+], CuttingBoardBlockEntity, "onInteract", null);
+CuttingBoardBlockEntity = __decorate([
+    attachedBlockEntity({ eventTypes: ["farmersdelight:cutting_board_tick"] })
+], CuttingBoardBlockEntity);
+export { CuttingBoardBlockEntity };

@@ -1,52 +1,53 @@
 import {
+    Block,
+    Entity,
     EntityInventoryComponent,
     EquipmentSlot,
     ItemComponentTypes,
     ItemStack,
     PlayerInteractWithBlockAfterEvent,
-    PlayerPlaceBlockAfterEvent,
-    Vector3,
+    system,
     world,
 } from "@minecraft/server";
-import { BlockWithEntity } from "../../lib/BlockWithEntity";
-import { hasLimitedMaterials } from "../../lib/EntityUtil";
-import {
-    cuttingBoardRecipeManager
-} from "../../data/recipe/cuttingBoardRecipe";
-import { hurtItem, hurtEquippedItem, spawnStack, takeEquippedItem, takeItem } from "../../lib/ItemUtil";
-import { CuttingBroadComponentParams } from "../../customComponents/item/CuttableComponent";
-import { subscribeEvent } from "../../lib/EventSubscriber";
+import { attachedBlockEntity, subscribeEvent } from "../lib/EventSubscriber";
+import { getBlockEntity } from "../lib/BlockWithEntity";
+import { dropsItems } from "../lib/EntityUtil";
+import { cuttingBoardRecipeManager } from "../data/recipe/cuttingBoardRecipe";
+import { hurtEquippedItem, spawnStack } from "../lib/ItemUtil";
 
+@attachedBlockEntity({ eventTypes: ["farmersdelight:cutting_board_tick"] })
+export class CuttingBoardBlockEntity {
+    //方块被破坏/替换时，掉落砧板上的物品（容器 slot 0）
+    static onDiscard(entity: Entity): undefined {
+        dropsItems(entity);
+    }
 
-export class CuttingBoardBlock extends BlockWithEntity {
-    @subscribeEvent(world.afterEvents.playerPlaceBlock)
-    placeBlock(args: PlayerPlaceBlockAfterEvent) {
-        if (args.block.typeId !== "farmersdelight:cutting_board") return;
-        const { x, y, z } = args.block.location;
-        const entity = super.setBlock(args.block.dimension, { x: x + 0.5, y, z: z + 0.5 }, "farmersdelight:cutting_board");
-        entity.setDynamicProperty("farmersdelight:blockEntityItemStackData", '{"item":"minecraft:air"}');
-        entity.setProperty("farmersdelight:is_block_mode", false)
+    static onTick(entity: Entity, block: Block) {
+        const { x, y, z }: { x: number; y: number; z: number } = entity.location;
+        const currentTick: number = system.currentTick % 2;
+        const itemStack: string = JSON.parse((entity.getDynamicProperty('farmersdelight:blockEntityItemStackData') as string) ?? '{"item":"minecraft:air"}')["item"];
+
+        if (!currentTick && itemStack) {
+            const id = itemStack.split(':');
+            const name = id[0] == 'minecraft' ? `farmersdelight:${id[0]}_${id[1]}` : itemStack;
+            entity.dimension.spawnParticle(name, { x: x, y: y + 0.0563, z: z });
+        }
     }
 
     @subscribeEvent(world.afterEvents.playerInteractWithBlock)
-    interactWithBlock(args: PlayerInteractWithBlockAfterEvent): void {
+    static onInteract(args: PlayerInteractWithBlockAfterEvent): void {
         const block = args.block;
         if (block?.typeId !== "farmersdelight:cutting_board") return;
 
-        const data = super.entityBlockData(block, {
-            type: 'farmersdelight:cutting_board',
-            location: block.location
-        });
-
+        const entity = getBlockEntity(block);
         const { x, y, z } = block.location;
         const player = args.player;
         const inventory = player.getComponent("inventory") as EntityInventoryComponent;
         const container = inventory?.container;
-        if (!data || !container) return;
-        const entity = data.entity;
+        if (!entity || !container) return;
         const itemStack = args.itemStack;
         const equip = player.getComponent('minecraft:equippable');
-        const itemData = JSON.parse(entity.getDynamicProperty("farmersdelight:blockEntityItemStackData") as string);
+        const itemData = JSON.parse((entity.getDynamicProperty("farmersdelight:blockEntityItemStackData") as string) ?? '{"item":"minecraft:air"}');
 
         const entityInv = entity.getComponent('minecraft:inventory');
         const currentItem = itemData.item as string;
@@ -172,24 +173,6 @@ export class CuttingBoardBlock extends BlockWithEntity {
                 entity.setDynamicProperty("farmersdelight:blockEntityItemStackData", '{"item":"minecraft:air"}');
                 entity.setProperty("farmersdelight:is_block_mode", false)
             }
-
-
         }
     }
-
-    static isCorrectTool(mode: string, mainHand: ItemStack, cutToolData: Record<string, string>): boolean {
-        return (mode === 'item' && cutToolData[mode] === mainHand.typeId) || (mode === 'tag' && mainHand.hasTag(cutToolData[mode]));
-    }
-
-    static processCuttingLoot(component: CuttingBroadComponentParams): { id: string; count: number }[] {
-        const drops: { id: string; count: number }[] = [];
-        for (const [id, count, chance = 1] of component.loot) {
-            if (Math.random() <= chance) {
-                drops.push({ id, count });
-            }
-        }
-        return drops;
-    }
-
 }
-

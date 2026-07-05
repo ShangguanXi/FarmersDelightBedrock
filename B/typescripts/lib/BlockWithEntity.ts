@@ -31,7 +31,7 @@ export function initBlockEntity(block: Block, typeId: string): Entity {
     return entity;
 }
 
-export function getBlockEntity<T>(block: Block, spec: ComponentSpec<T>): Entity | undefined {
+export function getBlockEntity<T>(block: Block, spec?: ComponentSpec<T>): Entity | undefined {
     const id = resolveBlockEntityType(block, spec)?.id;
     if (!id) return undefined;
     const pos = block.bottomCenter();

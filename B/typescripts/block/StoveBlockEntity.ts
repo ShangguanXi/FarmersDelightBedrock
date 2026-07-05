@@ -4,9 +4,9 @@ import {
     ItemStack,
     Vector3,
 } from "@minecraft/server";
-import { findCookingRecipe } from "../../data/recipe/cookRecipe";
-import { attachedBlockEntity } from "../../lib/EventSubscriber";
-import { dropsItems } from "../../lib/EntityUtil";
+import { findCookingRecipe } from "../data/recipe/cookRecipe";
+import { attachedBlockEntity } from "../lib/EventSubscriber";
+import { dropsItems } from "../lib/EntityUtil";
 
 const xOffset = 0.3;
 const yOffset = 0.2;
