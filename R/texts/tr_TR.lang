@@ -103,6 +103,7 @@ item.farmersdelight:chocolate_pie=Çikolatalı Turta
 item.farmersdelight:tomato=Domates
 item.farmersdelight:cabbage=Lahana
 item.farmersdelight:onion=Soğan
+item.farmersdelight:onion_soup=Soğan Çorbası
 item.farmersdelight:rice=Pirinç
 item.farmersdelight:cabbage_seeds=Lahana Tohumları
 item.farmersdelight:tomato_seeds=Domates Tohumları
@@ -153,6 +154,7 @@ item.farmersdelight:earthworm=Solucan
 
 item.farmersdelight:flint_knife=Çakmaktaşı Bıçak
 item.farmersdelight:iron_knife=Demir Bıçak
+item.farmersdelight:copper_knife=Bakır Bıçak
 item.farmersdelight:golden_knife=Altın Bıçak
 item.farmersdelight:diamond_knife=Elmas Bıçak
 item.farmersdelight:netherite_knife=Netherite Bıçak

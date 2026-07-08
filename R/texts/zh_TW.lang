@@ -104,6 +104,7 @@ item.farmersdelight:tomato=番茄
 item.farmersdelight:rotten_tomato=爛番茄
 item.farmersdelight:cabbage=捲心菜
 item.farmersdelight:onion=洋蔥
+item.farmersdelight:onion_soup=洋蔥湯
 item.farmersdelight:rice=稻米
 item.farmersdelight:cabbage_seeds=捲心菜種子
 item.farmersdelight:tomato_seeds=番茄種子
@@ -153,6 +154,7 @@ item.farmersdelight:earthworm=蚯蚓
 
 item.farmersdelight:flint_knife=燧石刀
 item.farmersdelight:iron_knife=鐵刀
+item.farmersdelight:copper_knife=銅刀
 item.farmersdelight:golden_knife=金刀
 item.farmersdelight:diamond_knife=鑽石刀
 item.farmersdelight:netherite_knife=下界合金刀

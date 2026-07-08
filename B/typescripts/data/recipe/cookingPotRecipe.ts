@@ -185,6 +185,36 @@ export const vanillaCookingPotRecipe = {
                 "item": "farmersdelight:beef_stew"
             }
         },
+        {
+            'identifer': 'farmersdelight:onion_soup',
+            'tags': ['cooking_pot'],
+            'priority': 0,
+            "container": {
+                "item": "minecraft:bowl"
+            },
+            "time": 200,
+            "experience": 1.0,
+            "ingredients": [
+                [
+                    { "tag": "farmersdelight:is_onion" },
+                    { "item": "better_on_bedrock:onion" }
+                ],
+                [
+                    { "tag": "farmersdelight:is_onion" },
+                    { "item": "better_on_bedrock:onion" }
+                ],
+                {
+                    "item": "minecraft:bread"
+                },
+                {
+                    "tag": "farmersdelight:is_milk"
+                }
+            ],
+            "recipe_book_tab": "meals",
+            "result": {
+                "item": "farmersdelight:onion_soup"
+            }
+        },
         //finish
         {
             'identifer': 'farmersdelight:chicken_soup',

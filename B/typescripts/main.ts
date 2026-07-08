@@ -1,7 +1,7 @@
-import "./block/cookingPot/CookingPotBlockEntity";
-import "./block/cuttingBoard/CuttingBoardBlockEntity";
+import "./block/CookingPotBlockEntity";
+import "./block/CuttingBoardBlockEntity";
 import "./block/StoveBlockEntity";
-import "./block/skillet/SkilletBlockEntity";
+import "./block/SkilletBlockEntity";
 import "./item/Knife";
 import { CookingPotRecipeRegistries } from "./init/CookingPotRecipeRegistries";
 import "./item/Food";

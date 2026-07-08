@@ -17,6 +17,10 @@ export class Knife {
         const victim = event.deadEntity;
         if (!victim)
             return;
+        if (!event.damageSource.damagingEntity?.isValid)
+            return;
+        if (event.damageSource.damagingEntity.typeId !== "minecraft:player")
+            return;
         const stack = getEquipment(event.damageSource.damagingEntity, EquipmentSlot.Mainhand);
         if (!stack || !stack.hasComponent("farmersdelight:increase_production"))
             return;

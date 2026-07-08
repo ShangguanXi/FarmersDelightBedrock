@@ -85,6 +85,7 @@ item.farmersdelight:chocolate_pie=Torta al cioccolato
 item.farmersdelight:tomato=Pomodoro
 item.farmersdelight:cabbage=Cavolo
 item.farmersdelight:onion=Cipolla
+item.farmersdelight:onion_soup=Zuppa di cipolle
 item.farmersdelight:rice=Riso
 item.farmersdelight:cabbage_seeds=Semi di cavolo
 item.farmersdelight:tomato_seeds=Semi di pomodoro
@@ -135,6 +136,7 @@ item.farmersdelight:earthworm=Lombrico
 
 item.farmersdelight:flint_knife=Coltello di pietra focaia
 item.farmersdelight:iron_knife=Coltello di ferro
+item.farmersdelight:copper_knife=Coltello di rame
 item.farmersdelight:golden_knife=Coltello d'oro
 item.farmersdelight:diamond_knife=Coltello di diamante
 item.farmersdelight:netherite_knife=Coltello di netherite

@@ -102,6 +102,7 @@ item.farmersdelight:chocolate_pie=チョコレートパイ
 item.farmersdelight:tomato=トマト
 item.farmersdelight:cabbage=キャベツ
 item.farmersdelight:onion=タマネギ
+item.farmersdelight:onion_soup=オニオンスープ
 item.farmersdelight:rice=コメ
 item.farmersdelight:cabbage_seeds=キャベツの種
 item.farmersdelight:tomato_seeds=トマトの種
@@ -152,6 +153,7 @@ item.farmersdelight:earthworm=ミミズ
 
 item.farmersdelight:flint_knife=火打石のナイフ
 item.farmersdelight:iron_knife=鉄のナイフ
+item.farmersdelight:copper_knife=銅のナイフ
 item.farmersdelight:golden_knife=金のナイフ
 item.farmersdelight:diamond_knife=ダイヤモンドのナイフ
 item.farmersdelight:netherite_knife=ネザライトのナイフ

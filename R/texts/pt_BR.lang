@@ -102,6 +102,7 @@ item.farmersdelight:chocolate_pie=Torta de Chocolate
 item.farmersdelight:tomato=Tomate
 item.farmersdelight:cabbage=Repolho
 item.farmersdelight:onion=Cebola
+item.farmersdelight:onion_soup=Sopa de cebola
 item.farmersdelight:rice=Arroz
 item.farmersdelight:cabbage_seeds=Sementes de Repolho
 item.farmersdelight:tomato_seeds=Sementes de Tomate 
@@ -152,6 +153,7 @@ item.farmersdelight:earthworm=Minhoca
 
 item.farmersdelight:flint_knife=Faca de Sílex 
 item.farmersdelight:iron_knife=Faca de Ferro
+item.farmersdelight:copper_knife=Faca de Cobre
 item.farmersdelight:golden_knife=Faca de Ouro
 item.farmersdelight:diamond_knife=Faca de Diamante
 item.farmersdelight:netherite_knife=Faca de Netherita

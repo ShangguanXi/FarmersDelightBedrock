@@ -1,0 +1,150 @@
+{
+  "format_version": "1.26.0",
+  "minecraft:item": {
+    "components": {
+      "minecraft:damage": 2,
+      "farmersdelight:increase_production": {},
+      "farmersdelight:knife": {},
+      "minecraft:digger": {
+        "destroy_speeds": [
+          {
+            "block": "minecraft:web",
+            "speed": 12
+          },
+          {
+            "block": "minecraft:white_wool",
+            "speed": 12
+          },
+          {
+            "block": "minecraft:orange_wool",
+            "speed": 12
+          },
+          {
+            "block": "minecraft:magenta_wool",
+            "speed": 12
+          },
+          {
+            "block": "minecraft:light_blue_wool",
+            "speed": 12
+          },
+          {
+            "block": "minecraft:yellow_wool",
+            "speed": 12
+          },
+          {
+            "block": "minecraft:lime_wool",
+            "speed": 12
+          },
+          {
+            "block": "minecraft:pink_wool",
+            "speed": 12
+          },
+          {
+            "block": "minecraft:gray_wool",
+            "speed": 12
+          },
+          {
+            "block": "minecraft:light_gray_wool",
+            "speed": 12
+          },
+          {
+            "block": "minecraft:cyan_wool",
+            "speed": 12
+          },
+          {
+            "block": "minecraft:purple_wool",
+            "speed": 12
+          },
+          {
+            "block": "minecraft:blue_wool",
+            "speed": 12
+          },
+          {
+            "block": "minecraft:red_wool",
+            "speed": 12
+          },
+          {
+            "block": "minecraft:brown_wool",
+            "speed": 12
+          },
+          {
+            "block": "minecraft:green_wool",
+            "speed": 12
+          },
+          {
+            "block": "minecraft:black_wool",
+            "speed": 12
+          },
+          {
+            "block": "minecraft:cake",
+            "speed": 12
+          },
+          {
+            "block": "minecraft:hay_block",
+            "speed": 12
+          },
+          {
+            "block": "minecraft:leaves",
+            "speed": 12
+          },
+          {
+            "block": "minecraft:leaves2",
+            "speed": 12
+          },
+          {
+            "block": {
+              "tags": "q.any_tag('farmersdelight:pie', 'farmersdelight:straw_blocks')"
+            },
+            "speed": 12
+          }
+        ],
+        "use_efficiency": true
+      },
+      "minecraft:durability": {
+        "max_durability": 220
+      },
+      "minecraft:enchantable": {
+        "slot": "sword",
+        "value": 12
+      },
+      "minecraft:hand_equipped": true,
+      "minecraft:can_destroy_in_creative": false,
+      "minecraft:icon": {
+        "textures": {
+          "default": "farmersdelight:copper_knife"
+        }
+      },
+      "minecraft:max_stack_size": 1,
+      "minecraft:repairable": {
+        "repair_items": [
+          {
+            "items": [
+              "farmersdelight:copper_knife"
+            ],
+            "repair_amount": "context.other->query.remaining_durability + 0.05 * context.other->query.max_durability"
+          },
+          {
+            "items": [
+              "minecraft:copper_ingot"
+            ],
+            "repair_amount": "query.max_durability * 0.25"
+          }
+        ]
+      },
+      "minecraft:tags": {
+        "tags": [
+          "minecraft:is_sword",
+          "farmersdelight:is_knife",
+          "farmersdelight:straw_harvesters"
+        ]
+      }
+    },
+    "description": {
+      "identifier": "farmersdelight:copper_knife",
+      "menu_category": {
+        "category": "equipment",
+        "group": "farmersdelight:itemGroup.name.knife"
+      }
+    }
+  }
+}

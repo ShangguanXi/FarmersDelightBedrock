@@ -104,6 +104,7 @@ item.farmersdelight:chocolate_pie=Pastel de chocolate
 item.farmersdelight:tomato=Tomate
 item.farmersdelight:cabbage=Col
 item.farmersdelight:onion=Cebolla
+item.farmersdelight:onion_soup=Sopa de cebolla
 item.farmersdelight:rice=Arroz
 item.farmersdelight:cabbage_seeds=Semillas de col
 item.farmersdelight:tomato_seeds=Semillas de tomate
@@ -154,6 +155,7 @@ item.farmersdelight:earthworm=Lombriz
 
 item.farmersdelight:flint_knife=Cuchillo de pedernal
 item.farmersdelight:iron_knife=Cuchillo de hierro
+item.farmersdelight:copper_knife=Cuchillo de cobre
 item.farmersdelight:golden_knife=Cuchillo de oro
 item.farmersdelight:diamond_knife=Cuchillo de diamante
 item.farmersdelight:netherite_knife=Cuchillo de netherita

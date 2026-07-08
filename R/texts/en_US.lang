@@ -102,6 +102,7 @@ item.farmersdelight:chocolate_pie=Chocolate Pie
 item.farmersdelight:tomato=Tomato
 item.farmersdelight:cabbage=Cabbage
 item.farmersdelight:onion=Onion
+item.farmersdelight:onion_soup=Onion Soup
 item.farmersdelight:rice=Rice
 item.farmersdelight:cabbage_seeds=Cabbage Seeds
 item.farmersdelight:tomato_seeds=Tomato Seeds
@@ -152,6 +153,7 @@ item.farmersdelight:earthworm=Earthworm
 
 item.farmersdelight:flint_knife=Flint Knife
 item.farmersdelight:iron_knife=Iron Knife
+item.farmersdelight:copper_knife=Copper Knife
 item.farmersdelight:golden_knife=Golden Knife
 item.farmersdelight:diamond_knife=Diamond Knife
 item.farmersdelight:netherite_knife=Netherite Knife

@@ -1,0 +1,26 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "farmersdelight:copper_knife"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "pattern": [
+            "#",
+            "W"
+        ],
+        "key": {
+            "#": {
+                "item": "minecraft:copper_ingot"
+            },
+            "W": {
+                "item": "minecraft:stick"
+            }
+        },
+        "result": {
+            "item": "farmersdelight:copper_knife"
+        }
+    }
+}

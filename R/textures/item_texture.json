@@ -83,6 +83,9 @@
 		"farmersdelight:beef_stew": {
 			"textures": "textures/items/beef_stew"
 		},
+		"farmersdelight:onion_soup": {
+			"textures": "textures/items/onion_soup"
+		},
 		"farmersdelight:nether_salad": {
 			"textures": "textures/items/nether_salad"
 		},
@@ -130,6 +133,9 @@
 		},
 		"farmersdelight:iron_knife": {
 			"textures": "textures/items/iron_knife"
+		},
+		"farmersdelight:copper_knife": {
+			"textures": "textures/items/copper_knife"
 		},
 		"farmersdelight:flint_knife": {
 			"textures": "textures/items/flint_knife"
