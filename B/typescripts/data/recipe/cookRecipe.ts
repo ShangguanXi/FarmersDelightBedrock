@@ -60,6 +60,15 @@ const RECIPES_BY_ID: Map<string, CookingRecipe> = new Map([
     ["#minecraft:egg", { result: "farmersdelight:fried_egg", time: 200, exp: 0.35 }],
 ]);
 
+// 字面量中以 # 开头的是标签配方, 迁移到标签表以走 hasTag 匹配
+for (const [tagOrId, recipe] of [...RECIPES_BY_ID]) {
+    if (tagOrId[0] === "#") {
+        (recipe as any).ingredientTag = tagOrId.substring(1);
+        RECIPES_BY_TAG.addSortableRecipe(recipe as TaggedCookingRecipe);
+        RECIPES_BY_ID.delete(tagOrId);
+    }
+}
+
 export function registerCookable(tagOrId: string, recipe: CookingRecipe) {
     if (tagOrId[0] === "#") {
         (recipe as any).ingredientTag = tagOrId.substring(1);

@@ -4,7 +4,7 @@
     "description": "pack.description",
     "name": "pack.name",
     "uuid": "d0131071-9ec1-edcd-6871-857c700703d8",
-    "version": [5, 0, 3],
+    "version": [5, 0, 4],
     "min_engine_version": [1, 26, 0]
   },
   "modules": [
@@ -12,20 +12,20 @@
       "description": "农夫乐事",
       "type": "data",
       "uuid": "f5b2a87f-b96f-1a44-e9f6-e7ad00377f4a",
-      "version": [5, 0, 3]
+      "version": [5, 0, 4]
     }, {
       "description": "农夫乐事脚本",
       "type": "script",
       "language": "javascript",
       "uuid": "c0290469-77f9-1f71-be52-f38c9e18abb0",
-      "version": [5, 0, 3],
+      "version": [5, 0, 4],
       "entry": "scripts/main.js"
     }
   ],
   "dependencies": [
     {
       "uuid": "98836a6c-fe16-60f4-87a4-5afb6439bd9f",
-      "version": [5, 0, 3]
+      "version": [5, 0, 4]
     }, {
       "module_name": "@minecraft/server",
       "version": "2.4.0"

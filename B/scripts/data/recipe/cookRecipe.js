@@ -35,6 +35,13 @@ const RECIPES_BY_ID = new Map([
     ["farmersdelight:salmon_slice", { result: "farmersdelight:cooked_salmon_slice", time: 200, exp: 0.35 }],
     ["#minecraft:egg", { result: "farmersdelight:fried_egg", time: 200, exp: 0.35 }],
 ]);
+for (const [tagOrId, recipe] of [...RECIPES_BY_ID]) {
+    if (tagOrId[0] === "#") {
+        recipe.ingredientTag = tagOrId.substring(1);
+        RECIPES_BY_TAG.addSortableRecipe(recipe);
+        RECIPES_BY_ID.delete(tagOrId);
+    }
+}
 export function registerCookable(tagOrId, recipe) {
     if (tagOrId[0] === "#") {
         recipe.ingredientTag = tagOrId.substring(1);
