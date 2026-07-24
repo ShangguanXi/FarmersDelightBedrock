@@ -1,6 +1,7 @@
 tile.farmersdelight:stove.name=ストーブ
 tile.farmersdelight:cooking_pot.name=調理鍋
 tile.farmersdelight:basket.name=カゴ
+tile.farmersdelight:wooden_basket.name=木のカゴ
 tile.farmersdelight:cutting_board.name=まな板
 tile.farmersdelight:skillet_block.name=スキレット
 item.farmersdelight:skillet_block=スキレット

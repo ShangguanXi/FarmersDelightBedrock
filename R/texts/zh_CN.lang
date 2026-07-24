@@ -1,6 +1,7 @@
 tile.farmersdelight:stove.name=炉灶
 tile.farmersdelight:cooking_pot.name=厨锅
 tile.farmersdelight:basket.name=篮子
+tile.farmersdelight:wooden_basket.name=木篮
 tile.farmersdelight:cutting_board.name=砧板
 tile.farmersdelight:skillet_block.name=煎锅
 item.farmersdelight:skillet_block=煎锅

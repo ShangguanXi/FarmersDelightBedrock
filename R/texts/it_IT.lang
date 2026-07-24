@@ -1,6 +1,7 @@
 tile.farmersdelight:stove.name=Fornello
 tile.farmersdelight:cooking_pot.name=Pentola
 tile.farmersdelight:basket.name=Cestino
+tile.farmersdelight:wooden_basket.name=Cesto di legno
 tile.farmersdelight:cutting_board.name=Tagliere
 tile.farmersdelight:skillet_block.name=Padella
 item.farmersdelight:skillet_block=Padella

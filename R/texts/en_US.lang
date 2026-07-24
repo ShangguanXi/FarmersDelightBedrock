@@ -1,6 +1,7 @@
 tile.farmersdelight:stove.name=Stove
 tile.farmersdelight:cooking_pot.name=Cooking Pot
 tile.farmersdelight:basket.name=Basket
+tile.farmersdelight:wooden_basket.name=Wooden Basket
 tile.farmersdelight:cutting_board.name=Cutting Board
 tile.farmersdelight:skillet_block.name=Skillet
 item.farmersdelight:skillet_block=Skillet

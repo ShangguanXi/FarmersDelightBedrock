@@ -538,6 +538,18 @@
 		"basket_bottom": {
 			"textures": "textures/blocks/basket_bottom"
 		},
+		"wooden_basket_top": {
+			"textures": "textures/blocks/wooden_basket_top"
+		},
+		"wooden_basket_side": {
+			"textures": "textures/blocks/wooden_basket_side"
+		},
+		"wooden_basket_handle": {
+			"textures": "textures/blocks/wooden_basket_handle"
+		},
+		"wooden_basket_bottom": {
+			"textures": "textures/blocks/wooden_basket_bottom"
+		},
 		"apple_pie_top": {
 			"textures": "textures/blocks/apple_pie_top"
 		},

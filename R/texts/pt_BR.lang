@@ -1,6 +1,7 @@
 tile.farmersdelight:stove.name=Fogão
 tile.farmersdelight:cooking_pot.name=Panela
 tile.farmersdelight:basket.name=Cesto
+tile.farmersdelight:wooden_basket.name=Cesto de madeira
 tile.farmersdelight:cutting_board.name=Tábua de Corte
 tile.farmersdelight:skillet_block.name=Frigideira
 item.farmersdelight:skillet_block=Frigideira

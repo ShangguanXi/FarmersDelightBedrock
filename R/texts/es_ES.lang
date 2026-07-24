@@ -1,6 +1,7 @@
 tile.farmersdelight:stove.name=Parrilla
 tile.farmersdelight:cooking_pot.name=Olla
 tile.farmersdelight:basket.name=Cesta
+tile.farmersdelight:wooden_basket.name=Cesta de madera
 tile.farmersdelight:cutting_board.name=Tabla de picar
 tile.farmersdelight:skillet_block.name=Sartén
 item.farmersdelight:skillet_block=Sartén

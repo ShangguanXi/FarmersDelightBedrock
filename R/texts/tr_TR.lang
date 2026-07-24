@@ -1,6 +1,7 @@
 tile.farmersdelight:stove.name=Ocak
 tile.farmersdelight:cooking_pot.name=Tencere
 tile.farmersdelight:basket.name=Sepet
+tile.farmersdelight:wooden_basket.name=Ahşap Sepet
 tile.farmersdelight:cutting_board.name=Kesme Tahtası
 tile.farmersdelight:skillet_block.name=Tava
 item.farmersdelight:skillet_block=Tava
