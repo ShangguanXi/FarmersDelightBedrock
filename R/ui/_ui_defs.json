@@ -1,5 +1,6 @@
 {
     "ui_defs": [
+      "ui/chest_screen.json",
       "ui/cooking_pot.json"
     ]
   }

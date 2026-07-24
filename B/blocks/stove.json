@@ -127,6 +127,23 @@
       "minecraft:movable": {
         "movement_type": "immovable"
       },
+      "minecraft:item_visual": {
+        "geometry": "minecraft:geometry.full_block",
+        "material_instances": {
+             "*": {
+              "texture": "stove_side"
+            },
+            "up": {
+              "texture": "stove_top"
+            },
+            "down": {
+              "texture": "stove_bottom"
+            },
+          "south": {
+            "texture": "stove_front"
+          }
+        }
+      },
       "minecraft:material_instances": {
         "*": {
           "texture": "stove_side",

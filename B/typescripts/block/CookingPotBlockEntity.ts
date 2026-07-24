@@ -67,6 +67,8 @@ export class CookingPotBlockEntity {
     }
 
     static onTick(entity: Entity, block: Block) {
+        const name = entity.nameTag
+        if (name != "farmersdelight厨锅") entity.nameTag = "farmersdelight厨锅";
         const { x, y, z }: { x: number; y: number; z: number } = entity.location;
         const inventory = entity.getComponent("inventory") as EntityInventoryComponent;
         const container: Container | undefined = inventory?.container;

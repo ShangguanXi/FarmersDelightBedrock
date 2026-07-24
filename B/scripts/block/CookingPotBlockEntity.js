@@ -57,6 +57,9 @@ let CookingPotBlockEntity = class CookingPotBlockEntity {
         recipeFactory.delete(entity.id);
     }
     static onTick(entity, block) {
+        const name = entity.nameTag;
+        if (name != "farmersdelight厨锅")
+            entity.nameTag = "farmersdelight厨锅";
         const { x, y, z } = entity.location;
         const inventory = entity.getComponent("inventory");
         const container = inventory?.container;
