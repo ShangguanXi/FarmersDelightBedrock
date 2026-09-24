@@ -9,6 +9,7 @@
 | [farmersdelight:increase_production](#farmersdelightincrease_production) | Increase production component, marks the item as having increased production effect |
 | [farmersdelight:knife](#farmersdelightknife)               | Knife component, provides knife mining drops and pumpkin carving functionality |
 | [farmersdelight:seed](#farmersdelightseed)                 | Seed component, marks the item as a seed type that can interact with rich soil blocks and plant specified crops |
+| [farmersdelight:remainder](#farmersdelightremainder)       | Remainder component, the container returned when the item is consumed as a cooking pot ingredient |
 
 ---
 
@@ -94,4 +95,20 @@ Seed, can directly plant specified crops on rich soil farmland.
 
 ```json
 "farmersdelight:seed": "example:crop"
+```
+
+---
+
+#### farmersdelight:remainder
+
+The container returned when this item is consumed as a cooking pot ingredient (like `craftRemainder` in the Java Edition). The returned item pops out above the pot.
+
+Vanilla buckets and bottles (water/milk/lava/powder snow buckets, honey bottle, potion, dragon's breath) and `farmersdelight:milk_bottle` are handled without this component.
+
+###### Type: string
+
+**Example:**
+
+```json
+"farmersdelight:remainder": "minecraft:bucket"
 ```

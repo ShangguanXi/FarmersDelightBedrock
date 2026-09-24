@@ -9,6 +9,7 @@
 | [farmersdelight:increase_production](#farmersdelightincrease_production) | 增产组件，标记物品具有增产效果                               |
 | [farmersdelight:knife](#farmersdelightknife)               | 刀组件，提供刀的挖掘掉落和南瓜雕刻功能                       |
 | [farmersdelight:seed](#farmersdelightseed)                 | 种子组件，标记物品为种子类型，可与沃土类方块交互，并种植指定作物。 |
+| [farmersdelight:remainder](#farmersdelightremainder)       | 返还容器组件，物品作为厨锅原料被消耗时返还的容器 |
 
 ---
 
@@ -96,4 +97,18 @@ json
 json
 "farmersdelight:seed"："exmaple:crop"
 
+---
 
+#### farmersdelight:remainder
+
+物品作为厨锅原料被消耗时返还的容器（相当于 Java 版的 `craftRemainder`），返还的物品从锅上方弹出。
+
+原版的桶和瓶（水桶、牛奶桶、熔岩桶、细雪桶、蜂蜜瓶、药水、龙息）以及 `farmersdelight:milk_bottle` 不需要这个组件，厨锅会自动返还。
+
+###### Type: string
+
+**示例：**
+
+```json
+"farmersdelight:remainder": "minecraft:bucket"
+```

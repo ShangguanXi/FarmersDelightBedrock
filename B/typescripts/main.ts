@@ -27,6 +27,7 @@ import "./customComponents/item/CuttableComponent";
 import "./customComponents/item/CookableComponent";
 import "./customComponents/block/BlockEntityComponent";
 import "./customComponents/item/IncreaseProductionComponent";
+import "./customComponents/item/RemainderComponent";
 import "./customComponents/item/SeedComponent";
 import { PieComponent } from "./customComponents/block/PieCompostComonent";
 import "./block/BasketBlockEntity";

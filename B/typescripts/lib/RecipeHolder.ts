@@ -1,4 +1,5 @@
 import { Container, Entity, EntityInventoryComponent, ItemStack } from "@minecraft/server"
+import { getRemainder } from "../customComponents/item/RemainderComponent"
 
 /**
  * @remarks
@@ -201,14 +202,24 @@ export class RecipeHolder {
     consume(recipe: any) {
         const resultItem = new ItemStack(recipe.result.item, recipe.result.amount)
         if (this.addOutput(resultItem)) {
+            const remainders: ItemStack[] = []
             for (let i = 0; i < this.inputSlots; i++) {
                 const item = this.container?.getItem(i)
+                // 桶装、瓶装原料返还空容器（Java 版厨锅的 ejectIngredientRemainder）
+                const remainder = item ? getRemainder(item) : undefined
+                if (remainder) remainders.push(new ItemStack(remainder))
                 if (item && item.amount > 1){
                     item.amount -= 1
                     this.container?.setItem(i, item)
                 }
                 else{
                     this.container?.setItem(i)
+                }
+            }
+            if (remainders.length) {
+                const { x, y, z } = this.entity.location
+                for (const stack of remainders) {
+                    this.entity.dimension.spawnItem(stack, { x, y: y + 1, z })
                 }
             }
         }

@@ -111,6 +111,8 @@
 
 > 若配方不包含 `container` 字段，产物可直接取出。
 
+> 原料是桶装或瓶装物品时，烹饪完成后会返还空容器（如水桶 → 桶）。附属的物品用物品组件 [farmersdelight:remainder](./item_comp.md#farmersdelightremainder) 声明返还什么。
+
 ---
 
 ## 完整配方示例

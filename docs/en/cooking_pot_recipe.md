@@ -111,6 +111,8 @@ The container item needed when taking out the product. If the recipe defines a `
 
 > If the recipe does not contain the `container` field, the product can be taken out directly.
 
+> Ingredients that are buckets or bottles give their container back when a meal is cooked (e.g. water bucket → bucket). Items from addons declare this with the item component [farmersdelight:remainder](./item_comp.md#farmersdelightremainder).
+
 ---
 
 ## Complete Recipe Examples

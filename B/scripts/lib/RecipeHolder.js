@@ -1,4 +1,5 @@
 import { EntityInventoryComponent, ItemStack } from "@minecraft/server";
+import { getRemainder } from "../customComponents/item/RemainderComponent";
 export class RecipeHolder {
     constructor(entity, inputSlots, outputSlots, tags, recipeList) {
         this.entity = entity;
@@ -129,14 +130,24 @@ export class RecipeHolder {
     consume(recipe) {
         const resultItem = new ItemStack(recipe.result.item, recipe.result.amount);
         if (this.addOutput(resultItem)) {
+            const remainders = [];
             for (let i = 0; i < this.inputSlots; i++) {
                 const item = this.container?.getItem(i);
+                const remainder = item ? getRemainder(item) : undefined;
+                if (remainder)
+                    remainders.push(new ItemStack(remainder));
                 if (item && item.amount > 1) {
                     item.amount -= 1;
                     this.container?.setItem(i, item);
                 }
                 else {
                     this.container?.setItem(i);
+                }
+            }
+            if (remainders.length) {
+                const { x, y, z } = this.entity.location;
+                for (const stack of remainders) {
+                    this.entity.dimension.spawnItem(stack, { x, y: y + 1, z });
                 }
             }
         }
